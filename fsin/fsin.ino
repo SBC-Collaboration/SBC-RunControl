@@ -1,11 +1,13 @@
 /* Prof Dahl laid out an I/O map
- * <- 0-15 SQ Waves
- * -> 16-31 (not 13) Trig in
- * <- 33-47 Trig latch
- * -> 48 Trig reset
- * <- 49 Trig OR (unlatched)
- * <- 50 ON-Time status bit
- * <- 51 Heartbeat SQ wave?
+ * <- 2-17 SQ Waves
+ * -> 18-33 Trig in
+ * <- 34-49 Trig latch
+ * -> 50 Trig reset
+ * <- 51 Trig OR (unlatched)
+ * <- 52 ON-Time status bit
+ * <- 53 Heartbeat SQ wave?
+ * 
+ * IMPORTANT: PINs 20 and 21 must be plugged in, otherwise they read HIGH by default and that would not work.
  */
 
 typedef struct square_wave {
@@ -23,12 +25,17 @@ Square_Wave wave1;
 unsigned long DELAY_TIME = 100; // 10 us
 unsigned long delayStart = 0; // the time the delay started
 
+int fISum;
+int latchState = LOW;
+
 void setup (void) {
-  for(int a=0;a<16;) pinMode(a++,OUTPUT); // PIN OUT for SQ waves
-  for(int a=16;a<32;) pinMode(a++,INPUT); // PIN IN for Trig in
-  for(int a=32;a<47;) pinMode(a++, OUTPUT); // PIN OUT for Trig latch
-  pinMode(48, INPUT); // PIN IN for the unlatched Trig reset
-  for(int a=49;a<52;) pinMode(a++,INPUT); // PIN OUT for Trig OR, ON-Time, Heartbeat
+  Serial.begin(9600);
+  
+  for(int a=2;a<18;) pinMode(a++,OUTPUT); // PIN OUT for SQ waves
+  for(int a=18;a<34;) pinMode(a++,INPUT); // PIN IN for Trig in
+  for(int a=34;a<50;) pinMode(a++, OUTPUT); // PIN OUT for Trig latch
+  pinMode(50, INPUT); // PIN IN for Trig reset
+  for(int a=51;a<54;) pinMode(a++,OUTPUT); // PIN OUT for Trig OR, ON-Time, Heartbeat
   
   wave1.period = 10; //this should be going 100fps
   wave1.phase = 10;
@@ -92,4 +99,28 @@ void loop (void) {
       digitalWrite(wave->pin, HIGH); 
     }
   }
+
+  //Or gate for the fan in
+  fISum=0;
+  for(int i=18; i<34;){
+    fISum += digitalRead(i++);
+  }
+  if(fISum > 0) {
+    latchState = HIGH;
+    for(int i=34; i<50;){
+      digitalWrite(i++, HIGH);
+    }
+  }
+  //Trigger reset
+  if(digitalRead(50) > 0){
+    for(int i=34; i<50;){
+      latchState = LOW;
+      digitalWrite(i++, LOW);
+    }
+  }
+  //Trig OR (unlatched)
+  if(fISum>0) digitalWrite(51, HIGH);
+  else digitalWrite(51, LOW);
+
+  Serial.println(fISum);
 } 
