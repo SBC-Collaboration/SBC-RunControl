@@ -19,6 +19,8 @@ typedef struct square_wave {
     int pin;
     int state;
    } Square_Wave;
+Square_Wave waves[16];
+
 
 bool delayRunning = false; // true if still waiting for delay to finish
 Square_Wave wave1; 
@@ -55,10 +57,12 @@ void setup (void) {
   //int counter; //this is what Dr. Dahl called 'clock'
   //int pin;
   //int state;
+
+  waves[0] = wave1;
 } 
 
 void loop (void) {
-  Square_Wave* wave = &wave1;
+//  Square_Wave* wave = &wave1;
   bool ontime = false;
   while ((micros() - delayStart) <= DELAY_TIME) { 
     ontime = true;
@@ -67,38 +71,41 @@ void loop (void) {
   //add hearbeat pin. high-low-high low on every delay time. 
   //status pin as probe on ontime to makesure that delaytime is taking the right amount of time. 
   //update_wave(&wave1);
-  if (wave->state==0 && wave->counter > wave->phase){
-    wave->state = 1;
-  }
-  else if (wave->state==1 && wave->counter > (wave->phase + wave->duty)){
-    wave->state = 2;
-  }
-  else if (wave->state==2 && wave->counter > wave->period){
-     wave->state = 0;
-     wave->counter = 0;
-  }
-
-  wave->counter++;
-
-  if (wave->state==1) {
-    if (wave->polarity){
-      digitalWrite(wave->pin,HIGH); 
-    }
-    else
-    {
-      digitalWrite(wave->pin, LOW); 
-    }
-  }
-  else 
-  {
-     if (wave->polarity){
-      digitalWrite(wave->pin,LOW); 
-    }
-    else
-    {
-      digitalWrite(wave->pin, HIGH); 
-    }
-  }
+//  for(int i=0; i<15;){
+//    if(waves[i]==null) break;
+//    Square_Wave* wave = &waves[i]
+//  if (wave->state==0 && wave->counter > wave->phase){
+//    wave->state = 1;
+//  }
+//  else if (wave->state==1 && wave->counter > (wave->phase + wave->duty)){
+//    wave->state = 2;
+//  }
+//  else if (wave->state==2 && wave->counter > wave->period){
+//     wave->state = 0;
+//     wave->counter = 0;
+//  }
+//
+//  wave->counter++;
+//
+//  if (wave->state==1) {
+//    if (wave->polarity){
+//      digitalWrite(wave->pin,HIGH); 
+//    }
+//    else
+//    {
+//      digitalWrite(wave->pin, LOW); 
+//    }
+//  }
+//  else 
+//  {
+//     if (wave->polarity){
+//      digitalWrite(wave->pin,LOW); 
+//    }
+//    else
+//    {
+//      digitalWrite(wave->pin, HIGH); 
+//    }
+//  }
 
   //Or gate for the fan in
   fISum=0;
