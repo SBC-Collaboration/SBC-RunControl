@@ -24,7 +24,8 @@ Square_Wave waves[16];
 
 bool delayRunning = false; // true if still waiting for delay to finish
 Square_Wave wave1; 
-unsigned long DELAY_TIME = 100; // 10 us
+Square_Wave wave2;
+unsigned long DELAY_TIME = 100000; // 10 us
 unsigned long delayStart = 0; // the time the delay started
 
 int fISum;
@@ -39,12 +40,12 @@ void setup (void) {
   pinMode(50, INPUT); // PIN IN for Trig reset
   for(int a=51;a<54;) pinMode(a++,OUTPUT); // PIN OUT for Trig OR, ON-Time, Heartbeat
   
-  wave1.period = 10; //this should be going 100fps
-  wave1.phase = 10;
-  wave1.duty = 10;
+  wave1.period = 20; //this should be going 100fps
+  wave1.phase = 0;
+  wave1.duty = 5;
   wave1.polarity = true;
   wave1.counter = 0;
-  wave1.pin = 37;
+  wave1.pin = 2;
   wave1.state = 0;
   pinMode(wave1.pin, OUTPUT);
   digitalWrite(wave1.pin, LOW); 
@@ -58,7 +59,20 @@ void setup (void) {
   //int pin;
   //int state;
 
+  wave2.period = 20; //this should be going 100fps
+  wave2.phase = 0;
+  wave2.duty = 5;
+  wave2.polarity = false;
+  wave2.counter = 0;
+  wave2.pin = 3;
+  wave2.state = 0;
+
+  
+
   waves[0] = wave1;
+  waves[1] = wave2;
+  Square_Wave* wave[16];
+  //for(int i=0;i<15;i++) wave[i] = &waves[i];
 } 
 
 void loop (void) {
@@ -67,46 +81,47 @@ void loop (void) {
   while ((micros() - delayStart) <= DELAY_TIME) { 
     ontime = true;
   }
+  Serial.println("Going");
   delayStart += DELAY_TIME; // this prevents drift in the delays
   //add hearbeat pin. high-low-high low on every delay time. 
   //status pin as probe on ontime to makesure that delaytime is taking the right amount of time. 
   //update_wave(&wave1);
-//  for(int i=0; i<15;){
-//    if(waves[i]==null) break;
-//    Square_Wave* wave = &waves[i]
-//  if (wave->state==0 && wave->counter > wave->phase){
-//    wave->state = 1;
-//  }
-//  else if (wave->state==1 && wave->counter > (wave->phase + wave->duty)){
-//    wave->state = 2;
-//  }
-//  else if (wave->state==2 && wave->counter > wave->period){
-//     wave->state = 0;
-//     wave->counter = 0;
-//  }
-//
-//  wave->counter++;
-//
-//  if (wave->state==1) {
-//    if (wave->polarity){
-//      digitalWrite(wave->pin,HIGH); 
-//    }
-//    else
-//    {
-//      digitalWrite(wave->pin, LOW); 
-//    }
-//  }
-//  else 
-//  {
-//     if (wave->polarity){
-//      digitalWrite(wave->pin,LOW); 
-//    }
-//    else
-//    {
-//      digitalWrite(wave->pin, HIGH); 
-//    }
-//  }
+  for(int w=0; w<2; w++){
+  Square_Wave* wave = &waves[w];
+  if (wave->state==0 && wave->counter > wave->phase){
+    wave->state = 1;
+  }
+  else if (wave->state==1 && wave->counter > (wave->phase + wave->duty)){
+    wave->state = 2;
+  }
+  else if (wave->state==2 && wave->counter > wave->period){
+     wave->state = 0;
+     wave->counter = 0;
+  }
 
+  wave->counter++;
+
+  if (wave->state==1) {
+    if (wave->polarity){
+      digitalWrite(wave->pin,HIGH); 
+    }
+    else
+    {
+      digitalWrite(wave->pin, LOW); 
+    }
+  }
+  else 
+  {
+     if (wave->polarity){
+      digitalWrite(wave->pin,LOW); 
+    }
+    else
+    {
+      digitalWrite(wave->pin, HIGH); 
+    }
+  }}
+  
+  
   //Or gate for the fan in
   fISum=0;
   for(int i=18; i<34;){
@@ -129,5 +144,4 @@ void loop (void) {
   if(fISum>0) digitalWrite(51, HIGH);
   else digitalWrite(51, LOW);
 
-  Serial.println(fISum);
 } 
