@@ -25,14 +25,18 @@ Square_Wave waves[16];
 bool delayRunning = false; // true if still waiting for delay to finish
 Square_Wave wave1; 
 Square_Wave wave2;
-unsigned long DELAY_TIME = 100000; // 10 us
+Square_Wave wave3; 
+Square_Wave wave4;
+Square_Wave wave5;
+unsigned long DELAY_TIME = 150; // 10 us
 unsigned long delayStart = 0; // the time the delay started
+unsigned long prevTime = 0;
 
 int fISum;
 int latchState = LOW;
 
 void setup (void) {
-  Serial.begin(9600);
+  //Serial.begin(9600);
   
   for(int a=2;a<18;) pinMode(a++,OUTPUT); // PIN OUT for SQ waves
   for(int a=18;a<34;) pinMode(a++,INPUT); // PIN IN for Trig in
@@ -67,10 +71,36 @@ void setup (void) {
   wave2.pin = 3;
   wave2.state = 0;
 
-  
+  wave3.period = 20; //this should be going 100fps
+  wave3.phase = 0;
+  wave3.duty = 5;
+  wave3.polarity = false;
+  wave3.counter = 0;
+  wave3.pin = 4;
+  wave3.state = 0;
 
+  wave4.period = 20; //this should be going 100fps
+  wave4.phase = 0;
+  wave4.duty = 5;
+  wave4.polarity = false;
+  wave4.counter = 0;
+  wave4.pin = 5;
+  wave4.state = 0;
+
+  wave5.period = 20; //this should be going 100fps
+  wave5.phase = 0;
+  wave5.duty = 5;
+  wave5.polarity = false;
+  wave5.counter = 0;
+  wave5.pin = 6;
+  wave5.state = 0;
+  wave5.period = 20; 
+  
   waves[0] = wave1;
   waves[1] = wave2;
+  waves[2] = wave3;
+  waves[3] = wave4;
+  waves[4] = wave5;
   Square_Wave* wave[16];
   //for(int i=0;i<15;i++) wave[i] = &waves[i];
 } 
@@ -81,12 +111,14 @@ void loop (void) {
   while ((micros() - delayStart) <= DELAY_TIME) { 
     ontime = true;
   }
-  Serial.println("Going");
+  if(ontime) digitalWrite(52, HIGH);
+  else digitalWrite(52,LOW);
+  
   delayStart += DELAY_TIME; // this prevents drift in the delays
   //add hearbeat pin. high-low-high low on every delay time. 
   //status pin as probe on ontime to makesure that delaytime is taking the right amount of time. 
   //update_wave(&wave1);
-  for(int w=0; w<2; w++){
+  for(int w=0; w<5; w++){
   Square_Wave* wave = &waves[w];
   if (wave->state==0 && wave->counter > wave->phase){
     wave->state = 1;
@@ -125,23 +157,25 @@ void loop (void) {
   //Or gate for the fan in
   fISum=0;
   for(int i=18; i<34;){
-    fISum += digitalRead(i++);
-  }
-  if(fISum > 0) {
-    latchState = HIGH;
-    for(int i=34; i<50;){
-      digitalWrite(i++, HIGH);
+    if (digitalRead(i++)>0) {
+      latchState = HIGH;
+      fISum = HIGH;
+      break;
     }
   }
+  for(int i=34; i<50;){
+    digitalWrite(i++, latchState);
+  }
+  
   //Trigger reset
-  if(digitalRead(50) > 0){
+  if(digitalRead(50) == HIGH && latchState == HIGH){
+    latchState = LOW;
     for(int i=34; i<50;){
-      latchState = LOW;
       digitalWrite(i++, LOW);
     }
   }
   //Trig OR (unlatched)
-  if(fISum>0) digitalWrite(51, HIGH);
-  else digitalWrite(51, LOW);
+  digitalWrite(51, fISum);
+  fISum = LOW;
 
 } 
