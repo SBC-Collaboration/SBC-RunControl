@@ -28,7 +28,7 @@ Square_Wave wave2;
 Square_Wave wave3; 
 Square_Wave wave4;
 Square_Wave wave5;
-unsigned long DELAY_TIME = 85; // 10 us
+unsigned long DELAY_TIME = 100; // 10 us
 unsigned long delayStart = 0; // the time the delay started
 unsigned long prevTime = 0;
 
@@ -39,6 +39,8 @@ void setup (void) {
   //Serial.begin(9600);
   
   for(int a=2;a<18;) pinMode(a++,OUTPUT); // PIN OUT for SQ waves
+
+  DDRB = B11111111; // PIN OUT for SQ waves
 //  for(int a=18;a<34;) pinMode(a++,INPUT); // PIN IN for Trig in
 //  for(int a=34;a<50;) pinMode(a++, OUTPUT); // PIN OUT for Trig latch
   DDRA = B00000000; // Fan IN PINs 22-29
@@ -115,47 +117,50 @@ void loop (void) {
   while ((micros() - delayStart) <= DELAY_TIME) { 
     ontime = true;
   }
-  if(ontime) digitalWrite(40, HIGH);
+  if(ontime) PORTG |= B00000010;
   else digitalWrite(40,LOW);
   
   delayStart += DELAY_TIME; // this prevents drift in the delays
   //add hearbeat pin. high-low-high low on every delay time. 
   //status pin as probe on ontime to makesure that delaytime is taking the right amount of time. 
   //update_wave(&wave1);
+
+  //Waves:
   for(int w=0; w<5; w++){
-  Square_Wave* wave = &waves[w];
-  if (wave->state==0 && wave->counter > wave->phase){
-    wave->state = 1;
-  }
-  else if (wave->state==1 && wave->counter > (wave->phase + wave->duty)){
-    wave->state = 2;
-  }
-  else if (wave->state==2 && wave->counter > wave->period){
-     wave->state = 0;
-     wave->counter = 0;
-  }
-
-  wave->counter++;
-
-  if (wave->state==1) {
-    if (wave->polarity){
-      digitalWrite(wave->pin,HIGH); 
+    Square_Wave* wave = &waves[w];
+    if (wave->state==0 && wave->counter > wave->phase){
+      wave->state = 1;
     }
-    else
+    else if (wave->state==1 && wave->counter > (wave->phase + wave->duty)){
+      wave->state = 2;
+    }
+    else if (wave->state==2 && wave->counter > wave->period){
+       wave->state = 0;
+       wave->counter = 0;
+    }
+  
+    wave->counter++;
+  
+    if (wave->state==1) {
+      if (wave->polarity){
+        digitalWrite(wave->pin,HIGH); 
+      }
+      else
+      {
+        digitalWrite(wave->pin, LOW); 
+      }
+    }
+    else 
     {
-      digitalWrite(wave->pin, LOW); 
+       if (wave->polarity){
+        digitalWrite(wave->pin,LOW); 
+      }
+      else
+      {
+        digitalWrite(wave->pin, HIGH); 
+      }
     }
   }
-  else 
-  {
-     if (wave->polarity){
-      digitalWrite(wave->pin,LOW); 
-    }
-    else
-    {
-      digitalWrite(wave->pin, HIGH); 
-    }
-  }}
 
   int fISum = LOW;
   
@@ -169,7 +174,7 @@ void loop (void) {
 
   
   //Trigger reset
-  if(digitalRead(38)==1 && latchState == HIGH){
+  if(PIND > 127 && latchState == HIGH){
     latchState = LOW;
     PORTB = B00000000;
     PORTL = B00000000;
@@ -177,5 +182,8 @@ void loop (void) {
   
   //Trig OR (unlatched)
   digitalWrite(39, fISum);
+  if(fISum == HIGH){
+    PORTG |= B00000100;
+  }
 
 } 
