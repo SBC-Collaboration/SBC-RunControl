@@ -50,7 +50,7 @@ void setup (void) {
   pinMode(38, INPUT); // PIN IN for Trig reset
   for(int a=39;a<42;) pinMode(a++,OUTPUT); // PIN OUT for Trig OR, ON-Time, Heartbeat
   
-  wave1.period = 20; //this should be going 100fps
+  wave1.period = 10; //this should be going 100fps
   wave1.phase = 0;
   wave1.duty = 5;
   wave1.polarity = true;
@@ -69,10 +69,10 @@ void setup (void) {
   //int pin;
   //int state;
 
-  wave2.period = 20; //this should be going 100fps
+  wave2.period = 2; //this should be going 100fps
   wave2.phase = 0;
-  wave2.duty = 5;
-  wave2.polarity = false;
+  wave2.duty = 1;
+  wave2.polarity = true;
   wave2.counter = 0;
   wave2.pin = 3;
   wave2.state = 0;
@@ -134,7 +134,7 @@ void loop (void) {
     else if (wave->state==1 && wave->counter > (wave->phase + wave->duty)){
       wave->state = 2;
     }
-    else if (wave->state==2 && wave->counter > wave->period){
+    else if (wave->state==2 && wave->counter> wave->period){
        wave->state = 0;
        wave->counter = 0;
     }
