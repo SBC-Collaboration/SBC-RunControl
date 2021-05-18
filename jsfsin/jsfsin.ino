@@ -32,13 +32,17 @@ Config config; // <- global configuration object
 
 
 void setup (void) {
+  Serial.begin(9600);
   // Open file for reading
   File file = SD.open(filename);
   
   DynamicJsonDocument doc(1024);
   DeserializationError error = deserializeJson(doc, file);
-  if (error)
+  if (error){
+    Serial.print(F("deserializeJson() failed: "));
+    Serial.println(error.f_str());
     return;
+  }
   config.period = doc["jperiod"]; //this should be going 100fps
   config.phase = doc["jphase"];
   config.duty = doc["jduty"];
@@ -65,6 +69,7 @@ void setup (void) {
   //int counter; //this is what Dr. Dahl called 'clock'
   //int pin;
   //int state;
+  
 } 
 
 void loop (void) {
@@ -108,5 +113,6 @@ void loop (void) {
     {
       digitalWrite(wave->pin, HIGH); 
     }
+    Serial.println(wave->period);
   }
 } 
