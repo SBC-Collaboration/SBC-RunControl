@@ -8,6 +8,10 @@ import time
 
 
 class StartRunWorker(QObject):
+    """
+    Worker class for starting a run. It will change the run state into "starting", then initialize each DAQ modules.
+    Then it changes the state to "active".
+    """
     state = Signal(str)
     finished = Signal()
 
@@ -20,6 +24,10 @@ class StartRunWorker(QObject):
 
 
 class StopRunWorker(QObject):
+    """
+    Worker class for stopping a run. It will change the run state into "stopping", then wait for each DAQ modules to
+    end. Then it changes the run state to "idle".
+    """
     state = Signal(str)
     finished = Signal()
 

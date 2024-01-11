@@ -1,0 +1,8 @@
+<RCC>
+  <qresource prefix="icons">
+    <file>sbc_icon.png</file>
+  </qresource>
+  <qresource prefix="images"/>
+  <qresource prefix="config"/>
+  <qresource prefix="data"/>
+</RCC>
