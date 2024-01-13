@@ -60,7 +60,7 @@
       <property name="tabBarAutoHide">
        <bool>false</bool>
       </property>
-      <widget class="QWidget" name="settings_files_tab">
+      <widget class="QWidget" name="files_tab">
        <attribute name="title">
         <string>Files</string>
        </attribute>
@@ -78,7 +78,7 @@
          <number>0</number>
         </property>
         <item>
-         <widget class="QScrollArea" name="scrollArea_5">
+         <widget class="QScrollArea" name="files_scroll_area">
           <property name="frameShape">
            <enum>QFrame::NoFrame</enum>
           </property>
@@ -143,6 +143,9 @@
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
               </property>
+              <property name="buddy">
+               <cstring>config_path_edit</cstring>
+              </property>
              </widget>
             </item>
             <item row="1" column="0">
@@ -155,6 +158,9 @@
               </property>
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+              <property name="buddy">
+               <cstring>data_path_edit</cstring>
               </property>
              </widget>
             </item>
@@ -170,7 +176,7 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="settings_run_tab">
+      <widget class="QWidget" name="run_tab">
        <attribute name="title">
         <string>Run</string>
        </attribute>
@@ -188,7 +194,7 @@
          <number>0</number>
         </property>
         <item>
-         <widget class="QScrollArea" name="scrollArea_4">
+         <widget class="QScrollArea" name="run_scroll_area">
           <property name="frameShape">
            <enum>QFrame::NoFrame</enum>
           </property>
@@ -228,6 +234,12 @@
               <property name="text">
                <string>Max Number of Events</string>
               </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+              <property name="buddy">
+               <cstring>spinBox</cstring>
+              </property>
              </widget>
             </item>
             <item row="1" column="1">
@@ -247,6 +259,12 @@
              <widget class="QLabel" name="label">
               <property name="text">
                <string>Max Event Time</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+              <property name="buddy">
+               <cstring>doubleSpinBox</cstring>
               </property>
              </widget>
             </item>
@@ -276,7 +294,7 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="settings_sipm_tab">
+      <widget class="QWidget" name="sipm_tab">
        <attribute name="title">
         <string>SiPM</string>
        </attribute>
@@ -294,7 +312,7 @@
          <number>0</number>
         </property>
         <item>
-         <widget class="QScrollArea" name="scrollArea_2">
+         <widget class="QScrollArea" name="sipm_scroll_area">
           <property name="frameShape">
            <enum>QFrame::NoFrame</enum>
           </property>
@@ -358,7 +376,7 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="settings_acoustics_tab">
+      <widget class="QWidget" name="acoustics_tab">
        <attribute name="title">
         <string>Acoustics</string>
        </attribute>
@@ -376,7 +394,7 @@
          <number>0</number>
         </property>
         <item>
-         <widget class="QScrollArea" name="scrollArea_6">
+         <widget class="QScrollArea" name="acoustics_scroll_area">
           <property name="frameShape">
            <enum>QFrame::NoFrame</enum>
           </property>
@@ -412,7 +430,7 @@
              <number>0</number>
             </property>
             <item>
-             <layout class="QGridLayout" name="gridLayout_4">
+             <layout class="QGridLayout" name="acous_general_grid">
               <item row="1" column="0">
                <widget class="QLabel" name="label_33">
                 <property name="text">
@@ -420,6 +438,9 @@
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>spinBox_25</cstring>
                 </property>
                </widget>
               </item>
@@ -440,6 +461,9 @@
                 <property name="alignment">
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                 </property>
+                <property name="buddy">
+                 <cstring>comboBox</cstring>
+                </property>
                </widget>
               </item>
               <item row="1" column="1">
@@ -452,6 +476,9 @@
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>spinBox_43</cstring>
                 </property>
                </widget>
               </item>
@@ -466,6 +493,9 @@
                 <property name="alignment">
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                 </property>
+                <property name="buddy">
+                 <cstring>spinBox_26</cstring>
+                </property>
                </widget>
               </item>
               <item row="2" column="1">
@@ -478,6 +508,9 @@
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>spinBox_44</cstring>
                 </property>
                </widget>
               </item>
@@ -494,7 +527,7 @@
              </widget>
             </item>
             <item>
-             <layout class="QGridLayout" name="gridLayout_6">
+             <layout class="QGridLayout" name="acous_per_ch_grid">
               <property name="spacing">
                <number>3</number>
               </property>
@@ -526,6 +559,9 @@
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>acous__ch1_enbl_ckbox</cstring>
                 </property>
                </widget>
               </item>
@@ -597,6 +633,9 @@
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>acous__ch3_enbl_ckbox</cstring>
                 </property>
                </widget>
               </item>
@@ -687,6 +726,9 @@
                 <property name="alignment">
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                 </property>
+                <property name="buddy">
+                 <cstring>checkBox_14</cstring>
+                </property>
                </widget>
               </item>
               <item row="0" column="2">
@@ -732,7 +774,7 @@
                </widget>
               </item>
               <item row="1" column="2">
-               <widget class="QCheckBox" name="checkBox">
+               <widget class="QCheckBox" name="acous__ch1_enbl_ckbox">
                 <property name="text">
                  <string/>
                 </property>
@@ -813,7 +855,7 @@
                </widget>
               </item>
               <item row="3" column="2">
-               <widget class="QCheckBox" name="checkBox_12">
+               <widget class="QCheckBox" name="acous__ch3_enbl_ckbox">
                 <property name="text">
                  <string/>
                 </property>
@@ -840,6 +882,9 @@
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>checkBox_15</cstring>
                 </property>
                </widget>
               </item>
@@ -901,10 +946,13 @@
                 <property name="alignment">
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                 </property>
+                <property name="buddy">
+                 <cstring>checkBox_13</cstring>
+                </property>
                </widget>
               </item>
               <item row="2" column="2">
-               <widget class="QCheckBox" name="checkBox_11">
+               <widget class="QCheckBox" name="acous__ch2_enbl_ckbox">
                 <property name="text">
                  <string/>
                 </property>
@@ -931,6 +979,9 @@
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>checkBox_17</cstring>
                 </property>
                </widget>
               </item>
@@ -975,6 +1026,9 @@
                 <property name="alignment">
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                 </property>
+                <property name="buddy">
+                 <cstring>acous__ch2_enbl_ckbox</cstring>
+                </property>
                </widget>
               </item>
               <item row="2" column="4">
@@ -991,6 +1045,9 @@
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>checkBox_16</cstring>
                 </property>
                </widget>
               </item>
@@ -1125,7 +1182,7 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="settings_cam_tab">
+      <widget class="QWidget" name="cam_tab">
        <attribute name="title">
         <string>Camera</string>
        </attribute>
@@ -1143,7 +1200,7 @@
          <number>0</number>
         </property>
         <item>
-         <widget class="QScrollArea" name="scrollArea">
+         <widget class="QScrollArea" name="cam_scroll_area">
           <property name="sizeIncrement">
            <size>
             <width>0</width>
@@ -1996,7 +2053,7 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="settings_dio_tab">
+      <widget class="QWidget" name="dio_tab">
        <attribute name="title">
         <string>DIO</string>
        </attribute>
@@ -2017,7 +2074,7 @@
          <number>0</number>
         </property>
         <item>
-         <widget class="QScrollArea" name="scrollArea_3">
+         <widget class="QScrollArea" name="dio_scroll_area">
           <property name="frameShape">
            <enum>QFrame::NoFrame</enum>
           </property>
@@ -2093,6 +2150,9 @@
                 <property name="alignment">
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                 </property>
+                <property name="buddy">
+                 <cstring>spinBox_21</cstring>
+                </property>
                </widget>
               </item>
               <item row="1" column="0">
@@ -2102,6 +2162,9 @@
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>lineEdit_10</cstring>
                 </property>
                </widget>
               </item>
@@ -2116,6 +2179,9 @@
                 <property name="alignment">
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                 </property>
+                <property name="buddy">
+                 <cstring>spinBox_22</cstring>
+                </property>
                </widget>
               </item>
               <item row="2" column="0">
@@ -2126,6 +2192,9 @@
                 <property name="alignment">
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                 </property>
+                <property name="buddy">
+                 <cstring>lineEdit_11</cstring>
+                </property>
                </widget>
               </item>
               <item row="4" column="0">
@@ -2135,6 +2204,9 @@
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>spinBox_23</cstring>
                 </property>
                </widget>
               </item>
@@ -2148,6 +2220,9 @@
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>spinBox_24</cstring>
                 </property>
                </widget>
               </item>
@@ -2636,17 +2711,24 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
-   <addaction name="actionLoadConfig"/>
+   <addaction name="actionClose_Window"/>
+   <addaction name="actionReloadConfig"/>
    <addaction name="actionApply_config"/>
    <addaction name="actionSaveConfig"/>
   </widget>
-  <action name="actionLoadConfig">
+  <action name="actionReloadConfig">
    <property name="icon">
     <iconset resource="../resources/resources.qrc">
      <normaloff>:/icons/reload.png</normaloff>:/icons/reload.png</iconset>
    </property>
    <property name="text">
-    <string>Load config</string>
+    <string>Reload config</string>
+   </property>
+   <property name="toolTip">
+    <string>Reload config</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+R</string>
    </property>
    <property name="menuRole">
     <enum>QAction::NoRole</enum>
@@ -2662,6 +2744,9 @@
    </property>
    <property name="toolTip">
     <string>Save config to file</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
    </property>
    <property name="menuRole">
     <enum>QAction::NoRole</enum>
@@ -2682,7 +2767,26 @@
     <enum>QAction::NoRole</enum>
    </property>
   </action>
+  <action name="actionClose_Window">
+   <property name="icon">
+    <iconset resource="../resources/resources.qrc">
+     <normaloff>:/icons/quit.png</normaloff>:/icons/quit.png</iconset>
+   </property>
+   <property name="text">
+    <string>Close Window</string>
+   </property>
+   <property name="toolTip">
+    <string>Close Window</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+W</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
+  </action>
  </widget>
+ <layoutdefault spacing="3" margin="0"/>
  <resources>
   <include location="../resources/resources.qrc"/>
  </resources>

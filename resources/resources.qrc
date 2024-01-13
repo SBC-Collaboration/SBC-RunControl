@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="icons">
+    <file>help.png</file>
     <file>check.png</file>
     <file>quit.png</file>
     <file>log.png</file>
@@ -11,6 +12,4 @@
     <file>sbc_icon.png</file>
   </qresource>
   <qresource prefix="images"/>
-  <qresource prefix="config"/>
-  <qresource prefix="data"/>
 </RCC>

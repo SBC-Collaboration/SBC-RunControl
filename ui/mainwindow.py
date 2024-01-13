@@ -16,16 +16,16 @@ from PySide6.QtGui import (QAction, QBrush, QColor, QConicalGradient,
     QIcon, QImage, QKeySequence, QLinearGradient,
     QPainter, QPalette, QPixmap, QRadialGradient,
     QTransform)
-from PySide6.QtWidgets import (QApplication, QGridLayout, QLabel, QMainWindow,
-    QPushButton, QSizePolicy, QSpacerItem, QTabWidget,
-    QToolBar, QWidget)
+from PySide6.QtWidgets import (QApplication, QGridLayout, QLabel, QLineEdit,
+    QMainWindow, QPushButton, QSizePolicy, QSpacerItem,
+    QTabWidget, QToolBar, QToolButton, QWidget)
 import resources_rc
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(500, 400)
+        MainWindow.resize(500, 602)
         sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -63,25 +63,6 @@ class Ui_MainWindow(object):
         self.gridLayout.setSpacing(3)
         self.gridLayout.setObjectName(u"gridLayout")
         self.gridLayout.setContentsMargins(3, 3, 3, 3)
-        self.start_run_but = QPushButton(self.centralwidget)
-        self.start_run_but.setObjectName(u"start_run_but")
-        sizePolicy1 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Fixed)
-        sizePolicy1.setHorizontalStretch(0)
-        sizePolicy1.setVerticalStretch(0)
-        sizePolicy1.setHeightForWidth(self.start_run_but.sizePolicy().hasHeightForWidth())
-        self.start_run_but.setSizePolicy(sizePolicy1)
-        self.start_run_but.setMinimumSize(QSize(0, 50))
-        self.start_run_but.setSizeIncrement(QSize(0, 0))
-        font = QFont()
-        font.setPointSize(11)
-        font.setBold(True)
-        self.start_run_but.setFont(font)
-        self.start_run_but.setCursor(QCursor(Qt.PointingHandCursor))
-        self.start_run_but.setStyleSheet(u"QPushButton:enabled {color: rgb(0, 85, 0);}\n"
-"QPushButton:disabled {color: rgb(120, 120, 120);}")
-
-        self.gridLayout.addWidget(self.start_run_but, 0, 0, 1, 1)
-
         self.tabs_widget = QTabWidget(self.centralwidget)
         self.tabs_widget.setObjectName(u"tabs_widget")
         sizePolicy.setHeightForWidth(self.tabs_widget.sizePolicy().hasHeightForWidth())
@@ -93,6 +74,15 @@ class Ui_MainWindow(object):
         self.tabs_widget.setMovable(True)
         self.plc_tab = QWidget()
         self.plc_tab.setObjectName(u"plc_tab")
+        self.file_but = QToolButton(self.plc_tab)
+        self.file_but.setObjectName(u"file_but")
+        self.file_but.setGeometry(QRect(360, 10, 21, 22))
+        icon4 = QIcon()
+        icon4.addFile(u":/icons/open.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.file_but.setIcon(icon4)
+        self.file_path = QLineEdit(self.plc_tab)
+        self.file_path.setObjectName(u"file_path")
+        self.file_path.setGeometry(QRect(0, 40, 371, 21))
         self.tabs_widget.addTab(self.plc_tab, "")
         self.scint_tab = QWidget()
         self.scint_tab.setObjectName(u"scint_tab")
@@ -134,11 +124,11 @@ class Ui_MainWindow(object):
 
         self.camera_status_label = QLabel(self.camera_tab)
         self.camera_status_label.setObjectName(u"camera_status_label")
-        sizePolicy2 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Preferred)
-        sizePolicy2.setHorizontalStretch(0)
-        sizePolicy2.setVerticalStretch(0)
-        sizePolicy2.setHeightForWidth(self.camera_status_label.sizePolicy().hasHeightForWidth())
-        self.camera_status_label.setSizePolicy(sizePolicy2)
+        sizePolicy1 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Preferred)
+        sizePolicy1.setHorizontalStretch(0)
+        sizePolicy1.setVerticalStretch(0)
+        sizePolicy1.setHeightForWidth(self.camera_status_label.sizePolicy().hasHeightForWidth())
+        self.camera_status_label.setSizePolicy(sizePolicy1)
         self.camera_status_label.setLayoutDirection(Qt.LeftToRight)
         self.camera_status_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
@@ -162,9 +152,15 @@ class Ui_MainWindow(object):
         self.stop_run_but = QPushButton(self.centralwidget)
         self.stop_run_but.setObjectName(u"stop_run_but")
         self.stop_run_but.setEnabled(False)
-        sizePolicy1.setHeightForWidth(self.stop_run_but.sizePolicy().hasHeightForWidth())
-        self.stop_run_but.setSizePolicy(sizePolicy1)
+        sizePolicy2 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Fixed)
+        sizePolicy2.setHorizontalStretch(0)
+        sizePolicy2.setVerticalStretch(0)
+        sizePolicy2.setHeightForWidth(self.stop_run_but.sizePolicy().hasHeightForWidth())
+        self.stop_run_but.setSizePolicy(sizePolicy2)
         self.stop_run_but.setMinimumSize(QSize(0, 50))
+        font = QFont()
+        font.setPointSize(11)
+        font.setBold(True)
         self.stop_run_but.setFont(font)
         self.stop_run_but.setCursor(QCursor(Qt.PointingHandCursor))
         self.stop_run_but.setStyleSheet(u"QPushButton:enabled {color: rgb(170, 0, 0);}\n"
@@ -177,6 +173,19 @@ class Ui_MainWindow(object):
         self.run_state_label.setAlignment(Qt.AlignCenter)
 
         self.gridLayout.addWidget(self.run_state_label, 2, 0, 1, 1)
+
+        self.start_run_but = QPushButton(self.centralwidget)
+        self.start_run_but.setObjectName(u"start_run_but")
+        sizePolicy2.setHeightForWidth(self.start_run_but.sizePolicy().hasHeightForWidth())
+        self.start_run_but.setSizePolicy(sizePolicy2)
+        self.start_run_but.setMinimumSize(QSize(0, 50))
+        self.start_run_but.setSizeIncrement(QSize(0, 0))
+        self.start_run_but.setFont(font)
+        self.start_run_but.setCursor(QCursor(Qt.PointingHandCursor))
+        self.start_run_but.setStyleSheet(u"QPushButton:enabled {color: rgb(0, 85, 0);}\n"
+"QPushButton:disabled {color: rgb(120, 120, 120);}")
+
+        self.gridLayout.addWidget(self.start_run_but, 0, 0, 1, 1)
 
         self.gridLayout.setColumnStretch(0, 2)
         self.gridLayout.setColumnStretch(1, 8)
@@ -191,11 +200,12 @@ class Ui_MainWindow(object):
         self.toolBar.addAction(self.action_log)
 
         self.retranslateUi(MainWindow)
-        self.start_run_but.clicked.connect(MainWindow.start_run)
         self.stop_run_but.clicked.connect(MainWindow.stop_run)
         self.action_settings.triggered.connect(MainWindow.open_settings_window)
         self.action_log.triggered.connect(MainWindow.open_log_window)
         self.action_quit.triggered.connect(MainWindow.close)
+        self.start_run_but.clicked.connect(MainWindow.start_run)
+        self.file_but.clicked.connect(MainWindow.select_file)
 
         self.tabs_widget.setCurrentIndex(0)
 
@@ -206,15 +216,21 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"SBC Run Control", None))
         self.action_settings.setText(QCoreApplication.translate("MainWindow", u"Settings", None))
+#if QT_CONFIG(shortcut)
+        self.action_settings.setShortcut(QCoreApplication.translate("MainWindow", u"Ctrl+Shift+S", None))
+#endif // QT_CONFIG(shortcut)
         self.action_log.setText(QCoreApplication.translate("MainWindow", u"Log", None))
 #if QT_CONFIG(tooltip)
         self.action_log.setToolTip(QCoreApplication.translate("MainWindow", u"Log", None))
 #endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(shortcut)
+        self.action_log.setShortcut(QCoreApplication.translate("MainWindow", u"Ctrl+L", None))
+#endif // QT_CONFIG(shortcut)
         self.action_quit.setText(QCoreApplication.translate("MainWindow", u"Quit", None))
 #if QT_CONFIG(tooltip)
         self.action_quit.setToolTip(QCoreApplication.translate("MainWindow", u"quit", None))
 #endif // QT_CONFIG(tooltip)
-        self.start_run_but.setText(QCoreApplication.translate("MainWindow", u"Start Run", None))
+        self.file_but.setText(QCoreApplication.translate("MainWindow", u"...", None))
         self.tabs_widget.setTabText(self.tabs_widget.indexOf(self.plc_tab), QCoreApplication.translate("MainWindow", u"PLC", None))
         self.tabs_widget.setTabText(self.tabs_widget.indexOf(self.scint_tab), QCoreApplication.translate("MainWindow", u"Scintillation", None))
         self.tabs_widget.setTabText(self.tabs_widget.indexOf(self.acoustics_tab), QCoreApplication.translate("MainWindow", u"Acoustics", None))
@@ -227,6 +243,7 @@ class Ui_MainWindow(object):
         self.tabs_widget.setTabText(self.tabs_widget.indexOf(self.settings_tab), QCoreApplication.translate("MainWindow", u"Settings", None))
         self.stop_run_but.setText(QCoreApplication.translate("MainWindow", u"Stop Run", None))
         self.run_state_label.setText(QCoreApplication.translate("MainWindow", u"RunState", None))
+        self.start_run_but.setText(QCoreApplication.translate("MainWindow", u"Start Run", None))
         self.toolBar.setWindowTitle(QCoreApplication.translate("MainWindow", u"toolBar", None))
     # retranslateUi
 

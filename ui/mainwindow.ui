@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>500</width>
-    <height>400</height>
+    <height>602</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -70,44 +70,6 @@
     <property name="spacing">
      <number>3</number>
     </property>
-    <item row="0" column="0">
-     <widget class="QPushButton" name="start_run_but">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="minimumSize">
-       <size>
-        <width>0</width>
-        <height>50</height>
-       </size>
-      </property>
-      <property name="sizeIncrement">
-       <size>
-        <width>0</width>
-        <height>0</height>
-       </size>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>11</pointsize>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="cursor">
-       <cursorShape>PointingHandCursor</cursorShape>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">QPushButton:enabled {color: rgb(0, 85, 0);}
-QPushButton:disabled {color: rgb(120, 120, 120);}</string>
-      </property>
-      <property name="text">
-       <string>Start Run</string>
-      </property>
-     </widget>
-    </item>
     <item row="0" column="1" rowspan="3">
      <widget class="QTabWidget" name="tabs_widget">
       <property name="sizePolicy">
@@ -141,6 +103,33 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
        <attribute name="title">
         <string>PLC</string>
        </attribute>
+       <widget class="QToolButton" name="file_but">
+        <property name="geometry">
+         <rect>
+          <x>360</x>
+          <y>10</y>
+          <width>21</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>...</string>
+        </property>
+        <property name="icon">
+         <iconset resource="../resources/resources.qrc">
+          <normaloff>:/icons/open.png</normaloff>:/icons/open.png</iconset>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="file_path">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>40</y>
+          <width>371</width>
+          <height>21</height>
+         </rect>
+        </property>
+       </widget>
       </widget>
       <widget class="QWidget" name="scint_tab">
        <attribute name="title">
@@ -313,6 +302,44 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
       </property>
      </widget>
     </item>
+    <item row="0" column="0">
+     <widget class="QPushButton" name="start_run_but">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="sizeIncrement">
+       <size>
+        <width>0</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton:enabled {color: rgb(0, 85, 0);}
+QPushButton:disabled {color: rgb(120, 120, 120);}</string>
+      </property>
+      <property name="text">
+       <string>Start Run</string>
+      </property>
+     </widget>
+    </item>
    </layout>
   </widget>
   <widget class="QToolBar" name="toolBar">
@@ -340,6 +367,9 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
    <property name="text">
     <string>Settings</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+S</string>
+   </property>
    <property name="menuRole">
     <enum>QAction::PreferencesRole</enum>
    </property>
@@ -354,6 +384,9 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
    </property>
    <property name="toolTip">
     <string>Log</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+L</string>
    </property>
   </action>
   <action name="action_quit">
@@ -377,34 +410,18 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
  </resources>
  <connections>
   <connection>
-   <sender>start_run_but</sender>
-   <signal>clicked()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>start_run()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>46</x>
-     <y>86</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>99</x>
-     <y>71</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>stop_run_but</sender>
    <signal>clicked()</signal>
    <receiver>MainWindow</receiver>
    <slot>stop_run()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>66</x>
-     <y>151</y>
+     <x>69</x>
+     <y>139</y>
     </hint>
     <hint type="destinationlabel">
      <x>97</x>
-     <y>429</y>
+     <y>401</y>
     </hint>
    </hints>
   </connection>
@@ -456,6 +473,38 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>start_run_but</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>start_run()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>46</x>
+     <y>86</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>99</x>
+     <y>71</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>file_but</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>select_file()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>278</x>
+     <y>109</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>295</x>
+     <y>-10</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>start_run()</slot>
@@ -463,5 +512,6 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
   <slot>stop_run()</slot>
   <slot>open_settings_window()</slot>
   <slot>open_log_window()</slot>
+  <slot>select_file()</slot>
  </slots>
 </ui>

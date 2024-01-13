@@ -1,5 +1,5 @@
 import sys
-from PySide6.QtWidgets import QApplication, QMainWindow
+from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog
 from PySide6.QtCore import QFile
 from ui.mainwindow import Ui_MainWindow
 from ui.settingswindow import Ui_SettingsWindow
@@ -34,6 +34,12 @@ class MainWindow(QMainWindow):
         self.update_state("Idle")
 
     def closeEvent(self, event):
+        # close other opened windows before closing
+        try:
+            self.log_window.close()
+            self.settings_window.close()
+        except AttributeError:
+            pass
         logging.info("Quitting run control.\n")
 
     def start_run(self):
@@ -93,6 +99,10 @@ class MainWindow(QMainWindow):
         text = open(self.log_filename).read()
         self.log_ui.log_box.setText(text)
         self.log_ui.log_box.verticalScrollBar().setValue(self.log_ui.log_box.verticalScrollBar().maximum())
+
+    def select_file(self):
+        filename,_ = QFileDialog.getOpenFileName(self)
+        self.ui.file_path.setText(filename)
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
