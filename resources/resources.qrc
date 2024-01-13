@@ -1,5 +1,12 @@
 <RCC>
   <qresource prefix="icons">
+    <file>quit.png</file>
+    <file>log.png</file>
+    <file>settings.png</file>
+    <file>file.png</file>
+    <file>reload.png</file>
+    <file>open.png</file>
+    <file>save.png</file>
     <file>sbc_icon.png</file>
   </qresource>
   <qresource prefix="images"/>
