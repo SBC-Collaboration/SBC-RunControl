@@ -16,9 +16,9 @@ from PySide6.QtGui import (QAction, QBrush, QColor, QConicalGradient,
     QIcon, QImage, QKeySequence, QLinearGradient,
     QPainter, QPalette, QPixmap, QRadialGradient,
     QTransform)
-from PySide6.QtWidgets import (QApplication, QGraphicsView, QGridLayout, QHBoxLayout,
-    QLabel, QMainWindow, QPushButton, QSizePolicy,
-    QTabWidget, QToolBar, QVBoxLayout, QWidget)
+from PySide6.QtWidgets import (QApplication, QGridLayout, QLabel, QMainWindow,
+    QPushButton, QSizePolicy, QSpacerItem, QTabWidget,
+    QToolBar, QWidget)
 import resources_rc
 
 class Ui_MainWindow(object):
@@ -89,24 +89,35 @@ class Ui_MainWindow(object):
         self.tabs_widget.setSizeIncrement(QSize(100, 0))
         self.plc_tab = QWidget()
         self.plc_tab.setObjectName(u"plc_tab")
-        self.widget = QWidget(self.plc_tab)
-        self.widget.setObjectName(u"widget")
-        self.widget.setGeometry(QRect(10, 10, 261, 181))
         self.tabs_widget.addTab(self.plc_tab, "")
         self.scint_tab = QWidget()
         self.scint_tab.setObjectName(u"scint_tab")
         self.tabs_widget.addTab(self.scint_tab, "")
         self.camera_tab = QWidget()
         self.camera_tab.setObjectName(u"camera_tab")
-        self.verticalLayout_2 = QVBoxLayout(self.camera_tab)
-        self.verticalLayout_2.setObjectName(u"verticalLayout_2")
-        self.labelsLayout = QHBoxLayout()
-        self.labelsLayout.setObjectName(u"labelsLayout")
+        self.gridLayout_2 = QGridLayout(self.camera_tab)
+        self.gridLayout_2.setObjectName(u"gridLayout_2")
         self.TakeImageButton = QPushButton(self.camera_tab)
         self.TakeImageButton.setObjectName(u"TakeImageButton")
         self.TakeImageButton.setMinimumSize(QSize(80, 30))
 
-        self.labelsLayout.addWidget(self.TakeImageButton)
+        self.gridLayout_2.addWidget(self.TakeImageButton, 1, 0, 1, 1)
+
+        self.cam3_status_light = QLabel(self.camera_tab)
+        self.cam3_status_light.setObjectName(u"cam3_status_light")
+        self.cam3_status_light.setStyleSheet(u"color: rgb(255, 255, 255);\n"
+"background-color: rgb(150, 150, 150);")
+        self.cam3_status_light.setAlignment(Qt.AlignCenter)
+
+        self.gridLayout_2.addWidget(self.cam3_status_light, 1, 4, 1, 1)
+
+        self.cam1_status_light = QLabel(self.camera_tab)
+        self.cam1_status_light.setObjectName(u"cam1_status_light")
+        self.cam1_status_light.setStyleSheet(u"color: rgb(255, 255, 255);\n"
+"background-color: rgb(150, 150, 150);")
+        self.cam1_status_light.setAlignment(Qt.AlignCenter)
+
+        self.gridLayout_2.addWidget(self.cam1_status_light, 1, 2, 1, 1)
 
         self.camera_status_label = QLabel(self.camera_tab)
         self.camera_status_label.setObjectName(u"camera_status_label")
@@ -118,15 +129,7 @@ class Ui_MainWindow(object):
         self.camera_status_label.setLayoutDirection(Qt.LeftToRight)
         self.camera_status_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
-        self.labelsLayout.addWidget(self.camera_status_label)
-
-        self.cam1_status_light = QLabel(self.camera_tab)
-        self.cam1_status_light.setObjectName(u"cam1_status_light")
-        self.cam1_status_light.setStyleSheet(u"color: rgb(255, 255, 255);\n"
-"background-color: rgb(150, 150, 150);")
-        self.cam1_status_light.setAlignment(Qt.AlignCenter)
-
-        self.labelsLayout.addWidget(self.cam1_status_light)
+        self.gridLayout_2.addWidget(self.camera_status_label, 1, 1, 1, 1)
 
         self.cam2_status_light = QLabel(self.camera_tab)
         self.cam2_status_light.setObjectName(u"cam2_status_light")
@@ -134,28 +137,11 @@ class Ui_MainWindow(object):
 "background-color: rgb(150, 150, 150);")
         self.cam2_status_light.setAlignment(Qt.AlignCenter)
 
-        self.labelsLayout.addWidget(self.cam2_status_light)
+        self.gridLayout_2.addWidget(self.cam2_status_light, 1, 3, 1, 1)
 
-        self.cam3_status_light = QLabel(self.camera_tab)
-        self.cam3_status_light.setObjectName(u"cam3_status_light")
-        self.cam3_status_light.setStyleSheet(u"color: rgb(255, 255, 255);\n"
-"background-color: rgb(150, 150, 150);")
-        self.cam3_status_light.setAlignment(Qt.AlignCenter)
+        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
-        self.labelsLayout.addWidget(self.cam3_status_light)
-
-
-        self.verticalLayout_2.addLayout(self.labelsLayout)
-
-        self.imagesLayout = QHBoxLayout()
-        self.imagesLayout.setObjectName(u"imagesLayout")
-        self.graphicsView = QGraphicsView(self.camera_tab)
-        self.graphicsView.setObjectName(u"graphicsView")
-
-        self.imagesLayout.addWidget(self.graphicsView)
-
-
-        self.verticalLayout_2.addLayout(self.imagesLayout)
+        self.gridLayout_2.addItem(self.verticalSpacer, 2, 2, 1, 1)
 
         self.tabs_widget.addTab(self.camera_tab, "")
         self.settings_tab = QWidget()
@@ -199,7 +185,7 @@ class Ui_MainWindow(object):
         self.stop_run_but.clicked.connect(MainWindow.stop_run)
         self.action_settings.triggered.connect(MainWindow.open_settings_window)
         self.action_log.triggered.connect(MainWindow.open_log_window)
-        self.action_quit.triggered.connect(MainWindow.quit)
+        self.action_quit.triggered.connect(MainWindow.close)
 
         self.tabs_widget.setCurrentIndex(0)
 
@@ -214,18 +200,18 @@ class Ui_MainWindow(object):
 #if QT_CONFIG(tooltip)
         self.action_log.setToolTip(QCoreApplication.translate("MainWindow", u"Log", None))
 #endif // QT_CONFIG(tooltip)
-        self.action_quit.setText(QCoreApplication.translate("MainWindow", u"quit", None))
+        self.action_quit.setText(QCoreApplication.translate("MainWindow", u"Quit", None))
 #if QT_CONFIG(tooltip)
-        self.action_quit.setToolTip(QCoreApplication.translate("MainWindow", u"Quit", None))
+        self.action_quit.setToolTip(QCoreApplication.translate("MainWindow", u"quit", None))
 #endif // QT_CONFIG(tooltip)
         self.start_run_but.setText(QCoreApplication.translate("MainWindow", u"Start Run", None))
         self.tabs_widget.setTabText(self.tabs_widget.indexOf(self.plc_tab), QCoreApplication.translate("MainWindow", u"PLC", None))
         self.tabs_widget.setTabText(self.tabs_widget.indexOf(self.scint_tab), QCoreApplication.translate("MainWindow", u"Scintillation", None))
         self.TakeImageButton.setText(QCoreApplication.translate("MainWindow", u"Take Image", None))
-        self.camera_status_label.setText(QCoreApplication.translate("MainWindow", u"Camera Status:", None))
-        self.cam1_status_light.setText(QCoreApplication.translate("MainWindow", u"Cam 1", None))
-        self.cam2_status_light.setText(QCoreApplication.translate("MainWindow", u"Cam 2", None))
         self.cam3_status_light.setText(QCoreApplication.translate("MainWindow", u"Cam 3", None))
+        self.cam1_status_light.setText(QCoreApplication.translate("MainWindow", u"Cam 1", None))
+        self.camera_status_label.setText(QCoreApplication.translate("MainWindow", u"Camera Status:", None))
+        self.cam2_status_light.setText(QCoreApplication.translate("MainWindow", u"Cam 2", None))
         self.tabs_widget.setTabText(self.tabs_widget.indexOf(self.camera_tab), QCoreApplication.translate("MainWindow", u"Camera", None))
         self.tabs_widget.setTabText(self.tabs_widget.indexOf(self.settings_tab), QCoreApplication.translate("MainWindow", u"Settings", None))
         self.stop_run_but.setText(QCoreApplication.translate("MainWindow", u"Stop Run", None))

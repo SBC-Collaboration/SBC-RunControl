@@ -23,7 +23,7 @@ class Ui_LogWindow(object):
     def setupUi(self, LogWindow):
         if not LogWindow.objectName():
             LogWindow.setObjectName(u"LogWindow")
-        LogWindow.resize(500, 200)
+        LogWindow.resize(500, 203)
         sizePolicy = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)

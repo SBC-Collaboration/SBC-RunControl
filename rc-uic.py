@@ -33,9 +33,8 @@ class MainWindow(QMainWindow):
         # initialize run state
         self.update_state("Idle")
 
-    def quit(self):
+    def closeEvent(self, event):
         logging.info("Quitting run control.\n")
-        self.close()
 
     def start_run(self):
         if self.run_state == self.run_states["Idle"]:
