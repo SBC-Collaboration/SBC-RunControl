@@ -1,80 +1,49 @@
 import sys
-from PySide6.QtCore import *
-from PySide6.QtGui import *
-from PySide6.QtWidgets import *
-from enum import Enum
+from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog
+from PySide6.QtCore import QFile
+from ui.mainwindow import Ui_MainWindow
+from ui.settingswindow import Ui_SettingsWindow
+from ui.logwindow import Ui_LogWindow
 import logging
+from enum import Enum
 import time
 from config import *
 from workers import *
 
-
 class MainWindow(QMainWindow):
-    """
-    Main Qt class that creates all the windows and components, declares functions, and handles logging.
-    """
 
-    # define four run states
-    states = Enum("State", ["Idle", "Starting", "Active", "Stopping"])
 
     def __init__(self):
-        super().__init__()
-        self.setWindowTitle("SBC Run Control")
-        self.setWindowIcon(QIcon('sbc_icon.png'))
-        self.resize(600, 600)
+        super(MainWindow, self).__init__()
+        self.ui = Ui_MainWindow()
+        self.ui.setupUi(self)
+        self.init()
 
-        # config class initialization
-        self.config = Config()
-
+    def init(self):
         # logger initialization
-        log_filename = "test-rc.log"
+        self.log_filename = "test-rc.log"
         log_format = '%(asctime)s %(levelname)s > %(message)s'
-        logging.basicConfig(filename=log_filename, format=log_format, level=logging.INFO)
+        logging.basicConfig(filename=self.log_filename, format=log_format, level=logging.INFO)
         logging.getLogger().addHandler(logging.StreamHandler())
         logging.info("Starting run control.")
 
-        layout = QGridLayout()
+        # define four run states
+        self.run_states = Enum("State", ["Idle", "Starting", "Active", "Stopping"])
 
-        self.quit_but = QPushButton("Quit")
-        self.quit_but.clicked.connect(self.quit)
-        layout.addWidget(self.quit_but, 0, 0)
+        # initialize run state
+        self.update_state("Idle")
 
-        # start run button
-        self.start_run_but = QPushButton("Start Run")
-        self.start_run_but.clicked.connect(self.start_run)
-        layout.addWidget(self.start_run_but, 1, 0)
-
-        # stop run button
-        self.stop_run_but = QPushButton("Stop Run")
-        self.stop_run_but.clicked.connect(self.stop_run)
-        layout.addWidget(self.stop_run_but, 2, 0)
-
-        # run state indicator
-        self.state_label = QLabel(self)
-        self.state_label.setText("State")
-        layout.addWidget(self.state_label, 3, 0)
-
-        self.state_label2 = QLabel(self)
-        self.state_label2.setText("State2")
-        self.state_label3 = QLabel(self)
-        self.state_label3.setText("State3")
-        self.tab_widget = QTabWidget()
-        self.tab_widget.addTab(self.state_label2, "label2")
-        self.tab_widget.addTab(self.state_label3, "label3")
-        layout.addWidget(self.tab_widget, 0, 1,0,3)
-
-
-
-        widget = QWidget()
-        widget.setLayout(layout)
-        self.setCentralWidget(widget)
-
-    def quit(self):
+    def closeEvent(self, event):
+        # close other opened windows before closing
+        try:
+            self.log_window.close()
+            self.settings_window.close()
+        except AttributeError:
+            pass
         logging.info("Quitting run control.\n")
-        self.close()
 
     def start_run(self):
-        if self.state == self.states["Idle"]:
+        if self.run_state == self.run_states["Idle"]:
             # set up multithreading thread and workers
             self.start_run_thread = QThread()
             self.start_run_worker = StartRunWorker()
@@ -87,7 +56,7 @@ class MainWindow(QMainWindow):
             self.start_run_thread.start()
 
     def stop_run(self):
-        if self.state == self.states["Active"]:
+        if self.run_state == self.run_states["Active"]:
             # set up multithreading thread and workers
             self.stop_run_thread = QThread()
             self.stop_run_worker = StopRunWorker()
@@ -100,23 +69,45 @@ class MainWindow(QMainWindow):
             self.stop_run_thread.start()
 
     def update_state(self, s):
-        self.state = self.states[s]
+        self.run_state = self.run_states[s]
         logging.info(f"Run state: {s}.")
-        self.state_label.setText(self.state.name)
-        state_colors = ["lightgrey", "lightblue", "lightgreen", "lightpink"]
-        self.state_label.setStyleSheet(f"background-color: {state_colors[self.state.value-1]}")
-        if self.state == self.states["Idle"]:
-            self.start_run_but.setEnabled(True)
-            self.stop_run_but.setEnabled(False)
-        elif self.state == self.states["Active"]:
-            self.start_run_but.setEnabled(False)
-            self.stop_run_but.setEnabled(True)
+        self.ui.run_state_label.setText(self.run_state.name)
+        run_state_colors = ["lightgrey", "lightblue", "lightgreen", "lightpink"]
+        self.ui.run_state_label.setStyleSheet(f"background-color: {run_state_colors[self.run_state.value-1]}")
+        if self.run_state == self.run_states["Idle"]:
+            self.ui.start_run_but.setEnabled(True)
+            self.ui.stop_run_but.setEnabled(False)
+        elif self.run_state == self.run_states["Active"]:
+            self.ui.start_run_but.setEnabled(False)
+            self.ui.stop_run_but.setEnabled(True)
         else:
-            self.start_run_but.setEnabled(False)
-            self.stop_run_but.setEnabled(False)
+            self.ui.start_run_but.setEnabled(False)
+            self.ui.stop_run_but.setEnabled(False)
 
-app = QApplication(sys.argv)
-win = MainWindow()
-win.show()
+    def open_settings_window(self):
+        self.settings_window = QMainWindow()
+        self.settings_ui = Ui_SettingsWindow()
+        self.settings_ui.setupUi(self.settings_window)
+        self.settings_window.show()
 
-sys.exit(app.exec())
+    def open_log_window(self):
+        self.log_window = QMainWindow()
+        self.log_ui = Ui_LogWindow()
+        self.log_ui.setupUi(self.log_window)
+        self.log_window.show()
+
+        text = open(self.log_filename).read()
+        self.log_ui.log_box.setText(text)
+        self.log_ui.log_box.verticalScrollBar().setValue(self.log_ui.log_box.verticalScrollBar().maximum())
+
+    def select_file(self):
+        filename,_ = QFileDialog.getOpenFileName(self)
+        self.ui.file_path.setText(filename)
+
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+
+    window = MainWindow()
+    window.show()
+
+    sys.exit(app.exec())
