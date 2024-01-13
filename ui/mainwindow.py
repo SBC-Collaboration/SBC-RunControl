@@ -76,7 +76,7 @@ class Ui_MainWindow(object):
         font.setPointSize(11)
         font.setBold(True)
         self.start_run_but.setFont(font)
-        self.start_run_but.setCursor(QCursor(Qt.ArrowCursor))
+        self.start_run_but.setCursor(QCursor(Qt.PointingHandCursor))
         self.start_run_but.setStyleSheet(u"QPushButton:enabled {color: rgb(0, 85, 0);}\n"
 "QPushButton:disabled {color: rgb(120, 120, 120);}")
 
@@ -87,21 +87,34 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(self.tabs_widget.sizePolicy().hasHeightForWidth())
         self.tabs_widget.setSizePolicy(sizePolicy)
         self.tabs_widget.setSizeIncrement(QSize(100, 0))
+        self.tabs_widget.setTabShape(QTabWidget.Rounded)
+        self.tabs_widget.setDocumentMode(False)
+        self.tabs_widget.setTabsClosable(False)
+        self.tabs_widget.setMovable(True)
         self.plc_tab = QWidget()
         self.plc_tab.setObjectName(u"plc_tab")
         self.tabs_widget.addTab(self.plc_tab, "")
         self.scint_tab = QWidget()
         self.scint_tab.setObjectName(u"scint_tab")
         self.tabs_widget.addTab(self.scint_tab, "")
+        self.acoustics_tab = QWidget()
+        self.acoustics_tab.setObjectName(u"acoustics_tab")
+        self.tabs_widget.addTab(self.acoustics_tab, "")
         self.camera_tab = QWidget()
         self.camera_tab.setObjectName(u"camera_tab")
         self.gridLayout_2 = QGridLayout(self.camera_tab)
+        self.gridLayout_2.setSpacing(3)
         self.gridLayout_2.setObjectName(u"gridLayout_2")
-        self.TakeImageButton = QPushButton(self.camera_tab)
-        self.TakeImageButton.setObjectName(u"TakeImageButton")
-        self.TakeImageButton.setMinimumSize(QSize(80, 30))
+        self.gridLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.take_image_but = QPushButton(self.camera_tab)
+        self.take_image_but.setObjectName(u"take_image_but")
+        self.take_image_but.setMinimumSize(QSize(80, 30))
 
-        self.gridLayout_2.addWidget(self.TakeImageButton, 1, 0, 1, 1)
+        self.gridLayout_2.addWidget(self.take_image_but, 1, 0, 1, 1)
+
+        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+
+        self.gridLayout_2.addItem(self.verticalSpacer, 2, 3, 1, 1)
 
         self.cam3_status_light = QLabel(self.camera_tab)
         self.cam3_status_light.setObjectName(u"cam3_status_light")
@@ -109,7 +122,7 @@ class Ui_MainWindow(object):
 "background-color: rgb(150, 150, 150);")
         self.cam3_status_light.setAlignment(Qt.AlignCenter)
 
-        self.gridLayout_2.addWidget(self.cam3_status_light, 1, 4, 1, 1)
+        self.gridLayout_2.addWidget(self.cam3_status_light, 1, 5, 1, 1)
 
         self.cam1_status_light = QLabel(self.camera_tab)
         self.cam1_status_light.setObjectName(u"cam1_status_light")
@@ -117,7 +130,7 @@ class Ui_MainWindow(object):
 "background-color: rgb(150, 150, 150);")
         self.cam1_status_light.setAlignment(Qt.AlignCenter)
 
-        self.gridLayout_2.addWidget(self.cam1_status_light, 1, 2, 1, 1)
+        self.gridLayout_2.addWidget(self.cam1_status_light, 1, 3, 1, 1)
 
         self.camera_status_label = QLabel(self.camera_tab)
         self.camera_status_label.setObjectName(u"camera_status_label")
@@ -129,7 +142,7 @@ class Ui_MainWindow(object):
         self.camera_status_label.setLayoutDirection(Qt.LeftToRight)
         self.camera_status_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
-        self.gridLayout_2.addWidget(self.camera_status_label, 1, 1, 1, 1)
+        self.gridLayout_2.addWidget(self.camera_status_label, 1, 2, 1, 1)
 
         self.cam2_status_light = QLabel(self.camera_tab)
         self.cam2_status_light.setObjectName(u"cam2_status_light")
@@ -137,11 +150,7 @@ class Ui_MainWindow(object):
 "background-color: rgb(150, 150, 150);")
         self.cam2_status_light.setAlignment(Qt.AlignCenter)
 
-        self.gridLayout_2.addWidget(self.cam2_status_light, 1, 3, 1, 1)
-
-        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
-
-        self.gridLayout_2.addItem(self.verticalSpacer, 2, 2, 1, 1)
+        self.gridLayout_2.addWidget(self.cam2_status_light, 1, 4, 1, 1)
 
         self.tabs_widget.addTab(self.camera_tab, "")
         self.settings_tab = QWidget()
@@ -157,6 +166,7 @@ class Ui_MainWindow(object):
         self.stop_run_but.setSizePolicy(sizePolicy1)
         self.stop_run_but.setMinimumSize(QSize(0, 50))
         self.stop_run_but.setFont(font)
+        self.stop_run_but.setCursor(QCursor(Qt.PointingHandCursor))
         self.stop_run_but.setStyleSheet(u"QPushButton:enabled {color: rgb(170, 0, 0);}\n"
 "QPushButton:disabled {color: rgb(120, 120, 120);}")
 
@@ -207,7 +217,8 @@ class Ui_MainWindow(object):
         self.start_run_but.setText(QCoreApplication.translate("MainWindow", u"Start Run", None))
         self.tabs_widget.setTabText(self.tabs_widget.indexOf(self.plc_tab), QCoreApplication.translate("MainWindow", u"PLC", None))
         self.tabs_widget.setTabText(self.tabs_widget.indexOf(self.scint_tab), QCoreApplication.translate("MainWindow", u"Scintillation", None))
-        self.TakeImageButton.setText(QCoreApplication.translate("MainWindow", u"Take Image", None))
+        self.tabs_widget.setTabText(self.tabs_widget.indexOf(self.acoustics_tab), QCoreApplication.translate("MainWindow", u"Acoustics", None))
+        self.take_image_but.setText(QCoreApplication.translate("MainWindow", u"Take Image", None))
         self.cam3_status_light.setText(QCoreApplication.translate("MainWindow", u"Cam 3", None))
         self.cam1_status_light.setText(QCoreApplication.translate("MainWindow", u"Cam 1", None))
         self.camera_status_label.setText(QCoreApplication.translate("MainWindow", u"Camera Status:", None))

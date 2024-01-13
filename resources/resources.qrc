@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="icons">
+    <file>check.png</file>
     <file>quit.png</file>
     <file>log.png</file>
     <file>settings.png</file>

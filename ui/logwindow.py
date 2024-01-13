@@ -23,13 +23,13 @@ class Ui_LogWindow(object):
     def setupUi(self, LogWindow):
         if not LogWindow.objectName():
             LogWindow.setObjectName(u"LogWindow")
-        LogWindow.resize(500, 203)
+        LogWindow.resize(300, 150)
         sizePolicy = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(LogWindow.sizePolicy().hasHeightForWidth())
         LogWindow.setSizePolicy(sizePolicy)
-        LogWindow.setMinimumSize(QSize(200, 100))
+        LogWindow.setMinimumSize(QSize(300, 150))
         icon = QIcon()
         icon.addFile(u":/icons/sbc_icon.png", QSize(), QIcon.Normal, QIcon.Off)
         LogWindow.setWindowIcon(icon)
