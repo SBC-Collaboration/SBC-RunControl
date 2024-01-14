@@ -20,14 +20,14 @@ from PySide6.QtWidgets import (QAbstractSpinBox, QApplication, QCheckBox, QCombo
     QDoubleSpinBox, QFrame, QGridLayout, QLabel,
     QLayout, QLineEdit, QMainWindow, QScrollArea,
     QSizePolicy, QSpacerItem, QSpinBox, QTabWidget,
-    QToolBar, QVBoxLayout, QWidget)
+    QToolBar, QToolButton, QVBoxLayout, QWidget)
 import resources_rc
 
 class Ui_SettingsWindow(object):
     def setupUi(self, SettingsWindow):
         if not SettingsWindow.objectName():
             SettingsWindow.setObjectName(u"SettingsWindow")
-        SettingsWindow.resize(400, 462)
+        SettingsWindow.resize(400, 503)
         sizePolicy = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -60,7 +60,7 @@ class Ui_SettingsWindow(object):
         icon4 = QIcon()
         icon4.addFile(u":/icons/quit.png", QSize(), QIcon.Normal, QIcon.Off)
         self.actionClose_Window.setIcon(icon4)
-        self.actionClose_Window.setMenuRole(QAction.NoRole)
+        self.actionClose_Window.setMenuRole(QAction.QuitRole)
         self.centralwidget = QWidget(SettingsWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.gridLayout = QGridLayout(self.centralwidget)
@@ -88,15 +88,17 @@ class Ui_SettingsWindow(object):
         self.files_scroll_area.setWidgetResizable(True)
         self.scrollAreaWidgetContents_5 = QWidget()
         self.scrollAreaWidgetContents_5.setObjectName(u"scrollAreaWidgetContents_5")
-        self.scrollAreaWidgetContents_5.setGeometry(QRect(0, 0, 388, 393))
+        self.scrollAreaWidgetContents_5.setGeometry(QRect(0, 0, 388, 434))
+        self.scrollAreaWidgetContents_5.setMaximumSize(QSize(1000, 16777215))
         self.gridLayout_3 = QGridLayout(self.scrollAreaWidgetContents_5)
         self.gridLayout_3.setSpacing(3)
         self.gridLayout_3.setContentsMargins(0, 0, 0, 0)
         self.gridLayout_3.setObjectName(u"gridLayout_3")
         self.gridLayout_3.setContentsMargins(0, 0, 0, 0)
-        self.verticalSpacer = QSpacerItem(20, 336, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.config_path_edit = QLineEdit(self.scrollAreaWidgetContents_5)
+        self.config_path_edit.setObjectName(u"config_path_edit")
 
-        self.gridLayout_3.addItem(self.verticalSpacer, 2, 2, 1, 1)
+        self.gridLayout_3.addWidget(self.config_path_edit, 0, 2, 1, 1)
 
         self.config_path_label = QLabel(self.scrollAreaWidgetContents_5)
         self.config_path_label.setObjectName(u"config_path_label")
@@ -118,10 +120,19 @@ class Ui_SettingsWindow(object):
 
         self.gridLayout_3.addWidget(self.data_path_edit, 1, 2, 1, 1)
 
-        self.config_path_edit = QLineEdit(self.scrollAreaWidgetContents_5)
-        self.config_path_edit.setObjectName(u"config_path_edit")
+        self.verticalSpacer = QSpacerItem(20, 336, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
-        self.gridLayout_3.addWidget(self.config_path_edit, 0, 2, 1, 1)
+        self.gridLayout_3.addItem(self.verticalSpacer, 3, 2, 1, 1)
+
+        self.config_path_but = QToolButton(self.scrollAreaWidgetContents_5)
+        self.config_path_but.setObjectName(u"config_path_but")
+
+        self.gridLayout_3.addWidget(self.config_path_but, 0, 3, 1, 1)
+
+        self.data_path_but = QToolButton(self.scrollAreaWidgetContents_5)
+        self.data_path_but.setObjectName(u"data_path_but")
+
+        self.gridLayout_3.addWidget(self.data_path_but, 1, 3, 1, 1)
 
         self.files_scroll_area.setWidget(self.scrollAreaWidgetContents_5)
 
@@ -143,7 +154,8 @@ class Ui_SettingsWindow(object):
         self.run_scroll_area.setWidgetResizable(True)
         self.scrollAreaWidgetContents_4 = QWidget()
         self.scrollAreaWidgetContents_4.setObjectName(u"scrollAreaWidgetContents_4")
-        self.scrollAreaWidgetContents_4.setGeometry(QRect(0, 0, 388, 393))
+        self.scrollAreaWidgetContents_4.setGeometry(QRect(0, 0, 388, 434))
+        self.scrollAreaWidgetContents_4.setMaximumSize(QSize(1000, 16777215))
         self.gridLayout_2 = QGridLayout(self.scrollAreaWidgetContents_4)
         self.gridLayout_2.setSpacing(3)
         self.gridLayout_2.setContentsMargins(0, 0, 0, 0)
@@ -198,7 +210,8 @@ class Ui_SettingsWindow(object):
         self.sipm_scroll_area.setWidgetResizable(True)
         self.scrollAreaWidgetContents_2 = QWidget()
         self.scrollAreaWidgetContents_2.setObjectName(u"scrollAreaWidgetContents_2")
-        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, 0, 388, 393))
+        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, 0, 388, 434))
+        self.scrollAreaWidgetContents_2.setMaximumSize(QSize(1000, 16777215))
         self.gridLayout_7 = QGridLayout(self.scrollAreaWidgetContents_2)
         self.gridLayout_7.setSpacing(3)
         self.gridLayout_7.setContentsMargins(0, 0, 0, 0)
@@ -233,7 +246,8 @@ class Ui_SettingsWindow(object):
         self.acoustics_scroll_area.setWidgetResizable(True)
         self.scrollAreaWidgetContents_6 = QWidget()
         self.scrollAreaWidgetContents_6.setObjectName(u"scrollAreaWidgetContents_6")
-        self.scrollAreaWidgetContents_6.setGeometry(QRect(0, 0, 388, 393))
+        self.scrollAreaWidgetContents_6.setGeometry(QRect(0, 0, 388, 434))
+        self.scrollAreaWidgetContents_6.setMaximumSize(QSize(1000, 16777215))
         self.verticalLayout_8 = QVBoxLayout(self.scrollAreaWidgetContents_6)
         self.verticalLayout_8.setSpacing(3)
         self.verticalLayout_8.setContentsMargins(0, 0, 0, 0)
@@ -311,20 +325,92 @@ class Ui_SettingsWindow(object):
         self.acous_per_ch_grid = QGridLayout()
         self.acous_per_ch_grid.setSpacing(3)
         self.acous_per_ch_grid.setObjectName(u"acous_per_ch_grid")
-        self.spinBox_84 = QSpinBox(self.scrollAreaWidgetContents_6)
-        self.spinBox_84.setObjectName(u"spinBox_84")
+        self.checkBox_16 = QCheckBox(self.scrollAreaWidgetContents_6)
+        self.checkBox_16.setObjectName(u"checkBox_16")
 
-        self.acous_per_ch_grid.addWidget(self.spinBox_84, 2, 3, 1, 1)
+        self.acous_per_ch_grid.addWidget(self.checkBox_16, 7, 1, 1, 1)
+
+        self.acous__ch3_enbl_ckbox = QCheckBox(self.scrollAreaWidgetContents_6)
+        self.acous__ch3_enbl_ckbox.setObjectName(u"acous__ch3_enbl_ckbox")
+
+        self.acous_per_ch_grid.addWidget(self.acous__ch3_enbl_ckbox, 3, 1, 1, 1)
+
+        self.label_62 = QLabel(self.scrollAreaWidgetContents_6)
+        self.label_62.setObjectName(u"label_62")
+        self.label_62.setAlignment(Qt.AlignCenter)
+
+        self.acous_per_ch_grid.addWidget(self.label_62, 0, 4, 1, 1)
+
+        self.spinBox_100 = QSpinBox(self.scrollAreaWidgetContents_6)
+        self.spinBox_100.setObjectName(u"spinBox_100")
+
+        self.acous_per_ch_grid.addWidget(self.spinBox_100, 4, 6, 1, 1)
+
+        self.label_63 = QLabel(self.scrollAreaWidgetContents_6)
+        self.label_63.setObjectName(u"label_63")
+        self.label_63.setAlignment(Qt.AlignCenter)
+
+        self.acous_per_ch_grid.addWidget(self.label_63, 0, 5, 1, 1)
+
+        self.label_58 = QLabel(self.scrollAreaWidgetContents_6)
+        self.label_58.setObjectName(u"label_58")
+        self.label_58.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.acous_per_ch_grid.addWidget(self.label_58, 5, 0, 1, 1)
+
+        self.comboBox_5 = QComboBox(self.scrollAreaWidgetContents_6)
+        self.comboBox_5.addItem("")
+        self.comboBox_5.addItem("")
+        self.comboBox_5.setObjectName(u"comboBox_5")
+        self.comboBox_5.setIconSize(QSize(16, 16))
+        self.comboBox_5.setFrame(True)
+
+        self.acous_per_ch_grid.addWidget(self.comboBox_5, 4, 5, 1, 1)
+
+        self.label_52 = QLabel(self.scrollAreaWidgetContents_6)
+        self.label_52.setObjectName(u"label_52")
+        self.label_52.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.acous_per_ch_grid.addWidget(self.label_52, 2, 0, 1, 1)
+
+        self.comboBox_4 = QComboBox(self.scrollAreaWidgetContents_6)
+        self.comboBox_4.addItem("")
+        self.comboBox_4.addItem("")
+        self.comboBox_4.setObjectName(u"comboBox_4")
+        self.comboBox_4.setIconSize(QSize(16, 16))
+        self.comboBox_4.setFrame(True)
+
+        self.acous_per_ch_grid.addWidget(self.comboBox_4, 3, 5, 1, 1)
+
+        self.comboBox_6 = QComboBox(self.scrollAreaWidgetContents_6)
+        self.comboBox_6.addItem("")
+        self.comboBox_6.addItem("")
+        self.comboBox_6.setObjectName(u"comboBox_6")
+        self.comboBox_6.setIconSize(QSize(16, 16))
+        self.comboBox_6.setFrame(True)
+
+        self.acous_per_ch_grid.addWidget(self.comboBox_6, 5, 5, 1, 1)
+
+        self.spinBox_94 = QSpinBox(self.scrollAreaWidgetContents_6)
+        self.spinBox_94.setObjectName(u"spinBox_94")
+
+        self.acous_per_ch_grid.addWidget(self.spinBox_94, 7, 3, 1, 1)
 
         self.label_37 = QLabel(self.scrollAreaWidgetContents_6)
         self.label_37.setObjectName(u"label_37")
+        self.label_37.setAlignment(Qt.AlignCenter)
 
-        self.acous_per_ch_grid.addWidget(self.label_37, 0, 3, 1, 1)
+        self.acous_per_ch_grid.addWidget(self.label_37, 0, 2, 1, 1)
 
-        self.spinBox_90 = QSpinBox(self.scrollAreaWidgetContents_6)
-        self.spinBox_90.setObjectName(u"spinBox_90")
+        self.checkBox_13 = QCheckBox(self.scrollAreaWidgetContents_6)
+        self.checkBox_13.setObjectName(u"checkBox_13")
 
-        self.acous_per_ch_grid.addWidget(self.spinBox_90, 5, 3, 1, 1)
+        self.acous_per_ch_grid.addWidget(self.checkBox_13, 4, 1, 1, 1)
+
+        self.checkBox_24 = QCheckBox(self.scrollAreaWidgetContents_6)
+        self.checkBox_24.setObjectName(u"checkBox_24")
+
+        self.acous_per_ch_grid.addWidget(self.checkBox_24, 7, 4, 1, 1)
 
         self.label_40 = QLabel(self.scrollAreaWidgetContents_6)
         self.label_40.setObjectName(u"label_40")
@@ -332,10 +418,25 @@ class Ui_SettingsWindow(object):
 
         self.acous_per_ch_grid.addWidget(self.label_40, 1, 0, 1, 1)
 
-        self.checkBox_19 = QCheckBox(self.scrollAreaWidgetContents_6)
-        self.checkBox_19.setObjectName(u"checkBox_19")
+        self.comboBox_13 = QComboBox(self.scrollAreaWidgetContents_6)
+        self.comboBox_13.addItem("")
+        self.comboBox_13.addItem("")
+        self.comboBox_13.setObjectName(u"comboBox_13")
+        self.comboBox_13.setIconSize(QSize(16, 16))
+        self.comboBox_13.setFrame(True)
 
-        self.acous_per_ch_grid.addWidget(self.checkBox_19, 2, 5, 1, 1)
+        self.acous_per_ch_grid.addWidget(self.comboBox_13, 9, 5, 1, 1)
+
+        self.spinBox_96 = QSpinBox(self.scrollAreaWidgetContents_6)
+        self.spinBox_96.setObjectName(u"spinBox_96")
+
+        self.acous_per_ch_grid.addWidget(self.spinBox_96, 8, 2, 1, 1)
+
+        self.label_59 = QLabel(self.scrollAreaWidgetContents_6)
+        self.label_59.setObjectName(u"label_59")
+        self.label_59.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.acous_per_ch_grid.addWidget(self.label_59, 6, 0, 1, 1)
 
         self.comboBox_9 = QComboBox(self.scrollAreaWidgetContents_6)
         self.comboBox_9.addItem("")
@@ -344,32 +445,68 @@ class Ui_SettingsWindow(object):
         self.comboBox_9.setIconSize(QSize(16, 16))
         self.comboBox_9.setFrame(True)
 
-        self.acous_per_ch_grid.addWidget(self.comboBox_9, 8, 6, 1, 1)
-
-        self.spinBox_86 = QSpinBox(self.scrollAreaWidgetContents_6)
-        self.spinBox_86.setObjectName(u"spinBox_86")
-
-        self.acous_per_ch_grid.addWidget(self.spinBox_86, 3, 4, 1, 1)
-
-        self.spinBox_92 = QSpinBox(self.scrollAreaWidgetContents_6)
-        self.spinBox_92.setObjectName(u"spinBox_92")
-
-        self.acous_per_ch_grid.addWidget(self.spinBox_92, 7, 3, 1, 1)
-
-        self.label_62 = QLabel(self.scrollAreaWidgetContents_6)
-        self.label_62.setObjectName(u"label_62")
-
-        self.acous_per_ch_grid.addWidget(self.label_62, 0, 5, 1, 1)
-
-        self.checkBox_25 = QCheckBox(self.scrollAreaWidgetContents_6)
-        self.checkBox_25.setObjectName(u"checkBox_25")
-
-        self.acous_per_ch_grid.addWidget(self.checkBox_25, 8, 5, 1, 1)
+        self.acous_per_ch_grid.addWidget(self.comboBox_9, 8, 5, 1, 1)
 
         self.spinBox_97 = QSpinBox(self.scrollAreaWidgetContents_6)
         self.spinBox_97.setObjectName(u"spinBox_97")
 
-        self.acous_per_ch_grid.addWidget(self.spinBox_97, 1, 7, 1, 1)
+        self.acous_per_ch_grid.addWidget(self.spinBox_97, 1, 6, 1, 1)
+
+        self.spinBox_88 = QSpinBox(self.scrollAreaWidgetContents_6)
+        self.spinBox_88.setObjectName(u"spinBox_88")
+
+        self.acous_per_ch_grid.addWidget(self.spinBox_88, 4, 3, 1, 1)
+
+        self.label_60 = QLabel(self.scrollAreaWidgetContents_6)
+        self.label_60.setObjectName(u"label_60")
+        self.label_60.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.acous_per_ch_grid.addWidget(self.label_60, 7, 0, 1, 1)
+
+        self.acous__ch2_enbl_ckbox = QCheckBox(self.scrollAreaWidgetContents_6)
+        self.acous__ch2_enbl_ckbox.setObjectName(u"acous__ch2_enbl_ckbox")
+        self.acous__ch2_enbl_ckbox.setStyleSheet(u"")
+
+        self.acous_per_ch_grid.addWidget(self.acous__ch2_enbl_ckbox, 2, 1, 1, 1)
+
+        self.spinBox_95 = QSpinBox(self.scrollAreaWidgetContents_6)
+        self.spinBox_95.setObjectName(u"spinBox_95")
+
+        self.acous_per_ch_grid.addWidget(self.spinBox_95, 8, 3, 1, 1)
+
+        self.spinBox_99 = QSpinBox(self.scrollAreaWidgetContents_6)
+        self.spinBox_99.setObjectName(u"spinBox_99")
+
+        self.acous_per_ch_grid.addWidget(self.spinBox_99, 3, 6, 1, 1)
+
+        self.checkBox_23 = QCheckBox(self.scrollAreaWidgetContents_6)
+        self.checkBox_23.setObjectName(u"checkBox_23")
+
+        self.acous_per_ch_grid.addWidget(self.checkBox_23, 6, 4, 1, 1)
+
+        self.checkBox_26 = QCheckBox(self.scrollAreaWidgetContents_6)
+        self.checkBox_26.setObjectName(u"checkBox_26")
+
+        self.acous_per_ch_grid.addWidget(self.checkBox_26, 9, 4, 1, 1)
+
+        self.spinBox_85 = QSpinBox(self.scrollAreaWidgetContents_6)
+        self.spinBox_85.setObjectName(u"spinBox_85")
+
+        self.acous_per_ch_grid.addWidget(self.spinBox_85, 3, 2, 1, 1)
+
+        self.comboBox_7 = QComboBox(self.scrollAreaWidgetContents_6)
+        self.comboBox_7.addItem("")
+        self.comboBox_7.addItem("")
+        self.comboBox_7.setObjectName(u"comboBox_7")
+        self.comboBox_7.setIconSize(QSize(16, 16))
+        self.comboBox_7.setFrame(True)
+
+        self.acous_per_ch_grid.addWidget(self.comboBox_7, 6, 5, 1, 1)
+
+        self.spinBox_103 = QSpinBox(self.scrollAreaWidgetContents_6)
+        self.spinBox_103.setObjectName(u"spinBox_103")
+
+        self.acous_per_ch_grid.addWidget(self.spinBox_103, 7, 6, 1, 1)
 
         self.label_56 = QLabel(self.scrollAreaWidgetContents_6)
         self.label_56.setObjectName(u"label_56")
@@ -377,26 +514,170 @@ class Ui_SettingsWindow(object):
 
         self.acous_per_ch_grid.addWidget(self.label_56, 3, 0, 1, 1)
 
-        self.spinBox_82 = QSpinBox(self.scrollAreaWidgetContents_6)
-        self.spinBox_82.setObjectName(u"spinBox_82")
-        self.spinBox_82.setStepType(QAbstractSpinBox.DefaultStepType)
+        self.spinBox_104 = QSpinBox(self.scrollAreaWidgetContents_6)
+        self.spinBox_104.setObjectName(u"spinBox_104")
 
-        self.acous_per_ch_grid.addWidget(self.spinBox_82, 1, 3, 1, 1)
+        self.acous_per_ch_grid.addWidget(self.spinBox_104, 8, 6, 1, 1)
 
-        self.checkBox_13 = QCheckBox(self.scrollAreaWidgetContents_6)
-        self.checkBox_13.setObjectName(u"checkBox_13")
+        self.spinBox_93 = QSpinBox(self.scrollAreaWidgetContents_6)
+        self.spinBox_93.setObjectName(u"spinBox_93")
 
-        self.acous_per_ch_grid.addWidget(self.checkBox_13, 4, 2, 1, 1)
+        self.acous_per_ch_grid.addWidget(self.spinBox_93, 6, 2, 1, 1)
 
-        self.spinBox_101 = QSpinBox(self.scrollAreaWidgetContents_6)
-        self.spinBox_101.setObjectName(u"spinBox_101")
+        self.spinBox_98 = QSpinBox(self.scrollAreaWidgetContents_6)
+        self.spinBox_98.setObjectName(u"spinBox_98")
 
-        self.acous_per_ch_grid.addWidget(self.spinBox_101, 5, 7, 1, 1)
+        self.acous_per_ch_grid.addWidget(self.spinBox_98, 2, 6, 1, 1)
+
+        self.checkBox_21 = QCheckBox(self.scrollAreaWidgetContents_6)
+        self.checkBox_21.setObjectName(u"checkBox_21")
+
+        self.acous_per_ch_grid.addWidget(self.checkBox_21, 4, 4, 1, 1)
+
+        self.spinBox_81 = QSpinBox(self.scrollAreaWidgetContents_6)
+        self.spinBox_81.setObjectName(u"spinBox_81")
+
+        self.acous_per_ch_grid.addWidget(self.spinBox_81, 1, 3, 1, 1)
+
+        self.checkBox_19 = QCheckBox(self.scrollAreaWidgetContents_6)
+        self.checkBox_19.setObjectName(u"checkBox_19")
+
+        self.acous_per_ch_grid.addWidget(self.checkBox_19, 2, 4, 1, 1)
+
+        self.label_61 = QLabel(self.scrollAreaWidgetContents_6)
+        self.label_61.setObjectName(u"label_61")
+        self.label_61.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.acous_per_ch_grid.addWidget(self.label_61, 8, 0, 1, 1)
+
+        self.spinBox_105 = QSpinBox(self.scrollAreaWidgetContents_6)
+        self.spinBox_105.setObjectName(u"spinBox_105")
+
+        self.acous_per_ch_grid.addWidget(self.spinBox_105, 9, 6, 1, 1)
+
+        self.spinBox_89 = QSpinBox(self.scrollAreaWidgetContents_6)
+        self.spinBox_89.setObjectName(u"spinBox_89")
+
+        self.acous_per_ch_grid.addWidget(self.spinBox_89, 5, 3, 1, 1)
+
+        self.label_38 = QLabel(self.scrollAreaWidgetContents_6)
+        self.label_38.setObjectName(u"label_38")
+        self.label_38.setAlignment(Qt.AlignCenter)
+
+        self.acous_per_ch_grid.addWidget(self.label_38, 0, 3, 1, 1)
+
+        self.comboBox_3 = QComboBox(self.scrollAreaWidgetContents_6)
+        self.comboBox_3.addItem("")
+        self.comboBox_3.addItem("")
+        self.comboBox_3.setObjectName(u"comboBox_3")
+        self.comboBox_3.setIconSize(QSize(16, 16))
+        self.comboBox_3.setFrame(True)
+
+        self.acous_per_ch_grid.addWidget(self.comboBox_3, 2, 5, 1, 1)
+
+        self.checkBox_25 = QCheckBox(self.scrollAreaWidgetContents_6)
+        self.checkBox_25.setObjectName(u"checkBox_25")
+
+        self.acous_per_ch_grid.addWidget(self.checkBox_25, 8, 4, 1, 1)
+
+        self.label_39 = QLabel(self.scrollAreaWidgetContents_6)
+        self.label_39.setObjectName(u"label_39")
+        self.label_39.setAlignment(Qt.AlignCenter)
+
+        self.acous_per_ch_grid.addWidget(self.label_39, 0, 1, 1, 1)
+
+        self.checkBox_14 = QCheckBox(self.scrollAreaWidgetContents_6)
+        self.checkBox_14.setObjectName(u"checkBox_14")
+
+        self.acous_per_ch_grid.addWidget(self.checkBox_14, 5, 1, 1, 1)
+
+        self.spinBox_84 = QSpinBox(self.scrollAreaWidgetContents_6)
+        self.spinBox_84.setObjectName(u"spinBox_84")
+
+        self.acous_per_ch_grid.addWidget(self.spinBox_84, 2, 2, 1, 1)
+
+        self.label_57 = QLabel(self.scrollAreaWidgetContents_6)
+        self.label_57.setObjectName(u"label_57")
+        self.label_57.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.acous_per_ch_grid.addWidget(self.label_57, 4, 0, 1, 1)
+
+        self.spinBox_92 = QSpinBox(self.scrollAreaWidgetContents_6)
+        self.spinBox_92.setObjectName(u"spinBox_92")
+
+        self.acous_per_ch_grid.addWidget(self.spinBox_92, 7, 2, 1, 1)
 
         self.checkBox_22 = QCheckBox(self.scrollAreaWidgetContents_6)
         self.checkBox_22.setObjectName(u"checkBox_22")
 
-        self.acous_per_ch_grid.addWidget(self.checkBox_22, 5, 5, 1, 1)
+        self.acous_per_ch_grid.addWidget(self.checkBox_22, 5, 4, 1, 1)
+
+        self.checkBox_20 = QCheckBox(self.scrollAreaWidgetContents_6)
+        self.checkBox_20.setObjectName(u"checkBox_20")
+
+        self.acous_per_ch_grid.addWidget(self.checkBox_20, 3, 4, 1, 1)
+
+        self.spinBox_83 = QSpinBox(self.scrollAreaWidgetContents_6)
+        self.spinBox_83.setObjectName(u"spinBox_83")
+
+        self.acous_per_ch_grid.addWidget(self.spinBox_83, 2, 3, 1, 1)
+
+        self.spinBox_90 = QSpinBox(self.scrollAreaWidgetContents_6)
+        self.spinBox_90.setObjectName(u"spinBox_90")
+
+        self.acous_per_ch_grid.addWidget(self.spinBox_90, 5, 2, 1, 1)
+
+        self.spinBox_101 = QSpinBox(self.scrollAreaWidgetContents_6)
+        self.spinBox_101.setObjectName(u"spinBox_101")
+
+        self.acous_per_ch_grid.addWidget(self.spinBox_101, 5, 6, 1, 1)
+
+        self.spinBox_102 = QSpinBox(self.scrollAreaWidgetContents_6)
+        self.spinBox_102.setObjectName(u"spinBox_102")
+
+        self.acous_per_ch_grid.addWidget(self.spinBox_102, 6, 6, 1, 1)
+
+        self.comboBox_8 = QComboBox(self.scrollAreaWidgetContents_6)
+        self.comboBox_8.addItem("")
+        self.comboBox_8.addItem("")
+        self.comboBox_8.setObjectName(u"comboBox_8")
+        self.comboBox_8.setIconSize(QSize(16, 16))
+        self.comboBox_8.setFrame(True)
+
+        self.acous_per_ch_grid.addWidget(self.comboBox_8, 7, 5, 1, 1)
+
+        self.checkBox_17 = QCheckBox(self.scrollAreaWidgetContents_6)
+        self.checkBox_17.setObjectName(u"checkBox_17")
+
+        self.acous_per_ch_grid.addWidget(self.checkBox_17, 8, 1, 1, 1)
+
+        self.spinBox_82 = QSpinBox(self.scrollAreaWidgetContents_6)
+        self.spinBox_82.setObjectName(u"spinBox_82")
+        self.spinBox_82.setStepType(QAbstractSpinBox.DefaultStepType)
+
+        self.acous_per_ch_grid.addWidget(self.spinBox_82, 1, 2, 1, 1)
+
+        self.spinBox_87 = QSpinBox(self.scrollAreaWidgetContents_6)
+        self.spinBox_87.setObjectName(u"spinBox_87")
+
+        self.acous_per_ch_grid.addWidget(self.spinBox_87, 4, 2, 1, 1)
+
+        self.checkBox_15 = QCheckBox(self.scrollAreaWidgetContents_6)
+        self.checkBox_15.setObjectName(u"checkBox_15")
+
+        self.acous_per_ch_grid.addWidget(self.checkBox_15, 6, 1, 1, 1)
+
+        self.acous__ch1_enbl_ckbox = QCheckBox(self.scrollAreaWidgetContents_6)
+        self.acous__ch1_enbl_ckbox.setObjectName(u"acous__ch1_enbl_ckbox")
+        self.acous__ch1_enbl_ckbox.setStyleSheet(u"")
+
+        self.acous_per_ch_grid.addWidget(self.acous__ch1_enbl_ckbox, 1, 1, 1, 1)
+
+        self.label_64 = QLabel(self.scrollAreaWidgetContents_6)
+        self.label_64.setObjectName(u"label_64")
+        self.label_64.setAlignment(Qt.AlignCenter)
+
+        self.acous_per_ch_grid.addWidget(self.label_64, 0, 6, 1, 1)
 
         self.comboBox_2 = QComboBox(self.scrollAreaWidgetContents_6)
         self.comboBox_2.addItem("")
@@ -407,262 +688,7 @@ class Ui_SettingsWindow(object):
         self.comboBox_2.setIconSize(QSize(16, 16))
         self.comboBox_2.setFrame(True)
 
-        self.acous_per_ch_grid.addWidget(self.comboBox_2, 1, 6, 1, 1)
-
-        self.comboBox_4 = QComboBox(self.scrollAreaWidgetContents_6)
-        self.comboBox_4.addItem("")
-        self.comboBox_4.addItem("")
-        self.comboBox_4.setObjectName(u"comboBox_4")
-        self.comboBox_4.setIconSize(QSize(16, 16))
-        self.comboBox_4.setFrame(True)
-
-        self.acous_per_ch_grid.addWidget(self.comboBox_4, 3, 6, 1, 1)
-
-        self.label_58 = QLabel(self.scrollAreaWidgetContents_6)
-        self.label_58.setObjectName(u"label_58")
-        self.label_58.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
-
-        self.acous_per_ch_grid.addWidget(self.label_58, 5, 0, 1, 1)
-
-        self.label_39 = QLabel(self.scrollAreaWidgetContents_6)
-        self.label_39.setObjectName(u"label_39")
-
-        self.acous_per_ch_grid.addWidget(self.label_39, 0, 2, 1, 1)
-
-        self.checkBox_21 = QCheckBox(self.scrollAreaWidgetContents_6)
-        self.checkBox_21.setObjectName(u"checkBox_21")
-
-        self.acous_per_ch_grid.addWidget(self.checkBox_21, 4, 5, 1, 1)
-
-        self.spinBox_95 = QSpinBox(self.scrollAreaWidgetContents_6)
-        self.spinBox_95.setObjectName(u"spinBox_95")
-
-        self.acous_per_ch_grid.addWidget(self.spinBox_95, 8, 4, 1, 1)
-
-        self.checkBox_23 = QCheckBox(self.scrollAreaWidgetContents_6)
-        self.checkBox_23.setObjectName(u"checkBox_23")
-
-        self.acous_per_ch_grid.addWidget(self.checkBox_23, 6, 5, 1, 1)
-
-        self.checkBox_24 = QCheckBox(self.scrollAreaWidgetContents_6)
-        self.checkBox_24.setObjectName(u"checkBox_24")
-
-        self.acous_per_ch_grid.addWidget(self.checkBox_24, 7, 5, 1, 1)
-
-        self.label_63 = QLabel(self.scrollAreaWidgetContents_6)
-        self.label_63.setObjectName(u"label_63")
-
-        self.acous_per_ch_grid.addWidget(self.label_63, 0, 6, 1, 1)
-
-        self.acous__ch1_enbl_ckbox = QCheckBox(self.scrollAreaWidgetContents_6)
-        self.acous__ch1_enbl_ckbox.setObjectName(u"acous__ch1_enbl_ckbox")
-
-        self.acous_per_ch_grid.addWidget(self.acous__ch1_enbl_ckbox, 1, 2, 1, 1)
-
-        self.comboBox_7 = QComboBox(self.scrollAreaWidgetContents_6)
-        self.comboBox_7.addItem("")
-        self.comboBox_7.addItem("")
-        self.comboBox_7.setObjectName(u"comboBox_7")
-        self.comboBox_7.setIconSize(QSize(16, 16))
-        self.comboBox_7.setFrame(True)
-
-        self.acous_per_ch_grid.addWidget(self.comboBox_7, 6, 6, 1, 1)
-
-        self.label_64 = QLabel(self.scrollAreaWidgetContents_6)
-        self.label_64.setObjectName(u"label_64")
-
-        self.acous_per_ch_grid.addWidget(self.label_64, 0, 7, 1, 1)
-
-        self.spinBox_91 = QSpinBox(self.scrollAreaWidgetContents_6)
-        self.spinBox_91.setObjectName(u"spinBox_91")
-
-        self.acous_per_ch_grid.addWidget(self.spinBox_91, 6, 4, 1, 1)
-
-        self.label_38 = QLabel(self.scrollAreaWidgetContents_6)
-        self.label_38.setObjectName(u"label_38")
-
-        self.acous_per_ch_grid.addWidget(self.label_38, 0, 4, 1, 1)
-
-        self.spinBox_85 = QSpinBox(self.scrollAreaWidgetContents_6)
-        self.spinBox_85.setObjectName(u"spinBox_85")
-
-        self.acous_per_ch_grid.addWidget(self.spinBox_85, 3, 3, 1, 1)
-
-        self.comboBox_6 = QComboBox(self.scrollAreaWidgetContents_6)
-        self.comboBox_6.addItem("")
-        self.comboBox_6.addItem("")
-        self.comboBox_6.setObjectName(u"comboBox_6")
-        self.comboBox_6.setIconSize(QSize(16, 16))
-        self.comboBox_6.setFrame(True)
-
-        self.acous_per_ch_grid.addWidget(self.comboBox_6, 5, 6, 1, 1)
-
-        self.acous__ch3_enbl_ckbox = QCheckBox(self.scrollAreaWidgetContents_6)
-        self.acous__ch3_enbl_ckbox.setObjectName(u"acous__ch3_enbl_ckbox")
-
-        self.acous_per_ch_grid.addWidget(self.acous__ch3_enbl_ckbox, 3, 2, 1, 1)
-
-        self.spinBox_88 = QSpinBox(self.scrollAreaWidgetContents_6)
-        self.spinBox_88.setObjectName(u"spinBox_88")
-
-        self.acous_per_ch_grid.addWidget(self.spinBox_88, 4, 4, 1, 1)
-
-        self.checkBox_20 = QCheckBox(self.scrollAreaWidgetContents_6)
-        self.checkBox_20.setObjectName(u"checkBox_20")
-
-        self.acous_per_ch_grid.addWidget(self.checkBox_20, 3, 5, 1, 1)
-
-        self.label_59 = QLabel(self.scrollAreaWidgetContents_6)
-        self.label_59.setObjectName(u"label_59")
-        self.label_59.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
-
-        self.acous_per_ch_grid.addWidget(self.label_59, 6, 0, 1, 1)
-
-        self.spinBox_98 = QSpinBox(self.scrollAreaWidgetContents_6)
-        self.spinBox_98.setObjectName(u"spinBox_98")
-
-        self.acous_per_ch_grid.addWidget(self.spinBox_98, 2, 7, 1, 1)
-
-        self.spinBox_93 = QSpinBox(self.scrollAreaWidgetContents_6)
-        self.spinBox_93.setObjectName(u"spinBox_93")
-
-        self.acous_per_ch_grid.addWidget(self.spinBox_93, 6, 3, 1, 1)
-
-        self.checkBox_14 = QCheckBox(self.scrollAreaWidgetContents_6)
-        self.checkBox_14.setObjectName(u"checkBox_14")
-
-        self.acous_per_ch_grid.addWidget(self.checkBox_14, 5, 2, 1, 1)
-
-        self.checkBox_15 = QCheckBox(self.scrollAreaWidgetContents_6)
-        self.checkBox_15.setObjectName(u"checkBox_15")
-
-        self.acous_per_ch_grid.addWidget(self.checkBox_15, 6, 2, 1, 1)
-
-        self.spinBox_99 = QSpinBox(self.scrollAreaWidgetContents_6)
-        self.spinBox_99.setObjectName(u"spinBox_99")
-
-        self.acous_per_ch_grid.addWidget(self.spinBox_99, 3, 7, 1, 1)
-
-        self.spinBox_104 = QSpinBox(self.scrollAreaWidgetContents_6)
-        self.spinBox_104.setObjectName(u"spinBox_104")
-
-        self.acous_per_ch_grid.addWidget(self.spinBox_104, 8, 7, 1, 1)
-
-        self.spinBox_87 = QSpinBox(self.scrollAreaWidgetContents_6)
-        self.spinBox_87.setObjectName(u"spinBox_87")
-
-        self.acous_per_ch_grid.addWidget(self.spinBox_87, 4, 3, 1, 1)
-
-        self.spinBox_89 = QSpinBox(self.scrollAreaWidgetContents_6)
-        self.spinBox_89.setObjectName(u"spinBox_89")
-
-        self.acous_per_ch_grid.addWidget(self.spinBox_89, 5, 4, 1, 1)
-
-        self.spinBox_100 = QSpinBox(self.scrollAreaWidgetContents_6)
-        self.spinBox_100.setObjectName(u"spinBox_100")
-
-        self.acous_per_ch_grid.addWidget(self.spinBox_100, 4, 7, 1, 1)
-
-        self.spinBox_102 = QSpinBox(self.scrollAreaWidgetContents_6)
-        self.spinBox_102.setObjectName(u"spinBox_102")
-
-        self.acous_per_ch_grid.addWidget(self.spinBox_102, 6, 7, 1, 1)
-
-        self.label_57 = QLabel(self.scrollAreaWidgetContents_6)
-        self.label_57.setObjectName(u"label_57")
-        self.label_57.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
-
-        self.acous_per_ch_grid.addWidget(self.label_57, 4, 0, 1, 1)
-
-        self.acous__ch2_enbl_ckbox = QCheckBox(self.scrollAreaWidgetContents_6)
-        self.acous__ch2_enbl_ckbox.setObjectName(u"acous__ch2_enbl_ckbox")
-
-        self.acous_per_ch_grid.addWidget(self.acous__ch2_enbl_ckbox, 2, 2, 1, 1)
-
-        self.checkBox_18 = QCheckBox(self.scrollAreaWidgetContents_6)
-        self.checkBox_18.setObjectName(u"checkBox_18")
-
-        self.acous_per_ch_grid.addWidget(self.checkBox_18, 1, 5, 1, 1)
-
-        self.spinBox_96 = QSpinBox(self.scrollAreaWidgetContents_6)
-        self.spinBox_96.setObjectName(u"spinBox_96")
-
-        self.acous_per_ch_grid.addWidget(self.spinBox_96, 8, 3, 1, 1)
-
-        self.label_61 = QLabel(self.scrollAreaWidgetContents_6)
-        self.label_61.setObjectName(u"label_61")
-        self.label_61.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
-
-        self.acous_per_ch_grid.addWidget(self.label_61, 8, 0, 1, 1)
-
-        self.spinBox_94 = QSpinBox(self.scrollAreaWidgetContents_6)
-        self.spinBox_94.setObjectName(u"spinBox_94")
-
-        self.acous_per_ch_grid.addWidget(self.spinBox_94, 7, 4, 1, 1)
-
-        self.comboBox_5 = QComboBox(self.scrollAreaWidgetContents_6)
-        self.comboBox_5.addItem("")
-        self.comboBox_5.addItem("")
-        self.comboBox_5.setObjectName(u"comboBox_5")
-        self.comboBox_5.setIconSize(QSize(16, 16))
-        self.comboBox_5.setFrame(True)
-
-        self.acous_per_ch_grid.addWidget(self.comboBox_5, 4, 6, 1, 1)
-
-        self.spinBox_103 = QSpinBox(self.scrollAreaWidgetContents_6)
-        self.spinBox_103.setObjectName(u"spinBox_103")
-
-        self.acous_per_ch_grid.addWidget(self.spinBox_103, 7, 7, 1, 1)
-
-        self.label_52 = QLabel(self.scrollAreaWidgetContents_6)
-        self.label_52.setObjectName(u"label_52")
-        self.label_52.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
-
-        self.acous_per_ch_grid.addWidget(self.label_52, 2, 0, 1, 1)
-
-        self.spinBox_83 = QSpinBox(self.scrollAreaWidgetContents_6)
-        self.spinBox_83.setObjectName(u"spinBox_83")
-
-        self.acous_per_ch_grid.addWidget(self.spinBox_83, 2, 4, 1, 1)
-
-        self.label_60 = QLabel(self.scrollAreaWidgetContents_6)
-        self.label_60.setObjectName(u"label_60")
-        self.label_60.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
-
-        self.acous_per_ch_grid.addWidget(self.label_60, 7, 0, 1, 1)
-
-        self.spinBox_81 = QSpinBox(self.scrollAreaWidgetContents_6)
-        self.spinBox_81.setObjectName(u"spinBox_81")
-
-        self.acous_per_ch_grid.addWidget(self.spinBox_81, 1, 4, 1, 1)
-
-        self.checkBox_16 = QCheckBox(self.scrollAreaWidgetContents_6)
-        self.checkBox_16.setObjectName(u"checkBox_16")
-
-        self.acous_per_ch_grid.addWidget(self.checkBox_16, 7, 2, 1, 1)
-
-        self.checkBox_17 = QCheckBox(self.scrollAreaWidgetContents_6)
-        self.checkBox_17.setObjectName(u"checkBox_17")
-
-        self.acous_per_ch_grid.addWidget(self.checkBox_17, 8, 2, 1, 1)
-
-        self.comboBox_8 = QComboBox(self.scrollAreaWidgetContents_6)
-        self.comboBox_8.addItem("")
-        self.comboBox_8.addItem("")
-        self.comboBox_8.setObjectName(u"comboBox_8")
-        self.comboBox_8.setIconSize(QSize(16, 16))
-        self.comboBox_8.setFrame(True)
-
-        self.acous_per_ch_grid.addWidget(self.comboBox_8, 7, 6, 1, 1)
-
-        self.comboBox_3 = QComboBox(self.scrollAreaWidgetContents_6)
-        self.comboBox_3.addItem("")
-        self.comboBox_3.addItem("")
-        self.comboBox_3.setObjectName(u"comboBox_3")
-        self.comboBox_3.setIconSize(QSize(16, 16))
-        self.comboBox_3.setFrame(True)
-
-        self.acous_per_ch_grid.addWidget(self.comboBox_3, 2, 6, 1, 1)
+        self.acous_per_ch_grid.addWidget(self.comboBox_2, 1, 5, 1, 1)
 
         self.label_65 = QLabel(self.scrollAreaWidgetContents_6)
         self.label_65.setObjectName(u"label_65")
@@ -670,25 +696,28 @@ class Ui_SettingsWindow(object):
 
         self.acous_per_ch_grid.addWidget(self.label_65, 9, 0, 1, 1)
 
-        self.checkBox_26 = QCheckBox(self.scrollAreaWidgetContents_6)
-        self.checkBox_26.setObjectName(u"checkBox_26")
+        self.checkBox_18 = QCheckBox(self.scrollAreaWidgetContents_6)
+        self.checkBox_18.setObjectName(u"checkBox_18")
 
-        self.acous_per_ch_grid.addWidget(self.checkBox_26, 9, 5, 1, 1)
+        self.acous_per_ch_grid.addWidget(self.checkBox_18, 1, 4, 1, 1)
 
-        self.comboBox_13 = QComboBox(self.scrollAreaWidgetContents_6)
-        self.comboBox_13.addItem("")
-        self.comboBox_13.addItem("")
-        self.comboBox_13.setObjectName(u"comboBox_13")
-        self.comboBox_13.setIconSize(QSize(16, 16))
-        self.comboBox_13.setFrame(True)
+        self.spinBox_86 = QSpinBox(self.scrollAreaWidgetContents_6)
+        self.spinBox_86.setObjectName(u"spinBox_86")
 
-        self.acous_per_ch_grid.addWidget(self.comboBox_13, 9, 6, 1, 1)
+        self.acous_per_ch_grid.addWidget(self.spinBox_86, 3, 3, 1, 1)
 
-        self.spinBox_105 = QSpinBox(self.scrollAreaWidgetContents_6)
-        self.spinBox_105.setObjectName(u"spinBox_105")
+        self.spinBox_91 = QSpinBox(self.scrollAreaWidgetContents_6)
+        self.spinBox_91.setObjectName(u"spinBox_91")
 
-        self.acous_per_ch_grid.addWidget(self.spinBox_105, 9, 7, 1, 1)
+        self.acous_per_ch_grid.addWidget(self.spinBox_91, 6, 3, 1, 1)
 
+        self.acous_per_ch_grid.setColumnStretch(0, 1)
+        self.acous_per_ch_grid.setColumnStretch(1, 1)
+        self.acous_per_ch_grid.setColumnStretch(2, 1)
+        self.acous_per_ch_grid.setColumnStretch(3, 1)
+        self.acous_per_ch_grid.setColumnStretch(4, 1)
+        self.acous_per_ch_grid.setColumnStretch(5, 1)
+        self.acous_per_ch_grid.setColumnStretch(6, 1)
 
         self.verticalLayout_8.addLayout(self.acous_per_ch_grid)
 
@@ -720,7 +749,8 @@ class Ui_SettingsWindow(object):
         self.cam_scroll_area.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 371, 427))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 388, 434))
+        self.scrollAreaWidgetContents.setMaximumSize(QSize(1000, 16777215))
         self.gridLayout_5 = QGridLayout(self.scrollAreaWidgetContents)
         self.gridLayout_5.setSpacing(3)
         self.gridLayout_5.setContentsMargins(0, 0, 0, 0)
@@ -1257,7 +1287,8 @@ class Ui_SettingsWindow(object):
         self.dio_scroll_area.setWidgetResizable(True)
         self.scrollAreaWidgetContents_3 = QWidget()
         self.scrollAreaWidgetContents_3.setObjectName(u"scrollAreaWidgetContents_3")
-        self.scrollAreaWidgetContents_3.setGeometry(QRect(0, 0, 388, 393))
+        self.scrollAreaWidgetContents_3.setGeometry(QRect(0, 0, 388, 434))
+        self.scrollAreaWidgetContents_3.setMaximumSize(QSize(1000, 16777215))
         self.verticalLayout_2 = QVBoxLayout(self.scrollAreaWidgetContents_3)
         self.verticalLayout_2.setSpacing(0)
         self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
@@ -1717,14 +1748,14 @@ class Ui_SettingsWindow(object):
         self.label_35.setBuddy(self.spinBox_43)
         self.label_34.setBuddy(self.spinBox_26)
         self.label_36.setBuddy(self.spinBox_44)
-        self.label_40.setBuddy(self.acous__ch1_enbl_ckbox)
-        self.label_56.setBuddy(self.acous__ch3_enbl_ckbox)
         self.label_58.setBuddy(self.checkBox_14)
-        self.label_59.setBuddy(self.checkBox_15)
-        self.label_57.setBuddy(self.checkBox_13)
-        self.label_61.setBuddy(self.checkBox_17)
         self.label_52.setBuddy(self.acous__ch2_enbl_ckbox)
+        self.label_40.setBuddy(self.acous__ch1_enbl_ckbox)
+        self.label_59.setBuddy(self.checkBox_15)
         self.label_60.setBuddy(self.checkBox_16)
+        self.label_56.setBuddy(self.acous__ch3_enbl_ckbox)
+        self.label_61.setBuddy(self.checkBox_17)
+        self.label_57.setBuddy(self.checkBox_13)
         self.label_24.setBuddy(self.spinBox_21)
         self.label_22.setBuddy(self.lineEdit_10)
         self.label_25.setBuddy(self.spinBox_22)
@@ -1739,8 +1770,11 @@ class Ui_SettingsWindow(object):
         self.toolBar.addAction(self.actionSaveConfig)
 
         self.retranslateUi(SettingsWindow)
+        self.actionClose_Window.triggered.connect(SettingsWindow.close)
+        self.config_path_but.clicked.connect(SettingsWindow.select_config_path)
+        self.data_path_but.clicked.connect(SettingsWindow.select_data_path)
 
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(3)
 
 
         QMetaObject.connectSlotsByName(SettingsWindow)
@@ -1775,6 +1809,8 @@ class Ui_SettingsWindow(object):
 #endif // QT_CONFIG(shortcut)
         self.config_path_label.setText(QCoreApplication.translate("SettingsWindow", u"Config Path", None))
         self.data_path_label.setText(QCoreApplication.translate("SettingsWindow", u"Data Path", None))
+        self.config_path_but.setText(QCoreApplication.translate("SettingsWindow", u"...", None))
+        self.data_path_but.setText(QCoreApplication.translate("SettingsWindow", u"...", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.files_tab), QCoreApplication.translate("SettingsWindow", u"Files", None))
         self.label_2.setText(QCoreApplication.translate("SettingsWindow", u"Max Number of Events", None))
         self.label.setText(QCoreApplication.translate("SettingsWindow", u"Max Event Time", None))
@@ -1789,81 +1825,81 @@ class Ui_SettingsWindow(object):
         self.label_35.setText(QCoreApplication.translate("SettingsWindow", u"Trig Timeout", None))
         self.label_34.setText(QCoreApplication.translate("SettingsWindow", u"Post Trig Length", None))
         self.label_36.setText(QCoreApplication.translate("SettingsWindow", u"Trig Delay", None))
-        self.spinBox_84.setSuffix(QCoreApplication.translate("SettingsWindow", u"mV", None))
-        self.label_37.setText(QCoreApplication.translate("SettingsWindow", u"Range", None))
-        self.spinBox_90.setSuffix(QCoreApplication.translate("SettingsWindow", u"mV", None))
-        self.label_40.setText(QCoreApplication.translate("SettingsWindow", u"Ch 1", None))
-        self.checkBox_19.setText("")
-        self.comboBox_9.setItemText(0, QCoreApplication.translate("SettingsWindow", u"Rising", None))
-        self.comboBox_9.setItemText(1, QCoreApplication.translate("SettingsWindow", u"Falling", None))
-
-        self.spinBox_86.setSuffix(QCoreApplication.translate("SettingsWindow", u"%", None))
-        self.spinBox_92.setSuffix(QCoreApplication.translate("SettingsWindow", u"mV", None))
-        self.label_62.setText(QCoreApplication.translate("SettingsWindow", u"Trigger", None))
-        self.checkBox_25.setText("")
-        self.label_56.setText(QCoreApplication.translate("SettingsWindow", u"Ch 3", None))
-        self.spinBox_82.setSuffix(QCoreApplication.translate("SettingsWindow", u"mV", None))
-        self.checkBox_13.setText("")
-        self.checkBox_22.setText("")
-        self.comboBox_2.setItemText(0, QCoreApplication.translate("SettingsWindow", u"Rising", None))
-        self.comboBox_2.setItemText(1, QCoreApplication.translate("SettingsWindow", u"Falling", None))
-
-        self.comboBox_4.setItemText(0, QCoreApplication.translate("SettingsWindow", u"Rising", None))
-        self.comboBox_4.setItemText(1, QCoreApplication.translate("SettingsWindow", u"Falling", None))
-
-        self.label_58.setText(QCoreApplication.translate("SettingsWindow", u"Ch 5", None))
-        self.label_39.setText(QCoreApplication.translate("SettingsWindow", u"Enabled", None))
-        self.checkBox_21.setText("")
-        self.spinBox_95.setSuffix(QCoreApplication.translate("SettingsWindow", u"%", None))
-        self.checkBox_23.setText("")
-        self.checkBox_24.setText("")
-        self.label_63.setText(QCoreApplication.translate("SettingsWindow", u"Polarity", None))
-        self.acous__ch1_enbl_ckbox.setText("")
-        self.comboBox_7.setItemText(0, QCoreApplication.translate("SettingsWindow", u"Rising", None))
-        self.comboBox_7.setItemText(1, QCoreApplication.translate("SettingsWindow", u"Falling", None))
-
-        self.label_64.setText(QCoreApplication.translate("SettingsWindow", u"Threshold", None))
-        self.spinBox_91.setSuffix(QCoreApplication.translate("SettingsWindow", u"%", None))
-        self.label_38.setText(QCoreApplication.translate("SettingsWindow", u"DC Offset", None))
-        self.spinBox_85.setSuffix(QCoreApplication.translate("SettingsWindow", u"mV", None))
-        self.comboBox_6.setItemText(0, QCoreApplication.translate("SettingsWindow", u"Rising", None))
-        self.comboBox_6.setItemText(1, QCoreApplication.translate("SettingsWindow", u"Falling", None))
-
+        self.checkBox_16.setText("")
         self.acous__ch3_enbl_ckbox.setText("")
-        self.spinBox_88.setSuffix(QCoreApplication.translate("SettingsWindow", u"%", None))
-        self.checkBox_20.setText("")
-        self.label_59.setText(QCoreApplication.translate("SettingsWindow", u"Ch 6", None))
-        self.spinBox_93.setSuffix(QCoreApplication.translate("SettingsWindow", u"mV", None))
-        self.checkBox_14.setText("")
-        self.checkBox_15.setText("")
-        self.spinBox_87.setSuffix(QCoreApplication.translate("SettingsWindow", u"mV", None))
-        self.spinBox_89.setSuffix(QCoreApplication.translate("SettingsWindow", u"%", None))
-        self.label_57.setText(QCoreApplication.translate("SettingsWindow", u"Ch 4", None))
-        self.acous__ch2_enbl_ckbox.setText("")
-        self.checkBox_18.setText("")
-        self.spinBox_96.setSuffix(QCoreApplication.translate("SettingsWindow", u"mV", None))
-        self.label_61.setText(QCoreApplication.translate("SettingsWindow", u"Ch 8", None))
-        self.spinBox_94.setSuffix(QCoreApplication.translate("SettingsWindow", u"%", None))
+        self.label_62.setText(QCoreApplication.translate("SettingsWindow", u"Trigger", None))
+        self.label_63.setText(QCoreApplication.translate("SettingsWindow", u"Polarity", None))
+        self.label_58.setText(QCoreApplication.translate("SettingsWindow", u"Ch 5", None))
         self.comboBox_5.setItemText(0, QCoreApplication.translate("SettingsWindow", u"Rising", None))
         self.comboBox_5.setItemText(1, QCoreApplication.translate("SettingsWindow", u"Falling", None))
 
         self.label_52.setText(QCoreApplication.translate("SettingsWindow", u"Ch 2", None))
-        self.spinBox_83.setSuffix(QCoreApplication.translate("SettingsWindow", u"%", None))
-        self.label_60.setText(QCoreApplication.translate("SettingsWindow", u"Ch 7", None))
-        self.spinBox_81.setSuffix(QCoreApplication.translate("SettingsWindow", u"%", None))
-        self.checkBox_16.setText("")
-        self.checkBox_17.setText("")
-        self.comboBox_8.setItemText(0, QCoreApplication.translate("SettingsWindow", u"Rising", None))
-        self.comboBox_8.setItemText(1, QCoreApplication.translate("SettingsWindow", u"Falling", None))
+        self.comboBox_4.setItemText(0, QCoreApplication.translate("SettingsWindow", u"Rising", None))
+        self.comboBox_4.setItemText(1, QCoreApplication.translate("SettingsWindow", u"Falling", None))
 
-        self.comboBox_3.setItemText(0, QCoreApplication.translate("SettingsWindow", u"Rising", None))
-        self.comboBox_3.setItemText(1, QCoreApplication.translate("SettingsWindow", u"Falling", None))
+        self.comboBox_6.setItemText(0, QCoreApplication.translate("SettingsWindow", u"Rising", None))
+        self.comboBox_6.setItemText(1, QCoreApplication.translate("SettingsWindow", u"Falling", None))
 
-        self.label_65.setText(QCoreApplication.translate("SettingsWindow", u"Ext", None))
-        self.checkBox_26.setText("")
+        self.spinBox_94.setSuffix(QCoreApplication.translate("SettingsWindow", u"%", None))
+        self.label_37.setText(QCoreApplication.translate("SettingsWindow", u"Range", None))
+        self.checkBox_13.setText("")
+        self.checkBox_24.setText("")
+        self.label_40.setText(QCoreApplication.translate("SettingsWindow", u"Ch 1", None))
         self.comboBox_13.setItemText(0, QCoreApplication.translate("SettingsWindow", u"Rising", None))
         self.comboBox_13.setItemText(1, QCoreApplication.translate("SettingsWindow", u"Falling", None))
 
+        self.spinBox_96.setSuffix(QCoreApplication.translate("SettingsWindow", u"mV", None))
+        self.label_59.setText(QCoreApplication.translate("SettingsWindow", u"Ch 6", None))
+        self.comboBox_9.setItemText(0, QCoreApplication.translate("SettingsWindow", u"Rising", None))
+        self.comboBox_9.setItemText(1, QCoreApplication.translate("SettingsWindow", u"Falling", None))
+
+        self.spinBox_88.setSuffix(QCoreApplication.translate("SettingsWindow", u"%", None))
+        self.label_60.setText(QCoreApplication.translate("SettingsWindow", u"Ch 7", None))
+        self.acous__ch2_enbl_ckbox.setText("")
+        self.spinBox_95.setSuffix(QCoreApplication.translate("SettingsWindow", u"%", None))
+        self.checkBox_23.setText("")
+        self.checkBox_26.setText("")
+        self.spinBox_85.setSuffix(QCoreApplication.translate("SettingsWindow", u"mV", None))
+        self.comboBox_7.setItemText(0, QCoreApplication.translate("SettingsWindow", u"Rising", None))
+        self.comboBox_7.setItemText(1, QCoreApplication.translate("SettingsWindow", u"Falling", None))
+
+        self.label_56.setText(QCoreApplication.translate("SettingsWindow", u"Ch 3", None))
+        self.spinBox_93.setSuffix(QCoreApplication.translate("SettingsWindow", u"mV", None))
+        self.checkBox_21.setText("")
+        self.spinBox_81.setSuffix(QCoreApplication.translate("SettingsWindow", u"%", None))
+        self.checkBox_19.setText("")
+        self.label_61.setText(QCoreApplication.translate("SettingsWindow", u"Ch 8", None))
+        self.spinBox_89.setSuffix(QCoreApplication.translate("SettingsWindow", u"%", None))
+        self.label_38.setText(QCoreApplication.translate("SettingsWindow", u"DC Offset", None))
+        self.comboBox_3.setItemText(0, QCoreApplication.translate("SettingsWindow", u"Rising", None))
+        self.comboBox_3.setItemText(1, QCoreApplication.translate("SettingsWindow", u"Falling", None))
+
+        self.checkBox_25.setText("")
+        self.label_39.setText(QCoreApplication.translate("SettingsWindow", u"Enabled", None))
+        self.checkBox_14.setText("")
+        self.spinBox_84.setSuffix(QCoreApplication.translate("SettingsWindow", u"mV", None))
+        self.label_57.setText(QCoreApplication.translate("SettingsWindow", u"Ch 4", None))
+        self.spinBox_92.setSuffix(QCoreApplication.translate("SettingsWindow", u"mV", None))
+        self.checkBox_22.setText("")
+        self.checkBox_20.setText("")
+        self.spinBox_83.setSuffix(QCoreApplication.translate("SettingsWindow", u"%", None))
+        self.spinBox_90.setSuffix(QCoreApplication.translate("SettingsWindow", u"mV", None))
+        self.comboBox_8.setItemText(0, QCoreApplication.translate("SettingsWindow", u"Rising", None))
+        self.comboBox_8.setItemText(1, QCoreApplication.translate("SettingsWindow", u"Falling", None))
+
+        self.checkBox_17.setText("")
+        self.spinBox_82.setSuffix(QCoreApplication.translate("SettingsWindow", u"mV", None))
+        self.spinBox_87.setSuffix(QCoreApplication.translate("SettingsWindow", u"mV", None))
+        self.checkBox_15.setText("")
+        self.acous__ch1_enbl_ckbox.setText("")
+        self.label_64.setText(QCoreApplication.translate("SettingsWindow", u"Threshold", None))
+        self.comboBox_2.setItemText(0, QCoreApplication.translate("SettingsWindow", u"Rising", None))
+        self.comboBox_2.setItemText(1, QCoreApplication.translate("SettingsWindow", u"Falling", None))
+
+        self.label_65.setText(QCoreApplication.translate("SettingsWindow", u"Ext", None))
+        self.checkBox_18.setText("")
+        self.spinBox_86.setSuffix(QCoreApplication.translate("SettingsWindow", u"%", None))
+        self.spinBox_91.setSuffix(QCoreApplication.translate("SettingsWindow", u"%", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.acoustics_tab), QCoreApplication.translate("SettingsWindow", u"Acoustics", None))
         self.label_17.setText(QCoreApplication.translate("SettingsWindow", u"State Comm Pin", None))
         self.label_29.setText(QCoreApplication.translate("SettingsWindow", u"Config Path", None))

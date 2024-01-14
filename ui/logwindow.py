@@ -16,8 +16,8 @@ from PySide6.QtGui import (QAction, QBrush, QColor, QConicalGradient,
     QIcon, QImage, QKeySequence, QLinearGradient,
     QPainter, QPalette, QPixmap, QRadialGradient,
     QTransform)
-from PySide6.QtWidgets import (QApplication, QHBoxLayout, QMainWindow, QSizePolicy,
-    QTextEdit, QToolBar, QWidget)
+from PySide6.QtWidgets import (QApplication, QCheckBox, QGridLayout, QMainWindow,
+    QPlainTextEdit, QSizePolicy, QToolBar, QWidget)
 import resources_rc
 
 class Ui_LogWindow(object):
@@ -48,13 +48,26 @@ class Ui_LogWindow(object):
         self.actionReload_Log.setMenuRole(QAction.NoRole)
         self.centralwidget = QWidget(LogWindow)
         self.centralwidget.setObjectName(u"centralwidget")
-        self.horizontalLayout = QHBoxLayout(self.centralwidget)
-        self.horizontalLayout.setObjectName(u"horizontalLayout")
-        self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
-        self.log_box = QTextEdit(self.centralwidget)
+        self.gridLayout = QGridLayout(self.centralwidget)
+        self.gridLayout.setObjectName(u"gridLayout")
+        self.gridLayout.setVerticalSpacing(3)
+        self.gridLayout.setContentsMargins(0, 0, 0, 0)
+        self.auto_update_box = QCheckBox(self.centralwidget)
+        self.auto_update_box.setObjectName(u"auto_update_box")
+        self.auto_update_box.setChecked(True)
+
+        self.gridLayout.addWidget(self.auto_update_box, 0, 1, 1, 1)
+
+        self.hold_end_box = QCheckBox(self.centralwidget)
+        self.hold_end_box.setObjectName(u"hold_end_box")
+        self.hold_end_box.setChecked(True)
+
+        self.gridLayout.addWidget(self.hold_end_box, 0, 2, 1, 1)
+
+        self.log_box = QPlainTextEdit(self.centralwidget)
         self.log_box.setObjectName(u"log_box")
 
-        self.horizontalLayout.addWidget(self.log_box)
+        self.gridLayout.addWidget(self.log_box, 3, 1, 1, 2)
 
         LogWindow.setCentralWidget(self.centralwidget)
         self.toolBar = QToolBar(LogWindow)
@@ -65,6 +78,8 @@ class Ui_LogWindow(object):
         self.toolBar.addAction(self.actionReload_Log)
 
         self.retranslateUi(LogWindow)
+        self.actionClose_Window.triggered.connect(LogWindow.close)
+        self.actionReload_Log.triggered.connect(LogWindow.load_log)
 
         QMetaObject.connectSlotsByName(LogWindow)
     # setupUi
@@ -85,14 +100,8 @@ class Ui_LogWindow(object):
 #if QT_CONFIG(shortcut)
         self.actionReload_Log.setShortcut(QCoreApplication.translate("LogWindow", u"Ctrl+R", None))
 #endif // QT_CONFIG(shortcut)
-        self.log_box.setHtml(QCoreApplication.translate("LogWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"hr { height: 1px; border-width: 0; }\n"
-"li.unchecked::marker { content: \"\\2610\"; }\n"
-"li.checked::marker { content: \"\\2612\"; }\n"
-"</style></head><body style=\" font-family:'Segoe UI'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Log is loaded here</p></body></html>", None))
+        self.auto_update_box.setText(QCoreApplication.translate("LogWindow", u"Auto Update", None))
+        self.hold_end_box.setText(QCoreApplication.translate("LogWindow", u"Hold At End", None))
         self.toolBar.setWindowTitle(QCoreApplication.translate("LogWindow", u"toolBar", None))
     # retranslateUi
 

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>500</width>
-    <height>602</height>
+    <height>400</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -54,7 +54,7 @@
      <height>0</height>
     </size>
    </property>
-   <layout class="QGridLayout" name="gridLayout" columnstretch="2,8">
+   <layout class="QGridLayout" name="gridLayout" columnstretch="1,9" columnminimumwidth="80,0">
     <property name="leftMargin">
      <number>3</number>
     </property>
@@ -67,10 +67,178 @@
     <property name="bottomMargin">
      <number>3</number>
     </property>
-    <property name="spacing">
+    <property name="horizontalSpacing">
      <number>3</number>
     </property>
-    <item row="0" column="1" rowspan="3">
+    <property name="verticalSpacing">
+     <number>0</number>
+    </property>
+    <item row="0" column="0">
+     <widget class="QPushButton" name="start_run_but">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="sizeIncrement">
+       <size>
+        <width>0</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton:enabled {color: rgb(0, 85, 0);}
+QPushButton:disabled {color: rgb(120, 120, 120);}</string>
+      </property>
+      <property name="text">
+       <string>Start Run</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="0">
+     <widget class="QLabel" name="run_label">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="text">
+       <string>Run Num</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="run_state_label">
+      <property name="text">
+       <string>RunState</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="0">
+     <widget class="QLabel" name="event_label">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="text">
+       <string>Event Num</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="0">
+     <widget class="QLineEdit" name="run_edit"/>
+    </item>
+    <item row="1" column="0">
+     <widget class="QPushButton" name="stop_run_but">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton:enabled {color: rgb(170, 0, 0);}
+QPushButton:disabled {color: rgb(120, 120, 120);}</string>
+      </property>
+      <property name="text">
+       <string>Stop Run</string>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="0">
+     <widget class="QLineEdit" name="event_num_edit"/>
+    </item>
+    <item row="7" column="0">
+     <widget class="QLabel" name="event_time_label">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="lineWidth">
+       <number>1</number>
+      </property>
+      <property name="text">
+       <string>Event Time</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="8" column="0">
+     <widget class="QLineEdit" name="event_time_edit"/>
+    </item>
+    <item row="9" column="0">
+     <widget class="QLabel" name="run_live_time_label">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="lineWidth">
+       <number>1</number>
+      </property>
+      <property name="text">
+       <string>Run Live Time</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="10" column="0">
+     <widget class="QLineEdit" name="run_live_time_edit"/>
+    </item>
+    <item row="0" column="1" rowspan="11">
      <widget class="QTabWidget" name="tabs_widget">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -88,7 +256,7 @@
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <property name="documentMode">
        <bool>false</bool>
@@ -145,7 +313,10 @@
        <attribute name="title">
         <string>Camera</string>
        </attribute>
-       <layout class="QGridLayout" name="gridLayout_2">
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <property name="spacing">
+         <number>3</number>
+        </property>
         <property name="leftMargin">
          <number>0</number>
         </property>
@@ -158,186 +329,144 @@
         <property name="bottomMargin">
          <number>0</number>
         </property>
-        <property name="spacing">
-         <number>3</number>
-        </property>
-        <item row="1" column="0">
-         <widget class="QPushButton" name="take_image_but">
-          <property name="minimumSize">
-           <size>
-            <width>80</width>
-            <height>30</height>
-           </size>
+        <item>
+         <widget class="QScrollArea" name="scrollArea">
+          <property name="frameShape">
+           <enum>QFrame::NoFrame</enum>
           </property>
-          <property name="text">
-           <string>Take Image</string>
+          <property name="frameShadow">
+           <enum>QFrame::Plain</enum>
           </property>
-         </widget>
-        </item>
-        <item row="2" column="3">
-         <spacer name="verticalSpacer">
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
+          <property name="lineWidth">
+           <number>0</number>
           </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>20</width>
-            <height>40</height>
-           </size>
+          <property name="widgetResizable">
+           <bool>true</bool>
           </property>
-         </spacer>
-        </item>
-        <item row="1" column="5">
-         <widget class="QLabel" name="cam3_status_light">
-          <property name="styleSheet">
-           <string notr="true">color: rgb(255, 255, 255);
+          <widget class="QWidget" name="scrollAreaWidgetContents">
+           <property name="geometry">
+            <rect>
+             <x>0</x>
+             <y>0</y>
+             <width>405</width>
+             <height>331</height>
+            </rect>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>1000</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <layout class="QGridLayout" name="gridLayout_2">
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>0</number>
+            </property>
+            <property name="spacing">
+             <number>3</number>
+            </property>
+            <item row="0" column="2">
+             <widget class="QLabel" name="cam1_status_light">
+              <property name="styleSheet">
+               <string notr="true">color: rgb(255, 255, 255);
 background-color: rgb(150, 150, 150);</string>
-          </property>
-          <property name="text">
-           <string>Cam 3</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="3">
-         <widget class="QLabel" name="cam1_status_light">
-          <property name="styleSheet">
-           <string notr="true">color: rgb(255, 255, 255);
+              </property>
+              <property name="text">
+               <string>Cam 1</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="0">
+             <widget class="QPushButton" name="take_image_but">
+              <property name="minimumSize">
+               <size>
+                <width>80</width>
+                <height>30</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>Take Image</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="3">
+             <widget class="QLabel" name="cam2_status_light">
+              <property name="styleSheet">
+               <string notr="true">color: rgb(255, 255, 255);
 background-color: rgb(150, 150, 150);</string>
-          </property>
-          <property name="text">
-           <string>Cam 1</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="2">
-         <widget class="QLabel" name="camera_status_label">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="layoutDirection">
-           <enum>Qt::LeftToRight</enum>
-          </property>
-          <property name="text">
-           <string>Camera Status:</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="4">
-         <widget class="QLabel" name="cam2_status_light">
-          <property name="styleSheet">
-           <string notr="true">color: rgb(255, 255, 255);
+              </property>
+              <property name="text">
+               <string>Cam 2</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="4">
+             <widget class="QLabel" name="cam3_status_light">
+              <property name="styleSheet">
+               <string notr="true">color: rgb(255, 255, 255);
 background-color: rgb(150, 150, 150);</string>
-          </property>
-          <property name="text">
-           <string>Cam 2</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
+              </property>
+              <property name="text">
+               <string>Cam 3</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QLabel" name="camera_status_label">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="layoutDirection">
+               <enum>Qt::LeftToRight</enum>
+              </property>
+              <property name="text">
+               <string>Camera Status:</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="2">
+             <spacer name="verticalSpacer">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>40</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </widget>
          </widget>
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="settings_tab">
-       <attribute name="title">
-        <string>Settings</string>
-       </attribute>
-      </widget>
-     </widget>
-    </item>
-    <item row="1" column="0">
-     <widget class="QPushButton" name="stop_run_but">
-      <property name="enabled">
-       <bool>false</bool>
-      </property>
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="minimumSize">
-       <size>
-        <width>0</width>
-        <height>50</height>
-       </size>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>11</pointsize>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="cursor">
-       <cursorShape>PointingHandCursor</cursorShape>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">QPushButton:enabled {color: rgb(170, 0, 0);}
-QPushButton:disabled {color: rgb(120, 120, 120);}</string>
-      </property>
-      <property name="text">
-       <string>Stop Run</string>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="0">
-     <widget class="QLabel" name="run_state_label">
-      <property name="text">
-       <string>RunState</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="0">
-     <widget class="QPushButton" name="start_run_but">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="minimumSize">
-       <size>
-        <width>0</width>
-        <height>50</height>
-       </size>
-      </property>
-      <property name="sizeIncrement">
-       <size>
-        <width>0</width>
-        <height>0</height>
-       </size>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>11</pointsize>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="cursor">
-       <cursorShape>PointingHandCursor</cursorShape>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">QPushButton:enabled {color: rgb(0, 85, 0);}
-QPushButton:disabled {color: rgb(120, 120, 120);}</string>
-      </property>
-      <property name="text">
-       <string>Start Run</string>
-      </property>
      </widget>
     </item>
    </layout>
@@ -496,8 +625,8 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
    <slot>select_file()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>278</x>
-     <y>109</y>
+     <x>478</x>
+     <y>79</y>
     </hint>
     <hint type="destinationlabel">
      <x>295</x>

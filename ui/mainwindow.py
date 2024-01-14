@@ -16,16 +16,17 @@ from PySide6.QtGui import (QAction, QBrush, QColor, QConicalGradient,
     QIcon, QImage, QKeySequence, QLinearGradient,
     QPainter, QPalette, QPixmap, QRadialGradient,
     QTransform)
-from PySide6.QtWidgets import (QApplication, QGridLayout, QLabel, QLineEdit,
-    QMainWindow, QPushButton, QSizePolicy, QSpacerItem,
-    QTabWidget, QToolBar, QToolButton, QWidget)
+from PySide6.QtWidgets import (QApplication, QFrame, QGridLayout, QLabel,
+    QLineEdit, QMainWindow, QPushButton, QScrollArea,
+    QSizePolicy, QSpacerItem, QTabWidget, QToolBar,
+    QToolButton, QVBoxLayout, QWidget)
 import resources_rc
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(500, 602)
+        MainWindow.resize(500, 400)
         sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -60,9 +61,105 @@ class Ui_MainWindow(object):
         self.centralwidget.setMinimumSize(QSize(50, 50))
         self.centralwidget.setBaseSize(QSize(0, 0))
         self.gridLayout = QGridLayout(self.centralwidget)
-        self.gridLayout.setSpacing(3)
         self.gridLayout.setObjectName(u"gridLayout")
+        self.gridLayout.setHorizontalSpacing(3)
+        self.gridLayout.setVerticalSpacing(0)
         self.gridLayout.setContentsMargins(3, 3, 3, 3)
+        self.start_run_but = QPushButton(self.centralwidget)
+        self.start_run_but.setObjectName(u"start_run_but")
+        sizePolicy1 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Fixed)
+        sizePolicy1.setHorizontalStretch(0)
+        sizePolicy1.setVerticalStretch(0)
+        sizePolicy1.setHeightForWidth(self.start_run_but.sizePolicy().hasHeightForWidth())
+        self.start_run_but.setSizePolicy(sizePolicy1)
+        self.start_run_but.setMinimumSize(QSize(0, 50))
+        self.start_run_but.setSizeIncrement(QSize(0, 0))
+        font = QFont()
+        font.setPointSize(11)
+        font.setBold(True)
+        self.start_run_but.setFont(font)
+        self.start_run_but.setCursor(QCursor(Qt.PointingHandCursor))
+        self.start_run_but.setStyleSheet(u"QPushButton:enabled {color: rgb(0, 85, 0);}\n"
+"QPushButton:disabled {color: rgb(120, 120, 120);}")
+
+        self.gridLayout.addWidget(self.start_run_but, 0, 0, 1, 1)
+
+        self.run_label = QLabel(self.centralwidget)
+        self.run_label.setObjectName(u"run_label")
+        sizePolicy2 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Fixed)
+        sizePolicy2.setHorizontalStretch(0)
+        sizePolicy2.setVerticalStretch(0)
+        sizePolicy2.setHeightForWidth(self.run_label.sizePolicy().hasHeightForWidth())
+        self.run_label.setSizePolicy(sizePolicy2)
+        self.run_label.setAlignment(Qt.AlignCenter)
+
+        self.gridLayout.addWidget(self.run_label, 3, 0, 1, 1)
+
+        self.run_state_label = QLabel(self.centralwidget)
+        self.run_state_label.setObjectName(u"run_state_label")
+        self.run_state_label.setAlignment(Qt.AlignCenter)
+
+        self.gridLayout.addWidget(self.run_state_label, 2, 0, 1, 1)
+
+        self.event_label = QLabel(self.centralwidget)
+        self.event_label.setObjectName(u"event_label")
+        sizePolicy2.setHeightForWidth(self.event_label.sizePolicy().hasHeightForWidth())
+        self.event_label.setSizePolicy(sizePolicy2)
+        self.event_label.setAlignment(Qt.AlignCenter)
+
+        self.gridLayout.addWidget(self.event_label, 5, 0, 1, 1)
+
+        self.run_edit = QLineEdit(self.centralwidget)
+        self.run_edit.setObjectName(u"run_edit")
+
+        self.gridLayout.addWidget(self.run_edit, 4, 0, 1, 1)
+
+        self.stop_run_but = QPushButton(self.centralwidget)
+        self.stop_run_but.setObjectName(u"stop_run_but")
+        self.stop_run_but.setEnabled(False)
+        sizePolicy1.setHeightForWidth(self.stop_run_but.sizePolicy().hasHeightForWidth())
+        self.stop_run_but.setSizePolicy(sizePolicy1)
+        self.stop_run_but.setMinimumSize(QSize(0, 50))
+        self.stop_run_but.setFont(font)
+        self.stop_run_but.setCursor(QCursor(Qt.PointingHandCursor))
+        self.stop_run_but.setStyleSheet(u"QPushButton:enabled {color: rgb(170, 0, 0);}\n"
+"QPushButton:disabled {color: rgb(120, 120, 120);}")
+
+        self.gridLayout.addWidget(self.stop_run_but, 1, 0, 1, 1)
+
+        self.event_num_edit = QLineEdit(self.centralwidget)
+        self.event_num_edit.setObjectName(u"event_num_edit")
+
+        self.gridLayout.addWidget(self.event_num_edit, 6, 0, 1, 1)
+
+        self.event_time_label = QLabel(self.centralwidget)
+        self.event_time_label.setObjectName(u"event_time_label")
+        sizePolicy2.setHeightForWidth(self.event_time_label.sizePolicy().hasHeightForWidth())
+        self.event_time_label.setSizePolicy(sizePolicy2)
+        self.event_time_label.setLineWidth(1)
+        self.event_time_label.setAlignment(Qt.AlignCenter)
+
+        self.gridLayout.addWidget(self.event_time_label, 7, 0, 1, 1)
+
+        self.event_time_edit = QLineEdit(self.centralwidget)
+        self.event_time_edit.setObjectName(u"event_time_edit")
+
+        self.gridLayout.addWidget(self.event_time_edit, 8, 0, 1, 1)
+
+        self.run_live_time_label = QLabel(self.centralwidget)
+        self.run_live_time_label.setObjectName(u"run_live_time_label")
+        sizePolicy2.setHeightForWidth(self.run_live_time_label.sizePolicy().hasHeightForWidth())
+        self.run_live_time_label.setSizePolicy(sizePolicy2)
+        self.run_live_time_label.setLineWidth(1)
+        self.run_live_time_label.setAlignment(Qt.AlignCenter)
+
+        self.gridLayout.addWidget(self.run_live_time_label, 9, 0, 1, 1)
+
+        self.run_live_time_edit = QLineEdit(self.centralwidget)
+        self.run_live_time_edit.setObjectName(u"run_live_time_edit")
+
+        self.gridLayout.addWidget(self.run_live_time_edit, 10, 0, 1, 1)
+
         self.tabs_widget = QTabWidget(self.centralwidget)
         self.tabs_widget.setObjectName(u"tabs_widget")
         sizePolicy.setHeightForWidth(self.tabs_widget.sizePolicy().hasHeightForWidth())
@@ -92,103 +189,81 @@ class Ui_MainWindow(object):
         self.tabs_widget.addTab(self.acoustics_tab, "")
         self.camera_tab = QWidget()
         self.camera_tab.setObjectName(u"camera_tab")
-        self.gridLayout_2 = QGridLayout(self.camera_tab)
+        self.verticalLayout = QVBoxLayout(self.camera_tab)
+        self.verticalLayout.setSpacing(3)
+        self.verticalLayout.setObjectName(u"verticalLayout")
+        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
+        self.scrollArea = QScrollArea(self.camera_tab)
+        self.scrollArea.setObjectName(u"scrollArea")
+        self.scrollArea.setFrameShape(QFrame.NoFrame)
+        self.scrollArea.setFrameShadow(QFrame.Plain)
+        self.scrollArea.setLineWidth(0)
+        self.scrollArea.setWidgetResizable(True)
+        self.scrollAreaWidgetContents = QWidget()
+        self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 405, 331))
+        self.scrollAreaWidgetContents.setMaximumSize(QSize(1000, 16777215))
+        self.gridLayout_2 = QGridLayout(self.scrollAreaWidgetContents)
         self.gridLayout_2.setSpacing(3)
         self.gridLayout_2.setObjectName(u"gridLayout_2")
         self.gridLayout_2.setContentsMargins(0, 0, 0, 0)
-        self.take_image_but = QPushButton(self.camera_tab)
-        self.take_image_but.setObjectName(u"take_image_but")
-        self.take_image_but.setMinimumSize(QSize(80, 30))
-
-        self.gridLayout_2.addWidget(self.take_image_but, 1, 0, 1, 1)
-
-        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
-
-        self.gridLayout_2.addItem(self.verticalSpacer, 2, 3, 1, 1)
-
-        self.cam3_status_light = QLabel(self.camera_tab)
-        self.cam3_status_light.setObjectName(u"cam3_status_light")
-        self.cam3_status_light.setStyleSheet(u"color: rgb(255, 255, 255);\n"
-"background-color: rgb(150, 150, 150);")
-        self.cam3_status_light.setAlignment(Qt.AlignCenter)
-
-        self.gridLayout_2.addWidget(self.cam3_status_light, 1, 5, 1, 1)
-
-        self.cam1_status_light = QLabel(self.camera_tab)
+        self.cam1_status_light = QLabel(self.scrollAreaWidgetContents)
         self.cam1_status_light.setObjectName(u"cam1_status_light")
         self.cam1_status_light.setStyleSheet(u"color: rgb(255, 255, 255);\n"
 "background-color: rgb(150, 150, 150);")
         self.cam1_status_light.setAlignment(Qt.AlignCenter)
 
-        self.gridLayout_2.addWidget(self.cam1_status_light, 1, 3, 1, 1)
+        self.gridLayout_2.addWidget(self.cam1_status_light, 0, 2, 1, 1)
 
-        self.camera_status_label = QLabel(self.camera_tab)
-        self.camera_status_label.setObjectName(u"camera_status_label")
-        sizePolicy1 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Preferred)
-        sizePolicy1.setHorizontalStretch(0)
-        sizePolicy1.setVerticalStretch(0)
-        sizePolicy1.setHeightForWidth(self.camera_status_label.sizePolicy().hasHeightForWidth())
-        self.camera_status_label.setSizePolicy(sizePolicy1)
-        self.camera_status_label.setLayoutDirection(Qt.LeftToRight)
-        self.camera_status_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.take_image_but = QPushButton(self.scrollAreaWidgetContents)
+        self.take_image_but.setObjectName(u"take_image_but")
+        self.take_image_but.setMinimumSize(QSize(80, 30))
 
-        self.gridLayout_2.addWidget(self.camera_status_label, 1, 2, 1, 1)
+        self.gridLayout_2.addWidget(self.take_image_but, 0, 0, 1, 1)
 
-        self.cam2_status_light = QLabel(self.camera_tab)
+        self.cam2_status_light = QLabel(self.scrollAreaWidgetContents)
         self.cam2_status_light.setObjectName(u"cam2_status_light")
         self.cam2_status_light.setStyleSheet(u"color: rgb(255, 255, 255);\n"
 "background-color: rgb(150, 150, 150);")
         self.cam2_status_light.setAlignment(Qt.AlignCenter)
 
-        self.gridLayout_2.addWidget(self.cam2_status_light, 1, 4, 1, 1)
+        self.gridLayout_2.addWidget(self.cam2_status_light, 0, 3, 1, 1)
+
+        self.cam3_status_light = QLabel(self.scrollAreaWidgetContents)
+        self.cam3_status_light.setObjectName(u"cam3_status_light")
+        self.cam3_status_light.setStyleSheet(u"color: rgb(255, 255, 255);\n"
+"background-color: rgb(150, 150, 150);")
+        self.cam3_status_light.setAlignment(Qt.AlignCenter)
+
+        self.gridLayout_2.addWidget(self.cam3_status_light, 0, 4, 1, 1)
+
+        self.camera_status_label = QLabel(self.scrollAreaWidgetContents)
+        self.camera_status_label.setObjectName(u"camera_status_label")
+        sizePolicy3 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Preferred)
+        sizePolicy3.setHorizontalStretch(0)
+        sizePolicy3.setVerticalStretch(0)
+        sizePolicy3.setHeightForWidth(self.camera_status_label.sizePolicy().hasHeightForWidth())
+        self.camera_status_label.setSizePolicy(sizePolicy3)
+        self.camera_status_label.setLayoutDirection(Qt.LeftToRight)
+        self.camera_status_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.gridLayout_2.addWidget(self.camera_status_label, 0, 1, 1, 1)
+
+        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+
+        self.gridLayout_2.addItem(self.verticalSpacer, 1, 2, 1, 1)
+
+        self.scrollArea.setWidget(self.scrollAreaWidgetContents)
+
+        self.verticalLayout.addWidget(self.scrollArea)
 
         self.tabs_widget.addTab(self.camera_tab, "")
-        self.settings_tab = QWidget()
-        self.settings_tab.setObjectName(u"settings_tab")
-        self.tabs_widget.addTab(self.settings_tab, "")
 
-        self.gridLayout.addWidget(self.tabs_widget, 0, 1, 3, 1)
+        self.gridLayout.addWidget(self.tabs_widget, 0, 1, 11, 1)
 
-        self.stop_run_but = QPushButton(self.centralwidget)
-        self.stop_run_but.setObjectName(u"stop_run_but")
-        self.stop_run_but.setEnabled(False)
-        sizePolicy2 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Fixed)
-        sizePolicy2.setHorizontalStretch(0)
-        sizePolicy2.setVerticalStretch(0)
-        sizePolicy2.setHeightForWidth(self.stop_run_but.sizePolicy().hasHeightForWidth())
-        self.stop_run_but.setSizePolicy(sizePolicy2)
-        self.stop_run_but.setMinimumSize(QSize(0, 50))
-        font = QFont()
-        font.setPointSize(11)
-        font.setBold(True)
-        self.stop_run_but.setFont(font)
-        self.stop_run_but.setCursor(QCursor(Qt.PointingHandCursor))
-        self.stop_run_but.setStyleSheet(u"QPushButton:enabled {color: rgb(170, 0, 0);}\n"
-"QPushButton:disabled {color: rgb(120, 120, 120);}")
-
-        self.gridLayout.addWidget(self.stop_run_but, 1, 0, 1, 1)
-
-        self.run_state_label = QLabel(self.centralwidget)
-        self.run_state_label.setObjectName(u"run_state_label")
-        self.run_state_label.setAlignment(Qt.AlignCenter)
-
-        self.gridLayout.addWidget(self.run_state_label, 2, 0, 1, 1)
-
-        self.start_run_but = QPushButton(self.centralwidget)
-        self.start_run_but.setObjectName(u"start_run_but")
-        sizePolicy2.setHeightForWidth(self.start_run_but.sizePolicy().hasHeightForWidth())
-        self.start_run_but.setSizePolicy(sizePolicy2)
-        self.start_run_but.setMinimumSize(QSize(0, 50))
-        self.start_run_but.setSizeIncrement(QSize(0, 0))
-        self.start_run_but.setFont(font)
-        self.start_run_but.setCursor(QCursor(Qt.PointingHandCursor))
-        self.start_run_but.setStyleSheet(u"QPushButton:enabled {color: rgb(0, 85, 0);}\n"
-"QPushButton:disabled {color: rgb(120, 120, 120);}")
-
-        self.gridLayout.addWidget(self.start_run_but, 0, 0, 1, 1)
-
-        self.gridLayout.setColumnStretch(0, 2)
-        self.gridLayout.setColumnStretch(1, 8)
+        self.gridLayout.setColumnStretch(0, 1)
+        self.gridLayout.setColumnStretch(1, 9)
+        self.gridLayout.setColumnMinimumWidth(0, 80)
         MainWindow.setCentralWidget(self.centralwidget)
         self.toolBar = QToolBar(MainWindow)
         self.toolBar.setObjectName(u"toolBar")
@@ -207,7 +282,7 @@ class Ui_MainWindow(object):
         self.start_run_but.clicked.connect(MainWindow.start_run)
         self.file_but.clicked.connect(MainWindow.select_file)
 
-        self.tabs_widget.setCurrentIndex(0)
+        self.tabs_widget.setCurrentIndex(2)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -230,20 +305,23 @@ class Ui_MainWindow(object):
 #if QT_CONFIG(tooltip)
         self.action_quit.setToolTip(QCoreApplication.translate("MainWindow", u"quit", None))
 #endif // QT_CONFIG(tooltip)
+        self.start_run_but.setText(QCoreApplication.translate("MainWindow", u"Start Run", None))
+        self.run_label.setText(QCoreApplication.translate("MainWindow", u"Run Num", None))
+        self.run_state_label.setText(QCoreApplication.translate("MainWindow", u"RunState", None))
+        self.event_label.setText(QCoreApplication.translate("MainWindow", u"Event Num", None))
+        self.stop_run_but.setText(QCoreApplication.translate("MainWindow", u"Stop Run", None))
+        self.event_time_label.setText(QCoreApplication.translate("MainWindow", u"Event Time", None))
+        self.run_live_time_label.setText(QCoreApplication.translate("MainWindow", u"Run Live Time", None))
         self.file_but.setText(QCoreApplication.translate("MainWindow", u"...", None))
         self.tabs_widget.setTabText(self.tabs_widget.indexOf(self.plc_tab), QCoreApplication.translate("MainWindow", u"PLC", None))
         self.tabs_widget.setTabText(self.tabs_widget.indexOf(self.scint_tab), QCoreApplication.translate("MainWindow", u"Scintillation", None))
         self.tabs_widget.setTabText(self.tabs_widget.indexOf(self.acoustics_tab), QCoreApplication.translate("MainWindow", u"Acoustics", None))
-        self.take_image_but.setText(QCoreApplication.translate("MainWindow", u"Take Image", None))
-        self.cam3_status_light.setText(QCoreApplication.translate("MainWindow", u"Cam 3", None))
         self.cam1_status_light.setText(QCoreApplication.translate("MainWindow", u"Cam 1", None))
-        self.camera_status_label.setText(QCoreApplication.translate("MainWindow", u"Camera Status:", None))
+        self.take_image_but.setText(QCoreApplication.translate("MainWindow", u"Take Image", None))
         self.cam2_status_light.setText(QCoreApplication.translate("MainWindow", u"Cam 2", None))
+        self.cam3_status_light.setText(QCoreApplication.translate("MainWindow", u"Cam 3", None))
+        self.camera_status_label.setText(QCoreApplication.translate("MainWindow", u"Camera Status:", None))
         self.tabs_widget.setTabText(self.tabs_widget.indexOf(self.camera_tab), QCoreApplication.translate("MainWindow", u"Camera", None))
-        self.tabs_widget.setTabText(self.tabs_widget.indexOf(self.settings_tab), QCoreApplication.translate("MainWindow", u"Settings", None))
-        self.stop_run_but.setText(QCoreApplication.translate("MainWindow", u"Stop Run", None))
-        self.run_state_label.setText(QCoreApplication.translate("MainWindow", u"RunState", None))
-        self.start_run_but.setText(QCoreApplication.translate("MainWindow", u"Start Run", None))
         self.toolBar.setWindowTitle(QCoreApplication.translate("MainWindow", u"toolBar", None))
     # retranslateUi
 
