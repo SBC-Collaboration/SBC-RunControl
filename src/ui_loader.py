@@ -16,14 +16,29 @@ class SettingsWindow(QMainWindow):
         super(SettingsWindow, self).__init__()
         self.ui = Ui_SettingsWindow()
         self.ui.setupUi(self)
+        self.main_window = main_window
+        self.load_config()
+
+    def load_config(self):
+        self.main_window.config.load_config_to_window(self.ui)
+
+    def apply_config(self):
+        self.main_window.config.apply_config(self.ui)
+
+    def save_config(self):
+        self.main_window.config.save_config(self.ui)
 
     def select_config_path(self):
         config_path, _ = QFileDialog.getOpenFileName(self)
         self.ui.config_path_edit.setText(config_path)
 
-    def select_data_path(self):
-        data_path, _ = QFileDialog.getOpenFileName(self)
-        self.ui.data_path_edit.setText(data_path)
+    def select_log_path(self):
+        log_path = QFileDialog.getExistingDirectory(self)
+        self.ui.log_path_edit.setText(log_path)
+
+    def select_data_dir(self):
+        data_dir = QFileDialog.getExistingDirectory(self)
+        self.ui.data_dir_edit.setText(data_dir)
 
 
 # Loads log window

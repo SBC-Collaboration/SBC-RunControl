@@ -19,7 +19,7 @@ from PySide6.QtGui import (QAction, QBrush, QColor, QConicalGradient,
 from PySide6.QtWidgets import (QApplication, QFrame, QGridLayout, QLabel,
     QLineEdit, QMainWindow, QPushButton, QScrollArea,
     QSizePolicy, QSpacerItem, QTabWidget, QToolBar,
-    QToolButton, QVBoxLayout, QWidget)
+    QVBoxLayout, QWidget)
 import resources_rc
 
 class Ui_MainWindow(object):
@@ -101,16 +101,17 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.run_state_label, 2, 0, 1, 1)
 
-        self.event_label = QLabel(self.centralwidget)
-        self.event_label.setObjectName(u"event_label")
-        sizePolicy2.setHeightForWidth(self.event_label.sizePolicy().hasHeightForWidth())
-        self.event_label.setSizePolicy(sizePolicy2)
-        self.event_label.setAlignment(Qt.AlignCenter)
+        self.event_num_label = QLabel(self.centralwidget)
+        self.event_num_label.setObjectName(u"event_num_label")
+        sizePolicy2.setHeightForWidth(self.event_num_label.sizePolicy().hasHeightForWidth())
+        self.event_num_label.setSizePolicy(sizePolicy2)
+        self.event_num_label.setAlignment(Qt.AlignCenter)
 
-        self.gridLayout.addWidget(self.event_label, 5, 0, 1, 1)
+        self.gridLayout.addWidget(self.event_num_label, 5, 0, 1, 1)
 
         self.run_edit = QLineEdit(self.centralwidget)
         self.run_edit.setObjectName(u"run_edit")
+        self.run_edit.setReadOnly(True)
 
         self.gridLayout.addWidget(self.run_edit, 4, 0, 1, 1)
 
@@ -129,6 +130,7 @@ class Ui_MainWindow(object):
 
         self.event_num_edit = QLineEdit(self.centralwidget)
         self.event_num_edit.setObjectName(u"event_num_edit")
+        self.event_num_edit.setReadOnly(True)
 
         self.gridLayout.addWidget(self.event_num_edit, 6, 0, 1, 1)
 
@@ -143,6 +145,7 @@ class Ui_MainWindow(object):
 
         self.event_time_edit = QLineEdit(self.centralwidget)
         self.event_time_edit.setObjectName(u"event_time_edit")
+        self.event_time_edit.setReadOnly(True)
 
         self.gridLayout.addWidget(self.event_time_edit, 8, 0, 1, 1)
 
@@ -157,6 +160,7 @@ class Ui_MainWindow(object):
 
         self.run_live_time_edit = QLineEdit(self.centralwidget)
         self.run_live_time_edit.setObjectName(u"run_live_time_edit")
+        self.run_live_time_edit.setReadOnly(True)
 
         self.gridLayout.addWidget(self.run_live_time_edit, 10, 0, 1, 1)
 
@@ -171,15 +175,6 @@ class Ui_MainWindow(object):
         self.tabs_widget.setMovable(True)
         self.plc_tab = QWidget()
         self.plc_tab.setObjectName(u"plc_tab")
-        self.file_but = QToolButton(self.plc_tab)
-        self.file_but.setObjectName(u"file_but")
-        self.file_but.setGeometry(QRect(360, 10, 21, 22))
-        icon4 = QIcon()
-        icon4.addFile(u":/icons/open.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.file_but.setIcon(icon4)
-        self.file_path = QLineEdit(self.plc_tab)
-        self.file_path.setObjectName(u"file_path")
-        self.file_path.setGeometry(QRect(0, 40, 371, 21))
         self.tabs_widget.addTab(self.plc_tab, "")
         self.scint_tab = QWidget()
         self.scint_tab.setObjectName(u"scint_tab")
@@ -280,9 +275,8 @@ class Ui_MainWindow(object):
         self.action_log.triggered.connect(MainWindow.open_log_window)
         self.action_quit.triggered.connect(MainWindow.close)
         self.start_run_but.clicked.connect(MainWindow.start_run)
-        self.file_but.clicked.connect(MainWindow.select_file)
 
-        self.tabs_widget.setCurrentIndex(2)
+        self.tabs_widget.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -308,11 +302,10 @@ class Ui_MainWindow(object):
         self.start_run_but.setText(QCoreApplication.translate("MainWindow", u"Start Run", None))
         self.run_label.setText(QCoreApplication.translate("MainWindow", u"Run Num", None))
         self.run_state_label.setText(QCoreApplication.translate("MainWindow", u"RunState", None))
-        self.event_label.setText(QCoreApplication.translate("MainWindow", u"Event Num", None))
+        self.event_num_label.setText(QCoreApplication.translate("MainWindow", u"Event Num", None))
         self.stop_run_but.setText(QCoreApplication.translate("MainWindow", u"Stop Run", None))
         self.event_time_label.setText(QCoreApplication.translate("MainWindow", u"Event Time", None))
         self.run_live_time_label.setText(QCoreApplication.translate("MainWindow", u"Run Live Time", None))
-        self.file_but.setText(QCoreApplication.translate("MainWindow", u"...", None))
         self.tabs_widget.setTabText(self.tabs_widget.indexOf(self.plc_tab), QCoreApplication.translate("MainWindow", u"PLC", None))
         self.tabs_widget.setTabText(self.tabs_widget.indexOf(self.scint_tab), QCoreApplication.translate("MainWindow", u"Scintillation", None))
         self.tabs_widget.setTabText(self.tabs_widget.indexOf(self.acoustics_tab), QCoreApplication.translate("MainWindow", u"Acoustics", None))

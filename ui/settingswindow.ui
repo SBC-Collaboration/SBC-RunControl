@@ -49,7 +49,7 @@
     <item row="2" column="1">
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>3</number>
+       <number>0</number>
       </property>
       <property name="tabsClosable">
        <bool>false</bool>
@@ -60,9 +60,9 @@
       <property name="tabBarAutoHide">
        <bool>false</bool>
       </property>
-      <widget class="QWidget" name="files_tab">
+      <widget class="QWidget" name="general_tab">
        <attribute name="title">
-        <string>Files</string>
+        <string>General</string>
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_4">
         <property name="leftMargin">
@@ -147,26 +147,33 @@
               </property>
              </widget>
             </item>
-            <item row="1" column="0">
-             <widget class="QLabel" name="data_path_label">
+            <item row="2" column="0">
+             <widget class="QLabel" name="data_dir_label">
               <property name="lineWidth">
                <number>0</number>
               </property>
               <property name="text">
-               <string>Data Path</string>
+               <string>Data Dir</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
               </property>
               <property name="buddy">
-               <cstring>data_path_edit</cstring>
+               <cstring>data_dir_edit</cstring>
               </property>
              </widget>
             </item>
-            <item row="1" column="2">
-             <widget class="QLineEdit" name="data_path_edit"/>
+            <item row="2" column="2">
+             <widget class="QLineEdit" name="data_dir_edit"/>
             </item>
-            <item row="3" column="2">
+            <item row="0" column="3">
+             <widget class="QToolButton" name="config_path_but">
+              <property name="text">
+               <string>...</string>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="2">
              <spacer name="verticalSpacer">
               <property name="orientation">
                <enum>Qt::Vertical</enum>
@@ -179,15 +186,34 @@
               </property>
              </spacer>
             </item>
-            <item row="0" column="3">
-             <widget class="QToolButton" name="config_path_but">
+            <item row="2" column="3">
+             <widget class="QToolButton" name="data_dir_but">
               <property name="text">
                <string>...</string>
               </property>
              </widget>
             </item>
+            <item row="1" column="0">
+             <widget class="QLabel" name="log_path_label">
+              <property name="lineWidth">
+               <number>0</number>
+              </property>
+              <property name="text">
+               <string>Log Path</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+              <property name="buddy">
+               <cstring>data_dir_edit</cstring>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="2">
+             <widget class="QLineEdit" name="log_path_edit"/>
+            </item>
             <item row="1" column="3">
-             <widget class="QToolButton" name="data_path_but">
+             <widget class="QToolButton" name="log_path_but">
               <property name="text">
                <string>...</string>
               </property>
@@ -258,53 +284,7 @@
             <property name="bottomMargin">
              <number>0</number>
             </property>
-            <item row="1" column="0">
-             <widget class="QLabel" name="label_2">
-              <property name="text">
-               <string>Max Number of Events</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-              <property name="buddy">
-               <cstring>spinBox</cstring>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="1">
-             <widget class="QSpinBox" name="spinBox">
-              <property name="minimum">
-               <number>1</number>
-              </property>
-              <property name="maximum">
-               <number>1000</number>
-              </property>
-              <property name="value">
-               <number>100</number>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="0">
-             <widget class="QLabel" name="label">
-              <property name="text">
-               <string>Max Event Time</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-              <property name="buddy">
-               <cstring>doubleSpinBox</cstring>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="1">
-             <widget class="QDoubleSpinBox" name="doubleSpinBox">
-              <property name="suffix">
-               <string>s</string>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="1">
+            <item row="4" column="1">
              <spacer name="verticalSpacer_2">
               <property name="orientation">
                <enum>Qt::Vertical</enum>
@@ -316,6 +296,116 @@
                </size>
               </property>
              </spacer>
+            </item>
+            <item row="1" column="2">
+             <widget class="QLabel" name="max_num_ev_label">
+              <property name="text">
+               <string>Max Num of Events</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+              <property name="buddy">
+               <cstring>max_num_ev_box</cstring>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QComboBox" name="comboBox_23">
+              <property name="editable">
+               <bool>true</bool>
+              </property>
+              <item>
+               <property name="text">
+                <string>Cf-252</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Co-57</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Cs-137</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="QDoubleSpinBox" name="max_ev_time_box">
+              <property name="suffix">
+               <string>s</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="0">
+             <widget class="QLabel" name="max_ev_time_label">
+              <property name="text">
+               <string>Max Event Time</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+              <property name="buddy">
+               <cstring>max_ev_time_box</cstring>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="0">
+             <widget class="QLabel" name="max_ev_time_label_2">
+              <property name="text">
+               <string>Source</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+              <property name="buddy">
+               <cstring>max_ev_time_box</cstring>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="3">
+             <widget class="QSpinBox" name="max_num_ev_box">
+              <property name="minimum">
+               <number>1</number>
+              </property>
+              <property name="maximum">
+               <number>1000</number>
+              </property>
+              <property name="value">
+               <number>100</number>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="2">
+             <widget class="QLabel" name="max_ev_time_label_3">
+              <property name="text">
+               <string>Pressure Setpoint</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+              <property name="buddy">
+               <cstring>max_ev_time_box</cstring>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="3">
+             <widget class="QSpinBox" name="max_num_ev_box_2">
+              <property name="suffix">
+               <string>psia</string>
+              </property>
+              <property name="minimum">
+               <number>1</number>
+              </property>
+              <property name="maximum">
+               <number>1000</number>
+              </property>
+              <property name="value">
+               <number>25</number>
+              </property>
+             </widget>
             </item>
            </layout>
           </widget>
@@ -473,7 +563,7 @@
             <item>
              <layout class="QGridLayout" name="acous_general_grid">
               <item row="1" column="0">
-               <widget class="QLabel" name="label_33">
+               <widget class="QLabel" name="acous_pre_trig_label">
                 <property name="text">
                  <string>Pre Trig Length</string>
                 </property>
@@ -481,12 +571,12 @@
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                 </property>
                 <property name="buddy">
-                 <cstring>spinBox_25</cstring>
+                 <cstring>acous_pre_trig_box</cstring>
                 </property>
                </widget>
               </item>
               <item row="0" column="1" colspan="3">
-               <widget class="QComboBox" name="comboBox">
+               <widget class="QComboBox" name="acous_sample_rate_box">
                 <item>
                  <property name="text">
                   <string>100 MS/s</string>
@@ -495,7 +585,7 @@
                </widget>
               </item>
               <item row="0" column="0">
-               <widget class="QLabel" name="label_32">
+               <widget class="QLabel" name="acous_sample_rate_label">
                 <property name="text">
                  <string>Sample Rate</string>
                 </property>
@@ -503,15 +593,15 @@
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                 </property>
                 <property name="buddy">
-                 <cstring>comboBox</cstring>
+                 <cstring>acous_sample_rate_box</cstring>
                 </property>
                </widget>
               </item>
               <item row="1" column="1">
-               <widget class="QSpinBox" name="spinBox_25"/>
+               <widget class="QSpinBox" name="acous_pre_trig_box"/>
               </item>
               <item row="1" column="2">
-               <widget class="QLabel" name="label_35">
+               <widget class="QLabel" name="acous_trig_timeout_label">
                 <property name="text">
                  <string>Trig Timeout</string>
                 </property>
@@ -519,15 +609,15 @@
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                 </property>
                 <property name="buddy">
-                 <cstring>spinBox_43</cstring>
+                 <cstring>acous_trig_timeout_box</cstring>
                 </property>
                </widget>
               </item>
               <item row="1" column="3">
-               <widget class="QSpinBox" name="spinBox_43"/>
+               <widget class="QSpinBox" name="acous_trig_timeout_box"/>
               </item>
               <item row="2" column="0">
-               <widget class="QLabel" name="label_34">
+               <widget class="QLabel" name="acous_post_trig_label">
                 <property name="text">
                  <string>Post Trig Length</string>
                 </property>
@@ -535,15 +625,15 @@
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                 </property>
                 <property name="buddy">
-                 <cstring>spinBox_26</cstring>
+                 <cstring>acous_post_trig_box</cstring>
                 </property>
                </widget>
               </item>
               <item row="2" column="1">
-               <widget class="QSpinBox" name="spinBox_26"/>
+               <widget class="QSpinBox" name="acous_post_trig_box"/>
               </item>
               <item row="2" column="2">
-               <widget class="QLabel" name="label_36">
+               <widget class="QLabel" name="acous_trig_delay_label">
                 <property name="text">
                  <string>Trig Delay</string>
                 </property>
@@ -551,17 +641,17 @@
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                 </property>
                 <property name="buddy">
-                 <cstring>spinBox_44</cstring>
+                 <cstring>acous_trig_delay_box</cstring>
                 </property>
                </widget>
               </item>
               <item row="2" column="3">
-               <widget class="QSpinBox" name="spinBox_44"/>
+               <widget class="QSpinBox" name="acous_trig_delay_box"/>
               </item>
              </layout>
             </item>
             <item>
-             <widget class="Line" name="line_2">
+             <widget class="Line" name="acous_line">
               <property name="orientation">
                <enum>Qt::Horizontal</enum>
               </property>
@@ -573,21 +663,21 @@
                <number>3</number>
               </property>
               <item row="7" column="1">
-               <widget class="QCheckBox" name="checkBox_16">
+               <widget class="QCheckBox" name="acous_enable_ch7">
                 <property name="text">
                  <string/>
                 </property>
                </widget>
               </item>
               <item row="3" column="1">
-               <widget class="QCheckBox" name="acous__ch3_enbl_ckbox">
+               <widget class="QCheckBox" name="acous_enable_ch3">
                 <property name="text">
                  <string/>
                 </property>
                </widget>
               </item>
               <item row="0" column="4">
-               <widget class="QLabel" name="label_62">
+               <widget class="QLabel" name="acous_trig_label">
                 <property name="text">
                  <string>Trigger</string>
                 </property>
@@ -597,10 +687,10 @@
                </widget>
               </item>
               <item row="4" column="6">
-               <widget class="QSpinBox" name="spinBox_100"/>
+               <widget class="QSpinBox" name="acous_threshold_ch4"/>
               </item>
               <item row="0" column="5">
-               <widget class="QLabel" name="label_63">
+               <widget class="QLabel" name="acous_polarity_label">
                 <property name="text">
                  <string>Polarity</string>
                 </property>
@@ -610,7 +700,7 @@
                </widget>
               </item>
               <item row="5" column="0">
-               <widget class="QLabel" name="label_58">
+               <widget class="QLabel" name="acous_ch5_label">
                 <property name="text">
                  <string>Ch 5</string>
                 </property>
@@ -618,12 +708,12 @@
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                 </property>
                 <property name="buddy">
-                 <cstring>checkBox_14</cstring>
+                 <cstring>acous_enable_ch5</cstring>
                 </property>
                </widget>
               </item>
               <item row="4" column="5">
-               <widget class="QComboBox" name="comboBox_5">
+               <widget class="QComboBox" name="acous_polarity_ch4">
                 <property name="iconSize">
                  <size>
                   <width>16</width>
@@ -646,7 +736,7 @@
                </widget>
               </item>
               <item row="2" column="0">
-               <widget class="QLabel" name="label_52">
+               <widget class="QLabel" name="acous_ch2_label">
                 <property name="text">
                  <string>Ch 2</string>
                 </property>
@@ -654,12 +744,12 @@
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                 </property>
                 <property name="buddy">
-                 <cstring>acous__ch2_enbl_ckbox</cstring>
+                 <cstring>acous_enable_ch2</cstring>
                 </property>
                </widget>
               </item>
               <item row="3" column="5">
-               <widget class="QComboBox" name="comboBox_4">
+               <widget class="QComboBox" name="acous_polarity_ch3">
                 <property name="iconSize">
                  <size>
                   <width>16</width>
@@ -682,7 +772,7 @@
                </widget>
               </item>
               <item row="5" column="5">
-               <widget class="QComboBox" name="comboBox_6">
+               <widget class="QComboBox" name="acous_polarity_ch5">
                 <property name="iconSize">
                  <size>
                   <width>16</width>
@@ -705,14 +795,14 @@
                </widget>
               </item>
               <item row="7" column="3">
-               <widget class="QSpinBox" name="spinBox_94">
+               <widget class="QSpinBox" name="acous_dc_offset_ch7">
                 <property name="suffix">
                  <string>%</string>
                 </property>
                </widget>
               </item>
               <item row="0" column="2">
-               <widget class="QLabel" name="label_37">
+               <widget class="QLabel" name="acous_range_label">
                 <property name="text">
                  <string>Range</string>
                 </property>
@@ -722,21 +812,21 @@
                </widget>
               </item>
               <item row="4" column="1">
-               <widget class="QCheckBox" name="checkBox_13">
+               <widget class="QCheckBox" name="acous_enable_ch4">
                 <property name="text">
                  <string/>
                 </property>
                </widget>
               </item>
               <item row="7" column="4">
-               <widget class="QCheckBox" name="checkBox_24">
+               <widget class="QCheckBox" name="acous_trig_ch7">
                 <property name="text">
                  <string/>
                 </property>
                </widget>
               </item>
               <item row="1" column="0">
-               <widget class="QLabel" name="label_40">
+               <widget class="QLabel" name="acous_ch1_label">
                 <property name="text">
                  <string>Ch 1</string>
                 </property>
@@ -744,12 +834,12 @@
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                 </property>
                 <property name="buddy">
-                 <cstring>acous__ch1_enbl_ckbox</cstring>
+                 <cstring>acous_enable_ch1</cstring>
                 </property>
                </widget>
               </item>
               <item row="9" column="5">
-               <widget class="QComboBox" name="comboBox_13">
+               <widget class="QComboBox" name="acous_polarity_ext">
                 <property name="iconSize">
                  <size>
                   <width>16</width>
@@ -772,14 +862,14 @@
                </widget>
               </item>
               <item row="8" column="2">
-               <widget class="QSpinBox" name="spinBox_96">
+               <widget class="QSpinBox" name="acous_range_ch8">
                 <property name="suffix">
                  <string>mV</string>
                 </property>
                </widget>
               </item>
               <item row="6" column="0">
-               <widget class="QLabel" name="label_59">
+               <widget class="QLabel" name="acous_ch6_label">
                 <property name="text">
                  <string>Ch 6</string>
                 </property>
@@ -787,12 +877,12 @@
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                 </property>
                 <property name="buddy">
-                 <cstring>checkBox_15</cstring>
+                 <cstring>acous_enable_ch6</cstring>
                 </property>
                </widget>
               </item>
               <item row="8" column="5">
-               <widget class="QComboBox" name="comboBox_9">
+               <widget class="QComboBox" name="acous_polarity_ch8">
                 <property name="iconSize">
                  <size>
                   <width>16</width>
@@ -815,17 +905,17 @@
                </widget>
               </item>
               <item row="1" column="6">
-               <widget class="QSpinBox" name="spinBox_97"/>
+               <widget class="QSpinBox" name="acous_threshold_ch1"/>
               </item>
               <item row="4" column="3">
-               <widget class="QSpinBox" name="spinBox_88">
+               <widget class="QSpinBox" name="acous_dc_offset_ch4">
                 <property name="suffix">
                  <string>%</string>
                 </property>
                </widget>
               </item>
               <item row="7" column="0">
-               <widget class="QLabel" name="label_60">
+               <widget class="QLabel" name="acous_ch7_label">
                 <property name="text">
                  <string>Ch 7</string>
                 </property>
@@ -833,12 +923,12 @@
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                 </property>
                 <property name="buddy">
-                 <cstring>checkBox_16</cstring>
+                 <cstring>acous_enable_ch7</cstring>
                 </property>
                </widget>
               </item>
               <item row="2" column="1">
-               <widget class="QCheckBox" name="acous__ch2_enbl_ckbox">
+               <widget class="QCheckBox" name="acous_enable_ch2">
                 <property name="styleSheet">
                  <string notr="true"/>
                 </property>
@@ -848,38 +938,38 @@
                </widget>
               </item>
               <item row="8" column="3">
-               <widget class="QSpinBox" name="spinBox_95">
+               <widget class="QSpinBox" name="acous_dc_offset_ch8">
                 <property name="suffix">
                  <string>%</string>
                 </property>
                </widget>
               </item>
               <item row="3" column="6">
-               <widget class="QSpinBox" name="spinBox_99"/>
+               <widget class="QSpinBox" name="acous_threshold_ch3"/>
               </item>
               <item row="6" column="4">
-               <widget class="QCheckBox" name="checkBox_23">
+               <widget class="QCheckBox" name="acous_trig_ch6">
                 <property name="text">
                  <string/>
                 </property>
                </widget>
               </item>
               <item row="9" column="4">
-               <widget class="QCheckBox" name="checkBox_26">
+               <widget class="QCheckBox" name="acous_trig_ext">
                 <property name="text">
                  <string/>
                 </property>
                </widget>
               </item>
               <item row="3" column="2">
-               <widget class="QSpinBox" name="spinBox_85">
+               <widget class="QSpinBox" name="acous_range_ch3">
                 <property name="suffix">
                  <string>mV</string>
                 </property>
                </widget>
               </item>
               <item row="6" column="5">
-               <widget class="QComboBox" name="comboBox_7">
+               <widget class="QComboBox" name="acous_polarity_ch6">
                 <property name="iconSize">
                  <size>
                   <width>16</width>
@@ -902,10 +992,10 @@
                </widget>
               </item>
               <item row="7" column="6">
-               <widget class="QSpinBox" name="spinBox_103"/>
+               <widget class="QSpinBox" name="acous_threshold_ch7"/>
               </item>
               <item row="3" column="0">
-               <widget class="QLabel" name="label_56">
+               <widget class="QLabel" name="acous_ch3_label">
                 <property name="text">
                  <string>Ch 3</string>
                 </property>
@@ -913,46 +1003,46 @@
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                 </property>
                 <property name="buddy">
-                 <cstring>acous__ch3_enbl_ckbox</cstring>
+                 <cstring>acous_enable_ch3</cstring>
                 </property>
                </widget>
               </item>
               <item row="8" column="6">
-               <widget class="QSpinBox" name="spinBox_104"/>
+               <widget class="QSpinBox" name="acous_threshold_ch8"/>
               </item>
               <item row="6" column="2">
-               <widget class="QSpinBox" name="spinBox_93">
+               <widget class="QSpinBox" name="acous_range_ch6">
                 <property name="suffix">
                  <string>mV</string>
                 </property>
                </widget>
               </item>
               <item row="2" column="6">
-               <widget class="QSpinBox" name="spinBox_98"/>
+               <widget class="QSpinBox" name="acous_threshold_ch2"/>
               </item>
               <item row="4" column="4">
-               <widget class="QCheckBox" name="checkBox_21">
+               <widget class="QCheckBox" name="acous_trig_ch4">
                 <property name="text">
                  <string/>
                 </property>
                </widget>
               </item>
               <item row="1" column="3">
-               <widget class="QSpinBox" name="spinBox_81">
+               <widget class="QSpinBox" name="acous_dc_offset_ch1">
                 <property name="suffix">
                  <string>%</string>
                 </property>
                </widget>
               </item>
               <item row="2" column="4">
-               <widget class="QCheckBox" name="checkBox_19">
+               <widget class="QCheckBox" name="acous_trig_ch2">
                 <property name="text">
                  <string/>
                 </property>
                </widget>
               </item>
               <item row="8" column="0">
-               <widget class="QLabel" name="label_61">
+               <widget class="QLabel" name="acous_ch8_label">
                 <property name="text">
                  <string>Ch 8</string>
                 </property>
@@ -960,22 +1050,22 @@
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                 </property>
                 <property name="buddy">
-                 <cstring>checkBox_17</cstring>
+                 <cstring>acous_enable_ch8</cstring>
                 </property>
                </widget>
               </item>
               <item row="9" column="6">
-               <widget class="QSpinBox" name="spinBox_105"/>
+               <widget class="QSpinBox" name="acous_threshold_ext"/>
               </item>
               <item row="5" column="3">
-               <widget class="QSpinBox" name="spinBox_89">
+               <widget class="QSpinBox" name="acous_dc_offset_ch5">
                 <property name="suffix">
                  <string>%</string>
                 </property>
                </widget>
               </item>
               <item row="0" column="3">
-               <widget class="QLabel" name="label_38">
+               <widget class="QLabel" name="acous_dc_offset_label">
                 <property name="text">
                  <string>DC Offset</string>
                 </property>
@@ -985,7 +1075,7 @@
                </widget>
               </item>
               <item row="2" column="5">
-               <widget class="QComboBox" name="comboBox_3">
+               <widget class="QComboBox" name="acous_polarity_ch2">
                 <property name="iconSize">
                  <size>
                   <width>16</width>
@@ -1008,14 +1098,14 @@
                </widget>
               </item>
               <item row="8" column="4">
-               <widget class="QCheckBox" name="checkBox_25">
+               <widget class="QCheckBox" name="acous_trig_ch8">
                 <property name="text">
                  <string/>
                 </property>
                </widget>
               </item>
               <item row="0" column="1">
-               <widget class="QLabel" name="label_39">
+               <widget class="QLabel" name="acous_enabled_label">
                 <property name="text">
                  <string>Enabled</string>
                 </property>
@@ -1025,21 +1115,21 @@
                </widget>
               </item>
               <item row="5" column="1">
-               <widget class="QCheckBox" name="checkBox_14">
+               <widget class="QCheckBox" name="acous_enable_ch5">
                 <property name="text">
                  <string/>
                 </property>
                </widget>
               </item>
               <item row="2" column="2">
-               <widget class="QSpinBox" name="spinBox_84">
+               <widget class="QSpinBox" name="acous_range_ch2">
                 <property name="suffix">
                  <string>mV</string>
                 </property>
                </widget>
               </item>
               <item row="4" column="0">
-               <widget class="QLabel" name="label_57">
+               <widget class="QLabel" name="acous_ch4_label">
                 <property name="text">
                  <string>Ch 4</string>
                 </property>
@@ -1047,53 +1137,53 @@
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                 </property>
                 <property name="buddy">
-                 <cstring>checkBox_13</cstring>
+                 <cstring>acous_enable_ch4</cstring>
                 </property>
                </widget>
               </item>
               <item row="7" column="2">
-               <widget class="QSpinBox" name="spinBox_92">
+               <widget class="QSpinBox" name="acous_range_ch7">
                 <property name="suffix">
                  <string>mV</string>
                 </property>
                </widget>
               </item>
               <item row="5" column="4">
-               <widget class="QCheckBox" name="checkBox_22">
+               <widget class="QCheckBox" name="acous_trig_ch5">
                 <property name="text">
                  <string/>
                 </property>
                </widget>
               </item>
               <item row="3" column="4">
-               <widget class="QCheckBox" name="checkBox_20">
+               <widget class="QCheckBox" name="acous_trig_ch3">
                 <property name="text">
                  <string/>
                 </property>
                </widget>
               </item>
               <item row="2" column="3">
-               <widget class="QSpinBox" name="spinBox_83">
+               <widget class="QSpinBox" name="acous_dc_offset_ch2">
                 <property name="suffix">
                  <string>%</string>
                 </property>
                </widget>
               </item>
               <item row="5" column="2">
-               <widget class="QSpinBox" name="spinBox_90">
+               <widget class="QSpinBox" name="acous_range_ch5">
                 <property name="suffix">
                  <string>mV</string>
                 </property>
                </widget>
               </item>
               <item row="5" column="6">
-               <widget class="QSpinBox" name="spinBox_101"/>
+               <widget class="QSpinBox" name="acous_threshold_ch5"/>
               </item>
               <item row="6" column="6">
-               <widget class="QSpinBox" name="spinBox_102"/>
+               <widget class="QSpinBox" name="acous_threshold_ch6"/>
               </item>
               <item row="7" column="5">
-               <widget class="QComboBox" name="comboBox_8">
+               <widget class="QComboBox" name="acous_polarity_ch7">
                 <property name="iconSize">
                  <size>
                   <width>16</width>
@@ -1116,14 +1206,14 @@
                </widget>
               </item>
               <item row="8" column="1">
-               <widget class="QCheckBox" name="checkBox_17">
+               <widget class="QCheckBox" name="acous_enable_ch8">
                 <property name="text">
                  <string/>
                 </property>
                </widget>
               </item>
               <item row="1" column="2">
-               <widget class="QSpinBox" name="spinBox_82">
+               <widget class="QSpinBox" name="acous_range_ch1">
                 <property name="suffix">
                  <string>mV</string>
                 </property>
@@ -1133,21 +1223,21 @@
                </widget>
               </item>
               <item row="4" column="2">
-               <widget class="QSpinBox" name="spinBox_87">
+               <widget class="QSpinBox" name="acous_range_ch4">
                 <property name="suffix">
                  <string>mV</string>
                 </property>
                </widget>
               </item>
               <item row="6" column="1">
-               <widget class="QCheckBox" name="checkBox_15">
+               <widget class="QCheckBox" name="acous_enable_ch6">
                 <property name="text">
                  <string/>
                 </property>
                </widget>
               </item>
               <item row="1" column="1">
-               <widget class="QCheckBox" name="acous__ch1_enbl_ckbox">
+               <widget class="QCheckBox" name="acous_enable_ch1">
                 <property name="styleSheet">
                  <string notr="true"/>
                 </property>
@@ -1157,7 +1247,7 @@
                </widget>
               </item>
               <item row="0" column="6">
-               <widget class="QLabel" name="label_64">
+               <widget class="QLabel" name="acous_threshold_label">
                 <property name="text">
                  <string>Threshold</string>
                 </property>
@@ -1167,7 +1257,7 @@
                </widget>
               </item>
               <item row="1" column="5">
-               <widget class="QComboBox" name="comboBox_2">
+               <widget class="QComboBox" name="acous_polarity_ch1">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                   <horstretch>0</horstretch>
@@ -1196,7 +1286,7 @@
                </widget>
               </item>
               <item row="9" column="0">
-               <widget class="QLabel" name="label_65">
+               <widget class="QLabel" name="acous_ext_label">
                 <property name="text">
                  <string>Ext</string>
                 </property>
@@ -1206,21 +1296,21 @@
                </widget>
               </item>
               <item row="1" column="4">
-               <widget class="QCheckBox" name="checkBox_18">
+               <widget class="QCheckBox" name="acous_trig_ch1">
                 <property name="text">
                  <string/>
                 </property>
                </widget>
               </item>
               <item row="3" column="3">
-               <widget class="QSpinBox" name="spinBox_86">
+               <widget class="QSpinBox" name="acous_dc_offset_ch3">
                 <property name="suffix">
                  <string>%</string>
                 </property>
                </widget>
               </item>
               <item row="6" column="3">
-               <widget class="QSpinBox" name="spinBox_91">
+               <widget class="QSpinBox" name="acous_dc_offset_ch6">
                 <property name="suffix">
                  <string>%</string>
                 </property>
@@ -1229,7 +1319,7 @@
              </layout>
             </item>
             <item>
-             <spacer name="verticalSpacer_6">
+             <spacer name="acous_spacer">
               <property name="orientation">
                <enum>Qt::Vertical</enum>
               </property>
@@ -1324,7 +1414,7 @@
              <number>3</number>
             </property>
             <item row="18" column="0">
-             <widget class="QLabel" name="label_17">
+             <widget class="QLabel" name="state_comm_pin_label">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                 <horstretch>0</horstretch>
@@ -1340,7 +1430,7 @@
              </widget>
             </item>
             <item row="4" column="3">
-             <widget class="QSpinBox" name="spinBox_17">
+             <widget class="QSpinBox" name="mode_cam3">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -1350,7 +1440,7 @@
              </widget>
             </item>
             <item row="23" column="1">
-             <widget class="QSpinBox" name="spinBox_40">
+             <widget class="QSpinBox" name="trig_pin_cam_1">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -1360,7 +1450,7 @@
              </widget>
             </item>
             <item row="1" column="0">
-             <widget class="QLabel" name="label_29">
+             <widget class="QLabel" name="config_path_label_2">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                 <horstretch>0</horstretch>
@@ -1376,7 +1466,7 @@
              </widget>
             </item>
             <item row="11" column="1">
-             <widget class="QSpinBox" name="spinBox_5">
+             <widget class="QSpinBox" name="post_trig_len_cam1">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -1386,7 +1476,7 @@
              </widget>
             </item>
             <item row="21" column="0">
-             <widget class="QLabel" name="label_18">
+             <widget class="QLabel" name="trig_latch_pin_label">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                 <horstretch>0</horstretch>
@@ -1402,7 +1492,7 @@
              </widget>
             </item>
             <item row="23" column="3">
-             <widget class="QSpinBox" name="spinBox_42">
+             <widget class="QSpinBox" name="trig_pin_cam3">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -1412,20 +1502,20 @@
              </widget>
             </item>
             <item row="1" column="1">
-             <widget class="QLineEdit" name="lineEdit_15">
+             <widget class="QLineEdit" name="config_path_cam1">
               <property name="text">
                <string/>
               </property>
              </widget>
             </item>
             <item row="3" column="1">
-             <widget class="QLineEdit" name="lineEdit_12"/>
+             <widget class="QLineEdit" name="ip_addr_cam1"/>
             </item>
             <item row="17" column="3">
-             <widget class="QLineEdit" name="lineEdit"/>
+             <widget class="QLineEdit" name="date_format_cam3"/>
             </item>
             <item row="9" column="3">
-             <widget class="QSpinBox" name="spinBox_8">
+             <widget class="QSpinBox" name="exposure_cam3">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -1435,14 +1525,14 @@
              </widget>
             </item>
             <item row="2" column="2">
-             <widget class="QLineEdit" name="lineEdit_7">
+             <widget class="QLineEdit" name="data_path_cam2">
               <property name="text">
                <string/>
               </property>
              </widget>
             </item>
             <item row="11" column="0">
-             <widget class="QLabel" name="label_7">
+             <widget class="QLabel" name="post_trig_len_label">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                 <horstretch>0</horstretch>
@@ -1458,7 +1548,7 @@
              </widget>
             </item>
             <item row="8" column="3">
-             <widget class="QDoubleSpinBox" name="doubleSpinBox_4">
+             <widget class="QDoubleSpinBox" name="trig_wait_cam3">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -1471,7 +1561,7 @@
              </widget>
             </item>
             <item row="0" column="3">
-             <widget class="QLabel" name="label_11">
+             <widget class="QLabel" name="cam3_label">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
                 <horstretch>0</horstretch>
@@ -1487,7 +1577,7 @@
              </widget>
             </item>
             <item row="8" column="2">
-             <widget class="QDoubleSpinBox" name="doubleSpinBox_3">
+             <widget class="QDoubleSpinBox" name="trig_wait_cam2">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -1500,7 +1590,7 @@
              </widget>
             </item>
             <item row="23" column="0">
-             <widget class="QLabel" name="label_20">
+             <widget class="QLabel" name="trig_pin_label">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                 <horstretch>0</horstretch>
@@ -1516,7 +1606,7 @@
              </widget>
             </item>
             <item row="16" column="1">
-             <widget class="QComboBox" name="comboBox_10">
+             <widget class="QComboBox" name="image_format_cam1">
               <item>
                <property name="text">
                 <string>png</string>
@@ -1530,7 +1620,7 @@
              </widget>
             </item>
             <item row="13" column="2">
-             <widget class="QSpinBox" name="spinBox_15">
+             <widget class="QSpinBox" name="pix_threshold_cam2">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -1540,7 +1630,7 @@
              </widget>
             </item>
             <item row="22" column="0">
-             <widget class="QLabel" name="label_19">
+             <widget class="QLabel" name="state_pin_label">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                 <horstretch>0</horstretch>
@@ -1556,7 +1646,7 @@
              </widget>
             </item>
             <item row="0" column="1">
-             <widget class="QLabel" name="label_9">
+             <widget class="QLabel" name="cam1_label">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
                 <horstretch>0</horstretch>
@@ -1572,7 +1662,7 @@
              </widget>
             </item>
             <item row="18" column="3">
-             <widget class="QSpinBox" name="spinBox_20">
+             <widget class="QSpinBox" name="state_comm_pin_cam3">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -1582,10 +1672,10 @@
              </widget>
             </item>
             <item row="1" column="2">
-             <widget class="QLineEdit" name="lineEdit_16"/>
+             <widget class="QLineEdit" name="config_path_cam2"/>
             </item>
             <item row="2" column="0">
-             <widget class="QLabel" name="label_30">
+             <widget class="QLabel" name="data_path_label">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                 <horstretch>0</horstretch>
@@ -1601,7 +1691,7 @@
              </widget>
             </item>
             <item row="3" column="0">
-             <widget class="QLabel" name="label_21">
+             <widget class="QLabel" name="ip_addr_label">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                 <horstretch>0</horstretch>
@@ -1617,14 +1707,14 @@
              </widget>
             </item>
             <item row="3" column="3">
-             <widget class="QLineEdit" name="lineEdit_14">
+             <widget class="QLineEdit" name="ip_addr_cam3">
               <property name="text">
                <string/>
               </property>
              </widget>
             </item>
             <item row="0" column="2">
-             <widget class="QLabel" name="label_10">
+             <widget class="QLabel" name="cam2_label">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
                 <horstretch>0</horstretch>
@@ -1640,7 +1730,7 @@
              </widget>
             </item>
             <item row="12" column="3">
-             <widget class="QSpinBox" name="spinBox_14">
+             <widget class="QSpinBox" name="adc_threshold_cam3">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -1650,7 +1740,7 @@
              </widget>
             </item>
             <item row="9" column="1">
-             <widget class="QSpinBox" name="spinBox_2">
+             <widget class="QSpinBox" name="exposure_cam1">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -1660,10 +1750,10 @@
              </widget>
             </item>
             <item row="2" column="1">
-             <widget class="QLineEdit" name="lineEdit_9"/>
+             <widget class="QLineEdit" name="data_path_cam1"/>
             </item>
             <item row="22" column="2">
-             <widget class="QSpinBox" name="spinBox_38">
+             <widget class="QSpinBox" name="state_pin_cam2">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -1673,7 +1763,7 @@
              </widget>
             </item>
             <item row="10" column="1">
-             <widget class="QSpinBox" name="spinBox_3">
+             <widget class="QSpinBox" name="buffer_len_cam1">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -1683,7 +1773,7 @@
              </widget>
             </item>
             <item row="24" column="0" colspan="4">
-             <spacer name="verticalSpacer_3">
+             <spacer name="cam_spacer">
               <property name="orientation">
                <enum>Qt::Vertical</enum>
               </property>
@@ -1699,7 +1789,7 @@
              </spacer>
             </item>
             <item row="12" column="1">
-             <widget class="QSpinBox" name="spinBox_4">
+             <widget class="QSpinBox" name="adc_threshold_cam1">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -1709,7 +1799,7 @@
              </widget>
             </item>
             <item row="12" column="0">
-             <widget class="QLabel" name="label_6">
+             <widget class="QLabel" name="adc_threshold_label">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                 <horstretch>0</horstretch>
@@ -1725,10 +1815,10 @@
              </widget>
             </item>
             <item row="17" column="1">
-             <widget class="QLineEdit" name="lineEdit_3"/>
+             <widget class="QLineEdit" name="date_format_cam1"/>
             </item>
             <item row="20" column="2">
-             <widget class="QSpinBox" name="spinBox_32">
+             <widget class="QSpinBox" name="trig_enbl_pin_cam2">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -1738,7 +1828,7 @@
              </widget>
             </item>
             <item row="16" column="0">
-             <widget class="QLabel" name="label_14">
+             <widget class="QLabel" name="image_format_label">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                 <horstretch>0</horstretch>
@@ -1754,7 +1844,7 @@
              </widget>
             </item>
             <item row="21" column="3">
-             <widget class="QSpinBox" name="spinBox_36">
+             <widget class="QSpinBox" name="trig_latch_pin_cam3">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -1764,7 +1854,7 @@
              </widget>
             </item>
             <item row="20" column="1">
-             <widget class="QSpinBox" name="spinBox_31">
+             <widget class="QSpinBox" name="trig_enbl_pin_cam1">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -1774,7 +1864,7 @@
              </widget>
             </item>
             <item row="11" column="2">
-             <widget class="QSpinBox" name="spinBox_11">
+             <widget class="QSpinBox" name="post_trig_len_cam2">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -1784,7 +1874,7 @@
              </widget>
             </item>
             <item row="13" column="1">
-             <widget class="QSpinBox" name="spinBox_6">
+             <widget class="QSpinBox" name="pix_threshold_cam1">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -1794,7 +1884,7 @@
              </widget>
             </item>
             <item row="13" column="3">
-             <widget class="QSpinBox" name="spinBox_16">
+             <widget class="QSpinBox" name="pix_threshold_cam3">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -1804,7 +1894,7 @@
              </widget>
             </item>
             <item row="10" column="2">
-             <widget class="QSpinBox" name="spinBox_9">
+             <widget class="QSpinBox" name="buffer_len_cam2">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -1814,7 +1904,7 @@
              </widget>
             </item>
             <item row="18" column="1">
-             <widget class="QSpinBox" name="spinBox_29">
+             <widget class="QSpinBox" name="state_comm_pin_cam1">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -1824,7 +1914,7 @@
              </widget>
             </item>
             <item row="8" column="0">
-             <widget class="QLabel" name="label_3">
+             <widget class="QLabel" name="trig_wait_label">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                 <horstretch>0</horstretch>
@@ -1832,7 +1922,7 @@
                </sizepolicy>
               </property>
               <property name="text">
-               <string>Trig Enable Time</string>
+               <string>Trigger Wait</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -1840,7 +1930,7 @@
              </widget>
             </item>
             <item row="11" column="3">
-             <widget class="QSpinBox" name="spinBox_12">
+             <widget class="QSpinBox" name="post_trig_len_cam3">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -1850,13 +1940,13 @@
              </widget>
             </item>
             <item row="17" column="2">
-             <widget class="QLineEdit" name="lineEdit_2"/>
+             <widget class="QLineEdit" name="date_format_cam2"/>
             </item>
             <item row="2" column="3">
-             <widget class="QLineEdit" name="lineEdit_8"/>
+             <widget class="QLineEdit" name="data_path_cam3"/>
             </item>
             <item row="9" column="0">
-             <widget class="QLabel" name="label_4">
+             <widget class="QLabel" name="exposure_label">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                 <horstretch>0</horstretch>
@@ -1872,7 +1962,7 @@
              </widget>
             </item>
             <item row="13" column="0">
-             <widget class="QLabel" name="label_8">
+             <widget class="QLabel" name="pix_threshold_label">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                 <horstretch>0</horstretch>
@@ -1888,7 +1978,7 @@
              </widget>
             </item>
             <item row="4" column="1">
-             <widget class="QSpinBox" name="spinBox_19">
+             <widget class="QSpinBox" name="mode_cam1">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -1898,7 +1988,7 @@
              </widget>
             </item>
             <item row="8" column="1">
-             <widget class="QDoubleSpinBox" name="doubleSpinBox_2">
+             <widget class="QDoubleSpinBox" name="trig_wait_cam1">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -1911,7 +2001,7 @@
              </widget>
             </item>
             <item row="23" column="2">
-             <widget class="QSpinBox" name="spinBox_41">
+             <widget class="QSpinBox" name="trig_pin_cam2">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -1921,7 +2011,7 @@
              </widget>
             </item>
             <item row="21" column="1">
-             <widget class="QSpinBox" name="spinBox_34">
+             <widget class="QSpinBox" name="trig_latch_pin_cam1">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -1931,7 +2021,7 @@
              </widget>
             </item>
             <item row="21" column="2">
-             <widget class="QSpinBox" name="spinBox_35">
+             <widget class="QSpinBox" name="trig_latch_pin_cam2">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -1941,7 +2031,7 @@
              </widget>
             </item>
             <item row="9" column="2">
-             <widget class="QSpinBox" name="spinBox_7">
+             <widget class="QSpinBox" name="exposure_cam2">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -1951,7 +2041,7 @@
              </widget>
             </item>
             <item row="22" column="1">
-             <widget class="QSpinBox" name="spinBox_37">
+             <widget class="QSpinBox" name="state_pin_cam1">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -1961,7 +2051,7 @@
              </widget>
             </item>
             <item row="4" column="0">
-             <widget class="QLabel" name="label_13">
+             <widget class="QLabel" name="mode_label">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                 <horstretch>0</horstretch>
@@ -1977,7 +2067,7 @@
              </widget>
             </item>
             <item row="22" column="3">
-             <widget class="QSpinBox" name="spinBox_39">
+             <widget class="QSpinBox" name="state_pin_cam3">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -1987,10 +2077,10 @@
              </widget>
             </item>
             <item row="1" column="3">
-             <widget class="QLineEdit" name="lineEdit_17"/>
+             <widget class="QLineEdit" name="config_path_cam3"/>
             </item>
             <item row="20" column="0">
-             <widget class="QLabel" name="label_16">
+             <widget class="QLabel" name="trig_enbl_pin_label">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                 <horstretch>0</horstretch>
@@ -2006,7 +2096,7 @@
              </widget>
             </item>
             <item row="20" column="3">
-             <widget class="QSpinBox" name="spinBox_33">
+             <widget class="QSpinBox" name="trig_enbl_pin_cam3">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -2016,7 +2106,7 @@
              </widget>
             </item>
             <item row="10" column="3">
-             <widget class="QSpinBox" name="spinBox_10">
+             <widget class="QSpinBox" name="buffer_len_cam3">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -2026,7 +2116,7 @@
              </widget>
             </item>
             <item row="17" column="0">
-             <widget class="QLabel" name="label_15">
+             <widget class="QLabel" name="date_format_label">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                 <horstretch>0</horstretch>
@@ -2042,7 +2132,7 @@
              </widget>
             </item>
             <item row="12" column="2">
-             <widget class="QSpinBox" name="spinBox_13">
+             <widget class="QSpinBox" name="adc_threshold_cam2">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -2052,7 +2142,7 @@
              </widget>
             </item>
             <item row="18" column="2">
-             <widget class="QSpinBox" name="spinBox_30">
+             <widget class="QSpinBox" name="state_comm_pin_cam2">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -2062,7 +2152,7 @@
              </widget>
             </item>
             <item row="10" column="0">
-             <widget class="QLabel" name="label_5">
+             <widget class="QLabel" name="buffer_len_label">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                 <horstretch>0</horstretch>
@@ -2078,10 +2168,10 @@
              </widget>
             </item>
             <item row="3" column="2">
-             <widget class="QLineEdit" name="lineEdit_13"/>
+             <widget class="QLineEdit" name="ip_addr_cam2"/>
             </item>
             <item row="4" column="2">
-             <widget class="QSpinBox" name="spinBox_18">
+             <widget class="QSpinBox" name="mode_cam2">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -2091,7 +2181,7 @@
              </widget>
             </item>
             <item row="16" column="2">
-             <widget class="QComboBox" name="comboBox_11">
+             <widget class="QComboBox" name="image_format_cam2">
               <item>
                <property name="text">
                 <string>png</string>
@@ -2105,7 +2195,7 @@
              </widget>
             </item>
             <item row="16" column="3">
-             <widget class="QComboBox" name="comboBox_12">
+             <widget class="QComboBox" name="iamge_format_cam3">
               <item>
                <property name="text">
                 <string>png</string>
@@ -2190,7 +2280,7 @@
              <number>0</number>
             </property>
             <item>
-             <layout class="QGridLayout" name="gridLayout_8">
+             <layout class="QGridLayout" name="fifo_grid_layout">
               <property name="topMargin">
                <number>6</number>
               </property>
@@ -2201,10 +2291,10 @@
                <number>3</number>
               </property>
               <item row="3" column="3">
-               <widget class="QSpinBox" name="spinBox_22"/>
+               <widget class="QSpinBox" name="trig_or_pin_edit"/>
               </item>
               <item row="0" column="0" colspan="4">
-               <widget class="QLabel" name="label_12">
+               <widget class="QLabel" name="fifo_layout">
                 <property name="text">
                  <string>Trig FIFO Arduino</string>
                 </property>
@@ -2214,13 +2304,13 @@
                </widget>
               </item>
               <item row="3" column="1">
-               <widget class="QSpinBox" name="spinBox_21"/>
+               <widget class="QSpinBox" name="trig_reset_pin_edit"/>
               </item>
               <item row="1" column="1" colspan="3">
-               <widget class="QLineEdit" name="lineEdit_10"/>
+               <widget class="QLineEdit" name="trig_in_pins_edit"/>
               </item>
               <item row="3" column="0">
-               <widget class="QLabel" name="label_24">
+               <widget class="QLabel" name="trig_reset_pin_label">
                 <property name="text">
                  <string>Trig Reset Pin</string>
                 </property>
@@ -2228,12 +2318,12 @@
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                 </property>
                 <property name="buddy">
-                 <cstring>spinBox_21</cstring>
+                 <cstring>trig_reset_pin_edit</cstring>
                 </property>
                </widget>
               </item>
               <item row="1" column="0">
-               <widget class="QLabel" name="label_22">
+               <widget class="QLabel" name="trig_in_pins_label">
                 <property name="text">
                  <string>Trig In Pins</string>
                 </property>
@@ -2241,15 +2331,15 @@
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                 </property>
                 <property name="buddy">
-                 <cstring>lineEdit_10</cstring>
+                 <cstring>trig_in_pins_edit</cstring>
                 </property>
                </widget>
               </item>
               <item row="2" column="1" colspan="3">
-               <widget class="QLineEdit" name="lineEdit_11"/>
+               <widget class="QLineEdit" name="trig_latch_pins_edit"/>
               </item>
               <item row="3" column="2">
-               <widget class="QLabel" name="label_25">
+               <widget class="QLabel" name="trig_or_pin_label">
                 <property name="text">
                  <string>Trig Or Pin</string>
                 </property>
@@ -2257,12 +2347,12 @@
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                 </property>
                 <property name="buddy">
-                 <cstring>spinBox_22</cstring>
+                 <cstring>trig_or_pin_edit</cstring>
                 </property>
                </widget>
               </item>
               <item row="2" column="0">
-               <widget class="QLabel" name="label_23">
+               <widget class="QLabel" name="trig_latch_pins_label">
                 <property name="text">
                  <string>Trig Latch Pins</string>
                 </property>
@@ -2270,12 +2360,12 @@
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                 </property>
                 <property name="buddy">
-                 <cstring>lineEdit_11</cstring>
+                 <cstring>trig_latch_pins_edit</cstring>
                 </property>
                </widget>
               </item>
               <item row="4" column="0">
-               <widget class="QLabel" name="label_26">
+               <widget class="QLabel" name="on_time_pin_label">
                 <property name="text">
                  <string>On-Time Pin</string>
                 </property>
@@ -2283,15 +2373,15 @@
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                 </property>
                 <property name="buddy">
-                 <cstring>spinBox_23</cstring>
+                 <cstring>on_time_pin_edit</cstring>
                 </property>
                </widget>
               </item>
               <item row="4" column="1">
-               <widget class="QSpinBox" name="spinBox_23"/>
+               <widget class="QSpinBox" name="on_time_pin_edit"/>
               </item>
               <item row="4" column="2">
-               <widget class="QLabel" name="label_27">
+               <widget class="QLabel" name="heartbeat_pin_label">
                 <property name="text">
                  <string>Heartbeat Pin</string>
                 </property>
@@ -2299,24 +2389,24 @@
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                 </property>
                 <property name="buddy">
-                 <cstring>spinBox_24</cstring>
+                 <cstring>heartbeat_pin_edit</cstring>
                 </property>
                </widget>
               </item>
               <item row="4" column="3">
-               <widget class="QSpinBox" name="spinBox_24"/>
+               <widget class="QSpinBox" name="heartbeat_pin_edit"/>
               </item>
              </layout>
             </item>
             <item>
-             <widget class="Line" name="line">
+             <widget class="Line" name="dio_line">
               <property name="orientation">
                <enum>Qt::Horizontal</enum>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QLabel" name="label_28">
+             <widget class="QLabel" name="gate_label">
               <property name="text">
                <string>Gate Generator Arduino</string>
               </property>
@@ -2326,7 +2416,7 @@
              </widget>
             </item>
             <item>
-             <layout class="QGridLayout" name="gridLayout_11">
+             <layout class="QGridLayout" name="gate_grid_layout">
               <property name="leftMargin">
                <number>6</number>
               </property>
@@ -2337,7 +2427,7 @@
                <number>3</number>
               </property>
               <item row="2" column="0">
-               <widget class="QLabel" name="label_47">
+               <widget class="QLabel" name="wave1_label">
                 <property name="text">
                  <string>Wave 1</string>
                 </property>
@@ -2347,13 +2437,13 @@
                </widget>
               </item>
               <item row="4" column="1">
-               <widget class="QSpinBox" name="spinBox_53"/>
+               <widget class="QSpinBox" name="gate_pin_wave3"/>
               </item>
               <item row="2" column="1">
-               <widget class="QSpinBox" name="spinBox_47"/>
+               <widget class="QSpinBox" name="gate_pin_wave1"/>
               </item>
               <item row="2" column="3">
-               <widget class="QSpinBox" name="spinBox_46">
+               <widget class="QSpinBox" name="gate_phase_wave1">
                 <property name="buttonSymbols">
                  <enum>QAbstractSpinBox::UpDownArrows</enum>
                 </property>
@@ -2363,7 +2453,7 @@
                </widget>
               </item>
               <item row="9" column="0">
-               <widget class="QLabel" name="label_54">
+               <widget class="QLabel" name="wave8_label">
                 <property name="text">
                  <string>Wave 8</string>
                 </property>
@@ -2373,7 +2463,7 @@
                </widget>
               </item>
               <item row="7" column="0">
-               <widget class="QLabel" name="label_51">
+               <widget class="QLabel" name="wave6_label">
                 <property name="text">
                  <string>Wave 6</string>
                 </property>
@@ -2383,7 +2473,7 @@
                </widget>
               </item>
               <item row="0" column="4">
-               <widget class="QLabel" name="label_43">
+               <widget class="QLabel" name="duty_label">
                 <property name="text">
                  <string>Duty</string>
                 </property>
@@ -2393,7 +2483,7 @@
                </widget>
               </item>
               <item row="0" column="2">
-               <widget class="QLabel" name="label_46">
+               <widget class="QLabel" name="gate_period_label">
                 <property name="text">
                  <string>Period</string>
                 </property>
@@ -2403,23 +2493,23 @@
                </widget>
               </item>
               <item row="4" column="2">
-               <widget class="QSpinBox" name="spinBox_54"/>
+               <widget class="QSpinBox" name="gate_period_wave3"/>
               </item>
               <item row="3" column="3">
-               <widget class="QSpinBox" name="spinBox_50"/>
+               <widget class="QSpinBox" name="gate_phase_wave2"/>
               </item>
               <item row="4" column="4">
-               <widget class="QSpinBox" name="spinBox_56">
+               <widget class="QSpinBox" name="duty_wave3">
                 <property name="suffix">
                  <string>%</string>
                 </property>
                </widget>
               </item>
               <item row="2" column="2">
-               <widget class="QSpinBox" name="spinBox_48"/>
+               <widget class="QSpinBox" name="gate_period_wave1"/>
               </item>
               <item row="6" column="0">
-               <widget class="QLabel" name="label_50">
+               <widget class="QLabel" name="wave5_label">
                 <property name="text">
                  <string>Wave 5</string>
                 </property>
@@ -2429,7 +2519,7 @@
                </widget>
               </item>
               <item row="5" column="0">
-               <widget class="QLabel" name="label_49">
+               <widget class="QLabel" name="wave4_label">
                 <property name="text">
                  <string>Wave 4</string>
                 </property>
@@ -2439,7 +2529,7 @@
                </widget>
               </item>
               <item row="8" column="0">
-               <widget class="QLabel" name="label_53">
+               <widget class="QLabel" name="wave7_label">
                 <property name="text">
                  <string>Wave 7</string>
                 </property>
@@ -2449,13 +2539,13 @@
                </widget>
               </item>
               <item row="4" column="3">
-               <widget class="QSpinBox" name="spinBox_55"/>
+               <widget class="QSpinBox" name="gate_phase_wave3"/>
               </item>
               <item row="3" column="2">
-               <widget class="QSpinBox" name="spinBox_49"/>
+               <widget class="QSpinBox" name="gate_period_wave2"/>
               </item>
               <item row="0" column="5">
-               <widget class="QLabel" name="label_45">
+               <widget class="QLabel" name="gate_polarity_label">
                 <property name="text">
                  <string>Polarity</string>
                 </property>
@@ -2465,10 +2555,10 @@
                </widget>
               </item>
               <item row="3" column="1">
-               <widget class="QSpinBox" name="spinBox_52"/>
+               <widget class="QSpinBox" name="gate_pin_wave2"/>
               </item>
               <item row="0" column="1">
-               <widget class="QLabel" name="label_42">
+               <widget class="QLabel" name="gate_pin_label">
                 <property name="text">
                  <string>Pin</string>
                 </property>
@@ -2478,7 +2568,7 @@
                </widget>
               </item>
               <item row="3" column="0">
-               <widget class="QLabel" name="label_41">
+               <widget class="QLabel" name="wave2_label">
                 <property name="text">
                  <string>Wave 2</string>
                 </property>
@@ -2488,14 +2578,14 @@
                </widget>
               </item>
               <item row="2" column="4">
-               <widget class="QSpinBox" name="spinBox_45">
+               <widget class="QSpinBox" name="duty_wave1">
                 <property name="suffix">
                  <string>%</string>
                 </property>
                </widget>
               </item>
               <item row="0" column="3">
-               <widget class="QLabel" name="label_44">
+               <widget class="QLabel" name="gate_phase_label">
                 <property name="text">
                  <string>Phase</string>
                 </property>
@@ -2505,14 +2595,14 @@
                </widget>
               </item>
               <item row="3" column="4">
-               <widget class="QSpinBox" name="spinBox_51">
+               <widget class="QSpinBox" name="duty_wave2">
                 <property name="suffix">
                  <string>%</string>
                 </property>
                </widget>
               </item>
               <item row="4" column="0">
-               <widget class="QLabel" name="label_48">
+               <widget class="QLabel" name="wave3_label">
                 <property name="text">
                  <string>Wave 3</string>
                 </property>
@@ -2522,7 +2612,7 @@
                </widget>
               </item>
               <item row="10" column="0">
-               <widget class="QLabel" name="label_55">
+               <widget class="QLabel" name="wave9_label">
                 <property name="text">
                  <string>Wave 9</string>
                 </property>
@@ -2532,103 +2622,103 @@
                </widget>
               </item>
               <item row="5" column="2">
-               <widget class="QSpinBox" name="spinBox_57"/>
+               <widget class="QSpinBox" name="gate_period_wave4"/>
               </item>
               <item row="5" column="3">
-               <widget class="QSpinBox" name="spinBox_58"/>
+               <widget class="QSpinBox" name="gate_phase_wave4"/>
               </item>
               <item row="5" column="4">
-               <widget class="QSpinBox" name="spinBox_59">
+               <widget class="QSpinBox" name="duty_wave4">
                 <property name="suffix">
                  <string>%</string>
                 </property>
                </widget>
               </item>
               <item row="5" column="1">
-               <widget class="QSpinBox" name="spinBox_60"/>
+               <widget class="QSpinBox" name="gate_pin_wave4"/>
               </item>
               <item row="6" column="1">
-               <widget class="QSpinBox" name="spinBox_61"/>
+               <widget class="QSpinBox" name="gate_pin_wave5"/>
               </item>
               <item row="6" column="2">
-               <widget class="QSpinBox" name="spinBox_62"/>
+               <widget class="QSpinBox" name="gate_period_wave5"/>
               </item>
               <item row="6" column="3">
-               <widget class="QSpinBox" name="spinBox_63"/>
+               <widget class="QSpinBox" name="gate_phase_wave5"/>
               </item>
               <item row="6" column="4">
-               <widget class="QSpinBox" name="spinBox_64">
+               <widget class="QSpinBox" name="duty_wave5">
                 <property name="suffix">
                  <string>%</string>
                 </property>
                </widget>
               </item>
               <item row="7" column="1">
-               <widget class="QSpinBox" name="spinBox_65"/>
+               <widget class="QSpinBox" name="gate_pin_wave6"/>
               </item>
               <item row="7" column="2">
-               <widget class="QSpinBox" name="spinBox_66"/>
+               <widget class="QSpinBox" name="gate_period_wave6"/>
               </item>
               <item row="7" column="3">
-               <widget class="QSpinBox" name="spinBox_67"/>
+               <widget class="QSpinBox" name="gate_phase_wave6"/>
               </item>
               <item row="7" column="4">
-               <widget class="QSpinBox" name="spinBox_68">
+               <widget class="QSpinBox" name="duty_wave6">
                 <property name="suffix">
                  <string>%</string>
                 </property>
                </widget>
               </item>
               <item row="8" column="1">
-               <widget class="QSpinBox" name="spinBox_69"/>
+               <widget class="QSpinBox" name="gate_pin_wave7"/>
               </item>
               <item row="8" column="2">
-               <widget class="QSpinBox" name="spinBox_70"/>
+               <widget class="QSpinBox" name="gate_period_wave7"/>
               </item>
               <item row="8" column="3">
-               <widget class="QSpinBox" name="spinBox_71"/>
+               <widget class="QSpinBox" name="gate_phase_wave7"/>
               </item>
               <item row="8" column="4">
-               <widget class="QSpinBox" name="spinBox_72">
+               <widget class="QSpinBox" name="duty_wave7">
                 <property name="suffix">
                  <string>%</string>
                 </property>
                </widget>
               </item>
               <item row="9" column="1">
-               <widget class="QSpinBox" name="spinBox_73"/>
+               <widget class="QSpinBox" name="gate_pin_wave8"/>
               </item>
               <item row="9" column="2">
-               <widget class="QSpinBox" name="spinBox_74"/>
+               <widget class="QSpinBox" name="gate_period_wave8"/>
               </item>
               <item row="9" column="3">
-               <widget class="QSpinBox" name="spinBox_75"/>
+               <widget class="QSpinBox" name="gate_phase_wave8"/>
               </item>
               <item row="9" column="4">
-               <widget class="QSpinBox" name="spinBox_76">
+               <widget class="QSpinBox" name="duty_wave8">
                 <property name="suffix">
                  <string>%</string>
                 </property>
                </widget>
               </item>
               <item row="10" column="1">
-               <widget class="QSpinBox" name="spinBox_77"/>
+               <widget class="QSpinBox" name="gate_pin_wave9"/>
               </item>
               <item row="10" column="2">
-               <widget class="QSpinBox" name="spinBox_78"/>
+               <widget class="QSpinBox" name="gate_period_wave9"/>
               </item>
               <item row="10" column="3">
-               <widget class="QSpinBox" name="spinBox_79"/>
+               <widget class="QSpinBox" name="gate_phase_wave9"/>
               </item>
               <item row="10" column="4">
-               <widget class="QSpinBox" name="spinBox_80">
+               <widget class="QSpinBox" name="duty_wave9">
                 <property name="suffix">
                  <string>%</string>
                 </property>
                </widget>
               </item>
               <item row="2" column="5">
-               <widget class="QComboBox" name="comboBox_14">
+               <widget class="QComboBox" name="gate_polarity_wave1">
                 <item>
                  <property name="text">
                   <string>Normal</string>
@@ -2642,7 +2732,7 @@
                </widget>
               </item>
               <item row="3" column="5">
-               <widget class="QComboBox" name="comboBox_15">
+               <widget class="QComboBox" name="gate_polarity_wave2">
                 <item>
                  <property name="text">
                   <string>Normal</string>
@@ -2656,7 +2746,7 @@
                </widget>
               </item>
               <item row="4" column="5">
-               <widget class="QComboBox" name="comboBox_16">
+               <widget class="QComboBox" name="gate_polarity_wave3">
                 <item>
                  <property name="text">
                   <string>Normal</string>
@@ -2670,7 +2760,7 @@
                </widget>
               </item>
               <item row="5" column="5">
-               <widget class="QComboBox" name="comboBox_17">
+               <widget class="QComboBox" name="gate_polarity_wave4">
                 <item>
                  <property name="text">
                   <string>Normal</string>
@@ -2684,7 +2774,7 @@
                </widget>
               </item>
               <item row="6" column="5">
-               <widget class="QComboBox" name="comboBox_18">
+               <widget class="QComboBox" name="gate_polarity_wave5">
                 <item>
                  <property name="text">
                   <string>Normal</string>
@@ -2698,7 +2788,7 @@
                </widget>
               </item>
               <item row="7" column="5">
-               <widget class="QComboBox" name="comboBox_19">
+               <widget class="QComboBox" name="gate_polarity_wave6">
                 <item>
                  <property name="text">
                   <string>Normal</string>
@@ -2712,7 +2802,7 @@
                </widget>
               </item>
               <item row="8" column="5">
-               <widget class="QComboBox" name="comboBox_20">
+               <widget class="QComboBox" name="gate_polarity_wave7">
                 <item>
                  <property name="text">
                   <string>Normal</string>
@@ -2726,7 +2816,7 @@
                </widget>
               </item>
               <item row="9" column="5">
-               <widget class="QComboBox" name="comboBox_21">
+               <widget class="QComboBox" name="gate_polarity_wave8">
                 <item>
                  <property name="text">
                   <string>Normal</string>
@@ -2740,7 +2830,7 @@
                </widget>
               </item>
               <item row="10" column="5">
-               <widget class="QComboBox" name="comboBox_22">
+               <widget class="QComboBox" name="gate_polarity_wave9">
                 <item>
                  <property name="text">
                   <string>Normal</string>
@@ -2756,7 +2846,7 @@
              </layout>
             </item>
             <item>
-             <spacer name="verticalSpacer_5">
+             <spacer name="dio_spacer">
               <property name="orientation">
                <enum>Qt::Vertical</enum>
               </property>
@@ -2891,34 +2981,102 @@
    <slot>select_config_path()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>415</x>
+     <x>380</x>
      <y>69</y>
     </hint>
     <hint type="destinationlabel">
-     <x>438</x>
+     <x>399</x>
      <y>119</y>
     </hint>
    </hints>
   </connection>
   <connection>
-   <sender>data_path_but</sender>
+   <sender>data_dir_but</sender>
    <signal>clicked()</signal>
    <receiver>SettingsWindow</receiver>
-   <slot>select_data_path()</slot>
+   <slot>select_data_dir()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>419</x>
-     <y>100</y>
+     <x>384</x>
+     <y>125</y>
     </hint>
     <hint type="destinationlabel">
-     <x>449</x>
+     <x>399</x>
      <y>133</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionApply_config</sender>
+   <signal>triggered()</signal>
+   <receiver>SettingsWindow</receiver>
+   <slot>apply_config()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>199</x>
+     <y>251</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionSaveConfig</sender>
+   <signal>triggered()</signal>
+   <receiver>SettingsWindow</receiver>
+   <slot>save_config()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>199</x>
+     <y>251</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionReloadConfig</sender>
+   <signal>triggered()</signal>
+   <receiver>SettingsWindow</receiver>
+   <slot>load_config()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>199</x>
+     <y>251</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>log_path_but</sender>
+   <signal>clicked()</signal>
+   <receiver>SettingsWindow</receiver>
+   <slot>select_log_path()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>382</x>
+     <y>97</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>199</x>
+     <y>251</y>
     </hint>
    </hints>
   </connection>
  </connections>
  <slots>
   <slot>select_config_path()</slot>
-  <slot>select_data_path()</slot>
+  <slot>select_data_dir()</slot>
+  <slot>apply_config()</slot>
+  <slot>load_config()</slot>
+  <slot>save_config()</slot>
+  <slot>select_log_path()</slot>
  </slots>
 </ui>
