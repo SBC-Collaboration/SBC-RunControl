@@ -27,7 +27,7 @@ class Ui_SettingsWindow(object):
     def setupUi(self, SettingsWindow):
         if not SettingsWindow.objectName():
             SettingsWindow.setObjectName(u"SettingsWindow")
-        SettingsWindow.resize(400, 503)
+        SettingsWindow.resize(400, 511)
         sizePolicy = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -88,7 +88,7 @@ class Ui_SettingsWindow(object):
         self.files_scroll_area.setWidgetResizable(True)
         self.scrollAreaWidgetContents_5 = QWidget()
         self.scrollAreaWidgetContents_5.setObjectName(u"scrollAreaWidgetContents_5")
-        self.scrollAreaWidgetContents_5.setGeometry(QRect(0, 0, 388, 434))
+        self.scrollAreaWidgetContents_5.setGeometry(QRect(0, 0, 388, 442))
         self.scrollAreaWidgetContents_5.setMaximumSize(QSize(1000, 16777215))
         self.gridLayout_3 = QGridLayout(self.scrollAreaWidgetContents_5)
         self.gridLayout_3.setSpacing(3)
@@ -171,7 +171,7 @@ class Ui_SettingsWindow(object):
         self.run_scroll_area.setWidgetResizable(True)
         self.scrollAreaWidgetContents_4 = QWidget()
         self.scrollAreaWidgetContents_4.setObjectName(u"scrollAreaWidgetContents_4")
-        self.scrollAreaWidgetContents_4.setGeometry(QRect(0, 0, 388, 434))
+        self.scrollAreaWidgetContents_4.setGeometry(QRect(0, 0, 388, 442))
         self.scrollAreaWidgetContents_4.setMaximumSize(QSize(1000, 16777215))
         self.gridLayout_2 = QGridLayout(self.scrollAreaWidgetContents_4)
         self.gridLayout_2.setSpacing(3)
@@ -241,14 +241,14 @@ class Ui_SettingsWindow(object):
         self.verticalLayout_6.addWidget(self.run_scroll_area)
 
         self.tabWidget.addTab(self.run_tab, "")
-        self.sipm_tab = QWidget()
-        self.sipm_tab.setObjectName(u"sipm_tab")
-        self.verticalLayout_5 = QVBoxLayout(self.sipm_tab)
+        self.scint_tab = QWidget()
+        self.scint_tab.setObjectName(u"scint_tab")
+        self.verticalLayout_5 = QVBoxLayout(self.scint_tab)
         self.verticalLayout_5.setSpacing(3)
         self.verticalLayout_5.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_5.setObjectName(u"verticalLayout_5")
         self.verticalLayout_5.setContentsMargins(0, 0, 0, 0)
-        self.sipm_scroll_area = QScrollArea(self.sipm_tab)
+        self.sipm_scroll_area = QScrollArea(self.scint_tab)
         self.sipm_scroll_area.setObjectName(u"sipm_scroll_area")
         self.sipm_scroll_area.setFrameShape(QFrame.NoFrame)
         self.sipm_scroll_area.setFrameShadow(QFrame.Plain)
@@ -256,27 +256,488 @@ class Ui_SettingsWindow(object):
         self.sipm_scroll_area.setWidgetResizable(True)
         self.scrollAreaWidgetContents_2 = QWidget()
         self.scrollAreaWidgetContents_2.setObjectName(u"scrollAreaWidgetContents_2")
-        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, 0, 388, 434))
+        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, 0, 388, 442))
         self.scrollAreaWidgetContents_2.setMaximumSize(QSize(1000, 16777215))
-        self.gridLayout_7 = QGridLayout(self.scrollAreaWidgetContents_2)
-        self.gridLayout_7.setSpacing(3)
-        self.gridLayout_7.setContentsMargins(0, 0, 0, 0)
-        self.gridLayout_7.setObjectName(u"gridLayout_7")
-        self.gridLayout_7.setContentsMargins(0, 0, 0, 0)
-        self.verticalSpacer_4 = QSpacerItem(20, 368, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.verticalLayout_9 = QVBoxLayout(self.scrollAreaWidgetContents_2)
+        self.verticalLayout_9.setSpacing(3)
+        self.verticalLayout_9.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_9.setObjectName(u"verticalLayout_9")
+        self.verticalLayout_9.setContentsMargins(0, 0, 0, 0)
+        self.gridLayout_4 = QGridLayout()
+        self.gridLayout_4.setSpacing(3)
+        self.gridLayout_4.setObjectName(u"gridLayout_4")
+        self.gridLayout_4.setVerticalSpacing(3)
+        self.label_2 = QLabel(self.scrollAreaWidgetContents_2)
+        self.label_2.setObjectName(u"label_2")
+        self.label_2.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
-        self.gridLayout_7.addItem(self.verticalSpacer_4, 1, 0, 1, 1)
+        self.gridLayout_4.addWidget(self.label_2, 1, 0, 1, 1)
+
+        self.doubleSpinBox = QDoubleSpinBox(self.scrollAreaWidgetContents_2)
+        self.doubleSpinBox.setObjectName(u"doubleSpinBox")
+        self.doubleSpinBox.setDecimals(1)
+
+        self.gridLayout_4.addWidget(self.doubleSpinBox, 2, 1, 1, 1)
+
+        self.doubleSpinBox_2 = QDoubleSpinBox(self.scrollAreaWidgetContents_2)
+        self.doubleSpinBox_2.setObjectName(u"doubleSpinBox_2")
+        self.doubleSpinBox_2.setDecimals(1)
+
+        self.gridLayout_4.addWidget(self.doubleSpinBox_2, 2, 3, 1, 1)
+
+        self.lineEdit = QLineEdit(self.scrollAreaWidgetContents_2)
+        self.lineEdit.setObjectName(u"lineEdit")
+
+        self.gridLayout_4.addWidget(self.lineEdit, 1, 1, 1, 3)
+
+        self.label = QLabel(self.scrollAreaWidgetContents_2)
+        self.label.setObjectName(u"label")
+        self.label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.gridLayout_4.addWidget(self.label, 2, 2, 1, 1)
 
         self.label_31 = QLabel(self.scrollAreaWidgetContents_2)
         self.label_31.setObjectName(u"label_31")
+        self.label_31.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
-        self.gridLayout_7.addWidget(self.label_31, 0, 0, 1, 1)
+        self.gridLayout_4.addWidget(self.label_31, 2, 0, 1, 1)
+
+        self.label_3 = QLabel(self.scrollAreaWidgetContents_2)
+        self.label_3.setObjectName(u"label_3")
+        self.label_3.setAlignment(Qt.AlignCenter)
+
+        self.gridLayout_4.addWidget(self.label_3, 0, 0, 1, 4)
+
+
+        self.verticalLayout_9.addLayout(self.gridLayout_4)
+
+        self.line = QFrame(self.scrollAreaWidgetContents_2)
+        self.line.setObjectName(u"line")
+        self.line.setFrameShape(QFrame.HLine)
+        self.line.setFrameShadow(QFrame.Sunken)
+
+        self.verticalLayout_9.addWidget(self.line)
+
+        self.gridLayout_6 = QGridLayout()
+        self.gridLayout_6.setSpacing(3)
+        self.gridLayout_6.setObjectName(u"gridLayout_6")
+        self.comboBox_4 = QComboBox(self.scrollAreaWidgetContents_2)
+        self.comboBox_4.addItem("")
+        self.comboBox_4.addItem("")
+        self.comboBox_4.setObjectName(u"comboBox_4")
+
+        self.gridLayout_6.addWidget(self.comboBox_4, 6, 1, 1, 1)
+
+        self.label_13 = QLabel(self.scrollAreaWidgetContents_2)
+        self.label_13.setObjectName(u"label_13")
+        self.label_13.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.gridLayout_6.addWidget(self.label_13, 6, 0, 1, 1)
+
+        self.spinBox = QSpinBox(self.scrollAreaWidgetContents_2)
+        self.spinBox.setObjectName(u"spinBox")
+        self.spinBox.setMinimumSize(QSize(50, 0))
+
+        self.gridLayout_6.addWidget(self.spinBox, 1, 3, 1, 1)
+
+        self.label_14 = QLabel(self.scrollAreaWidgetContents_2)
+        self.label_14.setObjectName(u"label_14")
+        self.label_14.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.gridLayout_6.addWidget(self.label_14, 6, 2, 1, 1)
+
+        self.label_10 = QLabel(self.scrollAreaWidgetContents_2)
+        self.label_10.setObjectName(u"label_10")
+        self.label_10.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.gridLayout_6.addWidget(self.label_10, 3, 2, 1, 1)
+
+        self.comboBox_6 = QComboBox(self.scrollAreaWidgetContents_2)
+        self.comboBox_6.addItem("")
+        self.comboBox_6.addItem("")
+        self.comboBox_6.addItem("")
+        self.comboBox_6.addItem("")
+        self.comboBox_6.setObjectName(u"comboBox_6")
+
+        self.gridLayout_6.addWidget(self.comboBox_6, 7, 1, 1, 1)
+
+        self.comboBox = QComboBox(self.scrollAreaWidgetContents_2)
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.setObjectName(u"comboBox")
+
+        self.gridLayout_6.addWidget(self.comboBox, 1, 1, 1, 1)
+
+        self.label_7 = QLabel(self.scrollAreaWidgetContents_2)
+        self.label_7.setObjectName(u"label_7")
+        self.label_7.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.gridLayout_6.addWidget(self.label_7, 2, 0, 1, 1)
+
+        self.label_15 = QLabel(self.scrollAreaWidgetContents_2)
+        self.label_15.setObjectName(u"label_15")
+        self.label_15.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.gridLayout_6.addWidget(self.label_15, 7, 0, 1, 1)
+
+        self.comboBox_7 = QComboBox(self.scrollAreaWidgetContents_2)
+        self.comboBox_7.addItem("")
+        self.comboBox_7.addItem("")
+        self.comboBox_7.addItem("")
+        self.comboBox_7.addItem("")
+        self.comboBox_7.setObjectName(u"comboBox_7")
+
+        self.gridLayout_6.addWidget(self.comboBox_7, 7, 3, 1, 1)
+
+        self.spinBox_4 = QSpinBox(self.scrollAreaWidgetContents_2)
+        self.spinBox_4.setObjectName(u"spinBox_4")
+
+        self.gridLayout_6.addWidget(self.spinBox_4, 2, 3, 1, 1)
+
+        self.label_12 = QLabel(self.scrollAreaWidgetContents_2)
+        self.label_12.setObjectName(u"label_12")
+        self.label_12.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.gridLayout_6.addWidget(self.label_12, 5, 0, 1, 1)
+
+        self.checkBox_2 = QCheckBox(self.scrollAreaWidgetContents_2)
+        self.checkBox_2.setObjectName(u"checkBox_2")
+
+        self.gridLayout_6.addWidget(self.checkBox_2, 5, 1, 1, 1)
+
+        self.spinBox_3 = QSpinBox(self.scrollAreaWidgetContents_2)
+        self.spinBox_3.setObjectName(u"spinBox_3")
+
+        self.gridLayout_6.addWidget(self.spinBox_3, 3, 1, 1, 1)
+
+        self.label_17 = QLabel(self.scrollAreaWidgetContents_2)
+        self.label_17.setObjectName(u"label_17")
+        self.label_17.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.gridLayout_6.addWidget(self.label_17, 2, 2, 1, 1)
+
+        self.comboBox_5 = QComboBox(self.scrollAreaWidgetContents_2)
+        self.comboBox_5.addItem("")
+        self.comboBox_5.addItem("")
+        self.comboBox_5.setObjectName(u"comboBox_5")
+
+        self.gridLayout_6.addWidget(self.comboBox_5, 6, 3, 1, 1)
+
+        self.comboBox_2 = QComboBox(self.scrollAreaWidgetContents_2)
+        self.comboBox_2.addItem("")
+        self.comboBox_2.addItem("")
+        self.comboBox_2.setObjectName(u"comboBox_2")
+
+        self.gridLayout_6.addWidget(self.comboBox_2, 2, 1, 1, 1)
+
+        self.label_4 = QLabel(self.scrollAreaWidgetContents_2)
+        self.label_4.setObjectName(u"label_4")
+        self.label_4.setAlignment(Qt.AlignCenter)
+
+        self.gridLayout_6.addWidget(self.label_4, 0, 0, 1, 4)
+
+        self.label_5 = QLabel(self.scrollAreaWidgetContents_2)
+        self.label_5.setObjectName(u"label_5")
+        sizePolicy1 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Preferred)
+        sizePolicy1.setHorizontalStretch(0)
+        sizePolicy1.setVerticalStretch(0)
+        sizePolicy1.setHeightForWidth(self.label_5.sizePolicy().hasHeightForWidth())
+        self.label_5.setSizePolicy(sizePolicy1)
+        self.label_5.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.gridLayout_6.addWidget(self.label_5, 1, 0, 1, 1)
+
+        self.label_6 = QLabel(self.scrollAreaWidgetContents_2)
+        self.label_6.setObjectName(u"label_6")
+        self.label_6.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.gridLayout_6.addWidget(self.label_6, 1, 2, 1, 1)
+
+        self.label_16 = QLabel(self.scrollAreaWidgetContents_2)
+        self.label_16.setObjectName(u"label_16")
+        self.label_16.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.gridLayout_6.addWidget(self.label_16, 7, 2, 1, 1)
+
+        self.label_8 = QLabel(self.scrollAreaWidgetContents_2)
+        self.label_8.setObjectName(u"label_8")
+        self.label_8.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.gridLayout_6.addWidget(self.label_8, 3, 0, 1, 1)
+
+        self.spinBox_2 = QSpinBox(self.scrollAreaWidgetContents_2)
+        self.spinBox_2.setObjectName(u"spinBox_2")
+
+        self.gridLayout_6.addWidget(self.spinBox_2, 3, 3, 1, 1)
+
+        self.label_9 = QLabel(self.scrollAreaWidgetContents_2)
+        self.label_9.setObjectName(u"label_9")
+        self.label_9.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.gridLayout_6.addWidget(self.label_9, 4, 2, 1, 1)
+
+        self.comboBox_3 = QComboBox(self.scrollAreaWidgetContents_2)
+        self.comboBox_3.addItem("")
+        self.comboBox_3.addItem("")
+        self.comboBox_3.addItem("")
+        self.comboBox_3.addItem("")
+        self.comboBox_3.addItem("")
+        self.comboBox_3.addItem("")
+        self.comboBox_3.addItem("")
+        self.comboBox_3.addItem("")
+        self.comboBox_3.setObjectName(u"comboBox_3")
+
+        self.gridLayout_6.addWidget(self.comboBox_3, 4, 3, 1, 1)
+
+        self.label_11 = QLabel(self.scrollAreaWidgetContents_2)
+        self.label_11.setObjectName(u"label_11")
+        self.label_11.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.gridLayout_6.addWidget(self.label_11, 4, 0, 1, 1)
+
+        self.checkBox = QCheckBox(self.scrollAreaWidgetContents_2)
+        self.checkBox.setObjectName(u"checkBox")
+
+        self.gridLayout_6.addWidget(self.checkBox, 4, 1, 1, 1)
+
+
+        self.verticalLayout_9.addLayout(self.gridLayout_6)
+
+        self.line_2 = QFrame(self.scrollAreaWidgetContents_2)
+        self.line_2.setObjectName(u"line_2")
+        self.line_2.setFrameShape(QFrame.HLine)
+        self.line_2.setFrameShadow(QFrame.Sunken)
+
+        self.verticalLayout_9.addWidget(self.line_2)
+
+        self.gridLayout_7 = QGridLayout()
+        self.gridLayout_7.setSpacing(3)
+        self.gridLayout_7.setObjectName(u"gridLayout_7")
+        self.spinBox_5 = QSpinBox(self.scrollAreaWidgetContents_2)
+        self.spinBox_5.setObjectName(u"spinBox_5")
+
+        self.gridLayout_7.addWidget(self.spinBox_5, 1, 3, 1, 1)
+
+        self.label_19 = QLabel(self.scrollAreaWidgetContents_2)
+        self.label_19.setObjectName(u"label_19")
+        self.label_19.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.gridLayout_7.addWidget(self.label_19, 1, 0, 1, 1)
+
+        self.checkBox_3 = QCheckBox(self.scrollAreaWidgetContents_2)
+        self.checkBox_3.setObjectName(u"checkBox_3")
+
+        self.gridLayout_7.addWidget(self.checkBox_3, 1, 1, 1, 1)
+
+        self.label_18 = QLabel(self.scrollAreaWidgetContents_2)
+        self.label_18.setObjectName(u"label_18")
+        self.label_18.setAlignment(Qt.AlignCenter)
+
+        self.gridLayout_7.addWidget(self.label_18, 0, 0, 1, 4)
+
+        self.label_20 = QLabel(self.scrollAreaWidgetContents_2)
+        self.label_20.setObjectName(u"label_20")
+        self.label_20.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.gridLayout_7.addWidget(self.label_20, 1, 2, 1, 1)
+
+
+        self.verticalLayout_9.addLayout(self.gridLayout_7)
+
+        self.gridLayout_8 = QGridLayout()
+        self.gridLayout_8.setSpacing(3)
+        self.gridLayout_8.setObjectName(u"gridLayout_8")
+        self.checkBox_18 = QCheckBox(self.scrollAreaWidgetContents_2)
+        self.checkBox_18.setObjectName(u"checkBox_18")
+
+        self.gridLayout_8.addWidget(self.checkBox_18, 2, 7, 1, 1)
+
+        self.label_21 = QLabel(self.scrollAreaWidgetContents_2)
+        self.label_21.setObjectName(u"label_21")
+        self.label_21.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.gridLayout_8.addWidget(self.label_21, 1, 0, 1, 1)
+
+        self.checkBox_11 = QCheckBox(self.scrollAreaWidgetContents_2)
+        self.checkBox_11.setObjectName(u"checkBox_11")
+
+        self.gridLayout_8.addWidget(self.checkBox_11, 1, 5, 1, 1)
+
+        self.checkBox_5 = QCheckBox(self.scrollAreaWidgetContents_2)
+        self.checkBox_5.setObjectName(u"checkBox_5")
+
+        self.gridLayout_8.addWidget(self.checkBox_5, 1, 2, 1, 1)
+
+        self.checkBox_19 = QCheckBox(self.scrollAreaWidgetContents_2)
+        self.checkBox_19.setObjectName(u"checkBox_19")
+
+        self.gridLayout_8.addWidget(self.checkBox_19, 2, 8, 1, 1)
+
+        self.checkBox_4 = QCheckBox(self.scrollAreaWidgetContents_2)
+        self.checkBox_4.setObjectName(u"checkBox_4")
+
+        self.gridLayout_8.addWidget(self.checkBox_4, 1, 1, 1, 1)
+
+        self.checkBox_16 = QCheckBox(self.scrollAreaWidgetContents_2)
+        self.checkBox_16.setObjectName(u"checkBox_16")
+
+        self.gridLayout_8.addWidget(self.checkBox_16, 2, 5, 1, 1)
+
+        self.checkBox_23 = QCheckBox(self.scrollAreaWidgetContents_2)
+        self.checkBox_23.setObjectName(u"checkBox_23")
+
+        self.gridLayout_8.addWidget(self.checkBox_23, 3, 4, 1, 1)
+
+        self.checkBox_25 = QCheckBox(self.scrollAreaWidgetContents_2)
+        self.checkBox_25.setObjectName(u"checkBox_25")
+
+        self.gridLayout_8.addWidget(self.checkBox_25, 3, 6, 1, 1)
+
+        self.label_22 = QLabel(self.scrollAreaWidgetContents_2)
+        self.label_22.setObjectName(u"label_22")
+        self.label_22.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.gridLayout_8.addWidget(self.label_22, 2, 0, 1, 1)
+
+        self.checkBox_10 = QCheckBox(self.scrollAreaWidgetContents_2)
+        self.checkBox_10.setObjectName(u"checkBox_10")
+
+        self.gridLayout_8.addWidget(self.checkBox_10, 1, 6, 1, 1)
+
+        self.checkBox_22 = QCheckBox(self.scrollAreaWidgetContents_2)
+        self.checkBox_22.setObjectName(u"checkBox_22")
+
+        self.gridLayout_8.addWidget(self.checkBox_22, 3, 3, 1, 1)
+
+        self.checkBox_17 = QCheckBox(self.scrollAreaWidgetContents_2)
+        self.checkBox_17.setObjectName(u"checkBox_17")
+
+        self.gridLayout_8.addWidget(self.checkBox_17, 2, 6, 1, 1)
+
+        self.checkBox_6 = QCheckBox(self.scrollAreaWidgetContents_2)
+        self.checkBox_6.setObjectName(u"checkBox_6")
+
+        self.gridLayout_8.addWidget(self.checkBox_6, 1, 4, 1, 1)
+
+        self.checkBox_8 = QCheckBox(self.scrollAreaWidgetContents_2)
+        self.checkBox_8.setObjectName(u"checkBox_8")
+
+        self.gridLayout_8.addWidget(self.checkBox_8, 1, 8, 1, 1)
+
+        self.checkBox_7 = QCheckBox(self.scrollAreaWidgetContents_2)
+        self.checkBox_7.setObjectName(u"checkBox_7")
+
+        self.gridLayout_8.addWidget(self.checkBox_7, 1, 3, 1, 1)
+
+        self.checkBox_9 = QCheckBox(self.scrollAreaWidgetContents_2)
+        self.checkBox_9.setObjectName(u"checkBox_9")
+
+        self.gridLayout_8.addWidget(self.checkBox_9, 1, 7, 1, 1)
+
+        self.checkBox_20 = QCheckBox(self.scrollAreaWidgetContents_2)
+        self.checkBox_20.setObjectName(u"checkBox_20")
+
+        self.gridLayout_8.addWidget(self.checkBox_20, 3, 1, 1, 1)
+
+        self.checkBox_26 = QCheckBox(self.scrollAreaWidgetContents_2)
+        self.checkBox_26.setObjectName(u"checkBox_26")
+
+        self.gridLayout_8.addWidget(self.checkBox_26, 3, 7, 1, 1)
+
+        self.checkBox_15 = QCheckBox(self.scrollAreaWidgetContents_2)
+        self.checkBox_15.setObjectName(u"checkBox_15")
+
+        self.gridLayout_8.addWidget(self.checkBox_15, 2, 4, 1, 1)
+
+        self.checkBox_12 = QCheckBox(self.scrollAreaWidgetContents_2)
+        self.checkBox_12.setObjectName(u"checkBox_12")
+
+        self.gridLayout_8.addWidget(self.checkBox_12, 2, 1, 1, 1)
+
+        self.label_23 = QLabel(self.scrollAreaWidgetContents_2)
+        self.label_23.setObjectName(u"label_23")
+        self.label_23.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.gridLayout_8.addWidget(self.label_23, 3, 0, 1, 1)
+
+        self.checkBox_27 = QCheckBox(self.scrollAreaWidgetContents_2)
+        self.checkBox_27.setObjectName(u"checkBox_27")
+
+        self.gridLayout_8.addWidget(self.checkBox_27, 3, 8, 1, 1)
+
+        self.checkBox_14 = QCheckBox(self.scrollAreaWidgetContents_2)
+        self.checkBox_14.setObjectName(u"checkBox_14")
+
+        self.gridLayout_8.addWidget(self.checkBox_14, 2, 3, 1, 1)
+
+        self.checkBox_24 = QCheckBox(self.scrollAreaWidgetContents_2)
+        self.checkBox_24.setObjectName(u"checkBox_24")
+
+        self.gridLayout_8.addWidget(self.checkBox_24, 3, 5, 1, 1)
+
+        self.checkBox_21 = QCheckBox(self.scrollAreaWidgetContents_2)
+        self.checkBox_21.setObjectName(u"checkBox_21")
+
+        self.gridLayout_8.addWidget(self.checkBox_21, 3, 2, 1, 1)
+
+        self.checkBox_13 = QCheckBox(self.scrollAreaWidgetContents_2)
+        self.checkBox_13.setObjectName(u"checkBox_13")
+
+        self.gridLayout_8.addWidget(self.checkBox_13, 2, 2, 1, 1)
+
+        self.label_30 = QLabel(self.scrollAreaWidgetContents_2)
+        self.label_30.setObjectName(u"label_30")
+
+        self.gridLayout_8.addWidget(self.label_30, 0, 8, 1, 1)
+
+        self.label_29 = QLabel(self.scrollAreaWidgetContents_2)
+        self.label_29.setObjectName(u"label_29")
+
+        self.gridLayout_8.addWidget(self.label_29, 0, 7, 1, 1)
+
+        self.label_28 = QLabel(self.scrollAreaWidgetContents_2)
+        self.label_28.setObjectName(u"label_28")
+
+        self.gridLayout_8.addWidget(self.label_28, 0, 6, 1, 1)
+
+        self.label_27 = QLabel(self.scrollAreaWidgetContents_2)
+        self.label_27.setObjectName(u"label_27")
+
+        self.gridLayout_8.addWidget(self.label_27, 0, 5, 1, 1)
+
+        self.label_26 = QLabel(self.scrollAreaWidgetContents_2)
+        self.label_26.setObjectName(u"label_26")
+
+        self.gridLayout_8.addWidget(self.label_26, 0, 4, 1, 1)
+
+        self.label_25 = QLabel(self.scrollAreaWidgetContents_2)
+        self.label_25.setObjectName(u"label_25")
+
+        self.gridLayout_8.addWidget(self.label_25, 0, 3, 1, 1)
+
+        self.label_24 = QLabel(self.scrollAreaWidgetContents_2)
+        self.label_24.setObjectName(u"label_24")
+
+        self.gridLayout_8.addWidget(self.label_24, 0, 2, 1, 1)
+
+        self.label_32 = QLabel(self.scrollAreaWidgetContents_2)
+        self.label_32.setObjectName(u"label_32")
+
+        self.gridLayout_8.addWidget(self.label_32, 0, 1, 1, 1)
+
+
+        self.verticalLayout_9.addLayout(self.gridLayout_8)
+
+        self.verticalSpacer_4 = QSpacerItem(20, 368, QSizePolicy.Minimum, QSizePolicy.Expanding)
+
+        self.verticalLayout_9.addItem(self.verticalSpacer_4)
 
         self.sipm_scroll_area.setWidget(self.scrollAreaWidgetContents_2)
 
         self.verticalLayout_5.addWidget(self.sipm_scroll_area)
 
-        self.tabWidget.addTab(self.sipm_tab, "")
+        self.tabWidget.addTab(self.scint_tab, "")
         self.acoustics_tab = QWidget()
         self.acoustics_tab.setObjectName(u"acoustics_tab")
         self.verticalLayout_7 = QVBoxLayout(self.acoustics_tab)
@@ -292,7 +753,7 @@ class Ui_SettingsWindow(object):
         self.acoustics_scroll_area.setWidgetResizable(True)
         self.scrollAreaWidgetContents_6 = QWidget()
         self.scrollAreaWidgetContents_6.setObjectName(u"scrollAreaWidgetContents_6")
-        self.scrollAreaWidgetContents_6.setGeometry(QRect(0, 0, 388, 434))
+        self.scrollAreaWidgetContents_6.setGeometry(QRect(0, 0, 339, 332))
         self.scrollAreaWidgetContents_6.setMaximumSize(QSize(1000, 16777215))
         self.verticalLayout_8 = QVBoxLayout(self.scrollAreaWidgetContents_6)
         self.verticalLayout_8.setSpacing(3)
@@ -795,7 +1256,7 @@ class Ui_SettingsWindow(object):
         self.cam_scroll_area.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 388, 434))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 261, 427))
         self.scrollAreaWidgetContents.setMaximumSize(QSize(1000, 16777215))
         self.gridLayout_5 = QGridLayout(self.scrollAreaWidgetContents)
         self.gridLayout_5.setSpacing(3)
@@ -805,59 +1266,59 @@ class Ui_SettingsWindow(object):
         self.gridLayout_5.setContentsMargins(0, 0, 0, 0)
         self.state_comm_pin_label = QLabel(self.scrollAreaWidgetContents)
         self.state_comm_pin_label.setObjectName(u"state_comm_pin_label")
-        sizePolicy1 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
-        sizePolicy1.setHorizontalStretch(0)
-        sizePolicy1.setVerticalStretch(0)
-        sizePolicy1.setHeightForWidth(self.state_comm_pin_label.sizePolicy().hasHeightForWidth())
-        self.state_comm_pin_label.setSizePolicy(sizePolicy1)
+        sizePolicy2 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
+        sizePolicy2.setHorizontalStretch(0)
+        sizePolicy2.setVerticalStretch(0)
+        sizePolicy2.setHeightForWidth(self.state_comm_pin_label.sizePolicy().hasHeightForWidth())
+        self.state_comm_pin_label.setSizePolicy(sizePolicy2)
         self.state_comm_pin_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
         self.gridLayout_5.addWidget(self.state_comm_pin_label, 18, 0, 1, 1)
 
         self.mode_cam3 = QSpinBox(self.scrollAreaWidgetContents)
         self.mode_cam3.setObjectName(u"mode_cam3")
-        sizePolicy2 = QSizePolicy(QSizePolicy.MinimumExpanding, QSizePolicy.Fixed)
-        sizePolicy2.setHorizontalStretch(0)
-        sizePolicy2.setVerticalStretch(0)
-        sizePolicy2.setHeightForWidth(self.mode_cam3.sizePolicy().hasHeightForWidth())
-        self.mode_cam3.setSizePolicy(sizePolicy2)
+        sizePolicy3 = QSizePolicy(QSizePolicy.MinimumExpanding, QSizePolicy.Fixed)
+        sizePolicy3.setHorizontalStretch(0)
+        sizePolicy3.setVerticalStretch(0)
+        sizePolicy3.setHeightForWidth(self.mode_cam3.sizePolicy().hasHeightForWidth())
+        self.mode_cam3.setSizePolicy(sizePolicy3)
 
         self.gridLayout_5.addWidget(self.mode_cam3, 4, 3, 1, 1)
 
         self.trig_pin_cam_1 = QSpinBox(self.scrollAreaWidgetContents)
         self.trig_pin_cam_1.setObjectName(u"trig_pin_cam_1")
-        sizePolicy2.setHeightForWidth(self.trig_pin_cam_1.sizePolicy().hasHeightForWidth())
-        self.trig_pin_cam_1.setSizePolicy(sizePolicy2)
+        sizePolicy3.setHeightForWidth(self.trig_pin_cam_1.sizePolicy().hasHeightForWidth())
+        self.trig_pin_cam_1.setSizePolicy(sizePolicy3)
 
         self.gridLayout_5.addWidget(self.trig_pin_cam_1, 23, 1, 1, 1)
 
         self.config_path_label_2 = QLabel(self.scrollAreaWidgetContents)
         self.config_path_label_2.setObjectName(u"config_path_label_2")
-        sizePolicy1.setHeightForWidth(self.config_path_label_2.sizePolicy().hasHeightForWidth())
-        self.config_path_label_2.setSizePolicy(sizePolicy1)
+        sizePolicy2.setHeightForWidth(self.config_path_label_2.sizePolicy().hasHeightForWidth())
+        self.config_path_label_2.setSizePolicy(sizePolicy2)
         self.config_path_label_2.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
         self.gridLayout_5.addWidget(self.config_path_label_2, 1, 0, 1, 1)
 
         self.post_trig_len_cam1 = QSpinBox(self.scrollAreaWidgetContents)
         self.post_trig_len_cam1.setObjectName(u"post_trig_len_cam1")
-        sizePolicy2.setHeightForWidth(self.post_trig_len_cam1.sizePolicy().hasHeightForWidth())
-        self.post_trig_len_cam1.setSizePolicy(sizePolicy2)
+        sizePolicy3.setHeightForWidth(self.post_trig_len_cam1.sizePolicy().hasHeightForWidth())
+        self.post_trig_len_cam1.setSizePolicy(sizePolicy3)
 
         self.gridLayout_5.addWidget(self.post_trig_len_cam1, 11, 1, 1, 1)
 
         self.trig_latch_pin_label = QLabel(self.scrollAreaWidgetContents)
         self.trig_latch_pin_label.setObjectName(u"trig_latch_pin_label")
-        sizePolicy1.setHeightForWidth(self.trig_latch_pin_label.sizePolicy().hasHeightForWidth())
-        self.trig_latch_pin_label.setSizePolicy(sizePolicy1)
+        sizePolicy2.setHeightForWidth(self.trig_latch_pin_label.sizePolicy().hasHeightForWidth())
+        self.trig_latch_pin_label.setSizePolicy(sizePolicy2)
         self.trig_latch_pin_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
         self.gridLayout_5.addWidget(self.trig_latch_pin_label, 21, 0, 1, 1)
 
         self.trig_pin_cam3 = QSpinBox(self.scrollAreaWidgetContents)
         self.trig_pin_cam3.setObjectName(u"trig_pin_cam3")
-        sizePolicy2.setHeightForWidth(self.trig_pin_cam3.sizePolicy().hasHeightForWidth())
-        self.trig_pin_cam3.setSizePolicy(sizePolicy2)
+        sizePolicy3.setHeightForWidth(self.trig_pin_cam3.sizePolicy().hasHeightForWidth())
+        self.trig_pin_cam3.setSizePolicy(sizePolicy3)
 
         self.gridLayout_5.addWidget(self.trig_pin_cam3, 23, 3, 1, 1)
 
@@ -878,8 +1339,8 @@ class Ui_SettingsWindow(object):
 
         self.exposure_cam3 = QSpinBox(self.scrollAreaWidgetContents)
         self.exposure_cam3.setObjectName(u"exposure_cam3")
-        sizePolicy2.setHeightForWidth(self.exposure_cam3.sizePolicy().hasHeightForWidth())
-        self.exposure_cam3.setSizePolicy(sizePolicy2)
+        sizePolicy3.setHeightForWidth(self.exposure_cam3.sizePolicy().hasHeightForWidth())
+        self.exposure_cam3.setSizePolicy(sizePolicy3)
 
         self.gridLayout_5.addWidget(self.exposure_cam3, 9, 3, 1, 1)
 
@@ -890,41 +1351,41 @@ class Ui_SettingsWindow(object):
 
         self.post_trig_len_label = QLabel(self.scrollAreaWidgetContents)
         self.post_trig_len_label.setObjectName(u"post_trig_len_label")
-        sizePolicy1.setHeightForWidth(self.post_trig_len_label.sizePolicy().hasHeightForWidth())
-        self.post_trig_len_label.setSizePolicy(sizePolicy1)
+        sizePolicy2.setHeightForWidth(self.post_trig_len_label.sizePolicy().hasHeightForWidth())
+        self.post_trig_len_label.setSizePolicy(sizePolicy2)
         self.post_trig_len_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
         self.gridLayout_5.addWidget(self.post_trig_len_label, 11, 0, 1, 1)
 
         self.trig_wait_cam3 = QDoubleSpinBox(self.scrollAreaWidgetContents)
         self.trig_wait_cam3.setObjectName(u"trig_wait_cam3")
-        sizePolicy2.setHeightForWidth(self.trig_wait_cam3.sizePolicy().hasHeightForWidth())
-        self.trig_wait_cam3.setSizePolicy(sizePolicy2)
+        sizePolicy3.setHeightForWidth(self.trig_wait_cam3.sizePolicy().hasHeightForWidth())
+        self.trig_wait_cam3.setSizePolicy(sizePolicy3)
 
         self.gridLayout_5.addWidget(self.trig_wait_cam3, 8, 3, 1, 1)
 
         self.cam3_label = QLabel(self.scrollAreaWidgetContents)
         self.cam3_label.setObjectName(u"cam3_label")
-        sizePolicy3 = QSizePolicy(QSizePolicy.MinimumExpanding, QSizePolicy.Preferred)
-        sizePolicy3.setHorizontalStretch(0)
-        sizePolicy3.setVerticalStretch(0)
-        sizePolicy3.setHeightForWidth(self.cam3_label.sizePolicy().hasHeightForWidth())
-        self.cam3_label.setSizePolicy(sizePolicy3)
+        sizePolicy4 = QSizePolicy(QSizePolicy.MinimumExpanding, QSizePolicy.Preferred)
+        sizePolicy4.setHorizontalStretch(0)
+        sizePolicy4.setVerticalStretch(0)
+        sizePolicy4.setHeightForWidth(self.cam3_label.sizePolicy().hasHeightForWidth())
+        self.cam3_label.setSizePolicy(sizePolicy4)
         self.cam3_label.setAlignment(Qt.AlignCenter)
 
         self.gridLayout_5.addWidget(self.cam3_label, 0, 3, 1, 1)
 
         self.trig_wait_cam2 = QDoubleSpinBox(self.scrollAreaWidgetContents)
         self.trig_wait_cam2.setObjectName(u"trig_wait_cam2")
-        sizePolicy2.setHeightForWidth(self.trig_wait_cam2.sizePolicy().hasHeightForWidth())
-        self.trig_wait_cam2.setSizePolicy(sizePolicy2)
+        sizePolicy3.setHeightForWidth(self.trig_wait_cam2.sizePolicy().hasHeightForWidth())
+        self.trig_wait_cam2.setSizePolicy(sizePolicy3)
 
         self.gridLayout_5.addWidget(self.trig_wait_cam2, 8, 2, 1, 1)
 
         self.trig_pin_label = QLabel(self.scrollAreaWidgetContents)
         self.trig_pin_label.setObjectName(u"trig_pin_label")
-        sizePolicy1.setHeightForWidth(self.trig_pin_label.sizePolicy().hasHeightForWidth())
-        self.trig_pin_label.setSizePolicy(sizePolicy1)
+        sizePolicy2.setHeightForWidth(self.trig_pin_label.sizePolicy().hasHeightForWidth())
+        self.trig_pin_label.setSizePolicy(sizePolicy2)
         self.trig_pin_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
         self.gridLayout_5.addWidget(self.trig_pin_label, 23, 0, 1, 1)
@@ -938,31 +1399,31 @@ class Ui_SettingsWindow(object):
 
         self.pix_threshold_cam2 = QSpinBox(self.scrollAreaWidgetContents)
         self.pix_threshold_cam2.setObjectName(u"pix_threshold_cam2")
-        sizePolicy2.setHeightForWidth(self.pix_threshold_cam2.sizePolicy().hasHeightForWidth())
-        self.pix_threshold_cam2.setSizePolicy(sizePolicy2)
+        sizePolicy3.setHeightForWidth(self.pix_threshold_cam2.sizePolicy().hasHeightForWidth())
+        self.pix_threshold_cam2.setSizePolicy(sizePolicy3)
 
         self.gridLayout_5.addWidget(self.pix_threshold_cam2, 13, 2, 1, 1)
 
         self.state_pin_label = QLabel(self.scrollAreaWidgetContents)
         self.state_pin_label.setObjectName(u"state_pin_label")
-        sizePolicy1.setHeightForWidth(self.state_pin_label.sizePolicy().hasHeightForWidth())
-        self.state_pin_label.setSizePolicy(sizePolicy1)
+        sizePolicy2.setHeightForWidth(self.state_pin_label.sizePolicy().hasHeightForWidth())
+        self.state_pin_label.setSizePolicy(sizePolicy2)
         self.state_pin_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
         self.gridLayout_5.addWidget(self.state_pin_label, 22, 0, 1, 1)
 
         self.cam1_label = QLabel(self.scrollAreaWidgetContents)
         self.cam1_label.setObjectName(u"cam1_label")
-        sizePolicy3.setHeightForWidth(self.cam1_label.sizePolicy().hasHeightForWidth())
-        self.cam1_label.setSizePolicy(sizePolicy3)
+        sizePolicy4.setHeightForWidth(self.cam1_label.sizePolicy().hasHeightForWidth())
+        self.cam1_label.setSizePolicy(sizePolicy4)
         self.cam1_label.setAlignment(Qt.AlignCenter)
 
         self.gridLayout_5.addWidget(self.cam1_label, 0, 1, 1, 1)
 
         self.state_comm_pin_cam3 = QSpinBox(self.scrollAreaWidgetContents)
         self.state_comm_pin_cam3.setObjectName(u"state_comm_pin_cam3")
-        sizePolicy2.setHeightForWidth(self.state_comm_pin_cam3.sizePolicy().hasHeightForWidth())
-        self.state_comm_pin_cam3.setSizePolicy(sizePolicy2)
+        sizePolicy3.setHeightForWidth(self.state_comm_pin_cam3.sizePolicy().hasHeightForWidth())
+        self.state_comm_pin_cam3.setSizePolicy(sizePolicy3)
 
         self.gridLayout_5.addWidget(self.state_comm_pin_cam3, 18, 3, 1, 1)
 
@@ -973,16 +1434,16 @@ class Ui_SettingsWindow(object):
 
         self.data_path_label = QLabel(self.scrollAreaWidgetContents)
         self.data_path_label.setObjectName(u"data_path_label")
-        sizePolicy1.setHeightForWidth(self.data_path_label.sizePolicy().hasHeightForWidth())
-        self.data_path_label.setSizePolicy(sizePolicy1)
+        sizePolicy2.setHeightForWidth(self.data_path_label.sizePolicy().hasHeightForWidth())
+        self.data_path_label.setSizePolicy(sizePolicy2)
         self.data_path_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
         self.gridLayout_5.addWidget(self.data_path_label, 2, 0, 1, 1)
 
         self.ip_addr_label = QLabel(self.scrollAreaWidgetContents)
         self.ip_addr_label.setObjectName(u"ip_addr_label")
-        sizePolicy1.setHeightForWidth(self.ip_addr_label.sizePolicy().hasHeightForWidth())
-        self.ip_addr_label.setSizePolicy(sizePolicy1)
+        sizePolicy2.setHeightForWidth(self.ip_addr_label.sizePolicy().hasHeightForWidth())
+        self.ip_addr_label.setSizePolicy(sizePolicy2)
         self.ip_addr_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
         self.gridLayout_5.addWidget(self.ip_addr_label, 3, 0, 1, 1)
@@ -994,23 +1455,23 @@ class Ui_SettingsWindow(object):
 
         self.cam2_label = QLabel(self.scrollAreaWidgetContents)
         self.cam2_label.setObjectName(u"cam2_label")
-        sizePolicy3.setHeightForWidth(self.cam2_label.sizePolicy().hasHeightForWidth())
-        self.cam2_label.setSizePolicy(sizePolicy3)
+        sizePolicy4.setHeightForWidth(self.cam2_label.sizePolicy().hasHeightForWidth())
+        self.cam2_label.setSizePolicy(sizePolicy4)
         self.cam2_label.setAlignment(Qt.AlignCenter)
 
         self.gridLayout_5.addWidget(self.cam2_label, 0, 2, 1, 1)
 
         self.adc_threshold_cam3 = QSpinBox(self.scrollAreaWidgetContents)
         self.adc_threshold_cam3.setObjectName(u"adc_threshold_cam3")
-        sizePolicy2.setHeightForWidth(self.adc_threshold_cam3.sizePolicy().hasHeightForWidth())
-        self.adc_threshold_cam3.setSizePolicy(sizePolicy2)
+        sizePolicy3.setHeightForWidth(self.adc_threshold_cam3.sizePolicy().hasHeightForWidth())
+        self.adc_threshold_cam3.setSizePolicy(sizePolicy3)
 
         self.gridLayout_5.addWidget(self.adc_threshold_cam3, 12, 3, 1, 1)
 
         self.exposure_cam1 = QSpinBox(self.scrollAreaWidgetContents)
         self.exposure_cam1.setObjectName(u"exposure_cam1")
-        sizePolicy2.setHeightForWidth(self.exposure_cam1.sizePolicy().hasHeightForWidth())
-        self.exposure_cam1.setSizePolicy(sizePolicy2)
+        sizePolicy3.setHeightForWidth(self.exposure_cam1.sizePolicy().hasHeightForWidth())
+        self.exposure_cam1.setSizePolicy(sizePolicy3)
 
         self.gridLayout_5.addWidget(self.exposure_cam1, 9, 1, 1, 1)
 
@@ -1021,15 +1482,15 @@ class Ui_SettingsWindow(object):
 
         self.state_pin_cam2 = QSpinBox(self.scrollAreaWidgetContents)
         self.state_pin_cam2.setObjectName(u"state_pin_cam2")
-        sizePolicy2.setHeightForWidth(self.state_pin_cam2.sizePolicy().hasHeightForWidth())
-        self.state_pin_cam2.setSizePolicy(sizePolicy2)
+        sizePolicy3.setHeightForWidth(self.state_pin_cam2.sizePolicy().hasHeightForWidth())
+        self.state_pin_cam2.setSizePolicy(sizePolicy3)
 
         self.gridLayout_5.addWidget(self.state_pin_cam2, 22, 2, 1, 1)
 
         self.buffer_len_cam1 = QSpinBox(self.scrollAreaWidgetContents)
         self.buffer_len_cam1.setObjectName(u"buffer_len_cam1")
-        sizePolicy2.setHeightForWidth(self.buffer_len_cam1.sizePolicy().hasHeightForWidth())
-        self.buffer_len_cam1.setSizePolicy(sizePolicy2)
+        sizePolicy3.setHeightForWidth(self.buffer_len_cam1.sizePolicy().hasHeightForWidth())
+        self.buffer_len_cam1.setSizePolicy(sizePolicy3)
 
         self.gridLayout_5.addWidget(self.buffer_len_cam1, 10, 1, 1, 1)
 
@@ -1039,15 +1500,15 @@ class Ui_SettingsWindow(object):
 
         self.adc_threshold_cam1 = QSpinBox(self.scrollAreaWidgetContents)
         self.adc_threshold_cam1.setObjectName(u"adc_threshold_cam1")
-        sizePolicy2.setHeightForWidth(self.adc_threshold_cam1.sizePolicy().hasHeightForWidth())
-        self.adc_threshold_cam1.setSizePolicy(sizePolicy2)
+        sizePolicy3.setHeightForWidth(self.adc_threshold_cam1.sizePolicy().hasHeightForWidth())
+        self.adc_threshold_cam1.setSizePolicy(sizePolicy3)
 
         self.gridLayout_5.addWidget(self.adc_threshold_cam1, 12, 1, 1, 1)
 
         self.adc_threshold_label = QLabel(self.scrollAreaWidgetContents)
         self.adc_threshold_label.setObjectName(u"adc_threshold_label")
-        sizePolicy1.setHeightForWidth(self.adc_threshold_label.sizePolicy().hasHeightForWidth())
-        self.adc_threshold_label.setSizePolicy(sizePolicy1)
+        sizePolicy2.setHeightForWidth(self.adc_threshold_label.sizePolicy().hasHeightForWidth())
+        self.adc_threshold_label.setSizePolicy(sizePolicy2)
         self.adc_threshold_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
         self.gridLayout_5.addWidget(self.adc_threshold_label, 12, 0, 1, 1)
@@ -1059,80 +1520,80 @@ class Ui_SettingsWindow(object):
 
         self.trig_enbl_pin_cam2 = QSpinBox(self.scrollAreaWidgetContents)
         self.trig_enbl_pin_cam2.setObjectName(u"trig_enbl_pin_cam2")
-        sizePolicy2.setHeightForWidth(self.trig_enbl_pin_cam2.sizePolicy().hasHeightForWidth())
-        self.trig_enbl_pin_cam2.setSizePolicy(sizePolicy2)
+        sizePolicy3.setHeightForWidth(self.trig_enbl_pin_cam2.sizePolicy().hasHeightForWidth())
+        self.trig_enbl_pin_cam2.setSizePolicy(sizePolicy3)
 
         self.gridLayout_5.addWidget(self.trig_enbl_pin_cam2, 20, 2, 1, 1)
 
         self.image_format_label = QLabel(self.scrollAreaWidgetContents)
         self.image_format_label.setObjectName(u"image_format_label")
-        sizePolicy1.setHeightForWidth(self.image_format_label.sizePolicy().hasHeightForWidth())
-        self.image_format_label.setSizePolicy(sizePolicy1)
+        sizePolicy2.setHeightForWidth(self.image_format_label.sizePolicy().hasHeightForWidth())
+        self.image_format_label.setSizePolicy(sizePolicy2)
         self.image_format_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
         self.gridLayout_5.addWidget(self.image_format_label, 16, 0, 1, 1)
 
         self.trig_latch_pin_cam3 = QSpinBox(self.scrollAreaWidgetContents)
         self.trig_latch_pin_cam3.setObjectName(u"trig_latch_pin_cam3")
-        sizePolicy2.setHeightForWidth(self.trig_latch_pin_cam3.sizePolicy().hasHeightForWidth())
-        self.trig_latch_pin_cam3.setSizePolicy(sizePolicy2)
+        sizePolicy3.setHeightForWidth(self.trig_latch_pin_cam3.sizePolicy().hasHeightForWidth())
+        self.trig_latch_pin_cam3.setSizePolicy(sizePolicy3)
 
         self.gridLayout_5.addWidget(self.trig_latch_pin_cam3, 21, 3, 1, 1)
 
         self.trig_enbl_pin_cam1 = QSpinBox(self.scrollAreaWidgetContents)
         self.trig_enbl_pin_cam1.setObjectName(u"trig_enbl_pin_cam1")
-        sizePolicy2.setHeightForWidth(self.trig_enbl_pin_cam1.sizePolicy().hasHeightForWidth())
-        self.trig_enbl_pin_cam1.setSizePolicy(sizePolicy2)
+        sizePolicy3.setHeightForWidth(self.trig_enbl_pin_cam1.sizePolicy().hasHeightForWidth())
+        self.trig_enbl_pin_cam1.setSizePolicy(sizePolicy3)
 
         self.gridLayout_5.addWidget(self.trig_enbl_pin_cam1, 20, 1, 1, 1)
 
         self.post_trig_len_cam2 = QSpinBox(self.scrollAreaWidgetContents)
         self.post_trig_len_cam2.setObjectName(u"post_trig_len_cam2")
-        sizePolicy2.setHeightForWidth(self.post_trig_len_cam2.sizePolicy().hasHeightForWidth())
-        self.post_trig_len_cam2.setSizePolicy(sizePolicy2)
+        sizePolicy3.setHeightForWidth(self.post_trig_len_cam2.sizePolicy().hasHeightForWidth())
+        self.post_trig_len_cam2.setSizePolicy(sizePolicy3)
 
         self.gridLayout_5.addWidget(self.post_trig_len_cam2, 11, 2, 1, 1)
 
         self.pix_threshold_cam1 = QSpinBox(self.scrollAreaWidgetContents)
         self.pix_threshold_cam1.setObjectName(u"pix_threshold_cam1")
-        sizePolicy2.setHeightForWidth(self.pix_threshold_cam1.sizePolicy().hasHeightForWidth())
-        self.pix_threshold_cam1.setSizePolicy(sizePolicy2)
+        sizePolicy3.setHeightForWidth(self.pix_threshold_cam1.sizePolicy().hasHeightForWidth())
+        self.pix_threshold_cam1.setSizePolicy(sizePolicy3)
 
         self.gridLayout_5.addWidget(self.pix_threshold_cam1, 13, 1, 1, 1)
 
         self.pix_threshold_cam3 = QSpinBox(self.scrollAreaWidgetContents)
         self.pix_threshold_cam3.setObjectName(u"pix_threshold_cam3")
-        sizePolicy2.setHeightForWidth(self.pix_threshold_cam3.sizePolicy().hasHeightForWidth())
-        self.pix_threshold_cam3.setSizePolicy(sizePolicy2)
+        sizePolicy3.setHeightForWidth(self.pix_threshold_cam3.sizePolicy().hasHeightForWidth())
+        self.pix_threshold_cam3.setSizePolicy(sizePolicy3)
 
         self.gridLayout_5.addWidget(self.pix_threshold_cam3, 13, 3, 1, 1)
 
         self.buffer_len_cam2 = QSpinBox(self.scrollAreaWidgetContents)
         self.buffer_len_cam2.setObjectName(u"buffer_len_cam2")
-        sizePolicy2.setHeightForWidth(self.buffer_len_cam2.sizePolicy().hasHeightForWidth())
-        self.buffer_len_cam2.setSizePolicy(sizePolicy2)
+        sizePolicy3.setHeightForWidth(self.buffer_len_cam2.sizePolicy().hasHeightForWidth())
+        self.buffer_len_cam2.setSizePolicy(sizePolicy3)
 
         self.gridLayout_5.addWidget(self.buffer_len_cam2, 10, 2, 1, 1)
 
         self.state_comm_pin_cam1 = QSpinBox(self.scrollAreaWidgetContents)
         self.state_comm_pin_cam1.setObjectName(u"state_comm_pin_cam1")
-        sizePolicy2.setHeightForWidth(self.state_comm_pin_cam1.sizePolicy().hasHeightForWidth())
-        self.state_comm_pin_cam1.setSizePolicy(sizePolicy2)
+        sizePolicy3.setHeightForWidth(self.state_comm_pin_cam1.sizePolicy().hasHeightForWidth())
+        self.state_comm_pin_cam1.setSizePolicy(sizePolicy3)
 
         self.gridLayout_5.addWidget(self.state_comm_pin_cam1, 18, 1, 1, 1)
 
         self.trig_wait_label = QLabel(self.scrollAreaWidgetContents)
         self.trig_wait_label.setObjectName(u"trig_wait_label")
-        sizePolicy1.setHeightForWidth(self.trig_wait_label.sizePolicy().hasHeightForWidth())
-        self.trig_wait_label.setSizePolicy(sizePolicy1)
+        sizePolicy2.setHeightForWidth(self.trig_wait_label.sizePolicy().hasHeightForWidth())
+        self.trig_wait_label.setSizePolicy(sizePolicy2)
         self.trig_wait_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
         self.gridLayout_5.addWidget(self.trig_wait_label, 8, 0, 1, 1)
 
         self.post_trig_len_cam3 = QSpinBox(self.scrollAreaWidgetContents)
         self.post_trig_len_cam3.setObjectName(u"post_trig_len_cam3")
-        sizePolicy2.setHeightForWidth(self.post_trig_len_cam3.sizePolicy().hasHeightForWidth())
-        self.post_trig_len_cam3.setSizePolicy(sizePolicy2)
+        sizePolicy3.setHeightForWidth(self.post_trig_len_cam3.sizePolicy().hasHeightForWidth())
+        self.post_trig_len_cam3.setSizePolicy(sizePolicy3)
 
         self.gridLayout_5.addWidget(self.post_trig_len_cam3, 11, 3, 1, 1)
 
@@ -1148,81 +1609,81 @@ class Ui_SettingsWindow(object):
 
         self.exposure_label = QLabel(self.scrollAreaWidgetContents)
         self.exposure_label.setObjectName(u"exposure_label")
-        sizePolicy1.setHeightForWidth(self.exposure_label.sizePolicy().hasHeightForWidth())
-        self.exposure_label.setSizePolicy(sizePolicy1)
+        sizePolicy2.setHeightForWidth(self.exposure_label.sizePolicy().hasHeightForWidth())
+        self.exposure_label.setSizePolicy(sizePolicy2)
         self.exposure_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
         self.gridLayout_5.addWidget(self.exposure_label, 9, 0, 1, 1)
 
         self.pix_threshold_label = QLabel(self.scrollAreaWidgetContents)
         self.pix_threshold_label.setObjectName(u"pix_threshold_label")
-        sizePolicy1.setHeightForWidth(self.pix_threshold_label.sizePolicy().hasHeightForWidth())
-        self.pix_threshold_label.setSizePolicy(sizePolicy1)
+        sizePolicy2.setHeightForWidth(self.pix_threshold_label.sizePolicy().hasHeightForWidth())
+        self.pix_threshold_label.setSizePolicy(sizePolicy2)
         self.pix_threshold_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
         self.gridLayout_5.addWidget(self.pix_threshold_label, 13, 0, 1, 1)
 
         self.mode_cam1 = QSpinBox(self.scrollAreaWidgetContents)
         self.mode_cam1.setObjectName(u"mode_cam1")
-        sizePolicy2.setHeightForWidth(self.mode_cam1.sizePolicy().hasHeightForWidth())
-        self.mode_cam1.setSizePolicy(sizePolicy2)
+        sizePolicy3.setHeightForWidth(self.mode_cam1.sizePolicy().hasHeightForWidth())
+        self.mode_cam1.setSizePolicy(sizePolicy3)
 
         self.gridLayout_5.addWidget(self.mode_cam1, 4, 1, 1, 1)
 
         self.trig_wait_cam1 = QDoubleSpinBox(self.scrollAreaWidgetContents)
         self.trig_wait_cam1.setObjectName(u"trig_wait_cam1")
-        sizePolicy2.setHeightForWidth(self.trig_wait_cam1.sizePolicy().hasHeightForWidth())
-        self.trig_wait_cam1.setSizePolicy(sizePolicy2)
+        sizePolicy3.setHeightForWidth(self.trig_wait_cam1.sizePolicy().hasHeightForWidth())
+        self.trig_wait_cam1.setSizePolicy(sizePolicy3)
 
         self.gridLayout_5.addWidget(self.trig_wait_cam1, 8, 1, 1, 1)
 
         self.trig_pin_cam2 = QSpinBox(self.scrollAreaWidgetContents)
         self.trig_pin_cam2.setObjectName(u"trig_pin_cam2")
-        sizePolicy2.setHeightForWidth(self.trig_pin_cam2.sizePolicy().hasHeightForWidth())
-        self.trig_pin_cam2.setSizePolicy(sizePolicy2)
+        sizePolicy3.setHeightForWidth(self.trig_pin_cam2.sizePolicy().hasHeightForWidth())
+        self.trig_pin_cam2.setSizePolicy(sizePolicy3)
 
         self.gridLayout_5.addWidget(self.trig_pin_cam2, 23, 2, 1, 1)
 
         self.trig_latch_pin_cam1 = QSpinBox(self.scrollAreaWidgetContents)
         self.trig_latch_pin_cam1.setObjectName(u"trig_latch_pin_cam1")
-        sizePolicy2.setHeightForWidth(self.trig_latch_pin_cam1.sizePolicy().hasHeightForWidth())
-        self.trig_latch_pin_cam1.setSizePolicy(sizePolicy2)
+        sizePolicy3.setHeightForWidth(self.trig_latch_pin_cam1.sizePolicy().hasHeightForWidth())
+        self.trig_latch_pin_cam1.setSizePolicy(sizePolicy3)
 
         self.gridLayout_5.addWidget(self.trig_latch_pin_cam1, 21, 1, 1, 1)
 
         self.trig_latch_pin_cam2 = QSpinBox(self.scrollAreaWidgetContents)
         self.trig_latch_pin_cam2.setObjectName(u"trig_latch_pin_cam2")
-        sizePolicy2.setHeightForWidth(self.trig_latch_pin_cam2.sizePolicy().hasHeightForWidth())
-        self.trig_latch_pin_cam2.setSizePolicy(sizePolicy2)
+        sizePolicy3.setHeightForWidth(self.trig_latch_pin_cam2.sizePolicy().hasHeightForWidth())
+        self.trig_latch_pin_cam2.setSizePolicy(sizePolicy3)
 
         self.gridLayout_5.addWidget(self.trig_latch_pin_cam2, 21, 2, 1, 1)
 
         self.exposure_cam2 = QSpinBox(self.scrollAreaWidgetContents)
         self.exposure_cam2.setObjectName(u"exposure_cam2")
-        sizePolicy2.setHeightForWidth(self.exposure_cam2.sizePolicy().hasHeightForWidth())
-        self.exposure_cam2.setSizePolicy(sizePolicy2)
+        sizePolicy3.setHeightForWidth(self.exposure_cam2.sizePolicy().hasHeightForWidth())
+        self.exposure_cam2.setSizePolicy(sizePolicy3)
 
         self.gridLayout_5.addWidget(self.exposure_cam2, 9, 2, 1, 1)
 
         self.state_pin_cam1 = QSpinBox(self.scrollAreaWidgetContents)
         self.state_pin_cam1.setObjectName(u"state_pin_cam1")
-        sizePolicy2.setHeightForWidth(self.state_pin_cam1.sizePolicy().hasHeightForWidth())
-        self.state_pin_cam1.setSizePolicy(sizePolicy2)
+        sizePolicy3.setHeightForWidth(self.state_pin_cam1.sizePolicy().hasHeightForWidth())
+        self.state_pin_cam1.setSizePolicy(sizePolicy3)
 
         self.gridLayout_5.addWidget(self.state_pin_cam1, 22, 1, 1, 1)
 
         self.mode_label = QLabel(self.scrollAreaWidgetContents)
         self.mode_label.setObjectName(u"mode_label")
-        sizePolicy1.setHeightForWidth(self.mode_label.sizePolicy().hasHeightForWidth())
-        self.mode_label.setSizePolicy(sizePolicy1)
+        sizePolicy2.setHeightForWidth(self.mode_label.sizePolicy().hasHeightForWidth())
+        self.mode_label.setSizePolicy(sizePolicy2)
         self.mode_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
         self.gridLayout_5.addWidget(self.mode_label, 4, 0, 1, 1)
 
         self.state_pin_cam3 = QSpinBox(self.scrollAreaWidgetContents)
         self.state_pin_cam3.setObjectName(u"state_pin_cam3")
-        sizePolicy2.setHeightForWidth(self.state_pin_cam3.sizePolicy().hasHeightForWidth())
-        self.state_pin_cam3.setSizePolicy(sizePolicy2)
+        sizePolicy3.setHeightForWidth(self.state_pin_cam3.sizePolicy().hasHeightForWidth())
+        self.state_pin_cam3.setSizePolicy(sizePolicy3)
 
         self.gridLayout_5.addWidget(self.state_pin_cam3, 22, 3, 1, 1)
 
@@ -1233,52 +1694,52 @@ class Ui_SettingsWindow(object):
 
         self.trig_enbl_pin_label = QLabel(self.scrollAreaWidgetContents)
         self.trig_enbl_pin_label.setObjectName(u"trig_enbl_pin_label")
-        sizePolicy1.setHeightForWidth(self.trig_enbl_pin_label.sizePolicy().hasHeightForWidth())
-        self.trig_enbl_pin_label.setSizePolicy(sizePolicy1)
+        sizePolicy2.setHeightForWidth(self.trig_enbl_pin_label.sizePolicy().hasHeightForWidth())
+        self.trig_enbl_pin_label.setSizePolicy(sizePolicy2)
         self.trig_enbl_pin_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
         self.gridLayout_5.addWidget(self.trig_enbl_pin_label, 20, 0, 1, 1)
 
         self.trig_enbl_pin_cam3 = QSpinBox(self.scrollAreaWidgetContents)
         self.trig_enbl_pin_cam3.setObjectName(u"trig_enbl_pin_cam3")
-        sizePolicy2.setHeightForWidth(self.trig_enbl_pin_cam3.sizePolicy().hasHeightForWidth())
-        self.trig_enbl_pin_cam3.setSizePolicy(sizePolicy2)
+        sizePolicy3.setHeightForWidth(self.trig_enbl_pin_cam3.sizePolicy().hasHeightForWidth())
+        self.trig_enbl_pin_cam3.setSizePolicy(sizePolicy3)
 
         self.gridLayout_5.addWidget(self.trig_enbl_pin_cam3, 20, 3, 1, 1)
 
         self.buffer_len_cam3 = QSpinBox(self.scrollAreaWidgetContents)
         self.buffer_len_cam3.setObjectName(u"buffer_len_cam3")
-        sizePolicy2.setHeightForWidth(self.buffer_len_cam3.sizePolicy().hasHeightForWidth())
-        self.buffer_len_cam3.setSizePolicy(sizePolicy2)
+        sizePolicy3.setHeightForWidth(self.buffer_len_cam3.sizePolicy().hasHeightForWidth())
+        self.buffer_len_cam3.setSizePolicy(sizePolicy3)
 
         self.gridLayout_5.addWidget(self.buffer_len_cam3, 10, 3, 1, 1)
 
         self.date_format_label = QLabel(self.scrollAreaWidgetContents)
         self.date_format_label.setObjectName(u"date_format_label")
-        sizePolicy1.setHeightForWidth(self.date_format_label.sizePolicy().hasHeightForWidth())
-        self.date_format_label.setSizePolicy(sizePolicy1)
+        sizePolicy2.setHeightForWidth(self.date_format_label.sizePolicy().hasHeightForWidth())
+        self.date_format_label.setSizePolicy(sizePolicy2)
         self.date_format_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
         self.gridLayout_5.addWidget(self.date_format_label, 17, 0, 1, 1)
 
         self.adc_threshold_cam2 = QSpinBox(self.scrollAreaWidgetContents)
         self.adc_threshold_cam2.setObjectName(u"adc_threshold_cam2")
-        sizePolicy2.setHeightForWidth(self.adc_threshold_cam2.sizePolicy().hasHeightForWidth())
-        self.adc_threshold_cam2.setSizePolicy(sizePolicy2)
+        sizePolicy3.setHeightForWidth(self.adc_threshold_cam2.sizePolicy().hasHeightForWidth())
+        self.adc_threshold_cam2.setSizePolicy(sizePolicy3)
 
         self.gridLayout_5.addWidget(self.adc_threshold_cam2, 12, 2, 1, 1)
 
         self.state_comm_pin_cam2 = QSpinBox(self.scrollAreaWidgetContents)
         self.state_comm_pin_cam2.setObjectName(u"state_comm_pin_cam2")
-        sizePolicy2.setHeightForWidth(self.state_comm_pin_cam2.sizePolicy().hasHeightForWidth())
-        self.state_comm_pin_cam2.setSizePolicy(sizePolicy2)
+        sizePolicy3.setHeightForWidth(self.state_comm_pin_cam2.sizePolicy().hasHeightForWidth())
+        self.state_comm_pin_cam2.setSizePolicy(sizePolicy3)
 
         self.gridLayout_5.addWidget(self.state_comm_pin_cam2, 18, 2, 1, 1)
 
         self.buffer_len_label = QLabel(self.scrollAreaWidgetContents)
         self.buffer_len_label.setObjectName(u"buffer_len_label")
-        sizePolicy1.setHeightForWidth(self.buffer_len_label.sizePolicy().hasHeightForWidth())
-        self.buffer_len_label.setSizePolicy(sizePolicy1)
+        sizePolicy2.setHeightForWidth(self.buffer_len_label.sizePolicy().hasHeightForWidth())
+        self.buffer_len_label.setSizePolicy(sizePolicy2)
         self.buffer_len_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
         self.gridLayout_5.addWidget(self.buffer_len_label, 10, 0, 1, 1)
@@ -1290,8 +1751,8 @@ class Ui_SettingsWindow(object):
 
         self.mode_cam2 = QSpinBox(self.scrollAreaWidgetContents)
         self.mode_cam2.setObjectName(u"mode_cam2")
-        sizePolicy2.setHeightForWidth(self.mode_cam2.sizePolicy().hasHeightForWidth())
-        self.mode_cam2.setSizePolicy(sizePolicy2)
+        sizePolicy3.setHeightForWidth(self.mode_cam2.sizePolicy().hasHeightForWidth())
+        self.mode_cam2.setSizePolicy(sizePolicy3)
 
         self.gridLayout_5.addWidget(self.mode_cam2, 4, 2, 1, 1)
 
@@ -1333,7 +1794,7 @@ class Ui_SettingsWindow(object):
         self.dio_scroll_area.setWidgetResizable(True)
         self.scrollAreaWidgetContents_3 = QWidget()
         self.scrollAreaWidgetContents_3.setObjectName(u"scrollAreaWidgetContents_3")
-        self.scrollAreaWidgetContents_3.setGeometry(QRect(0, 0, 388, 434))
+        self.scrollAreaWidgetContents_3.setGeometry(QRect(0, 0, 272, 382))
         self.scrollAreaWidgetContents_3.setMaximumSize(QSize(1000, 16777215))
         self.verticalLayout_2 = QVBoxLayout(self.scrollAreaWidgetContents_3)
         self.verticalLayout_2.setSpacing(0)
@@ -1878,8 +2339,101 @@ class Ui_SettingsWindow(object):
         self.max_ev_time_label_3.setText(QCoreApplication.translate("SettingsWindow", u"Pressure Setpoint", None))
         self.max_num_ev_box_2.setSuffix(QCoreApplication.translate("SettingsWindow", u"psia", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.run_tab), QCoreApplication.translate("SettingsWindow", u"Run", None))
-        self.label_31.setText(QCoreApplication.translate("SettingsWindow", u"TextLabel", None))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.sipm_tab), QCoreApplication.translate("SettingsWindow", u"SiPM", None))
+        self.label_2.setText(QCoreApplication.translate("SettingsWindow", u"IP Addr", None))
+        self.doubleSpinBox.setSuffix(QCoreApplication.translate("SettingsWindow", u"V", None))
+        self.doubleSpinBox_2.setSuffix(QCoreApplication.translate("SettingsWindow", u"V", None))
+        self.label.setText(QCoreApplication.translate("SettingsWindow", u"QP Voltage", None))
+        self.label_31.setText(QCoreApplication.translate("SettingsWindow", u"Bias Voltage", None))
+        self.label_3.setText(QCoreApplication.translate("SettingsWindow", u"SiPM Amplifier", None))
+        self.comboBox_4.setItemText(0, QCoreApplication.translate("SettingsWindow", u"Positive", None))
+        self.comboBox_4.setItemText(1, QCoreApplication.translate("SettingsWindow", u"Negative", None))
+
+        self.label_13.setText(QCoreApplication.translate("SettingsWindow", u"Polarity", None))
+        self.label_14.setText(QCoreApplication.translate("SettingsWindow", u"IO Level", None))
+        self.label_10.setText(QCoreApplication.translate("SettingsWindow", u"Post Trig", None))
+        self.comboBox_6.setItemText(0, QCoreApplication.translate("SettingsWindow", u"Disabled", None))
+        self.comboBox_6.setItemText(1, QCoreApplication.translate("SettingsWindow", u"ACQ Only", None))
+        self.comboBox_6.setItemText(2, QCoreApplication.translate("SettingsWindow", u"EXT Only", None))
+        self.comboBox_6.setItemText(3, QCoreApplication.translate("SettingsWindow", u"ACQ+EXT", None))
+
+        self.comboBox.setItemText(0, QCoreApplication.translate("SettingsWindow", u"DT5740D", None))
+        self.comboBox.setItemText(1, QCoreApplication.translate("SettingsWindow", u"DT5730B", None))
+        self.comboBox.setItemText(2, QCoreApplication.translate("SettingsWindow", u"V1740D", None))
+
+        self.label_7.setText(QCoreApplication.translate("SettingsWindow", u"Connection Type", None))
+        self.label_15.setText(QCoreApplication.translate("SettingsWindow", u"Ext Trig Mode", None))
+        self.comboBox_7.setItemText(0, QCoreApplication.translate("SettingsWindow", u"Disabled", None))
+        self.comboBox_7.setItemText(1, QCoreApplication.translate("SettingsWindow", u"ACQ Only", None))
+        self.comboBox_7.setItemText(2, QCoreApplication.translate("SettingsWindow", u"EXT Only", None))
+        self.comboBox_7.setItemText(3, QCoreApplication.translate("SettingsWindow", u"ACQ+EXT", None))
+
+        self.label_12.setText(QCoreApplication.translate("SettingsWindow", u"Overlap Reject", None))
+        self.checkBox_2.setText("")
+        self.label_17.setText(QCoreApplication.translate("SettingsWindow", u"Evs Per Read", None))
+        self.comboBox_5.setItemText(0, QCoreApplication.translate("SettingsWindow", u"TTL", None))
+        self.comboBox_5.setItemText(1, QCoreApplication.translate("SettingsWindow", u"NIM", None))
+
+        self.comboBox_2.setItemText(0, QCoreApplication.translate("SettingsWindow", u"USB", None))
+        self.comboBox_2.setItemText(1, QCoreApplication.translate("SettingsWindow", u"PCI", None))
+
+        self.label_4.setText(QCoreApplication.translate("SettingsWindow", u"CAEN Digitizer General", None))
+        self.label_5.setText(QCoreApplication.translate("SettingsWindow", u"Model", None))
+        self.label_6.setText(QCoreApplication.translate("SettingsWindow", u"Port", None))
+        self.label_16.setText(QCoreApplication.translate("SettingsWindow", u"SW Trig Mode", None))
+        self.label_8.setText(QCoreApplication.translate("SettingsWindow", u"Record Length", None))
+        self.spinBox_2.setSuffix(QCoreApplication.translate("SettingsWindow", u"%", None))
+        self.label_9.setText(QCoreApplication.translate("SettingsWindow", u"Decimation", None))
+        self.comboBox_3.setItemText(0, QCoreApplication.translate("SettingsWindow", u"1", None))
+        self.comboBox_3.setItemText(1, QCoreApplication.translate("SettingsWindow", u"2", None))
+        self.comboBox_3.setItemText(2, QCoreApplication.translate("SettingsWindow", u"4", None))
+        self.comboBox_3.setItemText(3, QCoreApplication.translate("SettingsWindow", u"8", None))
+        self.comboBox_3.setItemText(4, QCoreApplication.translate("SettingsWindow", u"16", None))
+        self.comboBox_3.setItemText(5, QCoreApplication.translate("SettingsWindow", u"32", None))
+        self.comboBox_3.setItemText(6, QCoreApplication.translate("SettingsWindow", u"64", None))
+        self.comboBox_3.setItemText(7, QCoreApplication.translate("SettingsWindow", u"128", None))
+
+        self.label_11.setText(QCoreApplication.translate("SettingsWindow", u"TRG-IN as Gate", None))
+        self.checkBox.setText("")
+        self.label_19.setText(QCoreApplication.translate("SettingsWindow", u"Enabled", None))
+        self.checkBox_3.setText("")
+        self.label_18.setText(QCoreApplication.translate("SettingsWindow", u"Group 0", None))
+        self.label_20.setText(QCoreApplication.translate("SettingsWindow", u"Threshold", None))
+        self.checkBox_18.setText("")
+        self.label_21.setText(QCoreApplication.translate("SettingsWindow", u"Trig Mask", None))
+        self.checkBox_11.setText("")
+        self.checkBox_5.setText("")
+        self.checkBox_19.setText("")
+        self.checkBox_4.setText("")
+        self.checkBox_16.setText("")
+        self.checkBox_23.setText("")
+        self.checkBox_25.setText("")
+        self.label_22.setText(QCoreApplication.translate("SettingsWindow", u"ACQ Mask", None))
+        self.checkBox_10.setText("")
+        self.checkBox_22.setText("")
+        self.checkBox_17.setText("")
+        self.checkBox_6.setText("")
+        self.checkBox_8.setText("")
+        self.checkBox_7.setText("")
+        self.checkBox_9.setText("")
+        self.checkBox_20.setText("")
+        self.checkBox_26.setText("")
+        self.checkBox_15.setText("")
+        self.checkBox_12.setText("")
+        self.label_23.setText(QCoreApplication.translate("SettingsWindow", u"Correction", None))
+        self.checkBox_27.setText("")
+        self.checkBox_14.setText("")
+        self.checkBox_24.setText("")
+        self.checkBox_21.setText("")
+        self.checkBox_13.setText("")
+        self.label_30.setText(QCoreApplication.translate("SettingsWindow", u"Ch7", None))
+        self.label_29.setText(QCoreApplication.translate("SettingsWindow", u"Ch6", None))
+        self.label_28.setText(QCoreApplication.translate("SettingsWindow", u"Ch5", None))
+        self.label_27.setText(QCoreApplication.translate("SettingsWindow", u"Ch4", None))
+        self.label_26.setText(QCoreApplication.translate("SettingsWindow", u"Ch3", None))
+        self.label_25.setText(QCoreApplication.translate("SettingsWindow", u"Ch2", None))
+        self.label_24.setText(QCoreApplication.translate("SettingsWindow", u"Ch1", None))
+        self.label_32.setText(QCoreApplication.translate("SettingsWindow", u"Ch0", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.scint_tab), QCoreApplication.translate("SettingsWindow", u"Scint", None))
         self.acous_pre_trig_label.setText(QCoreApplication.translate("SettingsWindow", u"Pre Trig Length", None))
         self.acous_sample_rate_box.setItemText(0, QCoreApplication.translate("SettingsWindow", u"100 MS/s", None))
 

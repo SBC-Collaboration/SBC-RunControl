@@ -16,17 +16,18 @@ from PySide6.QtGui import (QAction, QBrush, QColor, QConicalGradient,
     QIcon, QImage, QKeySequence, QLinearGradient,
     QPainter, QPalette, QPixmap, QRadialGradient,
     QTransform)
-from PySide6.QtWidgets import (QApplication, QFrame, QGridLayout, QLabel,
-    QLineEdit, QMainWindow, QPushButton, QScrollArea,
-    QSizePolicy, QSpacerItem, QTabWidget, QToolBar,
-    QVBoxLayout, QWidget)
+from PySide6.QtWidgets import (QApplication, QCheckBox, QFrame, QGridLayout,
+    QHBoxLayout, QLabel, QLayout, QLineEdit,
+    QMainWindow, QPushButton, QScrollArea, QSizePolicy,
+    QSpacerItem, QSpinBox, QTabWidget, QToolBar,
+    QToolButton, QVBoxLayout, QWidget)
 import resources_rc
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(500, 400)
+        MainWindow.resize(874, 624)
         sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -112,6 +113,7 @@ class Ui_MainWindow(object):
         self.run_edit = QLineEdit(self.centralwidget)
         self.run_edit.setObjectName(u"run_edit")
         self.run_edit.setReadOnly(True)
+        self.run_edit.setClearButtonEnabled(False)
 
         self.gridLayout.addWidget(self.run_edit, 4, 0, 1, 1)
 
@@ -145,6 +147,7 @@ class Ui_MainWindow(object):
 
         self.event_time_edit = QLineEdit(self.centralwidget)
         self.event_time_edit.setObjectName(u"event_time_edit")
+        self.event_time_edit.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
         self.event_time_edit.setReadOnly(True)
 
         self.gridLayout.addWidget(self.event_time_edit, 8, 0, 1, 1)
@@ -160,6 +163,7 @@ class Ui_MainWindow(object):
 
         self.run_live_time_edit = QLineEdit(self.centralwidget)
         self.run_live_time_edit.setObjectName(u"run_live_time_edit")
+        self.run_live_time_edit.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
         self.run_live_time_edit.setReadOnly(True)
 
         self.gridLayout.addWidget(self.run_live_time_edit, 10, 0, 1, 1)
@@ -196,41 +200,18 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 405, 331))
+        self.scrollAreaWidgetContents.setGeometry(QRect(-228, 0, 1000, 538))
         self.scrollAreaWidgetContents.setMaximumSize(QSize(1000, 16777215))
-        self.gridLayout_2 = QGridLayout(self.scrollAreaWidgetContents)
-        self.gridLayout_2.setSpacing(3)
-        self.gridLayout_2.setObjectName(u"gridLayout_2")
-        self.gridLayout_2.setContentsMargins(0, 0, 0, 0)
-        self.cam1_status_light = QLabel(self.scrollAreaWidgetContents)
-        self.cam1_status_light.setObjectName(u"cam1_status_light")
-        self.cam1_status_light.setStyleSheet(u"color: rgb(255, 255, 255);\n"
-"background-color: rgb(150, 150, 150);")
-        self.cam1_status_light.setAlignment(Qt.AlignCenter)
-
-        self.gridLayout_2.addWidget(self.cam1_status_light, 0, 2, 1, 1)
-
+        self.verticalLayout_2 = QVBoxLayout(self.scrollAreaWidgetContents)
+        self.verticalLayout_2.setObjectName(u"verticalLayout_2")
+        self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout = QHBoxLayout()
+        self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.take_image_but = QPushButton(self.scrollAreaWidgetContents)
         self.take_image_but.setObjectName(u"take_image_but")
         self.take_image_but.setMinimumSize(QSize(80, 30))
 
-        self.gridLayout_2.addWidget(self.take_image_but, 0, 0, 1, 1)
-
-        self.cam2_status_light = QLabel(self.scrollAreaWidgetContents)
-        self.cam2_status_light.setObjectName(u"cam2_status_light")
-        self.cam2_status_light.setStyleSheet(u"color: rgb(255, 255, 255);\n"
-"background-color: rgb(150, 150, 150);")
-        self.cam2_status_light.setAlignment(Qt.AlignCenter)
-
-        self.gridLayout_2.addWidget(self.cam2_status_light, 0, 3, 1, 1)
-
-        self.cam3_status_light = QLabel(self.scrollAreaWidgetContents)
-        self.cam3_status_light.setObjectName(u"cam3_status_light")
-        self.cam3_status_light.setStyleSheet(u"color: rgb(255, 255, 255);\n"
-"background-color: rgb(150, 150, 150);")
-        self.cam3_status_light.setAlignment(Qt.AlignCenter)
-
-        self.gridLayout_2.addWidget(self.cam3_status_light, 0, 4, 1, 1)
+        self.horizontalLayout.addWidget(self.take_image_but)
 
         self.camera_status_label = QLabel(self.scrollAreaWidgetContents)
         self.camera_status_label.setObjectName(u"camera_status_label")
@@ -242,11 +223,142 @@ class Ui_MainWindow(object):
         self.camera_status_label.setLayoutDirection(Qt.LeftToRight)
         self.camera_status_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
-        self.gridLayout_2.addWidget(self.camera_status_label, 0, 1, 1, 1)
+        self.horizontalLayout.addWidget(self.camera_status_label)
+
+        self.cam1_status_light = QLabel(self.scrollAreaWidgetContents)
+        self.cam1_status_light.setObjectName(u"cam1_status_light")
+        self.cam1_status_light.setStyleSheet(u"color: rgb(255, 255, 255);\n"
+"background-color: rgb(150, 150, 150);")
+        self.cam1_status_light.setAlignment(Qt.AlignCenter)
+
+        self.horizontalLayout.addWidget(self.cam1_status_light)
+
+        self.cam2_status_light = QLabel(self.scrollAreaWidgetContents)
+        self.cam2_status_light.setObjectName(u"cam2_status_light")
+        self.cam2_status_light.setStyleSheet(u"color: rgb(255, 255, 255);\n"
+"background-color: rgb(150, 150, 150);")
+        self.cam2_status_light.setAlignment(Qt.AlignCenter)
+
+        self.horizontalLayout.addWidget(self.cam2_status_light)
+
+        self.cam3_status_light = QLabel(self.scrollAreaWidgetContents)
+        self.cam3_status_light.setObjectName(u"cam3_status_light")
+        self.cam3_status_light.setStyleSheet(u"color: rgb(255, 255, 255);\n"
+"background-color: rgb(150, 150, 150);")
+        self.cam3_status_light.setAlignment(Qt.AlignCenter)
+
+        self.horizontalLayout.addWidget(self.cam3_status_light)
+
+
+        self.verticalLayout_2.addLayout(self.horizontalLayout)
+
+        self.horizontalLayout_2 = QHBoxLayout()
+        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
+        self.verticalLayout_3 = QVBoxLayout()
+        self.verticalLayout_3.setObjectName(u"verticalLayout_3")
+        self.cam1_image = QLabel(self.scrollAreaWidgetContents)
+        self.cam1_image.setObjectName(u"cam1_image")
+        self.cam1_image.setMaximumSize(QSize(500, 300))
+        self.cam1_image.setPixmap(QPixmap(u"../resources/cam1.png"))
+        self.cam1_image.setScaledContents(True)
+
+        self.verticalLayout_3.addWidget(self.cam1_image)
+
+        self.cam1_image_check = QCheckBox(self.scrollAreaWidgetContents)
+        self.cam1_image_check.setObjectName(u"cam1_image_check")
+        self.cam1_image_check.setChecked(False)
+
+        self.verticalLayout_3.addWidget(self.cam1_image_check)
+
+
+        self.horizontalLayout_2.addLayout(self.verticalLayout_3)
+
+        self.verticalLayout_4 = QVBoxLayout()
+        self.verticalLayout_4.setObjectName(u"verticalLayout_4")
+        self.cam2_image = QLabel(self.scrollAreaWidgetContents)
+        self.cam2_image.setObjectName(u"cam2_image")
+        self.cam2_image.setMaximumSize(QSize(500, 300))
+        self.cam2_image.setPixmap(QPixmap(u"../resources/cam2.png"))
+        self.cam2_image.setScaledContents(True)
+
+        self.verticalLayout_4.addWidget(self.cam2_image)
+
+        self.cam2_image_check = QCheckBox(self.scrollAreaWidgetContents)
+        self.cam2_image_check.setObjectName(u"cam2_image_check")
+        self.cam2_image_check.setChecked(False)
+
+        self.verticalLayout_4.addWidget(self.cam2_image_check)
+
+
+        self.horizontalLayout_2.addLayout(self.verticalLayout_4)
+
+        self.verticalLayout_5 = QVBoxLayout()
+        self.verticalLayout_5.setObjectName(u"verticalLayout_5")
+        self.cam3_image = QLabel(self.scrollAreaWidgetContents)
+        self.cam3_image.setObjectName(u"cam3_image")
+        self.cam3_image.setMaximumSize(QSize(500, 300))
+        self.cam3_image.setScaledContents(True)
+
+        self.verticalLayout_5.addWidget(self.cam3_image)
+
+        self.cam3_image_check = QCheckBox(self.scrollAreaWidgetContents)
+        self.cam3_image_check.setObjectName(u"cam3_image_check")
+        self.cam3_image_check.setChecked(False)
+
+        self.verticalLayout_5.addWidget(self.cam3_image_check)
+
+
+        self.horizontalLayout_2.addLayout(self.verticalLayout_5)
+
+        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_2.addItem(self.horizontalSpacer)
+
+
+        self.verticalLayout_2.addLayout(self.horizontalLayout_2)
+
+        self.horizontalLayout_3 = QHBoxLayout()
+        self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
+        self.horizontalLayout_3.setSizeConstraint(QLayout.SetDefaultConstraint)
+        self.image_num_label = QLabel(self.scrollAreaWidgetContents)
+        self.image_num_label.setObjectName(u"image_num_label")
+
+        self.horizontalLayout_3.addWidget(self.image_num_label)
+
+        self.image_num_box = QSpinBox(self.scrollAreaWidgetContents)
+        self.image_num_box.setObjectName(u"image_num_box")
+        self.image_num_box.setMinimumSize(QSize(50, 0))
+
+        self.horizontalLayout_3.addWidget(self.image_num_box)
+
+        self.prev_image_but = QPushButton(self.scrollAreaWidgetContents)
+        self.prev_image_but.setObjectName(u"prev_image_but")
+
+        self.horizontalLayout_3.addWidget(self.prev_image_but)
+
+        self.next_imag_but = QToolButton(self.scrollAreaWidgetContents)
+        self.next_imag_but.setObjectName(u"next_imag_but")
+        sizePolicy1.setHeightForWidth(self.next_imag_but.sizePolicy().hasHeightForWidth())
+        self.next_imag_but.setSizePolicy(sizePolicy1)
+
+        self.horizontalLayout_3.addWidget(self.next_imag_but)
+
+        self.image_play_but = QToolButton(self.scrollAreaWidgetContents)
+        self.image_play_but.setObjectName(u"image_play_but")
+
+        self.horizontalLayout_3.addWidget(self.image_play_but)
+
+        self.load_image_but = QToolButton(self.scrollAreaWidgetContents)
+        self.load_image_but.setObjectName(u"load_image_but")
+
+        self.horizontalLayout_3.addWidget(self.load_image_but)
+
+
+        self.verticalLayout_2.addLayout(self.horizontalLayout_3)
 
         self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
-        self.gridLayout_2.addItem(self.verticalSpacer, 1, 2, 1, 1)
+        self.verticalLayout_2.addItem(self.verticalSpacer)
 
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
 
@@ -276,7 +388,7 @@ class Ui_MainWindow(object):
         self.action_quit.triggered.connect(MainWindow.close)
         self.start_run_but.clicked.connect(MainWindow.start_run)
 
-        self.tabs_widget.setCurrentIndex(0)
+        self.tabs_widget.setCurrentIndex(3)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -303,17 +415,29 @@ class Ui_MainWindow(object):
         self.run_label.setText(QCoreApplication.translate("MainWindow", u"Run Num", None))
         self.run_state_label.setText(QCoreApplication.translate("MainWindow", u"RunState", None))
         self.event_num_label.setText(QCoreApplication.translate("MainWindow", u"Event Num", None))
+        self.run_edit.setPlaceholderText("")
         self.stop_run_but.setText(QCoreApplication.translate("MainWindow", u"Stop Run", None))
         self.event_time_label.setText(QCoreApplication.translate("MainWindow", u"Event Time", None))
         self.run_live_time_label.setText(QCoreApplication.translate("MainWindow", u"Run Live Time", None))
         self.tabs_widget.setTabText(self.tabs_widget.indexOf(self.plc_tab), QCoreApplication.translate("MainWindow", u"PLC", None))
         self.tabs_widget.setTabText(self.tabs_widget.indexOf(self.scint_tab), QCoreApplication.translate("MainWindow", u"Scintillation", None))
         self.tabs_widget.setTabText(self.tabs_widget.indexOf(self.acoustics_tab), QCoreApplication.translate("MainWindow", u"Acoustics", None))
-        self.cam1_status_light.setText(QCoreApplication.translate("MainWindow", u"Cam 1", None))
         self.take_image_but.setText(QCoreApplication.translate("MainWindow", u"Take Image", None))
+        self.camera_status_label.setText(QCoreApplication.translate("MainWindow", u"Camera Status:", None))
+        self.cam1_status_light.setText(QCoreApplication.translate("MainWindow", u"Cam 1", None))
         self.cam2_status_light.setText(QCoreApplication.translate("MainWindow", u"Cam 2", None))
         self.cam3_status_light.setText(QCoreApplication.translate("MainWindow", u"Cam 3", None))
-        self.camera_status_label.setText(QCoreApplication.translate("MainWindow", u"Camera Status:", None))
+        self.cam1_image.setText("")
+        self.cam1_image_check.setText(QCoreApplication.translate("MainWindow", u"Cam1", None))
+        self.cam2_image.setText("")
+        self.cam2_image_check.setText(QCoreApplication.translate("MainWindow", u"Cam2", None))
+        self.cam3_image.setText("")
+        self.cam3_image_check.setText(QCoreApplication.translate("MainWindow", u"Cam3", None))
+        self.image_num_label.setText(QCoreApplication.translate("MainWindow", u"Image #", None))
+        self.prev_image_but.setText(QCoreApplication.translate("MainWindow", u"<<", None))
+        self.next_imag_but.setText(QCoreApplication.translate("MainWindow", u">>", None))
+        self.image_play_but.setText(QCoreApplication.translate("MainWindow", u"Play", None))
+        self.load_image_but.setText(QCoreApplication.translate("MainWindow", u"Load Image", None))
         self.tabs_widget.setTabText(self.tabs_widget.indexOf(self.camera_tab), QCoreApplication.translate("MainWindow", u"Camera", None))
         self.toolBar.setWindowTitle(QCoreApplication.translate("MainWindow", u"toolBar", None))
     # retranslateUi

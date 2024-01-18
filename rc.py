@@ -1,6 +1,7 @@
 import sys
 from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog
-from PySide6.QtCore import QFile
+from PySide6.QtCore import QElapsedTimer, QTimer, Qt
+from PySide6.QtGui import QPixmap
 from ui.mainwindow import Ui_MainWindow
 from src.config import *
 from src.workers import *
@@ -30,8 +31,17 @@ class MainWindow(QMainWindow):
         logging.getLogger().addHandler(logging.StreamHandler())
         logging.info("Starting run control.")
 
+        # timer for event loop
+        self.timer = QTimer()
+        self.timer.setInterval(10)
+        self.timer.timeout.connect(self.update)
+        self.timer.start()
+        # event timer
+        self.event_timer = QElapsedTimer()
+        self.run_livetime = 0
+
         # define four run states
-        self.run_states = Enum("State", ["Idle", "Starting", "Active", "Stopping"])
+        self.run_states = Enum("State", ["Idle", "Active", "Starting", "Stopping", "Expanding", "Compressing"])
         # initialize run state
         self.update_state("Idle")
 
@@ -64,6 +74,53 @@ class MainWindow(QMainWindow):
         filename, _ = QFileDialog.getOpenFileName(self)
         self.ui.file_path.setText(filename)
 
+    def format_time(self, t):
+        seconds, milliseconds = divmod(t, 1000)
+        minutes, seconds = divmod(seconds, 60)
+        hours, minutes = divmod(minutes, 60)
+        if hours > 0:
+            return f"{hours}h {minutes:02d}m {seconds:02d}s{milliseconds//100:1d}"
+        elif minutes > 0:
+            return f"{minutes}m {seconds:02d}s {milliseconds:03d}"
+        else:
+            return f"{seconds}s {milliseconds:03d}"
+
+    def display_image(self, path, label, checked=True):
+        # display image when checkbox checked
+        # TODO: make it only render when checkbox changed
+        if checked:
+            image = QPixmap(path)
+            aspect_ratio = image.height()/image.width()
+            image = image.scaled(500, 500*aspect_ratio, aspectMode=Qt.KeepAspectRatio)
+            label.setPixmap(image)
+        else:
+            label.clear()
+
+    # event loop
+    def update(self):
+        if self.run_state == self.run_states.Active:
+            self.ui.event_time_edit.setText(
+                self.format_time(self.event_timer.elapsed())
+            )
+            self.ui.run_live_time_edit.setText(
+                self.format_time(self.event_timer.elapsed() + self.run_livetime)
+            )
+        self.display_image(
+            "resources/cam1.png",
+            self.ui.cam1_image,
+            self.ui.cam1_image_check.isChecked(),
+        )
+        self.display_image(
+            "resources/cam2.png",
+            self.ui.cam2_image,
+            self.ui.cam2_image_check.isChecked(),
+        )
+        self.display_image(
+            "resources/cam3.png",
+            self.ui.cam3_image,
+            self.ui.cam3_image_check.isChecked(),
+        )
+
     def create_run_directory(self):
         # get all runs in the data directory, get the run numbers
         # using regex to handle 2/3 digits of run number and possible suffix at the end
@@ -71,8 +128,10 @@ class MainWindow(QMainWindow):
         # it also handles the case that there's no runs today yet
         data_dir = self.config.config["general"]["data_dir"]
         today = datetime.date.today().strftime("%Y%m%d")
-        todays_runs = [int(re.search(r"\d+", r[9:])[0]) for r in os.listdir(data_dir) if today in r]
-        num = 0 if len(todays_runs)==0 else max(todays_runs)+1
+        todays_runs = [
+            int(re.search(r"\d+", r[9:])[0]) for r in os.listdir(data_dir) if today in r
+        ]
+        num = 0 if len(todays_runs) == 0 else max(todays_runs) + 1
         self.run_number = f"{today}_{num:02d}"
 
         os.mkdir(os.path.join(data_dir, self.run_number))
@@ -80,23 +139,27 @@ class MainWindow(QMainWindow):
 
     def start_run(self):
         if self.run_state == self.run_states["Idle"]:
+            self.ui.event_time_edit.setText(self.format_time(0))
+            # self.ui.run_live_time_edit.setText(self.format_time(self.run_livetime))
             self.create_run_directory()
 
             # set up multithreading thread and workers
             # TODO: check if thread can persist between runs while worker rerun every time
             # TODO: implement event timer / livetime timer
             self.start_run_thread = QThread()
-            self.start_run_worker = StartRunWorker()
+            self.start_run_worker = StartRunWorker(self)
             self.start_run_worker.moveToThread(self.start_run_thread)
             self.start_run_thread.started.connect(self.start_run_worker.run)
             self.start_run_worker.finished.connect(self.start_run_thread.quit)
             self.start_run_worker.finished.connect(self.start_run_worker.deleteLater)
             self.start_run_thread.finished.connect(self.start_run_thread.deleteLater)
+            self.start_run_thread.finished.connect(self.event_timer.start)
             self.start_run_worker.state.connect(self.update_state)
             self.start_run_thread.start()
 
     def stop_run(self):
         if self.run_state == self.run_states["Active"]:
+            self.run_livetime += self.event_timer.elapsed()
             # set up multithreading thread and workers
             self.stop_run_thread = QThread()
             self.stop_run_worker = StopRunWorker()
@@ -111,7 +174,13 @@ class MainWindow(QMainWindow):
     def update_state(self, s):
         self.run_state = self.run_states[s]
         self.ui.run_state_label.setText(self.run_state.name)
-        run_state_colors = ["lightgrey", "lightblue", "lightgreen", "lightpink"]
+        run_state_colors = [
+            "lightgrey",
+            "lightblue",
+            "lightgreen",
+            "lightyellow",
+            "lightpink",
+        ]
         self.ui.run_state_label.setStyleSheet(
             f"background-color: {run_state_colors[self.run_state.value-1]}"
         )
@@ -119,8 +188,10 @@ class MainWindow(QMainWindow):
             logging.info(f"Entering into Idle state.")
             self.ui.start_run_but.setEnabled(True)
             self.ui.stop_run_but.setEnabled(False)
-        elif self.run_state == self.run_states["Active"]:
-            logging.info(f"Run {self.run_number} active.")
+        elif (
+            self.run_state == self.run_states["Active"]
+        ):  # or self.run_state == self.run_states[""]:
+            logging.info(f"Run active.")
             self.ui.start_run_but.setEnabled(False)
             self.ui.stop_run_but.setEnabled(True)
         elif self.run_state == self.run_states["Starting"]:

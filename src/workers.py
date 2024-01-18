@@ -14,6 +14,9 @@ class StartRunWorker(QObject):
     """
     state = Signal(str)
     finished = Signal()
+    def __init__(self, main_window):
+        super(StartRunWorker, self).__init__()
+        self.main_window = main_window
 
     def run(self):
         """Processes to start run"""
