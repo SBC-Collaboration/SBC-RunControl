@@ -37,7 +37,7 @@ void loop(void) {
   while ((micros() - delayStart) <= DELAY_TIME) { 
   }
   if(ontime) PORTG |= B00000010;
-  else digitalWrite(40,LOW);  
+  else PORTG &= B11111101;  
 
   delayStart += DELAY_TIME; // this prevents drift in the delays
   //add hearbeat pin. high-low-high low on every delay time. 
@@ -50,13 +50,15 @@ void loop(void) {
 
   //OR Gate for the Fan IN
   if(PINA + PINC > 0) {
+    if(latchState == LOW) {
+      PORTB = PINA;
+      PORTL = PINC;
+    }
     latchState = HIGH;
     fISum = HIGH;
     PORTE = B11111111;
     PORTH = B11111111;
     PORTJ = B11111111;
-    PORTB = PINA;
-    PORTL = PINC;
   }
 
 
@@ -72,9 +74,19 @@ void loop(void) {
 
 
   //Trig OR (Unlatched)
-  digitalWrite(39, fISum);
+  //digitalWrite(39, fISum);
   if(fISum == HIGH){
     PORTG |= B00000100;
   }
+  else {
+    PORTG &= B11111011;
+  }
 
+  if(PINB > 0){
+    PORTG |= B00100000;
+  }
+  else {
+    PORTG &= B11011111;
+  }
+  
 }
