@@ -7,14 +7,14 @@ Assigning more squarewaves to other ports should work just the same,
 but the order of pins in each port should be double-checked when plugged in just to be sure.
 
 In order, the square waves are assigned to the following pins in PORTH:
-squarewave1 -- pin17
-squarewave2 -- pin16
-squarewave3 -- pin6
-squarewave4 -- pin7
-squarewave5 -- pin8
-squarewave6 -- pin9
-squarewave7 -- pin5
-squarewave8 -- pin2
+squarewave1 -- pin17,
+squarewave2 -- pin16,
+squarewave3 -- pin6,
+squarewave4 -- pin7,
+squarewave5 -- pin8,
+squarewave6 -- pin9,
+squarewave7 -- pin5,
+squarewave8 -- pin2,
 squarewave9 -- pin3
 
 (the order is peculiar, yes, but I was not the one who designed the order of pins for PORTH)
