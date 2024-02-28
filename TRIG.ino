@@ -82,11 +82,12 @@ void loop(void) {
     PORTG &= B11111011;
   }
 
-  if(PINB > 0){
+  //Fast Compress Signal
+  if(PINB> 0){
     PORTG |= B00100000;
   }
   else {
     PORTG &= B11011111;
   }
-  
+
 }
