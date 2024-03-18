@@ -88,7 +88,7 @@ class Ui_SettingsWindow(object):
         self.files_scroll_area.setWidgetResizable(True)
         self.scrollAreaWidgetContents_5 = QWidget()
         self.scrollAreaWidgetContents_5.setObjectName(u"scrollAreaWidgetContents_5")
-        self.scrollAreaWidgetContents_5.setGeometry(QRect(0, 0, 388, 442))
+        self.scrollAreaWidgetContents_5.setGeometry(QRect(0, 0, 390, 438))
         self.scrollAreaWidgetContents_5.setMaximumSize(QSize(1000, 16777215))
         self.gridLayout_3 = QGridLayout(self.scrollAreaWidgetContents_5)
         self.gridLayout_3.setSpacing(3)
@@ -171,7 +171,7 @@ class Ui_SettingsWindow(object):
         self.run_scroll_area.setWidgetResizable(True)
         self.scrollAreaWidgetContents_4 = QWidget()
         self.scrollAreaWidgetContents_4.setObjectName(u"scrollAreaWidgetContents_4")
-        self.scrollAreaWidgetContents_4.setGeometry(QRect(0, 0, 388, 442))
+        self.scrollAreaWidgetContents_4.setGeometry(QRect(0, 0, 390, 438))
         self.scrollAreaWidgetContents_4.setMaximumSize(QSize(1000, 16777215))
         self.gridLayout_2 = QGridLayout(self.scrollAreaWidgetContents_4)
         self.gridLayout_2.setSpacing(3)
@@ -188,14 +188,15 @@ class Ui_SettingsWindow(object):
 
         self.gridLayout_2.addWidget(self.max_num_ev_label, 1, 2, 1, 1)
 
-        self.comboBox_23 = QComboBox(self.scrollAreaWidgetContents_4)
-        self.comboBox_23.addItem("")
-        self.comboBox_23.addItem("")
-        self.comboBox_23.addItem("")
-        self.comboBox_23.setObjectName(u"comboBox_23")
-        self.comboBox_23.setEditable(True)
+        self.source_box = QComboBox(self.scrollAreaWidgetContents_4)
+        self.source_box.addItem("")
+        self.source_box.addItem("")
+        self.source_box.addItem("")
+        self.source_box.addItem("")
+        self.source_box.setObjectName(u"source_box")
+        self.source_box.setEditable(True)
 
-        self.gridLayout_2.addWidget(self.comboBox_23, 0, 1, 1, 1)
+        self.gridLayout_2.addWidget(self.source_box, 0, 1, 1, 1)
 
         self.max_ev_time_box = QDoubleSpinBox(self.scrollAreaWidgetContents_4)
         self.max_ev_time_box.setObjectName(u"max_ev_time_box")
@@ -208,11 +209,11 @@ class Ui_SettingsWindow(object):
 
         self.gridLayout_2.addWidget(self.max_ev_time_label, 1, 0, 1, 1)
 
-        self.max_ev_time_label_2 = QLabel(self.scrollAreaWidgetContents_4)
-        self.max_ev_time_label_2.setObjectName(u"max_ev_time_label_2")
-        self.max_ev_time_label_2.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.source_label = QLabel(self.scrollAreaWidgetContents_4)
+        self.source_label.setObjectName(u"source_label")
+        self.source_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
-        self.gridLayout_2.addWidget(self.max_ev_time_label_2, 0, 0, 1, 1)
+        self.gridLayout_2.addWidget(self.source_label, 0, 0, 1, 1)
 
         self.max_num_ev_box = QSpinBox(self.scrollAreaWidgetContents_4)
         self.max_num_ev_box.setObjectName(u"max_num_ev_box")
@@ -222,19 +223,19 @@ class Ui_SettingsWindow(object):
 
         self.gridLayout_2.addWidget(self.max_num_ev_box, 1, 3, 1, 1)
 
-        self.max_ev_time_label_3 = QLabel(self.scrollAreaWidgetContents_4)
-        self.max_ev_time_label_3.setObjectName(u"max_ev_time_label_3")
-        self.max_ev_time_label_3.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.pressure_setpoint_label = QLabel(self.scrollAreaWidgetContents_4)
+        self.pressure_setpoint_label.setObjectName(u"pressure_setpoint_label")
+        self.pressure_setpoint_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
-        self.gridLayout_2.addWidget(self.max_ev_time_label_3, 0, 2, 1, 1)
+        self.gridLayout_2.addWidget(self.pressure_setpoint_label, 0, 2, 1, 1)
 
-        self.max_num_ev_box_2 = QSpinBox(self.scrollAreaWidgetContents_4)
-        self.max_num_ev_box_2.setObjectName(u"max_num_ev_box_2")
-        self.max_num_ev_box_2.setMinimum(1)
-        self.max_num_ev_box_2.setMaximum(1000)
-        self.max_num_ev_box_2.setValue(25)
+        self.pressure_setpoint_box = QSpinBox(self.scrollAreaWidgetContents_4)
+        self.pressure_setpoint_box.setObjectName(u"pressure_setpoint_box")
+        self.pressure_setpoint_box.setMinimum(1)
+        self.pressure_setpoint_box.setMaximum(1000)
+        self.pressure_setpoint_box.setValue(25)
 
-        self.gridLayout_2.addWidget(self.max_num_ev_box_2, 0, 3, 1, 1)
+        self.gridLayout_2.addWidget(self.pressure_setpoint_box, 0, 3, 1, 1)
 
         self.run_scroll_area.setWidget(self.scrollAreaWidgetContents_4)
 
@@ -256,7 +257,7 @@ class Ui_SettingsWindow(object):
         self.sipm_scroll_area.setWidgetResizable(True)
         self.scrollAreaWidgetContents_2 = QWidget()
         self.scrollAreaWidgetContents_2.setObjectName(u"scrollAreaWidgetContents_2")
-        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, 0, 388, 442))
+        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, 0, 390, 438))
         self.scrollAreaWidgetContents_2.setMaximumSize(QSize(1000, 16777215))
         self.verticalLayout_9 = QVBoxLayout(self.scrollAreaWidgetContents_2)
         self.verticalLayout_9.setSpacing(3)
@@ -267,46 +268,46 @@ class Ui_SettingsWindow(object):
         self.gridLayout_4.setSpacing(3)
         self.gridLayout_4.setObjectName(u"gridLayout_4")
         self.gridLayout_4.setVerticalSpacing(3)
-        self.label_2 = QLabel(self.scrollAreaWidgetContents_2)
-        self.label_2.setObjectName(u"label_2")
-        self.label_2.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.sipm_ip_addr_label = QLabel(self.scrollAreaWidgetContents_2)
+        self.sipm_ip_addr_label.setObjectName(u"sipm_ip_addr_label")
+        self.sipm_ip_addr_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
-        self.gridLayout_4.addWidget(self.label_2, 1, 0, 1, 1)
+        self.gridLayout_4.addWidget(self.sipm_ip_addr_label, 1, 0, 1, 1)
 
-        self.doubleSpinBox = QDoubleSpinBox(self.scrollAreaWidgetContents_2)
-        self.doubleSpinBox.setObjectName(u"doubleSpinBox")
-        self.doubleSpinBox.setDecimals(1)
+        self.sipm_bias_box = QDoubleSpinBox(self.scrollAreaWidgetContents_2)
+        self.sipm_bias_box.setObjectName(u"sipm_bias_box")
+        self.sipm_bias_box.setDecimals(1)
 
-        self.gridLayout_4.addWidget(self.doubleSpinBox, 2, 1, 1, 1)
+        self.gridLayout_4.addWidget(self.sipm_bias_box, 2, 1, 1, 1)
 
-        self.doubleSpinBox_2 = QDoubleSpinBox(self.scrollAreaWidgetContents_2)
-        self.doubleSpinBox_2.setObjectName(u"doubleSpinBox_2")
-        self.doubleSpinBox_2.setDecimals(1)
+        self.sipm_qp_box = QDoubleSpinBox(self.scrollAreaWidgetContents_2)
+        self.sipm_qp_box.setObjectName(u"sipm_qp_box")
+        self.sipm_qp_box.setDecimals(1)
 
-        self.gridLayout_4.addWidget(self.doubleSpinBox_2, 2, 3, 1, 1)
+        self.gridLayout_4.addWidget(self.sipm_qp_box, 2, 3, 1, 1)
 
-        self.lineEdit = QLineEdit(self.scrollAreaWidgetContents_2)
-        self.lineEdit.setObjectName(u"lineEdit")
+        self.sipm_ip_addr_edit = QLineEdit(self.scrollAreaWidgetContents_2)
+        self.sipm_ip_addr_edit.setObjectName(u"sipm_ip_addr_edit")
 
-        self.gridLayout_4.addWidget(self.lineEdit, 1, 1, 1, 3)
+        self.gridLayout_4.addWidget(self.sipm_ip_addr_edit, 1, 1, 1, 3)
 
-        self.label = QLabel(self.scrollAreaWidgetContents_2)
-        self.label.setObjectName(u"label")
-        self.label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.sipm_qp_label = QLabel(self.scrollAreaWidgetContents_2)
+        self.sipm_qp_label.setObjectName(u"sipm_qp_label")
+        self.sipm_qp_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
-        self.gridLayout_4.addWidget(self.label, 2, 2, 1, 1)
+        self.gridLayout_4.addWidget(self.sipm_qp_label, 2, 2, 1, 1)
 
-        self.label_31 = QLabel(self.scrollAreaWidgetContents_2)
-        self.label_31.setObjectName(u"label_31")
-        self.label_31.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.sipm_bias_label = QLabel(self.scrollAreaWidgetContents_2)
+        self.sipm_bias_label.setObjectName(u"sipm_bias_label")
+        self.sipm_bias_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
-        self.gridLayout_4.addWidget(self.label_31, 2, 0, 1, 1)
+        self.gridLayout_4.addWidget(self.sipm_bias_label, 2, 0, 1, 1)
 
-        self.label_3 = QLabel(self.scrollAreaWidgetContents_2)
-        self.label_3.setObjectName(u"label_3")
-        self.label_3.setAlignment(Qt.AlignCenter)
+        self.sipm_amp_label = QLabel(self.scrollAreaWidgetContents_2)
+        self.sipm_amp_label.setObjectName(u"sipm_amp_label")
+        self.sipm_amp_label.setAlignment(Qt.AlignCenter)
 
-        self.gridLayout_4.addWidget(self.label_3, 0, 0, 1, 4)
+        self.gridLayout_4.addWidget(self.sipm_amp_label, 0, 0, 1, 4)
 
 
         self.verticalLayout_9.addLayout(self.gridLayout_4)
@@ -753,7 +754,7 @@ class Ui_SettingsWindow(object):
         self.acoustics_scroll_area.setWidgetResizable(True)
         self.scrollAreaWidgetContents_6 = QWidget()
         self.scrollAreaWidgetContents_6.setObjectName(u"scrollAreaWidgetContents_6")
-        self.scrollAreaWidgetContents_6.setGeometry(QRect(0, 0, 339, 332))
+        self.scrollAreaWidgetContents_6.setGeometry(QRect(0, 0, 390, 438))
         self.scrollAreaWidgetContents_6.setMaximumSize(QSize(1000, 16777215))
         self.verticalLayout_8 = QVBoxLayout(self.scrollAreaWidgetContents_6)
         self.verticalLayout_8.setSpacing(3)
@@ -1256,7 +1257,7 @@ class Ui_SettingsWindow(object):
         self.cam_scroll_area.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 261, 427))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 376, 456))
         self.scrollAreaWidgetContents.setMaximumSize(QSize(1000, 16777215))
         self.gridLayout_5 = QGridLayout(self.scrollAreaWidgetContents)
         self.gridLayout_5.setSpacing(3)
@@ -1794,37 +1795,132 @@ class Ui_SettingsWindow(object):
         self.dio_scroll_area.setWidgetResizable(True)
         self.scrollAreaWidgetContents_3 = QWidget()
         self.scrollAreaWidgetContents_3.setObjectName(u"scrollAreaWidgetContents_3")
-        self.scrollAreaWidgetContents_3.setGeometry(QRect(0, 0, 272, 382))
+        self.scrollAreaWidgetContents_3.setGeometry(QRect(0, 0, 376, 534))
         self.scrollAreaWidgetContents_3.setMaximumSize(QSize(1000, 16777215))
         self.verticalLayout_2 = QVBoxLayout(self.scrollAreaWidgetContents_3)
-        self.verticalLayout_2.setSpacing(0)
+        self.verticalLayout_2.setSpacing(6)
         self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.dio_general_grid_layout = QGridLayout()
+        self.dio_general_grid_layout.setSpacing(3)
+        self.dio_general_grid_layout.setObjectName(u"dio_general_grid_layout")
+        self.position_arduino_label = QLabel(self.scrollAreaWidgetContents_3)
+        self.position_arduino_label.setObjectName(u"position_arduino_label")
+
+        self.dio_general_grid_layout.addWidget(self.position_arduino_label, 4, 0, 1, 1)
+
+        self.trigger_address_edit = QLineEdit(self.scrollAreaWidgetContents_3)
+        self.trigger_address_edit.setObjectName(u"trigger_address_edit")
+
+        self.dio_general_grid_layout.addWidget(self.trigger_address_edit, 2, 1, 1, 1)
+
+        self.position_sketch_edit = QLineEdit(self.scrollAreaWidgetContents_3)
+        self.position_sketch_edit.setObjectName(u"position_sketch_edit")
+
+        self.dio_general_grid_layout.addWidget(self.position_sketch_edit, 4, 2, 1, 1)
+
+        self.clock_address_edit = QLineEdit(self.scrollAreaWidgetContents_3)
+        self.clock_address_edit.setObjectName(u"clock_address_edit")
+
+        self.dio_general_grid_layout.addWidget(self.clock_address_edit, 3, 1, 1, 1)
+
+        self.arduino_address_label = QLabel(self.scrollAreaWidgetContents_3)
+        self.arduino_address_label.setObjectName(u"arduino_address_label")
+
+        self.dio_general_grid_layout.addWidget(self.arduino_address_label, 1, 1, 1, 1)
+
+        self.position_address_edit = QLineEdit(self.scrollAreaWidgetContents_3)
+        self.position_address_edit.setObjectName(u"position_address_edit")
+
+        self.dio_general_grid_layout.addWidget(self.position_address_edit, 4, 1, 1, 1)
+
+        self.trigger_arduino_label = QLabel(self.scrollAreaWidgetContents_3)
+        self.trigger_arduino_label.setObjectName(u"trigger_arduino_label")
+
+        self.dio_general_grid_layout.addWidget(self.trigger_arduino_label, 2, 0, 1, 1)
+
+        self.trigger_sketch_edit = QLineEdit(self.scrollAreaWidgetContents_3)
+        self.trigger_sketch_edit.setObjectName(u"trigger_sketch_edit")
+
+        self.dio_general_grid_layout.addWidget(self.trigger_sketch_edit, 2, 2, 1, 1)
+
+        self.clock_arduino_label = QLabel(self.scrollAreaWidgetContents_3)
+        self.clock_arduino_label.setObjectName(u"clock_arduino_label")
+
+        self.dio_general_grid_layout.addWidget(self.clock_arduino_label, 3, 0, 1, 1)
+
+        self.sketch_location_label = QLabel(self.scrollAreaWidgetContents_3)
+        self.sketch_location_label.setObjectName(u"sketch_location_label")
+
+        self.dio_general_grid_layout.addWidget(self.sketch_location_label, 1, 2, 1, 1)
+
+        self.clock_sketch_edit = QLineEdit(self.scrollAreaWidgetContents_3)
+        self.clock_sketch_edit.setObjectName(u"clock_sketch_edit")
+
+        self.dio_general_grid_layout.addWidget(self.clock_sketch_edit, 3, 2, 1, 1)
+
+        self.dio_general_label = QLabel(self.scrollAreaWidgetContents_3)
+        self.dio_general_label.setObjectName(u"dio_general_label")
+        font1 = QFont()
+        font1.setBold(True)
+        self.dio_general_label.setFont(font1)
+        self.dio_general_label.setAlignment(Qt.AlignCenter)
+
+        self.dio_general_grid_layout.addWidget(self.dio_general_label, 0, 0, 1, 3)
+
+
+        self.verticalLayout_2.addLayout(self.dio_general_grid_layout)
+
+        self.dio_line = QFrame(self.scrollAreaWidgetContents_3)
+        self.dio_line.setObjectName(u"dio_line")
+        self.dio_line.setFrameShape(QFrame.HLine)
+        self.dio_line.setFrameShadow(QFrame.Sunken)
+
+        self.verticalLayout_2.addWidget(self.dio_line)
+
         self.fifo_grid_layout = QGridLayout()
         self.fifo_grid_layout.setSpacing(3)
         self.fifo_grid_layout.setObjectName(u"fifo_grid_layout")
-        self.fifo_grid_layout.setContentsMargins(-1, 6, -1, 6)
-        self.trig_or_pin_edit = QSpinBox(self.scrollAreaWidgetContents_3)
-        self.trig_or_pin_edit.setObjectName(u"trig_or_pin_edit")
+        self.fifo_grid_layout.setContentsMargins(-1, 0, -1, 0)
+        self.trig_latch_pins_label = QLabel(self.scrollAreaWidgetContents_3)
+        self.trig_latch_pins_label.setObjectName(u"trig_latch_pins_label")
+        self.trig_latch_pins_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
-        self.fifo_grid_layout.addWidget(self.trig_or_pin_edit, 3, 3, 1, 1)
+        self.fifo_grid_layout.addWidget(self.trig_latch_pins_label, 2, 0, 1, 1)
 
-        self.fifo_layout = QLabel(self.scrollAreaWidgetContents_3)
-        self.fifo_layout.setObjectName(u"fifo_layout")
-        self.fifo_layout.setAlignment(Qt.AlignCenter)
+        self.trig_latch_pins_edit = QLineEdit(self.scrollAreaWidgetContents_3)
+        self.trig_latch_pins_edit.setObjectName(u"trig_latch_pins_edit")
 
-        self.fifo_grid_layout.addWidget(self.fifo_layout, 0, 0, 1, 4)
+        self.fifo_grid_layout.addWidget(self.trig_latch_pins_edit, 2, 1, 1, 3)
 
         self.trig_reset_pin_edit = QSpinBox(self.scrollAreaWidgetContents_3)
         self.trig_reset_pin_edit.setObjectName(u"trig_reset_pin_edit")
 
         self.fifo_grid_layout.addWidget(self.trig_reset_pin_edit, 3, 1, 1, 1)
 
-        self.trig_in_pins_edit = QLineEdit(self.scrollAreaWidgetContents_3)
-        self.trig_in_pins_edit.setObjectName(u"trig_in_pins_edit")
+        self.on_time_pin_edit = QSpinBox(self.scrollAreaWidgetContents_3)
+        self.on_time_pin_edit.setObjectName(u"on_time_pin_edit")
 
-        self.fifo_grid_layout.addWidget(self.trig_in_pins_edit, 1, 1, 1, 3)
+        self.fifo_grid_layout.addWidget(self.on_time_pin_edit, 4, 1, 1, 1)
+
+        self.trig_or_pin_label = QLabel(self.scrollAreaWidgetContents_3)
+        self.trig_or_pin_label.setObjectName(u"trig_or_pin_label")
+        self.trig_or_pin_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.fifo_grid_layout.addWidget(self.trig_or_pin_label, 3, 2, 1, 1)
+
+        self.heartbeat_pin_label = QLabel(self.scrollAreaWidgetContents_3)
+        self.heartbeat_pin_label.setObjectName(u"heartbeat_pin_label")
+        self.heartbeat_pin_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.fifo_grid_layout.addWidget(self.heartbeat_pin_label, 4, 2, 1, 1)
+
+        self.heartbeat_pin_edit = QSpinBox(self.scrollAreaWidgetContents_3)
+        self.heartbeat_pin_edit.setObjectName(u"heartbeat_pin_edit")
+        self.heartbeat_pin_edit.setFocusPolicy(Qt.StrongFocus)
+
+        self.fifo_grid_layout.addWidget(self.heartbeat_pin_edit, 4, 3, 1, 1)
 
         self.trig_reset_pin_label = QLabel(self.scrollAreaWidgetContents_3)
         self.trig_reset_pin_label.setObjectName(u"trig_reset_pin_label")
@@ -1838,22 +1934,10 @@ class Ui_SettingsWindow(object):
 
         self.fifo_grid_layout.addWidget(self.trig_in_pins_label, 1, 0, 1, 1)
 
-        self.trig_latch_pins_edit = QLineEdit(self.scrollAreaWidgetContents_3)
-        self.trig_latch_pins_edit.setObjectName(u"trig_latch_pins_edit")
+        self.trig_in_pins_edit = QLineEdit(self.scrollAreaWidgetContents_3)
+        self.trig_in_pins_edit.setObjectName(u"trig_in_pins_edit")
 
-        self.fifo_grid_layout.addWidget(self.trig_latch_pins_edit, 2, 1, 1, 3)
-
-        self.trig_or_pin_label = QLabel(self.scrollAreaWidgetContents_3)
-        self.trig_or_pin_label.setObjectName(u"trig_or_pin_label")
-        self.trig_or_pin_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
-
-        self.fifo_grid_layout.addWidget(self.trig_or_pin_label, 3, 2, 1, 1)
-
-        self.trig_latch_pins_label = QLabel(self.scrollAreaWidgetContents_3)
-        self.trig_latch_pins_label.setObjectName(u"trig_latch_pins_label")
-        self.trig_latch_pins_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
-
-        self.fifo_grid_layout.addWidget(self.trig_latch_pins_label, 2, 0, 1, 1)
+        self.fifo_grid_layout.addWidget(self.trig_in_pins_edit, 1, 1, 1, 3)
 
         self.on_time_pin_label = QLabel(self.scrollAreaWidgetContents_3)
         self.on_time_pin_label.setObjectName(u"on_time_pin_label")
@@ -1861,370 +1945,369 @@ class Ui_SettingsWindow(object):
 
         self.fifo_grid_layout.addWidget(self.on_time_pin_label, 4, 0, 1, 1)
 
-        self.on_time_pin_edit = QSpinBox(self.scrollAreaWidgetContents_3)
-        self.on_time_pin_edit.setObjectName(u"on_time_pin_edit")
+        self.fifo_layout = QLabel(self.scrollAreaWidgetContents_3)
+        self.fifo_layout.setObjectName(u"fifo_layout")
+        self.fifo_layout.setFont(font1)
+        self.fifo_layout.setAlignment(Qt.AlignCenter)
 
-        self.fifo_grid_layout.addWidget(self.on_time_pin_edit, 4, 1, 1, 1)
+        self.fifo_grid_layout.addWidget(self.fifo_layout, 0, 0, 1, 4)
 
-        self.heartbeat_pin_label = QLabel(self.scrollAreaWidgetContents_3)
-        self.heartbeat_pin_label.setObjectName(u"heartbeat_pin_label")
-        self.heartbeat_pin_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.trig_or_pin_edit = QSpinBox(self.scrollAreaWidgetContents_3)
+        self.trig_or_pin_edit.setObjectName(u"trig_or_pin_edit")
+        self.trig_or_pin_edit.setFocusPolicy(Qt.StrongFocus)
 
-        self.fifo_grid_layout.addWidget(self.heartbeat_pin_label, 4, 2, 1, 1)
-
-        self.heartbeat_pin_edit = QSpinBox(self.scrollAreaWidgetContents_3)
-        self.heartbeat_pin_edit.setObjectName(u"heartbeat_pin_edit")
-
-        self.fifo_grid_layout.addWidget(self.heartbeat_pin_edit, 4, 3, 1, 1)
+        self.fifo_grid_layout.addWidget(self.trig_or_pin_edit, 3, 3, 1, 1)
 
 
         self.verticalLayout_2.addLayout(self.fifo_grid_layout)
 
-        self.dio_line = QFrame(self.scrollAreaWidgetContents_3)
-        self.dio_line.setObjectName(u"dio_line")
-        self.dio_line.setFrameShape(QFrame.HLine)
-        self.dio_line.setFrameShadow(QFrame.Sunken)
+        self.dio_line_3 = QFrame(self.scrollAreaWidgetContents_3)
+        self.dio_line_3.setObjectName(u"dio_line_3")
+        self.dio_line_3.setFrameShape(QFrame.HLine)
+        self.dio_line_3.setFrameShadow(QFrame.Sunken)
 
-        self.verticalLayout_2.addWidget(self.dio_line)
-
-        self.gate_label = QLabel(self.scrollAreaWidgetContents_3)
-        self.gate_label.setObjectName(u"gate_label")
-        self.gate_label.setAlignment(Qt.AlignCenter)
-
-        self.verticalLayout_2.addWidget(self.gate_label)
+        self.verticalLayout_2.addWidget(self.dio_line_3)
 
         self.gate_grid_layout = QGridLayout()
         self.gate_grid_layout.setSpacing(3)
         self.gate_grid_layout.setObjectName(u"gate_grid_layout")
-        self.gate_grid_layout.setContentsMargins(6, 6, -1, -1)
-        self.wave1_label = QLabel(self.scrollAreaWidgetContents_3)
-        self.wave1_label.setObjectName(u"wave1_label")
-        self.wave1_label.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
+        self.gate_grid_layout.setContentsMargins(0, 0, -1, -1)
+        self.gate_period_wave5 = QSpinBox(self.scrollAreaWidgetContents_3)
+        self.gate_period_wave5.setObjectName(u"gate_period_wave5")
 
-        self.gate_grid_layout.addWidget(self.wave1_label, 2, 0, 1, 1)
-
-        self.gate_pin_wave3 = QSpinBox(self.scrollAreaWidgetContents_3)
-        self.gate_pin_wave3.setObjectName(u"gate_pin_wave3")
-
-        self.gate_grid_layout.addWidget(self.gate_pin_wave3, 4, 1, 1, 1)
+        self.gate_grid_layout.addWidget(self.gate_period_wave5, 7, 2, 1, 1)
 
         self.gate_pin_wave1 = QSpinBox(self.scrollAreaWidgetContents_3)
         self.gate_pin_wave1.setObjectName(u"gate_pin_wave1")
 
-        self.gate_grid_layout.addWidget(self.gate_pin_wave1, 2, 1, 1, 1)
-
-        self.gate_phase_wave1 = QSpinBox(self.scrollAreaWidgetContents_3)
-        self.gate_phase_wave1.setObjectName(u"gate_phase_wave1")
-        self.gate_phase_wave1.setButtonSymbols(QAbstractSpinBox.UpDownArrows)
-        self.gate_phase_wave1.setKeyboardTracking(True)
-
-        self.gate_grid_layout.addWidget(self.gate_phase_wave1, 2, 3, 1, 1)
-
-        self.wave8_label = QLabel(self.scrollAreaWidgetContents_3)
-        self.wave8_label.setObjectName(u"wave8_label")
-        self.wave8_label.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
-
-        self.gate_grid_layout.addWidget(self.wave8_label, 9, 0, 1, 1)
-
-        self.wave6_label = QLabel(self.scrollAreaWidgetContents_3)
-        self.wave6_label.setObjectName(u"wave6_label")
-        self.wave6_label.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
-
-        self.gate_grid_layout.addWidget(self.wave6_label, 7, 0, 1, 1)
-
-        self.duty_label = QLabel(self.scrollAreaWidgetContents_3)
-        self.duty_label.setObjectName(u"duty_label")
-        self.duty_label.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
-
-        self.gate_grid_layout.addWidget(self.duty_label, 0, 4, 1, 1)
-
-        self.gate_period_label = QLabel(self.scrollAreaWidgetContents_3)
-        self.gate_period_label.setObjectName(u"gate_period_label")
-        self.gate_period_label.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
-
-        self.gate_grid_layout.addWidget(self.gate_period_label, 0, 2, 1, 1)
-
-        self.gate_period_wave3 = QSpinBox(self.scrollAreaWidgetContents_3)
-        self.gate_period_wave3.setObjectName(u"gate_period_wave3")
-
-        self.gate_grid_layout.addWidget(self.gate_period_wave3, 4, 2, 1, 1)
-
-        self.gate_phase_wave2 = QSpinBox(self.scrollAreaWidgetContents_3)
-        self.gate_phase_wave2.setObjectName(u"gate_phase_wave2")
-
-        self.gate_grid_layout.addWidget(self.gate_phase_wave2, 3, 3, 1, 1)
-
-        self.duty_wave3 = QSpinBox(self.scrollAreaWidgetContents_3)
-        self.duty_wave3.setObjectName(u"duty_wave3")
-
-        self.gate_grid_layout.addWidget(self.duty_wave3, 4, 4, 1, 1)
-
-        self.gate_period_wave1 = QSpinBox(self.scrollAreaWidgetContents_3)
-        self.gate_period_wave1.setObjectName(u"gate_period_wave1")
-
-        self.gate_grid_layout.addWidget(self.gate_period_wave1, 2, 2, 1, 1)
-
-        self.wave5_label = QLabel(self.scrollAreaWidgetContents_3)
-        self.wave5_label.setObjectName(u"wave5_label")
-        self.wave5_label.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
-
-        self.gate_grid_layout.addWidget(self.wave5_label, 6, 0, 1, 1)
-
-        self.wave4_label = QLabel(self.scrollAreaWidgetContents_3)
-        self.wave4_label.setObjectName(u"wave4_label")
-        self.wave4_label.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
-
-        self.gate_grid_layout.addWidget(self.wave4_label, 5, 0, 1, 1)
-
-        self.wave7_label = QLabel(self.scrollAreaWidgetContents_3)
-        self.wave7_label.setObjectName(u"wave7_label")
-        self.wave7_label.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
-
-        self.gate_grid_layout.addWidget(self.wave7_label, 8, 0, 1, 1)
-
-        self.gate_phase_wave3 = QSpinBox(self.scrollAreaWidgetContents_3)
-        self.gate_phase_wave3.setObjectName(u"gate_phase_wave3")
-
-        self.gate_grid_layout.addWidget(self.gate_phase_wave3, 4, 3, 1, 1)
-
-        self.gate_period_wave2 = QSpinBox(self.scrollAreaWidgetContents_3)
-        self.gate_period_wave2.setObjectName(u"gate_period_wave2")
-
-        self.gate_grid_layout.addWidget(self.gate_period_wave2, 3, 2, 1, 1)
-
-        self.gate_polarity_label = QLabel(self.scrollAreaWidgetContents_3)
-        self.gate_polarity_label.setObjectName(u"gate_polarity_label")
-        self.gate_polarity_label.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
-
-        self.gate_grid_layout.addWidget(self.gate_polarity_label, 0, 5, 1, 1)
-
-        self.gate_pin_wave2 = QSpinBox(self.scrollAreaWidgetContents_3)
-        self.gate_pin_wave2.setObjectName(u"gate_pin_wave2")
-
-        self.gate_grid_layout.addWidget(self.gate_pin_wave2, 3, 1, 1, 1)
-
-        self.gate_pin_label = QLabel(self.scrollAreaWidgetContents_3)
-        self.gate_pin_label.setObjectName(u"gate_pin_label")
-        self.gate_pin_label.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
-
-        self.gate_grid_layout.addWidget(self.gate_pin_label, 0, 1, 1, 1)
-
-        self.wave2_label = QLabel(self.scrollAreaWidgetContents_3)
-        self.wave2_label.setObjectName(u"wave2_label")
-        self.wave2_label.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
-
-        self.gate_grid_layout.addWidget(self.wave2_label, 3, 0, 1, 1)
-
-        self.duty_wave1 = QSpinBox(self.scrollAreaWidgetContents_3)
-        self.duty_wave1.setObjectName(u"duty_wave1")
-
-        self.gate_grid_layout.addWidget(self.duty_wave1, 2, 4, 1, 1)
-
-        self.gate_phase_label = QLabel(self.scrollAreaWidgetContents_3)
-        self.gate_phase_label.setObjectName(u"gate_phase_label")
-        self.gate_phase_label.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
-
-        self.gate_grid_layout.addWidget(self.gate_phase_label, 0, 3, 1, 1)
-
-        self.duty_wave2 = QSpinBox(self.scrollAreaWidgetContents_3)
-        self.duty_wave2.setObjectName(u"duty_wave2")
-
-        self.gate_grid_layout.addWidget(self.duty_wave2, 3, 4, 1, 1)
-
-        self.wave3_label = QLabel(self.scrollAreaWidgetContents_3)
-        self.wave3_label.setObjectName(u"wave3_label")
-        self.wave3_label.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
-
-        self.gate_grid_layout.addWidget(self.wave3_label, 4, 0, 1, 1)
-
-        self.wave9_label = QLabel(self.scrollAreaWidgetContents_3)
-        self.wave9_label.setObjectName(u"wave9_label")
-        self.wave9_label.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
-
-        self.gate_grid_layout.addWidget(self.wave9_label, 10, 0, 1, 1)
-
-        self.gate_period_wave4 = QSpinBox(self.scrollAreaWidgetContents_3)
-        self.gate_period_wave4.setObjectName(u"gate_period_wave4")
-
-        self.gate_grid_layout.addWidget(self.gate_period_wave4, 5, 2, 1, 1)
-
-        self.gate_phase_wave4 = QSpinBox(self.scrollAreaWidgetContents_3)
-        self.gate_phase_wave4.setObjectName(u"gate_phase_wave4")
-
-        self.gate_grid_layout.addWidget(self.gate_phase_wave4, 5, 3, 1, 1)
-
-        self.duty_wave4 = QSpinBox(self.scrollAreaWidgetContents_3)
-        self.duty_wave4.setObjectName(u"duty_wave4")
-
-        self.gate_grid_layout.addWidget(self.duty_wave4, 5, 4, 1, 1)
-
-        self.gate_pin_wave4 = QSpinBox(self.scrollAreaWidgetContents_3)
-        self.gate_pin_wave4.setObjectName(u"gate_pin_wave4")
-
-        self.gate_grid_layout.addWidget(self.gate_pin_wave4, 5, 1, 1, 1)
-
-        self.gate_pin_wave5 = QSpinBox(self.scrollAreaWidgetContents_3)
-        self.gate_pin_wave5.setObjectName(u"gate_pin_wave5")
-
-        self.gate_grid_layout.addWidget(self.gate_pin_wave5, 6, 1, 1, 1)
-
-        self.gate_period_wave5 = QSpinBox(self.scrollAreaWidgetContents_3)
-        self.gate_period_wave5.setObjectName(u"gate_period_wave5")
-
-        self.gate_grid_layout.addWidget(self.gate_period_wave5, 6, 2, 1, 1)
-
-        self.gate_phase_wave5 = QSpinBox(self.scrollAreaWidgetContents_3)
-        self.gate_phase_wave5.setObjectName(u"gate_phase_wave5")
-
-        self.gate_grid_layout.addWidget(self.gate_phase_wave5, 6, 3, 1, 1)
-
-        self.duty_wave5 = QSpinBox(self.scrollAreaWidgetContents_3)
-        self.duty_wave5.setObjectName(u"duty_wave5")
-
-        self.gate_grid_layout.addWidget(self.duty_wave5, 6, 4, 1, 1)
-
-        self.gate_pin_wave6 = QSpinBox(self.scrollAreaWidgetContents_3)
-        self.gate_pin_wave6.setObjectName(u"gate_pin_wave6")
-
-        self.gate_grid_layout.addWidget(self.gate_pin_wave6, 7, 1, 1, 1)
-
-        self.gate_period_wave6 = QSpinBox(self.scrollAreaWidgetContents_3)
-        self.gate_period_wave6.setObjectName(u"gate_period_wave6")
-
-        self.gate_grid_layout.addWidget(self.gate_period_wave6, 7, 2, 1, 1)
-
-        self.gate_phase_wave6 = QSpinBox(self.scrollAreaWidgetContents_3)
-        self.gate_phase_wave6.setObjectName(u"gate_phase_wave6")
-
-        self.gate_grid_layout.addWidget(self.gate_phase_wave6, 7, 3, 1, 1)
-
-        self.duty_wave6 = QSpinBox(self.scrollAreaWidgetContents_3)
-        self.duty_wave6.setObjectName(u"duty_wave6")
-
-        self.gate_grid_layout.addWidget(self.duty_wave6, 7, 4, 1, 1)
-
-        self.gate_pin_wave7 = QSpinBox(self.scrollAreaWidgetContents_3)
-        self.gate_pin_wave7.setObjectName(u"gate_pin_wave7")
-
-        self.gate_grid_layout.addWidget(self.gate_pin_wave7, 8, 1, 1, 1)
-
-        self.gate_period_wave7 = QSpinBox(self.scrollAreaWidgetContents_3)
-        self.gate_period_wave7.setObjectName(u"gate_period_wave7")
-
-        self.gate_grid_layout.addWidget(self.gate_period_wave7, 8, 2, 1, 1)
-
-        self.gate_phase_wave7 = QSpinBox(self.scrollAreaWidgetContents_3)
-        self.gate_phase_wave7.setObjectName(u"gate_phase_wave7")
-
-        self.gate_grid_layout.addWidget(self.gate_phase_wave7, 8, 3, 1, 1)
-
-        self.duty_wave7 = QSpinBox(self.scrollAreaWidgetContents_3)
-        self.duty_wave7.setObjectName(u"duty_wave7")
-
-        self.gate_grid_layout.addWidget(self.duty_wave7, 8, 4, 1, 1)
-
-        self.gate_pin_wave8 = QSpinBox(self.scrollAreaWidgetContents_3)
-        self.gate_pin_wave8.setObjectName(u"gate_pin_wave8")
-
-        self.gate_grid_layout.addWidget(self.gate_pin_wave8, 9, 1, 1, 1)
-
-        self.gate_period_wave8 = QSpinBox(self.scrollAreaWidgetContents_3)
-        self.gate_period_wave8.setObjectName(u"gate_period_wave8")
-
-        self.gate_grid_layout.addWidget(self.gate_period_wave8, 9, 2, 1, 1)
-
-        self.gate_phase_wave8 = QSpinBox(self.scrollAreaWidgetContents_3)
-        self.gate_phase_wave8.setObjectName(u"gate_phase_wave8")
-
-        self.gate_grid_layout.addWidget(self.gate_phase_wave8, 9, 3, 1, 1)
-
-        self.duty_wave8 = QSpinBox(self.scrollAreaWidgetContents_3)
-        self.duty_wave8.setObjectName(u"duty_wave8")
-
-        self.gate_grid_layout.addWidget(self.duty_wave8, 9, 4, 1, 1)
-
-        self.gate_pin_wave9 = QSpinBox(self.scrollAreaWidgetContents_3)
-        self.gate_pin_wave9.setObjectName(u"gate_pin_wave9")
-
-        self.gate_grid_layout.addWidget(self.gate_pin_wave9, 10, 1, 1, 1)
-
-        self.gate_period_wave9 = QSpinBox(self.scrollAreaWidgetContents_3)
-        self.gate_period_wave9.setObjectName(u"gate_period_wave9")
-
-        self.gate_grid_layout.addWidget(self.gate_period_wave9, 10, 2, 1, 1)
-
-        self.gate_phase_wave9 = QSpinBox(self.scrollAreaWidgetContents_3)
-        self.gate_phase_wave9.setObjectName(u"gate_phase_wave9")
-
-        self.gate_grid_layout.addWidget(self.gate_phase_wave9, 10, 3, 1, 1)
-
-        self.duty_wave9 = QSpinBox(self.scrollAreaWidgetContents_3)
-        self.duty_wave9.setObjectName(u"duty_wave9")
-
-        self.gate_grid_layout.addWidget(self.duty_wave9, 10, 4, 1, 1)
+        self.gate_grid_layout.addWidget(self.gate_pin_wave1, 3, 1, 1, 1)
 
         self.gate_polarity_wave1 = QComboBox(self.scrollAreaWidgetContents_3)
         self.gate_polarity_wave1.addItem("")
         self.gate_polarity_wave1.addItem("")
         self.gate_polarity_wave1.setObjectName(u"gate_polarity_wave1")
 
-        self.gate_grid_layout.addWidget(self.gate_polarity_wave1, 2, 5, 1, 1)
-
-        self.gate_polarity_wave2 = QComboBox(self.scrollAreaWidgetContents_3)
-        self.gate_polarity_wave2.addItem("")
-        self.gate_polarity_wave2.addItem("")
-        self.gate_polarity_wave2.setObjectName(u"gate_polarity_wave2")
-
-        self.gate_grid_layout.addWidget(self.gate_polarity_wave2, 3, 5, 1, 1)
-
-        self.gate_polarity_wave3 = QComboBox(self.scrollAreaWidgetContents_3)
-        self.gate_polarity_wave3.addItem("")
-        self.gate_polarity_wave3.addItem("")
-        self.gate_polarity_wave3.setObjectName(u"gate_polarity_wave3")
-
-        self.gate_grid_layout.addWidget(self.gate_polarity_wave3, 4, 5, 1, 1)
-
-        self.gate_polarity_wave4 = QComboBox(self.scrollAreaWidgetContents_3)
-        self.gate_polarity_wave4.addItem("")
-        self.gate_polarity_wave4.addItem("")
-        self.gate_polarity_wave4.setObjectName(u"gate_polarity_wave4")
-
-        self.gate_grid_layout.addWidget(self.gate_polarity_wave4, 5, 5, 1, 1)
+        self.gate_grid_layout.addWidget(self.gate_polarity_wave1, 3, 5, 1, 1)
 
         self.gate_polarity_wave5 = QComboBox(self.scrollAreaWidgetContents_3)
         self.gate_polarity_wave5.addItem("")
         self.gate_polarity_wave5.addItem("")
         self.gate_polarity_wave5.setObjectName(u"gate_polarity_wave5")
 
-        self.gate_grid_layout.addWidget(self.gate_polarity_wave5, 6, 5, 1, 1)
+        self.gate_grid_layout.addWidget(self.gate_polarity_wave5, 7, 5, 1, 1)
 
-        self.gate_polarity_wave6 = QComboBox(self.scrollAreaWidgetContents_3)
-        self.gate_polarity_wave6.addItem("")
-        self.gate_polarity_wave6.addItem("")
-        self.gate_polarity_wave6.setObjectName(u"gate_polarity_wave6")
+        self.duty_wave2 = QSpinBox(self.scrollAreaWidgetContents_3)
+        self.duty_wave2.setObjectName(u"duty_wave2")
 
-        self.gate_grid_layout.addWidget(self.gate_polarity_wave6, 7, 5, 1, 1)
+        self.gate_grid_layout.addWidget(self.duty_wave2, 4, 4, 1, 1)
 
-        self.gate_polarity_wave7 = QComboBox(self.scrollAreaWidgetContents_3)
-        self.gate_polarity_wave7.addItem("")
-        self.gate_polarity_wave7.addItem("")
-        self.gate_polarity_wave7.setObjectName(u"gate_polarity_wave7")
+        self.wave1_label = QLabel(self.scrollAreaWidgetContents_3)
+        self.wave1_label.setObjectName(u"wave1_label")
+        self.wave1_label.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
 
-        self.gate_grid_layout.addWidget(self.gate_polarity_wave7, 8, 5, 1, 1)
+        self.gate_grid_layout.addWidget(self.wave1_label, 3, 0, 1, 1)
+
+        self.wave3_label = QLabel(self.scrollAreaWidgetContents_3)
+        self.wave3_label.setObjectName(u"wave3_label")
+        self.wave3_label.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
+
+        self.gate_grid_layout.addWidget(self.wave3_label, 5, 0, 1, 1)
+
+        self.gate_pin_label = QLabel(self.scrollAreaWidgetContents_3)
+        self.gate_pin_label.setObjectName(u"gate_pin_label")
+        self.gate_pin_label.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
+
+        self.gate_grid_layout.addWidget(self.gate_pin_label, 1, 1, 1, 1)
+
+        self.gate_pin_wave6 = QSpinBox(self.scrollAreaWidgetContents_3)
+        self.gate_pin_wave6.setObjectName(u"gate_pin_wave6")
+
+        self.gate_grid_layout.addWidget(self.gate_pin_wave6, 8, 1, 1, 1)
+
+        self.gate_phase_wave7 = QSpinBox(self.scrollAreaWidgetContents_3)
+        self.gate_phase_wave7.setObjectName(u"gate_phase_wave7")
+
+        self.gate_grid_layout.addWidget(self.gate_phase_wave7, 9, 3, 1, 1)
+
+        self.gate_phase_wave1 = QSpinBox(self.scrollAreaWidgetContents_3)
+        self.gate_phase_wave1.setObjectName(u"gate_phase_wave1")
+        self.gate_phase_wave1.setButtonSymbols(QAbstractSpinBox.UpDownArrows)
+        self.gate_phase_wave1.setKeyboardTracking(True)
+
+        self.gate_grid_layout.addWidget(self.gate_phase_wave1, 3, 3, 1, 1)
+
+        self.duty_wave8 = QSpinBox(self.scrollAreaWidgetContents_3)
+        self.duty_wave8.setObjectName(u"duty_wave8")
+
+        self.gate_grid_layout.addWidget(self.duty_wave8, 10, 4, 1, 1)
+
+        self.wave4_label = QLabel(self.scrollAreaWidgetContents_3)
+        self.wave4_label.setObjectName(u"wave4_label")
+        self.wave4_label.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
+
+        self.gate_grid_layout.addWidget(self.wave4_label, 6, 0, 1, 1)
+
+        self.duty_wave3 = QSpinBox(self.scrollAreaWidgetContents_3)
+        self.duty_wave3.setObjectName(u"duty_wave3")
+
+        self.gate_grid_layout.addWidget(self.duty_wave3, 5, 4, 1, 1)
+
+        self.gate_phase_wave4 = QSpinBox(self.scrollAreaWidgetContents_3)
+        self.gate_phase_wave4.setObjectName(u"gate_phase_wave4")
+
+        self.gate_grid_layout.addWidget(self.gate_phase_wave4, 6, 3, 1, 1)
 
         self.gate_polarity_wave8 = QComboBox(self.scrollAreaWidgetContents_3)
         self.gate_polarity_wave8.addItem("")
         self.gate_polarity_wave8.addItem("")
         self.gate_polarity_wave8.setObjectName(u"gate_polarity_wave8")
 
-        self.gate_grid_layout.addWidget(self.gate_polarity_wave8, 9, 5, 1, 1)
+        self.gate_grid_layout.addWidget(self.gate_polarity_wave8, 10, 5, 1, 1)
+
+        self.gate_polarity_wave7 = QComboBox(self.scrollAreaWidgetContents_3)
+        self.gate_polarity_wave7.addItem("")
+        self.gate_polarity_wave7.addItem("")
+        self.gate_polarity_wave7.setObjectName(u"gate_polarity_wave7")
+
+        self.gate_grid_layout.addWidget(self.gate_polarity_wave7, 9, 5, 1, 1)
+
+        self.gate_polarity_label = QLabel(self.scrollAreaWidgetContents_3)
+        self.gate_polarity_label.setObjectName(u"gate_polarity_label")
+        self.gate_polarity_label.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
+
+        self.gate_grid_layout.addWidget(self.gate_polarity_label, 1, 5, 1, 1)
+
+        self.gate_period_wave4 = QSpinBox(self.scrollAreaWidgetContents_3)
+        self.gate_period_wave4.setObjectName(u"gate_period_wave4")
+
+        self.gate_grid_layout.addWidget(self.gate_period_wave4, 6, 2, 1, 1)
+
+        self.gate_period_wave2 = QSpinBox(self.scrollAreaWidgetContents_3)
+        self.gate_period_wave2.setObjectName(u"gate_period_wave2")
+
+        self.gate_grid_layout.addWidget(self.gate_period_wave2, 4, 2, 1, 1)
+
+        self.wave6_label = QLabel(self.scrollAreaWidgetContents_3)
+        self.wave6_label.setObjectName(u"wave6_label")
+        self.wave6_label.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
+
+        self.gate_grid_layout.addWidget(self.wave6_label, 8, 0, 1, 1)
+
+        self.gate_pin_wave2 = QSpinBox(self.scrollAreaWidgetContents_3)
+        self.gate_pin_wave2.setObjectName(u"gate_pin_wave2")
+
+        self.gate_grid_layout.addWidget(self.gate_pin_wave2, 4, 1, 1, 1)
+
+        self.gate_period_wave9 = QSpinBox(self.scrollAreaWidgetContents_3)
+        self.gate_period_wave9.setObjectName(u"gate_period_wave9")
+
+        self.gate_grid_layout.addWidget(self.gate_period_wave9, 11, 2, 1, 1)
+
+        self.duty_wave4 = QSpinBox(self.scrollAreaWidgetContents_3)
+        self.duty_wave4.setObjectName(u"duty_wave4")
+
+        self.gate_grid_layout.addWidget(self.duty_wave4, 6, 4, 1, 1)
+
+        self.gate_period_wave7 = QSpinBox(self.scrollAreaWidgetContents_3)
+        self.gate_period_wave7.setObjectName(u"gate_period_wave7")
+
+        self.gate_grid_layout.addWidget(self.gate_period_wave7, 9, 2, 1, 1)
+
+        self.wave5_label = QLabel(self.scrollAreaWidgetContents_3)
+        self.wave5_label.setObjectName(u"wave5_label")
+        self.wave5_label.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
+
+        self.gate_grid_layout.addWidget(self.wave5_label, 7, 0, 1, 1)
+
+        self.duty_wave6 = QSpinBox(self.scrollAreaWidgetContents_3)
+        self.duty_wave6.setObjectName(u"duty_wave6")
+
+        self.gate_grid_layout.addWidget(self.duty_wave6, 8, 4, 1, 1)
+
+        self.gate_polarity_wave2 = QComboBox(self.scrollAreaWidgetContents_3)
+        self.gate_polarity_wave2.addItem("")
+        self.gate_polarity_wave2.addItem("")
+        self.gate_polarity_wave2.setObjectName(u"gate_polarity_wave2")
+
+        self.gate_grid_layout.addWidget(self.gate_polarity_wave2, 4, 5, 1, 1)
+
+        self.gate_phase_wave8 = QSpinBox(self.scrollAreaWidgetContents_3)
+        self.gate_phase_wave8.setObjectName(u"gate_phase_wave8")
+
+        self.gate_grid_layout.addWidget(self.gate_phase_wave8, 10, 3, 1, 1)
+
+        self.gate_period_wave8 = QSpinBox(self.scrollAreaWidgetContents_3)
+        self.gate_period_wave8.setObjectName(u"gate_period_wave8")
+
+        self.gate_grid_layout.addWidget(self.gate_period_wave8, 10, 2, 1, 1)
+
+        self.duty_wave7 = QSpinBox(self.scrollAreaWidgetContents_3)
+        self.duty_wave7.setObjectName(u"duty_wave7")
+
+        self.gate_grid_layout.addWidget(self.duty_wave7, 9, 4, 1, 1)
+
+        self.gate_phase_label = QLabel(self.scrollAreaWidgetContents_3)
+        self.gate_phase_label.setObjectName(u"gate_phase_label")
+        self.gate_phase_label.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
+
+        self.gate_grid_layout.addWidget(self.gate_phase_label, 1, 3, 1, 1)
+
+        self.wave2_label = QLabel(self.scrollAreaWidgetContents_3)
+        self.wave2_label.setObjectName(u"wave2_label")
+        self.wave2_label.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
+
+        self.gate_grid_layout.addWidget(self.wave2_label, 4, 0, 1, 1)
+
+        self.gate_phase_wave6 = QSpinBox(self.scrollAreaWidgetContents_3)
+        self.gate_phase_wave6.setObjectName(u"gate_phase_wave6")
+
+        self.gate_grid_layout.addWidget(self.gate_phase_wave6, 8, 3, 1, 1)
+
+        self.gate_pin_wave5 = QSpinBox(self.scrollAreaWidgetContents_3)
+        self.gate_pin_wave5.setObjectName(u"gate_pin_wave5")
+
+        self.gate_grid_layout.addWidget(self.gate_pin_wave5, 7, 1, 1, 1)
+
+        self.duty_wave1 = QSpinBox(self.scrollAreaWidgetContents_3)
+        self.duty_wave1.setObjectName(u"duty_wave1")
+
+        self.gate_grid_layout.addWidget(self.duty_wave1, 3, 4, 1, 1)
+
+        self.gate_phase_wave5 = QSpinBox(self.scrollAreaWidgetContents_3)
+        self.gate_phase_wave5.setObjectName(u"gate_phase_wave5")
+
+        self.gate_grid_layout.addWidget(self.gate_phase_wave5, 7, 3, 1, 1)
+
+        self.gate_pin_wave7 = QSpinBox(self.scrollAreaWidgetContents_3)
+        self.gate_pin_wave7.setObjectName(u"gate_pin_wave7")
+
+        self.gate_grid_layout.addWidget(self.gate_pin_wave7, 9, 1, 1, 1)
+
+        self.duty_wave9 = QSpinBox(self.scrollAreaWidgetContents_3)
+        self.duty_wave9.setObjectName(u"duty_wave9")
+
+        self.gate_grid_layout.addWidget(self.duty_wave9, 11, 4, 1, 1)
+
+        self.gate_pin_wave3 = QSpinBox(self.scrollAreaWidgetContents_3)
+        self.gate_pin_wave3.setObjectName(u"gate_pin_wave3")
+
+        self.gate_grid_layout.addWidget(self.gate_pin_wave3, 5, 1, 1, 1)
+
+        self.duty_label = QLabel(self.scrollAreaWidgetContents_3)
+        self.duty_label.setObjectName(u"duty_label")
+        self.duty_label.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
+
+        self.gate_grid_layout.addWidget(self.duty_label, 1, 4, 1, 1)
+
+        self.wave7_label = QLabel(self.scrollAreaWidgetContents_3)
+        self.wave7_label.setObjectName(u"wave7_label")
+        self.wave7_label.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
+
+        self.gate_grid_layout.addWidget(self.wave7_label, 9, 0, 1, 1)
+
+        self.gate_pin_wave4 = QSpinBox(self.scrollAreaWidgetContents_3)
+        self.gate_pin_wave4.setObjectName(u"gate_pin_wave4")
+
+        self.gate_grid_layout.addWidget(self.gate_pin_wave4, 6, 1, 1, 1)
+
+        self.gate_pin_wave8 = QSpinBox(self.scrollAreaWidgetContents_3)
+        self.gate_pin_wave8.setObjectName(u"gate_pin_wave8")
+
+        self.gate_grid_layout.addWidget(self.gate_pin_wave8, 10, 1, 1, 1)
+
+        self.wave9_label = QLabel(self.scrollAreaWidgetContents_3)
+        self.wave9_label.setObjectName(u"wave9_label")
+        self.wave9_label.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
+
+        self.gate_grid_layout.addWidget(self.wave9_label, 11, 0, 1, 1)
+
+        self.gate_period_label = QLabel(self.scrollAreaWidgetContents_3)
+        self.gate_period_label.setObjectName(u"gate_period_label")
+        self.gate_period_label.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
+
+        self.gate_grid_layout.addWidget(self.gate_period_label, 1, 2, 1, 1)
+
+        self.gate_polarity_wave4 = QComboBox(self.scrollAreaWidgetContents_3)
+        self.gate_polarity_wave4.addItem("")
+        self.gate_polarity_wave4.addItem("")
+        self.gate_polarity_wave4.setObjectName(u"gate_polarity_wave4")
+
+        self.gate_grid_layout.addWidget(self.gate_polarity_wave4, 6, 5, 1, 1)
+
+        self.gate_period_wave1 = QSpinBox(self.scrollAreaWidgetContents_3)
+        self.gate_period_wave1.setObjectName(u"gate_period_wave1")
+
+        self.gate_grid_layout.addWidget(self.gate_period_wave1, 3, 2, 1, 1)
+
+        self.gate_phase_wave3 = QSpinBox(self.scrollAreaWidgetContents_3)
+        self.gate_phase_wave3.setObjectName(u"gate_phase_wave3")
+
+        self.gate_grid_layout.addWidget(self.gate_phase_wave3, 5, 3, 1, 1)
 
         self.gate_polarity_wave9 = QComboBox(self.scrollAreaWidgetContents_3)
         self.gate_polarity_wave9.addItem("")
         self.gate_polarity_wave9.addItem("")
         self.gate_polarity_wave9.setObjectName(u"gate_polarity_wave9")
 
-        self.gate_grid_layout.addWidget(self.gate_polarity_wave9, 10, 5, 1, 1)
+        self.gate_grid_layout.addWidget(self.gate_polarity_wave9, 11, 5, 1, 1)
+
+        self.gate_phase_wave9 = QSpinBox(self.scrollAreaWidgetContents_3)
+        self.gate_phase_wave9.setObjectName(u"gate_phase_wave9")
+
+        self.gate_grid_layout.addWidget(self.gate_phase_wave9, 11, 3, 1, 1)
+
+        self.duty_wave5 = QSpinBox(self.scrollAreaWidgetContents_3)
+        self.duty_wave5.setObjectName(u"duty_wave5")
+
+        self.gate_grid_layout.addWidget(self.duty_wave5, 7, 4, 1, 1)
+
+        self.gate_polarity_wave3 = QComboBox(self.scrollAreaWidgetContents_3)
+        self.gate_polarity_wave3.addItem("")
+        self.gate_polarity_wave3.addItem("")
+        self.gate_polarity_wave3.setObjectName(u"gate_polarity_wave3")
+
+        self.gate_grid_layout.addWidget(self.gate_polarity_wave3, 5, 5, 1, 1)
+
+        self.gate_phase_wave2 = QSpinBox(self.scrollAreaWidgetContents_3)
+        self.gate_phase_wave2.setObjectName(u"gate_phase_wave2")
+
+        self.gate_grid_layout.addWidget(self.gate_phase_wave2, 4, 3, 1, 1)
+
+        self.gate_period_wave6 = QSpinBox(self.scrollAreaWidgetContents_3)
+        self.gate_period_wave6.setObjectName(u"gate_period_wave6")
+
+        self.gate_grid_layout.addWidget(self.gate_period_wave6, 8, 2, 1, 1)
+
+        self.gate_period_wave3 = QSpinBox(self.scrollAreaWidgetContents_3)
+        self.gate_period_wave3.setObjectName(u"gate_period_wave3")
+
+        self.gate_grid_layout.addWidget(self.gate_period_wave3, 5, 2, 1, 1)
+
+        self.wave8_label = QLabel(self.scrollAreaWidgetContents_3)
+        self.wave8_label.setObjectName(u"wave8_label")
+        self.wave8_label.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
+
+        self.gate_grid_layout.addWidget(self.wave8_label, 10, 0, 1, 1)
+
+        self.gate_polarity_wave6 = QComboBox(self.scrollAreaWidgetContents_3)
+        self.gate_polarity_wave6.addItem("")
+        self.gate_polarity_wave6.addItem("")
+        self.gate_polarity_wave6.setObjectName(u"gate_polarity_wave6")
+
+        self.gate_grid_layout.addWidget(self.gate_polarity_wave6, 8, 5, 1, 1)
+
+        self.gate_pin_wave9 = QSpinBox(self.scrollAreaWidgetContents_3)
+        self.gate_pin_wave9.setObjectName(u"gate_pin_wave9")
+
+        self.gate_grid_layout.addWidget(self.gate_pin_wave9, 11, 1, 1, 1)
+
+        self.gate_label = QLabel(self.scrollAreaWidgetContents_3)
+        self.gate_label.setObjectName(u"gate_label")
+        self.gate_label.setFont(font1)
+        self.gate_label.setAlignment(Qt.AlignCenter)
+        self.gate_label.setMargin(0)
+
+        self.gate_grid_layout.addWidget(self.gate_label, 0, 0, 1, 6)
 
 
         self.verticalLayout_2.addLayout(self.gate_grid_layout)
@@ -2251,8 +2334,8 @@ class Ui_SettingsWindow(object):
         self.log_path_label.setBuddy(self.data_dir_edit)
         self.max_num_ev_label.setBuddy(self.max_num_ev_box)
         self.max_ev_time_label.setBuddy(self.max_ev_time_box)
-        self.max_ev_time_label_2.setBuddy(self.max_ev_time_box)
-        self.max_ev_time_label_3.setBuddy(self.max_ev_time_box)
+        self.source_label.setBuddy(self.max_ev_time_box)
+        self.pressure_setpoint_label.setBuddy(self.max_ev_time_box)
         self.acous_pre_trig_label.setBuddy(self.acous_pre_trig_box)
         self.acous_sample_rate_label.setBuddy(self.acous_sample_rate_box)
         self.acous_trig_timeout_label.setBuddy(self.acous_trig_timeout_box)
@@ -2266,13 +2349,234 @@ class Ui_SettingsWindow(object):
         self.acous_ch3_label.setBuddy(self.acous_enable_ch3)
         self.acous_ch8_label.setBuddy(self.acous_enable_ch8)
         self.acous_ch4_label.setBuddy(self.acous_enable_ch4)
+        self.trig_latch_pins_label.setBuddy(self.trig_latch_pins_edit)
+        self.heartbeat_pin_label.setBuddy(self.heartbeat_pin_edit)
         self.trig_reset_pin_label.setBuddy(self.trig_reset_pin_edit)
         self.trig_in_pins_label.setBuddy(self.trig_in_pins_edit)
-        self.trig_or_pin_label.setBuddy(self.trig_or_pin_edit)
-        self.trig_latch_pins_label.setBuddy(self.trig_latch_pins_edit)
         self.on_time_pin_label.setBuddy(self.on_time_pin_edit)
-        self.heartbeat_pin_label.setBuddy(self.heartbeat_pin_edit)
 #endif // QT_CONFIG(shortcut)
+        QWidget.setTabOrder(self.tabWidget, self.files_scroll_area)
+        QWidget.setTabOrder(self.files_scroll_area, self.run_scroll_area)
+        QWidget.setTabOrder(self.run_scroll_area, self.sipm_scroll_area)
+        QWidget.setTabOrder(self.sipm_scroll_area, self.acoustics_scroll_area)
+        QWidget.setTabOrder(self.acoustics_scroll_area, self.cam_scroll_area)
+        QWidget.setTabOrder(self.cam_scroll_area, self.dio_scroll_area)
+        QWidget.setTabOrder(self.dio_scroll_area, self.config_path_edit)
+        QWidget.setTabOrder(self.config_path_edit, self.config_path_but)
+        QWidget.setTabOrder(self.config_path_but, self.log_path_edit)
+        QWidget.setTabOrder(self.log_path_edit, self.log_path_but)
+        QWidget.setTabOrder(self.log_path_but, self.data_dir_edit)
+        QWidget.setTabOrder(self.data_dir_edit, self.data_dir_but)
+        QWidget.setTabOrder(self.data_dir_but, self.source_box)
+        QWidget.setTabOrder(self.source_box, self.pressure_setpoint_box)
+        QWidget.setTabOrder(self.pressure_setpoint_box, self.max_ev_time_box)
+        QWidget.setTabOrder(self.max_ev_time_box, self.max_num_ev_box)
+        QWidget.setTabOrder(self.max_num_ev_box, self.sipm_ip_addr_edit)
+        QWidget.setTabOrder(self.sipm_ip_addr_edit, self.sipm_bias_box)
+        QWidget.setTabOrder(self.sipm_bias_box, self.sipm_qp_box)
+        QWidget.setTabOrder(self.sipm_qp_box, self.comboBox)
+        QWidget.setTabOrder(self.comboBox, self.spinBox)
+        QWidget.setTabOrder(self.spinBox, self.comboBox_2)
+        QWidget.setTabOrder(self.comboBox_2, self.spinBox_4)
+        QWidget.setTabOrder(self.spinBox_4, self.spinBox_3)
+        QWidget.setTabOrder(self.spinBox_3, self.spinBox_2)
+        QWidget.setTabOrder(self.spinBox_2, self.checkBox)
+        QWidget.setTabOrder(self.checkBox, self.comboBox_3)
+        QWidget.setTabOrder(self.comboBox_3, self.checkBox_2)
+        QWidget.setTabOrder(self.checkBox_2, self.comboBox_4)
+        QWidget.setTabOrder(self.comboBox_4, self.comboBox_5)
+        QWidget.setTabOrder(self.comboBox_5, self.comboBox_6)
+        QWidget.setTabOrder(self.comboBox_6, self.comboBox_7)
+        QWidget.setTabOrder(self.comboBox_7, self.checkBox_3)
+        QWidget.setTabOrder(self.checkBox_3, self.spinBox_5)
+        QWidget.setTabOrder(self.spinBox_5, self.checkBox_4)
+        QWidget.setTabOrder(self.checkBox_4, self.checkBox_5)
+        QWidget.setTabOrder(self.checkBox_5, self.checkBox_7)
+        QWidget.setTabOrder(self.checkBox_7, self.checkBox_6)
+        QWidget.setTabOrder(self.checkBox_6, self.checkBox_11)
+        QWidget.setTabOrder(self.checkBox_11, self.checkBox_10)
+        QWidget.setTabOrder(self.checkBox_10, self.checkBox_9)
+        QWidget.setTabOrder(self.checkBox_9, self.checkBox_8)
+        QWidget.setTabOrder(self.checkBox_8, self.checkBox_12)
+        QWidget.setTabOrder(self.checkBox_12, self.checkBox_13)
+        QWidget.setTabOrder(self.checkBox_13, self.checkBox_14)
+        QWidget.setTabOrder(self.checkBox_14, self.checkBox_15)
+        QWidget.setTabOrder(self.checkBox_15, self.checkBox_16)
+        QWidget.setTabOrder(self.checkBox_16, self.checkBox_17)
+        QWidget.setTabOrder(self.checkBox_17, self.checkBox_18)
+        QWidget.setTabOrder(self.checkBox_18, self.checkBox_19)
+        QWidget.setTabOrder(self.checkBox_19, self.checkBox_20)
+        QWidget.setTabOrder(self.checkBox_20, self.checkBox_21)
+        QWidget.setTabOrder(self.checkBox_21, self.checkBox_22)
+        QWidget.setTabOrder(self.checkBox_22, self.checkBox_23)
+        QWidget.setTabOrder(self.checkBox_23, self.checkBox_24)
+        QWidget.setTabOrder(self.checkBox_24, self.checkBox_25)
+        QWidget.setTabOrder(self.checkBox_25, self.checkBox_26)
+        QWidget.setTabOrder(self.checkBox_26, self.checkBox_27)
+        QWidget.setTabOrder(self.checkBox_27, self.acous_sample_rate_box)
+        QWidget.setTabOrder(self.acous_sample_rate_box, self.acous_pre_trig_box)
+        QWidget.setTabOrder(self.acous_pre_trig_box, self.acous_trig_timeout_box)
+        QWidget.setTabOrder(self.acous_trig_timeout_box, self.acous_post_trig_box)
+        QWidget.setTabOrder(self.acous_post_trig_box, self.acous_trig_delay_box)
+        QWidget.setTabOrder(self.acous_trig_delay_box, self.acous_enable_ch1)
+        QWidget.setTabOrder(self.acous_enable_ch1, self.acous_range_ch1)
+        QWidget.setTabOrder(self.acous_range_ch1, self.acous_dc_offset_ch1)
+        QWidget.setTabOrder(self.acous_dc_offset_ch1, self.acous_trig_ch1)
+        QWidget.setTabOrder(self.acous_trig_ch1, self.acous_polarity_ch1)
+        QWidget.setTabOrder(self.acous_polarity_ch1, self.acous_threshold_ch1)
+        QWidget.setTabOrder(self.acous_threshold_ch1, self.acous_enable_ch2)
+        QWidget.setTabOrder(self.acous_enable_ch2, self.acous_range_ch2)
+        QWidget.setTabOrder(self.acous_range_ch2, self.acous_dc_offset_ch2)
+        QWidget.setTabOrder(self.acous_dc_offset_ch2, self.acous_trig_ch2)
+        QWidget.setTabOrder(self.acous_trig_ch2, self.acous_polarity_ch2)
+        QWidget.setTabOrder(self.acous_polarity_ch2, self.acous_threshold_ch2)
+        QWidget.setTabOrder(self.acous_threshold_ch2, self.acous_enable_ch3)
+        QWidget.setTabOrder(self.acous_enable_ch3, self.acous_range_ch3)
+        QWidget.setTabOrder(self.acous_range_ch3, self.acous_dc_offset_ch3)
+        QWidget.setTabOrder(self.acous_dc_offset_ch3, self.acous_trig_ch3)
+        QWidget.setTabOrder(self.acous_trig_ch3, self.acous_polarity_ch3)
+        QWidget.setTabOrder(self.acous_polarity_ch3, self.acous_threshold_ch3)
+        QWidget.setTabOrder(self.acous_threshold_ch3, self.acous_enable_ch4)
+        QWidget.setTabOrder(self.acous_enable_ch4, self.acous_range_ch4)
+        QWidget.setTabOrder(self.acous_range_ch4, self.acous_dc_offset_ch4)
+        QWidget.setTabOrder(self.acous_dc_offset_ch4, self.acous_trig_ch4)
+        QWidget.setTabOrder(self.acous_trig_ch4, self.acous_polarity_ch4)
+        QWidget.setTabOrder(self.acous_polarity_ch4, self.acous_threshold_ch4)
+        QWidget.setTabOrder(self.acous_threshold_ch4, self.acous_enable_ch5)
+        QWidget.setTabOrder(self.acous_enable_ch5, self.acous_range_ch5)
+        QWidget.setTabOrder(self.acous_range_ch5, self.acous_dc_offset_ch5)
+        QWidget.setTabOrder(self.acous_dc_offset_ch5, self.acous_trig_ch5)
+        QWidget.setTabOrder(self.acous_trig_ch5, self.acous_polarity_ch5)
+        QWidget.setTabOrder(self.acous_polarity_ch5, self.acous_threshold_ch5)
+        QWidget.setTabOrder(self.acous_threshold_ch5, self.acous_enable_ch6)
+        QWidget.setTabOrder(self.acous_enable_ch6, self.acous_range_ch6)
+        QWidget.setTabOrder(self.acous_range_ch6, self.acous_dc_offset_ch6)
+        QWidget.setTabOrder(self.acous_dc_offset_ch6, self.acous_trig_ch6)
+        QWidget.setTabOrder(self.acous_trig_ch6, self.acous_polarity_ch6)
+        QWidget.setTabOrder(self.acous_polarity_ch6, self.acous_threshold_ch6)
+        QWidget.setTabOrder(self.acous_threshold_ch6, self.acous_enable_ch7)
+        QWidget.setTabOrder(self.acous_enable_ch7, self.acous_range_ch7)
+        QWidget.setTabOrder(self.acous_range_ch7, self.acous_dc_offset_ch7)
+        QWidget.setTabOrder(self.acous_dc_offset_ch7, self.acous_trig_ch7)
+        QWidget.setTabOrder(self.acous_trig_ch7, self.acous_polarity_ch7)
+        QWidget.setTabOrder(self.acous_polarity_ch7, self.acous_threshold_ch7)
+        QWidget.setTabOrder(self.acous_threshold_ch7, self.acous_enable_ch8)
+        QWidget.setTabOrder(self.acous_enable_ch8, self.acous_range_ch8)
+        QWidget.setTabOrder(self.acous_range_ch8, self.acous_dc_offset_ch8)
+        QWidget.setTabOrder(self.acous_dc_offset_ch8, self.acous_trig_ch8)
+        QWidget.setTabOrder(self.acous_trig_ch8, self.acous_polarity_ch8)
+        QWidget.setTabOrder(self.acous_polarity_ch8, self.acous_threshold_ch8)
+        QWidget.setTabOrder(self.acous_threshold_ch8, self.acous_trig_ext)
+        QWidget.setTabOrder(self.acous_trig_ext, self.acous_polarity_ext)
+        QWidget.setTabOrder(self.acous_polarity_ext, self.acous_threshold_ext)
+        QWidget.setTabOrder(self.acous_threshold_ext, self.config_path_cam1)
+        QWidget.setTabOrder(self.config_path_cam1, self.config_path_cam2)
+        QWidget.setTabOrder(self.config_path_cam2, self.config_path_cam3)
+        QWidget.setTabOrder(self.config_path_cam3, self.data_path_cam1)
+        QWidget.setTabOrder(self.data_path_cam1, self.data_path_cam2)
+        QWidget.setTabOrder(self.data_path_cam2, self.data_path_cam3)
+        QWidget.setTabOrder(self.data_path_cam3, self.ip_addr_cam1)
+        QWidget.setTabOrder(self.ip_addr_cam1, self.ip_addr_cam2)
+        QWidget.setTabOrder(self.ip_addr_cam2, self.ip_addr_cam3)
+        QWidget.setTabOrder(self.ip_addr_cam3, self.mode_cam1)
+        QWidget.setTabOrder(self.mode_cam1, self.mode_cam2)
+        QWidget.setTabOrder(self.mode_cam2, self.mode_cam3)
+        QWidget.setTabOrder(self.mode_cam3, self.trig_wait_cam1)
+        QWidget.setTabOrder(self.trig_wait_cam1, self.trig_wait_cam2)
+        QWidget.setTabOrder(self.trig_wait_cam2, self.trig_wait_cam3)
+        QWidget.setTabOrder(self.trig_wait_cam3, self.exposure_cam1)
+        QWidget.setTabOrder(self.exposure_cam1, self.exposure_cam2)
+        QWidget.setTabOrder(self.exposure_cam2, self.exposure_cam3)
+        QWidget.setTabOrder(self.exposure_cam3, self.buffer_len_cam1)
+        QWidget.setTabOrder(self.buffer_len_cam1, self.buffer_len_cam2)
+        QWidget.setTabOrder(self.buffer_len_cam2, self.buffer_len_cam3)
+        QWidget.setTabOrder(self.buffer_len_cam3, self.post_trig_len_cam1)
+        QWidget.setTabOrder(self.post_trig_len_cam1, self.post_trig_len_cam2)
+        QWidget.setTabOrder(self.post_trig_len_cam2, self.post_trig_len_cam3)
+        QWidget.setTabOrder(self.post_trig_len_cam3, self.adc_threshold_cam1)
+        QWidget.setTabOrder(self.adc_threshold_cam1, self.adc_threshold_cam2)
+        QWidget.setTabOrder(self.adc_threshold_cam2, self.adc_threshold_cam3)
+        QWidget.setTabOrder(self.adc_threshold_cam3, self.pix_threshold_cam1)
+        QWidget.setTabOrder(self.pix_threshold_cam1, self.pix_threshold_cam2)
+        QWidget.setTabOrder(self.pix_threshold_cam2, self.pix_threshold_cam3)
+        QWidget.setTabOrder(self.pix_threshold_cam3, self.image_format_cam1)
+        QWidget.setTabOrder(self.image_format_cam1, self.image_format_cam2)
+        QWidget.setTabOrder(self.image_format_cam2, self.iamge_format_cam3)
+        QWidget.setTabOrder(self.iamge_format_cam3, self.date_format_cam1)
+        QWidget.setTabOrder(self.date_format_cam1, self.date_format_cam2)
+        QWidget.setTabOrder(self.date_format_cam2, self.date_format_cam3)
+        QWidget.setTabOrder(self.date_format_cam3, self.state_comm_pin_cam1)
+        QWidget.setTabOrder(self.state_comm_pin_cam1, self.state_comm_pin_cam2)
+        QWidget.setTabOrder(self.state_comm_pin_cam2, self.state_comm_pin_cam3)
+        QWidget.setTabOrder(self.state_comm_pin_cam3, self.trig_enbl_pin_cam1)
+        QWidget.setTabOrder(self.trig_enbl_pin_cam1, self.trig_enbl_pin_cam2)
+        QWidget.setTabOrder(self.trig_enbl_pin_cam2, self.trig_enbl_pin_cam3)
+        QWidget.setTabOrder(self.trig_enbl_pin_cam3, self.trig_latch_pin_cam1)
+        QWidget.setTabOrder(self.trig_latch_pin_cam1, self.trig_latch_pin_cam2)
+        QWidget.setTabOrder(self.trig_latch_pin_cam2, self.trig_latch_pin_cam3)
+        QWidget.setTabOrder(self.trig_latch_pin_cam3, self.state_pin_cam1)
+        QWidget.setTabOrder(self.state_pin_cam1, self.state_pin_cam2)
+        QWidget.setTabOrder(self.state_pin_cam2, self.state_pin_cam3)
+        QWidget.setTabOrder(self.state_pin_cam3, self.trig_pin_cam_1)
+        QWidget.setTabOrder(self.trig_pin_cam_1, self.trig_pin_cam2)
+        QWidget.setTabOrder(self.trig_pin_cam2, self.trig_pin_cam3)
+        QWidget.setTabOrder(self.trig_pin_cam3, self.trigger_address_edit)
+        QWidget.setTabOrder(self.trigger_address_edit, self.trigger_sketch_edit)
+        QWidget.setTabOrder(self.trigger_sketch_edit, self.clock_address_edit)
+        QWidget.setTabOrder(self.clock_address_edit, self.clock_sketch_edit)
+        QWidget.setTabOrder(self.clock_sketch_edit, self.position_address_edit)
+        QWidget.setTabOrder(self.position_address_edit, self.position_sketch_edit)
+        QWidget.setTabOrder(self.position_sketch_edit, self.trig_in_pins_edit)
+        QWidget.setTabOrder(self.trig_in_pins_edit, self.trig_latch_pins_edit)
+        QWidget.setTabOrder(self.trig_latch_pins_edit, self.trig_reset_pin_edit)
+        QWidget.setTabOrder(self.trig_reset_pin_edit, self.trig_or_pin_edit)
+        QWidget.setTabOrder(self.trig_or_pin_edit, self.on_time_pin_edit)
+        QWidget.setTabOrder(self.on_time_pin_edit, self.heartbeat_pin_edit)
+        QWidget.setTabOrder(self.heartbeat_pin_edit, self.gate_pin_wave1)
+        QWidget.setTabOrder(self.gate_pin_wave1, self.gate_period_wave1)
+        QWidget.setTabOrder(self.gate_period_wave1, self.gate_phase_wave1)
+        QWidget.setTabOrder(self.gate_phase_wave1, self.duty_wave1)
+        QWidget.setTabOrder(self.duty_wave1, self.gate_polarity_wave1)
+        QWidget.setTabOrder(self.gate_polarity_wave1, self.gate_pin_wave2)
+        QWidget.setTabOrder(self.gate_pin_wave2, self.gate_period_wave2)
+        QWidget.setTabOrder(self.gate_period_wave2, self.gate_phase_wave2)
+        QWidget.setTabOrder(self.gate_phase_wave2, self.duty_wave2)
+        QWidget.setTabOrder(self.duty_wave2, self.gate_polarity_wave2)
+        QWidget.setTabOrder(self.gate_polarity_wave2, self.gate_pin_wave3)
+        QWidget.setTabOrder(self.gate_pin_wave3, self.gate_period_wave3)
+        QWidget.setTabOrder(self.gate_period_wave3, self.gate_phase_wave3)
+        QWidget.setTabOrder(self.gate_phase_wave3, self.duty_wave3)
+        QWidget.setTabOrder(self.duty_wave3, self.gate_polarity_wave3)
+        QWidget.setTabOrder(self.gate_polarity_wave3, self.gate_pin_wave4)
+        QWidget.setTabOrder(self.gate_pin_wave4, self.gate_period_wave4)
+        QWidget.setTabOrder(self.gate_period_wave4, self.gate_phase_wave4)
+        QWidget.setTabOrder(self.gate_phase_wave4, self.duty_wave4)
+        QWidget.setTabOrder(self.duty_wave4, self.gate_polarity_wave4)
+        QWidget.setTabOrder(self.gate_polarity_wave4, self.gate_pin_wave5)
+        QWidget.setTabOrder(self.gate_pin_wave5, self.gate_period_wave5)
+        QWidget.setTabOrder(self.gate_period_wave5, self.gate_phase_wave5)
+        QWidget.setTabOrder(self.gate_phase_wave5, self.duty_wave5)
+        QWidget.setTabOrder(self.duty_wave5, self.gate_polarity_wave5)
+        QWidget.setTabOrder(self.gate_polarity_wave5, self.gate_pin_wave6)
+        QWidget.setTabOrder(self.gate_pin_wave6, self.gate_period_wave6)
+        QWidget.setTabOrder(self.gate_period_wave6, self.gate_phase_wave6)
+        QWidget.setTabOrder(self.gate_phase_wave6, self.duty_wave6)
+        QWidget.setTabOrder(self.duty_wave6, self.gate_polarity_wave6)
+        QWidget.setTabOrder(self.gate_polarity_wave6, self.gate_pin_wave7)
+        QWidget.setTabOrder(self.gate_pin_wave7, self.gate_period_wave7)
+        QWidget.setTabOrder(self.gate_period_wave7, self.gate_phase_wave7)
+        QWidget.setTabOrder(self.gate_phase_wave7, self.duty_wave7)
+        QWidget.setTabOrder(self.duty_wave7, self.gate_polarity_wave7)
+        QWidget.setTabOrder(self.gate_polarity_wave7, self.gate_pin_wave8)
+        QWidget.setTabOrder(self.gate_pin_wave8, self.gate_period_wave8)
+        QWidget.setTabOrder(self.gate_period_wave8, self.gate_phase_wave8)
+        QWidget.setTabOrder(self.gate_phase_wave8, self.duty_wave8)
+        QWidget.setTabOrder(self.duty_wave8, self.gate_polarity_wave8)
+        QWidget.setTabOrder(self.gate_polarity_wave8, self.gate_pin_wave9)
+        QWidget.setTabOrder(self.gate_pin_wave9, self.gate_period_wave9)
+        QWidget.setTabOrder(self.gate_period_wave9, self.gate_phase_wave9)
+        QWidget.setTabOrder(self.gate_phase_wave9, self.duty_wave9)
+        QWidget.setTabOrder(self.duty_wave9, self.gate_polarity_wave9)
 
         self.toolBar.addAction(self.actionClose_Window)
         self.toolBar.addAction(self.actionReloadConfig)
@@ -2288,7 +2592,7 @@ class Ui_SettingsWindow(object):
         self.actionReloadConfig.triggered.connect(SettingsWindow.load_config)
         self.log_path_but.clicked.connect(SettingsWindow.select_log_path)
 
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(2)
 
 
         QMetaObject.connectSlotsByName(SettingsWindow)
@@ -2329,22 +2633,23 @@ class Ui_SettingsWindow(object):
         self.log_path_but.setText(QCoreApplication.translate("SettingsWindow", u"...", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.general_tab), QCoreApplication.translate("SettingsWindow", u"General", None))
         self.max_num_ev_label.setText(QCoreApplication.translate("SettingsWindow", u"Max Num of Events", None))
-        self.comboBox_23.setItemText(0, QCoreApplication.translate("SettingsWindow", u"Cf-252", None))
-        self.comboBox_23.setItemText(1, QCoreApplication.translate("SettingsWindow", u"Co-57", None))
-        self.comboBox_23.setItemText(2, QCoreApplication.translate("SettingsWindow", u"Cs-137", None))
+        self.source_box.setItemText(0, QCoreApplication.translate("SettingsWindow", u"Bg", None))
+        self.source_box.setItemText(1, QCoreApplication.translate("SettingsWindow", u"Cf-252", None))
+        self.source_box.setItemText(2, QCoreApplication.translate("SettingsWindow", u"Co-57", None))
+        self.source_box.setItemText(3, QCoreApplication.translate("SettingsWindow", u"Cs-137", None))
 
         self.max_ev_time_box.setSuffix(QCoreApplication.translate("SettingsWindow", u"s", None))
         self.max_ev_time_label.setText(QCoreApplication.translate("SettingsWindow", u"Max Event Time", None))
-        self.max_ev_time_label_2.setText(QCoreApplication.translate("SettingsWindow", u"Source", None))
-        self.max_ev_time_label_3.setText(QCoreApplication.translate("SettingsWindow", u"Pressure Setpoint", None))
-        self.max_num_ev_box_2.setSuffix(QCoreApplication.translate("SettingsWindow", u"psia", None))
+        self.source_label.setText(QCoreApplication.translate("SettingsWindow", u"Source", None))
+        self.pressure_setpoint_label.setText(QCoreApplication.translate("SettingsWindow", u"Pressure Setpoint", None))
+        self.pressure_setpoint_box.setSuffix(QCoreApplication.translate("SettingsWindow", u"psia", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.run_tab), QCoreApplication.translate("SettingsWindow", u"Run", None))
-        self.label_2.setText(QCoreApplication.translate("SettingsWindow", u"IP Addr", None))
-        self.doubleSpinBox.setSuffix(QCoreApplication.translate("SettingsWindow", u"V", None))
-        self.doubleSpinBox_2.setSuffix(QCoreApplication.translate("SettingsWindow", u"V", None))
-        self.label.setText(QCoreApplication.translate("SettingsWindow", u"QP Voltage", None))
-        self.label_31.setText(QCoreApplication.translate("SettingsWindow", u"Bias Voltage", None))
-        self.label_3.setText(QCoreApplication.translate("SettingsWindow", u"SiPM Amplifier", None))
+        self.sipm_ip_addr_label.setText(QCoreApplication.translate("SettingsWindow", u"IP Addr", None))
+        self.sipm_bias_box.setSuffix(QCoreApplication.translate("SettingsWindow", u"V", None))
+        self.sipm_qp_box.setSuffix(QCoreApplication.translate("SettingsWindow", u"V", None))
+        self.sipm_qp_label.setText(QCoreApplication.translate("SettingsWindow", u"QP Voltage", None))
+        self.sipm_bias_label.setText(QCoreApplication.translate("SettingsWindow", u"Bias Voltage", None))
+        self.sipm_amp_label.setText(QCoreApplication.translate("SettingsWindow", u"SiPM Amplifier", None))
         self.comboBox_4.setItemText(0, QCoreApplication.translate("SettingsWindow", u"Positive", None))
         self.comboBox_4.setItemText(1, QCoreApplication.translate("SettingsWindow", u"Negative", None))
 
@@ -2553,64 +2858,70 @@ class Ui_SettingsWindow(object):
         self.iamge_format_cam3.setItemText(1, QCoreApplication.translate("SettingsWindow", u"jpg", None))
 
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.cam_tab), QCoreApplication.translate("SettingsWindow", u"Camera", None))
-        self.fifo_layout.setText(QCoreApplication.translate("SettingsWindow", u"Trig FIFO Arduino", None))
+        self.position_arduino_label.setText(QCoreApplication.translate("SettingsWindow", u"Position", None))
+        self.arduino_address_label.setText(QCoreApplication.translate("SettingsWindow", u"Arduino Address", None))
+        self.trigger_arduino_label.setText(QCoreApplication.translate("SettingsWindow", u"Trigger", None))
+        self.clock_arduino_label.setText(QCoreApplication.translate("SettingsWindow", u"Clock", None))
+        self.sketch_location_label.setText(QCoreApplication.translate("SettingsWindow", u"Sketch Location", None))
+        self.dio_general_label.setText(QCoreApplication.translate("SettingsWindow", u"General", None))
+        self.trig_latch_pins_label.setText(QCoreApplication.translate("SettingsWindow", u"Trig Latch Pins", None))
+        self.trig_or_pin_label.setText(QCoreApplication.translate("SettingsWindow", u"Trig Or Pin", None))
+        self.heartbeat_pin_label.setText(QCoreApplication.translate("SettingsWindow", u"Heartbeat Pin", None))
         self.trig_reset_pin_label.setText(QCoreApplication.translate("SettingsWindow", u"Trig Reset Pin", None))
         self.trig_in_pins_label.setText(QCoreApplication.translate("SettingsWindow", u"Trig In Pins", None))
-        self.trig_or_pin_label.setText(QCoreApplication.translate("SettingsWindow", u"Trig Or Pin", None))
-        self.trig_latch_pins_label.setText(QCoreApplication.translate("SettingsWindow", u"Trig Latch Pins", None))
         self.on_time_pin_label.setText(QCoreApplication.translate("SettingsWindow", u"On-Time Pin", None))
-        self.heartbeat_pin_label.setText(QCoreApplication.translate("SettingsWindow", u"Heartbeat Pin", None))
-        self.gate_label.setText(QCoreApplication.translate("SettingsWindow", u"Gate Generator Arduino", None))
-        self.wave1_label.setText(QCoreApplication.translate("SettingsWindow", u"Wave 1", None))
-        self.wave8_label.setText(QCoreApplication.translate("SettingsWindow", u"Wave 8", None))
-        self.wave6_label.setText(QCoreApplication.translate("SettingsWindow", u"Wave 6", None))
-        self.duty_label.setText(QCoreApplication.translate("SettingsWindow", u"Duty", None))
-        self.gate_period_label.setText(QCoreApplication.translate("SettingsWindow", u"Period", None))
-        self.duty_wave3.setSuffix(QCoreApplication.translate("SettingsWindow", u"%", None))
-        self.wave5_label.setText(QCoreApplication.translate("SettingsWindow", u"Wave 5", None))
-        self.wave4_label.setText(QCoreApplication.translate("SettingsWindow", u"Wave 4", None))
-        self.wave7_label.setText(QCoreApplication.translate("SettingsWindow", u"Wave 7", None))
-        self.gate_polarity_label.setText(QCoreApplication.translate("SettingsWindow", u"Polarity", None))
-        self.gate_pin_label.setText(QCoreApplication.translate("SettingsWindow", u"Pin", None))
-        self.wave2_label.setText(QCoreApplication.translate("SettingsWindow", u"Wave 2", None))
-        self.duty_wave1.setSuffix(QCoreApplication.translate("SettingsWindow", u"%", None))
-        self.gate_phase_label.setText(QCoreApplication.translate("SettingsWindow", u"Phase", None))
-        self.duty_wave2.setSuffix(QCoreApplication.translate("SettingsWindow", u"%", None))
-        self.wave3_label.setText(QCoreApplication.translate("SettingsWindow", u"Wave 3", None))
-        self.wave9_label.setText(QCoreApplication.translate("SettingsWindow", u"Wave 9", None))
-        self.duty_wave4.setSuffix(QCoreApplication.translate("SettingsWindow", u"%", None))
-        self.duty_wave5.setSuffix(QCoreApplication.translate("SettingsWindow", u"%", None))
-        self.duty_wave6.setSuffix(QCoreApplication.translate("SettingsWindow", u"%", None))
-        self.duty_wave7.setSuffix(QCoreApplication.translate("SettingsWindow", u"%", None))
-        self.duty_wave8.setSuffix(QCoreApplication.translate("SettingsWindow", u"%", None))
-        self.duty_wave9.setSuffix(QCoreApplication.translate("SettingsWindow", u"%", None))
+        self.fifo_layout.setText(QCoreApplication.translate("SettingsWindow", u"Trig FIFO Arduino", None))
         self.gate_polarity_wave1.setItemText(0, QCoreApplication.translate("SettingsWindow", u"Normal", None))
         self.gate_polarity_wave1.setItemText(1, QCoreApplication.translate("SettingsWindow", u"Reverse", None))
-
-        self.gate_polarity_wave2.setItemText(0, QCoreApplication.translate("SettingsWindow", u"Normal", None))
-        self.gate_polarity_wave2.setItemText(1, QCoreApplication.translate("SettingsWindow", u"Reverse", None))
-
-        self.gate_polarity_wave3.setItemText(0, QCoreApplication.translate("SettingsWindow", u"Normal", None))
-        self.gate_polarity_wave3.setItemText(1, QCoreApplication.translate("SettingsWindow", u"Reverse", None))
-
-        self.gate_polarity_wave4.setItemText(0, QCoreApplication.translate("SettingsWindow", u"Normal", None))
-        self.gate_polarity_wave4.setItemText(1, QCoreApplication.translate("SettingsWindow", u"Reverse", None))
 
         self.gate_polarity_wave5.setItemText(0, QCoreApplication.translate("SettingsWindow", u"Normal", None))
         self.gate_polarity_wave5.setItemText(1, QCoreApplication.translate("SettingsWindow", u"Reverse", None))
 
-        self.gate_polarity_wave6.setItemText(0, QCoreApplication.translate("SettingsWindow", u"Normal", None))
-        self.gate_polarity_wave6.setItemText(1, QCoreApplication.translate("SettingsWindow", u"Reverse", None))
+        self.duty_wave2.setSuffix(QCoreApplication.translate("SettingsWindow", u"%", None))
+        self.wave1_label.setText(QCoreApplication.translate("SettingsWindow", u"Wave 1", None))
+        self.wave3_label.setText(QCoreApplication.translate("SettingsWindow", u"Wave 3", None))
+        self.gate_pin_label.setText(QCoreApplication.translate("SettingsWindow", u"Pin", None))
+        self.duty_wave8.setSuffix(QCoreApplication.translate("SettingsWindow", u"%", None))
+        self.wave4_label.setText(QCoreApplication.translate("SettingsWindow", u"Wave 4", None))
+        self.duty_wave3.setSuffix(QCoreApplication.translate("SettingsWindow", u"%", None))
+        self.gate_polarity_wave8.setItemText(0, QCoreApplication.translate("SettingsWindow", u"Normal", None))
+        self.gate_polarity_wave8.setItemText(1, QCoreApplication.translate("SettingsWindow", u"Reverse", None))
 
         self.gate_polarity_wave7.setItemText(0, QCoreApplication.translate("SettingsWindow", u"Normal", None))
         self.gate_polarity_wave7.setItemText(1, QCoreApplication.translate("SettingsWindow", u"Reverse", None))
 
-        self.gate_polarity_wave8.setItemText(0, QCoreApplication.translate("SettingsWindow", u"Normal", None))
-        self.gate_polarity_wave8.setItemText(1, QCoreApplication.translate("SettingsWindow", u"Reverse", None))
+        self.gate_polarity_label.setText(QCoreApplication.translate("SettingsWindow", u"Polarity", None))
+        self.wave6_label.setText(QCoreApplication.translate("SettingsWindow", u"Wave 6", None))
+        self.duty_wave4.setSuffix(QCoreApplication.translate("SettingsWindow", u"%", None))
+        self.wave5_label.setText(QCoreApplication.translate("SettingsWindow", u"Wave 5", None))
+        self.duty_wave6.setSuffix(QCoreApplication.translate("SettingsWindow", u"%", None))
+        self.gate_polarity_wave2.setItemText(0, QCoreApplication.translate("SettingsWindow", u"Normal", None))
+        self.gate_polarity_wave2.setItemText(1, QCoreApplication.translate("SettingsWindow", u"Reverse", None))
+
+        self.duty_wave7.setSuffix(QCoreApplication.translate("SettingsWindow", u"%", None))
+        self.gate_phase_label.setText(QCoreApplication.translate("SettingsWindow", u"Phase", None))
+        self.wave2_label.setText(QCoreApplication.translate("SettingsWindow", u"Wave 2", None))
+        self.duty_wave1.setSuffix(QCoreApplication.translate("SettingsWindow", u"%", None))
+        self.duty_wave9.setSuffix(QCoreApplication.translate("SettingsWindow", u"%", None))
+        self.duty_label.setText(QCoreApplication.translate("SettingsWindow", u"Duty", None))
+        self.wave7_label.setText(QCoreApplication.translate("SettingsWindow", u"Wave 7", None))
+        self.wave9_label.setText(QCoreApplication.translate("SettingsWindow", u"Wave 9", None))
+        self.gate_period_label.setText(QCoreApplication.translate("SettingsWindow", u"Period", None))
+        self.gate_polarity_wave4.setItemText(0, QCoreApplication.translate("SettingsWindow", u"Normal", None))
+        self.gate_polarity_wave4.setItemText(1, QCoreApplication.translate("SettingsWindow", u"Reverse", None))
 
         self.gate_polarity_wave9.setItemText(0, QCoreApplication.translate("SettingsWindow", u"Normal", None))
         self.gate_polarity_wave9.setItemText(1, QCoreApplication.translate("SettingsWindow", u"Reverse", None))
 
+        self.duty_wave5.setSuffix(QCoreApplication.translate("SettingsWindow", u"%", None))
+        self.gate_polarity_wave3.setItemText(0, QCoreApplication.translate("SettingsWindow", u"Normal", None))
+        self.gate_polarity_wave3.setItemText(1, QCoreApplication.translate("SettingsWindow", u"Reverse", None))
+
+        self.wave8_label.setText(QCoreApplication.translate("SettingsWindow", u"Wave 8", None))
+        self.gate_polarity_wave6.setItemText(0, QCoreApplication.translate("SettingsWindow", u"Normal", None))
+        self.gate_polarity_wave6.setItemText(1, QCoreApplication.translate("SettingsWindow", u"Reverse", None))
+
+        self.gate_label.setText(QCoreApplication.translate("SettingsWindow", u"Gate Generator Arduino", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.dio_tab), QCoreApplication.translate("SettingsWindow", u"DIO", None))
         self.toolBar.setWindowTitle(QCoreApplication.translate("SettingsWindow", u"toolBar", None))
     # retranslateUi

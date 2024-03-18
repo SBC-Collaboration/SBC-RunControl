@@ -31,19 +31,29 @@ class Config:
         # TODO: implement loading and saving for more settings components
 
     def apply_config(self, settings_ui):
-        general_config = {}
-        general_config["config_path"] = settings_ui.config_path_edit.text()
-        general_config["log_path"] = settings_ui.log_path_edit.text()
-        general_config["data_dir"] = settings_ui.data_dir_edit.text()
+        self.config = {}
+
+        # apply general config
+        self.config["general"] = {}
+        self.config["general"]["config_path"] = settings_ui.config_path_edit.text()
+        self.config["general"]["log_path"] = settings_ui.log_path_edit.text()
+        self.config["general"]["data_dir"] = settings_ui.data_dir_edit.text()
 
         # apply run config
-        run_config = {}
-        run_config["max_ev_time"] = settings_ui.max_ev_time_box.value()
-        run_config["max_num_evs"] = settings_ui.max_num_ev_box.value()
+        self.config["run"] = {}
+        self.config["run"]["source"] = settings_ui.source_box.currentText()
+        self.config["run"]["pressure_setpoint"] = settings_ui.pressure_setpoint_box.value()
+        self.config["run"]["max_ev_time"] = settings_ui.max_ev_time_box.value()
+        self.config["run"]["max_num_evs"] = settings_ui.max_num_ev_box.value()
 
-        # congregate all configs
-        self.config["general"] = general_config
-        self.config["run"] = run_config
+        self.config["scint"] = {}
+        self.config["scint"]["sipm"] = {}
+        self.config["scint"]["sipm"]["ip_addr"] = settings_ui.sipm_ip_addr_edit.text()
+        self.config["scint"]["sipm"]["bias"] = settings_ui.sipm_bias_box.value()
+        self.config["scint"]["sipm"]["qp"] = settings_ui.sipm_qp_box.value()
+
+        self.config["scint"]["caen"] = {}
+        logging.info("Settings applied")
 
     def save_config(self, settings_ui):
         self.apply_config(settings_ui)

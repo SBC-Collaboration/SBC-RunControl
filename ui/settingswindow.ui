@@ -49,7 +49,7 @@
     <item row="2" column="1">
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <property name="tabsClosable">
        <bool>false</bool>
@@ -96,8 +96,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>388</width>
-             <height>442</height>
+             <width>390</width>
+             <height>438</height>
             </rect>
            </property>
            <property name="maximumSize">
@@ -261,8 +261,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>388</width>
-             <height>442</height>
+             <width>390</width>
+             <height>438</height>
             </rect>
            </property>
            <property name="maximumSize">
@@ -314,10 +314,15 @@
              </widget>
             </item>
             <item row="0" column="1">
-             <widget class="QComboBox" name="comboBox_23">
+             <widget class="QComboBox" name="source_box">
               <property name="editable">
                <bool>true</bool>
               </property>
+              <item>
+               <property name="text">
+                <string>Bg</string>
+               </property>
+              </item>
               <item>
                <property name="text">
                 <string>Cf-252</string>
@@ -356,7 +361,7 @@
              </widget>
             </item>
             <item row="0" column="0">
-             <widget class="QLabel" name="max_ev_time_label_2">
+             <widget class="QLabel" name="source_label">
               <property name="text">
                <string>Source</string>
               </property>
@@ -382,7 +387,7 @@
              </widget>
             </item>
             <item row="0" column="2">
-             <widget class="QLabel" name="max_ev_time_label_3">
+             <widget class="QLabel" name="pressure_setpoint_label">
               <property name="text">
                <string>Pressure Setpoint</string>
               </property>
@@ -395,7 +400,7 @@
              </widget>
             </item>
             <item row="0" column="3">
-             <widget class="QSpinBox" name="max_num_ev_box_2">
+             <widget class="QSpinBox" name="pressure_setpoint_box">
               <property name="suffix">
                <string>psia</string>
               </property>
@@ -452,8 +457,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>388</width>
-             <height>442</height>
+             <width>390</width>
+             <height>438</height>
             </rect>
            </property>
            <property name="maximumSize">
@@ -484,7 +489,7 @@
                <number>3</number>
               </property>
               <item row="1" column="0">
-               <widget class="QLabel" name="label_2">
+               <widget class="QLabel" name="sipm_ip_addr_label">
                 <property name="text">
                  <string>IP Addr</string>
                 </property>
@@ -494,7 +499,7 @@
                </widget>
               </item>
               <item row="2" column="1">
-               <widget class="QDoubleSpinBox" name="doubleSpinBox">
+               <widget class="QDoubleSpinBox" name="sipm_bias_box">
                 <property name="suffix">
                  <string>V</string>
                 </property>
@@ -504,7 +509,7 @@
                </widget>
               </item>
               <item row="2" column="3">
-               <widget class="QDoubleSpinBox" name="doubleSpinBox_2">
+               <widget class="QDoubleSpinBox" name="sipm_qp_box">
                 <property name="suffix">
                  <string>V</string>
                 </property>
@@ -514,10 +519,10 @@
                </widget>
               </item>
               <item row="1" column="1" colspan="3">
-               <widget class="QLineEdit" name="lineEdit"/>
+               <widget class="QLineEdit" name="sipm_ip_addr_edit"/>
               </item>
               <item row="2" column="2">
-               <widget class="QLabel" name="label">
+               <widget class="QLabel" name="sipm_qp_label">
                 <property name="text">
                  <string>QP Voltage</string>
                 </property>
@@ -527,7 +532,7 @@
                </widget>
               </item>
               <item row="2" column="0">
-               <widget class="QLabel" name="label_31">
+               <widget class="QLabel" name="sipm_bias_label">
                 <property name="text">
                  <string>Bias Voltage</string>
                 </property>
@@ -537,7 +542,7 @@
                </widget>
               </item>
               <item row="0" column="0" colspan="4">
-               <widget class="QLabel" name="label_3">
+               <widget class="QLabel" name="sipm_amp_label">
                 <property name="text">
                  <string>SiPM Amplifier</string>
                 </property>
@@ -1265,8 +1270,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>339</width>
-             <height>332</height>
+             <width>390</width>
+             <height>438</height>
             </rect>
            </property>
            <property name="maximumSize">
@@ -2112,8 +2117,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>261</width>
-             <height>427</height>
+             <width>376</width>
+             <height>456</height>
             </rect>
            </property>
            <property name="maximumSize">
@@ -2981,8 +2986,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>272</width>
-             <height>382</height>
+             <width>376</width>
+             <height>534</height>
             </rect>
            </property>
            <property name="maximumSize">
@@ -2993,7 +2998,7 @@
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_2">
             <property name="spacing">
-             <number>0</number>
+             <number>6</number>
             </property>
             <property name="leftMargin">
              <number>0</number>
@@ -3008,34 +3013,149 @@
              <number>0</number>
             </property>
             <item>
-             <layout class="QGridLayout" name="fifo_grid_layout">
-              <property name="topMargin">
-               <number>6</number>
-              </property>
-              <property name="bottomMargin">
-               <number>6</number>
-              </property>
+             <layout class="QGridLayout" name="dio_general_grid_layout">
               <property name="spacing">
                <number>3</number>
               </property>
-              <item row="3" column="3">
-               <widget class="QSpinBox" name="trig_or_pin_edit"/>
-              </item>
-              <item row="0" column="0" colspan="4">
-               <widget class="QLabel" name="fifo_layout">
+              <item row="4" column="0">
+               <widget class="QLabel" name="position_arduino_label">
                 <property name="text">
-                 <string>Trig FIFO Arduino</string>
+                 <string>Position</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="QLineEdit" name="trigger_address_edit"/>
+              </item>
+              <item row="4" column="2">
+               <widget class="QLineEdit" name="position_sketch_edit"/>
+              </item>
+              <item row="3" column="1">
+               <widget class="QLineEdit" name="clock_address_edit"/>
+              </item>
+              <item row="1" column="1">
+               <widget class="QLabel" name="arduino_address_label">
+                <property name="text">
+                 <string>Arduino Address</string>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="1">
+               <widget class="QLineEdit" name="position_address_edit"/>
+              </item>
+              <item row="2" column="0">
+               <widget class="QLabel" name="trigger_arduino_label">
+                <property name="text">
+                 <string>Trigger</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="2">
+               <widget class="QLineEdit" name="trigger_sketch_edit"/>
+              </item>
+              <item row="3" column="0">
+               <widget class="QLabel" name="clock_arduino_label">
+                <property name="text">
+                 <string>Clock</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="2">
+               <widget class="QLabel" name="sketch_location_label">
+                <property name="text">
+                 <string>Sketch Location</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="2">
+               <widget class="QLineEdit" name="clock_sketch_edit"/>
+              </item>
+              <item row="0" column="0" colspan="3">
+               <widget class="QLabel" name="dio_general_label">
+                <property name="font">
+                 <font>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>General</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignCenter</set>
                 </property>
                </widget>
               </item>
+             </layout>
+            </item>
+            <item>
+             <widget class="Line" name="dio_line">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <layout class="QGridLayout" name="fifo_grid_layout">
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+              <property name="spacing">
+               <number>3</number>
+              </property>
+              <item row="2" column="0">
+               <widget class="QLabel" name="trig_latch_pins_label">
+                <property name="text">
+                 <string>Trig Latch Pins</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>trig_latch_pins_edit</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1" colspan="3">
+               <widget class="QLineEdit" name="trig_latch_pins_edit"/>
+              </item>
               <item row="3" column="1">
                <widget class="QSpinBox" name="trig_reset_pin_edit"/>
               </item>
-              <item row="1" column="1" colspan="3">
-               <widget class="QLineEdit" name="trig_in_pins_edit"/>
+              <item row="4" column="1">
+               <widget class="QSpinBox" name="on_time_pin_edit"/>
+              </item>
+              <item row="3" column="2">
+               <widget class="QLabel" name="trig_or_pin_label">
+                <property name="text">
+                 <string>Trig Or Pin</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="2">
+               <widget class="QLabel" name="heartbeat_pin_label">
+                <property name="text">
+                 <string>Heartbeat Pin</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>heartbeat_pin_edit</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="3">
+               <widget class="QSpinBox" name="heartbeat_pin_edit">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+               </widget>
               </item>
               <item row="3" column="0">
                <widget class="QLabel" name="trig_reset_pin_label">
@@ -3063,34 +3183,8 @@
                 </property>
                </widget>
               </item>
-              <item row="2" column="1" colspan="3">
-               <widget class="QLineEdit" name="trig_latch_pins_edit"/>
-              </item>
-              <item row="3" column="2">
-               <widget class="QLabel" name="trig_or_pin_label">
-                <property name="text">
-                 <string>Trig Or Pin</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>trig_or_pin_edit</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="0">
-               <widget class="QLabel" name="trig_latch_pins_label">
-                <property name="text">
-                 <string>Trig Latch Pins</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>trig_latch_pins_edit</cstring>
-                </property>
-               </widget>
+              <item row="1" column="1" colspan="3">
+               <widget class="QLineEdit" name="trig_in_pins_edit"/>
               </item>
               <item row="4" column="0">
                <widget class="QLabel" name="on_time_pin_label">
@@ -3105,347 +3199,55 @@
                 </property>
                </widget>
               </item>
-              <item row="4" column="1">
-               <widget class="QSpinBox" name="on_time_pin_edit"/>
-              </item>
-              <item row="4" column="2">
-               <widget class="QLabel" name="heartbeat_pin_label">
+              <item row="0" column="0" colspan="4">
+               <widget class="QLabel" name="fifo_layout">
+                <property name="font">
+                 <font>
+                  <bold>true</bold>
+                 </font>
+                </property>
                 <property name="text">
-                 <string>Heartbeat Pin</string>
+                 <string>Trig FIFO Arduino</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>heartbeat_pin_edit</cstring>
+                 <set>Qt::AlignCenter</set>
                 </property>
                </widget>
               </item>
-              <item row="4" column="3">
-               <widget class="QSpinBox" name="heartbeat_pin_edit"/>
+              <item row="3" column="3">
+               <widget class="QSpinBox" name="trig_or_pin_edit">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+               </widget>
               </item>
              </layout>
             </item>
             <item>
-             <widget class="Line" name="dio_line">
+             <widget class="Line" name="dio_line_3">
               <property name="orientation">
                <enum>Qt::Horizontal</enum>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QLabel" name="gate_label">
-              <property name="text">
-               <string>Gate Generator Arduino</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-            <item>
              <layout class="QGridLayout" name="gate_grid_layout">
               <property name="leftMargin">
-               <number>6</number>
+               <number>0</number>
               </property>
               <property name="topMargin">
-               <number>6</number>
+               <number>0</number>
               </property>
               <property name="spacing">
                <number>3</number>
               </property>
-              <item row="2" column="0">
-               <widget class="QLabel" name="wave1_label">
-                <property name="text">
-                 <string>Wave 1</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="1">
-               <widget class="QSpinBox" name="gate_pin_wave3"/>
-              </item>
-              <item row="2" column="1">
-               <widget class="QSpinBox" name="gate_pin_wave1"/>
-              </item>
-              <item row="2" column="3">
-               <widget class="QSpinBox" name="gate_phase_wave1">
-                <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::UpDownArrows</enum>
-                </property>
-                <property name="keyboardTracking">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-              <item row="9" column="0">
-               <widget class="QLabel" name="wave8_label">
-                <property name="text">
-                 <string>Wave 8</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="7" column="0">
-               <widget class="QLabel" name="wave6_label">
-                <property name="text">
-                 <string>Wave 6</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="4">
-               <widget class="QLabel" name="duty_label">
-                <property name="text">
-                 <string>Duty</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="2">
-               <widget class="QLabel" name="gate_period_label">
-                <property name="text">
-                 <string>Period</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="2">
-               <widget class="QSpinBox" name="gate_period_wave3"/>
-              </item>
-              <item row="3" column="3">
-               <widget class="QSpinBox" name="gate_phase_wave2"/>
-              </item>
-              <item row="4" column="4">
-               <widget class="QSpinBox" name="duty_wave3">
-                <property name="suffix">
-                 <string>%</string>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="2">
-               <widget class="QSpinBox" name="gate_period_wave1"/>
-              </item>
-              <item row="6" column="0">
-               <widget class="QLabel" name="wave5_label">
-                <property name="text">
-                 <string>Wave 5</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="5" column="0">
-               <widget class="QLabel" name="wave4_label">
-                <property name="text">
-                 <string>Wave 4</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="8" column="0">
-               <widget class="QLabel" name="wave7_label">
-                <property name="text">
-                 <string>Wave 7</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="3">
-               <widget class="QSpinBox" name="gate_phase_wave3"/>
-              </item>
-              <item row="3" column="2">
-               <widget class="QSpinBox" name="gate_period_wave2"/>
-              </item>
-              <item row="0" column="5">
-               <widget class="QLabel" name="gate_polarity_label">
-                <property name="text">
-                 <string>Polarity</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="1">
-               <widget class="QSpinBox" name="gate_pin_wave2"/>
-              </item>
-              <item row="0" column="1">
-               <widget class="QLabel" name="gate_pin_label">
-                <property name="text">
-                 <string>Pin</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="0">
-               <widget class="QLabel" name="wave2_label">
-                <property name="text">
-                 <string>Wave 2</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="4">
-               <widget class="QSpinBox" name="duty_wave1">
-                <property name="suffix">
-                 <string>%</string>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="3">
-               <widget class="QLabel" name="gate_phase_label">
-                <property name="text">
-                 <string>Phase</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="4">
-               <widget class="QSpinBox" name="duty_wave2">
-                <property name="suffix">
-                 <string>%</string>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="0">
-               <widget class="QLabel" name="wave3_label">
-                <property name="text">
-                 <string>Wave 3</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="10" column="0">
-               <widget class="QLabel" name="wave9_label">
-                <property name="text">
-                 <string>Wave 9</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="5" column="2">
-               <widget class="QSpinBox" name="gate_period_wave4"/>
-              </item>
-              <item row="5" column="3">
-               <widget class="QSpinBox" name="gate_phase_wave4"/>
-              </item>
-              <item row="5" column="4">
-               <widget class="QSpinBox" name="duty_wave4">
-                <property name="suffix">
-                 <string>%</string>
-                </property>
-               </widget>
-              </item>
-              <item row="5" column="1">
-               <widget class="QSpinBox" name="gate_pin_wave4"/>
-              </item>
-              <item row="6" column="1">
-               <widget class="QSpinBox" name="gate_pin_wave5"/>
-              </item>
-              <item row="6" column="2">
+              <item row="7" column="2">
                <widget class="QSpinBox" name="gate_period_wave5"/>
               </item>
-              <item row="6" column="3">
-               <widget class="QSpinBox" name="gate_phase_wave5"/>
+              <item row="3" column="1">
+               <widget class="QSpinBox" name="gate_pin_wave1"/>
               </item>
-              <item row="6" column="4">
-               <widget class="QSpinBox" name="duty_wave5">
-                <property name="suffix">
-                 <string>%</string>
-                </property>
-               </widget>
-              </item>
-              <item row="7" column="1">
-               <widget class="QSpinBox" name="gate_pin_wave6"/>
-              </item>
-              <item row="7" column="2">
-               <widget class="QSpinBox" name="gate_period_wave6"/>
-              </item>
-              <item row="7" column="3">
-               <widget class="QSpinBox" name="gate_phase_wave6"/>
-              </item>
-              <item row="7" column="4">
-               <widget class="QSpinBox" name="duty_wave6">
-                <property name="suffix">
-                 <string>%</string>
-                </property>
-               </widget>
-              </item>
-              <item row="8" column="1">
-               <widget class="QSpinBox" name="gate_pin_wave7"/>
-              </item>
-              <item row="8" column="2">
-               <widget class="QSpinBox" name="gate_period_wave7"/>
-              </item>
-              <item row="8" column="3">
-               <widget class="QSpinBox" name="gate_phase_wave7"/>
-              </item>
-              <item row="8" column="4">
-               <widget class="QSpinBox" name="duty_wave7">
-                <property name="suffix">
-                 <string>%</string>
-                </property>
-               </widget>
-              </item>
-              <item row="9" column="1">
-               <widget class="QSpinBox" name="gate_pin_wave8"/>
-              </item>
-              <item row="9" column="2">
-               <widget class="QSpinBox" name="gate_period_wave8"/>
-              </item>
-              <item row="9" column="3">
-               <widget class="QSpinBox" name="gate_phase_wave8"/>
-              </item>
-              <item row="9" column="4">
-               <widget class="QSpinBox" name="duty_wave8">
-                <property name="suffix">
-                 <string>%</string>
-                </property>
-               </widget>
-              </item>
-              <item row="10" column="1">
-               <widget class="QSpinBox" name="gate_pin_wave9"/>
-              </item>
-              <item row="10" column="2">
-               <widget class="QSpinBox" name="gate_period_wave9"/>
-              </item>
-              <item row="10" column="3">
-               <widget class="QSpinBox" name="gate_phase_wave9"/>
-              </item>
-              <item row="10" column="4">
-               <widget class="QSpinBox" name="duty_wave9">
-                <property name="suffix">
-                 <string>%</string>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="5">
+              <item row="3" column="5">
                <widget class="QComboBox" name="gate_polarity_wave1">
                 <item>
                  <property name="text">
@@ -3459,49 +3261,7 @@
                 </item>
                </widget>
               </item>
-              <item row="3" column="5">
-               <widget class="QComboBox" name="gate_polarity_wave2">
-                <item>
-                 <property name="text">
-                  <string>Normal</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Reverse</string>
-                 </property>
-                </item>
-               </widget>
-              </item>
-              <item row="4" column="5">
-               <widget class="QComboBox" name="gate_polarity_wave3">
-                <item>
-                 <property name="text">
-                  <string>Normal</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Reverse</string>
-                 </property>
-                </item>
-               </widget>
-              </item>
-              <item row="5" column="5">
-               <widget class="QComboBox" name="gate_polarity_wave4">
-                <item>
-                 <property name="text">
-                  <string>Normal</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Reverse</string>
-                 </property>
-                </item>
-               </widget>
-              </item>
-              <item row="6" column="5">
+              <item row="7" column="5">
                <widget class="QComboBox" name="gate_polarity_wave5">
                 <item>
                  <property name="text">
@@ -3515,35 +3275,87 @@
                 </item>
                </widget>
               </item>
-              <item row="7" column="5">
-               <widget class="QComboBox" name="gate_polarity_wave6">
-                <item>
-                 <property name="text">
-                  <string>Normal</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Reverse</string>
-                 </property>
-                </item>
+              <item row="4" column="4">
+               <widget class="QSpinBox" name="duty_wave2">
+                <property name="suffix">
+                 <string>%</string>
+                </property>
                </widget>
               </item>
-              <item row="8" column="5">
-               <widget class="QComboBox" name="gate_polarity_wave7">
-                <item>
-                 <property name="text">
-                  <string>Normal</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Reverse</string>
-                 </property>
-                </item>
+              <item row="3" column="0">
+               <widget class="QLabel" name="wave1_label">
+                <property name="text">
+                 <string>Wave 1</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                </property>
                </widget>
               </item>
-              <item row="9" column="5">
+              <item row="5" column="0">
+               <widget class="QLabel" name="wave3_label">
+                <property name="text">
+                 <string>Wave 3</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1">
+               <widget class="QLabel" name="gate_pin_label">
+                <property name="text">
+                 <string>Pin</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="8" column="1">
+               <widget class="QSpinBox" name="gate_pin_wave6"/>
+              </item>
+              <item row="9" column="3">
+               <widget class="QSpinBox" name="gate_phase_wave7"/>
+              </item>
+              <item row="3" column="3">
+               <widget class="QSpinBox" name="gate_phase_wave1">
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::UpDownArrows</enum>
+                </property>
+                <property name="keyboardTracking">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="10" column="4">
+               <widget class="QSpinBox" name="duty_wave8">
+                <property name="suffix">
+                 <string>%</string>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="0">
+               <widget class="QLabel" name="wave4_label">
+                <property name="text">
+                 <string>Wave 4</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="4">
+               <widget class="QSpinBox" name="duty_wave3">
+                <property name="suffix">
+                 <string>%</string>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="3">
+               <widget class="QSpinBox" name="gate_phase_wave4"/>
+              </item>
+              <item row="10" column="5">
                <widget class="QComboBox" name="gate_polarity_wave8">
                 <item>
                  <property name="text">
@@ -3557,7 +3369,222 @@
                 </item>
                </widget>
               </item>
-              <item row="10" column="5">
+              <item row="9" column="5">
+               <widget class="QComboBox" name="gate_polarity_wave7">
+                <item>
+                 <property name="text">
+                  <string>Normal</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Reverse</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="1" column="5">
+               <widget class="QLabel" name="gate_polarity_label">
+                <property name="text">
+                 <string>Polarity</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="2">
+               <widget class="QSpinBox" name="gate_period_wave4"/>
+              </item>
+              <item row="4" column="2">
+               <widget class="QSpinBox" name="gate_period_wave2"/>
+              </item>
+              <item row="8" column="0">
+               <widget class="QLabel" name="wave6_label">
+                <property name="text">
+                 <string>Wave 6</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="1">
+               <widget class="QSpinBox" name="gate_pin_wave2"/>
+              </item>
+              <item row="11" column="2">
+               <widget class="QSpinBox" name="gate_period_wave9"/>
+              </item>
+              <item row="6" column="4">
+               <widget class="QSpinBox" name="duty_wave4">
+                <property name="suffix">
+                 <string>%</string>
+                </property>
+               </widget>
+              </item>
+              <item row="9" column="2">
+               <widget class="QSpinBox" name="gate_period_wave7"/>
+              </item>
+              <item row="7" column="0">
+               <widget class="QLabel" name="wave5_label">
+                <property name="text">
+                 <string>Wave 5</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="8" column="4">
+               <widget class="QSpinBox" name="duty_wave6">
+                <property name="suffix">
+                 <string>%</string>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="5">
+               <widget class="QComboBox" name="gate_polarity_wave2">
+                <item>
+                 <property name="text">
+                  <string>Normal</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Reverse</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="10" column="3">
+               <widget class="QSpinBox" name="gate_phase_wave8"/>
+              </item>
+              <item row="10" column="2">
+               <widget class="QSpinBox" name="gate_period_wave8"/>
+              </item>
+              <item row="9" column="4">
+               <widget class="QSpinBox" name="duty_wave7">
+                <property name="suffix">
+                 <string>%</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="3">
+               <widget class="QLabel" name="gate_phase_label">
+                <property name="text">
+                 <string>Phase</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="0">
+               <widget class="QLabel" name="wave2_label">
+                <property name="text">
+                 <string>Wave 2</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="8" column="3">
+               <widget class="QSpinBox" name="gate_phase_wave6"/>
+              </item>
+              <item row="7" column="1">
+               <widget class="QSpinBox" name="gate_pin_wave5"/>
+              </item>
+              <item row="3" column="4">
+               <widget class="QSpinBox" name="duty_wave1">
+                <property name="suffix">
+                 <string>%</string>
+                </property>
+               </widget>
+              </item>
+              <item row="7" column="3">
+               <widget class="QSpinBox" name="gate_phase_wave5"/>
+              </item>
+              <item row="9" column="1">
+               <widget class="QSpinBox" name="gate_pin_wave7"/>
+              </item>
+              <item row="11" column="4">
+               <widget class="QSpinBox" name="duty_wave9">
+                <property name="suffix">
+                 <string>%</string>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="1">
+               <widget class="QSpinBox" name="gate_pin_wave3"/>
+              </item>
+              <item row="1" column="4">
+               <widget class="QLabel" name="duty_label">
+                <property name="text">
+                 <string>Duty</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="9" column="0">
+               <widget class="QLabel" name="wave7_label">
+                <property name="text">
+                 <string>Wave 7</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="1">
+               <widget class="QSpinBox" name="gate_pin_wave4"/>
+              </item>
+              <item row="10" column="1">
+               <widget class="QSpinBox" name="gate_pin_wave8"/>
+              </item>
+              <item row="11" column="0">
+               <widget class="QLabel" name="wave9_label">
+                <property name="text">
+                 <string>Wave 9</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="2">
+               <widget class="QLabel" name="gate_period_label">
+                <property name="text">
+                 <string>Period</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="5">
+               <widget class="QComboBox" name="gate_polarity_wave4">
+                <item>
+                 <property name="text">
+                  <string>Normal</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Reverse</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="3" column="2">
+               <widget class="QSpinBox" name="gate_period_wave1"/>
+              </item>
+              <item row="5" column="3">
+               <widget class="QSpinBox" name="gate_phase_wave3"/>
+              </item>
+              <item row="11" column="5">
                <widget class="QComboBox" name="gate_polarity_wave9">
                 <item>
                  <property name="text">
@@ -3569,6 +3596,84 @@
                   <string>Reverse</string>
                  </property>
                 </item>
+               </widget>
+              </item>
+              <item row="11" column="3">
+               <widget class="QSpinBox" name="gate_phase_wave9"/>
+              </item>
+              <item row="7" column="4">
+               <widget class="QSpinBox" name="duty_wave5">
+                <property name="suffix">
+                 <string>%</string>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="5">
+               <widget class="QComboBox" name="gate_polarity_wave3">
+                <item>
+                 <property name="text">
+                  <string>Normal</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Reverse</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="4" column="3">
+               <widget class="QSpinBox" name="gate_phase_wave2"/>
+              </item>
+              <item row="8" column="2">
+               <widget class="QSpinBox" name="gate_period_wave6"/>
+              </item>
+              <item row="5" column="2">
+               <widget class="QSpinBox" name="gate_period_wave3"/>
+              </item>
+              <item row="10" column="0">
+               <widget class="QLabel" name="wave8_label">
+                <property name="text">
+                 <string>Wave 8</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="8" column="5">
+               <widget class="QComboBox" name="gate_polarity_wave6">
+                <item>
+                 <property name="text">
+                  <string>Normal</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Reverse</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="11" column="1">
+               <widget class="QSpinBox" name="gate_pin_wave9"/>
+              </item>
+              <item row="0" column="0" colspan="6">
+               <widget class="QLabel" name="gate_label">
+                <property name="font">
+                 <font>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>Gate Generator Arduino</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="margin">
+                 <number>0</number>
+                </property>
                </widget>
               </item>
              </layout>
@@ -3682,6 +3787,231 @@
   </action>
  </widget>
  <layoutdefault spacing="3" margin="0"/>
+ <tabstops>
+  <tabstop>tabWidget</tabstop>
+  <tabstop>files_scroll_area</tabstop>
+  <tabstop>run_scroll_area</tabstop>
+  <tabstop>sipm_scroll_area</tabstop>
+  <tabstop>acoustics_scroll_area</tabstop>
+  <tabstop>cam_scroll_area</tabstop>
+  <tabstop>dio_scroll_area</tabstop>
+  <tabstop>config_path_edit</tabstop>
+  <tabstop>config_path_but</tabstop>
+  <tabstop>log_path_edit</tabstop>
+  <tabstop>log_path_but</tabstop>
+  <tabstop>data_dir_edit</tabstop>
+  <tabstop>data_dir_but</tabstop>
+  <tabstop>source_box</tabstop>
+  <tabstop>pressure_setpoint_box</tabstop>
+  <tabstop>max_ev_time_box</tabstop>
+  <tabstop>max_num_ev_box</tabstop>
+  <tabstop>sipm_ip_addr_edit</tabstop>
+  <tabstop>sipm_bias_box</tabstop>
+  <tabstop>sipm_qp_box</tabstop>
+  <tabstop>comboBox</tabstop>
+  <tabstop>spinBox</tabstop>
+  <tabstop>comboBox_2</tabstop>
+  <tabstop>spinBox_4</tabstop>
+  <tabstop>spinBox_3</tabstop>
+  <tabstop>spinBox_2</tabstop>
+  <tabstop>checkBox</tabstop>
+  <tabstop>comboBox_3</tabstop>
+  <tabstop>checkBox_2</tabstop>
+  <tabstop>comboBox_4</tabstop>
+  <tabstop>comboBox_5</tabstop>
+  <tabstop>comboBox_6</tabstop>
+  <tabstop>comboBox_7</tabstop>
+  <tabstop>checkBox_3</tabstop>
+  <tabstop>spinBox_5</tabstop>
+  <tabstop>checkBox_4</tabstop>
+  <tabstop>checkBox_5</tabstop>
+  <tabstop>checkBox_7</tabstop>
+  <tabstop>checkBox_6</tabstop>
+  <tabstop>checkBox_11</tabstop>
+  <tabstop>checkBox_10</tabstop>
+  <tabstop>checkBox_9</tabstop>
+  <tabstop>checkBox_8</tabstop>
+  <tabstop>checkBox_12</tabstop>
+  <tabstop>checkBox_13</tabstop>
+  <tabstop>checkBox_14</tabstop>
+  <tabstop>checkBox_15</tabstop>
+  <tabstop>checkBox_16</tabstop>
+  <tabstop>checkBox_17</tabstop>
+  <tabstop>checkBox_18</tabstop>
+  <tabstop>checkBox_19</tabstop>
+  <tabstop>checkBox_20</tabstop>
+  <tabstop>checkBox_21</tabstop>
+  <tabstop>checkBox_22</tabstop>
+  <tabstop>checkBox_23</tabstop>
+  <tabstop>checkBox_24</tabstop>
+  <tabstop>checkBox_25</tabstop>
+  <tabstop>checkBox_26</tabstop>
+  <tabstop>checkBox_27</tabstop>
+  <tabstop>acous_sample_rate_box</tabstop>
+  <tabstop>acous_pre_trig_box</tabstop>
+  <tabstop>acous_trig_timeout_box</tabstop>
+  <tabstop>acous_post_trig_box</tabstop>
+  <tabstop>acous_trig_delay_box</tabstop>
+  <tabstop>acous_enable_ch1</tabstop>
+  <tabstop>acous_range_ch1</tabstop>
+  <tabstop>acous_dc_offset_ch1</tabstop>
+  <tabstop>acous_trig_ch1</tabstop>
+  <tabstop>acous_polarity_ch1</tabstop>
+  <tabstop>acous_threshold_ch1</tabstop>
+  <tabstop>acous_enable_ch2</tabstop>
+  <tabstop>acous_range_ch2</tabstop>
+  <tabstop>acous_dc_offset_ch2</tabstop>
+  <tabstop>acous_trig_ch2</tabstop>
+  <tabstop>acous_polarity_ch2</tabstop>
+  <tabstop>acous_threshold_ch2</tabstop>
+  <tabstop>acous_enable_ch3</tabstop>
+  <tabstop>acous_range_ch3</tabstop>
+  <tabstop>acous_dc_offset_ch3</tabstop>
+  <tabstop>acous_trig_ch3</tabstop>
+  <tabstop>acous_polarity_ch3</tabstop>
+  <tabstop>acous_threshold_ch3</tabstop>
+  <tabstop>acous_enable_ch4</tabstop>
+  <tabstop>acous_range_ch4</tabstop>
+  <tabstop>acous_dc_offset_ch4</tabstop>
+  <tabstop>acous_trig_ch4</tabstop>
+  <tabstop>acous_polarity_ch4</tabstop>
+  <tabstop>acous_threshold_ch4</tabstop>
+  <tabstop>acous_enable_ch5</tabstop>
+  <tabstop>acous_range_ch5</tabstop>
+  <tabstop>acous_dc_offset_ch5</tabstop>
+  <tabstop>acous_trig_ch5</tabstop>
+  <tabstop>acous_polarity_ch5</tabstop>
+  <tabstop>acous_threshold_ch5</tabstop>
+  <tabstop>acous_enable_ch6</tabstop>
+  <tabstop>acous_range_ch6</tabstop>
+  <tabstop>acous_dc_offset_ch6</tabstop>
+  <tabstop>acous_trig_ch6</tabstop>
+  <tabstop>acous_polarity_ch6</tabstop>
+  <tabstop>acous_threshold_ch6</tabstop>
+  <tabstop>acous_enable_ch7</tabstop>
+  <tabstop>acous_range_ch7</tabstop>
+  <tabstop>acous_dc_offset_ch7</tabstop>
+  <tabstop>acous_trig_ch7</tabstop>
+  <tabstop>acous_polarity_ch7</tabstop>
+  <tabstop>acous_threshold_ch7</tabstop>
+  <tabstop>acous_enable_ch8</tabstop>
+  <tabstop>acous_range_ch8</tabstop>
+  <tabstop>acous_dc_offset_ch8</tabstop>
+  <tabstop>acous_trig_ch8</tabstop>
+  <tabstop>acous_polarity_ch8</tabstop>
+  <tabstop>acous_threshold_ch8</tabstop>
+  <tabstop>acous_trig_ext</tabstop>
+  <tabstop>acous_polarity_ext</tabstop>
+  <tabstop>acous_threshold_ext</tabstop>
+  <tabstop>config_path_cam1</tabstop>
+  <tabstop>config_path_cam2</tabstop>
+  <tabstop>config_path_cam3</tabstop>
+  <tabstop>data_path_cam1</tabstop>
+  <tabstop>data_path_cam2</tabstop>
+  <tabstop>data_path_cam3</tabstop>
+  <tabstop>ip_addr_cam1</tabstop>
+  <tabstop>ip_addr_cam2</tabstop>
+  <tabstop>ip_addr_cam3</tabstop>
+  <tabstop>mode_cam1</tabstop>
+  <tabstop>mode_cam2</tabstop>
+  <tabstop>mode_cam3</tabstop>
+  <tabstop>trig_wait_cam1</tabstop>
+  <tabstop>trig_wait_cam2</tabstop>
+  <tabstop>trig_wait_cam3</tabstop>
+  <tabstop>exposure_cam1</tabstop>
+  <tabstop>exposure_cam2</tabstop>
+  <tabstop>exposure_cam3</tabstop>
+  <tabstop>buffer_len_cam1</tabstop>
+  <tabstop>buffer_len_cam2</tabstop>
+  <tabstop>buffer_len_cam3</tabstop>
+  <tabstop>post_trig_len_cam1</tabstop>
+  <tabstop>post_trig_len_cam2</tabstop>
+  <tabstop>post_trig_len_cam3</tabstop>
+  <tabstop>adc_threshold_cam1</tabstop>
+  <tabstop>adc_threshold_cam2</tabstop>
+  <tabstop>adc_threshold_cam3</tabstop>
+  <tabstop>pix_threshold_cam1</tabstop>
+  <tabstop>pix_threshold_cam2</tabstop>
+  <tabstop>pix_threshold_cam3</tabstop>
+  <tabstop>image_format_cam1</tabstop>
+  <tabstop>image_format_cam2</tabstop>
+  <tabstop>iamge_format_cam3</tabstop>
+  <tabstop>date_format_cam1</tabstop>
+  <tabstop>date_format_cam2</tabstop>
+  <tabstop>date_format_cam3</tabstop>
+  <tabstop>state_comm_pin_cam1</tabstop>
+  <tabstop>state_comm_pin_cam2</tabstop>
+  <tabstop>state_comm_pin_cam3</tabstop>
+  <tabstop>trig_enbl_pin_cam1</tabstop>
+  <tabstop>trig_enbl_pin_cam2</tabstop>
+  <tabstop>trig_enbl_pin_cam3</tabstop>
+  <tabstop>trig_latch_pin_cam1</tabstop>
+  <tabstop>trig_latch_pin_cam2</tabstop>
+  <tabstop>trig_latch_pin_cam3</tabstop>
+  <tabstop>state_pin_cam1</tabstop>
+  <tabstop>state_pin_cam2</tabstop>
+  <tabstop>state_pin_cam3</tabstop>
+  <tabstop>trig_pin_cam_1</tabstop>
+  <tabstop>trig_pin_cam2</tabstop>
+  <tabstop>trig_pin_cam3</tabstop>
+  <tabstop>trigger_address_edit</tabstop>
+  <tabstop>trigger_sketch_edit</tabstop>
+  <tabstop>clock_address_edit</tabstop>
+  <tabstop>clock_sketch_edit</tabstop>
+  <tabstop>position_address_edit</tabstop>
+  <tabstop>position_sketch_edit</tabstop>
+  <tabstop>trig_in_pins_edit</tabstop>
+  <tabstop>trig_latch_pins_edit</tabstop>
+  <tabstop>trig_reset_pin_edit</tabstop>
+  <tabstop>trig_or_pin_edit</tabstop>
+  <tabstop>on_time_pin_edit</tabstop>
+  <tabstop>heartbeat_pin_edit</tabstop>
+  <tabstop>gate_pin_wave1</tabstop>
+  <tabstop>gate_period_wave1</tabstop>
+  <tabstop>gate_phase_wave1</tabstop>
+  <tabstop>duty_wave1</tabstop>
+  <tabstop>gate_polarity_wave1</tabstop>
+  <tabstop>gate_pin_wave2</tabstop>
+  <tabstop>gate_period_wave2</tabstop>
+  <tabstop>gate_phase_wave2</tabstop>
+  <tabstop>duty_wave2</tabstop>
+  <tabstop>gate_polarity_wave2</tabstop>
+  <tabstop>gate_pin_wave3</tabstop>
+  <tabstop>gate_period_wave3</tabstop>
+  <tabstop>gate_phase_wave3</tabstop>
+  <tabstop>duty_wave3</tabstop>
+  <tabstop>gate_polarity_wave3</tabstop>
+  <tabstop>gate_pin_wave4</tabstop>
+  <tabstop>gate_period_wave4</tabstop>
+  <tabstop>gate_phase_wave4</tabstop>
+  <tabstop>duty_wave4</tabstop>
+  <tabstop>gate_polarity_wave4</tabstop>
+  <tabstop>gate_pin_wave5</tabstop>
+  <tabstop>gate_period_wave5</tabstop>
+  <tabstop>gate_phase_wave5</tabstop>
+  <tabstop>duty_wave5</tabstop>
+  <tabstop>gate_polarity_wave5</tabstop>
+  <tabstop>gate_pin_wave6</tabstop>
+  <tabstop>gate_period_wave6</tabstop>
+  <tabstop>gate_phase_wave6</tabstop>
+  <tabstop>duty_wave6</tabstop>
+  <tabstop>gate_polarity_wave6</tabstop>
+  <tabstop>gate_pin_wave7</tabstop>
+  <tabstop>gate_period_wave7</tabstop>
+  <tabstop>gate_phase_wave7</tabstop>
+  <tabstop>duty_wave7</tabstop>
+  <tabstop>gate_polarity_wave7</tabstop>
+  <tabstop>gate_pin_wave8</tabstop>
+  <tabstop>gate_period_wave8</tabstop>
+  <tabstop>gate_phase_wave8</tabstop>
+  <tabstop>duty_wave8</tabstop>
+  <tabstop>gate_polarity_wave8</tabstop>
+  <tabstop>gate_pin_wave9</tabstop>
+  <tabstop>gate_period_wave9</tabstop>
+  <tabstop>gate_phase_wave9</tabstop>
+  <tabstop>duty_wave9</tabstop>
+  <tabstop>gate_polarity_wave9</tabstop>
+ </tabstops>
  <resources>
   <include location="../resources/resources.qrc"/>
  </resources>

@@ -213,3 +213,6 @@ if __name__ == "__main__":
     window.show()
 
     sys.exit(app.exec())
+
+# to flush arduino sketch
+# sudo -E env PATH=/home/sbc:$PATH arduino-cli upload -p /dev/ttyACM1 --fqbn arduino:avr:mega clock.ino
