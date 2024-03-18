@@ -1,4 +1,3 @@
-import sys
 from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog
 from PySide6.QtCore import QElapsedTimer, QTimer, Qt
 from PySide6.QtGui import QPixmap
@@ -9,7 +8,8 @@ from src.ui_loader import SettingsWindow, LogWindow
 from src.arduino import *
 import logging
 from enum import Enum
-import time, datetime
+import datetime
+import time
 import re
 
 
@@ -17,6 +17,9 @@ import re
 class MainWindow(QMainWindow):
     def __init__(self):
         super(MainWindow, self).__init__()
+        self.run_number = ""
+        self.ev_number = 0
+
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
@@ -41,13 +44,20 @@ class MainWindow(QMainWindow):
         self.timer = QTimer()
         self.timer.setInterval(10)
         self.timer.timeout.connect(self.update)
+        self.timer.timeout.connect(self.active_monitor)
         self.timer.start()
         # event timer
         self.event_timer = QElapsedTimer()
         self.run_livetime = 0
 
+        # set up run handling thread
+        self.run_handling_thread = QThread()
+
         # define four run states
-        self.run_states = Enum("State", ["Idle", "Active", "Starting", "Stopping", "Expanding", "Compressing"])
+        self.run_states = Enum(
+            "State",
+            ["Idle", "Active", "Starting", "Stopping", "Expanding", "Compressing"],
+        )
         # initialize run state
         self.update_state("Idle")
 
@@ -92,8 +102,8 @@ class MainWindow(QMainWindow):
         # TODO: make it only render when checkbox changed
         if checked:
             image = QPixmap(path)
-            aspect_ratio = image.height()/image.width()
-            image = image.scaled(500, 500*aspect_ratio, aspectMode=Qt.KeepAspectRatio)
+            aspect_ratio = image.height() / image.width()
+            image = image.scaled(500, 500 * aspect_ratio, aspectMode=Qt.KeepAspectRatio)
             label.setPixmap(image)
         else:
             label.clear()
@@ -126,7 +136,8 @@ class MainWindow(QMainWindow):
     def create_run_directory(self):
         # get all runs in the data directory, get the run numbers
         # using regex to handle 2/3 digits of run number and possible suffix at the end
-        # would handle folder names like "20240101_00", "20240101_0001", "20240101_03 cf252", ""20240101_04.252", non_continuous folder numbers
+        # would handle folder names like "20240101_00", "20240101_0001",
+        # "20240101_03 cf252", ""20240101_04.252", non_continuous folder numbers
         # it also handles the case that there's no runs today yet
         data_dir = self.config.config["general"]["data_dir"]
         today = datetime.date.today().strftime("%Y%m%d")
@@ -139,49 +150,67 @@ class MainWindow(QMainWindow):
         os.mkdir(os.path.join(data_dir, self.run_number))
         self.ui.run_edit.setText(self.run_number)
 
+    def active_monitor(self):
+        if self.run_state == self.run_states.Active:
+            if (
+                self.event_timer.elapsed()
+                > self.config.config["run"]["max_ev_time"] * 1000
+            ):
+                self.stop_event()
+
+    def start_event(self):
+        self.ui.event_num_edit.setText(f"{self.ev_number:2d}")
+        self.update_state("Expanding")
+        time.sleep(1)
+        self.event_timer.start()
+        self.update_state("Active")
+
+    def stop_event(self):
+        self.run_livetime += self.event_timer.elapsed()
+        self.update_state("Compressing")
+        time.sleep(1)
+        if self.ev_number + 1 < self.config.config["run"]["max_num_evs"]:
+            self.ev_number += 1
+            self.start_event()
+
     def start_run(self):
         if self.run_state == self.run_states["Idle"]:
             self.ui.event_time_edit.setText(self.format_time(0))
             # self.ui.run_live_time_edit.setText(self.format_time(self.run_livetime))
             self.create_run_directory()
+            self.ev_number = 0
 
             # set up multithreading thread and workers
             # TODO: check if thread can persist between runs while worker rerun every time
             # TODO: implement event timer / livetime timer
-            self.start_run_thread = QThread()
             self.start_run_worker = StartRunWorker(self)
-            self.start_run_worker.moveToThread(self.start_run_thread)
-            self.start_run_thread.started.connect(self.start_run_worker.run)
-            self.start_run_worker.finished.connect(self.start_run_thread.quit)
+            self.start_run_worker.moveToThread(self.run_handling_thread)
+            self.run_handling_thread.started.connect(self.start_run_worker.run)
             self.start_run_worker.finished.connect(self.start_run_worker.deleteLater)
-            self.start_run_thread.finished.connect(self.start_run_thread.deleteLater)
-            self.start_run_thread.finished.connect(self.event_timer.start)
+            self.start_run_worker.finished.connect(self.start_event)
             self.start_run_worker.state.connect(self.update_state)
-            self.start_run_thread.start()
+            self.run_handling_thread.start()
 
     def stop_run(self):
         if self.run_state == self.run_states["Active"]:
-            self.run_livetime += self.event_timer.elapsed()
             # set up multithreading thread and workers
-            self.stop_run_thread = QThread()
             self.stop_run_worker = StopRunWorker()
-            self.stop_run_worker.moveToThread(self.stop_run_thread)
-            self.stop_run_thread.started.connect(self.stop_run_worker.run)
-            self.stop_run_worker.finished.connect(self.stop_run_thread.quit)
+            self.stop_run_worker.moveToThread(self.run_handling_thread)
+            self.run_handling_thread.started.connect(self.stop_run_worker.run)
             self.stop_run_worker.finished.connect(self.stop_run_worker.deleteLater)
-            self.stop_run_thread.finished.connect(self.stop_run_thread.deleteLater)
             self.stop_run_worker.state.connect(self.update_state)
-            self.stop_run_thread.start()
+            self.run_handling_thread.start()
 
     def update_state(self, s):
         self.run_state = self.run_states[s]
         self.ui.run_state_label.setText(self.run_state.name)
         run_state_colors = [
             "lightgrey",
-            "lightblue",
             "lightgreen",
-            "lightyellow",
+            "lightskyblue",
             "lightpink",
+            "lightsalmon",
+            "lightblue",
         ]
         self.ui.run_state_label.setStyleSheet(
             f"background-color: {run_state_colors[self.run_state.value-1]}"
@@ -202,6 +231,13 @@ class MainWindow(QMainWindow):
             self.ui.stop_run_but.setEnabled(False)
         elif self.run_state == self.run_states["Stopping"]:
             self.logger.info(f"Stopping Run {self.run_number}.")
+            self.ui.start_run_but.setEnabled(False)
+            self.ui.stop_run_but.setEnabled(False)
+        elif self.run_state == self.run_states["Expanding"]:
+            logging.info(f"Event {self.ev_number}.")
+            self.ui.start_run_but.setEnabled(False)
+            self.ui.stop_run_but.setEnabled(False)
+        elif self.run_state == self.run_states["Compressing"]:
             self.ui.start_run_but.setEnabled(False)
             self.ui.stop_run_but.setEnabled(False)
         else:

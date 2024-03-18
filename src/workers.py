@@ -22,7 +22,6 @@ class StartRunWorker(QObject):
         """Processes to start run"""
         self.state.emit("Starting")
         time.sleep(1)
-        self.state.emit("Active")
         self.finished.emit()
 
 
@@ -40,3 +39,9 @@ class StopRunWorker(QObject):
         time.sleep(1)
         self.state.emit("Idle")
         self.finished.emit()
+
+class EventMonitoringWorker(QObject):
+    """
+    Worker class for handling processes during an event.
+    """
+    

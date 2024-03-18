@@ -1810,30 +1810,30 @@ class Ui_SettingsWindow(object):
 
         self.dio_general_grid_layout.addWidget(self.position_arduino_label, 4, 0, 1, 1)
 
-        self.trigger_address_edit = QLineEdit(self.scrollAreaWidgetContents_3)
-        self.trigger_address_edit.setObjectName(u"trigger_address_edit")
+        self.trigger_port_edit = QLineEdit(self.scrollAreaWidgetContents_3)
+        self.trigger_port_edit.setObjectName(u"trigger_port_edit")
 
-        self.dio_general_grid_layout.addWidget(self.trigger_address_edit, 2, 1, 1, 1)
+        self.dio_general_grid_layout.addWidget(self.trigger_port_edit, 2, 1, 1, 1)
 
         self.position_sketch_edit = QLineEdit(self.scrollAreaWidgetContents_3)
         self.position_sketch_edit.setObjectName(u"position_sketch_edit")
 
         self.dio_general_grid_layout.addWidget(self.position_sketch_edit, 4, 2, 1, 1)
 
-        self.clock_address_edit = QLineEdit(self.scrollAreaWidgetContents_3)
-        self.clock_address_edit.setObjectName(u"clock_address_edit")
+        self.clock_port_edit = QLineEdit(self.scrollAreaWidgetContents_3)
+        self.clock_port_edit.setObjectName(u"clock_port_edit")
 
-        self.dio_general_grid_layout.addWidget(self.clock_address_edit, 3, 1, 1, 1)
+        self.dio_general_grid_layout.addWidget(self.clock_port_edit, 3, 1, 1, 1)
 
-        self.arduino_address_label = QLabel(self.scrollAreaWidgetContents_3)
-        self.arduino_address_label.setObjectName(u"arduino_address_label")
+        self.arduino_port_label = QLabel(self.scrollAreaWidgetContents_3)
+        self.arduino_port_label.setObjectName(u"arduino_port_label")
 
-        self.dio_general_grid_layout.addWidget(self.arduino_address_label, 1, 1, 1, 1)
+        self.dio_general_grid_layout.addWidget(self.arduino_port_label, 1, 1, 1, 1)
 
-        self.position_address_edit = QLineEdit(self.scrollAreaWidgetContents_3)
-        self.position_address_edit.setObjectName(u"position_address_edit")
+        self.position_port_edit = QLineEdit(self.scrollAreaWidgetContents_3)
+        self.position_port_edit.setObjectName(u"position_port_edit")
 
-        self.dio_general_grid_layout.addWidget(self.position_address_edit, 4, 1, 1, 1)
+        self.dio_general_grid_layout.addWidget(self.position_port_edit, 4, 1, 1, 1)
 
         self.trigger_arduino_label = QLabel(self.scrollAreaWidgetContents_3)
         self.trigger_arduino_label.setObjectName(u"trigger_arduino_label")
@@ -2520,12 +2520,12 @@ class Ui_SettingsWindow(object):
         QWidget.setTabOrder(self.state_pin_cam3, self.trig_pin_cam_1)
         QWidget.setTabOrder(self.trig_pin_cam_1, self.trig_pin_cam2)
         QWidget.setTabOrder(self.trig_pin_cam2, self.trig_pin_cam3)
-        QWidget.setTabOrder(self.trig_pin_cam3, self.trigger_address_edit)
-        QWidget.setTabOrder(self.trigger_address_edit, self.trigger_sketch_edit)
-        QWidget.setTabOrder(self.trigger_sketch_edit, self.clock_address_edit)
-        QWidget.setTabOrder(self.clock_address_edit, self.clock_sketch_edit)
-        QWidget.setTabOrder(self.clock_sketch_edit, self.position_address_edit)
-        QWidget.setTabOrder(self.position_address_edit, self.position_sketch_edit)
+        QWidget.setTabOrder(self.trig_pin_cam3, self.trigger_port_edit)
+        QWidget.setTabOrder(self.trigger_port_edit, self.trigger_sketch_edit)
+        QWidget.setTabOrder(self.trigger_sketch_edit, self.clock_port_edit)
+        QWidget.setTabOrder(self.clock_port_edit, self.clock_sketch_edit)
+        QWidget.setTabOrder(self.clock_sketch_edit, self.position_port_edit)
+        QWidget.setTabOrder(self.position_port_edit, self.position_sketch_edit)
         QWidget.setTabOrder(self.position_sketch_edit, self.trig_in_pins_edit)
         QWidget.setTabOrder(self.trig_in_pins_edit, self.trig_latch_pins_edit)
         QWidget.setTabOrder(self.trig_latch_pins_edit, self.trig_reset_pin_edit)
@@ -2859,7 +2859,7 @@ class Ui_SettingsWindow(object):
 
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.cam_tab), QCoreApplication.translate("SettingsWindow", u"Camera", None))
         self.position_arduino_label.setText(QCoreApplication.translate("SettingsWindow", u"Position", None))
-        self.arduino_address_label.setText(QCoreApplication.translate("SettingsWindow", u"Arduino Address", None))
+        self.arduino_port_label.setText(QCoreApplication.translate("SettingsWindow", u"Arduino Port", None))
         self.trigger_arduino_label.setText(QCoreApplication.translate("SettingsWindow", u"Trigger", None))
         self.clock_arduino_label.setText(QCoreApplication.translate("SettingsWindow", u"Clock", None))
         self.sketch_location_label.setText(QCoreApplication.translate("SettingsWindow", u"Sketch Location", None))
@@ -2921,7 +2921,7 @@ class Ui_SettingsWindow(object):
         self.gate_polarity_wave6.setItemText(0, QCoreApplication.translate("SettingsWindow", u"Normal", None))
         self.gate_polarity_wave6.setItemText(1, QCoreApplication.translate("SettingsWindow", u"Reverse", None))
 
-        self.gate_label.setText(QCoreApplication.translate("SettingsWindow", u"Gate Generator Arduino", None))
+        self.gate_label.setText(QCoreApplication.translate("SettingsWindow", u"Gate Arduino", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.dio_tab), QCoreApplication.translate("SettingsWindow", u"DIO", None))
         self.toolBar.setWindowTitle(QCoreApplication.translate("SettingsWindow", u"toolBar", None))
     # retranslateUi
