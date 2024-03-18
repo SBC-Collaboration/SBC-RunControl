@@ -5,7 +5,33 @@
     "data_dir": "./run-data"
   },
   "run": {
+    "source": "Bg",
+    "pressure_setpoint": 25,
     "max_ev_time": 4.0,
     "max_num_evs": 102
+  },
+  "scint": {
+    "sipm": {
+      "ip_addr": "",
+      "bias": 0.0,
+      "qp": 0.0
+    },
+    "caen": {}
+  },
+  "dio": {
+    "general": {
+      "trigger": {
+        "port": "/dev/ttyACM2",
+        "sketch": "/home/sbc/packages/SBC-ArduinoSketches/trigger/"
+      },
+      "clock": {
+        "port": "/dev/ttyACM1",
+        "sketch": "/home/sbc/packages/SBC-ArduinoSketches/clock/"
+      },
+      "position": {
+        "port": "/dev/ttyACM0",
+        "sketch": "/home/sbc/packages/SBC-ArduinoSketches/position/"
+      }
+    }
   }
 }

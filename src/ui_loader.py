@@ -17,16 +17,21 @@ class SettingsWindow(QMainWindow):
         self.ui = Ui_SettingsWindow()
         self.ui.setupUi(self)
         self.main_window = main_window
+        self.config_class = self.main_window.config_class
         self.load_config()
+        self.logger = logging.getLogger(__name__)
+        self.logger.addHandler(logging.StreamHandler())
+
+        self.logger.debug("Settings window loaded.")
 
     def load_config(self):
-        self.main_window.config.load_config_to_window(self.ui)
+        self.config_class.load_config_to_window(self.ui)
 
     def apply_config(self):
-        self.main_window.config.apply_config(self.ui)
+        self.config_class.apply_config(self.ui)
 
     def save_config(self):
-        self.main_window.config.save_config(self.ui)
+        self.config_class.save_config(self.ui)
 
     def select_config_path(self):
         config_path, _ = QFileDialog.getOpenFileName(self)
@@ -49,6 +54,10 @@ class LogWindow(QMainWindow):
         self.ui.setupUi(self)
         self.main_window = main_window
         self.load_log()
+        self.logger = logging.getLogger(__name__)
+        self.logger.addHandler(logging.StreamHandler())
+
+        self.logger.info("Log window loaded.")
 
     def load_log(self):
         log = open(self.main_window.log_filename).read()

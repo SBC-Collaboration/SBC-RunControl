@@ -6,6 +6,7 @@ from ui.mainwindow import Ui_MainWindow
 from src.config import *
 from src.workers import *
 from src.ui_loader import SettingsWindow, LogWindow
+from src.arduino import *
 import logging
 from enum import Enum
 import time, datetime
@@ -20,16 +21,21 @@ class MainWindow(QMainWindow):
         self.ui.setupUi(self)
 
         # initialize config class
-        self.start_config()
+        self.config_class = Config(self, "config.json")
+        self.config_class.load_config()
 
         # logger initialization
-        self.log_filename = self.config.config["general"]["log_path"]
+        self.logger = logging.getLogger(__name__)
+        self.log_filename = self.config_class.config["general"]["log_path"]
         log_format = "%(asctime)s %(levelname)s > %(message)s"
         logging.basicConfig(
             filename=self.log_filename, format=log_format, level=logging.INFO
         )
-        logging.getLogger().addHandler(logging.StreamHandler())
-        logging.info("Starting run control.")
+        self.logger.addHandler(logging.StreamHandler())
+        self.logger.info("Starting run control.")
+
+        # initialize arduino class
+        self.arduino_class = Arduino(self)
 
         # timer for event loop
         self.timer = QTimer()
@@ -56,11 +62,7 @@ class MainWindow(QMainWindow):
             self.settings_window.close()
         except AttributeError:
             pass
-        logging.info("Quitting run control.\n")
-
-    def start_config(self):
-        self.config = Config(self, "config.json")
-        self.config.load_config()
+        self.logger.info("Quitting run control.\n")
 
     def open_settings_window(self):
         self.settings_window = SettingsWindow(self)
@@ -185,21 +187,21 @@ class MainWindow(QMainWindow):
             f"background-color: {run_state_colors[self.run_state.value-1]}"
         )
         if self.run_state == self.run_states["Idle"]:
-            logging.info(f"Entering into Idle state.")
+            self.logger.info(f"Entering into Idle state.")
             self.ui.start_run_but.setEnabled(True)
             self.ui.stop_run_but.setEnabled(False)
         elif (
             self.run_state == self.run_states["Active"]
         ):  # or self.run_state == self.run_states[""]:
-            logging.info(f"Run active.")
+            self.logger.info(f"Run active.")
             self.ui.start_run_but.setEnabled(False)
             self.ui.stop_run_but.setEnabled(True)
         elif self.run_state == self.run_states["Starting"]:
-            logging.info(f"Starting Run {self.run_number}.")
+            self.logger.info(f"Starting Run {self.run_number}.")
             self.ui.start_run_but.setEnabled(False)
             self.ui.stop_run_but.setEnabled(False)
         elif self.run_state == self.run_states["Stopping"]:
-            logging.info(f"Stopping Run {self.run_number}.")
+            self.logger.info(f"Stopping Run {self.run_number}.")
             self.ui.start_run_but.setEnabled(False)
             self.ui.stop_run_but.setEnabled(False)
         else:

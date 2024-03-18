@@ -49,7 +49,7 @@
     <item row="2" column="1">
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>2</number>
+       <number>5</number>
       </property>
       <property name="tabsClosable">
        <bool>false</bool>
@@ -566,7 +566,7 @@
                <number>3</number>
               </property>
               <item row="6" column="1">
-               <widget class="QComboBox" name="comboBox_4">
+               <widget class="QComboBox" name="caen_polarity_box">
                 <item>
                  <property name="text">
                   <string>Positive</string>
@@ -580,7 +580,7 @@
                </widget>
               </item>
               <item row="6" column="0">
-               <widget class="QLabel" name="label_13">
+               <widget class="QLabel" name="caen_polarity_label">
                 <property name="text">
                  <string>Polarity</string>
                 </property>
@@ -590,7 +590,7 @@
                </widget>
               </item>
               <item row="1" column="3">
-               <widget class="QSpinBox" name="spinBox">
+               <widget class="QSpinBox" name="caen_port_box">
                 <property name="minimumSize">
                  <size>
                   <width>50</width>
@@ -600,7 +600,7 @@
                </widget>
               </item>
               <item row="6" column="2">
-               <widget class="QLabel" name="label_14">
+               <widget class="QLabel" name="caen_io_label">
                 <property name="text">
                  <string>IO Level</string>
                 </property>
@@ -610,7 +610,7 @@
                </widget>
               </item>
               <item row="3" column="2">
-               <widget class="QLabel" name="label_10">
+               <widget class="QLabel" name="caen_post_trig_label">
                 <property name="text">
                  <string>Post Trig</string>
                 </property>
@@ -620,7 +620,7 @@
                </widget>
               </item>
               <item row="7" column="1">
-               <widget class="QComboBox" name="comboBox_6">
+               <widget class="QComboBox" name="caen_ext_trig_box">
                 <item>
                  <property name="text">
                   <string>Disabled</string>
@@ -644,7 +644,7 @@
                </widget>
               </item>
               <item row="1" column="1">
-               <widget class="QComboBox" name="comboBox">
+               <widget class="QComboBox" name="caen_model_box">
                 <item>
                  <property name="text">
                   <string>DT5740D</string>
@@ -663,7 +663,7 @@
                </widget>
               </item>
               <item row="2" column="0">
-               <widget class="QLabel" name="label_7">
+               <widget class="QLabel" name="caen_conn_label">
                 <property name="text">
                  <string>Connection Type</string>
                 </property>
@@ -673,7 +673,7 @@
                </widget>
               </item>
               <item row="7" column="0">
-               <widget class="QLabel" name="label_15">
+               <widget class="QLabel" name="caen_ext_trig_label">
                 <property name="text">
                  <string>Ext Trig Mode</string>
                 </property>
@@ -683,7 +683,7 @@
                </widget>
               </item>
               <item row="7" column="3">
-               <widget class="QComboBox" name="comboBox_7">
+               <widget class="QComboBox" name="caen_sw_trig_box">
                 <item>
                  <property name="text">
                   <string>Disabled</string>
@@ -707,10 +707,10 @@
                </widget>
               </item>
               <item row="2" column="3">
-               <widget class="QSpinBox" name="spinBox_4"/>
+               <widget class="QSpinBox" name="caen_evs_box"/>
               </item>
               <item row="5" column="0">
-               <widget class="QLabel" name="label_12">
+               <widget class="QLabel" name="caen_overlap_label">
                 <property name="text">
                  <string>Overlap Reject</string>
                 </property>
@@ -720,17 +720,17 @@
                </widget>
               </item>
               <item row="5" column="1">
-               <widget class="QCheckBox" name="checkBox_2">
+               <widget class="QCheckBox" name="caen_overlap_box">
                 <property name="text">
                  <string/>
                 </property>
                </widget>
               </item>
               <item row="3" column="1">
-               <widget class="QSpinBox" name="spinBox_3"/>
+               <widget class="QSpinBox" name="caen_length_box"/>
               </item>
               <item row="2" column="2">
-               <widget class="QLabel" name="label_17">
+               <widget class="QLabel" name="caen_evs_label">
                 <property name="text">
                  <string>Evs Per Read</string>
                 </property>
@@ -740,7 +740,7 @@
                </widget>
               </item>
               <item row="6" column="3">
-               <widget class="QComboBox" name="comboBox_5">
+               <widget class="QComboBox" name="caen_io_box">
                 <item>
                  <property name="text">
                   <string>TTL</string>
@@ -754,7 +754,7 @@
                </widget>
               </item>
               <item row="2" column="1">
-               <widget class="QComboBox" name="comboBox_2">
+               <widget class="QComboBox" name="caen_conn_box">
                 <item>
                  <property name="text">
                   <string>USB</string>
@@ -768,7 +768,7 @@
                </widget>
               </item>
               <item row="0" column="0" colspan="4">
-               <widget class="QLabel" name="label_4">
+               <widget class="QLabel" name="caen_general_label">
                 <property name="text">
                  <string>CAEN Digitizer General</string>
                 </property>
@@ -778,7 +778,7 @@
                </widget>
               </item>
               <item row="1" column="0">
-               <widget class="QLabel" name="label_5">
+               <widget class="QLabel" name="caen_model_label">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                   <horstretch>0</horstretch>
@@ -794,7 +794,7 @@
                </widget>
               </item>
               <item row="1" column="2">
-               <widget class="QLabel" name="label_6">
+               <widget class="QLabel" name="caen_port_label">
                 <property name="text">
                  <string>Port</string>
                 </property>
@@ -804,7 +804,7 @@
                </widget>
               </item>
               <item row="7" column="2">
-               <widget class="QLabel" name="label_16">
+               <widget class="QLabel" name="caen_sw_trig_label">
                 <property name="text">
                  <string>SW Trig Mode</string>
                 </property>
@@ -814,7 +814,7 @@
                </widget>
               </item>
               <item row="3" column="0">
-               <widget class="QLabel" name="label_8">
+               <widget class="QLabel" name="caen_length_label">
                 <property name="text">
                  <string>Record Length</string>
                 </property>
@@ -824,14 +824,14 @@
                </widget>
               </item>
               <item row="3" column="3">
-               <widget class="QSpinBox" name="spinBox_2">
+               <widget class="QSpinBox" name="caen_post_trig_box">
                 <property name="suffix">
                  <string>%</string>
                 </property>
                </widget>
               </item>
               <item row="4" column="2">
-               <widget class="QLabel" name="label_9">
+               <widget class="QLabel" name="caen_decimation_label">
                 <property name="text">
                  <string>Decimation</string>
                 </property>
@@ -841,7 +841,7 @@
                </widget>
               </item>
               <item row="4" column="3">
-               <widget class="QComboBox" name="comboBox_3">
+               <widget class="QComboBox" name="caen_decimation_box">
                 <item>
                  <property name="text">
                   <string>1</string>
@@ -885,7 +885,7 @@
                </widget>
               </item>
               <item row="4" column="0">
-               <widget class="QLabel" name="label_11">
+               <widget class="QLabel" name="caen_trigin_label">
                 <property name="text">
                  <string>TRG-IN as Gate</string>
                 </property>
@@ -895,7 +895,7 @@
                </widget>
               </item>
               <item row="4" column="1">
-               <widget class="QCheckBox" name="checkBox">
+               <widget class="QCheckBox" name="caen_trigin_box">
                 <property name="text">
                  <string/>
                 </property>
@@ -913,10 +913,10 @@
             <item>
              <layout class="QGridLayout" name="gridLayout_7">
               <item row="1" column="3">
-               <widget class="QSpinBox" name="spinBox_5"/>
+               <widget class="QSpinBox" name="caen_g0_thres_box"/>
               </item>
               <item row="1" column="0">
-               <widget class="QLabel" name="label_19">
+               <widget class="QLabel" name="caen_g0_enable_label">
                 <property name="text">
                  <string>Enabled</string>
                 </property>
@@ -926,14 +926,14 @@
                </widget>
               </item>
               <item row="1" column="1">
-               <widget class="QCheckBox" name="checkBox_3">
+               <widget class="QCheckBox" name="caen_g0_enable_box">
                 <property name="text">
                  <string/>
                 </property>
                </widget>
               </item>
               <item row="0" column="0" colspan="4">
-               <widget class="QLabel" name="label_18">
+               <widget class="QLabel" name="caen_g0_label">
                 <property name="text">
                  <string>Group 0</string>
                 </property>
@@ -943,7 +943,7 @@
                </widget>
               </item>
               <item row="1" column="2">
-               <widget class="QLabel" name="label_20">
+               <widget class="QLabel" name="caen_g0_thres_label">
                 <property name="text">
                  <string>Threshold</string>
                 </property>
@@ -1033,7 +1033,7 @@
                </widget>
               </item>
               <item row="1" column="6">
-               <widget class="QCheckBox" name="checkBox_10">
+               <widget class="QCheckBox" name="caen_g05_trig">
                 <property name="text">
                  <string/>
                 </property>
@@ -3025,23 +3025,23 @@
                </widget>
               </item>
               <item row="2" column="1">
-               <widget class="QLineEdit" name="trigger_address_edit"/>
+               <widget class="QLineEdit" name="trigger_port_edit"/>
               </item>
               <item row="4" column="2">
                <widget class="QLineEdit" name="position_sketch_edit"/>
               </item>
               <item row="3" column="1">
-               <widget class="QLineEdit" name="clock_address_edit"/>
+               <widget class="QLineEdit" name="clock_port_edit"/>
               </item>
               <item row="1" column="1">
-               <widget class="QLabel" name="arduino_address_label">
+               <widget class="QLabel" name="arduino_port_label">
                 <property name="text">
-                 <string>Arduino Address</string>
+                 <string>Arduino Port</string>
                 </property>
                </widget>
               </item>
               <item row="4" column="1">
-               <widget class="QLineEdit" name="position_address_edit"/>
+               <widget class="QLineEdit" name="position_port_edit"/>
               </item>
               <item row="2" column="0">
                <widget class="QLabel" name="trigger_arduino_label">
@@ -3666,7 +3666,7 @@
                  </font>
                 </property>
                 <property name="text">
-                 <string>Gate Generator Arduino</string>
+                 <string>Gate Arduino</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignCenter</set>
@@ -3808,27 +3808,27 @@
   <tabstop>sipm_ip_addr_edit</tabstop>
   <tabstop>sipm_bias_box</tabstop>
   <tabstop>sipm_qp_box</tabstop>
-  <tabstop>comboBox</tabstop>
-  <tabstop>spinBox</tabstop>
-  <tabstop>comboBox_2</tabstop>
-  <tabstop>spinBox_4</tabstop>
-  <tabstop>spinBox_3</tabstop>
-  <tabstop>spinBox_2</tabstop>
-  <tabstop>checkBox</tabstop>
-  <tabstop>comboBox_3</tabstop>
-  <tabstop>checkBox_2</tabstop>
-  <tabstop>comboBox_4</tabstop>
-  <tabstop>comboBox_5</tabstop>
-  <tabstop>comboBox_6</tabstop>
-  <tabstop>comboBox_7</tabstop>
-  <tabstop>checkBox_3</tabstop>
-  <tabstop>spinBox_5</tabstop>
+  <tabstop>caen_model_box</tabstop>
+  <tabstop>caen_port_box</tabstop>
+  <tabstop>caen_conn_box</tabstop>
+  <tabstop>caen_evs_box</tabstop>
+  <tabstop>caen_length_box</tabstop>
+  <tabstop>caen_post_trig_box</tabstop>
+  <tabstop>caen_trigin_box</tabstop>
+  <tabstop>caen_decimation_box</tabstop>
+  <tabstop>caen_overlap_box</tabstop>
+  <tabstop>caen_polarity_box</tabstop>
+  <tabstop>caen_io_box</tabstop>
+  <tabstop>caen_ext_trig_box</tabstop>
+  <tabstop>caen_sw_trig_box</tabstop>
+  <tabstop>caen_g0_enable_box</tabstop>
+  <tabstop>caen_g0_thres_box</tabstop>
   <tabstop>checkBox_4</tabstop>
   <tabstop>checkBox_5</tabstop>
   <tabstop>checkBox_7</tabstop>
   <tabstop>checkBox_6</tabstop>
   <tabstop>checkBox_11</tabstop>
-  <tabstop>checkBox_10</tabstop>
+  <tabstop>caen_g05_trig</tabstop>
   <tabstop>checkBox_9</tabstop>
   <tabstop>checkBox_8</tabstop>
   <tabstop>checkBox_12</tabstop>
@@ -3954,11 +3954,11 @@
   <tabstop>trig_pin_cam_1</tabstop>
   <tabstop>trig_pin_cam2</tabstop>
   <tabstop>trig_pin_cam3</tabstop>
-  <tabstop>trigger_address_edit</tabstop>
+  <tabstop>trigger_port_edit</tabstop>
   <tabstop>trigger_sketch_edit</tabstop>
-  <tabstop>clock_address_edit</tabstop>
+  <tabstop>clock_port_edit</tabstop>
   <tabstop>clock_sketch_edit</tabstop>
-  <tabstop>position_address_edit</tabstop>
+  <tabstop>position_port_edit</tabstop>
   <tabstop>position_sketch_edit</tabstop>
   <tabstop>trig_in_pins_edit</tabstop>
   <tabstop>trig_latch_pins_edit</tabstop>
