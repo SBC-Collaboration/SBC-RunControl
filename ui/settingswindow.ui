@@ -49,7 +49,7 @@
     <item row="2" column="1">
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>5</number>
+       <number>3</number>
       </property>
       <property name="tabsClosable">
        <bool>false</bool>
@@ -1295,61 +1295,10 @@
             </property>
             <item>
              <layout class="QGridLayout" name="acous_general_grid">
-              <item row="1" column="0">
-               <widget class="QLabel" name="acous_pre_trig_label">
-                <property name="text">
-                 <string>Pre Trig Length</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>acous_pre_trig_box</cstring>
-                </property>
-               </widget>
+              <item row="3" column="3">
+               <widget class="QSpinBox" name="acous_trig_delay_box"/>
               </item>
-              <item row="0" column="1" colspan="3">
-               <widget class="QComboBox" name="acous_sample_rate_box">
-                <item>
-                 <property name="text">
-                  <string>100 MS/s</string>
-                 </property>
-                </item>
-               </widget>
-              </item>
-              <item row="0" column="0">
-               <widget class="QLabel" name="acous_sample_rate_label">
-                <property name="text">
-                 <string>Sample Rate</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>acous_sample_rate_box</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="1">
-               <widget class="QSpinBox" name="acous_pre_trig_box"/>
-              </item>
-              <item row="1" column="2">
-               <widget class="QLabel" name="acous_trig_timeout_label">
-                <property name="text">
-                 <string>Trig Timeout</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>acous_trig_timeout_box</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="3">
-               <widget class="QSpinBox" name="acous_trig_timeout_box"/>
-              </item>
-              <item row="2" column="0">
+              <item row="3" column="0">
                <widget class="QLabel" name="acous_post_trig_label">
                 <property name="text">
                  <string>Post Trig Length</string>
@@ -1362,10 +1311,7 @@
                 </property>
                </widget>
               </item>
-              <item row="2" column="1">
-               <widget class="QSpinBox" name="acous_post_trig_box"/>
-              </item>
-              <item row="2" column="2">
+              <item row="3" column="2">
                <widget class="QLabel" name="acous_trig_delay_label">
                 <property name="text">
                  <string>Trig Delay</string>
@@ -1378,8 +1324,77 @@
                 </property>
                </widget>
               </item>
+              <item row="2" column="2">
+               <widget class="QLabel" name="acous_trig_timeout_label">
+                <property name="text">
+                 <string>Trig Timeout</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>acous_trig_timeout_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="1">
+               <widget class="QSpinBox" name="acous_post_trig_box"/>
+              </item>
+              <item row="2" column="1">
+               <widget class="QSpinBox" name="acous_pre_trig_box"/>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="acous_sample_rate_label">
+                <property name="text">
+                 <string>Sample Rate</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>acous_sample_rate_box</cstring>
+                </property>
+               </widget>
+              </item>
               <item row="2" column="3">
-               <widget class="QSpinBox" name="acous_trig_delay_box"/>
+               <widget class="QSpinBox" name="acous_trig_timeout_box"/>
+              </item>
+              <item row="1" column="1" colspan="3">
+               <widget class="QComboBox" name="acous_sample_rate_box">
+                <item>
+                 <property name="text">
+                  <string>100 MS/s</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QLabel" name="acous_pre_trig_label">
+                <property name="text">
+                 <string>Pre Trig Length</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>acous_pre_trig_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0" colspan="4">
+               <widget class="QLabel" name="label">
+                <property name="font">
+                 <font>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>General</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
               </item>
              </layout>
             </item>

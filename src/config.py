@@ -40,6 +40,23 @@ class Config:
         ui.sipm_bias_box.setValue(sipm_config["bias"])
         ui.sipm_qp_box.setValue(sipm_config["qp"])
 
+        caen_config = self.config["scint"]["caen"]
+        ui.caen_model_box.setCurrentText(caen_config["model"])
+        ui.caen_port_box.setValue(caen_config["port"])
+        ui.caen_conn_box.setCurrentText(caen_config["connection"])
+        ui.caen_evs_box.setValue(caen_config["evs_per_read"])
+        ui.caen_length_box.setValue(caen_config["rec_length"])
+        ui.caen_post_trig_box.setValue(caen_config["post_trig"])
+        ui.caen_trigin_box.setChecked(caen_config["trig_in"])
+        ui.caen_decimation_box.setCurrentText(caen_config["decimation"])
+        ui.caen_overlap_box.setChecked(caen_config["overlap"])
+        ui.caen_polarity_box.setCurrentText(caen_config["polarity"])
+        ui.caen_io_box.setCurrentText(caen_config["io_level"])
+        ui.caen_ext_trig_box.setCurrentText(caen_config["ext_trig"])
+        ui.caen_sw_trig_box.setCurrentText(caen_config["sw_trig"])
+
+        acous_config = self.config["acous"]
+
         dio_general_config = self.config["dio"]["general"]
         ui.trigger_port_edit.setText(dio_general_config["trigger"]["port"])
         ui.trigger_sketch_edit.setText(dio_general_config["trigger"]["sketch"])
@@ -54,34 +71,139 @@ class Config:
 
     def apply_config(self, ui):
         # apply general config
-        general_config = {"config_path": ui.config_path_edit.text(),
-                          "log_path": ui.log_path_edit.text(),
-                          "data_dir": ui.data_dir_edit.text()}
+        general_config = {
+            "config_path": ui.config_path_edit.text(),
+            "log_path": ui.log_path_edit.text(),
+            "data_dir": ui.data_dir_edit.text(),
+        }
 
         # apply run config
-        run_config = {"source": ui.source_box.currentText(),
-                      "pressure_setpoint": ui.pressure_setpoint_box.value(),
-                      "max_ev_time": ui.max_ev_time_box.value(),
-                      "max_num_evs": ui.max_num_ev_box.value()}
+        run_config = {
+            "source": ui.source_box.currentText(),
+            "pressure_setpoint": ui.pressure_setpoint_box.value(),
+            "max_ev_time": ui.max_ev_time_box.value(),
+            "max_num_evs": ui.max_num_ev_box.value(),
+        }
 
-        sipm_config = {"ip_addr": ui.sipm_ip_addr_edit.text(),
-                       "bias": ui.sipm_bias_box.value(),
-                       "qp": ui.sipm_qp_box.value()}
+        sipm_config = {
+            "ip_addr": ui.sipm_ip_addr_edit.text(),
+            "bias": ui.sipm_bias_box.value(),
+            "qp": ui.sipm_qp_box.value(),
+        }
 
-        caen_config = {}
+        caen_config = {
+            "model": ui.caen_model_box.currentText(),
+            "port": ui.caen_port_box.value(),
+            "connection": ui.caen_conn_box.currentText(),
+            "evs_per_read": ui.caen_evs_box.value(),
+            "rec_length": ui.caen_length_box.value(),
+            "post_trig": ui.caen_post_trig_box.value(),
+            "trig_in": ui.caen_trigin_box.isChecked(),
+            "decimation": ui.caen_decimation_box.currentText(),
+            "overlap": ui.caen_overlap_box.isChecked(),
+            "polarity": ui.caen_polarity_box.currentText(),
+            "io_level": ui.caen_io_box.currentText(),
+            "ext_trig": ui.caen_ext_trig_box.currentText(),
+            "sw_trig": ui.caen_sw_trig_box.currentText(),
+        }
 
-        dio_general_config = {"trigger": {"port": ui.trigger_port_edit.text(),
-                                          "sketch": ui.trigger_sketch_edit.text()},
-                              "clock": {"port": ui.clock_port_edit.text(),
-                                        "sketch": ui.clock_sketch_edit.text()},
-                              "position": {"port": ui.position_port_edit.text(),
-                                           "sketch": ui.position_sketch_edit.text()}}
+        acous_general_config = {
+            "sample_rate": ui.acous_sample_rate_box.currentText(),
+            "pre_trig_len": ui.acous_pre_trig_box.value(),
+            "post_trig_len": ui.acous_post_trig_box.value(),
+            "trig_timeout": ui.acous_trig_timeout_box.value(),
+            "trig_delay": ui.acous_trig_delay_box.value(),
+        }
 
-        self.config = {"general": general_config,
-                       "run": run_config,
-                       "scint": {"sipm": sipm_config,
-                                 "caen": caen_config},
-                       "dio": {"general": dio_general_config}}
+        acous_ch_config = {
+            "ch1": {
+                "enabled": ui.acous_enable_ch1,
+                "range": ui.acous_range_ch1,
+                "offset": ui.acous_dc_offset_ch1,
+                "trig": ui.acous_trig_ch1,
+                "polarity": ui.acous_polarity_ch1,
+                "threshold": ui.acous_threshold_ch1,
+            },
+            "ch2": {
+                "enabled": ui.acous_enable_ch2,
+                "range": ui.acous_range_ch2,
+                "offset": ui.acous_dc_offset_ch2,
+                "trig": ui.acous_trig_ch2,
+                "polarity": ui.acous_polarity_ch2,
+                "threshold": ui.acous_threshold_ch2,
+            },
+            "ch3": {
+                "enabled": ui.acous_enable_ch3,
+                "range": ui.acous_range_ch3,
+                "offset": ui.acous_dc_offset_ch3,
+                "trig": ui.acous_trig_ch3,
+                "polarity": ui.acous_polarity_ch3,
+                "threshold": ui.acous_threshold_ch3,
+            },
+            "ch4": {
+                "enabled": ui.acous_enable_ch4,
+                "range": ui.acous_range_ch4,
+                "offset": ui.acous_dc_offset_ch4,
+                "trig": ui.acous_trig_ch4,
+                "polarity": ui.acous_polarity_ch4,
+                "threshold": ui.acous_threshold_ch4,
+            },
+            "ch5": {
+                "enabled": ui.acous_enable_ch5,
+                "range": ui.acous_range_ch5,
+                "offset": ui.acous_dc_offset_ch5,
+                "trig": ui.acous_trig_ch5,
+                "polarity": ui.acous_polarity_ch5,
+                "threshold": ui.acous_threshold_ch5,
+            },
+            "ch6": {
+                "enabled": ui.acous_enable_ch6,
+                "range": ui.acous_range_ch6,
+                "offset": ui.acous_dc_offset_ch6,
+                "trig": ui.acous_trig_ch6,
+                "polarity": ui.acous_polarity_ch6,
+                "threshold": ui.acous_threshold_ch6,
+            },
+            "ch7": {
+                "enabled": ui.acous_enable_ch7,
+                "range": ui.acous_range_ch7,
+                "offset": ui.acous_dc_offset_ch7,
+                "trig": ui.acous_trig_ch7,
+                "polarity": ui.acous_polarity_ch7,
+                "threshold": ui.acous_threshold_ch7,
+            },
+            "ch8": {
+                "enabled": ui.acous_enable_ch8,
+                "range": ui.acous_range_ch8,
+                "offset": ui.acous_dc_offset_ch8,
+                "trig": ui.acous_trig_ch8,
+                "polarity": ui.acous_polarity_ch8,
+                "threshold": ui.acous_threshold_ch8,
+            },
+        }
+
+        dio_general_config = {
+            "trigger": {
+                "port": ui.trigger_port_edit.text(),
+                "sketch": ui.trigger_sketch_edit.text(),
+            },
+            "clock": {
+                "port": ui.clock_port_edit.text(),
+                "sketch": ui.clock_sketch_edit.text(),
+            },
+            "position": {
+                "port": ui.position_port_edit.text(),
+                "sketch": ui.position_sketch_edit.text(),
+            },
+        }
+
+        self.config = {
+            "general": general_config,
+            "run": run_config,
+            "scint": {"sipm": sipm_config, "caen": caen_config},
+            "acous": {"general": acous_general_config, "per_channel": acous_ch_config},
+            "dio": {"general": dio_general_config},
+        }
 
         self.logger.info("Configuration applied.")
 

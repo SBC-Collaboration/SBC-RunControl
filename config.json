@@ -16,22 +16,30 @@
       "bias": 0.0,
       "qp": 0.0
     },
-    "caen": {}
-  },
-  "dio": {
-    "general": {
-      "trigger": {
-        "port": "/dev/ttyACM2",
-        "sketch": "/home/sbc/packages/SBC-ArduinoSketches/trigger/"
-      },
-      "clock": {
-        "port": "/dev/ttyACM1",
-        "sketch": "/home/sbc/packages/SBC-ArduinoSketches/clock/"
-      },
-      "position": {
-        "port": "/dev/ttyACM0",
-        "sketch": "/home/sbc/packages/SBC-ArduinoSketches/position/"
-      }
+    "caen": {
+      "model": "DT5740D",
+      "port": 0,
+      "connection": "USB",
+      "evs_per_read": 0,
+      "rec_length": 0,
+      "post_trig": 50,
+      "trig_in": false,
+      "decimation": "1",
+      "overlap": true,
+      "polarity": "Positive",
+      "io_level": "TTL",
+      "ext_trig": "Disabled",
+      "sw_trig": "Disabled"
     }
-  }
-}
+  },
+  "acous": {
+    "general": {
+      "sample_rate": "100 MS/s",
+      "pre_trig_len": 0,
+      "post_trig_len": 0,
+      "trig_timeout": 0,
+      "trig_delay": 0
+    },
+    "per_channel": {
+      "ch1": {
+        "enabled": 
