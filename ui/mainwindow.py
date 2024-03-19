@@ -27,7 +27,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(874, 624)
+        MainWindow.resize(500, 400)
         sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -127,6 +127,7 @@ class Ui_MainWindow(object):
         self.stop_run_but.setCursor(QCursor(Qt.PointingHandCursor))
         self.stop_run_but.setStyleSheet(u"QPushButton:enabled {color: rgb(170, 0, 0);}\n"
 "QPushButton:disabled {color: rgb(120, 120, 120);}")
+        self.stop_run_but.setCheckable(True)
 
         self.gridLayout.addWidget(self.stop_run_but, 1, 0, 1, 1)
 
@@ -200,7 +201,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(-228, 0, 1000, 538))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 405, 331))
         self.scrollAreaWidgetContents.setMaximumSize(QSize(1000, 16777215))
         self.verticalLayout_2 = QVBoxLayout(self.scrollAreaWidgetContents)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
@@ -259,8 +260,7 @@ class Ui_MainWindow(object):
         self.cam1_image = QLabel(self.scrollAreaWidgetContents)
         self.cam1_image.setObjectName(u"cam1_image")
         self.cam1_image.setMaximumSize(QSize(500, 300))
-        self.cam1_image.setPixmap(QPixmap(u"../resources/cam1.png"))
-        self.cam1_image.setScaledContents(True)
+        self.cam1_image.setScaledContents(False)
 
         self.verticalLayout_3.addWidget(self.cam1_image)
 
@@ -278,8 +278,7 @@ class Ui_MainWindow(object):
         self.cam2_image = QLabel(self.scrollAreaWidgetContents)
         self.cam2_image.setObjectName(u"cam2_image")
         self.cam2_image.setMaximumSize(QSize(500, 300))
-        self.cam2_image.setPixmap(QPixmap(u"../resources/cam2.png"))
-        self.cam2_image.setScaledContents(True)
+        self.cam2_image.setScaledContents(False)
 
         self.verticalLayout_4.addWidget(self.cam2_image)
 
@@ -297,7 +296,7 @@ class Ui_MainWindow(object):
         self.cam3_image = QLabel(self.scrollAreaWidgetContents)
         self.cam3_image.setObjectName(u"cam3_image")
         self.cam3_image.setMaximumSize(QSize(500, 300))
-        self.cam3_image.setScaledContents(True)
+        self.cam3_image.setScaledContents(False)
 
         self.verticalLayout_5.addWidget(self.cam3_image)
 
@@ -382,7 +381,6 @@ class Ui_MainWindow(object):
         self.toolBar.addAction(self.action_log)
 
         self.retranslateUi(MainWindow)
-        self.stop_run_but.clicked.connect(MainWindow.stop_run)
         self.action_settings.triggered.connect(MainWindow.open_settings_window)
         self.action_log.triggered.connect(MainWindow.open_log_window)
         self.action_quit.triggered.connect(MainWindow.close)

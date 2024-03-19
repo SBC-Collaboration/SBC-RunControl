@@ -1,17 +1,15 @@
 import os
 import logging
 
-class Arduino:
+class Arduinos:
     def __init__(self, main_window):
         self.main_window = main_window
         self.config = main_window.config_class.config
         self.logger = logging.getLogger(__name__)
         self.logger.addHandler(logging.StreamHandler())
-        os.system("whoami")
         os.putenv("PATH", "/home/sbc/packages")
-        self.upload_sketch("clock")
 
-        self.logger.debug("Arduino class initialized.")
+        self.logger.debug("Arduinos class initialized.")
 
     def upload_sketch(self, name):
         fqbn = "arduino:avr:mega"

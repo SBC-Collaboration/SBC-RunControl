@@ -4,8 +4,9 @@ from PySide6.QtGui import QPixmap
 from ui.mainwindow import Ui_MainWindow
 from src.config import *
 from src.workers import *
-from src.ui_loader import SettingsWindow, LogWindow
-from src.arduino import *
+from src.ui_loader import *
+from src.arduinos import *
+from src.cameras import *
 import logging
 from enum import Enum
 import datetime
@@ -38,7 +39,7 @@ class MainWindow(QMainWindow):
         self.logger.info("Starting run control.")
 
         # initialize arduino class
-        self.arduino_class = Arduino(self)
+        self.arduinos_class = Arduinos(self)
 
         # timer for event loop
         self.timer = QTimer()
@@ -137,9 +138,9 @@ class MainWindow(QMainWindow):
         # get all runs in the data directory, get the run numbers
         # using regex to handle 2/3 digits of run number and possible suffix at the end
         # would handle folder names like "20240101_00", "20240101_0001",
-        # "20240101_03 cf252", ""20240101_04.252", non_continuous folder numbers
+        # "20240101_03 cf252", "20240101_04.252", non_continuous folder numbers
         # it also handles the case that there's no runs today yet
-        data_dir = self.config.config["general"]["data_dir"]
+        data_dir = self.config_class.config["general"]["data_dir"]
         today = datetime.date.today().strftime("%Y%m%d")
         todays_runs = [
             int(re.search(r"\d+", r[9:])[0]) for r in os.listdir(data_dir) if today in r
@@ -154,7 +155,7 @@ class MainWindow(QMainWindow):
         if self.run_state == self.run_states.Active:
             if (
                 self.event_timer.elapsed()
-                > self.config.config["run"]["max_ev_time"] * 1000
+                > self.config_class.config["run"]["max_ev_time"] * 1000
             ):
                 self.stop_event()
 
@@ -169,7 +170,12 @@ class MainWindow(QMainWindow):
         self.run_livetime += self.event_timer.elapsed()
         self.update_state("Compressing")
         time.sleep(1)
-        if self.ev_number + 1 < self.config.config["run"]["max_num_evs"]:
+        if (
+            self.ui.stop_run_but.isChecked()
+            or self.ev_number + 1 >= self.config_class.config["run"]["max_num_evs"]
+        ):
+            self.stop_run()
+        else:
             self.ev_number += 1
             self.start_event()
 
@@ -181,25 +187,25 @@ class MainWindow(QMainWindow):
             self.ev_number = 0
 
             # set up multithreading thread and workers
-            # TODO: check if thread can persist between runs while worker rerun every time
-            # TODO: implement event timer / livetime timer
             self.start_run_worker = StartRunWorker(self)
             self.start_run_worker.moveToThread(self.run_handling_thread)
             self.run_handling_thread.started.connect(self.start_run_worker.run)
             self.start_run_worker.finished.connect(self.start_run_worker.deleteLater)
+            self.start_run_worker.finished.connect(self.run_handling_thread.quit)
             self.start_run_worker.finished.connect(self.start_event)
             self.start_run_worker.state.connect(self.update_state)
             self.run_handling_thread.start()
 
     def stop_run(self):
-        if self.run_state == self.run_states["Active"]:
-            # set up multithreading thread and workers
-            self.stop_run_worker = StopRunWorker()
-            self.stop_run_worker.moveToThread(self.run_handling_thread)
-            self.run_handling_thread.started.connect(self.stop_run_worker.run)
-            self.stop_run_worker.finished.connect(self.stop_run_worker.deleteLater)
-            self.stop_run_worker.state.connect(self.update_state)
-            self.run_handling_thread.start()
+        # set up multithreading thread and workers
+
+        self.stop_run_worker = StopRunWorker(self)
+        self.stop_run_worker.moveToThread(self.run_handling_thread)
+        self.run_handling_thread.started.connect(self.stop_run_worker.run)
+        self.stop_run_worker.finished.connect(self.stop_run_worker.deleteLater)
+        self.stop_run_worker.finished.connect(self.run_handling_thread.quit)
+        self.stop_run_worker.state.connect(self.update_state)
+        self.run_handling_thread.start()
 
     def update_state(self, s):
         self.run_state = self.run_states[s]
@@ -222,7 +228,7 @@ class MainWindow(QMainWindow):
         elif (
             self.run_state == self.run_states["Active"]
         ):  # or self.run_state == self.run_states[""]:
-            self.logger.info(f"Run active.")
+            self.logger.info(f"Event {self.ev_number} active.")
             self.ui.start_run_but.setEnabled(False)
             self.ui.stop_run_but.setEnabled(True)
         elif self.run_state == self.run_states["Starting"]:
@@ -234,10 +240,11 @@ class MainWindow(QMainWindow):
             self.ui.start_run_but.setEnabled(False)
             self.ui.stop_run_but.setEnabled(False)
         elif self.run_state == self.run_states["Expanding"]:
-            logging.info(f"Event {self.ev_number}.")
+            self.logger.info(f"Event {self.ev_number} expanding")
             self.ui.start_run_but.setEnabled(False)
             self.ui.stop_run_but.setEnabled(False)
         elif self.run_state == self.run_states["Compressing"]:
+            self.logger.info(f"Event {self.ev_number} compressing")
             self.ui.start_run_but.setEnabled(False)
             self.ui.stop_run_but.setEnabled(False)
         else:
@@ -251,6 +258,3 @@ if __name__ == "__main__":
     window.show()
 
     sys.exit(app.exec())
-
-# to flush arduino sketch
-# sudo -E env PATH=/home/sbc:$PATH arduino-cli upload -p /dev/ttyACM1 --fqbn arduino:avr:mega clock.ino

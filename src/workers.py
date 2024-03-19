@@ -14,6 +14,7 @@ class StartRunWorker(QObject):
     """
     state = Signal(str)
     finished = Signal()
+
     def __init__(self, main_window):
         super(StartRunWorker, self).__init__()
         self.main_window = main_window
@@ -33,8 +34,12 @@ class StopRunWorker(QObject):
     state = Signal(str)
     finished = Signal()
 
+    def __init__(self, main_window):
+        super(StopRunWorker, self).__init__()
+        self.main_window = main_window
+
     def run(self):
-        """Processes to start run"""
+        """Processes to stop run"""
         self.state.emit("Stopping")
         time.sleep(1)
         self.state.emit("Idle")

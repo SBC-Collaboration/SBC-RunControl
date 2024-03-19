@@ -6,6 +6,7 @@ dependencies:
   - matplotlib
   - numpy>=1.26.0
   - pandas>=2.1.1
+  - paramiko>=2.8.1
   - pip>=23.3.1
   - python>=3.11
   - pip:

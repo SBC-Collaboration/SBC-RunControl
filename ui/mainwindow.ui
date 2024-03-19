@@ -199,6 +199,9 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
       <property name="text">
        <string>Stop Run</string>
       </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
      </widget>
     </item>
     <item row="6" column="0">
@@ -705,22 +708,6 @@ background-color: rgb(150, 150, 150);</string>
   <include location="../resources/resources.qrc"/>
  </resources>
  <connections>
-  <connection>
-   <sender>stop_run_but</sender>
-   <signal>clicked()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>stop_run()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>69</x>
-     <y>136</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>97</x>
-     <y>399</y>
-    </hint>
-   </hints>
-  </connection>
   <connection>
    <sender>action_settings</sender>
    <signal>triggered()</signal>

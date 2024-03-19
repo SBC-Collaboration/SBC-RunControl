@@ -49,7 +49,7 @@
     <item row="2" column="1">
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>5</number>
+       <number>0</number>
       </property>
       <property name="tabsClosable">
        <bool>false</bool>
@@ -96,8 +96,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>390</width>
-             <height>438</height>
+             <width>388</width>
+             <height>442</height>
             </rect>
            </property>
            <property name="maximumSize">
@@ -261,8 +261,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>390</width>
-             <height>438</height>
+             <width>388</width>
+             <height>442</height>
             </rect>
            </property>
            <property name="maximumSize">
@@ -457,8 +457,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>390</width>
-             <height>438</height>
+             <width>388</width>
+             <height>442</height>
             </rect>
            </property>
            <property name="maximumSize">
@@ -1270,8 +1270,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>390</width>
-             <height>438</height>
+             <width>388</width>
+             <height>442</height>
             </rect>
            </property>
            <property name="maximumSize">
@@ -2117,8 +2117,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>376</width>
-             <height>456</height>
+             <width>388</width>
+             <height>442</height>
             </rect>
            </property>
            <property name="maximumSize">
@@ -2986,8 +2986,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>376</width>
-             <height>534</height>
+             <width>371</width>
+             <height>512</height>
             </rect>
            </property>
            <property name="maximumSize">
