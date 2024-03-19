@@ -29,7 +29,41 @@
       "polarity": "Positive",
       "io_level": "TTL",
       "ext_trig": "Disabled",
-      "sw_trig": "Disabled"
+      "sw_trig": "ACQ+EXT"
+    },
+    "caen_g0": {
+      "enabled": true,
+      "threshold": 30000,
+      "trig_mask": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "acq_mask": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "offsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
     }
   },
   "acous": {

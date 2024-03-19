@@ -53,6 +53,34 @@ class Config:
         ui.caen_ext_trig_box.setCurrentText(caen_config["ext_trig"])
         ui.caen_sw_trig_box.setCurrentText(caen_config["sw_trig"])
 
+        caen_g0_config = self.config["scint"]["caen_g0"]
+        ui.caen_g0_enable_box.setChecked(caen_g0_config["enabled"])
+        ui.caen_g0_thres_box.setValue(caen_g0_config["threshold"])
+        ui.caen_g0_trig_mask_0.setChecked(caen_g0_config["trig_mask"][0])
+        ui.caen_g0_trig_mask_1.setChecked(caen_g0_config["trig_mask"][1])
+        ui.caen_g0_trig_mask_2.setChecked(caen_g0_config["trig_mask"][2])
+        ui.caen_g0_trig_mask_3.setChecked(caen_g0_config["trig_mask"][3])
+        ui.caen_g0_trig_mask_4.setChecked(caen_g0_config["trig_mask"][4])
+        ui.caen_g0_trig_mask_5.setChecked(caen_g0_config["trig_mask"][5])
+        ui.caen_g0_trig_mask_6.setChecked(caen_g0_config["trig_mask"][6])
+        ui.caen_g0_trig_mask_7.setChecked(caen_g0_config["trig_mask"][7])
+        ui.caen_g0_acq_mask_0.setChecked(caen_g0_config["acq_mask"][0])
+        ui.caen_g0_acq_mask_1.setChecked(caen_g0_config["acq_mask"][1])
+        ui.caen_g0_acq_mask_2.setChecked(caen_g0_config["acq_mask"][2])
+        ui.caen_g0_acq_mask_3.setChecked(caen_g0_config["acq_mask"][3])
+        ui.caen_g0_acq_mask_4.setChecked(caen_g0_config["acq_mask"][4])
+        ui.caen_g0_acq_mask_5.setChecked(caen_g0_config["acq_mask"][5])
+        ui.caen_g0_acq_mask_6.setChecked(caen_g0_config["acq_mask"][6])
+        ui.caen_g0_acq_mask_7.setChecked(caen_g0_config["acq_mask"][7])
+        ui.caen_g0_offset_0.setValue(caen_g0_config["offsets"][0])
+        ui.caen_g0_offset_1.setValue(caen_g0_config["offsets"][1])
+        ui.caen_g0_offset_2.setValue(caen_g0_config["offsets"][2])
+        ui.caen_g0_offset_3.setValue(caen_g0_config["offsets"][3])
+        ui.caen_g0_offset_4.setValue(caen_g0_config["offsets"][4])
+        ui.caen_g0_offset_5.setValue(caen_g0_config["offsets"][5])
+        ui.caen_g0_offset_6.setValue(caen_g0_config["offsets"][6])
+        ui.caen_g0_offset_7.setValue(caen_g0_config["offsets"][7])
+
         acous_config = self.config["acous"]
 
         dio_general_config = self.config["dio"]["general"]
@@ -103,6 +131,41 @@ class Config:
             "io_level": ui.caen_io_box.currentText(),
             "ext_trig": ui.caen_ext_trig_box.currentText(),
             "sw_trig": ui.caen_sw_trig_box.currentText(),
+        }
+
+        caen_g0_config = {
+            "enabled": ui.caen_g0_enable_box.isChecked(),
+            "threshold": ui.caen_g0_thres_box.value(),
+            "trig_mask": [
+                ui.caen_g0_trig_mask_0.isChecked(),
+                ui.caen_g0_trig_mask_1.isChecked(),
+                ui.caen_g0_trig_mask_2.isChecked(),
+                ui.caen_g0_trig_mask_3.isChecked(),
+                ui.caen_g0_trig_mask_4.isChecked(),
+                ui.caen_g0_trig_mask_5.isChecked(),
+                ui.caen_g0_trig_mask_6.isChecked(),
+                ui.caen_g0_trig_mask_7.isChecked(),
+            ],
+            "acq_mask": [
+                ui.caen_g0_acq_mask_0.isChecked(),
+                ui.caen_g0_acq_mask_1.isChecked(),
+                ui.caen_g0_acq_mask_2.isChecked(),
+                ui.caen_g0_acq_mask_3.isChecked(),
+                ui.caen_g0_acq_mask_4.isChecked(),
+                ui.caen_g0_acq_mask_5.isChecked(),
+                ui.caen_g0_acq_mask_6.isChecked(),
+                ui.caen_g0_acq_mask_7.isChecked(),
+            ],
+            "offsets": [
+                ui.caen_g0_offset_0.value(),
+                ui.caen_g0_offset_1.value(),
+                ui.caen_g0_offset_2.value(),
+                ui.caen_g0_offset_3.value(),
+                ui.caen_g0_offset_4.value(),
+                ui.caen_g0_offset_5.value(),
+                ui.caen_g0_offset_6.value(),
+                ui.caen_g0_offset_7.value(),
+            ],
         }
 
         acous_general_config = {
@@ -198,7 +261,11 @@ class Config:
         self.config = {
             "general": general_config,
             "run": run_config,
-            "scint": {"sipm": sipm_config, "caen": caen_config},
+            "scint": {
+                "sipm": sipm_config,
+                "caen": caen_config,
+                "caen_g0": caen_g0_config,
+            },
             "acous": {"general": acous_general_config, "per_channel": acous_ch_config},
             "dio": {"general": dio_general_config},
         }

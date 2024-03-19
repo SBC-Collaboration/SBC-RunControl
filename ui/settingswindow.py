@@ -515,6 +515,7 @@ class Ui_SettingsWindow(object):
         self.gridLayout_7.setObjectName(u"gridLayout_7")
         self.caen_g0_thres_box = QSpinBox(self.scrollAreaWidgetContents_2)
         self.caen_g0_thres_box.setObjectName(u"caen_g0_thres_box")
+        self.caen_g0_thres_box.setMaximum(65536)
 
         self.gridLayout_7.addWidget(self.caen_g0_thres_box, 1, 3, 1, 1)
 
@@ -547,10 +548,10 @@ class Ui_SettingsWindow(object):
         self.gridLayout_8 = QGridLayout()
         self.gridLayout_8.setSpacing(3)
         self.gridLayout_8.setObjectName(u"gridLayout_8")
-        self.checkBox_18 = QCheckBox(self.scrollAreaWidgetContents_2)
-        self.checkBox_18.setObjectName(u"checkBox_18")
+        self.caen_g0_acq_mask_6 = QCheckBox(self.scrollAreaWidgetContents_2)
+        self.caen_g0_acq_mask_6.setObjectName(u"caen_g0_acq_mask_6")
 
-        self.gridLayout_8.addWidget(self.checkBox_18, 2, 7, 1, 1)
+        self.gridLayout_8.addWidget(self.caen_g0_acq_mask_6, 2, 7, 1, 1)
 
         self.label_21 = QLabel(self.scrollAreaWidgetContents_2)
         self.label_21.setObjectName(u"label_21")
@@ -558,40 +559,30 @@ class Ui_SettingsWindow(object):
 
         self.gridLayout_8.addWidget(self.label_21, 1, 0, 1, 1)
 
-        self.checkBox_11 = QCheckBox(self.scrollAreaWidgetContents_2)
-        self.checkBox_11.setObjectName(u"checkBox_11")
+        self.caen_g0_trig_mask_4 = QCheckBox(self.scrollAreaWidgetContents_2)
+        self.caen_g0_trig_mask_4.setObjectName(u"caen_g0_trig_mask_4")
 
-        self.gridLayout_8.addWidget(self.checkBox_11, 1, 5, 1, 1)
+        self.gridLayout_8.addWidget(self.caen_g0_trig_mask_4, 1, 5, 1, 1)
 
-        self.checkBox_5 = QCheckBox(self.scrollAreaWidgetContents_2)
-        self.checkBox_5.setObjectName(u"checkBox_5")
+        self.caen_g0_trig_mask_1 = QCheckBox(self.scrollAreaWidgetContents_2)
+        self.caen_g0_trig_mask_1.setObjectName(u"caen_g0_trig_mask_1")
 
-        self.gridLayout_8.addWidget(self.checkBox_5, 1, 2, 1, 1)
+        self.gridLayout_8.addWidget(self.caen_g0_trig_mask_1, 1, 2, 1, 1)
 
-        self.checkBox_19 = QCheckBox(self.scrollAreaWidgetContents_2)
-        self.checkBox_19.setObjectName(u"checkBox_19")
+        self.caen_g0_acq_mask_7 = QCheckBox(self.scrollAreaWidgetContents_2)
+        self.caen_g0_acq_mask_7.setObjectName(u"caen_g0_acq_mask_7")
 
-        self.gridLayout_8.addWidget(self.checkBox_19, 2, 8, 1, 1)
+        self.gridLayout_8.addWidget(self.caen_g0_acq_mask_7, 2, 8, 1, 1)
 
-        self.checkBox_4 = QCheckBox(self.scrollAreaWidgetContents_2)
-        self.checkBox_4.setObjectName(u"checkBox_4")
+        self.caen_g0_trig_mask_0 = QCheckBox(self.scrollAreaWidgetContents_2)
+        self.caen_g0_trig_mask_0.setObjectName(u"caen_g0_trig_mask_0")
 
-        self.gridLayout_8.addWidget(self.checkBox_4, 1, 1, 1, 1)
+        self.gridLayout_8.addWidget(self.caen_g0_trig_mask_0, 1, 1, 1, 1)
 
-        self.checkBox_16 = QCheckBox(self.scrollAreaWidgetContents_2)
-        self.checkBox_16.setObjectName(u"checkBox_16")
+        self.caen_g0_acq_mask_4 = QCheckBox(self.scrollAreaWidgetContents_2)
+        self.caen_g0_acq_mask_4.setObjectName(u"caen_g0_acq_mask_4")
 
-        self.gridLayout_8.addWidget(self.checkBox_16, 2, 5, 1, 1)
-
-        self.checkBox_23 = QCheckBox(self.scrollAreaWidgetContents_2)
-        self.checkBox_23.setObjectName(u"checkBox_23")
-
-        self.gridLayout_8.addWidget(self.checkBox_23, 3, 4, 1, 1)
-
-        self.checkBox_25 = QCheckBox(self.scrollAreaWidgetContents_2)
-        self.checkBox_25.setObjectName(u"checkBox_25")
-
-        self.gridLayout_8.addWidget(self.checkBox_25, 3, 6, 1, 1)
+        self.gridLayout_8.addWidget(self.caen_g0_acq_mask_4, 2, 5, 1, 1)
 
         self.label_22 = QLabel(self.scrollAreaWidgetContents_2)
         self.label_22.setObjectName(u"label_22")
@@ -599,60 +590,45 @@ class Ui_SettingsWindow(object):
 
         self.gridLayout_8.addWidget(self.label_22, 2, 0, 1, 1)
 
-        self.caen_g05_trig = QCheckBox(self.scrollAreaWidgetContents_2)
-        self.caen_g05_trig.setObjectName(u"caen_g05_trig")
+        self.caen_g0_trig_mask_5 = QCheckBox(self.scrollAreaWidgetContents_2)
+        self.caen_g0_trig_mask_5.setObjectName(u"caen_g0_trig_mask_5")
 
-        self.gridLayout_8.addWidget(self.caen_g05_trig, 1, 6, 1, 1)
+        self.gridLayout_8.addWidget(self.caen_g0_trig_mask_5, 1, 6, 1, 1)
 
-        self.checkBox_22 = QCheckBox(self.scrollAreaWidgetContents_2)
-        self.checkBox_22.setObjectName(u"checkBox_22")
+        self.caen_g0_acq_mask_5 = QCheckBox(self.scrollAreaWidgetContents_2)
+        self.caen_g0_acq_mask_5.setObjectName(u"caen_g0_acq_mask_5")
 
-        self.gridLayout_8.addWidget(self.checkBox_22, 3, 3, 1, 1)
+        self.gridLayout_8.addWidget(self.caen_g0_acq_mask_5, 2, 6, 1, 1)
 
-        self.checkBox_17 = QCheckBox(self.scrollAreaWidgetContents_2)
-        self.checkBox_17.setObjectName(u"checkBox_17")
+        self.caen_g0_trig_mask_3 = QCheckBox(self.scrollAreaWidgetContents_2)
+        self.caen_g0_trig_mask_3.setObjectName(u"caen_g0_trig_mask_3")
 
-        self.gridLayout_8.addWidget(self.checkBox_17, 2, 6, 1, 1)
+        self.gridLayout_8.addWidget(self.caen_g0_trig_mask_3, 1, 4, 1, 1)
 
-        self.checkBox_6 = QCheckBox(self.scrollAreaWidgetContents_2)
-        self.checkBox_6.setObjectName(u"checkBox_6")
+        self.caen_g0_trig_mask_7 = QCheckBox(self.scrollAreaWidgetContents_2)
+        self.caen_g0_trig_mask_7.setObjectName(u"caen_g0_trig_mask_7")
 
-        self.gridLayout_8.addWidget(self.checkBox_6, 1, 4, 1, 1)
+        self.gridLayout_8.addWidget(self.caen_g0_trig_mask_7, 1, 8, 1, 1)
 
-        self.checkBox_8 = QCheckBox(self.scrollAreaWidgetContents_2)
-        self.checkBox_8.setObjectName(u"checkBox_8")
+        self.caen_g0_trig_mask_2 = QCheckBox(self.scrollAreaWidgetContents_2)
+        self.caen_g0_trig_mask_2.setObjectName(u"caen_g0_trig_mask_2")
 
-        self.gridLayout_8.addWidget(self.checkBox_8, 1, 8, 1, 1)
+        self.gridLayout_8.addWidget(self.caen_g0_trig_mask_2, 1, 3, 1, 1)
 
-        self.checkBox_7 = QCheckBox(self.scrollAreaWidgetContents_2)
-        self.checkBox_7.setObjectName(u"checkBox_7")
+        self.caen_g0_trig_mask_6 = QCheckBox(self.scrollAreaWidgetContents_2)
+        self.caen_g0_trig_mask_6.setObjectName(u"caen_g0_trig_mask_6")
 
-        self.gridLayout_8.addWidget(self.checkBox_7, 1, 3, 1, 1)
+        self.gridLayout_8.addWidget(self.caen_g0_trig_mask_6, 1, 7, 1, 1)
 
-        self.checkBox_9 = QCheckBox(self.scrollAreaWidgetContents_2)
-        self.checkBox_9.setObjectName(u"checkBox_9")
+        self.caen_g0_acq_mask_3 = QCheckBox(self.scrollAreaWidgetContents_2)
+        self.caen_g0_acq_mask_3.setObjectName(u"caen_g0_acq_mask_3")
 
-        self.gridLayout_8.addWidget(self.checkBox_9, 1, 7, 1, 1)
+        self.gridLayout_8.addWidget(self.caen_g0_acq_mask_3, 2, 4, 1, 1)
 
-        self.checkBox_20 = QCheckBox(self.scrollAreaWidgetContents_2)
-        self.checkBox_20.setObjectName(u"checkBox_20")
+        self.caen_g0_acq_mask_0 = QCheckBox(self.scrollAreaWidgetContents_2)
+        self.caen_g0_acq_mask_0.setObjectName(u"caen_g0_acq_mask_0")
 
-        self.gridLayout_8.addWidget(self.checkBox_20, 3, 1, 1, 1)
-
-        self.checkBox_26 = QCheckBox(self.scrollAreaWidgetContents_2)
-        self.checkBox_26.setObjectName(u"checkBox_26")
-
-        self.gridLayout_8.addWidget(self.checkBox_26, 3, 7, 1, 1)
-
-        self.checkBox_15 = QCheckBox(self.scrollAreaWidgetContents_2)
-        self.checkBox_15.setObjectName(u"checkBox_15")
-
-        self.gridLayout_8.addWidget(self.checkBox_15, 2, 4, 1, 1)
-
-        self.checkBox_12 = QCheckBox(self.scrollAreaWidgetContents_2)
-        self.checkBox_12.setObjectName(u"checkBox_12")
-
-        self.gridLayout_8.addWidget(self.checkBox_12, 2, 1, 1, 1)
+        self.gridLayout_8.addWidget(self.caen_g0_acq_mask_0, 2, 1, 1, 1)
 
         self.label_23 = QLabel(self.scrollAreaWidgetContents_2)
         self.label_23.setObjectName(u"label_23")
@@ -660,30 +636,15 @@ class Ui_SettingsWindow(object):
 
         self.gridLayout_8.addWidget(self.label_23, 3, 0, 1, 1)
 
-        self.checkBox_27 = QCheckBox(self.scrollAreaWidgetContents_2)
-        self.checkBox_27.setObjectName(u"checkBox_27")
+        self.caen_g0_acq_mask_2 = QCheckBox(self.scrollAreaWidgetContents_2)
+        self.caen_g0_acq_mask_2.setObjectName(u"caen_g0_acq_mask_2")
 
-        self.gridLayout_8.addWidget(self.checkBox_27, 3, 8, 1, 1)
+        self.gridLayout_8.addWidget(self.caen_g0_acq_mask_2, 2, 3, 1, 1)
 
-        self.checkBox_14 = QCheckBox(self.scrollAreaWidgetContents_2)
-        self.checkBox_14.setObjectName(u"checkBox_14")
+        self.caen_g0_acq_mask_1 = QCheckBox(self.scrollAreaWidgetContents_2)
+        self.caen_g0_acq_mask_1.setObjectName(u"caen_g0_acq_mask_1")
 
-        self.gridLayout_8.addWidget(self.checkBox_14, 2, 3, 1, 1)
-
-        self.checkBox_24 = QCheckBox(self.scrollAreaWidgetContents_2)
-        self.checkBox_24.setObjectName(u"checkBox_24")
-
-        self.gridLayout_8.addWidget(self.checkBox_24, 3, 5, 1, 1)
-
-        self.checkBox_21 = QCheckBox(self.scrollAreaWidgetContents_2)
-        self.checkBox_21.setObjectName(u"checkBox_21")
-
-        self.gridLayout_8.addWidget(self.checkBox_21, 3, 2, 1, 1)
-
-        self.checkBox_13 = QCheckBox(self.scrollAreaWidgetContents_2)
-        self.checkBox_13.setObjectName(u"checkBox_13")
-
-        self.gridLayout_8.addWidget(self.checkBox_13, 2, 2, 1, 1)
+        self.gridLayout_8.addWidget(self.caen_g0_acq_mask_1, 2, 2, 1, 1)
 
         self.label_30 = QLabel(self.scrollAreaWidgetContents_2)
         self.label_30.setObjectName(u"label_30")
@@ -724,6 +685,96 @@ class Ui_SettingsWindow(object):
         self.label_32.setObjectName(u"label_32")
 
         self.gridLayout_8.addWidget(self.label_32, 0, 1, 1, 1)
+
+        self.caen_g0_offset_0 = QSpinBox(self.scrollAreaWidgetContents_2)
+        self.caen_g0_offset_0.setObjectName(u"caen_g0_offset_0")
+        font = QFont()
+        font.setKerning(True)
+        self.caen_g0_offset_0.setFont(font)
+        self.caen_g0_offset_0.setWrapping(False)
+        self.caen_g0_offset_0.setButtonSymbols(QAbstractSpinBox.NoButtons)
+        self.caen_g0_offset_0.setProperty("showGroupSeparator", False)
+        self.caen_g0_offset_0.setMaximum(255)
+        self.caen_g0_offset_0.setValue(0)
+
+        self.gridLayout_8.addWidget(self.caen_g0_offset_0, 3, 1, 1, 1)
+
+        self.caen_g0_offset_1 = QSpinBox(self.scrollAreaWidgetContents_2)
+        self.caen_g0_offset_1.setObjectName(u"caen_g0_offset_1")
+        self.caen_g0_offset_1.setFont(font)
+        self.caen_g0_offset_1.setWrapping(False)
+        self.caen_g0_offset_1.setButtonSymbols(QAbstractSpinBox.NoButtons)
+        self.caen_g0_offset_1.setProperty("showGroupSeparator", False)
+        self.caen_g0_offset_1.setMaximum(255)
+        self.caen_g0_offset_1.setValue(0)
+
+        self.gridLayout_8.addWidget(self.caen_g0_offset_1, 3, 2, 1, 1)
+
+        self.caen_g0_offset_2 = QSpinBox(self.scrollAreaWidgetContents_2)
+        self.caen_g0_offset_2.setObjectName(u"caen_g0_offset_2")
+        self.caen_g0_offset_2.setFont(font)
+        self.caen_g0_offset_2.setWrapping(False)
+        self.caen_g0_offset_2.setButtonSymbols(QAbstractSpinBox.NoButtons)
+        self.caen_g0_offset_2.setProperty("showGroupSeparator", False)
+        self.caen_g0_offset_2.setMaximum(255)
+        self.caen_g0_offset_2.setValue(0)
+
+        self.gridLayout_8.addWidget(self.caen_g0_offset_2, 3, 3, 1, 1)
+
+        self.caen_g0_offset_3 = QSpinBox(self.scrollAreaWidgetContents_2)
+        self.caen_g0_offset_3.setObjectName(u"caen_g0_offset_3")
+        self.caen_g0_offset_3.setFont(font)
+        self.caen_g0_offset_3.setWrapping(False)
+        self.caen_g0_offset_3.setButtonSymbols(QAbstractSpinBox.NoButtons)
+        self.caen_g0_offset_3.setProperty("showGroupSeparator", False)
+        self.caen_g0_offset_3.setMaximum(255)
+        self.caen_g0_offset_3.setValue(0)
+
+        self.gridLayout_8.addWidget(self.caen_g0_offset_3, 3, 4, 1, 1)
+
+        self.caen_g0_offset_4 = QSpinBox(self.scrollAreaWidgetContents_2)
+        self.caen_g0_offset_4.setObjectName(u"caen_g0_offset_4")
+        self.caen_g0_offset_4.setFont(font)
+        self.caen_g0_offset_4.setWrapping(False)
+        self.caen_g0_offset_4.setButtonSymbols(QAbstractSpinBox.NoButtons)
+        self.caen_g0_offset_4.setProperty("showGroupSeparator", False)
+        self.caen_g0_offset_4.setMaximum(255)
+        self.caen_g0_offset_4.setValue(0)
+
+        self.gridLayout_8.addWidget(self.caen_g0_offset_4, 3, 5, 1, 1)
+
+        self.caen_g0_offset_5 = QSpinBox(self.scrollAreaWidgetContents_2)
+        self.caen_g0_offset_5.setObjectName(u"caen_g0_offset_5")
+        self.caen_g0_offset_5.setFont(font)
+        self.caen_g0_offset_5.setWrapping(False)
+        self.caen_g0_offset_5.setButtonSymbols(QAbstractSpinBox.NoButtons)
+        self.caen_g0_offset_5.setProperty("showGroupSeparator", False)
+        self.caen_g0_offset_5.setMaximum(255)
+        self.caen_g0_offset_5.setValue(0)
+
+        self.gridLayout_8.addWidget(self.caen_g0_offset_5, 3, 6, 1, 1)
+
+        self.caen_g0_offset_6 = QSpinBox(self.scrollAreaWidgetContents_2)
+        self.caen_g0_offset_6.setObjectName(u"caen_g0_offset_6")
+        self.caen_g0_offset_6.setFont(font)
+        self.caen_g0_offset_6.setWrapping(False)
+        self.caen_g0_offset_6.setButtonSymbols(QAbstractSpinBox.NoButtons)
+        self.caen_g0_offset_6.setProperty("showGroupSeparator", False)
+        self.caen_g0_offset_6.setMaximum(255)
+        self.caen_g0_offset_6.setValue(0)
+
+        self.gridLayout_8.addWidget(self.caen_g0_offset_6, 3, 7, 1, 1)
+
+        self.caen_g0_offset_7 = QSpinBox(self.scrollAreaWidgetContents_2)
+        self.caen_g0_offset_7.setObjectName(u"caen_g0_offset_7")
+        self.caen_g0_offset_7.setFont(font)
+        self.caen_g0_offset_7.setWrapping(False)
+        self.caen_g0_offset_7.setButtonSymbols(QAbstractSpinBox.NoButtons)
+        self.caen_g0_offset_7.setProperty("showGroupSeparator", False)
+        self.caen_g0_offset_7.setMaximum(255)
+        self.caen_g0_offset_7.setValue(0)
+
+        self.gridLayout_8.addWidget(self.caen_g0_offset_7, 3, 8, 1, 1)
 
 
         self.verticalLayout_9.addLayout(self.gridLayout_8)
@@ -820,9 +871,9 @@ class Ui_SettingsWindow(object):
 
         self.label = QLabel(self.scrollAreaWidgetContents_6)
         self.label.setObjectName(u"label")
-        font = QFont()
-        font.setBold(True)
-        self.label.setFont(font)
+        font1 = QFont()
+        font1.setBold(True)
+        self.label.setFont(font1)
         self.label.setAlignment(Qt.AlignCenter)
 
         self.acous_general_grid.addWidget(self.label, 0, 0, 1, 4)
@@ -944,6 +995,10 @@ class Ui_SettingsWindow(object):
 
         self.acous_range_ch8 = QSpinBox(self.scrollAreaWidgetContents_6)
         self.acous_range_ch8.setObjectName(u"acous_range_ch8")
+        font2 = QFont()
+        font2.setKerning(False)
+        self.acous_range_ch8.setFont(font2)
+        self.acous_range_ch8.setButtonSymbols(QAbstractSpinBox.NoButtons)
 
         self.acous_per_ch_grid.addWidget(self.acous_range_ch8, 8, 2, 1, 1)
 
@@ -1006,6 +1061,8 @@ class Ui_SettingsWindow(object):
 
         self.acous_range_ch3 = QSpinBox(self.scrollAreaWidgetContents_6)
         self.acous_range_ch3.setObjectName(u"acous_range_ch3")
+        self.acous_range_ch3.setFont(font2)
+        self.acous_range_ch3.setButtonSymbols(QAbstractSpinBox.NoButtons)
 
         self.acous_per_ch_grid.addWidget(self.acous_range_ch3, 3, 2, 1, 1)
 
@@ -1036,6 +1093,8 @@ class Ui_SettingsWindow(object):
 
         self.acous_range_ch6 = QSpinBox(self.scrollAreaWidgetContents_6)
         self.acous_range_ch6.setObjectName(u"acous_range_ch6")
+        self.acous_range_ch6.setFont(font2)
+        self.acous_range_ch6.setButtonSymbols(QAbstractSpinBox.NoButtons)
 
         self.acous_per_ch_grid.addWidget(self.acous_range_ch6, 6, 2, 1, 1)
 
@@ -1108,6 +1167,8 @@ class Ui_SettingsWindow(object):
 
         self.acous_range_ch2 = QSpinBox(self.scrollAreaWidgetContents_6)
         self.acous_range_ch2.setObjectName(u"acous_range_ch2")
+        self.acous_range_ch2.setFont(font2)
+        self.acous_range_ch2.setButtonSymbols(QAbstractSpinBox.NoButtons)
 
         self.acous_per_ch_grid.addWidget(self.acous_range_ch2, 2, 2, 1, 1)
 
@@ -1119,6 +1180,8 @@ class Ui_SettingsWindow(object):
 
         self.acous_range_ch7 = QSpinBox(self.scrollAreaWidgetContents_6)
         self.acous_range_ch7.setObjectName(u"acous_range_ch7")
+        self.acous_range_ch7.setFont(font2)
+        self.acous_range_ch7.setButtonSymbols(QAbstractSpinBox.NoButtons)
 
         self.acous_per_ch_grid.addWidget(self.acous_range_ch7, 7, 2, 1, 1)
 
@@ -1139,6 +1202,8 @@ class Ui_SettingsWindow(object):
 
         self.acous_range_ch5 = QSpinBox(self.scrollAreaWidgetContents_6)
         self.acous_range_ch5.setObjectName(u"acous_range_ch5")
+        self.acous_range_ch5.setFont(font2)
+        self.acous_range_ch5.setButtonSymbols(QAbstractSpinBox.NoButtons)
 
         self.acous_per_ch_grid.addWidget(self.acous_range_ch5, 5, 2, 1, 1)
 
@@ -1168,12 +1233,16 @@ class Ui_SettingsWindow(object):
 
         self.acous_range_ch1 = QSpinBox(self.scrollAreaWidgetContents_6)
         self.acous_range_ch1.setObjectName(u"acous_range_ch1")
+        self.acous_range_ch1.setFont(font2)
+        self.acous_range_ch1.setButtonSymbols(QAbstractSpinBox.NoButtons)
         self.acous_range_ch1.setStepType(QAbstractSpinBox.DefaultStepType)
 
         self.acous_per_ch_grid.addWidget(self.acous_range_ch1, 1, 2, 1, 1)
 
         self.acous_range_ch4 = QSpinBox(self.scrollAreaWidgetContents_6)
         self.acous_range_ch4.setObjectName(u"acous_range_ch4")
+        self.acous_range_ch4.setFont(font2)
+        self.acous_range_ch4.setButtonSymbols(QAbstractSpinBox.NoButtons)
 
         self.acous_per_ch_grid.addWidget(self.acous_range_ch4, 4, 2, 1, 1)
 
@@ -1255,9 +1324,7 @@ class Ui_SettingsWindow(object):
         self.cam_scroll_area = QScrollArea(self.cam_tab)
         self.cam_scroll_area.setObjectName(u"cam_scroll_area")
         self.cam_scroll_area.setSizeIncrement(QSize(0, 0))
-        font1 = QFont()
-        font1.setKerning(True)
-        self.cam_scroll_area.setFont(font1)
+        self.cam_scroll_area.setFont(font)
         self.cam_scroll_area.setFrameShape(QFrame.NoFrame)
         self.cam_scroll_area.setFrameShadow(QFrame.Plain)
         self.cam_scroll_area.setLineWidth(0)
@@ -1817,7 +1884,7 @@ class Ui_SettingsWindow(object):
         self.dio_general_grid_layout.setObjectName(u"dio_general_grid_layout")
         self.dio_general_label = QLabel(self.scrollAreaWidgetContents_3)
         self.dio_general_label.setObjectName(u"dio_general_label")
-        self.dio_general_label.setFont(font)
+        self.dio_general_label.setFont(font1)
         self.dio_general_label.setAlignment(Qt.AlignCenter)
 
         self.dio_general_grid_layout.addWidget(self.dio_general_label, 0, 0, 1, 3)
@@ -1970,7 +2037,7 @@ class Ui_SettingsWindow(object):
 
         self.fifo_layout = QLabel(self.scrollAreaWidgetContents_3)
         self.fifo_layout.setObjectName(u"fifo_layout")
-        self.fifo_layout.setFont(font)
+        self.fifo_layout.setFont(font1)
         self.fifo_layout.setAlignment(Qt.AlignCenter)
 
         self.fifo_grid_layout.addWidget(self.fifo_layout, 0, 0, 1, 4)
@@ -2345,7 +2412,7 @@ class Ui_SettingsWindow(object):
 
         self.gate_label = QLabel(self.scrollAreaWidgetContents_3)
         self.gate_label.setObjectName(u"gate_label")
-        self.gate_label.setFont(font)
+        self.gate_label.setFont(font1)
         self.gate_label.setAlignment(Qt.AlignCenter)
         self.gate_label.setMargin(0)
 
@@ -2430,31 +2497,23 @@ class Ui_SettingsWindow(object):
         QWidget.setTabOrder(self.caen_ext_trig_box, self.caen_sw_trig_box)
         QWidget.setTabOrder(self.caen_sw_trig_box, self.caen_g0_enable_box)
         QWidget.setTabOrder(self.caen_g0_enable_box, self.caen_g0_thres_box)
-        QWidget.setTabOrder(self.caen_g0_thres_box, self.checkBox_4)
-        QWidget.setTabOrder(self.checkBox_4, self.checkBox_5)
-        QWidget.setTabOrder(self.checkBox_5, self.checkBox_7)
-        QWidget.setTabOrder(self.checkBox_7, self.checkBox_6)
-        QWidget.setTabOrder(self.checkBox_6, self.checkBox_11)
-        QWidget.setTabOrder(self.checkBox_11, self.caen_g05_trig)
-        QWidget.setTabOrder(self.caen_g05_trig, self.checkBox_9)
-        QWidget.setTabOrder(self.checkBox_9, self.checkBox_8)
-        QWidget.setTabOrder(self.checkBox_8, self.checkBox_12)
-        QWidget.setTabOrder(self.checkBox_12, self.checkBox_13)
-        QWidget.setTabOrder(self.checkBox_13, self.checkBox_14)
-        QWidget.setTabOrder(self.checkBox_14, self.checkBox_15)
-        QWidget.setTabOrder(self.checkBox_15, self.checkBox_16)
-        QWidget.setTabOrder(self.checkBox_16, self.checkBox_17)
-        QWidget.setTabOrder(self.checkBox_17, self.checkBox_18)
-        QWidget.setTabOrder(self.checkBox_18, self.checkBox_19)
-        QWidget.setTabOrder(self.checkBox_19, self.checkBox_20)
-        QWidget.setTabOrder(self.checkBox_20, self.checkBox_21)
-        QWidget.setTabOrder(self.checkBox_21, self.checkBox_22)
-        QWidget.setTabOrder(self.checkBox_22, self.checkBox_23)
-        QWidget.setTabOrder(self.checkBox_23, self.checkBox_24)
-        QWidget.setTabOrder(self.checkBox_24, self.checkBox_25)
-        QWidget.setTabOrder(self.checkBox_25, self.checkBox_26)
-        QWidget.setTabOrder(self.checkBox_26, self.checkBox_27)
-        QWidget.setTabOrder(self.checkBox_27, self.acous_sample_rate_box)
+        QWidget.setTabOrder(self.caen_g0_thres_box, self.caen_g0_trig_mask_0)
+        QWidget.setTabOrder(self.caen_g0_trig_mask_0, self.caen_g0_trig_mask_1)
+        QWidget.setTabOrder(self.caen_g0_trig_mask_1, self.caen_g0_trig_mask_2)
+        QWidget.setTabOrder(self.caen_g0_trig_mask_2, self.caen_g0_trig_mask_3)
+        QWidget.setTabOrder(self.caen_g0_trig_mask_3, self.caen_g0_trig_mask_4)
+        QWidget.setTabOrder(self.caen_g0_trig_mask_4, self.caen_g0_trig_mask_5)
+        QWidget.setTabOrder(self.caen_g0_trig_mask_5, self.caen_g0_trig_mask_6)
+        QWidget.setTabOrder(self.caen_g0_trig_mask_6, self.caen_g0_trig_mask_7)
+        QWidget.setTabOrder(self.caen_g0_trig_mask_7, self.caen_g0_acq_mask_0)
+        QWidget.setTabOrder(self.caen_g0_acq_mask_0, self.caen_g0_acq_mask_1)
+        QWidget.setTabOrder(self.caen_g0_acq_mask_1, self.caen_g0_acq_mask_2)
+        QWidget.setTabOrder(self.caen_g0_acq_mask_2, self.caen_g0_acq_mask_3)
+        QWidget.setTabOrder(self.caen_g0_acq_mask_3, self.caen_g0_acq_mask_4)
+        QWidget.setTabOrder(self.caen_g0_acq_mask_4, self.caen_g0_acq_mask_5)
+        QWidget.setTabOrder(self.caen_g0_acq_mask_5, self.caen_g0_acq_mask_6)
+        QWidget.setTabOrder(self.caen_g0_acq_mask_6, self.caen_g0_acq_mask_7)
+        QWidget.setTabOrder(self.caen_g0_acq_mask_7, self.acous_sample_rate_box)
         QWidget.setTabOrder(self.acous_sample_rate_box, self.acous_pre_trig_box)
         QWidget.setTabOrder(self.acous_pre_trig_box, self.acous_trig_timeout_box)
         QWidget.setTabOrder(self.acous_trig_timeout_box, self.acous_post_trig_box)
@@ -2636,7 +2695,7 @@ class Ui_SettingsWindow(object):
         self.clock_sketch_but.clicked.connect(SettingsWindow.select_clock_sketch_dir)
         self.position_sketch_but.clicked.connect(SettingsWindow.select_position_sketch_dir)
 
-        self.tabWidget.setCurrentIndex(4)
+        self.tabWidget.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(SettingsWindow)
@@ -2739,33 +2798,25 @@ class Ui_SettingsWindow(object):
         self.caen_g0_enable_box.setText("")
         self.caen_g0_label.setText(QCoreApplication.translate("SettingsWindow", u"Group 0", None))
         self.caen_g0_thres_label.setText(QCoreApplication.translate("SettingsWindow", u"Threshold", None))
-        self.checkBox_18.setText("")
+        self.caen_g0_acq_mask_6.setText("")
         self.label_21.setText(QCoreApplication.translate("SettingsWindow", u"Trig Mask", None))
-        self.checkBox_11.setText("")
-        self.checkBox_5.setText("")
-        self.checkBox_19.setText("")
-        self.checkBox_4.setText("")
-        self.checkBox_16.setText("")
-        self.checkBox_23.setText("")
-        self.checkBox_25.setText("")
-        self.label_22.setText(QCoreApplication.translate("SettingsWindow", u"ACQ Mask", None))
-        self.caen_g05_trig.setText("")
-        self.checkBox_22.setText("")
-        self.checkBox_17.setText("")
-        self.checkBox_6.setText("")
-        self.checkBox_8.setText("")
-        self.checkBox_7.setText("")
-        self.checkBox_9.setText("")
-        self.checkBox_20.setText("")
-        self.checkBox_26.setText("")
-        self.checkBox_15.setText("")
-        self.checkBox_12.setText("")
-        self.label_23.setText(QCoreApplication.translate("SettingsWindow", u"Correction", None))
-        self.checkBox_27.setText("")
-        self.checkBox_14.setText("")
-        self.checkBox_24.setText("")
-        self.checkBox_21.setText("")
-        self.checkBox_13.setText("")
+        self.caen_g0_trig_mask_4.setText("")
+        self.caen_g0_trig_mask_1.setText("")
+        self.caen_g0_acq_mask_7.setText("")
+        self.caen_g0_trig_mask_0.setText("")
+        self.caen_g0_acq_mask_4.setText("")
+        self.label_22.setText(QCoreApplication.translate("SettingsWindow", u"Acq Mask", None))
+        self.caen_g0_trig_mask_5.setText("")
+        self.caen_g0_acq_mask_5.setText("")
+        self.caen_g0_trig_mask_3.setText("")
+        self.caen_g0_trig_mask_7.setText("")
+        self.caen_g0_trig_mask_2.setText("")
+        self.caen_g0_trig_mask_6.setText("")
+        self.caen_g0_acq_mask_3.setText("")
+        self.caen_g0_acq_mask_0.setText("")
+        self.label_23.setText(QCoreApplication.translate("SettingsWindow", u"Offsets", None))
+        self.caen_g0_acq_mask_2.setText("")
+        self.caen_g0_acq_mask_1.setText("")
         self.label_30.setText(QCoreApplication.translate("SettingsWindow", u"Ch7", None))
         self.label_29.setText(QCoreApplication.translate("SettingsWindow", u"Ch6", None))
         self.label_28.setText(QCoreApplication.translate("SettingsWindow", u"Ch5", None))
