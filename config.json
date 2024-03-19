@@ -141,6 +141,77 @@
       }
     }
   },
+  "cam": {
+    "cam1": {
+      "config_path": "",
+      "data_path": "",
+      "ip_addr": "192.168.137.101",
+      "mode": 5,
+      "trig_wait": 5.0,
+      "exposure": 300,
+      "buffer_len": 100,
+      "frames_after": 50,
+      "adc_threshold": 30,
+      "pix_threshold": 300,
+      "image_format": "bmp",
+      "date_format": "%Y-%m-%d_%H:%M:%S",
+      "input_pins": {
+        "state_com": 5,
+        "trig_en": 6,
+        "trigger_latch": 13
+      },
+      "output_pins": {
+        "state": 23,
+        "trig": 24
+      }
+    },
+    "cam2": {
+      "config_path": "",
+      "data_path": "",
+      "ip_addr": "192.168.137.102",
+      "mode": 5,
+      "trig_wait": 5.0,
+      "exposure": 300,
+      "buffer_len": 100,
+      "frames_after": 50,
+      "adc_threshold": 10,
+      "pix_threshold": 300,
+      "image_format": "bmp",
+      "date_format": "%Y-%m-%d_%H:%M:%S",
+      "input_pins": {
+        "state_com": 5,
+        "trig_en": 6,
+        "trigger_latch": 13
+      },
+      "output_pins": {
+        "state": 3,
+        "trig": 24
+      }
+    },
+    "cam3": {
+      "config_path": "",
+      "data_path": "",
+      "ip_addr": "192.168.137.103",
+      "mode": 5,
+      "trig_wait": 5.0,
+      "exposure": 300,
+      "buffer_len": 100,
+      "frames_after": 50,
+      "adc_threshold": 10,
+      "pix_threshold": 300,
+      "image_format": "bmp",
+      "date_format": "%Y-%m-%d_%H:%M:%S",
+      "input_pins": {
+        "state_com": 5,
+        "trig_en": 6,
+        "trigger_latch": 13
+      },
+      "output_pins": {
+        "state": 23,
+        "trig": 24
+      }
+    }
+  },
   "dio": {
     "general": {
       "trigger": {
