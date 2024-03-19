@@ -7,6 +7,25 @@ import logging
 import time
 
 
+class StartProgramWorker(QObject):
+    """
+    Worker class for starting up Run Control.
+    """
+    state = Signal(str)
+    finished = Signal()
+
+    def __init__(self, main_window):
+        super(StartProgramWorker, self).__init__()
+        self.main_window = main_window
+
+    def run(self):
+        """Processes to start run"""
+        self.state.emit("Starting")
+        time.sleep(1)
+        self.state.emit("Active")
+        self.finished.emit()
+
+
 class StartRunWorker(QObject):
     """
     Worker class for starting a run. It will change the run state into "starting", then initialize each DAQ modules.
@@ -23,6 +42,7 @@ class StartRunWorker(QObject):
         """Processes to start run"""
         self.state.emit("Starting")
         time.sleep(1)
+        self.state.emit("Active")
         self.finished.emit()
 
 
@@ -34,19 +54,10 @@ class StopRunWorker(QObject):
     state = Signal(str)
     finished = Signal()
 
-    def __init__(self, main_window):
-        super(StopRunWorker, self).__init__()
-        self.main_window = main_window
-
     def run(self):
-        """Processes to stop run"""
+        """Processes to start run"""
         self.state.emit("Stopping")
         time.sleep(1)
         self.state.emit("Idle")
         self.finished.emit()
-
-class EventMonitoringWorker(QObject):
-    """
-    Worker class for handling processes during an event.
-    """
     

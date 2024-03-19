@@ -39,7 +39,9 @@ class MainWindow(QMainWindow):
         self.logger.info("Starting run control.")
 
         # initialize arduino class
-        self.arduinos_class = Arduinos(self)
+        self.arduino_class = Arduino(self)
+        for arduino in ["trigger", "clock", "position"]:
+            self.arduino_class.upload_sketch(arduino)
 
         # timer for event loop
         self.timer = QTimer()
