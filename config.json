@@ -7,8 +7,8 @@
   "run": {
     "source": "Bg",
     "pressure_setpoint": 25,
-    "max_ev_time": 4.0,
-    "max_num_evs": 3
+    "max_ev_time": 1.0,
+    "max_num_evs": 300
   },
   "scint": {
     "sipm": {

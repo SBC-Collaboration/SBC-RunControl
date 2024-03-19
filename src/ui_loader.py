@@ -18,6 +18,7 @@ class SettingsWindow(QMainWindow):
         self.ui.setupUi(self)
         self.main_window = main_window
         self.config_class = self.main_window.config_class
+        self.config = self.config_class.config
         self.load_config()
         self.logger = logging.getLogger(__name__)
         self.logger.addHandler(logging.StreamHandler())
@@ -34,16 +35,28 @@ class SettingsWindow(QMainWindow):
         self.config_class.save_config(self.ui)
 
     def select_config_path(self):
-        config_path, _ = QFileDialog.getOpenFileName(self)
+        config_path, _ = QFileDialog.getOpenFileName(self, self.config["general"]["config_path"])
         self.ui.config_path_edit.setText(config_path)
 
     def select_log_path(self):
-        log_path = QFileDialog.getExistingDirectory(self)
+        log_path = QFileDialog.getExistingDirectory(self, self.config["general"]["log_path"])
         self.ui.log_path_edit.setText(log_path)
 
     def select_data_dir(self):
-        data_dir = QFileDialog.getExistingDirectory(self)
+        data_dir = QFileDialog.getExistingDirectory(self, self.config["general"]["data_dir"])
         self.ui.data_dir_edit.setText(data_dir)
+
+    def select_trigger_sketch_dir(self):
+        trigger_sketch_dir = QFileDialog.getExistingDirectory(self, self.config["trigger"]["sketch"])
+        self.ui.trigger_sketch_edit.setText(trigger_sketch_dir)
+
+    def select_clock_sketch_dir(self):
+        trigger_clock_dir = QFileDialog.getExistingDirectory(self, self.config["clock"]["sketch"])
+        self.ui.trigger_clock_edit.setText(trigger_clock_dir)
+
+    def select_position_sketch_dir(self):
+        trigger_position_dir = QFileDialog.getExistingDirectory(self, self.config["position"]["sketch"])
+        self.ui.trigger_position_edit.setText(trigger_position_dir)
 
 
 # Loads log window

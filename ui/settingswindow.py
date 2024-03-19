@@ -88,7 +88,7 @@ class Ui_SettingsWindow(object):
         self.files_scroll_area.setWidgetResizable(True)
         self.scrollAreaWidgetContents_5 = QWidget()
         self.scrollAreaWidgetContents_5.setObjectName(u"scrollAreaWidgetContents_5")
-        self.scrollAreaWidgetContents_5.setGeometry(QRect(0, 0, 390, 438))
+        self.scrollAreaWidgetContents_5.setGeometry(QRect(0, 0, 388, 442))
         self.scrollAreaWidgetContents_5.setMaximumSize(QSize(1000, 16777215))
         self.gridLayout_3 = QGridLayout(self.scrollAreaWidgetContents_5)
         self.gridLayout_3.setSpacing(3)
@@ -171,7 +171,7 @@ class Ui_SettingsWindow(object):
         self.run_scroll_area.setWidgetResizable(True)
         self.scrollAreaWidgetContents_4 = QWidget()
         self.scrollAreaWidgetContents_4.setObjectName(u"scrollAreaWidgetContents_4")
-        self.scrollAreaWidgetContents_4.setGeometry(QRect(0, 0, 390, 438))
+        self.scrollAreaWidgetContents_4.setGeometry(QRect(0, 0, 388, 442))
         self.scrollAreaWidgetContents_4.setMaximumSize(QSize(1000, 16777215))
         self.gridLayout_2 = QGridLayout(self.scrollAreaWidgetContents_4)
         self.gridLayout_2.setSpacing(3)
@@ -257,7 +257,7 @@ class Ui_SettingsWindow(object):
         self.sipm_scroll_area.setWidgetResizable(True)
         self.scrollAreaWidgetContents_2 = QWidget()
         self.scrollAreaWidgetContents_2.setObjectName(u"scrollAreaWidgetContents_2")
-        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, 0, 390, 438))
+        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, 0, 388, 442))
         self.scrollAreaWidgetContents_2.setMaximumSize(QSize(1000, 16777215))
         self.verticalLayout_9 = QVBoxLayout(self.scrollAreaWidgetContents_2)
         self.verticalLayout_9.setSpacing(3)
@@ -754,7 +754,7 @@ class Ui_SettingsWindow(object):
         self.acoustics_scroll_area.setWidgetResizable(True)
         self.scrollAreaWidgetContents_6 = QWidget()
         self.scrollAreaWidgetContents_6.setObjectName(u"scrollAreaWidgetContents_6")
-        self.scrollAreaWidgetContents_6.setGeometry(QRect(0, 0, 390, 438))
+        self.scrollAreaWidgetContents_6.setGeometry(QRect(0, 0, 388, 442))
         self.scrollAreaWidgetContents_6.setMaximumSize(QSize(1000, 16777215))
         self.verticalLayout_8 = QVBoxLayout(self.scrollAreaWidgetContents_6)
         self.verticalLayout_8.setSpacing(3)
@@ -1257,7 +1257,7 @@ class Ui_SettingsWindow(object):
         self.cam_scroll_area.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 376, 456))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 388, 442))
         self.scrollAreaWidgetContents.setMaximumSize(QSize(1000, 16777215))
         self.gridLayout_5 = QGridLayout(self.scrollAreaWidgetContents)
         self.gridLayout_5.setSpacing(3)
@@ -1795,7 +1795,7 @@ class Ui_SettingsWindow(object):
         self.dio_scroll_area.setWidgetResizable(True)
         self.scrollAreaWidgetContents_3 = QWidget()
         self.scrollAreaWidgetContents_3.setObjectName(u"scrollAreaWidgetContents_3")
-        self.scrollAreaWidgetContents_3.setGeometry(QRect(0, 0, 376, 534))
+        self.scrollAreaWidgetContents_3.setGeometry(QRect(0, 0, 371, 515))
         self.scrollAreaWidgetContents_3.setMaximumSize(QSize(1000, 16777215))
         self.verticalLayout_2 = QVBoxLayout(self.scrollAreaWidgetContents_3)
         self.verticalLayout_2.setSpacing(6)
@@ -1805,61 +1805,6 @@ class Ui_SettingsWindow(object):
         self.dio_general_grid_layout = QGridLayout()
         self.dio_general_grid_layout.setSpacing(3)
         self.dio_general_grid_layout.setObjectName(u"dio_general_grid_layout")
-        self.position_arduino_label = QLabel(self.scrollAreaWidgetContents_3)
-        self.position_arduino_label.setObjectName(u"position_arduino_label")
-
-        self.dio_general_grid_layout.addWidget(self.position_arduino_label, 4, 0, 1, 1)
-
-        self.trigger_port_edit = QLineEdit(self.scrollAreaWidgetContents_3)
-        self.trigger_port_edit.setObjectName(u"trigger_port_edit")
-
-        self.dio_general_grid_layout.addWidget(self.trigger_port_edit, 2, 1, 1, 1)
-
-        self.position_sketch_edit = QLineEdit(self.scrollAreaWidgetContents_3)
-        self.position_sketch_edit.setObjectName(u"position_sketch_edit")
-
-        self.dio_general_grid_layout.addWidget(self.position_sketch_edit, 4, 2, 1, 1)
-
-        self.clock_port_edit = QLineEdit(self.scrollAreaWidgetContents_3)
-        self.clock_port_edit.setObjectName(u"clock_port_edit")
-
-        self.dio_general_grid_layout.addWidget(self.clock_port_edit, 3, 1, 1, 1)
-
-        self.arduino_port_label = QLabel(self.scrollAreaWidgetContents_3)
-        self.arduino_port_label.setObjectName(u"arduino_port_label")
-
-        self.dio_general_grid_layout.addWidget(self.arduino_port_label, 1, 1, 1, 1)
-
-        self.position_port_edit = QLineEdit(self.scrollAreaWidgetContents_3)
-        self.position_port_edit.setObjectName(u"position_port_edit")
-
-        self.dio_general_grid_layout.addWidget(self.position_port_edit, 4, 1, 1, 1)
-
-        self.trigger_arduino_label = QLabel(self.scrollAreaWidgetContents_3)
-        self.trigger_arduino_label.setObjectName(u"trigger_arduino_label")
-
-        self.dio_general_grid_layout.addWidget(self.trigger_arduino_label, 2, 0, 1, 1)
-
-        self.trigger_sketch_edit = QLineEdit(self.scrollAreaWidgetContents_3)
-        self.trigger_sketch_edit.setObjectName(u"trigger_sketch_edit")
-
-        self.dio_general_grid_layout.addWidget(self.trigger_sketch_edit, 2, 2, 1, 1)
-
-        self.clock_arduino_label = QLabel(self.scrollAreaWidgetContents_3)
-        self.clock_arduino_label.setObjectName(u"clock_arduino_label")
-
-        self.dio_general_grid_layout.addWidget(self.clock_arduino_label, 3, 0, 1, 1)
-
-        self.sketch_location_label = QLabel(self.scrollAreaWidgetContents_3)
-        self.sketch_location_label.setObjectName(u"sketch_location_label")
-
-        self.dio_general_grid_layout.addWidget(self.sketch_location_label, 1, 2, 1, 1)
-
-        self.clock_sketch_edit = QLineEdit(self.scrollAreaWidgetContents_3)
-        self.clock_sketch_edit.setObjectName(u"clock_sketch_edit")
-
-        self.dio_general_grid_layout.addWidget(self.clock_sketch_edit, 3, 2, 1, 1)
-
         self.dio_general_label = QLabel(self.scrollAreaWidgetContents_3)
         self.dio_general_label.setObjectName(u"dio_general_label")
         font1 = QFont()
@@ -1868,6 +1813,76 @@ class Ui_SettingsWindow(object):
         self.dio_general_label.setAlignment(Qt.AlignCenter)
 
         self.dio_general_grid_layout.addWidget(self.dio_general_label, 0, 0, 1, 3)
+
+        self.trigger_arduino_label = QLabel(self.scrollAreaWidgetContents_3)
+        self.trigger_arduino_label.setObjectName(u"trigger_arduino_label")
+
+        self.dio_general_grid_layout.addWidget(self.trigger_arduino_label, 2, 0, 1, 1)
+
+        self.clock_port_edit = QLineEdit(self.scrollAreaWidgetContents_3)
+        self.clock_port_edit.setObjectName(u"clock_port_edit")
+
+        self.dio_general_grid_layout.addWidget(self.clock_port_edit, 3, 1, 1, 1)
+
+        self.clock_sketch_edit = QLineEdit(self.scrollAreaWidgetContents_3)
+        self.clock_sketch_edit.setObjectName(u"clock_sketch_edit")
+
+        self.dio_general_grid_layout.addWidget(self.clock_sketch_edit, 3, 2, 1, 1)
+
+        self.position_arduino_label = QLabel(self.scrollAreaWidgetContents_3)
+        self.position_arduino_label.setObjectName(u"position_arduino_label")
+
+        self.dio_general_grid_layout.addWidget(self.position_arduino_label, 4, 0, 1, 1)
+
+        self.clock_arduino_label = QLabel(self.scrollAreaWidgetContents_3)
+        self.clock_arduino_label.setObjectName(u"clock_arduino_label")
+
+        self.dio_general_grid_layout.addWidget(self.clock_arduino_label, 3, 0, 1, 1)
+
+        self.position_port_edit = QLineEdit(self.scrollAreaWidgetContents_3)
+        self.position_port_edit.setObjectName(u"position_port_edit")
+
+        self.dio_general_grid_layout.addWidget(self.position_port_edit, 4, 1, 1, 1)
+
+        self.position_sketch_edit = QLineEdit(self.scrollAreaWidgetContents_3)
+        self.position_sketch_edit.setObjectName(u"position_sketch_edit")
+
+        self.dio_general_grid_layout.addWidget(self.position_sketch_edit, 4, 2, 1, 1)
+
+        self.arduino_port_label = QLabel(self.scrollAreaWidgetContents_3)
+        self.arduino_port_label.setObjectName(u"arduino_port_label")
+
+        self.dio_general_grid_layout.addWidget(self.arduino_port_label, 1, 1, 1, 1)
+
+        self.trigger_sketch_edit = QLineEdit(self.scrollAreaWidgetContents_3)
+        self.trigger_sketch_edit.setObjectName(u"trigger_sketch_edit")
+
+        self.dio_general_grid_layout.addWidget(self.trigger_sketch_edit, 2, 2, 1, 1)
+
+        self.trigger_port_edit = QLineEdit(self.scrollAreaWidgetContents_3)
+        self.trigger_port_edit.setObjectName(u"trigger_port_edit")
+
+        self.dio_general_grid_layout.addWidget(self.trigger_port_edit, 2, 1, 1, 1)
+
+        self.trigger_sketch_but = QToolButton(self.scrollAreaWidgetContents_3)
+        self.trigger_sketch_but.setObjectName(u"trigger_sketch_but")
+
+        self.dio_general_grid_layout.addWidget(self.trigger_sketch_but, 2, 3, 1, 1)
+
+        self.sketch_location_label = QLabel(self.scrollAreaWidgetContents_3)
+        self.sketch_location_label.setObjectName(u"sketch_location_label")
+
+        self.dio_general_grid_layout.addWidget(self.sketch_location_label, 1, 2, 1, 2)
+
+        self.clock_sketch_but = QToolButton(self.scrollAreaWidgetContents_3)
+        self.clock_sketch_but.setObjectName(u"clock_sketch_but")
+
+        self.dio_general_grid_layout.addWidget(self.clock_sketch_but, 3, 3, 1, 1)
+
+        self.position_sketch_but = QToolButton(self.scrollAreaWidgetContents_3)
+        self.position_sketch_but.setObjectName(u"position_sketch_but")
+
+        self.dio_general_grid_layout.addWidget(self.position_sketch_but, 4, 3, 1, 1)
 
 
         self.verticalLayout_2.addLayout(self.dio_general_grid_layout)
@@ -2591,6 +2606,9 @@ class Ui_SettingsWindow(object):
         self.actionSaveConfig.triggered.connect(SettingsWindow.save_config)
         self.actionReloadConfig.triggered.connect(SettingsWindow.load_config)
         self.log_path_but.clicked.connect(SettingsWindow.select_log_path)
+        self.trigger_sketch_but.clicked.connect(SettingsWindow.select_trigger_sketch_dir)
+        self.clock_sketch_but.clicked.connect(SettingsWindow.select_clock_sketch_dir)
+        self.position_sketch_but.clicked.connect(SettingsWindow.select_position_sketch_dir)
 
         self.tabWidget.setCurrentIndex(5)
 
@@ -2858,12 +2876,15 @@ class Ui_SettingsWindow(object):
         self.iamge_format_cam3.setItemText(1, QCoreApplication.translate("SettingsWindow", u"jpg", None))
 
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.cam_tab), QCoreApplication.translate("SettingsWindow", u"Camera", None))
-        self.position_arduino_label.setText(QCoreApplication.translate("SettingsWindow", u"Position", None))
-        self.arduino_port_label.setText(QCoreApplication.translate("SettingsWindow", u"Arduino Port", None))
-        self.trigger_arduino_label.setText(QCoreApplication.translate("SettingsWindow", u"Trigger", None))
-        self.clock_arduino_label.setText(QCoreApplication.translate("SettingsWindow", u"Clock", None))
-        self.sketch_location_label.setText(QCoreApplication.translate("SettingsWindow", u"Sketch Location", None))
         self.dio_general_label.setText(QCoreApplication.translate("SettingsWindow", u"General", None))
+        self.trigger_arduino_label.setText(QCoreApplication.translate("SettingsWindow", u"Trigger", None))
+        self.position_arduino_label.setText(QCoreApplication.translate("SettingsWindow", u"Position", None))
+        self.clock_arduino_label.setText(QCoreApplication.translate("SettingsWindow", u"Clock", None))
+        self.arduino_port_label.setText(QCoreApplication.translate("SettingsWindow", u"Arduino Port", None))
+        self.trigger_sketch_but.setText(QCoreApplication.translate("SettingsWindow", u"...", None))
+        self.sketch_location_label.setText(QCoreApplication.translate("SettingsWindow", u"Sketch Location", None))
+        self.clock_sketch_but.setText(QCoreApplication.translate("SettingsWindow", u"...", None))
+        self.position_sketch_but.setText(QCoreApplication.translate("SettingsWindow", u"...", None))
         self.trig_latch_pins_label.setText(QCoreApplication.translate("SettingsWindow", u"Trig Latch Pins", None))
         self.trig_or_pin_label.setText(QCoreApplication.translate("SettingsWindow", u"Trig Or Pin", None))
         self.heartbeat_pin_label.setText(QCoreApplication.translate("SettingsWindow", u"Heartbeat Pin", None))

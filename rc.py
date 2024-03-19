@@ -153,7 +153,9 @@ class MainWindow(QMainWindow):
         num = 0 if len(todays_runs) == 0 else max(todays_runs) + 1
         self.run_number = f"{today}_{num:02d}"
 
-        os.mkdir(os.path.join(data_dir, self.run_number))
+        self.run_dir = os.path.join(data_dir, self.run_number)
+        if not os.path.exists(self.run_dir):
+            os.mkdir(self.run_dir)
         self.ui.run_edit.setText(self.run_number)
 
     def active_monitor(self):
@@ -165,8 +167,12 @@ class MainWindow(QMainWindow):
                 self.stop_event()
 
     def start_event(self):
+        event_dir = os.path.join(self.run_dir, str(self.ev_number))
+        if not os.path.exists(event_dir):
+            os.mkdir(event_dir)
         self.ui.event_num_edit.setText(f"{self.ev_number:2d}")
         self.update_state("Expanding")
+        # starting event processes
         time.sleep(1)
         self.event_timer.start()
         self.update_state("Active")
