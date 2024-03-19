@@ -49,7 +49,7 @@
     <item row="2" column="1">
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>3</number>
+       <number>4</number>
       </property>
       <property name="tabsClosable">
        <bool>false</bool>
@@ -344,6 +344,9 @@
              <widget class="QDoubleSpinBox" name="max_ev_time_box">
               <property name="suffix">
                <string>s</string>
+              </property>
+              <property name="maximum">
+               <double>100000.000000000000000</double>
               </property>
              </widget>
             </item>
@@ -707,7 +710,11 @@
                </widget>
               </item>
               <item row="2" column="3">
-               <widget class="QSpinBox" name="caen_evs_box"/>
+               <widget class="QSpinBox" name="caen_evs_box">
+                <property name="maximum">
+                 <number>10000</number>
+                </property>
+               </widget>
               </item>
               <item row="5" column="0">
                <widget class="QLabel" name="caen_overlap_label">
@@ -727,7 +734,11 @@
                </widget>
               </item>
               <item row="3" column="1">
-               <widget class="QSpinBox" name="caen_length_box"/>
+               <widget class="QSpinBox" name="caen_length_box">
+                <property name="maximum">
+                 <number>10000</number>
+                </property>
+               </widget>
               </item>
               <item row="2" column="2">
                <widget class="QLabel" name="caen_evs_label">
@@ -828,6 +839,9 @@
                 <property name="suffix">
                  <string>%</string>
                 </property>
+                <property name="maximum">
+                 <number>100</number>
+                </property>
                </widget>
               </item>
               <item row="4" column="2">
@@ -838,50 +852,6 @@
                 <property name="alignment">
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                 </property>
-               </widget>
-              </item>
-              <item row="4" column="3">
-               <widget class="QComboBox" name="caen_decimation_box">
-                <item>
-                 <property name="text">
-                  <string>1</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>2</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>4</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>8</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>16</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>32</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>64</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>128</string>
-                 </property>
-                </item>
                </widget>
               </item>
               <item row="4" column="0">
@@ -898,6 +868,19 @@
                <widget class="QCheckBox" name="caen_trigin_box">
                 <property name="text">
                  <string/>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="3">
+               <widget class="QSpinBox" name="caen_decimation_box">
+                <property name="prefix">
+                 <string/>
+                </property>
+                <property name="minimum">
+                 <number>1</number>
+                </property>
+                <property name="maximum">
+                 <number>7</number>
                 </property>
                </widget>
               </item>
@@ -2357,6 +2340,11 @@
              <widget class="QComboBox" name="image_format_cam1">
               <item>
                <property name="text">
+                <string>bmp</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
                 <string>png</string>
                </property>
               </item>
@@ -2932,6 +2920,11 @@
              <widget class="QComboBox" name="image_format_cam2">
               <item>
                <property name="text">
+                <string>bmp</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
                 <string>png</string>
                </property>
               </item>
@@ -2944,6 +2937,11 @@
             </item>
             <item row="16" column="3">
              <widget class="QComboBox" name="iamge_format_cam3">
+              <item>
+               <property name="text">
+                <string>bmp</string>
+               </property>
+              </item>
               <item>
                <property name="text">
                 <string>png</string>
@@ -3278,7 +3276,11 @@
                <number>3</number>
               </property>
               <item row="7" column="2">
-               <widget class="QSpinBox" name="gate_period_wave5"/>
+               <widget class="QSpinBox" name="gate_period_wave5">
+                <property name="maximum">
+                 <number>1000000</number>
+                </property>
+               </widget>
               </item>
               <item row="3" column="1">
                <widget class="QSpinBox" name="gate_pin_wave1"/>
@@ -3315,6 +3317,9 @@
                <widget class="QSpinBox" name="duty_wave2">
                 <property name="suffix">
                  <string>%</string>
+                </property>
+                <property name="maximum">
+                 <number>100</number>
                 </property>
                </widget>
               </item>
@@ -3362,12 +3367,18 @@
                 <property name="keyboardTracking">
                  <bool>true</bool>
                 </property>
+                <property name="maximum">
+                 <number>100</number>
+                </property>
                </widget>
               </item>
               <item row="10" column="4">
                <widget class="QSpinBox" name="duty_wave8">
                 <property name="suffix">
                  <string>%</string>
+                </property>
+                <property name="maximum">
+                 <number>100</number>
                 </property>
                </widget>
               </item>
@@ -3385,6 +3396,9 @@
                <widget class="QSpinBox" name="duty_wave3">
                 <property name="suffix">
                  <string>%</string>
+                </property>
+                <property name="maximum">
+                 <number>100</number>
                 </property>
                </widget>
               </item>
@@ -3430,10 +3444,18 @@
                </widget>
               </item>
               <item row="6" column="2">
-               <widget class="QSpinBox" name="gate_period_wave4"/>
+               <widget class="QSpinBox" name="gate_period_wave4">
+                <property name="maximum">
+                 <number>1000000</number>
+                </property>
+               </widget>
               </item>
               <item row="4" column="2">
-               <widget class="QSpinBox" name="gate_period_wave2"/>
+               <widget class="QSpinBox" name="gate_period_wave2">
+                <property name="maximum">
+                 <number>1000000</number>
+                </property>
+               </widget>
               </item>
               <item row="8" column="0">
                <widget class="QLabel" name="wave6_label">
@@ -3449,17 +3471,28 @@
                <widget class="QSpinBox" name="gate_pin_wave2"/>
               </item>
               <item row="11" column="2">
-               <widget class="QSpinBox" name="gate_period_wave9"/>
+               <widget class="QSpinBox" name="gate_period_wave9">
+                <property name="maximum">
+                 <number>1000000</number>
+                </property>
+               </widget>
               </item>
               <item row="6" column="4">
                <widget class="QSpinBox" name="duty_wave4">
                 <property name="suffix">
                  <string>%</string>
                 </property>
+                <property name="maximum">
+                 <number>100</number>
+                </property>
                </widget>
               </item>
               <item row="9" column="2">
-               <widget class="QSpinBox" name="gate_period_wave7"/>
+               <widget class="QSpinBox" name="gate_period_wave7">
+                <property name="maximum">
+                 <number>1000000</number>
+                </property>
+               </widget>
               </item>
               <item row="7" column="0">
                <widget class="QLabel" name="wave5_label">
@@ -3475,6 +3508,9 @@
                <widget class="QSpinBox" name="duty_wave6">
                 <property name="suffix">
                  <string>%</string>
+                </property>
+                <property name="maximum">
+                 <number>100</number>
                 </property>
                </widget>
               </item>
@@ -3496,12 +3532,19 @@
                <widget class="QSpinBox" name="gate_phase_wave8"/>
               </item>
               <item row="10" column="2">
-               <widget class="QSpinBox" name="gate_period_wave8"/>
+               <widget class="QSpinBox" name="gate_period_wave8">
+                <property name="maximum">
+                 <number>1000000</number>
+                </property>
+               </widget>
               </item>
               <item row="9" column="4">
                <widget class="QSpinBox" name="duty_wave7">
                 <property name="suffix">
                  <string>%</string>
+                </property>
+                <property name="maximum">
+                 <number>100</number>
                 </property>
                </widget>
               </item>
@@ -3536,6 +3579,9 @@
                 <property name="suffix">
                  <string>%</string>
                 </property>
+                <property name="maximum">
+                 <number>100</number>
+                </property>
                </widget>
               </item>
               <item row="7" column="3">
@@ -3548,6 +3594,9 @@
                <widget class="QSpinBox" name="duty_wave9">
                 <property name="suffix">
                  <string>%</string>
+                </property>
+                <property name="maximum">
+                 <number>100</number>
                 </property>
                </widget>
               </item>
@@ -3615,7 +3664,11 @@
                </widget>
               </item>
               <item row="3" column="2">
-               <widget class="QSpinBox" name="gate_period_wave1"/>
+               <widget class="QSpinBox" name="gate_period_wave1">
+                <property name="maximum">
+                 <number>1000000</number>
+                </property>
+               </widget>
               </item>
               <item row="5" column="3">
                <widget class="QSpinBox" name="gate_phase_wave3"/>
@@ -3642,6 +3695,9 @@
                 <property name="suffix">
                  <string>%</string>
                 </property>
+                <property name="maximum">
+                 <number>100</number>
+                </property>
                </widget>
               </item>
               <item row="5" column="5">
@@ -3662,10 +3718,18 @@
                <widget class="QSpinBox" name="gate_phase_wave2"/>
               </item>
               <item row="8" column="2">
-               <widget class="QSpinBox" name="gate_period_wave6"/>
+               <widget class="QSpinBox" name="gate_period_wave6">
+                <property name="maximum">
+                 <number>1000000</number>
+                </property>
+               </widget>
               </item>
               <item row="5" column="2">
-               <widget class="QSpinBox" name="gate_period_wave3"/>
+               <widget class="QSpinBox" name="gate_period_wave3">
+                <property name="maximum">
+                 <number>1000000</number>
+                </property>
+               </widget>
               </item>
               <item row="10" column="0">
                <widget class="QLabel" name="wave8_label">
@@ -3851,7 +3915,6 @@
   <tabstop>caen_length_box</tabstop>
   <tabstop>caen_post_trig_box</tabstop>
   <tabstop>caen_trigin_box</tabstop>
-  <tabstop>caen_decimation_box</tabstop>
   <tabstop>caen_overlap_box</tabstop>
   <tabstop>caen_polarity_box</tabstop>
   <tabstop>caen_io_box</tabstop>

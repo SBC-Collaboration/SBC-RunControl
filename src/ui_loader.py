@@ -47,15 +47,15 @@ class SettingsWindow(QMainWindow):
         self.ui.data_dir_edit.setText(data_dir)
 
     def select_trigger_sketch_dir(self):
-        trigger_sketch_dir = QFileDialog.getExistingDirectory(self, self.config["trigger"]["sketch"])
+        trigger_sketch_dir = QFileDialog.getExistingDirectory(self, self.config["dio"]["general"]["trigger"]["sketch"])
         self.ui.trigger_sketch_edit.setText(trigger_sketch_dir)
 
     def select_clock_sketch_dir(self):
-        trigger_clock_dir = QFileDialog.getExistingDirectory(self, self.config["clock"]["sketch"])
+        trigger_clock_dir = QFileDialog.getExistingDirectory(self, self.config["dio"]["general"]["clock"]["sketch"])
         self.ui.trigger_clock_edit.setText(trigger_clock_dir)
 
     def select_position_sketch_dir(self):
-        trigger_position_dir = QFileDialog.getExistingDirectory(self, self.config["position"]["sketch"])
+        trigger_position_dir = QFileDialog.getExistingDirectory(self, self.config["dio"]["general"]["position"]["sketch"])
         self.ui.trigger_position_edit.setText(trigger_position_dir)
 
 

@@ -200,6 +200,7 @@ class Ui_SettingsWindow(object):
 
         self.max_ev_time_box = QDoubleSpinBox(self.scrollAreaWidgetContents_4)
         self.max_ev_time_box.setObjectName(u"max_ev_time_box")
+        self.max_ev_time_box.setMaximum(100000.000000000000000)
 
         self.gridLayout_2.addWidget(self.max_ev_time_box, 1, 1, 1, 1)
 
@@ -393,6 +394,7 @@ class Ui_SettingsWindow(object):
 
         self.caen_evs_box = QSpinBox(self.scrollAreaWidgetContents_2)
         self.caen_evs_box.setObjectName(u"caen_evs_box")
+        self.caen_evs_box.setMaximum(10000)
 
         self.gridLayout_6.addWidget(self.caen_evs_box, 2, 3, 1, 1)
 
@@ -409,6 +411,7 @@ class Ui_SettingsWindow(object):
 
         self.caen_length_box = QSpinBox(self.scrollAreaWidgetContents_2)
         self.caen_length_box.setObjectName(u"caen_length_box")
+        self.caen_length_box.setMaximum(10000)
 
         self.gridLayout_6.addWidget(self.caen_length_box, 3, 1, 1, 1)
 
@@ -469,6 +472,7 @@ class Ui_SettingsWindow(object):
 
         self.caen_post_trig_box = QSpinBox(self.scrollAreaWidgetContents_2)
         self.caen_post_trig_box.setObjectName(u"caen_post_trig_box")
+        self.caen_post_trig_box.setMaximum(100)
 
         self.gridLayout_6.addWidget(self.caen_post_trig_box, 3, 3, 1, 1)
 
@@ -477,19 +481,6 @@ class Ui_SettingsWindow(object):
         self.caen_decimation_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
         self.gridLayout_6.addWidget(self.caen_decimation_label, 4, 2, 1, 1)
-
-        self.caen_decimation_box = QComboBox(self.scrollAreaWidgetContents_2)
-        self.caen_decimation_box.addItem("")
-        self.caen_decimation_box.addItem("")
-        self.caen_decimation_box.addItem("")
-        self.caen_decimation_box.addItem("")
-        self.caen_decimation_box.addItem("")
-        self.caen_decimation_box.addItem("")
-        self.caen_decimation_box.addItem("")
-        self.caen_decimation_box.addItem("")
-        self.caen_decimation_box.setObjectName(u"caen_decimation_box")
-
-        self.gridLayout_6.addWidget(self.caen_decimation_box, 4, 3, 1, 1)
 
         self.caen_trigin_label = QLabel(self.scrollAreaWidgetContents_2)
         self.caen_trigin_label.setObjectName(u"caen_trigin_label")
@@ -501,6 +492,13 @@ class Ui_SettingsWindow(object):
         self.caen_trigin_box.setObjectName(u"caen_trigin_box")
 
         self.gridLayout_6.addWidget(self.caen_trigin_box, 4, 1, 1, 1)
+
+        self.caen_decimation_box = QSpinBox(self.scrollAreaWidgetContents_2)
+        self.caen_decimation_box.setObjectName(u"caen_decimation_box")
+        self.caen_decimation_box.setMinimum(1)
+        self.caen_decimation_box.setMaximum(7)
+
+        self.gridLayout_6.addWidget(self.caen_decimation_box, 4, 3, 1, 1)
 
 
         self.verticalLayout_9.addLayout(self.gridLayout_6)
@@ -764,61 +762,70 @@ class Ui_SettingsWindow(object):
         self.acous_general_grid = QGridLayout()
         self.acous_general_grid.setSpacing(3)
         self.acous_general_grid.setObjectName(u"acous_general_grid")
-        self.acous_pre_trig_label = QLabel(self.scrollAreaWidgetContents_6)
-        self.acous_pre_trig_label.setObjectName(u"acous_pre_trig_label")
-        self.acous_pre_trig_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.acous_trig_delay_box = QSpinBox(self.scrollAreaWidgetContents_6)
+        self.acous_trig_delay_box.setObjectName(u"acous_trig_delay_box")
 
-        self.acous_general_grid.addWidget(self.acous_pre_trig_label, 1, 0, 1, 1)
-
-        self.acous_sample_rate_box = QComboBox(self.scrollAreaWidgetContents_6)
-        self.acous_sample_rate_box.addItem("")
-        self.acous_sample_rate_box.setObjectName(u"acous_sample_rate_box")
-
-        self.acous_general_grid.addWidget(self.acous_sample_rate_box, 0, 1, 1, 3)
-
-        self.acous_sample_rate_label = QLabel(self.scrollAreaWidgetContents_6)
-        self.acous_sample_rate_label.setObjectName(u"acous_sample_rate_label")
-        self.acous_sample_rate_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
-
-        self.acous_general_grid.addWidget(self.acous_sample_rate_label, 0, 0, 1, 1)
-
-        self.acous_pre_trig_box = QSpinBox(self.scrollAreaWidgetContents_6)
-        self.acous_pre_trig_box.setObjectName(u"acous_pre_trig_box")
-
-        self.acous_general_grid.addWidget(self.acous_pre_trig_box, 1, 1, 1, 1)
-
-        self.acous_trig_timeout_label = QLabel(self.scrollAreaWidgetContents_6)
-        self.acous_trig_timeout_label.setObjectName(u"acous_trig_timeout_label")
-        self.acous_trig_timeout_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
-
-        self.acous_general_grid.addWidget(self.acous_trig_timeout_label, 1, 2, 1, 1)
-
-        self.acous_trig_timeout_box = QSpinBox(self.scrollAreaWidgetContents_6)
-        self.acous_trig_timeout_box.setObjectName(u"acous_trig_timeout_box")
-
-        self.acous_general_grid.addWidget(self.acous_trig_timeout_box, 1, 3, 1, 1)
+        self.acous_general_grid.addWidget(self.acous_trig_delay_box, 3, 3, 1, 1)
 
         self.acous_post_trig_label = QLabel(self.scrollAreaWidgetContents_6)
         self.acous_post_trig_label.setObjectName(u"acous_post_trig_label")
         self.acous_post_trig_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
-        self.acous_general_grid.addWidget(self.acous_post_trig_label, 2, 0, 1, 1)
-
-        self.acous_post_trig_box = QSpinBox(self.scrollAreaWidgetContents_6)
-        self.acous_post_trig_box.setObjectName(u"acous_post_trig_box")
-
-        self.acous_general_grid.addWidget(self.acous_post_trig_box, 2, 1, 1, 1)
+        self.acous_general_grid.addWidget(self.acous_post_trig_label, 3, 0, 1, 1)
 
         self.acous_trig_delay_label = QLabel(self.scrollAreaWidgetContents_6)
         self.acous_trig_delay_label.setObjectName(u"acous_trig_delay_label")
         self.acous_trig_delay_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
-        self.acous_general_grid.addWidget(self.acous_trig_delay_label, 2, 2, 1, 1)
+        self.acous_general_grid.addWidget(self.acous_trig_delay_label, 3, 2, 1, 1)
 
-        self.acous_trig_delay_box = QSpinBox(self.scrollAreaWidgetContents_6)
-        self.acous_trig_delay_box.setObjectName(u"acous_trig_delay_box")
+        self.acous_trig_timeout_label = QLabel(self.scrollAreaWidgetContents_6)
+        self.acous_trig_timeout_label.setObjectName(u"acous_trig_timeout_label")
+        self.acous_trig_timeout_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
-        self.acous_general_grid.addWidget(self.acous_trig_delay_box, 2, 3, 1, 1)
+        self.acous_general_grid.addWidget(self.acous_trig_timeout_label, 2, 2, 1, 1)
+
+        self.acous_post_trig_box = QSpinBox(self.scrollAreaWidgetContents_6)
+        self.acous_post_trig_box.setObjectName(u"acous_post_trig_box")
+
+        self.acous_general_grid.addWidget(self.acous_post_trig_box, 3, 1, 1, 1)
+
+        self.acous_pre_trig_box = QSpinBox(self.scrollAreaWidgetContents_6)
+        self.acous_pre_trig_box.setObjectName(u"acous_pre_trig_box")
+
+        self.acous_general_grid.addWidget(self.acous_pre_trig_box, 2, 1, 1, 1)
+
+        self.acous_sample_rate_label = QLabel(self.scrollAreaWidgetContents_6)
+        self.acous_sample_rate_label.setObjectName(u"acous_sample_rate_label")
+        self.acous_sample_rate_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.acous_general_grid.addWidget(self.acous_sample_rate_label, 1, 0, 1, 1)
+
+        self.acous_trig_timeout_box = QSpinBox(self.scrollAreaWidgetContents_6)
+        self.acous_trig_timeout_box.setObjectName(u"acous_trig_timeout_box")
+
+        self.acous_general_grid.addWidget(self.acous_trig_timeout_box, 2, 3, 1, 1)
+
+        self.acous_sample_rate_box = QComboBox(self.scrollAreaWidgetContents_6)
+        self.acous_sample_rate_box.addItem("")
+        self.acous_sample_rate_box.setObjectName(u"acous_sample_rate_box")
+
+        self.acous_general_grid.addWidget(self.acous_sample_rate_box, 1, 1, 1, 3)
+
+        self.acous_pre_trig_label = QLabel(self.scrollAreaWidgetContents_6)
+        self.acous_pre_trig_label.setObjectName(u"acous_pre_trig_label")
+        self.acous_pre_trig_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.acous_general_grid.addWidget(self.acous_pre_trig_label, 2, 0, 1, 1)
+
+        self.label = QLabel(self.scrollAreaWidgetContents_6)
+        self.label.setObjectName(u"label")
+        font = QFont()
+        font.setBold(True)
+        self.label.setFont(font)
+        self.label.setAlignment(Qt.AlignCenter)
+
+        self.acous_general_grid.addWidget(self.label, 0, 0, 1, 4)
 
 
         self.verticalLayout_8.addLayout(self.acous_general_grid)
@@ -1248,9 +1255,9 @@ class Ui_SettingsWindow(object):
         self.cam_scroll_area = QScrollArea(self.cam_tab)
         self.cam_scroll_area.setObjectName(u"cam_scroll_area")
         self.cam_scroll_area.setSizeIncrement(QSize(0, 0))
-        font = QFont()
-        font.setKerning(True)
-        self.cam_scroll_area.setFont(font)
+        font1 = QFont()
+        font1.setKerning(True)
+        self.cam_scroll_area.setFont(font1)
         self.cam_scroll_area.setFrameShape(QFrame.NoFrame)
         self.cam_scroll_area.setFrameShadow(QFrame.Plain)
         self.cam_scroll_area.setLineWidth(0)
@@ -1392,6 +1399,7 @@ class Ui_SettingsWindow(object):
         self.gridLayout_5.addWidget(self.trig_pin_label, 23, 0, 1, 1)
 
         self.image_format_cam1 = QComboBox(self.scrollAreaWidgetContents)
+        self.image_format_cam1.addItem("")
         self.image_format_cam1.addItem("")
         self.image_format_cam1.addItem("")
         self.image_format_cam1.setObjectName(u"image_format_cam1")
@@ -1760,11 +1768,13 @@ class Ui_SettingsWindow(object):
         self.image_format_cam2 = QComboBox(self.scrollAreaWidgetContents)
         self.image_format_cam2.addItem("")
         self.image_format_cam2.addItem("")
+        self.image_format_cam2.addItem("")
         self.image_format_cam2.setObjectName(u"image_format_cam2")
 
         self.gridLayout_5.addWidget(self.image_format_cam2, 16, 2, 1, 1)
 
         self.iamge_format_cam3 = QComboBox(self.scrollAreaWidgetContents)
+        self.iamge_format_cam3.addItem("")
         self.iamge_format_cam3.addItem("")
         self.iamge_format_cam3.addItem("")
         self.iamge_format_cam3.setObjectName(u"iamge_format_cam3")
@@ -1807,9 +1817,7 @@ class Ui_SettingsWindow(object):
         self.dio_general_grid_layout.setObjectName(u"dio_general_grid_layout")
         self.dio_general_label = QLabel(self.scrollAreaWidgetContents_3)
         self.dio_general_label.setObjectName(u"dio_general_label")
-        font1 = QFont()
-        font1.setBold(True)
-        self.dio_general_label.setFont(font1)
+        self.dio_general_label.setFont(font)
         self.dio_general_label.setAlignment(Qt.AlignCenter)
 
         self.dio_general_grid_layout.addWidget(self.dio_general_label, 0, 0, 1, 3)
@@ -1962,7 +1970,7 @@ class Ui_SettingsWindow(object):
 
         self.fifo_layout = QLabel(self.scrollAreaWidgetContents_3)
         self.fifo_layout.setObjectName(u"fifo_layout")
-        self.fifo_layout.setFont(font1)
+        self.fifo_layout.setFont(font)
         self.fifo_layout.setAlignment(Qt.AlignCenter)
 
         self.fifo_grid_layout.addWidget(self.fifo_layout, 0, 0, 1, 4)
@@ -1989,6 +1997,7 @@ class Ui_SettingsWindow(object):
         self.gate_grid_layout.setContentsMargins(0, 0, -1, -1)
         self.gate_period_wave5 = QSpinBox(self.scrollAreaWidgetContents_3)
         self.gate_period_wave5.setObjectName(u"gate_period_wave5")
+        self.gate_period_wave5.setMaximum(1000000)
 
         self.gate_grid_layout.addWidget(self.gate_period_wave5, 7, 2, 1, 1)
 
@@ -2013,6 +2022,7 @@ class Ui_SettingsWindow(object):
 
         self.duty_wave2 = QSpinBox(self.scrollAreaWidgetContents_3)
         self.duty_wave2.setObjectName(u"duty_wave2")
+        self.duty_wave2.setMaximum(100)
 
         self.gate_grid_layout.addWidget(self.duty_wave2, 4, 4, 1, 1)
 
@@ -2048,11 +2058,13 @@ class Ui_SettingsWindow(object):
         self.gate_phase_wave1.setObjectName(u"gate_phase_wave1")
         self.gate_phase_wave1.setButtonSymbols(QAbstractSpinBox.UpDownArrows)
         self.gate_phase_wave1.setKeyboardTracking(True)
+        self.gate_phase_wave1.setMaximum(100)
 
         self.gate_grid_layout.addWidget(self.gate_phase_wave1, 3, 3, 1, 1)
 
         self.duty_wave8 = QSpinBox(self.scrollAreaWidgetContents_3)
         self.duty_wave8.setObjectName(u"duty_wave8")
+        self.duty_wave8.setMaximum(100)
 
         self.gate_grid_layout.addWidget(self.duty_wave8, 10, 4, 1, 1)
 
@@ -2064,6 +2076,7 @@ class Ui_SettingsWindow(object):
 
         self.duty_wave3 = QSpinBox(self.scrollAreaWidgetContents_3)
         self.duty_wave3.setObjectName(u"duty_wave3")
+        self.duty_wave3.setMaximum(100)
 
         self.gate_grid_layout.addWidget(self.duty_wave3, 5, 4, 1, 1)
 
@@ -2094,11 +2107,13 @@ class Ui_SettingsWindow(object):
 
         self.gate_period_wave4 = QSpinBox(self.scrollAreaWidgetContents_3)
         self.gate_period_wave4.setObjectName(u"gate_period_wave4")
+        self.gate_period_wave4.setMaximum(1000000)
 
         self.gate_grid_layout.addWidget(self.gate_period_wave4, 6, 2, 1, 1)
 
         self.gate_period_wave2 = QSpinBox(self.scrollAreaWidgetContents_3)
         self.gate_period_wave2.setObjectName(u"gate_period_wave2")
+        self.gate_period_wave2.setMaximum(1000000)
 
         self.gate_grid_layout.addWidget(self.gate_period_wave2, 4, 2, 1, 1)
 
@@ -2115,16 +2130,19 @@ class Ui_SettingsWindow(object):
 
         self.gate_period_wave9 = QSpinBox(self.scrollAreaWidgetContents_3)
         self.gate_period_wave9.setObjectName(u"gate_period_wave9")
+        self.gate_period_wave9.setMaximum(1000000)
 
         self.gate_grid_layout.addWidget(self.gate_period_wave9, 11, 2, 1, 1)
 
         self.duty_wave4 = QSpinBox(self.scrollAreaWidgetContents_3)
         self.duty_wave4.setObjectName(u"duty_wave4")
+        self.duty_wave4.setMaximum(100)
 
         self.gate_grid_layout.addWidget(self.duty_wave4, 6, 4, 1, 1)
 
         self.gate_period_wave7 = QSpinBox(self.scrollAreaWidgetContents_3)
         self.gate_period_wave7.setObjectName(u"gate_period_wave7")
+        self.gate_period_wave7.setMaximum(1000000)
 
         self.gate_grid_layout.addWidget(self.gate_period_wave7, 9, 2, 1, 1)
 
@@ -2136,6 +2154,7 @@ class Ui_SettingsWindow(object):
 
         self.duty_wave6 = QSpinBox(self.scrollAreaWidgetContents_3)
         self.duty_wave6.setObjectName(u"duty_wave6")
+        self.duty_wave6.setMaximum(100)
 
         self.gate_grid_layout.addWidget(self.duty_wave6, 8, 4, 1, 1)
 
@@ -2153,11 +2172,13 @@ class Ui_SettingsWindow(object):
 
         self.gate_period_wave8 = QSpinBox(self.scrollAreaWidgetContents_3)
         self.gate_period_wave8.setObjectName(u"gate_period_wave8")
+        self.gate_period_wave8.setMaximum(1000000)
 
         self.gate_grid_layout.addWidget(self.gate_period_wave8, 10, 2, 1, 1)
 
         self.duty_wave7 = QSpinBox(self.scrollAreaWidgetContents_3)
         self.duty_wave7.setObjectName(u"duty_wave7")
+        self.duty_wave7.setMaximum(100)
 
         self.gate_grid_layout.addWidget(self.duty_wave7, 9, 4, 1, 1)
 
@@ -2185,6 +2206,7 @@ class Ui_SettingsWindow(object):
 
         self.duty_wave1 = QSpinBox(self.scrollAreaWidgetContents_3)
         self.duty_wave1.setObjectName(u"duty_wave1")
+        self.duty_wave1.setMaximum(100)
 
         self.gate_grid_layout.addWidget(self.duty_wave1, 3, 4, 1, 1)
 
@@ -2200,6 +2222,7 @@ class Ui_SettingsWindow(object):
 
         self.duty_wave9 = QSpinBox(self.scrollAreaWidgetContents_3)
         self.duty_wave9.setObjectName(u"duty_wave9")
+        self.duty_wave9.setMaximum(100)
 
         self.gate_grid_layout.addWidget(self.duty_wave9, 11, 4, 1, 1)
 
@@ -2251,6 +2274,7 @@ class Ui_SettingsWindow(object):
 
         self.gate_period_wave1 = QSpinBox(self.scrollAreaWidgetContents_3)
         self.gate_period_wave1.setObjectName(u"gate_period_wave1")
+        self.gate_period_wave1.setMaximum(1000000)
 
         self.gate_grid_layout.addWidget(self.gate_period_wave1, 3, 2, 1, 1)
 
@@ -2273,6 +2297,7 @@ class Ui_SettingsWindow(object):
 
         self.duty_wave5 = QSpinBox(self.scrollAreaWidgetContents_3)
         self.duty_wave5.setObjectName(u"duty_wave5")
+        self.duty_wave5.setMaximum(100)
 
         self.gate_grid_layout.addWidget(self.duty_wave5, 7, 4, 1, 1)
 
@@ -2290,11 +2315,13 @@ class Ui_SettingsWindow(object):
 
         self.gate_period_wave6 = QSpinBox(self.scrollAreaWidgetContents_3)
         self.gate_period_wave6.setObjectName(u"gate_period_wave6")
+        self.gate_period_wave6.setMaximum(1000000)
 
         self.gate_grid_layout.addWidget(self.gate_period_wave6, 8, 2, 1, 1)
 
         self.gate_period_wave3 = QSpinBox(self.scrollAreaWidgetContents_3)
         self.gate_period_wave3.setObjectName(u"gate_period_wave3")
+        self.gate_period_wave3.setMaximum(1000000)
 
         self.gate_grid_layout.addWidget(self.gate_period_wave3, 5, 2, 1, 1)
 
@@ -2318,7 +2345,7 @@ class Ui_SettingsWindow(object):
 
         self.gate_label = QLabel(self.scrollAreaWidgetContents_3)
         self.gate_label.setObjectName(u"gate_label")
-        self.gate_label.setFont(font1)
+        self.gate_label.setFont(font)
         self.gate_label.setAlignment(Qt.AlignCenter)
         self.gate_label.setMargin(0)
 
@@ -2351,11 +2378,11 @@ class Ui_SettingsWindow(object):
         self.max_ev_time_label.setBuddy(self.max_ev_time_box)
         self.source_label.setBuddy(self.max_ev_time_box)
         self.pressure_setpoint_label.setBuddy(self.max_ev_time_box)
-        self.acous_pre_trig_label.setBuddy(self.acous_pre_trig_box)
-        self.acous_sample_rate_label.setBuddy(self.acous_sample_rate_box)
-        self.acous_trig_timeout_label.setBuddy(self.acous_trig_timeout_box)
         self.acous_post_trig_label.setBuddy(self.acous_post_trig_box)
         self.acous_trig_delay_label.setBuddy(self.acous_trig_delay_box)
+        self.acous_trig_timeout_label.setBuddy(self.acous_trig_timeout_box)
+        self.acous_sample_rate_label.setBuddy(self.acous_sample_rate_box)
+        self.acous_pre_trig_label.setBuddy(self.acous_pre_trig_box)
         self.acous_ch5_label.setBuddy(self.acous_enable_ch5)
         self.acous_ch2_label.setBuddy(self.acous_enable_ch2)
         self.acous_ch1_label.setBuddy(self.acous_enable_ch1)
@@ -2396,8 +2423,7 @@ class Ui_SettingsWindow(object):
         QWidget.setTabOrder(self.caen_evs_box, self.caen_length_box)
         QWidget.setTabOrder(self.caen_length_box, self.caen_post_trig_box)
         QWidget.setTabOrder(self.caen_post_trig_box, self.caen_trigin_box)
-        QWidget.setTabOrder(self.caen_trigin_box, self.caen_decimation_box)
-        QWidget.setTabOrder(self.caen_decimation_box, self.caen_overlap_box)
+        QWidget.setTabOrder(self.caen_trigin_box, self.caen_overlap_box)
         QWidget.setTabOrder(self.caen_overlap_box, self.caen_polarity_box)
         QWidget.setTabOrder(self.caen_polarity_box, self.caen_io_box)
         QWidget.setTabOrder(self.caen_io_box, self.caen_ext_trig_box)
@@ -2610,7 +2636,7 @@ class Ui_SettingsWindow(object):
         self.clock_sketch_but.clicked.connect(SettingsWindow.select_clock_sketch_dir)
         self.position_sketch_but.clicked.connect(SettingsWindow.select_position_sketch_dir)
 
-        self.tabWidget.setCurrentIndex(5)
+        self.tabWidget.setCurrentIndex(4)
 
 
         QMetaObject.connectSlotsByName(SettingsWindow)
@@ -2706,17 +2732,9 @@ class Ui_SettingsWindow(object):
         self.caen_length_label.setText(QCoreApplication.translate("SettingsWindow", u"Record Length", None))
         self.caen_post_trig_box.setSuffix(QCoreApplication.translate("SettingsWindow", u"%", None))
         self.caen_decimation_label.setText(QCoreApplication.translate("SettingsWindow", u"Decimation", None))
-        self.caen_decimation_box.setItemText(0, QCoreApplication.translate("SettingsWindow", u"1", None))
-        self.caen_decimation_box.setItemText(1, QCoreApplication.translate("SettingsWindow", u"2", None))
-        self.caen_decimation_box.setItemText(2, QCoreApplication.translate("SettingsWindow", u"4", None))
-        self.caen_decimation_box.setItemText(3, QCoreApplication.translate("SettingsWindow", u"8", None))
-        self.caen_decimation_box.setItemText(4, QCoreApplication.translate("SettingsWindow", u"16", None))
-        self.caen_decimation_box.setItemText(5, QCoreApplication.translate("SettingsWindow", u"32", None))
-        self.caen_decimation_box.setItemText(6, QCoreApplication.translate("SettingsWindow", u"64", None))
-        self.caen_decimation_box.setItemText(7, QCoreApplication.translate("SettingsWindow", u"128", None))
-
         self.caen_trigin_label.setText(QCoreApplication.translate("SettingsWindow", u"TRG-IN as Gate", None))
         self.caen_trigin_box.setText("")
+        self.caen_decimation_box.setPrefix("")
         self.caen_g0_enable_label.setText(QCoreApplication.translate("SettingsWindow", u"Enabled", None))
         self.caen_g0_enable_box.setText("")
         self.caen_g0_label.setText(QCoreApplication.translate("SettingsWindow", u"Group 0", None))
@@ -2757,13 +2775,14 @@ class Ui_SettingsWindow(object):
         self.label_24.setText(QCoreApplication.translate("SettingsWindow", u"Ch1", None))
         self.label_32.setText(QCoreApplication.translate("SettingsWindow", u"Ch0", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.scint_tab), QCoreApplication.translate("SettingsWindow", u"Scint", None))
-        self.acous_pre_trig_label.setText(QCoreApplication.translate("SettingsWindow", u"Pre Trig Length", None))
-        self.acous_sample_rate_box.setItemText(0, QCoreApplication.translate("SettingsWindow", u"100 MS/s", None))
-
-        self.acous_sample_rate_label.setText(QCoreApplication.translate("SettingsWindow", u"Sample Rate", None))
-        self.acous_trig_timeout_label.setText(QCoreApplication.translate("SettingsWindow", u"Trig Timeout", None))
         self.acous_post_trig_label.setText(QCoreApplication.translate("SettingsWindow", u"Post Trig Length", None))
         self.acous_trig_delay_label.setText(QCoreApplication.translate("SettingsWindow", u"Trig Delay", None))
+        self.acous_trig_timeout_label.setText(QCoreApplication.translate("SettingsWindow", u"Trig Timeout", None))
+        self.acous_sample_rate_label.setText(QCoreApplication.translate("SettingsWindow", u"Sample Rate", None))
+        self.acous_sample_rate_box.setItemText(0, QCoreApplication.translate("SettingsWindow", u"100 MS/s", None))
+
+        self.acous_pre_trig_label.setText(QCoreApplication.translate("SettingsWindow", u"Pre Trig Length", None))
+        self.label.setText(QCoreApplication.translate("SettingsWindow", u"General", None))
         self.acous_enable_ch7.setText("")
         self.acous_enable_ch3.setText("")
         self.acous_trig_label.setText(QCoreApplication.translate("SettingsWindow", u"Trigger", None))
@@ -2850,8 +2869,9 @@ class Ui_SettingsWindow(object):
         self.cam3_label.setText(QCoreApplication.translate("SettingsWindow", u"Cam 3", None))
         self.trig_wait_cam2.setSuffix(QCoreApplication.translate("SettingsWindow", u"s", None))
         self.trig_pin_label.setText(QCoreApplication.translate("SettingsWindow", u"Trigger Pin", None))
-        self.image_format_cam1.setItemText(0, QCoreApplication.translate("SettingsWindow", u"png", None))
-        self.image_format_cam1.setItemText(1, QCoreApplication.translate("SettingsWindow", u"jpg", None))
+        self.image_format_cam1.setItemText(0, QCoreApplication.translate("SettingsWindow", u"bmp", None))
+        self.image_format_cam1.setItemText(1, QCoreApplication.translate("SettingsWindow", u"png", None))
+        self.image_format_cam1.setItemText(2, QCoreApplication.translate("SettingsWindow", u"jpg", None))
 
         self.state_pin_label.setText(QCoreApplication.translate("SettingsWindow", u"State Pin", None))
         self.cam1_label.setText(QCoreApplication.translate("SettingsWindow", u"Cam 1", None))
@@ -2869,11 +2889,13 @@ class Ui_SettingsWindow(object):
         self.trig_enbl_pin_label.setText(QCoreApplication.translate("SettingsWindow", u"Trig Enable Pin", None))
         self.date_format_label.setText(QCoreApplication.translate("SettingsWindow", u"Date Format", None))
         self.buffer_len_label.setText(QCoreApplication.translate("SettingsWindow", u"Buffer Length", None))
-        self.image_format_cam2.setItemText(0, QCoreApplication.translate("SettingsWindow", u"png", None))
-        self.image_format_cam2.setItemText(1, QCoreApplication.translate("SettingsWindow", u"jpg", None))
+        self.image_format_cam2.setItemText(0, QCoreApplication.translate("SettingsWindow", u"bmp", None))
+        self.image_format_cam2.setItemText(1, QCoreApplication.translate("SettingsWindow", u"png", None))
+        self.image_format_cam2.setItemText(2, QCoreApplication.translate("SettingsWindow", u"jpg", None))
 
-        self.iamge_format_cam3.setItemText(0, QCoreApplication.translate("SettingsWindow", u"png", None))
-        self.iamge_format_cam3.setItemText(1, QCoreApplication.translate("SettingsWindow", u"jpg", None))
+        self.iamge_format_cam3.setItemText(0, QCoreApplication.translate("SettingsWindow", u"bmp", None))
+        self.iamge_format_cam3.setItemText(1, QCoreApplication.translate("SettingsWindow", u"png", None))
+        self.iamge_format_cam3.setItemText(2, QCoreApplication.translate("SettingsWindow", u"jpg", None))
 
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.cam_tab), QCoreApplication.translate("SettingsWindow", u"Camera", None))
         self.dio_general_label.setText(QCoreApplication.translate("SettingsWindow", u"General", None))

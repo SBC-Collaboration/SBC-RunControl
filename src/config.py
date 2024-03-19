@@ -22,8 +22,6 @@ class Config:
             self.config = json.load(file)
 
     def load_config_to_window(self, ui):
-        self.load_config()
-
         general_config = self.config["general"]
         ui.config_path_edit.setText(general_config["config_path"])
         ui.log_path_edit.setText(general_config["log_path"])
@@ -48,7 +46,7 @@ class Config:
         ui.caen_length_box.setValue(caen_config["rec_length"])
         ui.caen_post_trig_box.setValue(caen_config["post_trig"])
         ui.caen_trigin_box.setChecked(caen_config["trig_in"])
-        ui.caen_decimation_box.setCurrentText(caen_config["decimation"])
+        ui.caen_decimation_box.setValue(caen_config["decimation"])
         ui.caen_overlap_box.setChecked(caen_config["overlap"])
         ui.caen_polarity_box.setCurrentText(caen_config["polarity"])
         ui.caen_io_box.setCurrentText(caen_config["io_level"])
@@ -99,7 +97,7 @@ class Config:
             "rec_length": ui.caen_length_box.value(),
             "post_trig": ui.caen_post_trig_box.value(),
             "trig_in": ui.caen_trigin_box.isChecked(),
-            "decimation": ui.caen_decimation_box.currentText(),
+            "decimation": ui.caen_decimation_box.value(),
             "overlap": ui.caen_overlap_box.isChecked(),
             "polarity": ui.caen_polarity_box.currentText(),
             "io_level": ui.caen_io_box.currentText(),
@@ -117,68 +115,68 @@ class Config:
 
         acous_ch_config = {
             "ch1": {
-                "enabled": ui.acous_enable_ch1,
-                "range": ui.acous_range_ch1,
-                "offset": ui.acous_dc_offset_ch1,
-                "trig": ui.acous_trig_ch1,
-                "polarity": ui.acous_polarity_ch1,
-                "threshold": ui.acous_threshold_ch1,
+                "enabled": ui.acous_enable_ch1.isChecked(),
+                "range": ui.acous_range_ch1.value(),
+                "offset": ui.acous_dc_offset_ch1.value(),
+                "trig": ui.acous_trig_ch1.isChecked(),
+                "polarity": ui.acous_polarity_ch1.currentText(),
+                "threshold": ui.acous_threshold_ch1.value(),
             },
             "ch2": {
-                "enabled": ui.acous_enable_ch2,
-                "range": ui.acous_range_ch2,
-                "offset": ui.acous_dc_offset_ch2,
-                "trig": ui.acous_trig_ch2,
-                "polarity": ui.acous_polarity_ch2,
-                "threshold": ui.acous_threshold_ch2,
+                "enabled": ui.acous_enable_ch2.isChecked(),
+                "range": ui.acous_range_ch2.value(),
+                "offset": ui.acous_dc_offset_ch2.value(),
+                "trig": ui.acous_trig_ch2.isChecked(),
+                "polarity": ui.acous_polarity_ch2.currentText(),
+                "threshold": ui.acous_threshold_ch2.value(),
             },
             "ch3": {
-                "enabled": ui.acous_enable_ch3,
-                "range": ui.acous_range_ch3,
-                "offset": ui.acous_dc_offset_ch3,
-                "trig": ui.acous_trig_ch3,
-                "polarity": ui.acous_polarity_ch3,
-                "threshold": ui.acous_threshold_ch3,
+                "enabled": ui.acous_enable_ch3.isChecked(),
+                "range": ui.acous_range_ch3.value(),
+                "offset": ui.acous_dc_offset_ch3.value(),
+                "trig": ui.acous_trig_ch3.isChecked(),
+                "polarity": ui.acous_polarity_ch3.currentText(),
+                "threshold": ui.acous_threshold_ch3.value(),
             },
             "ch4": {
-                "enabled": ui.acous_enable_ch4,
-                "range": ui.acous_range_ch4,
-                "offset": ui.acous_dc_offset_ch4,
-                "trig": ui.acous_trig_ch4,
-                "polarity": ui.acous_polarity_ch4,
-                "threshold": ui.acous_threshold_ch4,
+                "enabled": ui.acous_enable_ch4.isChecked(),
+                "range": ui.acous_range_ch4.value(),
+                "offset": ui.acous_dc_offset_ch4.value(),
+                "trig": ui.acous_trig_ch4.isChecked(),
+                "polarity": ui.acous_polarity_ch4.currentText(),
+                "threshold": ui.acous_threshold_ch4.value(),
             },
             "ch5": {
-                "enabled": ui.acous_enable_ch5,
-                "range": ui.acous_range_ch5,
-                "offset": ui.acous_dc_offset_ch5,
-                "trig": ui.acous_trig_ch5,
-                "polarity": ui.acous_polarity_ch5,
-                "threshold": ui.acous_threshold_ch5,
+                "enabled": ui.acous_enable_ch5.isChecked(),
+                "range": ui.acous_range_ch5.value(),
+                "offset": ui.acous_dc_offset_ch5.value(),
+                "trig": ui.acous_trig_ch5.isChecked(),
+                "polarity": ui.acous_polarity_ch5.currentText(),
+                "threshold": ui.acous_threshold_ch5.value(),
             },
             "ch6": {
-                "enabled": ui.acous_enable_ch6,
-                "range": ui.acous_range_ch6,
-                "offset": ui.acous_dc_offset_ch6,
-                "trig": ui.acous_trig_ch6,
-                "polarity": ui.acous_polarity_ch6,
-                "threshold": ui.acous_threshold_ch6,
+                "enabled": ui.acous_enable_ch6.isChecked(),
+                "range": ui.acous_range_ch6.value(),
+                "offset": ui.acous_dc_offset_ch6.value(),
+                "trig": ui.acous_trig_ch6.isChecked(),
+                "polarity": ui.acous_polarity_ch6.currentText(),
+                "threshold": ui.acous_threshold_ch6.value(),
             },
             "ch7": {
-                "enabled": ui.acous_enable_ch7,
-                "range": ui.acous_range_ch7,
-                "offset": ui.acous_dc_offset_ch7,
-                "trig": ui.acous_trig_ch7,
-                "polarity": ui.acous_polarity_ch7,
-                "threshold": ui.acous_threshold_ch7,
+                "enabled": ui.acous_enable_ch7.isChecked(),
+                "range": ui.acous_range_ch7.value(),
+                "offset": ui.acous_dc_offset_ch7.value(),
+                "trig": ui.acous_trig_ch7.isChecked(),
+                "polarity": ui.acous_polarity_ch7.currentText(),
+                "threshold": ui.acous_threshold_ch7.value(),
             },
             "ch8": {
-                "enabled": ui.acous_enable_ch8,
-                "range": ui.acous_range_ch8,
-                "offset": ui.acous_dc_offset_ch8,
-                "trig": ui.acous_trig_ch8,
-                "polarity": ui.acous_polarity_ch8,
-                "threshold": ui.acous_threshold_ch8,
+                "enabled": ui.acous_enable_ch8.isChecked(),
+                "range": ui.acous_range_ch8.value(),
+                "offset": ui.acous_dc_offset_ch8.value(),
+                "trig": ui.acous_trig_ch8.isChecked(),
+                "polarity": ui.acous_polarity_ch8.currentText(),
+                "threshold": ui.acous_threshold_ch8.value(),
             },
         }
 

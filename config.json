@@ -7,25 +7,25 @@
   "run": {
     "source": "Bg",
     "pressure_setpoint": 25,
-    "max_ev_time": 1.0,
-    "max_num_evs": 300
+    "max_ev_time": 100.0,
+    "max_num_evs": 100
   },
   "scint": {
     "sipm": {
-      "ip_addr": "",
-      "bias": 0.0,
-      "qp": 0.0
+      "ip_addr": "192.168.137.21",
+      "bias": 48.0,
+      "qp": 70.0
     },
     "caen": {
       "model": "DT5740D",
       "port": 0,
       "connection": "USB",
-      "evs_per_read": 0,
-      "rec_length": 0,
+      "evs_per_read": 100,
+      "rec_length": 500,
       "post_trig": 50,
       "trig_in": false,
-      "decimation": "1",
-      "overlap": true,
+      "decimation": 1,
+      "overlap": false,
       "polarity": "Positive",
       "io_level": "TTL",
       "ext_trig": "Disabled",
@@ -42,4 +42,85 @@
     },
     "per_channel": {
       "ch1": {
-        "enabled": 
+        "enabled": false,
+        "range": 0,
+        "offset": 0,
+        "trig": false,
+        "polarity": "Rising",
+        "threshold": 0
+      },
+      "ch2": {
+        "enabled": false,
+        "range": 0,
+        "offset": 0,
+        "trig": false,
+        "polarity": "Rising",
+        "threshold": 0
+      },
+      "ch3": {
+        "enabled": false,
+        "range": 0,
+        "offset": 0,
+        "trig": false,
+        "polarity": "Rising",
+        "threshold": 0
+      },
+      "ch4": {
+        "enabled": false,
+        "range": 0,
+        "offset": 0,
+        "trig": false,
+        "polarity": "Rising",
+        "threshold": 0
+      },
+      "ch5": {
+        "enabled": false,
+        "range": 0,
+        "offset": 0,
+        "trig": false,
+        "polarity": "Rising",
+        "threshold": 0
+      },
+      "ch6": {
+        "enabled": false,
+        "range": 0,
+        "offset": 0,
+        "trig": false,
+        "polarity": "Rising",
+        "threshold": 0
+      },
+      "ch7": {
+        "enabled": false,
+        "range": 0,
+        "offset": 0,
+        "trig": false,
+        "polarity": "Rising",
+        "threshold": 0
+      },
+      "ch8": {
+        "enabled": false,
+        "range": 0,
+        "offset": 0,
+        "trig": false,
+        "polarity": "Rising",
+        "threshold": 0
+      }
+    }
+  },
+  "dio": {
+    "general": {
+      "trigger": {
+        "port": "/dev/ttyACM2",
+        "sketch": "/home/sbc/packages/SBC-ArduinoSketches/trigger/"
+      },
+      "clock": {
+        "port": "/dev/ttyACM1",
+        "sketch": "/home/sbc/packages/SBC-ArduinoSketches/clock/"
+      },
+      "position": {
+        "port": "/dev/ttyACM0",
+        "sketch": "/home/sbc/packages/SBC-ArduinoSketches/position/"
+      }
+    }
+  }
+}
