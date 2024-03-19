@@ -7,7 +7,7 @@
   "run": {
     "source": "Bg",
     "pressure_setpoint": 25,
-    "max_ev_time": 100.0,
+    "max_ev_time": 4.0,
     "max_num_evs": 100
   },
   "scint": {

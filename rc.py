@@ -19,7 +19,7 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super(MainWindow, self).__init__()
         self.run_number = ""
-        self.ev_number = 0
+        self.ev_number = None
 
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
@@ -36,12 +36,9 @@ class MainWindow(QMainWindow):
             filename=self.log_filename, format=log_format, level=logging.INFO
         )
         self.logger.addHandler(logging.StreamHandler())
-        self.logger.info("Starting run control.")
 
         # initialize arduino class
-        self.arduino_class = Arduino(self)
-        for arduino in ["trigger", "clock", "position"]:
-            self.arduino_class.upload_sketch(arduino)
+        self.arduinos_class = Arduinos(self)
 
         # timer for event loop
         self.timer = QTimer()
@@ -59,10 +56,17 @@ class MainWindow(QMainWindow):
         # define four run states
         self.run_states = Enum(
             "State",
-            ["Idle", "Active", "Starting", "Stopping", "Expanding", "Compressing"],
+            ["Idle", "Preparing", "Active", "Starting", "Stopping", "Expanding", "Compressing"],
         )
-        # initialize run state
-        self.update_state("Idle")
+
+        self.start_program_worker = StartProgramWorker(self)
+        self.start_program_worker.moveToThread(self.run_handling_thread)
+        self.run_handling_thread.started.connect(self.start_program_worker.run)
+        self.start_program_worker.finished.connect(self.start_program_worker.deleteLater)
+        self.start_program_worker.finished.connect(self.run_handling_thread.quit)
+        self.start_program_worker.state.connect(self.update_state)
+        self.run_handling_thread.start()
+
 
     # TODO: handle closing during run
     def closeEvent(self, event):
@@ -172,29 +176,43 @@ class MainWindow(QMainWindow):
         event_dir = os.path.join(self.run_dir, str(self.ev_number))
         if not os.path.exists(event_dir):
             os.mkdir(event_dir)
-        self.ui.event_num_edit.setText(f"{self.ev_number:2d}")
-        self.update_state("Expanding")
-        # starting event processes
-        time.sleep(1)
-        self.event_timer.start()
-        self.update_state("Active")
+
+        def set_ev_num():
+            self.ui.event_num_edit.setText(f"{self.ev_number:2d}")
+
+        self.start_event_worker = StartEventWorker(self)
+        self.start_event_worker.moveToThread(self.run_handling_thread)
+        self.run_handling_thread.started.connect(self.start_event_worker.run)
+        self.start_event_worker.finished.connect(self.start_event_worker.deleteLater)
+        self.start_event_worker.finished.connect(self.run_handling_thread.quit)
+        self.start_event_worker.state.connect(self.update_state)
+        self.start_event_worker.ev_number.connect(set_ev_num)
+        self.run_handling_thread.start()
 
     def stop_event(self):
         """
         Stop the event. Enter into compressing state. If the "Stop Run" button is pressed or the max number of events
         are reached, then it will enter into "stopping" state. Otherwise it will start another event.
         """
-        self.run_livetime += self.event_timer.elapsed()
-        self.update_state("Compressing")
-        time.sleep(1)
+
+        # TODO: move this check into worker
         if (
             self.ui.stop_run_but.isChecked()
             or self.ev_number + 1 >= self.config_class.config["run"]["max_num_evs"]
         ):
-            self.stop_run()
+            stop_run = True
         else:
-            self.ev_number += 1
-            self.start_event()
+            stop_run = False
+
+        self.stop_event_worker = StopEventWorker(self)
+        self.stop_event_worker.moveToThread(self.run_handling_thread)
+        self.run_handling_thread.started.connect(self.stop_event_worker.run)
+        self.stop_event_worker.finished.connect(self.stop_event_worker.deleteLater)
+        self.stop_event_worker.finished.connect(self.run_handling_thread.quit)
+        if stop_run: self.stop_event_worker.finished.connect(self.stop_run)
+        else: self.stop_event_worker.finished.connect(self.start_event)
+        self.stop_event_worker.state.connect(self.update_state)
+        self.run_handling_thread.start()
 
     def start_run(self):
         if self.run_state == self.run_states["Idle"]:
@@ -241,6 +259,7 @@ class MainWindow(QMainWindow):
         self.ui.run_state_label.setText(self.run_state.name)
         run_state_colors = [
             "lightgrey",
+            "khaki",
             "lightgreen",
             "lightskyblue",
             "lightpink",
@@ -255,19 +274,22 @@ class MainWindow(QMainWindow):
         if self.run_state == self.run_states["Idle"]:
             self.logger.info(f"Entering into Idle state.")
             self.ui.start_run_but.setEnabled(True)
-        elif (
-            self.run_state == self.run_states["Active"]
-        ):  # or self.run_state == self.run_states[""]:
+        elif self.run_state == self.run_states["Preparing"]:
+            self.logger.info(f"Run control starting.")
+        elif self.run_state == self.run_states["Active"]:
             self.logger.info(f"Event {self.ev_number} active.")
             self.ui.stop_run_but.setEnabled(True)
         elif self.run_state == self.run_states["Starting"]:
             self.logger.info(f"Starting Run {self.run_number}.")
+            self.ui.stop_run_but.setEnabled(True)
         elif self.run_state == self.run_states["Stopping"]:
             self.logger.info(f"Stopping Run {self.run_number}.")
         elif self.run_state == self.run_states["Expanding"]:
             self.logger.info(f"Event {self.ev_number} expanding")
+            self.ui.stop_run_but.setEnabled(True)
         elif self.run_state == self.run_states["Compressing"]:
             self.logger.info(f"Event {self.ev_number} compressing")
+            self.ui.stop_run_but.setEnabled(True)
         else:
             pass
 

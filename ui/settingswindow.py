@@ -88,7 +88,7 @@ class Ui_SettingsWindow(object):
         self.files_scroll_area.setWidgetResizable(True)
         self.scrollAreaWidgetContents_5 = QWidget()
         self.scrollAreaWidgetContents_5.setObjectName(u"scrollAreaWidgetContents_5")
-        self.scrollAreaWidgetContents_5.setGeometry(QRect(0, 0, 388, 442))
+        self.scrollAreaWidgetContents_5.setGeometry(QRect(0, 0, 390, 438))
         self.scrollAreaWidgetContents_5.setMaximumSize(QSize(1000, 16777215))
         self.gridLayout_3 = QGridLayout(self.scrollAreaWidgetContents_5)
         self.gridLayout_3.setSpacing(3)
@@ -171,7 +171,7 @@ class Ui_SettingsWindow(object):
         self.run_scroll_area.setWidgetResizable(True)
         self.scrollAreaWidgetContents_4 = QWidget()
         self.scrollAreaWidgetContents_4.setObjectName(u"scrollAreaWidgetContents_4")
-        self.scrollAreaWidgetContents_4.setGeometry(QRect(0, 0, 388, 442))
+        self.scrollAreaWidgetContents_4.setGeometry(QRect(0, 0, 392, 424))
         self.scrollAreaWidgetContents_4.setMaximumSize(QSize(1000, 16777215))
         self.gridLayout_2 = QGridLayout(self.scrollAreaWidgetContents_4)
         self.gridLayout_2.setSpacing(3)
@@ -258,7 +258,7 @@ class Ui_SettingsWindow(object):
         self.sipm_scroll_area.setWidgetResizable(True)
         self.scrollAreaWidgetContents_2 = QWidget()
         self.scrollAreaWidgetContents_2.setObjectName(u"scrollAreaWidgetContents_2")
-        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, 0, 388, 442))
+        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, 0, 390, 438))
         self.scrollAreaWidgetContents_2.setMaximumSize(QSize(1000, 16777215))
         self.verticalLayout_9 = QVBoxLayout(self.scrollAreaWidgetContents_2)
         self.verticalLayout_9.setSpacing(3)
@@ -803,7 +803,7 @@ class Ui_SettingsWindow(object):
         self.acoustics_scroll_area.setWidgetResizable(True)
         self.scrollAreaWidgetContents_6 = QWidget()
         self.scrollAreaWidgetContents_6.setObjectName(u"scrollAreaWidgetContents_6")
-        self.scrollAreaWidgetContents_6.setGeometry(QRect(0, 0, 388, 442))
+        self.scrollAreaWidgetContents_6.setGeometry(QRect(0, 0, 390, 438))
         self.scrollAreaWidgetContents_6.setMaximumSize(QSize(1000, 16777215))
         self.verticalLayout_8 = QVBoxLayout(self.scrollAreaWidgetContents_6)
         self.verticalLayout_8.setSpacing(3)
@@ -1329,40 +1329,47 @@ class Ui_SettingsWindow(object):
         self.cam_scroll_area.setFrameShadow(QFrame.Plain)
         self.cam_scroll_area.setLineWidth(0)
         self.cam_scroll_area.setWidgetResizable(True)
+        self.cam_scroll_area.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 388, 442))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, -18, 376, 456))
         self.scrollAreaWidgetContents.setMaximumSize(QSize(1000, 16777215))
         self.gridLayout_5 = QGridLayout(self.scrollAreaWidgetContents)
         self.gridLayout_5.setSpacing(3)
         self.gridLayout_5.setContentsMargins(0, 0, 0, 0)
         self.gridLayout_5.setObjectName(u"gridLayout_5")
         self.gridLayout_5.setSizeConstraint(QLayout.SetDefaultConstraint)
-        self.gridLayout_5.setContentsMargins(0, 0, 0, 0)
+        self.gridLayout_5.setContentsMargins(1, 0, 0, 0)
         self.cam_spacer = QSpacerItem(20, 10, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
         self.gridLayout_5.addItem(self.cam_spacer, 24, 0, 1, 4)
 
         self.cam1_data_path = QLineEdit(self.scrollAreaWidgetContents)
         self.cam1_data_path.setObjectName(u"cam1_data_path")
+        sizePolicy2 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
+        sizePolicy2.setHorizontalStretch(0)
+        sizePolicy2.setVerticalStretch(0)
+        sizePolicy2.setHeightForWidth(self.cam1_data_path.sizePolicy().hasHeightForWidth())
+        self.cam1_data_path.setSizePolicy(sizePolicy2)
 
         self.gridLayout_5.addWidget(self.cam1_data_path, 2, 1, 1, 1)
 
         self.cam1_ip_addr = QLineEdit(self.scrollAreaWidgetContents)
         self.cam1_ip_addr.setObjectName(u"cam1_ip_addr")
+        sizePolicy2.setHeightForWidth(self.cam1_ip_addr.sizePolicy().hasHeightForWidth())
+        self.cam1_ip_addr.setSizePolicy(sizePolicy2)
 
         self.gridLayout_5.addWidget(self.cam1_ip_addr, 3, 1, 1, 1)
 
         self.cam2_config_path = QLineEdit(self.scrollAreaWidgetContents)
         self.cam2_config_path.setObjectName(u"cam2_config_path")
+        sizePolicy2.setHeightForWidth(self.cam2_config_path.sizePolicy().hasHeightForWidth())
+        self.cam2_config_path.setSizePolicy(sizePolicy2)
 
         self.gridLayout_5.addWidget(self.cam2_config_path, 1, 2, 1, 1)
 
         self.state_comm_pin_label = QLabel(self.scrollAreaWidgetContents)
         self.state_comm_pin_label.setObjectName(u"state_comm_pin_label")
-        sizePolicy2 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
-        sizePolicy2.setHorizontalStretch(0)
-        sizePolicy2.setVerticalStretch(0)
         sizePolicy2.setHeightForWidth(self.state_comm_pin_label.sizePolicy().hasHeightForWidth())
         self.state_comm_pin_label.setSizePolicy(sizePolicy2)
         self.state_comm_pin_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
@@ -1371,11 +1378,9 @@ class Ui_SettingsWindow(object):
 
         self.cam2_post_trig_len = QSpinBox(self.scrollAreaWidgetContents)
         self.cam2_post_trig_len.setObjectName(u"cam2_post_trig_len")
-        sizePolicy3 = QSizePolicy(QSizePolicy.MinimumExpanding, QSizePolicy.Fixed)
-        sizePolicy3.setHorizontalStretch(0)
-        sizePolicy3.setVerticalStretch(0)
-        sizePolicy3.setHeightForWidth(self.cam2_post_trig_len.sizePolicy().hasHeightForWidth())
-        self.cam2_post_trig_len.setSizePolicy(sizePolicy3)
+        sizePolicy2.setHeightForWidth(self.cam2_post_trig_len.sizePolicy().hasHeightForWidth())
+        self.cam2_post_trig_len.setSizePolicy(sizePolicy2)
+        self.cam2_post_trig_len.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
         self.cam2_post_trig_len.setMaximum(1000)
 
         self.gridLayout_5.addWidget(self.cam2_post_trig_len, 11, 2, 1, 1)
@@ -1390,13 +1395,16 @@ class Ui_SettingsWindow(object):
 
         self.cam1_config_path = QLineEdit(self.scrollAreaWidgetContents)
         self.cam1_config_path.setObjectName(u"cam1_config_path")
+        sizePolicy2.setHeightForWidth(self.cam1_config_path.sizePolicy().hasHeightForWidth())
+        self.cam1_config_path.setSizePolicy(sizePolicy2)
 
         self.gridLayout_5.addWidget(self.cam1_config_path, 1, 1, 1, 1)
 
         self.cam1_trig_enbl_pin = QSpinBox(self.scrollAreaWidgetContents)
         self.cam1_trig_enbl_pin.setObjectName(u"cam1_trig_enbl_pin")
-        sizePolicy3.setHeightForWidth(self.cam1_trig_enbl_pin.sizePolicy().hasHeightForWidth())
-        self.cam1_trig_enbl_pin.setSizePolicy(sizePolicy3)
+        sizePolicy2.setHeightForWidth(self.cam1_trig_enbl_pin.sizePolicy().hasHeightForWidth())
+        self.cam1_trig_enbl_pin.setSizePolicy(sizePolicy2)
+        self.cam1_trig_enbl_pin.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
 
         self.gridLayout_5.addWidget(self.cam1_trig_enbl_pin, 20, 1, 1, 1)
 
@@ -1426,26 +1434,32 @@ class Ui_SettingsWindow(object):
 
         self.cam3_mode = QSpinBox(self.scrollAreaWidgetContents)
         self.cam3_mode.setObjectName(u"cam3_mode")
-        sizePolicy3.setHeightForWidth(self.cam3_mode.sizePolicy().hasHeightForWidth())
-        self.cam3_mode.setSizePolicy(sizePolicy3)
+        sizePolicy2.setHeightForWidth(self.cam3_mode.sizePolicy().hasHeightForWidth())
+        self.cam3_mode.setSizePolicy(sizePolicy2)
+        self.cam3_mode.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
 
         self.gridLayout_5.addWidget(self.cam3_mode, 4, 3, 1, 1)
 
         self.cam3_ip_addr = QLineEdit(self.scrollAreaWidgetContents)
         self.cam3_ip_addr.setObjectName(u"cam3_ip_addr")
+        sizePolicy2.setHeightForWidth(self.cam3_ip_addr.sizePolicy().hasHeightForWidth())
+        self.cam3_ip_addr.setSizePolicy(sizePolicy2)
 
         self.gridLayout_5.addWidget(self.cam3_ip_addr, 3, 3, 1, 1)
 
         self.cam3_post_trig_len = QSpinBox(self.scrollAreaWidgetContents)
         self.cam3_post_trig_len.setObjectName(u"cam3_post_trig_len")
-        sizePolicy3.setHeightForWidth(self.cam3_post_trig_len.sizePolicy().hasHeightForWidth())
-        self.cam3_post_trig_len.setSizePolicy(sizePolicy3)
+        sizePolicy2.setHeightForWidth(self.cam3_post_trig_len.sizePolicy().hasHeightForWidth())
+        self.cam3_post_trig_len.setSizePolicy(sizePolicy2)
+        self.cam3_post_trig_len.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
         self.cam3_post_trig_len.setMaximum(1000)
 
         self.gridLayout_5.addWidget(self.cam3_post_trig_len, 11, 3, 1, 1)
 
         self.cam3_config_path = QLineEdit(self.scrollAreaWidgetContents)
         self.cam3_config_path.setObjectName(u"cam3_config_path")
+        sizePolicy2.setHeightForWidth(self.cam3_config_path.sizePolicy().hasHeightForWidth())
+        self.cam3_config_path.setSizePolicy(sizePolicy2)
 
         self.gridLayout_5.addWidget(self.cam3_config_path, 1, 3, 1, 1)
 
@@ -1459,16 +1473,18 @@ class Ui_SettingsWindow(object):
 
         self.cam3_pix_threshold = QSpinBox(self.scrollAreaWidgetContents)
         self.cam3_pix_threshold.setObjectName(u"cam3_pix_threshold")
-        sizePolicy3.setHeightForWidth(self.cam3_pix_threshold.sizePolicy().hasHeightForWidth())
-        self.cam3_pix_threshold.setSizePolicy(sizePolicy3)
+        sizePolicy2.setHeightForWidth(self.cam3_pix_threshold.sizePolicy().hasHeightForWidth())
+        self.cam3_pix_threshold.setSizePolicy(sizePolicy2)
+        self.cam3_pix_threshold.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
         self.cam3_pix_threshold.setMaximum(100000)
 
         self.gridLayout_5.addWidget(self.cam3_pix_threshold, 13, 3, 1, 1)
 
         self.cam2_buffer_len = QSpinBox(self.scrollAreaWidgetContents)
         self.cam2_buffer_len.setObjectName(u"cam2_buffer_len")
-        sizePolicy3.setHeightForWidth(self.cam2_buffer_len.sizePolicy().hasHeightForWidth())
-        self.cam2_buffer_len.setSizePolicy(sizePolicy3)
+        sizePolicy2.setHeightForWidth(self.cam2_buffer_len.sizePolicy().hasHeightForWidth())
+        self.cam2_buffer_len.setSizePolicy(sizePolicy2)
+        self.cam2_buffer_len.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
         self.cam2_buffer_len.setMinimum(1)
         self.cam2_buffer_len.setMaximum(1000)
 
@@ -1476,16 +1492,18 @@ class Ui_SettingsWindow(object):
 
         self.cam2_adc_threshold = QSpinBox(self.scrollAreaWidgetContents)
         self.cam2_adc_threshold.setObjectName(u"cam2_adc_threshold")
-        sizePolicy3.setHeightForWidth(self.cam2_adc_threshold.sizePolicy().hasHeightForWidth())
-        self.cam2_adc_threshold.setSizePolicy(sizePolicy3)
+        sizePolicy2.setHeightForWidth(self.cam2_adc_threshold.sizePolicy().hasHeightForWidth())
+        self.cam2_adc_threshold.setSizePolicy(sizePolicy2)
+        self.cam2_adc_threshold.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
         self.cam2_adc_threshold.setMaximum(10000)
 
         self.gridLayout_5.addWidget(self.cam2_adc_threshold, 12, 2, 1, 1)
 
         self.cam1_pix_threshold = QSpinBox(self.scrollAreaWidgetContents)
         self.cam1_pix_threshold.setObjectName(u"cam1_pix_threshold")
-        sizePolicy3.setHeightForWidth(self.cam1_pix_threshold.sizePolicy().hasHeightForWidth())
-        self.cam1_pix_threshold.setSizePolicy(sizePolicy3)
+        sizePolicy2.setHeightForWidth(self.cam1_pix_threshold.sizePolicy().hasHeightForWidth())
+        self.cam1_pix_threshold.setSizePolicy(sizePolicy2)
+        self.cam1_pix_threshold.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
         self.cam1_pix_threshold.setMaximum(100000)
 
         self.gridLayout_5.addWidget(self.cam1_pix_threshold, 13, 1, 1, 1)
@@ -1508,64 +1526,75 @@ class Ui_SettingsWindow(object):
 
         self.cam2_pix_threshold = QSpinBox(self.scrollAreaWidgetContents)
         self.cam2_pix_threshold.setObjectName(u"cam2_pix_threshold")
-        sizePolicy3.setHeightForWidth(self.cam2_pix_threshold.sizePolicy().hasHeightForWidth())
-        self.cam2_pix_threshold.setSizePolicy(sizePolicy3)
+        sizePolicy2.setHeightForWidth(self.cam2_pix_threshold.sizePolicy().hasHeightForWidth())
+        self.cam2_pix_threshold.setSizePolicy(sizePolicy2)
+        self.cam2_pix_threshold.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
         self.cam2_pix_threshold.setMaximum(100000)
 
         self.gridLayout_5.addWidget(self.cam2_pix_threshold, 13, 2, 1, 1)
 
         self.cam2_label = QLabel(self.scrollAreaWidgetContents)
         self.cam2_label.setObjectName(u"cam2_label")
-        sizePolicy4 = QSizePolicy(QSizePolicy.MinimumExpanding, QSizePolicy.Preferred)
-        sizePolicy4.setHorizontalStretch(0)
-        sizePolicy4.setVerticalStretch(0)
-        sizePolicy4.setHeightForWidth(self.cam2_label.sizePolicy().hasHeightForWidth())
-        self.cam2_label.setSizePolicy(sizePolicy4)
+        sizePolicy3 = QSizePolicy(QSizePolicy.MinimumExpanding, QSizePolicy.Preferred)
+        sizePolicy3.setHorizontalStretch(0)
+        sizePolicy3.setVerticalStretch(0)
+        sizePolicy3.setHeightForWidth(self.cam2_label.sizePolicy().hasHeightForWidth())
+        self.cam2_label.setSizePolicy(sizePolicy3)
         self.cam2_label.setAlignment(Qt.AlignCenter)
 
         self.gridLayout_5.addWidget(self.cam2_label, 0, 2, 1, 1)
 
         self.cam1_trig_pin = QSpinBox(self.scrollAreaWidgetContents)
         self.cam1_trig_pin.setObjectName(u"cam1_trig_pin")
-        sizePolicy3.setHeightForWidth(self.cam1_trig_pin.sizePolicy().hasHeightForWidth())
-        self.cam1_trig_pin.setSizePolicy(sizePolicy3)
+        sizePolicy2.setHeightForWidth(self.cam1_trig_pin.sizePolicy().hasHeightForWidth())
+        self.cam1_trig_pin.setSizePolicy(sizePolicy2)
+        self.cam1_trig_pin.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
 
         self.gridLayout_5.addWidget(self.cam1_trig_pin, 23, 1, 1, 1)
 
         self.cam3_trig_latch_pin = QSpinBox(self.scrollAreaWidgetContents)
         self.cam3_trig_latch_pin.setObjectName(u"cam3_trig_latch_pin")
-        sizePolicy3.setHeightForWidth(self.cam3_trig_latch_pin.sizePolicy().hasHeightForWidth())
-        self.cam3_trig_latch_pin.setSizePolicy(sizePolicy3)
+        sizePolicy2.setHeightForWidth(self.cam3_trig_latch_pin.sizePolicy().hasHeightForWidth())
+        self.cam3_trig_latch_pin.setSizePolicy(sizePolicy2)
+        self.cam3_trig_latch_pin.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
 
         self.gridLayout_5.addWidget(self.cam3_trig_latch_pin, 21, 3, 1, 1)
 
         self.cam3_date_format = QLineEdit(self.scrollAreaWidgetContents)
         self.cam3_date_format.setObjectName(u"cam3_date_format")
+        sizePolicy2.setHeightForWidth(self.cam3_date_format.sizePolicy().hasHeightForWidth())
+        self.cam3_date_format.setSizePolicy(sizePolicy2)
 
         self.gridLayout_5.addWidget(self.cam3_date_format, 17, 3, 1, 1)
 
         self.cam1_exposure = QSpinBox(self.scrollAreaWidgetContents)
         self.cam1_exposure.setObjectName(u"cam1_exposure")
-        sizePolicy3.setHeightForWidth(self.cam1_exposure.sizePolicy().hasHeightForWidth())
-        self.cam1_exposure.setSizePolicy(sizePolicy3)
+        sizePolicy2.setHeightForWidth(self.cam1_exposure.sizePolicy().hasHeightForWidth())
+        self.cam1_exposure.setSizePolicy(sizePolicy2)
+        self.cam1_exposure.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
         self.cam1_exposure.setMaximum(10000)
 
         self.gridLayout_5.addWidget(self.cam1_exposure, 9, 1, 1, 1)
 
         self.cam2_data_path = QLineEdit(self.scrollAreaWidgetContents)
         self.cam2_data_path.setObjectName(u"cam2_data_path")
+        sizePolicy2.setHeightForWidth(self.cam2_data_path.sizePolicy().hasHeightForWidth())
+        self.cam2_data_path.setSizePolicy(sizePolicy2)
 
         self.gridLayout_5.addWidget(self.cam2_data_path, 2, 2, 1, 1)
 
         self.cam2_mode = QSpinBox(self.scrollAreaWidgetContents)
         self.cam2_mode.setObjectName(u"cam2_mode")
-        sizePolicy3.setHeightForWidth(self.cam2_mode.sizePolicy().hasHeightForWidth())
-        self.cam2_mode.setSizePolicy(sizePolicy3)
+        sizePolicy2.setHeightForWidth(self.cam2_mode.sizePolicy().hasHeightForWidth())
+        self.cam2_mode.setSizePolicy(sizePolicy2)
+        self.cam2_mode.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
 
         self.gridLayout_5.addWidget(self.cam2_mode, 4, 2, 1, 1)
 
         self.cam2_ip_addr = QLineEdit(self.scrollAreaWidgetContents)
         self.cam2_ip_addr.setObjectName(u"cam2_ip_addr")
+        sizePolicy2.setHeightForWidth(self.cam2_ip_addr.sizePolicy().hasHeightForWidth())
+        self.cam2_ip_addr.setSizePolicy(sizePolicy2)
 
         self.gridLayout_5.addWidget(self.cam2_ip_addr, 3, 2, 1, 1)
 
@@ -1574,13 +1603,16 @@ class Ui_SettingsWindow(object):
         self.cam2_image_format.addItem("")
         self.cam2_image_format.addItem("")
         self.cam2_image_format.setObjectName(u"cam2_image_format")
+        sizePolicy2.setHeightForWidth(self.cam2_image_format.sizePolicy().hasHeightForWidth())
+        self.cam2_image_format.setSizePolicy(sizePolicy2)
 
         self.gridLayout_5.addWidget(self.cam2_image_format, 16, 2, 1, 1)
 
         self.cam2_trig_pin = QSpinBox(self.scrollAreaWidgetContents)
         self.cam2_trig_pin.setObjectName(u"cam2_trig_pin")
-        sizePolicy3.setHeightForWidth(self.cam2_trig_pin.sizePolicy().hasHeightForWidth())
-        self.cam2_trig_pin.setSizePolicy(sizePolicy3)
+        sizePolicy2.setHeightForWidth(self.cam2_trig_pin.sizePolicy().hasHeightForWidth())
+        self.cam2_trig_pin.setSizePolicy(sizePolicy2)
+        self.cam2_trig_pin.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
 
         self.gridLayout_5.addWidget(self.cam2_trig_pin, 23, 2, 1, 1)
 
@@ -1594,8 +1626,9 @@ class Ui_SettingsWindow(object):
 
         self.cam1_state_comm_pin = QSpinBox(self.scrollAreaWidgetContents)
         self.cam1_state_comm_pin.setObjectName(u"cam1_state_comm_pin")
-        sizePolicy3.setHeightForWidth(self.cam1_state_comm_pin.sizePolicy().hasHeightForWidth())
-        self.cam1_state_comm_pin.setSizePolicy(sizePolicy3)
+        sizePolicy2.setHeightForWidth(self.cam1_state_comm_pin.sizePolicy().hasHeightForWidth())
+        self.cam1_state_comm_pin.setSizePolicy(sizePolicy2)
+        self.cam1_state_comm_pin.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
 
         self.gridLayout_5.addWidget(self.cam1_state_comm_pin, 18, 1, 1, 1)
 
@@ -1612,6 +1645,8 @@ class Ui_SettingsWindow(object):
         self.cam1_image_format.addItem("")
         self.cam1_image_format.addItem("")
         self.cam1_image_format.setObjectName(u"cam1_image_format")
+        sizePolicy2.setHeightForWidth(self.cam1_image_format.sizePolicy().hasHeightForWidth())
+        self.cam1_image_format.setSizePolicy(sizePolicy2)
 
         self.gridLayout_5.addWidget(self.cam1_image_format, 16, 1, 1, 1)
 
@@ -1625,46 +1660,51 @@ class Ui_SettingsWindow(object):
 
         self.cam3_exposure = QSpinBox(self.scrollAreaWidgetContents)
         self.cam3_exposure.setObjectName(u"cam3_exposure")
-        sizePolicy3.setHeightForWidth(self.cam3_exposure.sizePolicy().hasHeightForWidth())
-        self.cam3_exposure.setSizePolicy(sizePolicy3)
+        sizePolicy2.setHeightForWidth(self.cam3_exposure.sizePolicy().hasHeightForWidth())
+        self.cam3_exposure.setSizePolicy(sizePolicy2)
+        self.cam3_exposure.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
         self.cam3_exposure.setMaximum(10000)
 
         self.gridLayout_5.addWidget(self.cam3_exposure, 9, 3, 1, 1)
 
         self.cam3_state_comm_pin = QSpinBox(self.scrollAreaWidgetContents)
         self.cam3_state_comm_pin.setObjectName(u"cam3_state_comm_pin")
-        sizePolicy3.setHeightForWidth(self.cam3_state_comm_pin.sizePolicy().hasHeightForWidth())
-        self.cam3_state_comm_pin.setSizePolicy(sizePolicy3)
+        sizePolicy2.setHeightForWidth(self.cam3_state_comm_pin.sizePolicy().hasHeightForWidth())
+        self.cam3_state_comm_pin.setSizePolicy(sizePolicy2)
+        self.cam3_state_comm_pin.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
 
         self.gridLayout_5.addWidget(self.cam3_state_comm_pin, 18, 3, 1, 1)
 
         self.cam2_trig_latch_pin = QSpinBox(self.scrollAreaWidgetContents)
         self.cam2_trig_latch_pin.setObjectName(u"cam2_trig_latch_pin")
-        sizePolicy3.setHeightForWidth(self.cam2_trig_latch_pin.sizePolicy().hasHeightForWidth())
-        self.cam2_trig_latch_pin.setSizePolicy(sizePolicy3)
+        sizePolicy2.setHeightForWidth(self.cam2_trig_latch_pin.sizePolicy().hasHeightForWidth())
+        self.cam2_trig_latch_pin.setSizePolicy(sizePolicy2)
+        self.cam2_trig_latch_pin.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
 
         self.gridLayout_5.addWidget(self.cam2_trig_latch_pin, 21, 2, 1, 1)
 
         self.cam3_label = QLabel(self.scrollAreaWidgetContents)
         self.cam3_label.setObjectName(u"cam3_label")
-        sizePolicy4.setHeightForWidth(self.cam3_label.sizePolicy().hasHeightForWidth())
-        self.cam3_label.setSizePolicy(sizePolicy4)
+        sizePolicy3.setHeightForWidth(self.cam3_label.sizePolicy().hasHeightForWidth())
+        self.cam3_label.setSizePolicy(sizePolicy3)
         self.cam3_label.setAlignment(Qt.AlignCenter)
 
         self.gridLayout_5.addWidget(self.cam3_label, 0, 3, 1, 1)
 
         self.cam3_adc_threshold = QSpinBox(self.scrollAreaWidgetContents)
         self.cam3_adc_threshold.setObjectName(u"cam3_adc_threshold")
-        sizePolicy3.setHeightForWidth(self.cam3_adc_threshold.sizePolicy().hasHeightForWidth())
-        self.cam3_adc_threshold.setSizePolicy(sizePolicy3)
+        sizePolicy2.setHeightForWidth(self.cam3_adc_threshold.sizePolicy().hasHeightForWidth())
+        self.cam3_adc_threshold.setSizePolicy(sizePolicy2)
+        self.cam3_adc_threshold.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
         self.cam3_adc_threshold.setMaximum(10000)
 
         self.gridLayout_5.addWidget(self.cam3_adc_threshold, 12, 3, 1, 1)
 
         self.cam1_buffer_len = QSpinBox(self.scrollAreaWidgetContents)
         self.cam1_buffer_len.setObjectName(u"cam1_buffer_len")
-        sizePolicy3.setHeightForWidth(self.cam1_buffer_len.sizePolicy().hasHeightForWidth())
-        self.cam1_buffer_len.setSizePolicy(sizePolicy3)
+        sizePolicy2.setHeightForWidth(self.cam1_buffer_len.sizePolicy().hasHeightForWidth())
+        self.cam1_buffer_len.setSizePolicy(sizePolicy2)
+        self.cam1_buffer_len.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
         self.cam1_buffer_len.setMinimum(1)
         self.cam1_buffer_len.setMaximum(1000)
 
@@ -1672,15 +1712,17 @@ class Ui_SettingsWindow(object):
 
         self.cam2_state_pin = QSpinBox(self.scrollAreaWidgetContents)
         self.cam2_state_pin.setObjectName(u"cam2_state_pin")
-        sizePolicy3.setHeightForWidth(self.cam2_state_pin.sizePolicy().hasHeightForWidth())
-        self.cam2_state_pin.setSizePolicy(sizePolicy3)
+        sizePolicy2.setHeightForWidth(self.cam2_state_pin.sizePolicy().hasHeightForWidth())
+        self.cam2_state_pin.setSizePolicy(sizePolicy2)
+        self.cam2_state_pin.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
 
         self.gridLayout_5.addWidget(self.cam2_state_pin, 22, 2, 1, 1)
 
         self.cam2_trig_enbl_pin = QSpinBox(self.scrollAreaWidgetContents)
         self.cam2_trig_enbl_pin.setObjectName(u"cam2_trig_enbl_pin")
-        sizePolicy3.setHeightForWidth(self.cam2_trig_enbl_pin.sizePolicy().hasHeightForWidth())
-        self.cam2_trig_enbl_pin.setSizePolicy(sizePolicy3)
+        sizePolicy2.setHeightForWidth(self.cam2_trig_enbl_pin.sizePolicy().hasHeightForWidth())
+        self.cam2_trig_enbl_pin.setSizePolicy(sizePolicy2)
+        self.cam2_trig_enbl_pin.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
 
         self.gridLayout_5.addWidget(self.cam2_trig_enbl_pin, 20, 2, 1, 1)
 
@@ -1694,8 +1736,9 @@ class Ui_SettingsWindow(object):
 
         self.cam3_buffer_len = QSpinBox(self.scrollAreaWidgetContents)
         self.cam3_buffer_len.setObjectName(u"cam3_buffer_len")
-        sizePolicy3.setHeightForWidth(self.cam3_buffer_len.sizePolicy().hasHeightForWidth())
-        self.cam3_buffer_len.setSizePolicy(sizePolicy3)
+        sizePolicy2.setHeightForWidth(self.cam3_buffer_len.sizePolicy().hasHeightForWidth())
+        self.cam3_buffer_len.setSizePolicy(sizePolicy2)
+        self.cam3_buffer_len.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
         self.cam3_buffer_len.setMinimum(1)
         self.cam3_buffer_len.setMaximum(1000)
 
@@ -1703,8 +1746,9 @@ class Ui_SettingsWindow(object):
 
         self.cam2_exposure = QSpinBox(self.scrollAreaWidgetContents)
         self.cam2_exposure.setObjectName(u"cam2_exposure")
-        sizePolicy3.setHeightForWidth(self.cam2_exposure.sizePolicy().hasHeightForWidth())
-        self.cam2_exposure.setSizePolicy(sizePolicy3)
+        sizePolicy2.setHeightForWidth(self.cam2_exposure.sizePolicy().hasHeightForWidth())
+        self.cam2_exposure.setSizePolicy(sizePolicy2)
+        self.cam2_exposure.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
         self.cam2_exposure.setMaximum(10000)
 
         self.gridLayout_5.addWidget(self.cam2_exposure, 9, 2, 1, 1)
@@ -1719,46 +1763,55 @@ class Ui_SettingsWindow(object):
 
         self.cam1_mode = QSpinBox(self.scrollAreaWidgetContents)
         self.cam1_mode.setObjectName(u"cam1_mode")
-        sizePolicy3.setHeightForWidth(self.cam1_mode.sizePolicy().hasHeightForWidth())
-        self.cam1_mode.setSizePolicy(sizePolicy3)
+        sizePolicy2.setHeightForWidth(self.cam1_mode.sizePolicy().hasHeightForWidth())
+        self.cam1_mode.setSizePolicy(sizePolicy2)
+        self.cam1_mode.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
 
         self.gridLayout_5.addWidget(self.cam1_mode, 4, 1, 1, 1)
 
         self.cam3_trig_enbl_pin = QSpinBox(self.scrollAreaWidgetContents)
         self.cam3_trig_enbl_pin.setObjectName(u"cam3_trig_enbl_pin")
-        sizePolicy3.setHeightForWidth(self.cam3_trig_enbl_pin.sizePolicy().hasHeightForWidth())
-        self.cam3_trig_enbl_pin.setSizePolicy(sizePolicy3)
+        sizePolicy2.setHeightForWidth(self.cam3_trig_enbl_pin.sizePolicy().hasHeightForWidth())
+        self.cam3_trig_enbl_pin.setSizePolicy(sizePolicy2)
+        self.cam3_trig_enbl_pin.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
 
         self.gridLayout_5.addWidget(self.cam3_trig_enbl_pin, 20, 3, 1, 1)
 
         self.cam2_date_format = QLineEdit(self.scrollAreaWidgetContents)
         self.cam2_date_format.setObjectName(u"cam2_date_format")
+        sizePolicy2.setHeightForWidth(self.cam2_date_format.sizePolicy().hasHeightForWidth())
+        self.cam2_date_format.setSizePolicy(sizePolicy2)
 
         self.gridLayout_5.addWidget(self.cam2_date_format, 17, 2, 1, 1)
 
         self.cam2_state_comm_pin = QSpinBox(self.scrollAreaWidgetContents)
         self.cam2_state_comm_pin.setObjectName(u"cam2_state_comm_pin")
-        sizePolicy3.setHeightForWidth(self.cam2_state_comm_pin.sizePolicy().hasHeightForWidth())
-        self.cam2_state_comm_pin.setSizePolicy(sizePolicy3)
+        sizePolicy2.setHeightForWidth(self.cam2_state_comm_pin.sizePolicy().hasHeightForWidth())
+        self.cam2_state_comm_pin.setSizePolicy(sizePolicy2)
+        self.cam2_state_comm_pin.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
 
         self.gridLayout_5.addWidget(self.cam2_state_comm_pin, 18, 2, 1, 1)
 
         self.cam3_trig_pin = QSpinBox(self.scrollAreaWidgetContents)
         self.cam3_trig_pin.setObjectName(u"cam3_trig_pin")
-        sizePolicy3.setHeightForWidth(self.cam3_trig_pin.sizePolicy().hasHeightForWidth())
-        self.cam3_trig_pin.setSizePolicy(sizePolicy3)
+        sizePolicy2.setHeightForWidth(self.cam3_trig_pin.sizePolicy().hasHeightForWidth())
+        self.cam3_trig_pin.setSizePolicy(sizePolicy2)
+        self.cam3_trig_pin.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
 
         self.gridLayout_5.addWidget(self.cam3_trig_pin, 23, 3, 1, 1)
 
         self.cam1_date_format = QLineEdit(self.scrollAreaWidgetContents)
         self.cam1_date_format.setObjectName(u"cam1_date_format")
+        sizePolicy2.setHeightForWidth(self.cam1_date_format.sizePolicy().hasHeightForWidth())
+        self.cam1_date_format.setSizePolicy(sizePolicy2)
 
         self.gridLayout_5.addWidget(self.cam1_date_format, 17, 1, 1, 1)
 
         self.cam3_state_pin = QSpinBox(self.scrollAreaWidgetContents)
         self.cam3_state_pin.setObjectName(u"cam3_state_pin")
-        sizePolicy3.setHeightForWidth(self.cam3_state_pin.sizePolicy().hasHeightForWidth())
-        self.cam3_state_pin.setSizePolicy(sizePolicy3)
+        sizePolicy2.setHeightForWidth(self.cam3_state_pin.sizePolicy().hasHeightForWidth())
+        self.cam3_state_pin.setSizePolicy(sizePolicy2)
+        self.cam3_state_pin.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
 
         self.gridLayout_5.addWidget(self.cam3_state_pin, 22, 3, 1, 1)
 
@@ -1767,13 +1820,15 @@ class Ui_SettingsWindow(object):
         self.cam3_image_format.addItem("")
         self.cam3_image_format.addItem("")
         self.cam3_image_format.setObjectName(u"cam3_image_format")
+        sizePolicy2.setHeightForWidth(self.cam3_image_format.sizePolicy().hasHeightForWidth())
+        self.cam3_image_format.setSizePolicy(sizePolicy2)
 
         self.gridLayout_5.addWidget(self.cam3_image_format, 16, 3, 1, 1)
 
         self.cam1_label = QLabel(self.scrollAreaWidgetContents)
         self.cam1_label.setObjectName(u"cam1_label")
-        sizePolicy4.setHeightForWidth(self.cam1_label.sizePolicy().hasHeightForWidth())
-        self.cam1_label.setSizePolicy(sizePolicy4)
+        sizePolicy3.setHeightForWidth(self.cam1_label.sizePolicy().hasHeightForWidth())
+        self.cam1_label.setSizePolicy(sizePolicy3)
         self.cam1_label.setAlignment(Qt.AlignCenter)
 
         self.gridLayout_5.addWidget(self.cam1_label, 0, 1, 1, 1)
@@ -1788,31 +1843,35 @@ class Ui_SettingsWindow(object):
 
         self.cam1_state_pin = QSpinBox(self.scrollAreaWidgetContents)
         self.cam1_state_pin.setObjectName(u"cam1_state_pin")
-        sizePolicy3.setHeightForWidth(self.cam1_state_pin.sizePolicy().hasHeightForWidth())
-        self.cam1_state_pin.setSizePolicy(sizePolicy3)
+        sizePolicy2.setHeightForWidth(self.cam1_state_pin.sizePolicy().hasHeightForWidth())
+        self.cam1_state_pin.setSizePolicy(sizePolicy2)
+        self.cam1_state_pin.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
 
         self.gridLayout_5.addWidget(self.cam1_state_pin, 22, 1, 1, 1)
 
         self.cam1_post_trig_len = QSpinBox(self.scrollAreaWidgetContents)
         self.cam1_post_trig_len.setObjectName(u"cam1_post_trig_len")
-        sizePolicy3.setHeightForWidth(self.cam1_post_trig_len.sizePolicy().hasHeightForWidth())
-        self.cam1_post_trig_len.setSizePolicy(sizePolicy3)
+        sizePolicy2.setHeightForWidth(self.cam1_post_trig_len.sizePolicy().hasHeightForWidth())
+        self.cam1_post_trig_len.setSizePolicy(sizePolicy2)
+        self.cam1_post_trig_len.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
         self.cam1_post_trig_len.setMaximum(1000)
 
         self.gridLayout_5.addWidget(self.cam1_post_trig_len, 11, 1, 1, 1)
 
         self.cam1_adc_threshold = QSpinBox(self.scrollAreaWidgetContents)
         self.cam1_adc_threshold.setObjectName(u"cam1_adc_threshold")
-        sizePolicy3.setHeightForWidth(self.cam1_adc_threshold.sizePolicy().hasHeightForWidth())
-        self.cam1_adc_threshold.setSizePolicy(sizePolicy3)
+        sizePolicy2.setHeightForWidth(self.cam1_adc_threshold.sizePolicy().hasHeightForWidth())
+        self.cam1_adc_threshold.setSizePolicy(sizePolicy2)
+        self.cam1_adc_threshold.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
         self.cam1_adc_threshold.setMaximum(10000)
 
         self.gridLayout_5.addWidget(self.cam1_adc_threshold, 12, 1, 1, 1)
 
         self.cam1_trig_latch_pin = QSpinBox(self.scrollAreaWidgetContents)
         self.cam1_trig_latch_pin.setObjectName(u"cam1_trig_latch_pin")
-        sizePolicy3.setHeightForWidth(self.cam1_trig_latch_pin.sizePolicy().hasHeightForWidth())
-        self.cam1_trig_latch_pin.setSizePolicy(sizePolicy3)
+        sizePolicy2.setHeightForWidth(self.cam1_trig_latch_pin.sizePolicy().hasHeightForWidth())
+        self.cam1_trig_latch_pin.setSizePolicy(sizePolicy2)
+        self.cam1_trig_latch_pin.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
 
         self.gridLayout_5.addWidget(self.cam1_trig_latch_pin, 21, 1, 1, 1)
 
@@ -1826,6 +1885,8 @@ class Ui_SettingsWindow(object):
 
         self.cam3_data_path = QLineEdit(self.scrollAreaWidgetContents)
         self.cam3_data_path.setObjectName(u"cam3_data_path")
+        sizePolicy2.setHeightForWidth(self.cam3_data_path.sizePolicy().hasHeightForWidth())
+        self.cam3_data_path.setSizePolicy(sizePolicy2)
 
         self.gridLayout_5.addWidget(self.cam3_data_path, 2, 3, 1, 1)
 
@@ -1839,24 +1900,27 @@ class Ui_SettingsWindow(object):
 
         self.cam3_trig_wait = QDoubleSpinBox(self.scrollAreaWidgetContents)
         self.cam3_trig_wait.setObjectName(u"cam3_trig_wait")
-        sizePolicy3.setHeightForWidth(self.cam3_trig_wait.sizePolicy().hasHeightForWidth())
-        self.cam3_trig_wait.setSizePolicy(sizePolicy3)
+        sizePolicy2.setHeightForWidth(self.cam3_trig_wait.sizePolicy().hasHeightForWidth())
+        self.cam3_trig_wait.setSizePolicy(sizePolicy2)
+        self.cam3_trig_wait.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
         self.cam3_trig_wait.setMaximum(1000.000000000000000)
 
         self.gridLayout_5.addWidget(self.cam3_trig_wait, 8, 3, 1, 1)
 
         self.cam2_trig_wait = QDoubleSpinBox(self.scrollAreaWidgetContents)
         self.cam2_trig_wait.setObjectName(u"cam2_trig_wait")
-        sizePolicy3.setHeightForWidth(self.cam2_trig_wait.sizePolicy().hasHeightForWidth())
-        self.cam2_trig_wait.setSizePolicy(sizePolicy3)
+        sizePolicy2.setHeightForWidth(self.cam2_trig_wait.sizePolicy().hasHeightForWidth())
+        self.cam2_trig_wait.setSizePolicy(sizePolicy2)
+        self.cam2_trig_wait.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
         self.cam2_trig_wait.setMaximum(1000.000000000000000)
 
         self.gridLayout_5.addWidget(self.cam2_trig_wait, 8, 2, 1, 1)
 
         self.cam1_trig_wait = QDoubleSpinBox(self.scrollAreaWidgetContents)
         self.cam1_trig_wait.setObjectName(u"cam1_trig_wait")
-        sizePolicy3.setHeightForWidth(self.cam1_trig_wait.sizePolicy().hasHeightForWidth())
-        self.cam1_trig_wait.setSizePolicy(sizePolicy3)
+        sizePolicy2.setHeightForWidth(self.cam1_trig_wait.sizePolicy().hasHeightForWidth())
+        self.cam1_trig_wait.setSizePolicy(sizePolicy2)
+        self.cam1_trig_wait.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
         self.cam1_trig_wait.setMaximum(1000.000000000000000)
 
         self.gridLayout_5.addWidget(self.cam1_trig_wait, 8, 1, 1, 1)
@@ -1869,7 +1933,6 @@ class Ui_SettingsWindow(object):
 
         self.gridLayout_5.addWidget(self.trig_wait_label, 8, 0, 1, 1)
 
-        self.gridLayout_5.setColumnStretch(0, 1)
         self.cam_scroll_area.setWidget(self.scrollAreaWidgetContents)
 
         self.verticalLayout_3.addWidget(self.cam_scroll_area)
@@ -1890,7 +1953,7 @@ class Ui_SettingsWindow(object):
         self.dio_scroll_area.setWidgetResizable(True)
         self.scrollAreaWidgetContents_3 = QWidget()
         self.scrollAreaWidgetContents_3.setObjectName(u"scrollAreaWidgetContents_3")
-        self.scrollAreaWidgetContents_3.setGeometry(QRect(0, 0, 371, 515))
+        self.scrollAreaWidgetContents_3.setGeometry(QRect(0, 0, 376, 534))
         self.scrollAreaWidgetContents_3.setMaximumSize(QSize(1000, 16777215))
         self.verticalLayout_2 = QVBoxLayout(self.scrollAreaWidgetContents_3)
         self.verticalLayout_2.setSpacing(6)
@@ -1909,6 +1972,7 @@ class Ui_SettingsWindow(object):
 
         self.trigger_arduino_label = QLabel(self.scrollAreaWidgetContents_3)
         self.trigger_arduino_label.setObjectName(u"trigger_arduino_label")
+        self.trigger_arduino_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
         self.dio_general_grid_layout.addWidget(self.trigger_arduino_label, 2, 0, 1, 1)
 
@@ -1924,11 +1988,13 @@ class Ui_SettingsWindow(object):
 
         self.position_arduino_label = QLabel(self.scrollAreaWidgetContents_3)
         self.position_arduino_label.setObjectName(u"position_arduino_label")
+        self.position_arduino_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
         self.dio_general_grid_layout.addWidget(self.position_arduino_label, 4, 0, 1, 1)
 
         self.clock_arduino_label = QLabel(self.scrollAreaWidgetContents_3)
         self.clock_arduino_label.setObjectName(u"clock_arduino_label")
+        self.clock_arduino_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
         self.dio_general_grid_layout.addWidget(self.clock_arduino_label, 3, 0, 1, 1)
 
@@ -2004,11 +2070,18 @@ class Ui_SettingsWindow(object):
 
         self.trig_reset_pin_edit = QSpinBox(self.scrollAreaWidgetContents_3)
         self.trig_reset_pin_edit.setObjectName(u"trig_reset_pin_edit")
+        sizePolicy4 = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
+        sizePolicy4.setHorizontalStretch(0)
+        sizePolicy4.setVerticalStretch(0)
+        sizePolicy4.setHeightForWidth(self.trig_reset_pin_edit.sizePolicy().hasHeightForWidth())
+        self.trig_reset_pin_edit.setSizePolicy(sizePolicy4)
 
         self.fifo_grid_layout.addWidget(self.trig_reset_pin_edit, 3, 1, 1, 1)
 
         self.on_time_pin_edit = QSpinBox(self.scrollAreaWidgetContents_3)
         self.on_time_pin_edit.setObjectName(u"on_time_pin_edit")
+        sizePolicy4.setHeightForWidth(self.on_time_pin_edit.sizePolicy().hasHeightForWidth())
+        self.on_time_pin_edit.setSizePolicy(sizePolicy4)
 
         self.fifo_grid_layout.addWidget(self.on_time_pin_edit, 4, 1, 1, 1)
 
@@ -2026,6 +2099,8 @@ class Ui_SettingsWindow(object):
 
         self.heartbeat_pin_edit = QSpinBox(self.scrollAreaWidgetContents_3)
         self.heartbeat_pin_edit.setObjectName(u"heartbeat_pin_edit")
+        sizePolicy4.setHeightForWidth(self.heartbeat_pin_edit.sizePolicy().hasHeightForWidth())
+        self.heartbeat_pin_edit.setSizePolicy(sizePolicy4)
         self.heartbeat_pin_edit.setFocusPolicy(Qt.StrongFocus)
 
         self.fifo_grid_layout.addWidget(self.heartbeat_pin_edit, 4, 3, 1, 1)
@@ -2062,6 +2137,8 @@ class Ui_SettingsWindow(object):
 
         self.trig_or_pin_edit = QSpinBox(self.scrollAreaWidgetContents_3)
         self.trig_or_pin_edit.setObjectName(u"trig_or_pin_edit")
+        sizePolicy4.setHeightForWidth(self.trig_or_pin_edit.sizePolicy().hasHeightForWidth())
+        self.trig_or_pin_edit.setSizePolicy(sizePolicy4)
         self.trig_or_pin_edit.setFocusPolicy(Qt.StrongFocus)
 
         self.fifo_grid_layout.addWidget(self.trig_or_pin_edit, 3, 3, 1, 1)
@@ -2713,7 +2790,7 @@ class Ui_SettingsWindow(object):
         self.clock_sketch_but.clicked.connect(SettingsWindow.select_clock_sketch_dir)
         self.position_sketch_but.clicked.connect(SettingsWindow.select_position_sketch_dir)
 
-        self.tabWidget.setCurrentIndex(4)
+        self.tabWidget.setCurrentIndex(5)
 
 
         QMetaObject.connectSlotsByName(SettingsWindow)
