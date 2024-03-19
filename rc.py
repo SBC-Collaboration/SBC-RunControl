@@ -88,6 +88,9 @@ class MainWindow(QMainWindow):
         self.ui.file_path.setText(filename)
 
     def format_time(self, t):
+        """
+        Time formatting helper function for event time display
+        """
         seconds, milliseconds = divmod(t, 1000)
         minutes, seconds = divmod(seconds, 60)
         hours, minutes = divmod(minutes, 60)
@@ -135,11 +138,13 @@ class MainWindow(QMainWindow):
         )
 
     def create_run_directory(self):
-        # get all runs in the data directory, get the run numbers
-        # using regex to handle 2/3 digits of run number and possible suffix at the end
-        # would handle folder names like "20240101_00", "20240101_0001",
-        # "20240101_03 cf252", "20240101_04.252", non_continuous folder numbers
-        # it also handles the case that there's no runs today yet
+        """
+        Get all runs in the data directory, get the run numbers
+        using regex to handle 2/3 digits of run number and possible suffix at the end
+        would handle folder names like "20240101_00", "20240101_0001",
+        "20240101_03 cf252", "20240101_04.252", non_continuous folder numbers
+        it also handles the case that there's no runs today yet
+        """
         data_dir = self.config_class.config["general"]["data_dir"]
         today = datetime.date.today().strftime("%Y%m%d")
         todays_runs = [
@@ -167,6 +172,10 @@ class MainWindow(QMainWindow):
         self.update_state("Active")
 
     def stop_event(self):
+        """
+        Stop the event. Enter into compressing state. If the "Stop Run" button is pressed or the max number of events
+        are reached, then it will enter into "stopping" state. Otherwise it will start another event.
+        """
         self.run_livetime += self.event_timer.elapsed()
         self.update_state("Compressing")
         time.sleep(1)
@@ -208,6 +217,18 @@ class MainWindow(QMainWindow):
         self.run_handling_thread.start()
 
     def update_state(self, s):
+        """
+        The update_state function will change the self.run_state variable to the current state, and also change the GUI
+        to reflect it. The "Start Run" and "Stop Run" buttons are enabled and disabled accordingly. The states are:
+        - Idle: The program is idling. Settings can be changed and a new run can be started
+        - Starting: The run is starting. A configuration file is used for the entire run.
+        - Stopping: The running is stopping.
+        - Expanding: An event is starting. The pump is expanding the chamber and all components are starting up,
+        ready to take data
+        - Compressing: The event is stopping. The pump is compressing back to non-superheated state, and all components
+        are saving data to file.
+        - Active: All components are actively taking data to buffer.
+        """
         self.run_state = self.run_states[s]
         self.ui.run_state_label.setText(self.run_state.name)
         run_state_colors = [
@@ -221,32 +242,24 @@ class MainWindow(QMainWindow):
         self.ui.run_state_label.setStyleSheet(
             f"background-color: {run_state_colors[self.run_state.value-1]}"
         )
+        self.ui.start_run_but.setEnabled(False)
+        self.ui.stop_run_but.setEnabled(False)
         if self.run_state == self.run_states["Idle"]:
             self.logger.info(f"Entering into Idle state.")
             self.ui.start_run_but.setEnabled(True)
-            self.ui.stop_run_but.setEnabled(False)
         elif (
             self.run_state == self.run_states["Active"]
         ):  # or self.run_state == self.run_states[""]:
             self.logger.info(f"Event {self.ev_number} active.")
-            self.ui.start_run_but.setEnabled(False)
             self.ui.stop_run_but.setEnabled(True)
         elif self.run_state == self.run_states["Starting"]:
             self.logger.info(f"Starting Run {self.run_number}.")
-            self.ui.start_run_but.setEnabled(False)
-            self.ui.stop_run_but.setEnabled(False)
         elif self.run_state == self.run_states["Stopping"]:
             self.logger.info(f"Stopping Run {self.run_number}.")
-            self.ui.start_run_but.setEnabled(False)
-            self.ui.stop_run_but.setEnabled(False)
         elif self.run_state == self.run_states["Expanding"]:
             self.logger.info(f"Event {self.ev_number} expanding")
-            self.ui.start_run_but.setEnabled(False)
-            self.ui.stop_run_but.setEnabled(False)
         elif self.run_state == self.run_states["Compressing"]:
             self.logger.info(f"Event {self.ev_number} compressing")
-            self.ui.start_run_but.setEnabled(False)
-            self.ui.stop_run_but.setEnabled(False)
         else:
             pass
 

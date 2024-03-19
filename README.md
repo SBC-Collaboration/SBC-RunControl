@@ -6,9 +6,11 @@ Data acquisition software for SBC.
 1. Install [Miniconda3](https://docs.conda.io/projects/miniconda/en/latest/miniconda-install.html) or [Anaconda3](https://docs.anaconda.com/free/anaconda/install/index.html).
 2. Open conda prompt inside this directory.
 3. Update conda package list by running `conda update conda; conda update --all`.
-4. Create `runcontrol` conda environment from file by running `conda env create --name runcontrol --file=conda_rc.yml`. This should install all required packages in the new environment, including `PySide6`, `pip`, `numpy`, `matplotlib`, etc.
-5. Activate environment by running `conda activate runcontrol`.
-6. Now it's good to go! Start the program by running `python rc.py`.
+4. Create `runcontrol` conda environment from file by running `conda env create --name runcontrol --file=conda_rc.yml`. This should install all required packages in the new environment, including `PySide6`, `pip`, `numpy`, `matplotlib`, `paramiko`, etc.
+5. Install [Arduino IDE](https://arduino.github.io/arduino-cli/0.35/installation/) and add the installation 
+   directory to `PATH`. This is used by run control to compile and upload sketches to Arduinos.
+6. Activate environment by running `conda activate runcontrol`.
+7. Now it's good to go! Start the program by running `python3 rc.py`.
 
 # Using Qt designer and resource manager
 Qt designer can be used to edit all the UI components, then a python script can load the UI and add functionalities to the widgets (buttons, labels, etc). To use the designer program, run `pyside6-designer` within the conda envrionment. After saving the `.ui` file, run `pyside6-uic filename.ui -o filename.py` to generate the python file. This step needs to be repeated for every `.ui` file.
@@ -19,7 +21,7 @@ The resource manager in Qt can be used as a convinient way to keep track of all 
 - Main Controls
 - Trigger
 - Bubble Chamber
-- Slow Data
+- Slow Data/PLC
     - Pressures
     - Temperatures
     - Valve status
