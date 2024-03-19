@@ -1,3 +1,4 @@
+import os
 import sys
 from PySide6.QtCore import *
 from PySide6.QtGui import *
@@ -5,6 +6,8 @@ from PySide6.QtWidgets import *
 from enum import Enum
 import logging
 import time
+
+from src.ui_loader import SettingsWindow
 
 
 class StartProgramWorker(QObject):
@@ -16,11 +19,12 @@ class StartProgramWorker(QObject):
 
     def __init__(self, main_window):
         super(StartProgramWorker, self).__init__()
-        self.main_window = main_window
+        self.main = main_window
 
     def run(self):
         """Processes to start program"""
         self.state.emit("Preparing")
+        self.main.stopping_run = False
         # for arduino in ["trigger", "clock", "position"]:
         #     self.main_window.arduinos_class.upload_sketch(arduino)
         time.sleep(1)
@@ -42,8 +46,11 @@ class StartRunWorker(QObject):
 
     def run(self):
         """Processes to start run"""
+        self.main.create_run_directory()
         self.state.emit("Starting")
         self.main.ev_number = None
+        run_json_path = os.path.join(self.main.run_dir, f"{self.main.run_number}.json")
+        self.main.config_class.save_config(run_json_path)
         time.sleep(1)
         self.main.run_livetime = 0
         self.finished.emit()
@@ -68,6 +75,7 @@ class StopRunWorker(QObject):
         self.state.emit("Idle")
         self.finished.emit()
 
+
 class StartEventWorker(QObject):
     """
     Worker class for starting a run. It will change the run state into "starting", then initialize each DAQ modules.
@@ -83,11 +91,15 @@ class StartEventWorker(QObject):
 
     def run(self):
         """Processes to start run"""
+        self.main.logger.info("test2")
         if self.main.ev_number is not None:
             self.main.ev_number += 1
         else:
             self.main.ev_number = 0
         self.ev_number.emit()
+        event_dir = os.path.join(self.main.run_dir, str(self.main.ev_number))
+        if not os.path.exists(event_dir):
+            os.mkdir(event_dir)
         self.state.emit("Expanding")
         time.sleep(1)
 
@@ -102,15 +114,20 @@ class StopEventWorker(QObject):
     end. Then it changes the run state to "idle".
     """
     state = Signal(str)
+    next = Signal()
     finished = Signal()
 
     def __init__(self, main_window):
         super(StopEventWorker, self).__init__()
-        self.main_window = main_window
+        self.main = main_window
 
     def run(self):
         """Processes to stop event"""
-        self.main_window.run_livetime += self.main_window.event_timer.elapsed()
+        if self.main.ev_number + 1 >= self.main.config_class.config["run"]["max_num_evs"]:
+            self.main.stopping_run = True
+        self.next.emit()
+
+        self.main.run_livetime += self.main.event_timer.elapsed()
         self.state.emit("Compressing")
         time.sleep(1)
         self.finished.emit()

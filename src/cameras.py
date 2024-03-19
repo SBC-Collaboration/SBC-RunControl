@@ -4,7 +4,7 @@ import os
 
 class Cameras:
     def __init__(self, main_window):
-        self.main_window = main_window
+        self.main = main_window
         self.config = main_window.config_class.config
         self.logger = logging.getLogger(__name__)
         self.logger.addHandler(logging.StreamHandler())
@@ -20,3 +20,7 @@ class Cameras:
         _stdin, _stdout, _stderr = self.client.exec_command(command)
         print(_stdout.read().decode())
         self.client.close()
+
+    def save_config(self):
+        # cam_config = self.main.config_class.config["cam"]
+        pass

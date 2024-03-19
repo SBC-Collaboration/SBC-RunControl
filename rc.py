@@ -173,9 +173,6 @@ class MainWindow(QMainWindow):
                 self.stop_event()
 
     def start_event(self):
-        event_dir = os.path.join(self.run_dir, str(self.ev_number))
-        if not os.path.exists(event_dir):
-            os.mkdir(event_dir)
 
         def set_ev_num():
             self.ui.event_num_edit.setText(f"{self.ev_number:2d}")
@@ -195,22 +192,19 @@ class MainWindow(QMainWindow):
         are reached, then it will enter into "stopping" state. Otherwise it will start another event.
         """
 
-        # TODO: move this check into worker
-        if (
-            self.ui.stop_run_but.isChecked()
-            or self.ev_number + 1 >= self.config_class.config["run"]["max_num_evs"]
-        ):
-            stop_run = True
-        else:
-            stop_run = False
+        # choose whether stop run or start another event after this
+        def choose_next_step():
+            if self.stopping_run:
+                self.stop_event_worker.finished.connect(self.stop_run)
+            else:
+                self.stop_event_worker.finished.connect(self.start_event)
 
         self.stop_event_worker = StopEventWorker(self)
         self.stop_event_worker.moveToThread(self.run_handling_thread)
         self.run_handling_thread.started.connect(self.stop_event_worker.run)
         self.stop_event_worker.finished.connect(self.stop_event_worker.deleteLater)
         self.stop_event_worker.finished.connect(self.run_handling_thread.quit)
-        if stop_run: self.stop_event_worker.finished.connect(self.stop_run)
-        else: self.stop_event_worker.finished.connect(self.start_event)
+        self.stop_event_worker.next.connect(choose_next_step)
         self.stop_event_worker.state.connect(self.update_state)
         self.run_handling_thread.start()
 
@@ -218,8 +212,6 @@ class MainWindow(QMainWindow):
         if self.run_state == self.run_states["Idle"]:
             self.ui.event_time_edit.setText(self.format_time(0))
             # self.ui.run_live_time_edit.setText(self.format_time(self.run_livetime))
-            self.create_run_directory()
-            self.ev_number = 0
 
             # set up multithreading thread and workers
             self.start_run_worker = StartRunWorker(self)
@@ -230,6 +222,11 @@ class MainWindow(QMainWindow):
             self.start_run_worker.finished.connect(self.start_event)
             self.start_run_worker.state.connect(self.update_state)
             self.run_handling_thread.start()
+
+    def stop_run_but_pressed(self):
+        self.stopping_run = True
+        self.ui.stop_run_but.setEnabled(False)
+        self.logger.info("button pressed")
 
     def stop_run(self):
         # set up multithreading thread and workers
@@ -292,6 +289,9 @@ class MainWindow(QMainWindow):
             self.ui.stop_run_but.setEnabled(True)
         else:
             pass
+
+    def sw_trigger(self):
+        pass
 
 
 if __name__ == "__main__":

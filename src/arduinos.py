@@ -12,6 +12,7 @@ class Arduinos:
         self.logger.debug("Arduinos class initialized.")
 
     def upload_sketch(self, name):
+        # TODO: copy json
         fqbn = "arduino:avr:mega"
         port = self.config["dio"]["general"][name]["port"]
         sketch_path = self.config["dio"]["general"][name]["sketch"]

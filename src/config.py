@@ -403,8 +403,13 @@ class Config:
 
         self.logger.info("Configuration applied.")
 
-    def save_config(self, ui):
+    def save_config_from_ui(self, ui, path):
         self.apply_config(ui)
-        with open(self.path, "w") as file:
+        with open(path, "w") as file:
+            json.dump(self.config, file, indent=2)
+        self.logger.info("Configuration saved to file.")
+
+    def save_config(self, path):
+        with open(path, "w") as file:
             json.dump(self.config, file, indent=2)
         self.logger.info("Configuration saved to file.")

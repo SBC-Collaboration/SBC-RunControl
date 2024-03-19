@@ -32,7 +32,7 @@ class SettingsWindow(QMainWindow):
         self.config_class.apply_config(self.ui)
 
     def save_config(self):
-        self.config_class.save_config(self.ui)
+        self.config_class.save_config_from_ui(self.ui, self.main_window.config_class.path)
 
     def select_config_path(self):
         config_path, _ = QFileDialog.getOpenFileName(self, self.config["general"]["config_path"])
