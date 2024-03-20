@@ -27,6 +27,7 @@ class MainWindow(QMainWindow):
         # initialize config class
         self.config_class = Config(self, "config.json")
         self.config_class.load_config()
+        self.stopping_run = False
 
         # logger initialization
         self.logger = logging.getLogger(__name__)
@@ -39,9 +40,6 @@ class MainWindow(QMainWindow):
 
         # initialize arduino class
         self.arduinos_class = Arduinos(self)
-
-        # set up run handling thread
-        self.run_handling_thread = QThread()
 
         # define four run states
         self.run_states = Enum(
@@ -69,9 +67,20 @@ class MainWindow(QMainWindow):
         self.event_timer = QElapsedTimer()
         self.run_livetime = 0
 
+        # # set up run handling thread
+        self.run_handling_thread = QThread()
+        # self.run_handling_worker = RunHandlingWorker(self)
+        # self.run_handling_worker.moveToThread(self.run_handling_thread)
+        # self.run_handling_thread.started.connect(self.run_handling_worker.start_program)
+        # self.run_handling_worker.finished.connect(self.run_handling_thread.terminate)
+        # self.run_handling_worker.state.connect(self.update_state)
+        # self.run_handling_thread.start()
+
         self.start_program_worker = StartProgramWorker(self)
         self.start_program_worker.moveToThread(self.run_handling_thread)
-        self.run_handling_thread.started.connect(self.start_program_worker.run)
+        self.run_handling_thread.started.connect(
+            self.start_program_worker.start_program
+        )
         self.start_program_worker.finished.connect(
             self.start_program_worker.deleteLater
         )
@@ -189,7 +198,7 @@ class MainWindow(QMainWindow):
 
         self.start_event_worker = StartEventWorker(self)
         self.start_event_worker.moveToThread(self.run_handling_thread)
-        self.run_handling_thread.started.connect(self.start_event_worker.run)
+        self.run_handling_thread.started.connect(self.start_event_worker.start_event)
         self.start_event_worker.finished.connect(self.start_event_worker.deleteLater)
         self.start_event_worker.finished.connect(self.run_handling_thread.quit)
         self.start_event_worker.state.connect(self.update_state)
@@ -211,7 +220,7 @@ class MainWindow(QMainWindow):
 
         self.stop_event_worker = StopEventWorker(self)
         self.stop_event_worker.moveToThread(self.run_handling_thread)
-        self.run_handling_thread.started.connect(self.stop_event_worker.run)
+        self.run_handling_thread.started.connect(self.stop_event_worker.stop_event)
         self.stop_event_worker.finished.connect(self.stop_event_worker.deleteLater)
         self.stop_event_worker.finished.connect(self.run_handling_thread.quit)
         self.stop_event_worker.next.connect(choose_next_step)
@@ -226,7 +235,7 @@ class MainWindow(QMainWindow):
             # set up multithreading thread and workers
             self.start_run_worker = StartRunWorker(self)
             self.start_run_worker.moveToThread(self.run_handling_thread)
-            self.run_handling_thread.started.connect(self.start_run_worker.run)
+            self.run_handling_thread.started.connect(self.start_run_worker.start_run)
             self.start_run_worker.finished.connect(self.start_run_worker.deleteLater)
             self.start_run_worker.finished.connect(self.run_handling_thread.quit)
             self.start_run_worker.finished.connect(self.start_event)
@@ -242,7 +251,7 @@ class MainWindow(QMainWindow):
 
         self.stop_run_worker = StopRunWorker(self)
         self.stop_run_worker.moveToThread(self.run_handling_thread)
-        self.run_handling_thread.started.connect(self.stop_run_worker.run)
+        self.run_handling_thread.started.connect(self.stop_run_worker.stop_run)
         self.stop_run_worker.finished.connect(self.stop_run_worker.deleteLater)
         self.stop_run_worker.finished.connect(self.run_handling_thread.quit)
         self.stop_run_worker.state.connect(self.update_state)
@@ -270,34 +279,46 @@ class MainWindow(QMainWindow):
             "lightskyblue",
             "lightpink",
             "lightblue",
-            "lightsalmon"
+            "lightsalmon",
         ]
         self.ui.run_state_label.setStyleSheet(
             f"background-color: {run_state_colors[self.run_state.value-1]}"
         )
-        self.ui.start_run_but.setEnabled(False)
+
+        start_run_but_available = False
+        stop_run_but_available = False
+
         self.ui.stop_run_but.setEnabled(False)
         if self.run_state == self.run_states["Idle"]:
             self.logger.info(f"Entering into Idle state.")
-            self.ui.start_run_but.setEnabled(True)
+            start_run_but_available = True
         elif self.run_state == self.run_states["Preparing"]:
             self.logger.info(f"Run control starting.")
         elif self.run_state == self.run_states["Active"]:
             self.logger.info(f"Event {self.ev_number} active.")
-            self.ui.stop_run_but.setEnabled(True)
+            stop_run_but_available = True
         elif self.run_state == self.run_states["Starting"]:
             self.logger.info(f"Starting Run {self.run_number}.")
-            self.ui.stop_run_but.setEnabled(True)
+            stop_run_but_available = True
         elif self.run_state == self.run_states["Stopping"]:
             self.logger.info(f"Stopping Run {self.run_number}.")
         elif self.run_state == self.run_states["Expanding"]:
             self.logger.info(f"Event {self.ev_number} expanding")
-            self.ui.stop_run_but.setEnabled(True)
+            stop_run_but_available = True
         elif self.run_state == self.run_states["Compressing"]:
             self.logger.info(f"Event {self.ev_number} compressing")
-            self.ui.stop_run_but.setEnabled(True)
+            stop_run_but_available = True
         else:
             pass
+
+        if start_run_but_available:
+            self.ui.start_run_but.setEnabled(True)
+        else:
+            self.ui.start_run_but.setEnabled(False)
+        if stop_run_but_available and not self.stopping_run:
+            self.ui.stop_run_but.setEnabled(True)
+        else:
+            self.ui.stop_run_but.setEnabled(False)
 
     def sw_trigger(self):
         pass
