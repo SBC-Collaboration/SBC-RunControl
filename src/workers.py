@@ -27,6 +27,7 @@ class StartProgramWorker(QObject):
         self.main.stopping_run = False
         # for arduino in ["trigger", "clock", "position"]:
         #     self.main_window.arduinos_class.upload_sketch(arduino)
+
         time.sleep(1)
         self.state.emit("Idle")
         self.finished.emit()
@@ -91,7 +92,6 @@ class StartEventWorker(QObject):
 
     def run(self):
         """Processes to start run"""
-        self.main.logger.info("test2")
         if self.main.ev_number is not None:
             self.main.ev_number += 1
         else:
@@ -101,7 +101,7 @@ class StartEventWorker(QObject):
         if not os.path.exists(event_dir):
             os.mkdir(event_dir)
         self.state.emit("Expanding")
-        time.sleep(1)
+        # time.sleep(1)
 
         self.main.event_timer.start()
         self.state.emit("Active")

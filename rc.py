@@ -40,6 +40,25 @@ class MainWindow(QMainWindow):
         # initialize arduino class
         self.arduinos_class = Arduinos(self)
 
+        # set up run handling thread
+        self.run_handling_thread = QThread()
+
+        # define four run states
+        self.run_states = Enum(
+            "State",
+            [
+                "Idle",
+                "Preparing",
+                "Active",
+                "Starting",
+                "Stopping",
+                "Expanding",
+                "Compressing",
+            ],
+        )
+
+        self.update_state("Preparing")
+
         # timer for event loop
         self.timer = QTimer()
         self.timer.setInterval(10)
@@ -50,23 +69,15 @@ class MainWindow(QMainWindow):
         self.event_timer = QElapsedTimer()
         self.run_livetime = 0
 
-        # set up run handling thread
-        self.run_handling_thread = QThread()
-
-        # define four run states
-        self.run_states = Enum(
-            "State",
-            ["Idle", "Preparing", "Active", "Starting", "Stopping", "Expanding", "Compressing"],
-        )
-
         self.start_program_worker = StartProgramWorker(self)
         self.start_program_worker.moveToThread(self.run_handling_thread)
         self.run_handling_thread.started.connect(self.start_program_worker.run)
-        self.start_program_worker.finished.connect(self.start_program_worker.deleteLater)
+        self.start_program_worker.finished.connect(
+            self.start_program_worker.deleteLater
+        )
         self.start_program_worker.finished.connect(self.run_handling_thread.quit)
         self.start_program_worker.state.connect(self.update_state)
         self.run_handling_thread.start()
-
 
     # TODO: handle closing during run
     def closeEvent(self, event):
@@ -173,7 +184,6 @@ class MainWindow(QMainWindow):
                 self.stop_event()
 
     def start_event(self):
-
         def set_ev_num():
             self.ui.event_num_edit.setText(f"{self.ev_number:2d}")
 
@@ -226,7 +236,6 @@ class MainWindow(QMainWindow):
     def stop_run_but_pressed(self):
         self.stopping_run = True
         self.ui.stop_run_but.setEnabled(False)
-        self.logger.info("button pressed")
 
     def stop_run(self):
         # set up multithreading thread and workers
@@ -260,8 +269,8 @@ class MainWindow(QMainWindow):
             "lightgreen",
             "lightskyblue",
             "lightpink",
-            "lightsalmon",
             "lightblue",
+            "lightsalmon"
         ]
         self.ui.run_state_label.setStyleSheet(
             f"background-color: {run_state_colors[self.run_state.value-1]}"
