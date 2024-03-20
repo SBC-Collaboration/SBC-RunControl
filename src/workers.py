@@ -19,11 +19,11 @@ class RunHandlingWorker(QObject):
     state = Signal(str)
     program_started = Signal()
     run_started = Signal()
-    ev_num_generated = Signal()
     event_started = Signal()
     event_stopped = Signal()
     run_stopped = Signal()
-    next = Signal()
+    stopping = Signal()
+    continuing = Signal()
 
     def __init__(self, main_window):
         super(RunHandlingWorker, self).__init__()
@@ -43,7 +43,7 @@ class RunHandlingWorker(QObject):
         """Processes to start run"""
         self.main.create_run_directory()
         self.state.emit("Starting")
-        self.main.ev_number = None
+        self.main.ev_number = 0
         run_json_path = os.path.join(self.main.run_dir, f"{self.main.run_number}.json")
         self.main.config_class.save_config(run_json_path)
         time.sleep(1)
@@ -58,14 +58,9 @@ class RunHandlingWorker(QObject):
         self.state.emit("Idle")
         self.run_stopped.emit()
 
-
     def start_event(self):
         """Processes to start run"""
-        if self.main.ev_number is not None:
-            self.main.ev_number += 1
-        else:
-            self.main.ev_number = 0
-        self.ev_num_generated.emit()
+
         self.state.emit("Expanding")
 
         event_dir = os.path.join(self.main.run_dir, str(self.main.ev_number))
@@ -80,14 +75,20 @@ class RunHandlingWorker(QObject):
 
     def stop_event(self):
         """Processes to stop event"""
-        if (
-            self.main.ev_number + 1
-            >= self.main.config_class.config["run"]["max_num_evs"]
-        ):
-            self.main.stopping_run = True
-        self.next.emit()
-
         self.main.run_livetime += self.main.event_timer.elapsed()
         self.state.emit("Compressing")
         time.sleep(1)
         self.event_stopped.emit()
+
+    def check_event(self):
+        """Check between events to stop or continue"""
+        self.main.ev_number += 1
+
+        # check if needs to stop run
+        if self.main.ev_number >= self.main.config_class.config["run"]["max_num_evs"]:
+            self.main.stopping_run = True
+
+        if self.main.stopping_run:
+            self.stopping.emit()
+        else:
+            self.continuing.emit()

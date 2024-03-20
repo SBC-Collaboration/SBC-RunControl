@@ -49,7 +49,7 @@
     <item row="2" column="1">
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>5</number>
+       <number>0</number>
       </property>
       <property name="tabsClosable">
        <bool>false</bool>
@@ -96,8 +96,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>390</width>
-             <height>438</height>
+             <width>388</width>
+             <height>442</height>
             </rect>
            </property>
            <property name="maximumSize">
@@ -261,8 +261,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>392</width>
-             <height>424</height>
+             <width>388</width>
+             <height>442</height>
             </rect>
            </property>
            <property name="maximumSize">
@@ -460,8 +460,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>390</width>
-             <height>438</height>
+             <width>388</width>
+             <height>442</height>
             </rect>
            </property>
            <property name="maximumSize">
@@ -1393,8 +1393,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>390</width>
-             <height>438</height>
+             <width>388</width>
+             <height>442</height>
             </rect>
            </property>
            <property name="maximumSize">
@@ -2314,16 +2314,13 @@
           <property name="widgetResizable">
            <bool>true</bool>
           </property>
-          <property name="alignment">
-           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-          </property>
           <widget class="QWidget" name="scrollAreaWidgetContents">
            <property name="geometry">
             <rect>
              <x>0</x>
-             <y>-18</y>
-             <width>376</width>
-             <height>456</height>
+             <y>0</y>
+             <width>388</width>
+             <height>442</height>
             </rect>
            </property>
            <property name="maximumSize">
@@ -2332,12 +2329,12 @@
              <height>16777215</height>
             </size>
            </property>
-           <layout class="QGridLayout" name="gridLayout_5" columnstretch="0,0,0,0">
+           <layout class="QGridLayout" name="gridLayout_5" columnstretch="1,0,0,0">
             <property name="sizeConstraint">
              <enum>QLayout::SetDefaultConstraint</enum>
             </property>
             <property name="leftMargin">
-             <number>1</number>
+             <number>0</number>
             </property>
             <property name="topMargin">
              <number>0</number>
@@ -2368,34 +2365,13 @@
              </spacer>
             </item>
             <item row="2" column="1">
-             <widget class="QLineEdit" name="cam1_data_path">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-             </widget>
+             <widget class="QLineEdit" name="cam1_data_path"/>
             </item>
             <item row="3" column="1">
-             <widget class="QLineEdit" name="cam1_ip_addr">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-             </widget>
+             <widget class="QLineEdit" name="cam1_ip_addr"/>
             </item>
             <item row="1" column="2">
-             <widget class="QLineEdit" name="cam2_config_path">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-             </widget>
+             <widget class="QLineEdit" name="cam2_config_path"/>
             </item>
             <item row="18" column="0">
              <widget class="QLabel" name="state_comm_pin_label">
@@ -2416,13 +2392,10 @@
             <item row="11" column="2">
              <widget class="QSpinBox" name="cam2_post_trig_len">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
               </property>
               <property name="maximum">
                <number>1000</number>
@@ -2447,12 +2420,6 @@
             </item>
             <item row="1" column="1">
              <widget class="QLineEdit" name="cam1_config_path">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
               <property name="text">
                <string/>
               </property>
@@ -2461,13 +2428,10 @@
             <item row="20" column="1">
              <widget class="QSpinBox" name="cam1_trig_enbl_pin">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
               </property>
              </widget>
             </item>
@@ -2522,24 +2486,15 @@
             <item row="4" column="3">
              <widget class="QSpinBox" name="cam3_mode">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
               </property>
              </widget>
             </item>
             <item row="3" column="3">
              <widget class="QLineEdit" name="cam3_ip_addr">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
               <property name="text">
                <string/>
               </property>
@@ -2548,13 +2503,10 @@
             <item row="11" column="3">
              <widget class="QSpinBox" name="cam3_post_trig_len">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
               </property>
               <property name="maximum">
                <number>1000</number>
@@ -2562,14 +2514,7 @@
              </widget>
             </item>
             <item row="1" column="3">
-             <widget class="QLineEdit" name="cam3_config_path">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-             </widget>
+             <widget class="QLineEdit" name="cam3_config_path"/>
             </item>
             <item row="1" column="0">
              <widget class="QLabel" name="cam_config_path_label">
@@ -2590,13 +2535,10 @@
             <item row="13" column="3">
              <widget class="QSpinBox" name="cam3_pix_threshold">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
               </property>
               <property name="maximum">
                <number>100000</number>
@@ -2606,13 +2548,10 @@
             <item row="10" column="2">
              <widget class="QSpinBox" name="cam2_buffer_len">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
               </property>
               <property name="minimum">
                <number>1</number>
@@ -2625,13 +2564,10 @@
             <item row="12" column="2">
              <widget class="QSpinBox" name="cam2_adc_threshold">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
               </property>
               <property name="maximum">
                <number>10000</number>
@@ -2641,13 +2577,10 @@
             <item row="13" column="1">
              <widget class="QSpinBox" name="cam1_pix_threshold">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
               </property>
               <property name="maximum">
                <number>100000</number>
@@ -2689,13 +2622,10 @@
             <item row="13" column="2">
              <widget class="QSpinBox" name="cam2_pix_threshold">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
               </property>
               <property name="maximum">
                <number>100000</number>
@@ -2721,49 +2651,33 @@
             <item row="23" column="1">
              <widget class="QSpinBox" name="cam1_trig_pin">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
               </property>
              </widget>
             </item>
             <item row="21" column="3">
              <widget class="QSpinBox" name="cam3_trig_latch_pin">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
               </property>
              </widget>
             </item>
             <item row="17" column="3">
-             <widget class="QLineEdit" name="cam3_date_format">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-             </widget>
+             <widget class="QLineEdit" name="cam3_date_format"/>
             </item>
             <item row="9" column="1">
              <widget class="QSpinBox" name="cam1_exposure">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
               </property>
               <property name="maximum">
                <number>10000</number>
@@ -2772,12 +2686,6 @@
             </item>
             <item row="2" column="2">
              <widget class="QLineEdit" name="cam2_data_path">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
               <property name="text">
                <string/>
               </property>
@@ -2786,34 +2694,18 @@
             <item row="4" column="2">
              <widget class="QSpinBox" name="cam2_mode">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
               </property>
              </widget>
             </item>
             <item row="3" column="2">
-             <widget class="QLineEdit" name="cam2_ip_addr">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-             </widget>
+             <widget class="QLineEdit" name="cam2_ip_addr"/>
             </item>
             <item row="16" column="2">
              <widget class="QComboBox" name="cam2_image_format">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
               <item>
                <property name="text">
                 <string>bmp</string>
@@ -2834,13 +2726,10 @@
             <item row="23" column="2">
              <widget class="QSpinBox" name="cam2_trig_pin">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
               </property>
              </widget>
             </item>
@@ -2863,13 +2752,10 @@
             <item row="18" column="1">
              <widget class="QSpinBox" name="cam1_state_comm_pin">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
               </property>
              </widget>
             </item>
@@ -2891,12 +2777,6 @@
             </item>
             <item row="16" column="1">
              <widget class="QComboBox" name="cam1_image_format">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
               <item>
                <property name="text">
                 <string>bmp</string>
@@ -2933,13 +2813,10 @@
             <item row="9" column="3">
              <widget class="QSpinBox" name="cam3_exposure">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
               </property>
               <property name="maximum">
                <number>10000</number>
@@ -2949,26 +2826,20 @@
             <item row="18" column="3">
              <widget class="QSpinBox" name="cam3_state_comm_pin">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
               </property>
              </widget>
             </item>
             <item row="21" column="2">
              <widget class="QSpinBox" name="cam2_trig_latch_pin">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
               </property>
              </widget>
             </item>
@@ -2991,13 +2862,10 @@
             <item row="12" column="3">
              <widget class="QSpinBox" name="cam3_adc_threshold">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
               </property>
               <property name="maximum">
                <number>10000</number>
@@ -3007,13 +2875,10 @@
             <item row="10" column="1">
              <widget class="QSpinBox" name="cam1_buffer_len">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
               </property>
               <property name="minimum">
                <number>1</number>
@@ -3026,26 +2891,20 @@
             <item row="22" column="2">
              <widget class="QSpinBox" name="cam2_state_pin">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
               </property>
              </widget>
             </item>
             <item row="20" column="2">
              <widget class="QSpinBox" name="cam2_trig_enbl_pin">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
               </property>
              </widget>
             </item>
@@ -3068,13 +2927,10 @@
             <item row="10" column="3">
              <widget class="QSpinBox" name="cam3_buffer_len">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
               </property>
               <property name="minimum">
                <number>1</number>
@@ -3087,13 +2943,10 @@
             <item row="9" column="2">
              <widget class="QSpinBox" name="cam2_exposure">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
               </property>
               <property name="maximum">
                <number>10000</number>
@@ -3119,96 +2972,61 @@
             <item row="4" column="1">
              <widget class="QSpinBox" name="cam1_mode">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
               </property>
              </widget>
             </item>
             <item row="20" column="3">
              <widget class="QSpinBox" name="cam3_trig_enbl_pin">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
               </property>
              </widget>
             </item>
             <item row="17" column="2">
-             <widget class="QLineEdit" name="cam2_date_format">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-             </widget>
+             <widget class="QLineEdit" name="cam2_date_format"/>
             </item>
             <item row="18" column="2">
              <widget class="QSpinBox" name="cam2_state_comm_pin">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
               </property>
              </widget>
             </item>
             <item row="23" column="3">
              <widget class="QSpinBox" name="cam3_trig_pin">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
               </property>
              </widget>
             </item>
             <item row="17" column="1">
-             <widget class="QLineEdit" name="cam1_date_format">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-             </widget>
+             <widget class="QLineEdit" name="cam1_date_format"/>
             </item>
             <item row="22" column="3">
              <widget class="QSpinBox" name="cam3_state_pin">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
               </property>
              </widget>
             </item>
             <item row="16" column="3">
              <widget class="QComboBox" name="cam3_image_format">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
               <item>
                <property name="text">
                 <string>bmp</string>
@@ -3261,26 +3079,20 @@
             <item row="22" column="1">
              <widget class="QSpinBox" name="cam1_state_pin">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
               </property>
              </widget>
             </item>
             <item row="11" column="1">
              <widget class="QSpinBox" name="cam1_post_trig_len">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
               </property>
               <property name="maximum">
                <number>1000</number>
@@ -3290,13 +3102,10 @@
             <item row="12" column="1">
              <widget class="QSpinBox" name="cam1_adc_threshold">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
               </property>
               <property name="maximum">
                <number>10000</number>
@@ -3306,13 +3115,10 @@
             <item row="21" column="1">
              <widget class="QSpinBox" name="cam1_trig_latch_pin">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
               </property>
              </widget>
             </item>
@@ -3333,14 +3139,7 @@
              </widget>
             </item>
             <item row="2" column="3">
-             <widget class="QLineEdit" name="cam3_data_path">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-             </widget>
+             <widget class="QLineEdit" name="cam3_data_path"/>
             </item>
             <item row="4" column="0">
              <widget class="QLabel" name="mode_label">
@@ -3361,13 +3160,10 @@
             <item row="8" column="3">
              <widget class="QDoubleSpinBox" name="cam3_trig_wait">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
               </property>
               <property name="suffix">
                <string>s</string>
@@ -3380,13 +3176,10 @@
             <item row="8" column="2">
              <widget class="QDoubleSpinBox" name="cam2_trig_wait">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
               </property>
               <property name="suffix">
                <string>s</string>
@@ -3399,13 +3192,10 @@
             <item row="8" column="1">
              <widget class="QDoubleSpinBox" name="cam1_trig_wait">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
               </property>
               <property name="suffix">
                <string>s</string>
@@ -3476,8 +3266,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>376</width>
-             <height>534</height>
+             <width>371</width>
+             <height>515</height>
             </rect>
            </property>
            <property name="maximumSize">
@@ -3527,9 +3317,6 @@
                 <property name="text">
                  <string>Trigger</string>
                 </property>
-                <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                </property>
                </widget>
               </item>
               <item row="3" column="1">
@@ -3543,18 +3330,12 @@
                 <property name="text">
                  <string>Position</string>
                 </property>
-                <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                </property>
                </widget>
               </item>
               <item row="3" column="0">
                <widget class="QLabel" name="clock_arduino_label">
                 <property name="text">
                  <string>Clock</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                 </property>
                </widget>
               </item>
@@ -3642,24 +3423,10 @@
                <widget class="QLineEdit" name="trig_latch_pins_edit"/>
               </item>
               <item row="3" column="1">
-               <widget class="QSpinBox" name="trig_reset_pin_edit">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-               </widget>
+               <widget class="QSpinBox" name="trig_reset_pin_edit"/>
               </item>
               <item row="4" column="1">
-               <widget class="QSpinBox" name="on_time_pin_edit">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-               </widget>
+               <widget class="QSpinBox" name="on_time_pin_edit"/>
               </item>
               <item row="3" column="2">
                <widget class="QLabel" name="trig_or_pin_label">
@@ -3686,12 +3453,6 @@
               </item>
               <item row="4" column="3">
                <widget class="QSpinBox" name="heartbeat_pin_edit">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
@@ -3756,12 +3517,6 @@
               </item>
               <item row="3" column="3">
                <widget class="QSpinBox" name="trig_or_pin_edit">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
