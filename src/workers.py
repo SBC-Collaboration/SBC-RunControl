@@ -43,10 +43,10 @@ class RunHandlingWorker(QObject):
         """Processes to start run"""
         self.main.create_run_directory()
         self.state.emit("Starting")
-        self.main.ev_number = 0
         run_json_path = os.path.join(self.main.run_dir, f"{self.main.run_number}.json")
         self.main.config_class.save_config(run_json_path)
         time.sleep(1)
+        self.main.ev_number = 0
         self.main.run_livetime = 0
         self.run_started.emit()
 

@@ -1,0 +1,4 @@
+[submodule "dependencies/SBCBinaryFormat"]
+	path = dependencies/SBCBinaryFormat
+	url = https://github.com/SBC-Collaboration/SBCBinaryFormat.git
+	ignore = untracked

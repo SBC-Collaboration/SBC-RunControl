@@ -12,6 +12,7 @@ from enum import Enum
 import datetime
 import time
 import re
+from  dependencies.SBCBinaryFormat.python.sbcbinaryformat.files import Writer
 
 
 # Loads Main window
@@ -66,6 +67,9 @@ class MainWindow(QMainWindow):
         # event timer
         self.event_timer = QElapsedTimer()
         self.run_livetime = 0
+
+        # initialize writer for sbc binary format
+        # sbc_writer = Writer()
 
         # set up run handling thread and the worker
         self.run_handling_thread = QThread()
@@ -226,6 +230,7 @@ class MainWindow(QMainWindow):
     def start_run(self):
         self.ui.event_time_edit.setText(self.format_time(0))
         self.ui.run_live_time_edit.setText(self.format_time(0))
+        self.ui.event_num_edit.setText(f"{0:2d}")
 
         self.run_handling_thread.started.disconnect()
         self.run_handling_thread.started.connect(self.run_handling_worker.start_run)
