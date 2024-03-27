@@ -12,7 +12,7 @@ from enum import Enum
 import datetime
 import time
 import re
-from  dependencies.SBCBinaryFormat.python.sbcbinaryformat.files import Writer
+from dependencies.SBCBinaryFormat.python.sbcbinaryformat.files import Writer
 
 
 # Loads Main window

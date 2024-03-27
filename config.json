@@ -216,15 +216,15 @@
     "general": {
       "trigger": {
         "port": "/dev/ttyACM2",
-        "sketch": "/home/sbc/packages/SBC-ArduinoSketches/trigger/"
+        "sketch": "/home/sbc/RunControl/dependencies/ArduinoSketches/trigger/"
       },
       "clock": {
         "port": "/dev/ttyACM1",
-        "sketch": "/home/sbc/packages/SBC-ArduinoSketches/clock/"
+        "sketch": "/home/sbc/RunControl/dependencies/ArduinoSketches/clock/"
       },
       "position": {
         "port": "/dev/ttyACM0",
-        "sketch": "/home/sbc/packages/SBC-ArduinoSketches/position/"
+        "sketch": "/home/sbc/RunControl/dependencies/ArduinoSketches/position/"
       }
     }
   }
