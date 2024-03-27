@@ -1,0 +1,98 @@
+{
+  "0": {
+    "period": 100,
+    "phase": 0,
+    "duty": 10,
+    "polarity": true
+  },
+  "1": {
+    "period": 100,
+    "phase": 0,
+    "duty": 10,
+    "polarity": true
+  },
+  "2": {
+    "period": 100,
+    "phase": 0,
+    "duty": 10,
+    "polarity": true
+  },
+  "3": {
+    "period": 100,
+    "phase": 0,
+    "duty": 10,
+    "polarity": true
+  },
+  "4": {
+    "period": 100,
+    "phase": 0,
+    "duty": 10,
+    "polarity": true
+  },
+  "5": {
+    "period": 100,
+    "phase": 0,
+    "duty": 10,
+    "polarity": true
+  },
+  "6": {
+    "period": 100,
+    "phase": 0,
+    "duty": 20,
+    "polarity": true
+  },
+  "7": {
+    "period": 100,
+    "phase": 0,
+    "duty": 10,
+    "polarity": false
+  },
+  "8": {
+    "period": 100,
+    "phase": 0,
+    "duty": 10,
+    "polarity": true
+  },
+  "9": {
+    "period": 100,
+    "phase": 0,
+    "duty": 10,
+    "polarity": true
+  },
+  "10": {
+    "period": 100,
+    "phase": 0,
+    "duty": 10,
+    "polarity": true
+  },
+  "11": {
+    "period": 100,
+    "phase": 0,
+    "duty": 10,
+    "polarity": true
+  },
+  "12": {
+    "period": 100,
+    "phase": 0,
+    "duty": 10,
+    "polarity": true
+  },
+  "13": {
+    "period": 100,
+    "phase": 0,
+    "duty": 10,
+    "polarity": true
+  },
+  "14": {
+    "period": 100,
+    "phase": 0,
+    "duty": 10,
+    "polarity": true
+  },
+  "15": {
+    "period": 100,
+    "phase": 0,
+    "duty": 10,
+    "polarity": false
+  }
+}
