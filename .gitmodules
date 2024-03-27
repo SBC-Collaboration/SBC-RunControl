@@ -1,8 +1,0 @@
-[submodule "dependencies/SBCBinaryFormat"]
-	path = dependencies/SBCBinaryFormat
-	url = https://github.com/SBC-Collaboration/SBCBinaryFormat.git
-	ignore = untracked
-[submodule "dependencies/ArduinoSketches"]
-	path = dependencies/ArduinoSketches
-	url = https://github.com/SBC-Collaboration/SBC-ArduinoSketches.git
-	ignore = untracked

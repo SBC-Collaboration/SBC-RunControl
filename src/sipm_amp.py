@@ -2,7 +2,7 @@ import paramiko as pm
 import logging
 import os
 
-class Cameras:
+class SiPMAmp:
     def __init__(self, main_window):
         self.main = main_window
         self.config = main_window.config_class.config
