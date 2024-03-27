@@ -16,11 +16,12 @@ from PySide6.QtGui import (QAction, QBrush, QColor, QConicalGradient,
     QIcon, QImage, QKeySequence, QLinearGradient,
     QPainter, QPalette, QPixmap, QRadialGradient,
     QTransform)
-from PySide6.QtWidgets import (QApplication, QCheckBox, QFrame, QGridLayout,
-    QHBoxLayout, QLabel, QLayout, QLineEdit,
-    QMainWindow, QPushButton, QScrollArea, QSizePolicy,
-    QSpacerItem, QSpinBox, QTabWidget, QToolBar,
-    QToolButton, QVBoxLayout, QWidget)
+from PySide6.QtWidgets import (QAbstractScrollArea, QApplication, QCheckBox, QFrame,
+    QGridLayout, QHBoxLayout, QLabel, QLayout,
+    QLineEdit, QMainWindow, QPlainTextEdit, QPushButton,
+    QScrollArea, QSizePolicy, QSpacerItem, QSpinBox,
+    QTabWidget, QToolBar, QToolButton, QVBoxLayout,
+    QWidget)
 import resources_rc
 
 class Ui_MainWindow(object):
@@ -222,9 +223,96 @@ class Ui_MainWindow(object):
         self.tabs_widget.setDocumentMode(False)
         self.tabs_widget.setTabsClosable(False)
         self.tabs_widget.setMovable(True)
-        self.plc_tab = QWidget()
-        self.plc_tab.setObjectName(u"plc_tab")
-        self.tabs_widget.addTab(self.plc_tab, "")
+        self.general_tab = QWidget()
+        self.general_tab.setObjectName(u"general_tab")
+        self.verticalLayout_7 = QVBoxLayout(self.general_tab)
+        self.verticalLayout_7.setSpacing(3)
+        self.verticalLayout_7.setObjectName(u"verticalLayout_7")
+        self.verticalLayout_7.setContentsMargins(0, 0, 0, 0)
+        self.scrollArea_2 = QScrollArea(self.general_tab)
+        self.scrollArea_2.setObjectName(u"scrollArea_2")
+        self.scrollArea_2.setFrameShape(QFrame.NoFrame)
+        self.scrollArea_2.setFrameShadow(QFrame.Plain)
+        self.scrollArea_2.setWidgetResizable(True)
+        self.scrollAreaWidgetContents_2 = QWidget()
+        self.scrollAreaWidgetContents_2.setObjectName(u"scrollAreaWidgetContents_2")
+        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, 0, 346, 402))
+        self.verticalLayout_8 = QVBoxLayout(self.scrollAreaWidgetContents_2)
+        self.verticalLayout_8.setSpacing(3)
+        self.verticalLayout_8.setObjectName(u"verticalLayout_8")
+        self.verticalLayout_8.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_5 = QHBoxLayout()
+        self.horizontalLayout_5.setSpacing(3)
+        self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
+        self.horizontalLayout_5.setSizeConstraint(QLayout.SetDefaultConstraint)
+        self.horizontalLayout_5.setContentsMargins(0, 0, 0, 0)
+        self.toolButton = QToolButton(self.scrollAreaWidgetContents_2)
+        self.toolButton.setObjectName(u"toolButton")
+
+        self.horizontalLayout_5.addWidget(self.toolButton)
+
+        self.comment_grid = QGridLayout()
+        self.comment_grid.setSpacing(3)
+        self.comment_grid.setObjectName(u"comment_grid")
+        self.comment_grid.setSizeConstraint(QLayout.SetDefaultConstraint)
+        self.save_comment_but = QPushButton(self.scrollAreaWidgetContents_2)
+        self.save_comment_but.setObjectName(u"save_comment_but")
+
+        self.comment_grid.addWidget(self.save_comment_but, 1, 2, 1, 1)
+
+        self.comment_persist_box = QCheckBox(self.scrollAreaWidgetContents_2)
+        self.comment_persist_box.setObjectName(u"comment_persist_box")
+
+        self.comment_grid.addWidget(self.comment_persist_box, 1, 0, 1, 1)
+
+        self.edit_comment_but = QPushButton(self.scrollAreaWidgetContents_2)
+        self.edit_comment_but.setObjectName(u"edit_comment_but")
+
+        self.comment_grid.addWidget(self.edit_comment_but, 1, 1, 1, 1)
+
+        self.comment_edit = QPlainTextEdit(self.scrollAreaWidgetContents_2)
+        self.comment_edit.setObjectName(u"comment_edit")
+        sizePolicy4 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
+        sizePolicy4.setHorizontalStretch(0)
+        sizePolicy4.setVerticalStretch(0)
+        sizePolicy4.setHeightForWidth(self.comment_edit.sizePolicy().hasHeightForWidth())
+        self.comment_edit.setSizePolicy(sizePolicy4)
+        font1 = QFont()
+        font1.setKerning(True)
+        self.comment_edit.setFont(font1)
+        self.comment_edit.setFrameShape(QFrame.NoFrame)
+        self.comment_edit.setSizeAdjustPolicy(QAbstractScrollArea.AdjustToContents)
+        self.comment_edit.setTextInteractionFlags(Qt.LinksAccessibleByKeyboard|Qt.LinksAccessibleByMouse|Qt.TextBrowserInteraction|Qt.TextEditable|Qt.TextEditorInteraction|Qt.TextSelectableByKeyboard|Qt.TextSelectableByMouse)
+
+        self.comment_grid.addWidget(self.comment_edit, 0, 0, 1, 3)
+
+
+        self.horizontalLayout_5.addLayout(self.comment_grid)
+
+
+        self.verticalLayout_8.addLayout(self.horizontalLayout_5)
+
+        self.horizontalLayout_6 = QHBoxLayout()
+        self.horizontalLayout_6.setSpacing(3)
+        self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
+        self.horizontalLayout_6.setContentsMargins(0, 0, 0, 0)
+        self.pushButton = QPushButton(self.scrollAreaWidgetContents_2)
+        self.pushButton.setObjectName(u"pushButton")
+
+        self.horizontalLayout_6.addWidget(self.pushButton)
+
+
+        self.verticalLayout_8.addLayout(self.horizontalLayout_6)
+
+        self.verticalSpacer_3 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+
+        self.verticalLayout_8.addItem(self.verticalSpacer_3)
+
+        self.scrollArea_2.setWidget(self.scrollAreaWidgetContents_2)
+
+        self.verticalLayout_7.addWidget(self.scrollArea_2)
+
+        self.tabs_widget.addTab(self.general_tab, "")
         self.scint_tab = QWidget()
         self.scint_tab.setObjectName(u"scint_tab")
         self.tabs_widget.addTab(self.scint_tab, "")
@@ -246,8 +334,8 @@ class Ui_MainWindow(object):
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
         self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 346, 402))
-        self.scrollAreaWidgetContents.setMaximumSize(QSize(1000, 16777215))
         self.verticalLayout_2 = QVBoxLayout(self.scrollAreaWidgetContents)
+        self.verticalLayout_2.setSpacing(3)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout = QHBoxLayout()
@@ -260,11 +348,11 @@ class Ui_MainWindow(object):
 
         self.camera_status_label = QLabel(self.scrollAreaWidgetContents)
         self.camera_status_label.setObjectName(u"camera_status_label")
-        sizePolicy4 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Preferred)
-        sizePolicy4.setHorizontalStretch(0)
-        sizePolicy4.setVerticalStretch(0)
-        sizePolicy4.setHeightForWidth(self.camera_status_label.sizePolicy().hasHeightForWidth())
-        self.camera_status_label.setSizePolicy(sizePolicy4)
+        sizePolicy5 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Preferred)
+        sizePolicy5.setHorizontalStretch(0)
+        sizePolicy5.setVerticalStretch(0)
+        sizePolicy5.setHeightForWidth(self.camera_status_label.sizePolicy().hasHeightForWidth())
+        self.camera_status_label.setSizePolicy(sizePolicy5)
         self.camera_status_label.setLayoutDirection(Qt.LeftToRight)
         self.camera_status_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
@@ -381,11 +469,11 @@ class Ui_MainWindow(object):
 
         self.next_imag_but = QToolButton(self.scrollAreaWidgetContents)
         self.next_imag_but.setObjectName(u"next_imag_but")
-        sizePolicy5 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Fixed)
-        sizePolicy5.setHorizontalStretch(0)
-        sizePolicy5.setVerticalStretch(0)
-        sizePolicy5.setHeightForWidth(self.next_imag_but.sizePolicy().hasHeightForWidth())
-        self.next_imag_but.setSizePolicy(sizePolicy5)
+        sizePolicy6 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Fixed)
+        sizePolicy6.setHorizontalStretch(0)
+        sizePolicy6.setVerticalStretch(0)
+        sizePolicy6.setHeightForWidth(self.next_imag_but.sizePolicy().hasHeightForWidth())
+        self.next_imag_but.setSizePolicy(sizePolicy6)
 
         self.horizontalLayout_3.addWidget(self.next_imag_but)
 
@@ -435,7 +523,7 @@ class Ui_MainWindow(object):
         self.stop_run_but.clicked.connect(MainWindow.stop_run_but_pressed)
         self.sw_trigger_but.clicked.connect(MainWindow.sw_trigger)
 
-        self.tabs_widget.setCurrentIndex(3)
+        self.tabs_widget.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -467,7 +555,13 @@ class Ui_MainWindow(object):
         self.event_num_label.setText(QCoreApplication.translate("MainWindow", u"Event Num", None))
         self.event_time_label.setText(QCoreApplication.translate("MainWindow", u"Event Time", None))
         self.run_live_time_label.setText(QCoreApplication.translate("MainWindow", u"Run Live Time", None))
-        self.tabs_widget.setTabText(self.tabs_widget.indexOf(self.plc_tab), QCoreApplication.translate("MainWindow", u"PLC", None))
+        self.toolButton.setText(QCoreApplication.translate("MainWindow", u"...", None))
+        self.save_comment_but.setText(QCoreApplication.translate("MainWindow", u"Save", None))
+        self.comment_persist_box.setText(QCoreApplication.translate("MainWindow", u"Remember", None))
+        self.edit_comment_but.setText(QCoreApplication.translate("MainWindow", u"Edit", None))
+        self.comment_edit.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Enter run comments here.", None))
+        self.pushButton.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
+        self.tabs_widget.setTabText(self.tabs_widget.indexOf(self.general_tab), QCoreApplication.translate("MainWindow", u"General", None))
         self.tabs_widget.setTabText(self.tabs_widget.indexOf(self.scint_tab), QCoreApplication.translate("MainWindow", u"Scintillation", None))
         self.tabs_widget.setTabText(self.tabs_widget.indexOf(self.acoustics_tab), QCoreApplication.translate("MainWindow", u"Acoustics", None))
         self.take_image_but.setText(QCoreApplication.translate("MainWindow", u"Take Image", None))

@@ -1529,321 +1529,14 @@
              </widget>
             </item>
             <item>
-             <layout class="QGridLayout" name="acous_per_ch_grid">
+             <layout class="QGridLayout" name="acous_per_ch_grid" columnstretch="1,1,1,1,1,1,1">
               <property name="spacing">
                <number>3</number>
               </property>
-              <item row="6" column="2">
-               <widget class="QSpinBox" name="acous_range_ch6">
-                <property name="font">
-                 <font>
-                  <kerning>false</kerning>
-                 </font>
-                </property>
-                <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::NoButtons</enum>
-                </property>
-                <property name="suffix">
-                 <string>mV</string>
-                </property>
-               </widget>
-              </item>
-              <item row="6" column="3">
-               <widget class="QSpinBox" name="acous_dc_offset_ch6">
-                <property name="suffix">
-                 <string>%</string>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="2">
-               <widget class="QLabel" name="acous_range_label">
-                <property name="text">
-                 <string>Range</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="7" column="3">
-               <widget class="QSpinBox" name="acous_dc_offset_ch7">
-                <property name="suffix">
-                 <string>%</string>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="3">
-               <widget class="QLabel" name="acous_dc_offset_label">
-                <property name="text">
-                 <string>DC Offset</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="3">
-               <widget class="QSpinBox" name="acous_dc_offset_ch4">
-                <property name="suffix">
-                 <string>%</string>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="4">
-               <widget class="QCheckBox" name="acous_trig_ch3">
+              <item row="7" column="1">
+               <widget class="QCheckBox" name="acous_enable_ch7">
                 <property name="text">
                  <string/>
-                </property>
-               </widget>
-              </item>
-              <item row="8" column="5">
-               <widget class="QComboBox" name="acous_polarity_ch8">
-                <property name="iconSize">
-                 <size>
-                  <width>16</width>
-                  <height>16</height>
-                 </size>
-                </property>
-                <property name="frame">
-                 <bool>true</bool>
-                </property>
-                <item>
-                 <property name="text">
-                  <string>Rising</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Falling</string>
-                 </property>
-                </item>
-               </widget>
-              </item>
-              <item row="5" column="6">
-               <widget class="QSpinBox" name="acous_threshold_ch5"/>
-              </item>
-              <item row="8" column="4">
-               <widget class="QCheckBox" name="acous_trig_ch8">
-                <property name="text">
-                 <string/>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="1">
-               <widget class="QCheckBox" name="acous_enable_ch1">
-                <property name="styleSheet">
-                 <string notr="true"/>
-                </property>
-                <property name="text">
-                 <string/>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="0">
-               <widget class="QLabel" name="acous_ch1_label">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="text">
-                 <string>Ch 1</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>acous_enable_ch1</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="0">
-               <widget class="QLabel" name="acous_ch2_label">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="text">
-                 <string>Ch 2</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>acous_enable_ch2</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="6" column="1">
-               <widget class="QCheckBox" name="acous_enable_ch6">
-                <property name="text">
-                 <string/>
-                </property>
-               </widget>
-              </item>
-              <item row="8" column="2">
-               <widget class="QSpinBox" name="acous_range_ch8">
-                <property name="font">
-                 <font>
-                  <kerning>false</kerning>
-                 </font>
-                </property>
-                <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::NoButtons</enum>
-                </property>
-                <property name="suffix">
-                 <string>mV</string>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="0">
-               <widget class="QLabel" name="acous_ch3_label">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="text">
-                 <string>Ch 3</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>acous_enable_ch3</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="0">
-               <widget class="QLabel" name="acous_ch4_label">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="text">
-                 <string>Ch 4</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>acous_enable_ch4</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="5">
-               <widget class="QComboBox" name="acous_polarity_ch1">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="iconSize">
-                 <size>
-                  <width>16</width>
-                  <height>16</height>
-                 </size>
-                </property>
-                <property name="frame">
-                 <bool>true</bool>
-                </property>
-                <item>
-                 <property name="text">
-                  <string>Rising</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Falling</string>
-                 </property>
-                </item>
-               </widget>
-              </item>
-              <item row="6" column="6">
-               <widget class="QSpinBox" name="acous_threshold_ch6"/>
-              </item>
-              <item row="2" column="2">
-               <widget class="QSpinBox" name="acous_range_ch2">
-                <property name="font">
-                 <font>
-                  <kerning>false</kerning>
-                 </font>
-                </property>
-                <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::NoButtons</enum>
-                </property>
-                <property name="suffix">
-                 <string>mV</string>
-                </property>
-               </widget>
-              </item>
-              <item row="5" column="1">
-               <widget class="QCheckBox" name="acous_enable_ch5">
-                <property name="text">
-                 <string/>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="6">
-               <widget class="QSpinBox" name="acous_threshold_ch1"/>
-              </item>
-              <item row="5" column="0">
-               <widget class="QLabel" name="acous_ch5_label">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="text">
-                 <string>Ch 5</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>acous_enable_ch5</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="7" column="0">
-               <widget class="QLabel" name="acous_ch7_label">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="text">
-                 <string>Ch 7</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>acous_enable_ch7</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="5" column="2">
-               <widget class="QSpinBox" name="acous_range_ch5">
-                <property name="font">
-                 <font>
-                  <kerning>false</kerning>
-                 </font>
-                </property>
-                <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::NoButtons</enum>
-                </property>
-                <property name="suffix">
-                 <string>mV</string>
                 </property>
                </widget>
               </item>
@@ -1853,6 +1546,19 @@
                  <string/>
                 </property>
                </widget>
+              </item>
+              <item row="0" column="4">
+               <widget class="QLabel" name="acous_trig_label">
+                <property name="text">
+                 <string>Trigger</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="6">
+               <widget class="QSpinBox" name="acous_threshold_ch4"/>
               </item>
               <item row="0" column="5">
                <widget class="QLabel" name="acous_polarity_label">
@@ -1864,42 +1570,16 @@
                 </property>
                </widget>
               </item>
-              <item row="7" column="4">
-               <widget class="QCheckBox" name="acous_trig_ch7">
+              <item row="5" column="0">
+               <widget class="QLabel" name="acous_ch5_label">
                 <property name="text">
-                 <string/>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="6">
-               <widget class="QSpinBox" name="acous_threshold_ch2"/>
-              </item>
-              <item row="8" column="0">
-               <widget class="QLabel" name="acous_ch8_label">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="text">
-                 <string>Ch 8</string>
+                 <string>Ch 5</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                 </property>
                 <property name="buddy">
-                 <cstring>acous_enable_ch8</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="1">
-               <widget class="QLabel" name="acous_enabled_label">
-                <property name="text">
-                 <string>Enabled</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
+                 <cstring>acous_enable_ch5</cstring>
                 </property>
                </widget>
               </item>
@@ -1926,6 +1606,19 @@
                 </item>
                </widget>
               </item>
+              <item row="2" column="0">
+               <widget class="QLabel" name="acous_ch2_label">
+                <property name="text">
+                 <string>Ch 2</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>acous_enable_ch2</cstring>
+                </property>
+               </widget>
+              </item>
               <item row="3" column="5">
                <widget class="QComboBox" name="acous_polarity_ch3">
                 <property name="iconSize">
@@ -1949,10 +1642,70 @@
                 </item>
                </widget>
               </item>
-              <item row="5" column="4">
-               <widget class="QCheckBox" name="acous_trig_ch5">
+              <item row="5" column="5">
+               <widget class="QComboBox" name="acous_polarity_ch5">
+                <property name="iconSize">
+                 <size>
+                  <width>16</width>
+                  <height>16</height>
+                 </size>
+                </property>
+                <property name="frame">
+                 <bool>true</bool>
+                </property>
+                <item>
+                 <property name="text">
+                  <string>Rising</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Falling</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="7" column="3">
+               <widget class="QSpinBox" name="acous_dc_offset_ch7">
+                <property name="suffix">
+                 <string>%</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="2">
+               <widget class="QLabel" name="acous_range_label">
+                <property name="text">
+                 <string>Range</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="1">
+               <widget class="QCheckBox" name="acous_enable_ch4">
                 <property name="text">
                  <string/>
+                </property>
+               </widget>
+              </item>
+              <item row="7" column="4">
+               <widget class="QCheckBox" name="acous_trig_ch7">
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="acous_ch1_label">
+                <property name="text">
+                 <string>Ch 1</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>acous_enable_ch1</cstring>
                 </property>
                </widget>
               </item>
@@ -1979,11 +1732,8 @@
                 </item>
                </widget>
               </item>
-              <item row="9" column="6">
-               <widget class="QSpinBox" name="acous_threshold_ext"/>
-              </item>
-              <item row="4" column="2">
-               <widget class="QSpinBox" name="acous_range_ch4">
+              <item row="8" column="2">
+               <widget class="QSpinBox" name="acous_range_ch8">
                 <property name="font">
                  <font>
                   <kerning>false</kerning>
@@ -1997,103 +1747,62 @@
                 </property>
                </widget>
               </item>
-              <item row="1" column="3">
-               <widget class="QSpinBox" name="acous_dc_offset_ch1">
-                <property name="suffix">
-                 <string>%</string>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="3">
-               <widget class="QSpinBox" name="acous_dc_offset_ch3">
-                <property name="suffix">
-                 <string>%</string>
-                </property>
-               </widget>
-              </item>
-              <item row="7" column="6">
-               <widget class="QSpinBox" name="acous_threshold_ch7"/>
-              </item>
-              <item row="5" column="5">
-               <widget class="QComboBox" name="acous_polarity_ch5">
-                <property name="iconSize">
-                 <size>
-                  <width>16</width>
-                  <height>16</height>
-                 </size>
-                </property>
-                <property name="frame">
-                 <bool>true</bool>
-                </property>
-                <item>
-                 <property name="text">
-                  <string>Rising</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Falling</string>
-                 </property>
-                </item>
-               </widget>
-              </item>
-              <item row="4" column="4">
-               <widget class="QCheckBox" name="acous_trig_ch4">
+              <item row="6" column="0">
+               <widget class="QLabel" name="acous_ch6_label">
                 <property name="text">
-                 <string/>
-                </property>
-               </widget>
-              </item>
-              <item row="7" column="5">
-               <widget class="QComboBox" name="acous_polarity_ch7">
-                <property name="iconSize">
-                 <size>
-                  <width>16</width>
-                  <height>16</height>
-                 </size>
-                </property>
-                <property name="frame">
-                 <bool>true</bool>
-                </property>
-                <item>
-                 <property name="text">
-                  <string>Rising</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Falling</string>
-                 </property>
-                </item>
-               </widget>
-              </item>
-              <item row="2" column="4">
-               <widget class="QCheckBox" name="acous_trig_ch2">
-                <property name="text">
-                 <string/>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="3">
-               <widget class="QSpinBox" name="acous_dc_offset_ch2">
-                <property name="suffix">
-                 <string>%</string>
-                </property>
-               </widget>
-              </item>
-              <item row="9" column="0">
-               <widget class="QLabel" name="acous_ext_label">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="text">
-                 <string>Ext</string>
+                 <string>Ch 6</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>acous_enable_ch6</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="8" column="5">
+               <widget class="QComboBox" name="acous_polarity_ch8">
+                <property name="iconSize">
+                 <size>
+                  <width>16</width>
+                  <height>16</height>
+                 </size>
+                </property>
+                <property name="frame">
+                 <bool>true</bool>
+                </property>
+                <item>
+                 <property name="text">
+                  <string>Rising</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Falling</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="1" column="6">
+               <widget class="QSpinBox" name="acous_threshold_ch1"/>
+              </item>
+              <item row="4" column="3">
+               <widget class="QSpinBox" name="acous_dc_offset_ch4">
+                <property name="suffix">
+                 <string>%</string>
+                </property>
+               </widget>
+              </item>
+              <item row="7" column="0">
+               <widget class="QLabel" name="acous_ch7_label">
+                <property name="text">
+                 <string>Ch 7</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>acous_enable_ch7</cstring>
                 </property>
                </widget>
               </item>
@@ -2107,8 +1816,25 @@
                 </property>
                </widget>
               </item>
-              <item row="1" column="4">
-               <widget class="QCheckBox" name="acous_trig_ch1">
+              <item row="8" column="3">
+               <widget class="QSpinBox" name="acous_dc_offset_ch8">
+                <property name="suffix">
+                 <string>%</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="6">
+               <widget class="QSpinBox" name="acous_threshold_ch3"/>
+              </item>
+              <item row="6" column="4">
+               <widget class="QCheckBox" name="acous_trig_ch6">
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+              <item row="9" column="4">
+               <widget class="QCheckBox" name="acous_trig_ext">
                 <property name="text">
                  <string/>
                 </property>
@@ -2152,93 +1878,27 @@
                 </item>
                </widget>
               </item>
-              <item row="0" column="6">
-               <widget class="QLabel" name="acous_threshold_label">
-                <property name="text">
-                 <string>Threshold</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-               </widget>
+              <item row="7" column="6">
+               <widget class="QSpinBox" name="acous_threshold_ch7"/>
               </item>
-              <item row="6" column="0">
-               <widget class="QLabel" name="acous_ch6_label">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
+              <item row="3" column="0">
+               <widget class="QLabel" name="acous_ch3_label">
                 <property name="text">
-                 <string>Ch 6</string>
+                 <string>Ch 3</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                 </property>
                 <property name="buddy">
-                 <cstring>acous_enable_ch6</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="7" column="2">
-               <widget class="QSpinBox" name="acous_range_ch7">
-                <property name="font">
-                 <font>
-                  <kerning>false</kerning>
-                 </font>
-                </property>
-                <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::NoButtons</enum>
-                </property>
-                <property name="suffix">
-                 <string>mV</string>
-                </property>
-               </widget>
-              </item>
-              <item row="6" column="4">
-               <widget class="QCheckBox" name="acous_trig_ch6">
-                <property name="text">
-                 <string/>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="1">
-               <widget class="QCheckBox" name="acous_enable_ch4">
-                <property name="text">
-                 <string/>
-                </property>
-               </widget>
-              </item>
-              <item row="9" column="4">
-               <widget class="QCheckBox" name="acous_trig_ext">
-                <property name="text">
-                 <string/>
-                </property>
-               </widget>
-              </item>
-              <item row="8" column="1">
-               <widget class="QCheckBox" name="acous_enable_ch8">
-                <property name="text">
-                 <string/>
+                 <cstring>acous_enable_ch3</cstring>
                 </property>
                </widget>
               </item>
               <item row="8" column="6">
                <widget class="QSpinBox" name="acous_threshold_ch8"/>
               </item>
-              <item row="3" column="6">
-               <widget class="QSpinBox" name="acous_threshold_ch3"/>
-              </item>
-              <item row="8" column="3">
-               <widget class="QSpinBox" name="acous_dc_offset_ch8">
-                <property name="suffix">
-                 <string>%</string>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="2">
-               <widget class="QSpinBox" name="acous_range_ch1">
+              <item row="6" column="2">
+               <widget class="QSpinBox" name="acous_range_ch6">
                 <property name="font">
                  <font>
                   <kerning>false</kerning>
@@ -2250,10 +1910,47 @@
                 <property name="suffix">
                  <string>mV</string>
                 </property>
-                <property name="stepType">
-                 <enum>QAbstractSpinBox::DefaultStepType</enum>
+               </widget>
+              </item>
+              <item row="2" column="6">
+               <widget class="QSpinBox" name="acous_threshold_ch2"/>
+              </item>
+              <item row="4" column="4">
+               <widget class="QCheckBox" name="acous_trig_ch4">
+                <property name="text">
+                 <string/>
                 </property>
                </widget>
+              </item>
+              <item row="1" column="3">
+               <widget class="QSpinBox" name="acous_dc_offset_ch1">
+                <property name="suffix">
+                 <string>%</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="4">
+               <widget class="QCheckBox" name="acous_trig_ch2">
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+              <item row="8" column="0">
+               <widget class="QLabel" name="acous_ch8_label">
+                <property name="text">
+                 <string>Ch 8</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>acous_enable_ch8</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="9" column="6">
+               <widget class="QSpinBox" name="acous_threshold_ext"/>
               </item>
               <item row="5" column="3">
                <widget class="QSpinBox" name="acous_dc_offset_ch5">
@@ -2262,10 +1959,10 @@
                 </property>
                </widget>
               </item>
-              <item row="0" column="4">
-               <widget class="QLabel" name="acous_trig_label">
+              <item row="0" column="3">
+               <widget class="QLabel" name="acous_dc_offset_label">
                 <property name="text">
-                 <string>Trigger</string>
+                 <string>DC Offset</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignCenter</set>
@@ -2295,15 +1992,264 @@
                 </item>
                </widget>
               </item>
-              <item row="7" column="1">
-               <widget class="QCheckBox" name="acous_enable_ch7">
+              <item row="8" column="4">
+               <widget class="QCheckBox" name="acous_trig_ch8">
                 <property name="text">
                  <string/>
                 </property>
                </widget>
               </item>
-              <item row="4" column="6">
-               <widget class="QSpinBox" name="acous_threshold_ch4"/>
+              <item row="0" column="1">
+               <widget class="QLabel" name="acous_enabled_label">
+                <property name="text">
+                 <string>Enabled</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="1">
+               <widget class="QCheckBox" name="acous_enable_ch5">
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="2">
+               <widget class="QSpinBox" name="acous_range_ch2">
+                <property name="font">
+                 <font>
+                  <kerning>false</kerning>
+                 </font>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::NoButtons</enum>
+                </property>
+                <property name="suffix">
+                 <string>mV</string>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="0">
+               <widget class="QLabel" name="acous_ch4_label">
+                <property name="text">
+                 <string>Ch 4</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>acous_enable_ch4</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="7" column="2">
+               <widget class="QSpinBox" name="acous_range_ch7">
+                <property name="font">
+                 <font>
+                  <kerning>false</kerning>
+                 </font>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::NoButtons</enum>
+                </property>
+                <property name="suffix">
+                 <string>mV</string>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="4">
+               <widget class="QCheckBox" name="acous_trig_ch5">
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="4">
+               <widget class="QCheckBox" name="acous_trig_ch3">
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="3">
+               <widget class="QSpinBox" name="acous_dc_offset_ch2">
+                <property name="suffix">
+                 <string>%</string>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="2">
+               <widget class="QSpinBox" name="acous_range_ch5">
+                <property name="font">
+                 <font>
+                  <kerning>false</kerning>
+                 </font>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::NoButtons</enum>
+                </property>
+                <property name="suffix">
+                 <string>mV</string>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="6">
+               <widget class="QSpinBox" name="acous_threshold_ch5"/>
+              </item>
+              <item row="6" column="6">
+               <widget class="QSpinBox" name="acous_threshold_ch6"/>
+              </item>
+              <item row="7" column="5">
+               <widget class="QComboBox" name="acous_polarity_ch7">
+                <property name="iconSize">
+                 <size>
+                  <width>16</width>
+                  <height>16</height>
+                 </size>
+                </property>
+                <property name="frame">
+                 <bool>true</bool>
+                </property>
+                <item>
+                 <property name="text">
+                  <string>Rising</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Falling</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="8" column="1">
+               <widget class="QCheckBox" name="acous_enable_ch8">
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="2">
+               <widget class="QSpinBox" name="acous_range_ch1">
+                <property name="font">
+                 <font>
+                  <kerning>false</kerning>
+                 </font>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::NoButtons</enum>
+                </property>
+                <property name="suffix">
+                 <string>mV</string>
+                </property>
+                <property name="stepType">
+                 <enum>QAbstractSpinBox::DefaultStepType</enum>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="2">
+               <widget class="QSpinBox" name="acous_range_ch4">
+                <property name="font">
+                 <font>
+                  <kerning>false</kerning>
+                 </font>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::NoButtons</enum>
+                </property>
+                <property name="suffix">
+                 <string>mV</string>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="1">
+               <widget class="QCheckBox" name="acous_enable_ch6">
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1">
+               <widget class="QCheckBox" name="acous_enable_ch1">
+                <property name="styleSheet">
+                 <string notr="true"/>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="6">
+               <widget class="QLabel" name="acous_threshold_label">
+                <property name="text">
+                 <string>Threshold</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="5">
+               <widget class="QComboBox" name="acous_polarity_ch1">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>16</width>
+                  <height>16</height>
+                 </size>
+                </property>
+                <property name="frame">
+                 <bool>true</bool>
+                </property>
+                <item>
+                 <property name="text">
+                  <string>Rising</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Falling</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="9" column="0">
+               <widget class="QLabel" name="acous_ext_label">
+                <property name="text">
+                 <string>Ext</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="4">
+               <widget class="QCheckBox" name="acous_trig_ch1">
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="3">
+               <widget class="QSpinBox" name="acous_dc_offset_ch3">
+                <property name="suffix">
+                 <string>%</string>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="3">
+               <widget class="QSpinBox" name="acous_dc_offset_ch6">
+                <property name="suffix">
+                 <string>%</string>
+                </property>
+               </widget>
               </item>
              </layout>
             </item>
@@ -2383,7 +2329,7 @@
              <height>16777215</height>
             </size>
            </property>
-           <layout class="QGridLayout" name="gridLayout_5">
+           <layout class="QGridLayout" name="gridLayout_5" columnstretch="1,0,0,0">
             <property name="sizeConstraint">
              <enum>QLayout::SetDefaultConstraint</enum>
             </property>
@@ -2402,53 +2348,30 @@
             <property name="spacing">
              <number>3</number>
             </property>
-            <item row="2" column="0">
-             <widget class="QLabel" name="data_path_label">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
+            <item row="24" column="0" colspan="4">
+             <spacer name="cam_spacer">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
               </property>
-              <property name="text">
-               <string>Data Path</string>
+              <property name="sizeType">
+               <enum>QSizePolicy::Expanding</enum>
               </property>
-              <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>10</height>
+               </size>
               </property>
-             </widget>
+             </spacer>
             </item>
-            <item row="1" column="0">
-             <widget class="QLabel" name="cam_config_path_label">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="text">
-               <string>Config Path</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-             </widget>
+            <item row="2" column="1">
+             <widget class="QLineEdit" name="cam1_data_path"/>
             </item>
-            <item row="0" column="5">
-             <widget class="QLabel" name="cam3_label">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="text">
-               <string>Cam 3</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
+            <item row="3" column="1">
+             <widget class="QLineEdit" name="cam1_ip_addr"/>
+            </item>
+            <item row="1" column="2">
+             <widget class="QLineEdit" name="cam2_config_path"/>
             </item>
             <item row="18" column="0">
              <widget class="QLabel" name="state_comm_pin_label">
@@ -2466,51 +2389,16 @@
               </property>
              </widget>
             </item>
-            <item row="13" column="0">
-             <widget class="QLabel" name="pix_threshold_label">
+            <item row="11" column="2">
+             <widget class="QSpinBox" name="cam2_post_trig_len">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
               </property>
-              <property name="text">
-               <string>Pixel Treshold</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-             </widget>
-            </item>
-            <item row="22" column="0">
-             <widget class="QLabel" name="state_pin_label">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="text">
-               <string>State Pin</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-             </widget>
-            </item>
-            <item row="8" column="0">
-             <widget class="QLabel" name="trig_wait_label">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="text">
-               <string>Trigger Wait</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              <property name="maximum">
+               <number>1000</number>
               </property>
              </widget>
             </item>
@@ -2530,11 +2418,25 @@
               </property>
              </widget>
             </item>
-            <item row="1" column="5">
-             <widget class="QLineEdit" name="cam3_config_path"/>
+            <item row="1" column="1">
+             <widget class="QLineEdit" name="cam1_config_path">
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
             </item>
-            <item row="9" column="0">
-             <widget class="QLabel" name="exposure_label">
+            <item row="20" column="1">
+             <widget class="QSpinBox" name="cam1_trig_enbl_pin">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+             </widget>
+            </item>
+            <item row="16" column="0">
+             <widget class="QLabel" name="image_format_label">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                 <horstretch>0</horstretch>
@@ -2542,7 +2444,7 @@
                </sizepolicy>
               </property>
               <property name="text">
-               <string>Exposure</string>
+               <string>Image Format</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -2565,8 +2467,8 @@
               </property>
              </widget>
             </item>
-            <item row="23" column="0">
-             <widget class="QLabel" name="trig_pin_label">
+            <item row="10" column="0">
+             <widget class="QLabel" name="buffer_len_label">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                 <horstretch>0</horstretch>
@@ -2574,7 +2476,127 @@
                </sizepolicy>
               </property>
               <property name="text">
-               <string>Trigger Pin</string>
+               <string>Buffer Length</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="3">
+             <widget class="QSpinBox" name="cam3_mode">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="3">
+             <widget class="QLineEdit" name="cam3_ip_addr">
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+            <item row="11" column="3">
+             <widget class="QSpinBox" name="cam3_post_trig_len">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="maximum">
+               <number>1000</number>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="3">
+             <widget class="QLineEdit" name="cam3_config_path"/>
+            </item>
+            <item row="1" column="0">
+             <widget class="QLabel" name="cam_config_path_label">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="text">
+               <string>Config Path</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="13" column="3">
+             <widget class="QSpinBox" name="cam3_pix_threshold">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="maximum">
+               <number>100000</number>
+              </property>
+             </widget>
+            </item>
+            <item row="10" column="2">
+             <widget class="QSpinBox" name="cam2_buffer_len">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimum">
+               <number>1</number>
+              </property>
+              <property name="maximum">
+               <number>1000</number>
+              </property>
+             </widget>
+            </item>
+            <item row="12" column="2">
+             <widget class="QSpinBox" name="cam2_adc_threshold">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="maximum">
+               <number>10000</number>
+              </property>
+             </widget>
+            </item>
+            <item row="13" column="1">
+             <widget class="QSpinBox" name="cam1_pix_threshold">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="maximum">
+               <number>100000</number>
+              </property>
+             </widget>
+            </item>
+            <item row="11" column="0">
+             <widget class="QLabel" name="post_trig_len_label">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="text">
+               <string>Post-Trig Length</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -2597,69 +2619,20 @@
               </property>
              </widget>
             </item>
-            <item row="17" column="0">
-             <widget class="QLabel" name="date_format_label">
+            <item row="13" column="2">
+             <widget class="QSpinBox" name="cam2_pix_threshold">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
               </property>
-              <property name="text">
-               <string>Date Format</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              <property name="maximum">
+               <number>100000</number>
               </property>
              </widget>
             </item>
-            <item row="1" column="1">
-             <widget class="QLineEdit" name="cam1_config_path">
-              <property name="text">
-               <string/>
-              </property>
-             </widget>
-            </item>
-            <item row="10" column="0">
-             <widget class="QLabel" name="buffer_len_label">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="text">
-               <string>Buffer Length</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-             </widget>
-            </item>
-            <item row="4" column="0">
-             <widget class="QLabel" name="mode_label">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="text">
-               <string>Mode</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="3">
-             <widget class="QLineEdit" name="cam2_data_path">
-              <property name="text">
-               <string/>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="3">
+            <item row="0" column="2">
              <widget class="QLabel" name="cam2_label">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
@@ -2675,118 +2648,8 @@
               </property>
              </widget>
             </item>
-            <item row="24" column="0" colspan="6">
-             <spacer name="cam_spacer">
-              <property name="orientation">
-               <enum>Qt::Vertical</enum>
-              </property>
-              <property name="sizeType">
-               <enum>QSizePolicy::Expanding</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>20</width>
-                <height>10</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-            <item row="0" column="1">
-             <widget class="QLabel" name="cam1_label">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="text">
-               <string>Cam 1</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-            <item row="11" column="0">
-             <widget class="QLabel" name="post_trig_len_label">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="text">
-               <string>Post-Trig Length</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="2">
-             <widget class="QToolButton" name="cam1_config_but">
-              <property name="text">
-               <string>...</string>
-              </property>
-             </widget>
-            </item>
-            <item row="16" column="0">
-             <widget class="QLabel" name="image_format_label">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="text">
-               <string>Image Format</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="5">
-             <widget class="QLineEdit" name="cam3_data_path"/>
-            </item>
-            <item row="12" column="0">
-             <widget class="QLabel" name="adc_threshold_label">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="text">
-               <string>ADC Threshold</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="3">
-             <widget class="QLineEdit" name="cam2_config_path"/>
-            </item>
-            <item row="1" column="4">
-             <widget class="QToolButton" name="cam2_config_but">
-              <property name="text">
-               <string>...</string>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="6">
-             <widget class="QToolButton" name="cam3_config_but">
-              <property name="text">
-               <string>...</string>
-              </property>
-             </widget>
-            </item>
-            <item row="3" column="1" colspan="2">
-             <widget class="QLineEdit" name="cam1_ip_addr"/>
-            </item>
-            <item row="4" column="1" colspan="2">
-             <widget class="QSpinBox" name="cam1_mode">
+            <item row="23" column="1">
+             <widget class="QSpinBox" name="cam1_trig_pin">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -2795,23 +2658,20 @@
               </property>
              </widget>
             </item>
-            <item row="8" column="1" colspan="2">
-             <widget class="QDoubleSpinBox" name="cam1_trig_wait">
+            <item row="21" column="3">
+             <widget class="QSpinBox" name="cam3_trig_latch_pin">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
               </property>
-              <property name="suffix">
-               <string>s</string>
-              </property>
-              <property name="maximum">
-               <double>1000.000000000000000</double>
-              </property>
              </widget>
             </item>
-            <item row="9" column="1" colspan="2">
+            <item row="17" column="3">
+             <widget class="QLineEdit" name="cam3_date_format"/>
+            </item>
+            <item row="9" column="1">
              <widget class="QSpinBox" name="cam1_exposure">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
@@ -2824,134 +2684,14 @@
               </property>
              </widget>
             </item>
-            <item row="10" column="1" colspan="2">
-             <widget class="QSpinBox" name="cam1_buffer_len">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimum">
-               <number>1</number>
-              </property>
-              <property name="maximum">
-               <number>1000</number>
+            <item row="2" column="2">
+             <widget class="QLineEdit" name="cam2_data_path">
+              <property name="text">
+               <string/>
               </property>
              </widget>
             </item>
-            <item row="11" column="1" colspan="2">
-             <widget class="QSpinBox" name="cam1_post_trig_len">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="maximum">
-               <number>1000</number>
-              </property>
-             </widget>
-            </item>
-            <item row="12" column="1" colspan="2">
-             <widget class="QSpinBox" name="cam1_adc_threshold">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="maximum">
-               <number>10000</number>
-              </property>
-             </widget>
-            </item>
-            <item row="13" column="1" colspan="2">
-             <widget class="QSpinBox" name="cam1_pix_threshold">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="maximum">
-               <number>100000</number>
-              </property>
-             </widget>
-            </item>
-            <item row="16" column="1" colspan="2">
-             <widget class="QComboBox" name="cam1_image_format">
-              <item>
-               <property name="text">
-                <string>bmp</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>png</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>jpg</string>
-               </property>
-              </item>
-             </widget>
-            </item>
-            <item row="17" column="1" colspan="2">
-             <widget class="QLineEdit" name="cam1_date_format"/>
-            </item>
-            <item row="18" column="1" colspan="2">
-             <widget class="QSpinBox" name="cam1_state_comm_pin">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-             </widget>
-            </item>
-            <item row="20" column="1" colspan="2">
-             <widget class="QSpinBox" name="cam1_trig_enbl_pin">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-             </widget>
-            </item>
-            <item row="21" column="1" colspan="2">
-             <widget class="QSpinBox" name="cam1_trig_latch_pin">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-             </widget>
-            </item>
-            <item row="22" column="1" colspan="2">
-             <widget class="QSpinBox" name="cam1_state_pin">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-             </widget>
-            </item>
-            <item row="23" column="1" colspan="2">
-             <widget class="QSpinBox" name="cam1_trig_pin">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-             </widget>
-            </item>
-            <item row="4" column="3" colspan="2">
+            <item row="4" column="2">
              <widget class="QSpinBox" name="cam2_mode">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
@@ -2961,125 +2701,10 @@
               </property>
              </widget>
             </item>
-            <item row="2" column="1">
-             <widget class="QLineEdit" name="cam1_data_path"/>
-            </item>
-            <item row="3" column="3" colspan="2">
+            <item row="3" column="2">
              <widget class="QLineEdit" name="cam2_ip_addr"/>
             </item>
-            <item row="3" column="5" colspan="2">
-             <widget class="QLineEdit" name="cam3_ip_addr">
-              <property name="text">
-               <string/>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="2">
-             <widget class="QToolButton" name="cam1_data_but">
-              <property name="text">
-               <string>...</string>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="4">
-             <widget class="QToolButton" name="cam2_data_but">
-              <property name="text">
-               <string>...</string>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="6">
-             <widget class="QToolButton" name="cam3_data_but">
-              <property name="text">
-               <string>...</string>
-              </property>
-             </widget>
-            </item>
-            <item row="8" column="3" colspan="2">
-             <widget class="QDoubleSpinBox" name="cam2_trig_wait">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="suffix">
-               <string>s</string>
-              </property>
-              <property name="maximum">
-               <double>1000.000000000000000</double>
-              </property>
-             </widget>
-            </item>
-            <item row="9" column="3" colspan="2">
-             <widget class="QSpinBox" name="cam2_exposure">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="maximum">
-               <number>10000</number>
-              </property>
-             </widget>
-            </item>
-            <item row="10" column="3" colspan="2">
-             <widget class="QSpinBox" name="cam2_buffer_len">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimum">
-               <number>1</number>
-              </property>
-              <property name="maximum">
-               <number>1000</number>
-              </property>
-             </widget>
-            </item>
-            <item row="11" column="3" colspan="2">
-             <widget class="QSpinBox" name="cam2_post_trig_len">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="maximum">
-               <number>1000</number>
-              </property>
-             </widget>
-            </item>
-            <item row="12" column="3" colspan="2">
-             <widget class="QSpinBox" name="cam2_adc_threshold">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="maximum">
-               <number>10000</number>
-              </property>
-             </widget>
-            </item>
-            <item row="13" column="3" colspan="2">
-             <widget class="QSpinBox" name="cam2_pix_threshold">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="maximum">
-               <number>100000</number>
-              </property>
-             </widget>
-            </item>
-            <item row="16" column="3" colspan="2">
+            <item row="16" column="2">
              <widget class="QComboBox" name="cam2_image_format">
               <item>
                <property name="text">
@@ -3098,50 +2723,7 @@
               </item>
              </widget>
             </item>
-            <item row="17" column="3" colspan="2">
-             <widget class="QLineEdit" name="cam2_date_format"/>
-            </item>
-            <item row="18" column="3" colspan="2">
-             <widget class="QSpinBox" name="cam2_state_comm_pin">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-             </widget>
-            </item>
-            <item row="20" column="3" colspan="2">
-             <widget class="QSpinBox" name="cam2_trig_enbl_pin">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-             </widget>
-            </item>
-            <item row="21" column="3" colspan="2">
-             <widget class="QSpinBox" name="cam2_trig_latch_pin">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-             </widget>
-            </item>
-            <item row="22" column="3" colspan="2">
-             <widget class="QSpinBox" name="cam2_state_pin">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-             </widget>
-            </item>
-            <item row="23" column="3" colspan="2">
+            <item row="23" column="2">
              <widget class="QSpinBox" name="cam2_trig_pin">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
@@ -3151,8 +2733,24 @@
               </property>
              </widget>
             </item>
-            <item row="23" column="5" colspan="2">
-             <widget class="QSpinBox" name="cam3_trig_pin">
+            <item row="13" column="0">
+             <widget class="QLabel" name="pix_threshold_label">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="text">
+               <string>Pixel Treshold</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="18" column="1">
+             <widget class="QSpinBox" name="cam1_state_comm_pin">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -3161,37 +2759,71 @@
               </property>
              </widget>
             </item>
-            <item row="22" column="5" colspan="2">
-             <widget class="QSpinBox" name="cam3_state_pin">
+            <item row="17" column="0">
+             <widget class="QLabel" name="date_format_label">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="text">
+               <string>Date Format</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="16" column="1">
+             <widget class="QComboBox" name="cam1_image_format">
+              <item>
+               <property name="text">
+                <string>bmp</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>png</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>jpg</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+            <item row="22" column="0">
+             <widget class="QLabel" name="state_pin_label">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="text">
+               <string>State Pin</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="9" column="3">
+             <widget class="QSpinBox" name="cam3_exposure">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
               </property>
-             </widget>
-            </item>
-            <item row="21" column="5" colspan="2">
-             <widget class="QSpinBox" name="cam3_trig_latch_pin">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
+              <property name="maximum">
+               <number>10000</number>
               </property>
              </widget>
             </item>
-            <item row="20" column="5" colspan="2">
-             <widget class="QSpinBox" name="cam3_trig_enbl_pin">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-             </widget>
-            </item>
-            <item row="18" column="5" colspan="2">
+            <item row="18" column="3">
              <widget class="QSpinBox" name="cam3_state_comm_pin">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
@@ -3201,10 +2833,199 @@
               </property>
              </widget>
             </item>
-            <item row="17" column="5" colspan="2">
-             <widget class="QLineEdit" name="cam3_date_format"/>
+            <item row="21" column="2">
+             <widget class="QSpinBox" name="cam2_trig_latch_pin">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+             </widget>
             </item>
-            <item row="16" column="5" colspan="2">
+            <item row="0" column="3">
+             <widget class="QLabel" name="cam3_label">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="text">
+               <string>Cam 3</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="12" column="3">
+             <widget class="QSpinBox" name="cam3_adc_threshold">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="maximum">
+               <number>10000</number>
+              </property>
+             </widget>
+            </item>
+            <item row="10" column="1">
+             <widget class="QSpinBox" name="cam1_buffer_len">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimum">
+               <number>1</number>
+              </property>
+              <property name="maximum">
+               <number>1000</number>
+              </property>
+             </widget>
+            </item>
+            <item row="22" column="2">
+             <widget class="QSpinBox" name="cam2_state_pin">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+             </widget>
+            </item>
+            <item row="20" column="2">
+             <widget class="QSpinBox" name="cam2_trig_enbl_pin">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="0">
+             <widget class="QLabel" name="data_path_label">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="text">
+               <string>Data Path</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="10" column="3">
+             <widget class="QSpinBox" name="cam3_buffer_len">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimum">
+               <number>1</number>
+              </property>
+              <property name="maximum">
+               <number>1000</number>
+              </property>
+             </widget>
+            </item>
+            <item row="9" column="2">
+             <widget class="QSpinBox" name="cam2_exposure">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="maximum">
+               <number>10000</number>
+              </property>
+             </widget>
+            </item>
+            <item row="9" column="0">
+             <widget class="QLabel" name="exposure_label">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="text">
+               <string>Exposure</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="1">
+             <widget class="QSpinBox" name="cam1_mode">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+             </widget>
+            </item>
+            <item row="20" column="3">
+             <widget class="QSpinBox" name="cam3_trig_enbl_pin">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+             </widget>
+            </item>
+            <item row="17" column="2">
+             <widget class="QLineEdit" name="cam2_date_format"/>
+            </item>
+            <item row="18" column="2">
+             <widget class="QSpinBox" name="cam2_state_comm_pin">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+             </widget>
+            </item>
+            <item row="23" column="3">
+             <widget class="QSpinBox" name="cam3_trig_pin">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+             </widget>
+            </item>
+            <item row="17" column="1">
+             <widget class="QLineEdit" name="cam1_date_format"/>
+            </item>
+            <item row="22" column="3">
+             <widget class="QSpinBox" name="cam3_state_pin">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+             </widget>
+            </item>
+            <item row="16" column="3">
              <widget class="QComboBox" name="cam3_image_format">
               <item>
                <property name="text">
@@ -3223,34 +3044,50 @@
               </item>
              </widget>
             </item>
-            <item row="13" column="5" colspan="2">
-             <widget class="QSpinBox" name="cam3_pix_threshold">
+            <item row="0" column="1">
+             <widget class="QLabel" name="cam1_label">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="text">
+               <string>Cam 1</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="12" column="0">
+             <widget class="QLabel" name="adc_threshold_label">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="text">
+               <string>ADC Threshold</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="22" column="1">
+             <widget class="QSpinBox" name="cam1_state_pin">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
               </property>
-              <property name="maximum">
-               <number>100000</number>
-              </property>
              </widget>
             </item>
-            <item row="12" column="5" colspan="2">
-             <widget class="QSpinBox" name="cam3_adc_threshold">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="maximum">
-               <number>10000</number>
-              </property>
-             </widget>
-            </item>
-            <item row="11" column="5" colspan="2">
-             <widget class="QSpinBox" name="cam3_post_trig_len">
+            <item row="11" column="1">
+             <widget class="QSpinBox" name="cam1_post_trig_len">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -3262,24 +3099,8 @@
               </property>
              </widget>
             </item>
-            <item row="10" column="5" colspan="2">
-             <widget class="QSpinBox" name="cam3_buffer_len">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimum">
-               <number>1</number>
-              </property>
-              <property name="maximum">
-               <number>1000</number>
-              </property>
-             </widget>
-            </item>
-            <item row="9" column="5" colspan="2">
-             <widget class="QSpinBox" name="cam3_exposure">
+            <item row="12" column="1">
+             <widget class="QSpinBox" name="cam1_adc_threshold">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -3291,7 +3112,52 @@
               </property>
              </widget>
             </item>
-            <item row="8" column="5" colspan="2">
+            <item row="21" column="1">
+             <widget class="QSpinBox" name="cam1_trig_latch_pin">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+             </widget>
+            </item>
+            <item row="23" column="0">
+             <widget class="QLabel" name="trig_pin_label">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="text">
+               <string>Trigger Pin</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="3">
+             <widget class="QLineEdit" name="cam3_data_path"/>
+            </item>
+            <item row="4" column="0">
+             <widget class="QLabel" name="mode_label">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="text">
+               <string>Mode</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="8" column="3">
              <widget class="QDoubleSpinBox" name="cam3_trig_wait">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
@@ -3307,13 +3173,51 @@
               </property>
              </widget>
             </item>
-            <item row="4" column="5" colspan="2">
-             <widget class="QSpinBox" name="cam3_mode">
+            <item row="8" column="2">
+             <widget class="QDoubleSpinBox" name="cam2_trig_wait">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
+              </property>
+              <property name="suffix">
+               <string>s</string>
+              </property>
+              <property name="maximum">
+               <double>1000.000000000000000</double>
+              </property>
+             </widget>
+            </item>
+            <item row="8" column="1">
+             <widget class="QDoubleSpinBox" name="cam1_trig_wait">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="suffix">
+               <string>s</string>
+              </property>
+              <property name="maximum">
+               <double>1000.000000000000000</double>
+              </property>
+             </widget>
+            </item>
+            <item row="8" column="0">
+             <widget class="QLabel" name="trig_wait_label">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="text">
+               <string>Trigger Wait</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
               </property>
              </widget>
             </item>
@@ -3361,9 +3265,9 @@
            <property name="geometry">
             <rect>
              <x>0</x>
-             <y>-164</y>
+             <y>0</y>
              <width>371</width>
-             <height>611</height>
+             <height>515</height>
             </rect>
            </property>
            <property name="maximumSize">
@@ -3638,6 +3542,74 @@
               <property name="spacing">
                <number>3</number>
               </property>
+              <item row="7" column="2">
+               <widget class="QSpinBox" name="gate_period_wave5">
+                <property name="maximum">
+                 <number>1000000</number>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="1">
+               <widget class="QSpinBox" name="gate_pin_wave1"/>
+              </item>
+              <item row="3" column="5">
+               <widget class="QComboBox" name="gate_polarity_wave1">
+                <item>
+                 <property name="text">
+                  <string>Normal</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Reverse</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="7" column="5">
+               <widget class="QComboBox" name="gate_polarity_wave5">
+                <item>
+                 <property name="text">
+                  <string>Normal</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Reverse</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="4" column="4">
+               <widget class="QSpinBox" name="duty_wave2">
+                <property name="suffix">
+                 <string>%</string>
+                </property>
+                <property name="maximum">
+                 <number>100</number>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="0">
+               <widget class="QLabel" name="wave1_label">
+                <property name="text">
+                 <string>Wave 1</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="0">
+               <widget class="QLabel" name="wave3_label">
+                <property name="text">
+                 <string>Wave 3</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
               <item row="1" column="1">
                <widget class="QLabel" name="gate_pin_label">
                 <property name="text">
@@ -3648,85 +3620,27 @@
                 </property>
                </widget>
               </item>
-              <item row="6" column="0">
-               <widget class="QLabel" name="wave5_label">
-                <property name="text">
-                 <string>Wave 5</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-                </property>
-               </widget>
+              <item row="8" column="1">
+               <widget class="QSpinBox" name="gate_pin_wave6"/>
               </item>
-              <item row="3" column="0">
-               <widget class="QLabel" name="wave2_label">
-                <property name="text">
-                 <string>Wave 2</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-                </property>
-               </widget>
+              <item row="9" column="3">
+               <widget class="QSpinBox" name="gate_phase_wave7"/>
               </item>
               <item row="3" column="3">
-               <widget class="QSpinBox" name="gate_phase_wave2"/>
-              </item>
-              <item row="1" column="4">
-               <widget class="QLabel" name="duty_label">
-                <property name="text">
-                 <string>Duty</string>
+               <widget class="QSpinBox" name="gate_phase_wave1">
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::UpDownArrows</enum>
                 </property>
-                <property name="alignment">
-                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                <property name="keyboardTracking">
+                 <bool>true</bool>
                 </property>
-               </widget>
-              </item>
-              <item row="6" column="3">
-               <widget class="QSpinBox" name="gate_phase_wave5"/>
-              </item>
-              <item row="1" column="2">
-               <widget class="QLabel" name="gate_period_label">
-                <property name="text">
-                 <string>Period</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="10" column="5">
-               <widget class="QComboBox" name="gate_polarity_wave9">
-                <item>
-                 <property name="text">
-                  <string>Normal</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Reverse</string>
-                 </property>
-                </item>
-               </widget>
-              </item>
-              <item row="8" column="2">
-               <widget class="QSpinBox" name="gate_period_wave7">
                 <property name="maximum">
-                 <number>1000000</number>
+                 <number>100</number>
                 </property>
                </widget>
               </item>
-              <item row="1" column="3">
-               <widget class="QLabel" name="gate_phase_label">
-                <property name="text">
-                 <string>Phase</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="8" column="4">
-               <widget class="QSpinBox" name="duty_wave7">
+              <item row="10" column="4">
+               <widget class="QSpinBox" name="duty_wave8">
                 <property name="suffix">
                  <string>%</string>
                 </property>
@@ -3735,51 +3649,30 @@
                 </property>
                </widget>
               </item>
-              <item row="10" column="0">
-               <widget class="QLabel" name="wave9_label">
+              <item row="6" column="0">
+               <widget class="QLabel" name="wave4_label">
                 <property name="text">
-                 <string>Wave 9</string>
+                 <string>Wave 4</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
                 </property>
                </widget>
               </item>
-              <item row="2" column="1">
-               <widget class="QSpinBox" name="gate_pin_wave1"/>
-              </item>
-              <item row="7" column="5">
-               <widget class="QComboBox" name="gate_polarity_wave6">
-                <item>
-                 <property name="text">
-                  <string>Normal</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Reverse</string>
-                 </property>
-                </item>
-               </widget>
-              </item>
-              <item row="9" column="0">
-               <widget class="QLabel" name="wave8_label">
-                <property name="text">
-                 <string>Wave 8</string>
+              <item row="5" column="4">
+               <widget class="QSpinBox" name="duty_wave3">
+                <property name="suffix">
+                 <string>%</string>
                 </property>
-                <property name="alignment">
-                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="2">
-               <widget class="QSpinBox" name="gate_period_wave3">
                 <property name="maximum">
-                 <number>1000000</number>
+                 <number>100</number>
                 </property>
                </widget>
               </item>
-              <item row="9" column="5">
+              <item row="6" column="3">
+               <widget class="QSpinBox" name="gate_phase_wave4"/>
+              </item>
+              <item row="10" column="5">
                <widget class="QComboBox" name="gate_polarity_wave8">
                 <item>
                  <property name="text">
@@ -3793,21 +3686,237 @@
                 </item>
                </widget>
               </item>
-              <item row="5" column="2">
+              <item row="9" column="5">
+               <widget class="QComboBox" name="gate_polarity_wave7">
+                <item>
+                 <property name="text">
+                  <string>Normal</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Reverse</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="1" column="5">
+               <widget class="QLabel" name="gate_polarity_label">
+                <property name="text">
+                 <string>Polarity</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="2">
                <widget class="QSpinBox" name="gate_period_wave4">
                 <property name="maximum">
                  <number>1000000</number>
                 </property>
                </widget>
               </item>
-              <item row="10" column="2">
+              <item row="4" column="2">
+               <widget class="QSpinBox" name="gate_period_wave2">
+                <property name="maximum">
+                 <number>1000000</number>
+                </property>
+               </widget>
+              </item>
+              <item row="8" column="0">
+               <widget class="QLabel" name="wave6_label">
+                <property name="text">
+                 <string>Wave 6</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="1">
+               <widget class="QSpinBox" name="gate_pin_wave2"/>
+              </item>
+              <item row="11" column="2">
                <widget class="QSpinBox" name="gate_period_wave9">
                 <property name="maximum">
                  <number>1000000</number>
                 </property>
                </widget>
               </item>
-              <item row="5" column="5">
+              <item row="6" column="4">
+               <widget class="QSpinBox" name="duty_wave4">
+                <property name="suffix">
+                 <string>%</string>
+                </property>
+                <property name="maximum">
+                 <number>100</number>
+                </property>
+               </widget>
+              </item>
+              <item row="9" column="2">
+               <widget class="QSpinBox" name="gate_period_wave7">
+                <property name="maximum">
+                 <number>1000000</number>
+                </property>
+               </widget>
+              </item>
+              <item row="7" column="0">
+               <widget class="QLabel" name="wave5_label">
+                <property name="text">
+                 <string>Wave 5</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="8" column="4">
+               <widget class="QSpinBox" name="duty_wave6">
+                <property name="suffix">
+                 <string>%</string>
+                </property>
+                <property name="maximum">
+                 <number>100</number>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="5">
+               <widget class="QComboBox" name="gate_polarity_wave2">
+                <item>
+                 <property name="text">
+                  <string>Normal</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Reverse</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="10" column="3">
+               <widget class="QSpinBox" name="gate_phase_wave8"/>
+              </item>
+              <item row="10" column="2">
+               <widget class="QSpinBox" name="gate_period_wave8">
+                <property name="maximum">
+                 <number>1000000</number>
+                </property>
+               </widget>
+              </item>
+              <item row="9" column="4">
+               <widget class="QSpinBox" name="duty_wave7">
+                <property name="suffix">
+                 <string>%</string>
+                </property>
+                <property name="maximum">
+                 <number>100</number>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="3">
+               <widget class="QLabel" name="gate_phase_label">
+                <property name="text">
+                 <string>Phase</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="0">
+               <widget class="QLabel" name="wave2_label">
+                <property name="text">
+                 <string>Wave 2</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="8" column="3">
+               <widget class="QSpinBox" name="gate_phase_wave6"/>
+              </item>
+              <item row="7" column="1">
+               <widget class="QSpinBox" name="gate_pin_wave5"/>
+              </item>
+              <item row="3" column="4">
+               <widget class="QSpinBox" name="duty_wave1">
+                <property name="suffix">
+                 <string>%</string>
+                </property>
+                <property name="maximum">
+                 <number>100</number>
+                </property>
+               </widget>
+              </item>
+              <item row="7" column="3">
+               <widget class="QSpinBox" name="gate_phase_wave5"/>
+              </item>
+              <item row="9" column="1">
+               <widget class="QSpinBox" name="gate_pin_wave7"/>
+              </item>
+              <item row="11" column="4">
+               <widget class="QSpinBox" name="duty_wave9">
+                <property name="suffix">
+                 <string>%</string>
+                </property>
+                <property name="maximum">
+                 <number>100</number>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="1">
+               <widget class="QSpinBox" name="gate_pin_wave3"/>
+              </item>
+              <item row="1" column="4">
+               <widget class="QLabel" name="duty_label">
+                <property name="text">
+                 <string>Duty</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="9" column="0">
+               <widget class="QLabel" name="wave7_label">
+                <property name="text">
+                 <string>Wave 7</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="1">
+               <widget class="QSpinBox" name="gate_pin_wave4"/>
+              </item>
+              <item row="10" column="1">
+               <widget class="QSpinBox" name="gate_pin_wave8"/>
+              </item>
+              <item row="11" column="0">
+               <widget class="QLabel" name="wave9_label">
+                <property name="text">
+                 <string>Wave 9</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="2">
+               <widget class="QLabel" name="gate_period_label">
+                <property name="text">
+                 <string>Period</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="5">
                <widget class="QComboBox" name="gate_polarity_wave4">
                 <item>
                  <property name="text">
@@ -3821,17 +3930,44 @@
                 </item>
                </widget>
               </item>
-              <item row="9" column="2">
-               <widget class="QSpinBox" name="gate_period_wave8">
+              <item row="3" column="2">
+               <widget class="QSpinBox" name="gate_period_wave1">
                 <property name="maximum">
                  <number>1000000</number>
                 </property>
                </widget>
               </item>
-              <item row="5" column="1">
-               <widget class="QSpinBox" name="gate_pin_wave4"/>
+              <item row="5" column="3">
+               <widget class="QSpinBox" name="gate_phase_wave3"/>
               </item>
-              <item row="4" column="5">
+              <item row="11" column="5">
+               <widget class="QComboBox" name="gate_polarity_wave9">
+                <item>
+                 <property name="text">
+                  <string>Normal</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Reverse</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="11" column="3">
+               <widget class="QSpinBox" name="gate_phase_wave9"/>
+              </item>
+              <item row="7" column="4">
+               <widget class="QSpinBox" name="duty_wave5">
+                <property name="suffix">
+                 <string>%</string>
+                </property>
+                <property name="maximum">
+                 <number>100</number>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="5">
                <widget class="QComboBox" name="gate_polarity_wave3">
                 <item>
                  <property name="text">
@@ -3846,307 +3982,48 @@
                </widget>
               </item>
               <item row="4" column="3">
-               <widget class="QSpinBox" name="gate_phase_wave3"/>
+               <widget class="QSpinBox" name="gate_phase_wave2"/>
               </item>
-              <item row="8" column="3">
-               <widget class="QSpinBox" name="gate_phase_wave7"/>
-              </item>
-              <item row="14" column="0">
-               <widget class="QLabel" name="wave9_label_9">
-                <property name="text">
-                 <string>Wave 13</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="0">
-               <widget class="QLabel" name="wave3_label">
-                <property name="text">
-                 <string>Wave 3</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="7" column="1">
-               <widget class="QSpinBox" name="gate_pin_wave6"/>
-              </item>
-              <item row="3" column="1">
-               <widget class="QSpinBox" name="gate_pin_wave2"/>
-              </item>
-              <item row="8" column="5">
-               <widget class="QComboBox" name="gate_polarity_wave7">
-                <item>
-                 <property name="text">
-                  <string>Normal</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Reverse</string>
-                 </property>
-                </item>
-               </widget>
-              </item>
-              <item row="2" column="2">
-               <widget class="QSpinBox" name="gate_period_wave1">
-                <property name="maximum">
-                 <number>1000000</number>
-                </property>
-               </widget>
-              </item>
-              <item row="6" column="4">
-               <widget class="QSpinBox" name="duty_wave5">
-                <property name="suffix">
-                 <string>%</string>
-                </property>
-                <property name="maximum">
-                 <number>100</number>
-                </property>
-               </widget>
-              </item>
-              <item row="9" column="4">
-               <widget class="QSpinBox" name="duty_wave8">
-                <property name="suffix">
-                 <string>%</string>
-                </property>
-                <property name="maximum">
-                 <number>100</number>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="4">
-               <widget class="QSpinBox" name="duty_wave1">
-                <property name="suffix">
-                 <string>%</string>
-                </property>
-                <property name="maximum">
-                 <number>100</number>
-                </property>
-               </widget>
-              </item>
-              <item row="10" column="4">
-               <widget class="QSpinBox" name="duty_wave9">
-                <property name="suffix">
-                 <string>%</string>
-                </property>
-                <property name="maximum">
-                 <number>100</number>
-                </property>
-               </widget>
-              </item>
-              <item row="11" column="0">
-               <widget class="QLabel" name="wave9_label_2">
-                <property name="text">
-                 <string>Wave 10</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="7" column="3">
-               <widget class="QSpinBox" name="gate_phase_wave6"/>
-              </item>
-              <item row="13" column="0">
-               <widget class="QLabel" name="wave9_label_10">
-                <property name="text">
-                 <string>Wave 12</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="3">
-               <widget class="QSpinBox" name="gate_phase_wave1">
-                <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::UpDownArrows</enum>
-                </property>
-                <property name="keyboardTracking">
-                 <bool>true</bool>
-                </property>
-                <property name="maximum">
-                 <number>100</number>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="4">
-               <widget class="QSpinBox" name="duty_wave2">
-                <property name="suffix">
-                 <string>%</string>
-                </property>
-                <property name="maximum">
-                 <number>100</number>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="5">
-               <widget class="QComboBox" name="gate_polarity_wave2">
-                <item>
-                 <property name="text">
-                  <string>Normal</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Reverse</string>
-                 </property>
-                </item>
-               </widget>
-              </item>
-              <item row="8" column="1">
-               <widget class="QSpinBox" name="gate_pin_wave7"/>
-              </item>
-              <item row="5" column="0">
-               <widget class="QLabel" name="wave4_label">
-                <property name="text">
-                 <string>Wave 4</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="6" column="5">
-               <widget class="QComboBox" name="gate_polarity_wave5">
-                <item>
-                 <property name="text">
-                  <string>Normal</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Reverse</string>
-                 </property>
-                </item>
-               </widget>
-              </item>
-              <item row="2" column="0">
-               <widget class="QLabel" name="wave1_label">
-                <property name="text">
-                 <string>Wave 1</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="4">
-               <widget class="QSpinBox" name="duty_wave3">
-                <property name="suffix">
-                 <string>%</string>
-                </property>
-                <property name="maximum">
-                 <number>100</number>
-                </property>
-               </widget>
-              </item>
-              <item row="12" column="0">
-               <widget class="QLabel" name="wave9_label_3">
-                <property name="text">
-                 <string>Wave 11</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="1">
-               <widget class="QSpinBox" name="gate_pin_wave3"/>
-              </item>
-              <item row="7" column="0">
-               <widget class="QLabel" name="wave6_label">
-                <property name="text">
-                 <string>Wave 6</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="5" column="4">
-               <widget class="QSpinBox" name="duty_wave4">
-                <property name="suffix">
-                 <string>%</string>
-                </property>
-                <property name="maximum">
-                 <number>100</number>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="5">
-               <widget class="QLabel" name="gate_polarity_label">
-                <property name="text">
-                 <string>Polarity</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="9" column="1">
-               <widget class="QSpinBox" name="gate_pin_wave8"/>
-              </item>
-              <item row="10" column="3">
-               <widget class="QSpinBox" name="gate_phase_wave9"/>
-              </item>
-              <item row="7" column="4">
-               <widget class="QSpinBox" name="duty_wave6">
-                <property name="suffix">
-                 <string>%</string>
-                </property>
-                <property name="maximum">
-                 <number>100</number>
-                </property>
-               </widget>
-              </item>
-              <item row="9" column="3">
-               <widget class="QSpinBox" name="gate_phase_wave8"/>
-              </item>
-              <item row="2" column="5">
-               <widget class="QComboBox" name="gate_polarity_wave1">
-                <item>
-                 <property name="text">
-                  <string>Normal</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Reverse</string>
-                 </property>
-                </item>
-               </widget>
-              </item>
-              <item row="7" column="2">
+              <item row="8" column="2">
                <widget class="QSpinBox" name="gate_period_wave6">
                 <property name="maximum">
                  <number>1000000</number>
                 </property>
                </widget>
               </item>
-              <item row="6" column="1">
-               <widget class="QSpinBox" name="gate_pin_wave5"/>
+              <item row="5" column="2">
+               <widget class="QSpinBox" name="gate_period_wave3">
+                <property name="maximum">
+                 <number>1000000</number>
+                </property>
+               </widget>
               </item>
-              <item row="8" column="0">
-               <widget class="QLabel" name="wave7_label">
+              <item row="10" column="0">
+               <widget class="QLabel" name="wave8_label">
                 <property name="text">
-                 <string>Wave 7</string>
+                 <string>Wave 8</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
                 </property>
                </widget>
               </item>
-              <item row="3" column="2">
-               <widget class="QSpinBox" name="gate_period_wave2">
-                <property name="maximum">
-                 <number>1000000</number>
-                </property>
+              <item row="8" column="5">
+               <widget class="QComboBox" name="gate_polarity_wave6">
+                <item>
+                 <property name="text">
+                  <string>Normal</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Reverse</string>
+                 </property>
+                </item>
                </widget>
+              </item>
+              <item row="11" column="1">
+               <widget class="QSpinBox" name="gate_pin_wave9"/>
               </item>
               <item row="0" column="0" colspan="6">
                <widget class="QLabel" name="gate_label">
@@ -4165,31 +4042,6 @@
                  <number>0</number>
                 </property>
                </widget>
-              </item>
-              <item row="6" column="2">
-               <widget class="QSpinBox" name="gate_period_wave5">
-                <property name="maximum">
-                 <number>1000000</number>
-                </property>
-               </widget>
-              </item>
-              <item row="5" column="3">
-               <widget class="QSpinBox" name="gate_phase_wave4"/>
-              </item>
-              <item row="10" column="1">
-               <widget class="QSpinBox" name="gate_pin_wave9"/>
-              </item>
-              <item row="11" column="1">
-               <widget class="QSpinBox" name="gate_pin_wave9_3"/>
-              </item>
-              <item row="12" column="1">
-               <widget class="QSpinBox" name="gate_pin_wave9_4"/>
-              </item>
-              <item row="13" column="1">
-               <widget class="QSpinBox" name="gate_pin_wave9_5"/>
-              </item>
-              <item row="14" column="1">
-               <widget class="QSpinBox" name="gate_pin_wave9_6"/>
               </item>
              </layout>
             </item>
