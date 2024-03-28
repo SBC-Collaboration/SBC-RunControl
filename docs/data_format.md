@@ -1,4 +1,4 @@
-# Run Control Data Structures
+# Run Control Data Format
 This documentation contains information for the data structures of different saved files by the Run Control software and different modules.
 
 ## Configuration file
