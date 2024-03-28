@@ -1,6 +1,6 @@
 import sys
 from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog
-from PySide6.QtCore import QFile, Qt
+from PySide6.QtCore import QFile, Qt, QIODevice
 import logging
 from enum import Enum
 import time

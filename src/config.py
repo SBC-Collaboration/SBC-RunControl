@@ -33,7 +33,7 @@ class Config:
         ui.max_ev_time_box.setValue(run_config["max_ev_time"])
         ui.max_num_ev_box.setValue(run_config["max_num_evs"])
 
-        sipm_config = self.config["scint"]["sipm"]
+        sipm_config = self.config["scint"]["amp"]
         ui.sipm_ip_addr_edit.setText(sipm_config["ip_addr"])
         ui.sipm_bias_box.setValue(sipm_config["bias"])
         ui.sipm_qp_box.setValue(sipm_config["qp"])
@@ -392,7 +392,7 @@ class Config:
             "general": general_config,
             "run": run_config,
             "scint": {
-                "sipm": sipm_config,
+                "amp": sipm_config,
                 "caen": caen_config,
                 "caen_g0": caen_g0_config,
             },

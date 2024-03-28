@@ -1,5 +1,6 @@
 from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog
-from PySide6.QtCore import QElapsedTimer, QTimer, Qt
+from PySide6.QtCore import QElapsedTimer, QTimer, Qt, QIODevice
+from PySide6.QtUiTools import QUiLoader
 from PySide6.QtGui import QPixmap
 from ui.mainwindow import Ui_MainWindow
 from src.config import *
@@ -12,7 +13,6 @@ from enum import Enum
 import datetime
 import time
 import re
-from dependencies.SBCBinaryFormat.python.sbcbinaryformat.files import Writer
 
 
 # Loads Main window
@@ -41,6 +41,7 @@ class MainWindow(QMainWindow):
 
         # initialize arduino class
         self.arduinos_class = Arduinos(self)
+        self.camera_class = Cameras(self)
 
         # define four run states
         self.run_states = Enum(
@@ -197,7 +198,8 @@ class MainWindow(QMainWindow):
             int(re.search(r"\d+", r[9:])[0]) for r in os.listdir(data_dir) if today in r
         ]
         num = 0 if len(todays_runs) == 0 else max(todays_runs) + 1
-        self.run_number = f"{today}_{num:02d}"
+        # self.run_number = f"{today}_{num:02d}" # minimum two digits
+        self.run_number = f"{today}_{num}"
 
         self.run_dir = os.path.join(data_dir, self.run_number)
         if not os.path.exists(self.run_dir):
