@@ -90,15 +90,19 @@ class Ui_SettingsWindow(object):
         self.scrollAreaWidgetContents_5.setObjectName(u"scrollAreaWidgetContents_5")
         self.scrollAreaWidgetContents_5.setGeometry(QRect(0, 0, 388, 442))
         self.scrollAreaWidgetContents_5.setMaximumSize(QSize(1000, 16777215))
-        self.gridLayout_3 = QGridLayout(self.scrollAreaWidgetContents_5)
+        self.verticalLayout_10 = QVBoxLayout(self.scrollAreaWidgetContents_5)
+        self.verticalLayout_10.setSpacing(3)
+        self.verticalLayout_10.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_10.setObjectName(u"verticalLayout_10")
+        self.verticalLayout_10.setContentsMargins(0, 0, 0, 0)
+        self.gridLayout_3 = QGridLayout()
         self.gridLayout_3.setSpacing(3)
-        self.gridLayout_3.setContentsMargins(0, 0, 0, 0)
         self.gridLayout_3.setObjectName(u"gridLayout_3")
-        self.gridLayout_3.setContentsMargins(0, 0, 0, 0)
-        self.config_path_edit = QLineEdit(self.scrollAreaWidgetContents_5)
-        self.config_path_edit.setObjectName(u"config_path_edit")
+        self.gridLayout_3.setContentsMargins(-1, 0, 0, 0)
+        self.log_path_edit = QLineEdit(self.scrollAreaWidgetContents_5)
+        self.log_path_edit.setObjectName(u"log_path_edit")
 
-        self.gridLayout_3.addWidget(self.config_path_edit, 0, 2, 1, 1)
+        self.gridLayout_3.addWidget(self.log_path_edit, 1, 1, 1, 1)
 
         self.config_path_label = QLabel(self.scrollAreaWidgetContents_5)
         self.config_path_label.setObjectName(u"config_path_label")
@@ -107,6 +111,28 @@ class Ui_SettingsWindow(object):
         self.config_path_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
         self.gridLayout_3.addWidget(self.config_path_label, 0, 0, 1, 1)
+
+        self.log_path_label = QLabel(self.scrollAreaWidgetContents_5)
+        self.log_path_label.setObjectName(u"log_path_label")
+        self.log_path_label.setLineWidth(0)
+        self.log_path_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.gridLayout_3.addWidget(self.log_path_label, 1, 0, 1, 1)
+
+        self.log_path_but = QToolButton(self.scrollAreaWidgetContents_5)
+        self.log_path_but.setObjectName(u"log_path_but")
+
+        self.gridLayout_3.addWidget(self.log_path_but, 1, 2, 1, 1)
+
+        self.config_path_but = QToolButton(self.scrollAreaWidgetContents_5)
+        self.config_path_but.setObjectName(u"config_path_but")
+
+        self.gridLayout_3.addWidget(self.config_path_but, 0, 2, 1, 1)
+
+        self.config_path_edit = QLineEdit(self.scrollAreaWidgetContents_5)
+        self.config_path_edit.setObjectName(u"config_path_edit")
+
+        self.gridLayout_3.addWidget(self.config_path_edit, 0, 1, 1, 1)
 
         self.data_dir_label = QLabel(self.scrollAreaWidgetContents_5)
         self.data_dir_label.setObjectName(u"data_dir_label")
@@ -118,131 +144,58 @@ class Ui_SettingsWindow(object):
         self.data_dir_edit = QLineEdit(self.scrollAreaWidgetContents_5)
         self.data_dir_edit.setObjectName(u"data_dir_edit")
 
-        self.gridLayout_3.addWidget(self.data_dir_edit, 2, 2, 1, 1)
-
-        self.config_path_but = QToolButton(self.scrollAreaWidgetContents_5)
-        self.config_path_but.setObjectName(u"config_path_but")
-
-        self.gridLayout_3.addWidget(self.config_path_but, 0, 3, 1, 1)
-
-        self.verticalSpacer = QSpacerItem(20, 336, QSizePolicy.Minimum, QSizePolicy.Expanding)
-
-        self.gridLayout_3.addItem(self.verticalSpacer, 4, 2, 1, 1)
+        self.gridLayout_3.addWidget(self.data_dir_edit, 2, 1, 1, 1)
 
         self.data_dir_but = QToolButton(self.scrollAreaWidgetContents_5)
         self.data_dir_but.setObjectName(u"data_dir_but")
 
-        self.gridLayout_3.addWidget(self.data_dir_but, 2, 3, 1, 1)
+        self.gridLayout_3.addWidget(self.data_dir_but, 2, 2, 1, 1)
 
-        self.log_path_label = QLabel(self.scrollAreaWidgetContents_5)
-        self.log_path_label.setObjectName(u"log_path_label")
-        self.log_path_label.setLineWidth(0)
-        self.log_path_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
-        self.gridLayout_3.addWidget(self.log_path_label, 1, 0, 1, 1)
+        self.verticalLayout_10.addLayout(self.gridLayout_3)
 
-        self.log_path_edit = QLineEdit(self.scrollAreaWidgetContents_5)
-        self.log_path_edit.setObjectName(u"log_path_edit")
+        self.gridLayout_9 = QGridLayout()
+        self.gridLayout_9.setSpacing(3)
+        self.gridLayout_9.setObjectName(u"gridLayout_9")
+        self.gridLayout_9.setContentsMargins(-1, 0, 0, 0)
+        self.max_num_ev_box = QSpinBox(self.scrollAreaWidgetContents_5)
+        self.max_num_ev_box.setObjectName(u"max_num_ev_box")
+        self.max_num_ev_box.setMinimum(1)
+        self.max_num_ev_box.setMaximum(1000)
+        self.max_num_ev_box.setValue(100)
 
-        self.gridLayout_3.addWidget(self.log_path_edit, 1, 2, 1, 1)
+        self.gridLayout_9.addWidget(self.max_num_ev_box, 0, 3, 1, 1)
 
-        self.log_path_but = QToolButton(self.scrollAreaWidgetContents_5)
-        self.log_path_but.setObjectName(u"log_path_but")
+        self.max_ev_time_box = QDoubleSpinBox(self.scrollAreaWidgetContents_5)
+        self.max_ev_time_box.setObjectName(u"max_ev_time_box")
+        self.max_ev_time_box.setMaximum(100000.000000000000000)
 
-        self.gridLayout_3.addWidget(self.log_path_but, 1, 3, 1, 1)
+        self.gridLayout_9.addWidget(self.max_ev_time_box, 0, 1, 1, 1)
+
+        self.max_num_ev_label = QLabel(self.scrollAreaWidgetContents_5)
+        self.max_num_ev_label.setObjectName(u"max_num_ev_label")
+        self.max_num_ev_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.gridLayout_9.addWidget(self.max_num_ev_label, 0, 0, 1, 1)
+
+        self.max_ev_time_label = QLabel(self.scrollAreaWidgetContents_5)
+        self.max_ev_time_label.setObjectName(u"max_ev_time_label")
+        self.max_ev_time_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.gridLayout_9.addWidget(self.max_ev_time_label, 0, 2, 1, 1)
+
+
+        self.verticalLayout_10.addLayout(self.gridLayout_9)
+
+        self.verticalSpacer = QSpacerItem(20, 336, QSizePolicy.Minimum, QSizePolicy.Expanding)
+
+        self.verticalLayout_10.addItem(self.verticalSpacer)
 
         self.files_scroll_area.setWidget(self.scrollAreaWidgetContents_5)
 
         self.verticalLayout_4.addWidget(self.files_scroll_area)
 
         self.tabWidget.addTab(self.general_tab, "")
-        self.run_tab = QWidget()
-        self.run_tab.setObjectName(u"run_tab")
-        self.verticalLayout_6 = QVBoxLayout(self.run_tab)
-        self.verticalLayout_6.setSpacing(3)
-        self.verticalLayout_6.setContentsMargins(0, 0, 0, 0)
-        self.verticalLayout_6.setObjectName(u"verticalLayout_6")
-        self.verticalLayout_6.setContentsMargins(0, 0, 0, 0)
-        self.run_scroll_area = QScrollArea(self.run_tab)
-        self.run_scroll_area.setObjectName(u"run_scroll_area")
-        self.run_scroll_area.setFrameShape(QFrame.NoFrame)
-        self.run_scroll_area.setFrameShadow(QFrame.Plain)
-        self.run_scroll_area.setLineWidth(0)
-        self.run_scroll_area.setWidgetResizable(True)
-        self.scrollAreaWidgetContents_4 = QWidget()
-        self.scrollAreaWidgetContents_4.setObjectName(u"scrollAreaWidgetContents_4")
-        self.scrollAreaWidgetContents_4.setGeometry(QRect(0, 0, 388, 442))
-        self.scrollAreaWidgetContents_4.setMaximumSize(QSize(1000, 16777215))
-        self.gridLayout_2 = QGridLayout(self.scrollAreaWidgetContents_4)
-        self.gridLayout_2.setSpacing(3)
-        self.gridLayout_2.setContentsMargins(0, 0, 0, 0)
-        self.gridLayout_2.setObjectName(u"gridLayout_2")
-        self.gridLayout_2.setContentsMargins(0, 0, 0, 0)
-        self.verticalSpacer_2 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
-
-        self.gridLayout_2.addItem(self.verticalSpacer_2, 4, 1, 1, 1)
-
-        self.max_num_ev_label = QLabel(self.scrollAreaWidgetContents_4)
-        self.max_num_ev_label.setObjectName(u"max_num_ev_label")
-        self.max_num_ev_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
-
-        self.gridLayout_2.addWidget(self.max_num_ev_label, 1, 2, 1, 1)
-
-        self.source_box = QComboBox(self.scrollAreaWidgetContents_4)
-        self.source_box.addItem("")
-        self.source_box.addItem("")
-        self.source_box.addItem("")
-        self.source_box.addItem("")
-        self.source_box.setObjectName(u"source_box")
-        self.source_box.setEditable(True)
-
-        self.gridLayout_2.addWidget(self.source_box, 0, 1, 1, 1)
-
-        self.max_ev_time_box = QDoubleSpinBox(self.scrollAreaWidgetContents_4)
-        self.max_ev_time_box.setObjectName(u"max_ev_time_box")
-        self.max_ev_time_box.setMaximum(100000.000000000000000)
-
-        self.gridLayout_2.addWidget(self.max_ev_time_box, 1, 1, 1, 1)
-
-        self.max_ev_time_label = QLabel(self.scrollAreaWidgetContents_4)
-        self.max_ev_time_label.setObjectName(u"max_ev_time_label")
-        self.max_ev_time_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
-
-        self.gridLayout_2.addWidget(self.max_ev_time_label, 1, 0, 1, 1)
-
-        self.source_label = QLabel(self.scrollAreaWidgetContents_4)
-        self.source_label.setObjectName(u"source_label")
-        self.source_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
-
-        self.gridLayout_2.addWidget(self.source_label, 0, 0, 1, 1)
-
-        self.max_num_ev_box = QSpinBox(self.scrollAreaWidgetContents_4)
-        self.max_num_ev_box.setObjectName(u"max_num_ev_box")
-        self.max_num_ev_box.setMinimum(1)
-        self.max_num_ev_box.setMaximum(1000)
-        self.max_num_ev_box.setValue(100)
-
-        self.gridLayout_2.addWidget(self.max_num_ev_box, 1, 3, 1, 1)
-
-        self.pressure_setpoint_label = QLabel(self.scrollAreaWidgetContents_4)
-        self.pressure_setpoint_label.setObjectName(u"pressure_setpoint_label")
-        self.pressure_setpoint_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
-
-        self.gridLayout_2.addWidget(self.pressure_setpoint_label, 0, 2, 1, 1)
-
-        self.pressure_setpoint_box = QSpinBox(self.scrollAreaWidgetContents_4)
-        self.pressure_setpoint_box.setObjectName(u"pressure_setpoint_box")
-        self.pressure_setpoint_box.setMinimum(1)
-        self.pressure_setpoint_box.setMaximum(1000)
-        self.pressure_setpoint_box.setValue(25)
-
-        self.gridLayout_2.addWidget(self.pressure_setpoint_box, 0, 3, 1, 1)
-
-        self.run_scroll_area.setWidget(self.scrollAreaWidgetContents_4)
-
-        self.verticalLayout_6.addWidget(self.run_scroll_area)
-
-        self.tabWidget.addTab(self.run_tab, "")
         self.scint_tab = QWidget()
         self.scint_tab.setObjectName(u"scint_tab")
         self.verticalLayout_5 = QVBoxLayout(self.scint_tab)
@@ -2449,7 +2402,7 @@ class Ui_SettingsWindow(object):
 
         self.tabWidget.addTab(self.dio_tab, "")
 
-        self.gridLayout.addWidget(self.tabWidget, 2, 1, 1, 1)
+        self.gridLayout.addWidget(self.tabWidget, 0, 0, 1, 1)
 
         SettingsWindow.setCentralWidget(self.centralwidget)
         self.toolBar = QToolBar(SettingsWindow)
@@ -2457,12 +2410,9 @@ class Ui_SettingsWindow(object):
         SettingsWindow.addToolBar(Qt.TopToolBarArea, self.toolBar)
 #if QT_CONFIG(shortcut)
         self.config_path_label.setBuddy(self.config_path_edit)
-        self.data_dir_label.setBuddy(self.data_dir_edit)
         self.log_path_label.setBuddy(self.data_dir_edit)
-        self.max_num_ev_label.setBuddy(self.max_num_ev_box)
+        self.data_dir_label.setBuddy(self.data_dir_edit)
         self.max_ev_time_label.setBuddy(self.max_ev_time_box)
-        self.source_label.setBuddy(self.max_ev_time_box)
-        self.pressure_setpoint_label.setBuddy(self.max_ev_time_box)
         self.acous_post_trig_label.setBuddy(self.acous_post_trig_box)
         self.acous_trig_delay_label.setBuddy(self.acous_trig_delay_box)
         self.acous_trig_timeout_label.setBuddy(self.acous_trig_timeout_box)
@@ -2482,23 +2432,10 @@ class Ui_SettingsWindow(object):
         self.trig_in_pins_label.setBuddy(self.trig_in_pins_edit)
         self.on_time_pin_label.setBuddy(self.on_time_pin_edit)
 #endif // QT_CONFIG(shortcut)
-        QWidget.setTabOrder(self.tabWidget, self.files_scroll_area)
-        QWidget.setTabOrder(self.files_scroll_area, self.run_scroll_area)
-        QWidget.setTabOrder(self.run_scroll_area, self.sipm_scroll_area)
         QWidget.setTabOrder(self.sipm_scroll_area, self.acoustics_scroll_area)
         QWidget.setTabOrder(self.acoustics_scroll_area, self.cam_scroll_area)
         QWidget.setTabOrder(self.cam_scroll_area, self.dio_scroll_area)
-        QWidget.setTabOrder(self.dio_scroll_area, self.config_path_edit)
-        QWidget.setTabOrder(self.config_path_edit, self.config_path_but)
-        QWidget.setTabOrder(self.config_path_but, self.log_path_edit)
-        QWidget.setTabOrder(self.log_path_edit, self.log_path_but)
-        QWidget.setTabOrder(self.log_path_but, self.data_dir_edit)
-        QWidget.setTabOrder(self.data_dir_edit, self.data_dir_but)
-        QWidget.setTabOrder(self.data_dir_but, self.source_box)
-        QWidget.setTabOrder(self.source_box, self.pressure_setpoint_box)
-        QWidget.setTabOrder(self.pressure_setpoint_box, self.max_ev_time_box)
-        QWidget.setTabOrder(self.max_ev_time_box, self.max_num_ev_box)
-        QWidget.setTabOrder(self.max_num_ev_box, self.sipm_ip_addr_edit)
+        QWidget.setTabOrder(self.dio_scroll_area, self.sipm_ip_addr_edit)
         QWidget.setTabOrder(self.sipm_ip_addr_edit, self.sipm_bias_box)
         QWidget.setTabOrder(self.sipm_bias_box, self.sipm_qp_box)
         QWidget.setTabOrder(self.sipm_qp_box, self.caen_model_box)
@@ -2703,17 +2640,17 @@ class Ui_SettingsWindow(object):
 
         self.retranslateUi(SettingsWindow)
         self.actionClose_Window.triggered.connect(SettingsWindow.close)
-        self.config_path_but.clicked.connect(SettingsWindow.select_config_path)
-        self.data_dir_but.clicked.connect(SettingsWindow.select_data_dir)
         self.actionApply_config.triggered.connect(SettingsWindow.apply_config)
         self.actionSaveConfig.triggered.connect(SettingsWindow.save_config)
         self.actionReloadConfig.triggered.connect(SettingsWindow.load_config)
-        self.log_path_but.clicked.connect(SettingsWindow.select_log_path)
-        self.trigger_sketch_but.clicked.connect(SettingsWindow.select_trigger_sketch_dir)
-        self.clock_sketch_but.clicked.connect(SettingsWindow.select_clock_sketch_dir)
         self.position_sketch_but.clicked.connect(SettingsWindow.select_position_sketch_dir)
+        self.trigger_sketch_but.clicked.connect(SettingsWindow.select_trigger_sketch_dir)
+        self.log_path_but.clicked.connect(SettingsWindow.select_log_path)
+        self.data_dir_but.clicked.connect(SettingsWindow.select_data_dir)
+        self.clock_sketch_but.clicked.connect(SettingsWindow.select_clock_sketch_dir)
+        self.config_path_but.clicked.connect(SettingsWindow.select_config_path)
 
-        self.tabWidget.setCurrentIndex(5)
+        self.tabWidget.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(SettingsWindow)
@@ -2747,24 +2684,15 @@ class Ui_SettingsWindow(object):
         self.actionClose_Window.setShortcut(QCoreApplication.translate("SettingsWindow", u"Ctrl+W", None))
 #endif // QT_CONFIG(shortcut)
         self.config_path_label.setText(QCoreApplication.translate("SettingsWindow", u"Config Path", None))
-        self.data_dir_label.setText(QCoreApplication.translate("SettingsWindow", u"Data Dir", None))
-        self.config_path_but.setText(QCoreApplication.translate("SettingsWindow", u"...", None))
-        self.data_dir_but.setText(QCoreApplication.translate("SettingsWindow", u"...", None))
         self.log_path_label.setText(QCoreApplication.translate("SettingsWindow", u"Log Path", None))
         self.log_path_but.setText(QCoreApplication.translate("SettingsWindow", u"...", None))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.general_tab), QCoreApplication.translate("SettingsWindow", u"General", None))
-        self.max_num_ev_label.setText(QCoreApplication.translate("SettingsWindow", u"Max Num of Events", None))
-        self.source_box.setItemText(0, QCoreApplication.translate("SettingsWindow", u"Bg", None))
-        self.source_box.setItemText(1, QCoreApplication.translate("SettingsWindow", u"Cf-252", None))
-        self.source_box.setItemText(2, QCoreApplication.translate("SettingsWindow", u"Co-57", None))
-        self.source_box.setItemText(3, QCoreApplication.translate("SettingsWindow", u"Cs-137", None))
-
+        self.config_path_but.setText(QCoreApplication.translate("SettingsWindow", u"...", None))
+        self.data_dir_label.setText(QCoreApplication.translate("SettingsWindow", u"Data Dir", None))
+        self.data_dir_but.setText(QCoreApplication.translate("SettingsWindow", u"...", None))
         self.max_ev_time_box.setSuffix(QCoreApplication.translate("SettingsWindow", u"s", None))
+        self.max_num_ev_label.setText(QCoreApplication.translate("SettingsWindow", u"Max Num of Events", None))
         self.max_ev_time_label.setText(QCoreApplication.translate("SettingsWindow", u"Max Event Time", None))
-        self.source_label.setText(QCoreApplication.translate("SettingsWindow", u"Source", None))
-        self.pressure_setpoint_label.setText(QCoreApplication.translate("SettingsWindow", u"Pressure Setpoint", None))
-        self.pressure_setpoint_box.setSuffix(QCoreApplication.translate("SettingsWindow", u"psia", None))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.run_tab), QCoreApplication.translate("SettingsWindow", u"Run", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.general_tab), QCoreApplication.translate("SettingsWindow", u"General", None))
         self.sipm_ip_addr_label.setText(QCoreApplication.translate("SettingsWindow", u"IP Addr", None))
         self.sipm_bias_box.setSuffix(QCoreApplication.translate("SettingsWindow", u"V", None))
         self.sipm_qp_box.setSuffix(QCoreApplication.translate("SettingsWindow", u"V", None))

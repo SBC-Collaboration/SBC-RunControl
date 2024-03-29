@@ -89,7 +89,6 @@ class RunHandlingWorker(QObject):
         # event data tuple and save data to disk
         ev_number = [int(i) for i in self.main.run_number.split("_")]
         ev_number.append(self.main.ev_number)
-        print(self.main.run_number.split("_"))
         self.event_data = ({"ev_number": ev_number,
                             # list of date, run number, event number: [20240101, 0, 0]
                             "ev_livetime": self.event_livetime, # event livetime (ms)

@@ -16,19 +16,19 @@ from PySide6.QtGui import (QAction, QBrush, QColor, QConicalGradient,
     QIcon, QImage, QKeySequence, QLinearGradient,
     QPainter, QPalette, QPixmap, QRadialGradient,
     QTransform)
-from PySide6.QtWidgets import (QAbstractScrollArea, QApplication, QCheckBox, QFrame,
-    QGridLayout, QHBoxLayout, QLabel, QLayout,
-    QLineEdit, QMainWindow, QPlainTextEdit, QPushButton,
-    QScrollArea, QSizePolicy, QSpacerItem, QSpinBox,
-    QTabWidget, QToolBar, QToolButton, QVBoxLayout,
-    QWidget)
+from PySide6.QtWidgets import (QAbstractScrollArea, QApplication, QCheckBox, QComboBox,
+    QDoubleSpinBox, QFrame, QGridLayout, QHBoxLayout,
+    QLabel, QLayout, QLineEdit, QMainWindow,
+    QPlainTextEdit, QPushButton, QScrollArea, QSizePolicy,
+    QSpacerItem, QSpinBox, QTabWidget, QToolBar,
+    QToolButton, QVBoxLayout, QWidget)
 import resources_rc
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(500, 473)
+        MainWindow.resize(1000, 800)
         sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -236,61 +236,103 @@ class Ui_MainWindow(object):
         self.scrollArea_2.setWidgetResizable(True)
         self.scrollAreaWidgetContents_2 = QWidget()
         self.scrollAreaWidgetContents_2.setObjectName(u"scrollAreaWidgetContents_2")
-        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, 0, 346, 402))
+        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, 0, 846, 729))
         self.verticalLayout_8 = QVBoxLayout(self.scrollAreaWidgetContents_2)
         self.verticalLayout_8.setSpacing(3)
         self.verticalLayout_8.setObjectName(u"verticalLayout_8")
         self.verticalLayout_8.setContentsMargins(0, 0, 0, 0)
-        self.horizontalLayout_5 = QHBoxLayout()
-        self.horizontalLayout_5.setSpacing(3)
-        self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
-        self.horizontalLayout_5.setSizeConstraint(QLayout.SetDefaultConstraint)
-        self.horizontalLayout_5.setContentsMargins(0, 0, 0, 0)
-        self.toolButton = QToolButton(self.scrollAreaWidgetContents_2)
-        self.toolButton.setObjectName(u"toolButton")
-
-        self.horizontalLayout_5.addWidget(self.toolButton)
-
         self.comment_grid = QGridLayout()
         self.comment_grid.setSpacing(3)
         self.comment_grid.setObjectName(u"comment_grid")
         self.comment_grid.setSizeConstraint(QLayout.SetDefaultConstraint)
+        self.source_box = QComboBox(self.scrollAreaWidgetContents_2)
+        self.source_box.addItem("")
+        self.source_box.addItem("")
+        self.source_box.addItem("")
+        self.source_box.addItem("")
+        self.source_box.setObjectName(u"source_box")
+        self.source_box.setEditable(True)
+
+        self.comment_grid.addWidget(self.source_box, 2, 1, 1, 1)
+
+        self.source_location_box = QComboBox(self.scrollAreaWidgetContents_2)
+        self.source_location_box.setObjectName(u"source_location_box")
+
+        self.comment_grid.addWidget(self.source_location_box, 3, 1, 1, 1)
+
+        self.source_location_label = QLabel(self.scrollAreaWidgetContents_2)
+        self.source_location_label.setObjectName(u"source_location_label")
+        sizePolicy4 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Minimum)
+        sizePolicy4.setHorizontalStretch(0)
+        sizePolicy4.setVerticalStretch(0)
+        sizePolicy4.setHeightForWidth(self.source_location_label.sizePolicy().hasHeightForWidth())
+        self.source_location_label.setSizePolicy(sizePolicy4)
+        font1 = QFont()
+        font1.setKerning(True)
+        self.source_location_label.setFont(font1)
+        self.source_location_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.comment_grid.addWidget(self.source_location_label, 3, 0, 1, 1)
+
+        self.source_label = QLabel(self.scrollAreaWidgetContents_2)
+        self.source_label.setObjectName(u"source_label")
+        self.source_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.comment_grid.addWidget(self.source_label, 2, 0, 1, 1)
+
         self.save_comment_but = QPushButton(self.scrollAreaWidgetContents_2)
         self.save_comment_but.setObjectName(u"save_comment_but")
 
-        self.comment_grid.addWidget(self.save_comment_but, 1, 2, 1, 1)
+        self.comment_grid.addWidget(self.save_comment_but, 5, 4, 1, 1)
 
         self.comment_persist_box = QCheckBox(self.scrollAreaWidgetContents_2)
         self.comment_persist_box.setObjectName(u"comment_persist_box")
 
-        self.comment_grid.addWidget(self.comment_persist_box, 1, 0, 1, 1)
+        self.comment_grid.addWidget(self.comment_persist_box, 5, 2, 1, 1)
 
         self.edit_comment_but = QPushButton(self.scrollAreaWidgetContents_2)
         self.edit_comment_but.setObjectName(u"edit_comment_but")
 
-        self.comment_grid.addWidget(self.edit_comment_but, 1, 1, 1, 1)
+        self.comment_grid.addWidget(self.edit_comment_but, 5, 3, 1, 1)
+
+        self.pressure_setpoint_label = QLabel(self.scrollAreaWidgetContents_2)
+        self.pressure_setpoint_label.setObjectName(u"pressure_setpoint_label")
+        self.pressure_setpoint_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.comment_grid.addWidget(self.pressure_setpoint_label, 4, 0, 1, 1)
+
+        self.pressure_setpoint_box = QDoubleSpinBox(self.scrollAreaWidgetContents_2)
+        self.pressure_setpoint_box.setObjectName(u"pressure_setpoint_box")
+        self.pressure_setpoint_box.setFont(font1)
+        self.pressure_setpoint_box.setFrame(True)
+        self.pressure_setpoint_box.setMaximum(1000.000000000000000)
+
+        self.comment_grid.addWidget(self.pressure_setpoint_box, 4, 1, 1, 1)
 
         self.comment_edit = QPlainTextEdit(self.scrollAreaWidgetContents_2)
         self.comment_edit.setObjectName(u"comment_edit")
-        sizePolicy4 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
-        sizePolicy4.setHorizontalStretch(0)
-        sizePolicy4.setVerticalStretch(0)
-        sizePolicy4.setHeightForWidth(self.comment_edit.sizePolicy().hasHeightForWidth())
-        self.comment_edit.setSizePolicy(sizePolicy4)
-        font1 = QFont()
-        font1.setKerning(True)
+        sizePolicy5 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
+        sizePolicy5.setHorizontalStretch(0)
+        sizePolicy5.setVerticalStretch(0)
+        sizePolicy5.setHeightForWidth(self.comment_edit.sizePolicy().hasHeightForWidth())
+        self.comment_edit.setSizePolicy(sizePolicy5)
         self.comment_edit.setFont(font1)
         self.comment_edit.setFrameShape(QFrame.NoFrame)
         self.comment_edit.setSizeAdjustPolicy(QAbstractScrollArea.AdjustToContents)
         self.comment_edit.setTextInteractionFlags(Qt.LinksAccessibleByKeyboard|Qt.LinksAccessibleByMouse|Qt.TextBrowserInteraction|Qt.TextEditable|Qt.TextEditorInteraction|Qt.TextSelectableByKeyboard|Qt.TextSelectableByMouse)
 
-        self.comment_grid.addWidget(self.comment_edit, 0, 0, 1, 3)
+        self.comment_grid.addWidget(self.comment_edit, 2, 2, 3, 3)
 
 
-        self.horizontalLayout_5.addLayout(self.comment_grid)
+        self.verticalLayout_8.addLayout(self.comment_grid)
 
+        self.gridLayout_2 = QGridLayout()
+        self.gridLayout_2.setObjectName(u"gridLayout_2")
+        self.gridLayout_2.setContentsMargins(-1, 0, 0, 0)
+        self.gridLayout_2.setColumnStretch(1, 1)
+        self.gridLayout_2.setColumnStretch(3, 1)
 
-        self.verticalLayout_8.addLayout(self.horizontalLayout_5)
+        self.verticalLayout_8.addLayout(self.gridLayout_2)
 
         self.horizontalLayout_6 = QHBoxLayout()
         self.horizontalLayout_6.setSpacing(3)
@@ -333,7 +375,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 346, 402))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 846, 729))
         self.verticalLayout_2 = QVBoxLayout(self.scrollAreaWidgetContents)
         self.verticalLayout_2.setSpacing(3)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
@@ -348,11 +390,11 @@ class Ui_MainWindow(object):
 
         self.camera_status_label = QLabel(self.scrollAreaWidgetContents)
         self.camera_status_label.setObjectName(u"camera_status_label")
-        sizePolicy5 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Preferred)
-        sizePolicy5.setHorizontalStretch(0)
-        sizePolicy5.setVerticalStretch(0)
-        sizePolicy5.setHeightForWidth(self.camera_status_label.sizePolicy().hasHeightForWidth())
-        self.camera_status_label.setSizePolicy(sizePolicy5)
+        sizePolicy6 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Preferred)
+        sizePolicy6.setHorizontalStretch(0)
+        sizePolicy6.setVerticalStretch(0)
+        sizePolicy6.setHeightForWidth(self.camera_status_label.sizePolicy().hasHeightForWidth())
+        self.camera_status_label.setSizePolicy(sizePolicy6)
         self.camera_status_label.setLayoutDirection(Qt.LeftToRight)
         self.camera_status_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
@@ -469,11 +511,11 @@ class Ui_MainWindow(object):
 
         self.next_imag_but = QToolButton(self.scrollAreaWidgetContents)
         self.next_imag_but.setObjectName(u"next_imag_but")
-        sizePolicy6 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Fixed)
-        sizePolicy6.setHorizontalStretch(0)
-        sizePolicy6.setVerticalStretch(0)
-        sizePolicy6.setHeightForWidth(self.next_imag_but.sizePolicy().hasHeightForWidth())
-        self.next_imag_but.setSizePolicy(sizePolicy6)
+        sizePolicy7 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Fixed)
+        sizePolicy7.setHorizontalStretch(0)
+        sizePolicy7.setVerticalStretch(0)
+        sizePolicy7.setHeightForWidth(self.next_imag_but.sizePolicy().hasHeightForWidth())
+        self.next_imag_but.setSizePolicy(sizePolicy7)
 
         self.horizontalLayout_3.addWidget(self.next_imag_but)
 
@@ -510,6 +552,8 @@ class Ui_MainWindow(object):
         self.toolBar.setObjectName(u"toolBar")
         self.toolBar.setAutoFillBackground(False)
         MainWindow.addToolBar(Qt.TopToolBarArea, self.toolBar)
+#if QT_CONFIG(shortcut)
+#endif // QT_CONFIG(shortcut)
 
         self.toolBar.addAction(self.action_quit)
         self.toolBar.addAction(self.action_settings)
@@ -555,10 +599,18 @@ class Ui_MainWindow(object):
         self.event_num_label.setText(QCoreApplication.translate("MainWindow", u"Event Num", None))
         self.event_time_label.setText(QCoreApplication.translate("MainWindow", u"Event Time", None))
         self.run_live_time_label.setText(QCoreApplication.translate("MainWindow", u"Run Live Time", None))
-        self.toolButton.setText(QCoreApplication.translate("MainWindow", u"...", None))
+        self.source_box.setItemText(0, QCoreApplication.translate("MainWindow", u"Bg", None))
+        self.source_box.setItemText(1, QCoreApplication.translate("MainWindow", u"Cf-252", None))
+        self.source_box.setItemText(2, QCoreApplication.translate("MainWindow", u"Co-57", None))
+        self.source_box.setItemText(3, QCoreApplication.translate("MainWindow", u"Cs-137", None))
+
+        self.source_location_label.setText(QCoreApplication.translate("MainWindow", u"Location", None))
+        self.source_label.setText(QCoreApplication.translate("MainWindow", u"Source", None))
         self.save_comment_but.setText(QCoreApplication.translate("MainWindow", u"Save", None))
         self.comment_persist_box.setText(QCoreApplication.translate("MainWindow", u"Remember", None))
         self.edit_comment_but.setText(QCoreApplication.translate("MainWindow", u"Edit", None))
+        self.pressure_setpoint_label.setText(QCoreApplication.translate("MainWindow", u"Pressure Setpoint", None))
+        self.pressure_setpoint_box.setSuffix(QCoreApplication.translate("MainWindow", u" psia", None))
         self.comment_edit.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Enter run comments here.", None))
         self.pushButton.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
         self.tabs_widget.setTabText(self.tabs_widget.indexOf(self.general_tab), QCoreApplication.translate("MainWindow", u"General", None))

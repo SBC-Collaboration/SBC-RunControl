@@ -26,10 +26,6 @@ class Config:
         ui.config_path_edit.setText(general_config["config_path"])
         ui.log_path_edit.setText(general_config["log_path"])
         ui.data_dir_edit.setText(general_config["data_dir"])
-
-        run_config = self.config["run"]
-        ui.source_box.setCurrentText(run_config["source"])
-        ui.pressure_setpoint_box.setValue(run_config["pressure_setpoint"])
         ui.max_ev_time_box.setValue(run_config["max_ev_time"])
         ui.max_num_ev_box.setValue(run_config["max_num_evs"])
 
