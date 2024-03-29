@@ -5,33 +5,81 @@ This documentation contains information for the data structures of different sav
 The master configuration file is saved in `.json` format. The data structure is:
 - `general`: General configuration for the run control software. This includes paths that the software uses in 
   normal operation. This information generally doesn't change across runs and different days.
-  - `config_path`
-  - `log_path`
-  - `data_dir`
-- `run`: Information specific to this run.
-  - `source`
-  - `pressure_setpoint` (psia)
-  - `max_ev_time` (s)
-  - `max_num_evs`
+  - `config_path` (`str`)
+  - `log_path` (`str`)
+  - `data_dir` (`str`)
+  - `max_ev_time` (`int`, s)
+  - `max_num_evs` (`int`)
 - `scint`
   - `amp`
-    - `ip_addr`
-    - `bias` (V)
-    - `qp` (V)
+    - `ip_addr` (`str`)
+    - `bias` (`float`, V)
+    - `qp` (`float`, V)
   - `caen`
-    - `model`
-    - `port`
-    - `connection`
-    - `evs_per_read`
-    - `rec_length`
-    - `post_trig`
-    - `trig_in`
-    - `decimation`
-    - `overlap`
-    - `polarity`
-    - `io_level`
-    - `ext_trig`
-    - `sw_trig`
+    - `model` (`str`)
+    - `port` (`int`)
+    - `connection` (`str`)
+    - `evs_per_read` (`int`)
+    - `rec_length` (`int`)
+    - `post_trig` (`int`)
+    - `trig_in` (`bool`)
+    - `decimation` (`int`)
+    - `overlap` (`bool`)
+    - `polarity` (`str`)
+    - `io_level` (`str`)
+    - `ext_trig` (`str`)
+    - `sw_trig` (`str`)
+  - `caen_g0`, `caen_g1`, `caen_g2`, `caen_g3`
+    - `enabled` (`bool`)
+    - `thresdhold` (`int`)
+    - `trig_mask` (`bool`, 8)
+    - `acq_mask` (`bool`, 8)
+    - `offsets` (`int`, 8)
+- `acous`
+  - `general`
+    - `sample_rate` (`str`)
+    - `pre_trig_len` (`int`)
+    - `post_trig_len` (`int`)
+    - `trig_timeout` (`int`)
+    - `trig_delay` (`int`)
+  - `per_channel`
+    - `ch1`, `ch2`, `ch3`, `ch4`, `ch5`, `ch6`, `ch7`, `ch8`
+      - `enabled` (`bool`)
+      - `range` (`int`)
+      - `offset` (`int`)
+      - `trig` (`bool`)
+      - `polarity` (`str`)
+      - `threshold` (`int`)
+- `cam`
+  - `cam1`, `cam2`, `cam3`
+    - `config_path` (`str`)
+    - `data_path` (`str`)
+    - `ip_addr` (`str`)
+    - `mode` (`int`)
+    - `trig_wait` (`float`)
+    - `exposure` (`int`)
+    - `buffer_len` (`int`)
+    - `post_trig` (`int`)
+    - `adc_threshold` (`int`)
+    - `pix_threshold` (`int`)
+    - `image_format` (`str`)
+    - `date_format` (`str`)
+    - `state_comm_pin` (`int`)
+    - `trig_en_pin` (`int`)
+    - `trig_latch_pin` (`int`)
+    - `state_pin` (`int`)
+    - `trig_pin` (`int`)
+- `dio`
+  - `arduinos`
+    - `trigger`
+      - `port` (`str`)
+      - `sketch` (`str`)
+    - `clock`
+      - `port` (`str`)
+      - `sketch` (`str`)
+    - `position`
+      - `port` (`str`)
+      - `sketch` (`str`)
 
 ## Event data
 This data is saved in the SBC binary format using `SBCBinaryFormat` library. The data structure is:

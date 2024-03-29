@@ -26,8 +26,8 @@ class Config:
         ui.config_path_edit.setText(general_config["config_path"])
         ui.log_path_edit.setText(general_config["log_path"])
         ui.data_dir_edit.setText(general_config["data_dir"])
-        ui.max_ev_time_box.setValue(run_config["max_ev_time"])
-        ui.max_num_ev_box.setValue(run_config["max_num_evs"])
+        ui.max_ev_time_box.setValue(general_config["max_ev_time"])
+        ui.max_num_ev_box.setValue(general_config["max_num_evs"])
 
         sipm_config = self.config["scint"]["amp"]
         ui.sipm_ip_addr_edit.setText(sipm_config["ip_addr"])
@@ -88,16 +88,16 @@ class Config:
         ui.cam1_trig_wait.setValue(cam1_config["trig_wait"])
         ui.cam1_exposure.setValue(cam1_config["exposure"])
         ui.cam1_buffer_len.setValue(cam1_config["buffer_len"])
-        ui.cam1_post_trig_len.setValue(cam1_config["frames_after"])
+        ui.cam1_post_trig_len.setValue(cam1_config["post_trig"])
         ui.cam1_adc_threshold.setValue(cam1_config["adc_threshold"])
         ui.cam1_pix_threshold.setValue(cam1_config["pix_threshold"])
         ui.cam1_image_format.setCurrentText(cam1_config["image_format"])
         ui.cam1_date_format.setText(cam1_config["date_format"])
-        ui.cam1_state_comm_pin.setValue(cam1_config["input_pins"]["state_com"])
-        ui.cam1_trig_enbl_pin.setValue(cam1_config["input_pins"]["trig_en"])
-        ui.cam1_trig_latch_pin.setValue(cam1_config["input_pins"]["trigger_latch"])
-        ui.cam1_state_pin.setValue(cam1_config["output_pins"]["state"])
-        ui.cam1_trig_pin.setValue(cam1_config["output_pins"]["trig"])
+        ui.cam1_state_comm_pin.setValue(cam1_config["state_comm_pin"])
+        ui.cam1_trig_enbl_pin.setValue(cam1_config["trig_en_pin"])
+        ui.cam1_trig_latch_pin.setValue(cam1_config["trig_latch_pin"])
+        ui.cam1_state_pin.setValue(cam1_config["state_pin"])
+        ui.cam1_trig_pin.setValue(cam1_config["trig_pin"])
 
         cam2_config = cam_config["cam2"]
         ui.cam2_config_path.setText(cam2_config["config_path"])
@@ -107,16 +107,16 @@ class Config:
         ui.cam2_trig_wait.setValue(cam2_config["trig_wait"])
         ui.cam2_exposure.setValue(cam2_config["exposure"])
         ui.cam2_buffer_len.setValue(cam2_config["buffer_len"])
-        ui.cam2_post_trig_len.setValue(cam2_config["frames_after"])
+        ui.cam2_post_trig_len.setValue(cam2_config["post_trig"])
         ui.cam2_adc_threshold.setValue(cam2_config["adc_threshold"])
         ui.cam2_pix_threshold.setValue(cam2_config["pix_threshold"])
         ui.cam2_image_format.setCurrentText(cam2_config["image_format"])
         ui.cam2_date_format.setText(cam2_config["date_format"])
-        ui.cam2_state_comm_pin.setValue(cam2_config["input_pins"]["state_com"])
-        ui.cam2_trig_enbl_pin.setValue(cam2_config["input_pins"]["trig_en"])
-        ui.cam2_trig_latch_pin.setValue(cam2_config["input_pins"]["trigger_latch"])
-        ui.cam2_state_pin.setValue(cam2_config["output_pins"]["state"])
-        ui.cam2_trig_pin.setValue(cam2_config["output_pins"]["trig"])
+        ui.cam2_state_comm_pin.setValue(cam2_config["state_comm_pin"])
+        ui.cam2_trig_enbl_pin.setValue(cam2_config["trig_en_pin"])
+        ui.cam2_trig_latch_pin.setValue(cam2_config["trig_latch_pin"])
+        ui.cam2_state_pin.setValue(cam2_config["state_pin"])
+        ui.cam2_trig_pin.setValue(cam2_config["trig_pin"])
 
         cam3_config = cam_config["cam3"]
         ui.cam3_config_path.setText(cam3_config["config_path"])
@@ -126,24 +126,24 @@ class Config:
         ui.cam3_trig_wait.setValue(cam3_config["trig_wait"])
         ui.cam3_exposure.setValue(cam3_config["exposure"])
         ui.cam3_buffer_len.setValue(cam3_config["buffer_len"])
-        ui.cam3_post_trig_len.setValue(cam3_config["frames_after"])
+        ui.cam3_post_trig_len.setValue(cam3_config["post_trig"])
         ui.cam3_adc_threshold.setValue(cam3_config["adc_threshold"])
         ui.cam3_pix_threshold.setValue(cam3_config["pix_threshold"])
         ui.cam3_image_format.setCurrentText(cam3_config["image_format"])
         ui.cam3_date_format.setText(cam3_config["date_format"])
-        ui.cam3_state_comm_pin.setValue(cam3_config["input_pins"]["state_com"])
-        ui.cam3_trig_enbl_pin.setValue(cam3_config["input_pins"]["trig_en"])
-        ui.cam3_trig_latch_pin.setValue(cam3_config["input_pins"]["trigger_latch"])
-        ui.cam3_state_pin.setValue(cam3_config["output_pins"]["state"])
-        ui.cam3_trig_pin.setValue(cam3_config["output_pins"]["trig"])
+        ui.cam3_state_comm_pin.setValue(cam3_config["state_comm_pin"])
+        ui.cam3_trig_enbl_pin.setValue(cam3_config["trig_en_pin"])
+        ui.cam3_trig_latch_pin.setValue(cam3_config["trig_latch_pin"])
+        ui.cam3_state_pin.setValue(cam3_config["state_pin"])
+        ui.cam3_trig_pin.setValue(cam3_config["trig_pin"])
 
-        dio_general_config = self.config["dio"]["general"]
-        ui.trigger_port_edit.setText(dio_general_config["trigger"]["port"])
-        ui.trigger_sketch_edit.setText(dio_general_config["trigger"]["sketch"])
-        ui.clock_port_edit.setText(dio_general_config["clock"]["port"])
-        ui.clock_sketch_edit.setText(dio_general_config["clock"]["sketch"])
-        ui.position_port_edit.setText(dio_general_config["position"]["port"])
-        ui.position_sketch_edit.setText(dio_general_config["position"]["sketch"])
+        arduinos_config = self.config["dio"]["arduinos"]
+        ui.trigger_port_edit.setText(arduinos_config["trigger"]["port"])
+        ui.trigger_sketch_edit.setText(arduinos_config["trigger"]["sketch"])
+        ui.clock_port_edit.setText(arduinos_config["clock"]["port"])
+        ui.clock_sketch_edit.setText(arduinos_config["clock"]["sketch"])
+        ui.position_port_edit.setText(arduinos_config["position"]["port"])
+        ui.position_sketch_edit.setText(arduinos_config["position"]["sketch"])
 
         self.logger.info("Configuration loaded from file.")
 
@@ -155,12 +155,6 @@ class Config:
             "config_path": ui.config_path_edit.text(),
             "log_path": ui.log_path_edit.text(),
             "data_dir": ui.data_dir_edit.text(),
-        }
-
-        # apply run config
-        run_config = {
-            "source": ui.source_box.currentText(),
-            "pressure_setpoint": ui.pressure_setpoint_box.value(),
             "max_ev_time": ui.max_ev_time_box.value(),
             "max_num_evs": ui.max_num_ev_box.value(),
         }
@@ -306,20 +300,16 @@ class Config:
                 "trig_wait": ui.cam1_trig_wait.value(),
                 "exposure": ui.cam1_exposure.value(),
                 "buffer_len": ui.cam1_buffer_len.value(),
-                "frames_after": ui.cam1_post_trig_len.value(),
+                "post_trig": ui.cam1_post_trig_len.value(),
                 "adc_threshold": ui.cam1_adc_threshold.value(),
                 "pix_threshold": ui.cam1_pix_threshold.value(),
                 "image_format": ui.cam1_image_format.currentText(),
                 "date_format": ui.cam1_date_format.text(),
-                "input_pins": {
-                    "state_com": ui.cam1_state_comm_pin.value(),
-                    "trig_en": ui.cam1_trig_enbl_pin.value(),
-                    "trigger_latch": ui.cam1_trig_latch_pin.value(),
-                },
-                "output_pins": {
-                    "state": ui.cam1_state_pin.value(),
-                    "trig": ui.cam1_trig_pin.value(),
-                },
+                "state_comm_pin": ui.cam1_state_comm_pin.value(),
+                "trig_en_pin": ui.cam1_trig_enbl_pin.value(),
+                "trig_latch_pin": ui.cam1_trig_latch_pin.value(),
+                "state_pin": ui.cam1_state_pin.value(),
+                "trig_pin": ui.cam1_trig_pin.value()
             },
             "cam2": {
                 "config_path": ui.cam2_config_path.text(),
@@ -329,20 +319,16 @@ class Config:
                 "trig_wait": ui.cam2_trig_wait.value(),
                 "exposure": ui.cam2_exposure.value(),
                 "buffer_len": ui.cam2_buffer_len.value(),
-                "frames_after": ui.cam2_post_trig_len.value(),
+                "post_trig": ui.cam2_post_trig_len.value(),
                 "adc_threshold": ui.cam2_adc_threshold.value(),
                 "pix_threshold": ui.cam2_pix_threshold.value(),
                 "image_format": ui.cam2_image_format.currentText(),
                 "date_format": ui.cam2_date_format.text(),
-                "input_pins": {
-                    "state_com": ui.cam2_state_comm_pin.value(),
-                    "trig_en": ui.cam2_trig_enbl_pin.value(),
-                    "trigger_latch": ui.cam2_trig_latch_pin.value(),
-                },
-                "output_pins": {
-                    "state": ui.cam2_state_pin.value(),
-                    "trig": ui.cam2_trig_pin.value(),
-                },
+                "state_comm_pin": ui.cam2_state_comm_pin.value(),
+                "trig_en_pin": ui.cam2_trig_enbl_pin.value(),
+                "trig_latch_pin": ui.cam2_trig_latch_pin.value(),
+                "state_pin": ui.cam2_state_pin.value(),
+                "trig_pin": ui.cam2_trig_pin.value()
             },
             "cam3": {
                 "config_path": ui.cam3_config_path.text(),
@@ -352,24 +338,20 @@ class Config:
                 "trig_wait": ui.cam3_trig_wait.value(),
                 "exposure": ui.cam3_exposure.value(),
                 "buffer_len": ui.cam3_buffer_len.value(),
-                "frames_after": ui.cam3_post_trig_len.value(),
+                "post_trig": ui.cam3_post_trig_len.value(),
                 "adc_threshold": ui.cam3_adc_threshold.value(),
                 "pix_threshold": ui.cam3_pix_threshold.value(),
                 "image_format": ui.cam3_image_format.currentText(),
                 "date_format": ui.cam3_date_format.text(),
-                "input_pins": {
-                    "state_com": ui.cam3_state_comm_pin.value(),
-                    "trig_en": ui.cam3_trig_enbl_pin.value(),
-                    "trigger_latch": ui.cam3_trig_latch_pin.value(),
-                },
-                "output_pins": {
-                    "state": ui.cam3_state_pin.value(),
-                    "trig": ui.cam3_trig_pin.value(),
-                },
+                "state_comm_pin": ui.cam3_state_comm_pin.value(),
+                "trig_en_pin": ui.cam3_trig_enbl_pin.value(),
+                "trig_latch_pin": ui.cam3_trig_latch_pin.value(),
+                "state_pin": ui.cam3_state_pin.value(),
+                "trig_pin": ui.cam3_trig_pin.value()
             },
         }
 
-        dio_general_config = {
+        arduinos_config = {
             "trigger": {
                 "port": ui.trigger_port_edit.text(),
                 "sketch": ui.trigger_sketch_edit.text(),
@@ -386,7 +368,6 @@ class Config:
 
         self.config = {
             "general": general_config,
-            "run": run_config,
             "scint": {
                 "amp": sipm_config,
                 "caen": caen_config,
@@ -394,7 +375,7 @@ class Config:
             },
             "acous": {"general": acous_general_config, "per_channel": acous_ch_config},
             "cam": cam_config,
-            "dio": {"general": dio_general_config},
+            "dio": {"arduinos": arduinos_config},
         }
 
         self.logger.info("Configuration applied.")
