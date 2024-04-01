@@ -5,8 +5,8 @@ This documentation contains information for the data structures of different sav
 The master configuration file is saved in `.json` format. The data structure is:
 - `general`: General configuration for the run control software. This includes paths that the software uses in 
   normal operation. This information generally doesn't change across runs and different days.
-  - `config_path` (`str`)
-  - `log_path` (`str`)
+  - `config_path` (`str`): Path for the master config file.
+  - `log_path` (`str`): Path where the log file is saved.
   - `data_dir` (`str`)
   - `max_ev_time` (`int`, s)
   - `max_num_evs` (`int`)
@@ -80,6 +80,10 @@ The master configuration file is saved in `.json` format. The data structure is:
     - `position`
       - `port` (`str`)
       - `sketch` (`str`)
+
+## Run data
+The run data is saved in the run-data tables in the slow control SQL database. There is one line per run.
+
 
 ## Event data
 This data is saved in the SBC binary format using `SBCBinaryFormat` library. The data structure is:

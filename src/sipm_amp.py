@@ -6,8 +6,7 @@ class SiPMAmp:
     def __init__(self, main_window):
         self.main = main_window
         self.config = main_window.config_class.config
-        self.logger = logging.getLogger(__name__)
-        self.logger.addHandler(logging.StreamHandler())
+        self.logger = logging.getLogger("rc")
         os.putenv("PATH", "/home/sbc/packages")
         self.username = "pi"
         self.client = pm.client.SSHClient()

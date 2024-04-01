@@ -28,10 +28,11 @@ class RunHandlingWorker(QObject):
     def __init__(self, main_window):
         super(RunHandlingWorker, self).__init__()
         self.main = main_window
+        self.logger = logging.getLogger("rc")
+        self.logger.debug("Worker class initialized.")
 
     def start_program(self):
         """Processes to start program"""
-        self.state.emit("Preparing")
         # for arduino in ["trigger", "clock", "position"]:
         #     self.main_window.arduinos_class.upload_sketch(arduino)
 
@@ -43,8 +44,12 @@ class RunHandlingWorker(QObject):
         """Processes to start run"""
         self.main.create_run_directory()
         self.state.emit("Starting")
-        run_json_path = os.path.join(self.main.run_dir, f"{self.main.run_number}.json")
-        self.main.config_class.save_config(run_json_path)
+        run_json_path = os.path.join(self.main.run_dir, f"{self.main.run_id}.json")
+        run_log_path = os.path.join(self.main.run_dir, f"{self.main.run_id}.log")
+        file_handler = logging.FileHandler(run_log_path, mode="a")
+        file_handler.setLevel(logging.INFO)
+        file_handler.setFormatter(self.main.log_formatter)
+        self.logger.addHandler(file_handler)
 
         # initialize run data structure
         self.run_data = []
@@ -58,7 +63,9 @@ class RunHandlingWorker(QObject):
         """Processes to start run"""
         self.state.emit("Stopping")
         self.main.stopping_run = False
+
         time.sleep(1)
+        self.logger.removeHandler(self.logger.handlers[-1])
         self.state.emit("Idle")
         self.run_stopped.emit()
 
@@ -82,23 +89,40 @@ class RunHandlingWorker(QObject):
         self.event_livetime = self.main.event_timer.elapsed()
         self.main.run_livetime += self.event_livetime
         self.state.emit("Compressing")
-        self.trigger_source = "cam1" # TODO: implement trigger source logic
-        self.trigger_dict = {"cam1": 0, "cam2": 1, "cam3": 2, "RC_Timeout": 3, "RC_But": 4, "PLC": 5, "Kulite_Ar": 6,
-                             "Kulite_CF4":7, "Button": 8, "Unknown": 9}
+        self.trigger_source = "cam1"  # TODO: implement trigger source logic
+        self.trigger_dict = {
+            "cam1": 0,
+            "cam2": 1,
+            "cam3": 2,
+            "RC_Timeout": 3,
+            "RC_But": 4,
+            "PLC": 5,
+            "Kulite_Ar": 6,
+            "Kulite_CF4": 7,
+            "Button": 8,
+            "Unknown": 9,
+        }
 
         # event data tuple and save data to disk
-        ev_number = [int(i) for i in self.main.run_number.split("_")]
+        ev_number = [int(i) for i in self.main.run_id.split("_")]
         ev_number.append(self.main.ev_number)
-        self.event_data = ({"ev_number": ev_number,
-                            # list of date, run number, event number: [20240101, 0, 0]
-                            "ev_livetime": self.event_livetime, # event livetime (ms)
-                            "run_livetime": self.main.run_livetime, # event livetime (ms)
-                            "trigger_source": self.trigger_dict[self.trigger_source] # trigger source (dict)
-                            })
-        with Writer(os.path.join(self.main.event_dir, f"{self.main.run_number}_{self.main.ev_number}.sbc"),
-                    ["ev_number", "ev_livetime", "run_livetime", "trigger_source"],
-                    ['u4', 'u8', 'u8', 'u1'],
-                    [[3], [1], [1], [1]]) as event_writer:
+        self.event_data = {
+            "ev_number": ev_number,
+            # list of date, run number, event number: [20240101, 0, 0]
+            "ev_livetime": self.event_livetime,  # event livetime (ms)
+            "run_livetime": self.main.run_livetime,  # event livetime (ms)
+            "trigger_source": self.trigger_dict[
+                self.trigger_source
+            ],  # trigger source (dict)
+        }
+        with Writer(
+            os.path.join(
+                self.main.event_dir, f"{self.main.run_id}_{self.main.ev_number}.sbc"
+            ),
+            ["ev_number", "ev_livetime", "run_livetime", "trigger_source"],
+            ["u4", "u8", "u8", "u1"],
+            [[3], [1], [1], [1]],
+        ) as event_writer:
             event_writer.write(self.event_data)
         self.run_data.append(self.event_data)
 
@@ -110,7 +134,10 @@ class RunHandlingWorker(QObject):
         self.main.ev_number += 1
 
         # check if needs to stop run
-        if self.main.ev_number >= self.main.config_class.config["run"]["max_num_evs"]:
+        if (
+            self.main.ev_number
+            >= self.main.config_class.config["general"]["max_num_evs"]
+        ):
             self.main.stopping_run = True
 
         if self.main.stopping_run:

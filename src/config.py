@@ -12,10 +12,9 @@ class Config:
         self.main_window = main_window
         self.path = path
         self.config = {}
-        self.logger = logging.getLogger(__name__)
-        self.logger.addHandler(logging.StreamHandler())
+        self.logger = logging.getLogger("rc")
 
-        self.logger.info("Config class initialized.")
+        self.logger.debug("Config class initialized.")
 
     def load_config(self):
         with open(self.path, "r") as file:

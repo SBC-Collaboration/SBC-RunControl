@@ -20,8 +20,7 @@ class SettingsWindow(QMainWindow):
         self.config_class = self.main_window.config_class
         self.config = self.config_class.config
         self.load_config()
-        self.logger = logging.getLogger(__name__)
-        self.logger.addHandler(logging.StreamHandler())
+        self.logger = logging.getLogger("rc")
 
         self.logger.debug("Settings window loaded.")
 
@@ -67,8 +66,7 @@ class LogWindow(QMainWindow):
         self.ui.setupUi(self)
         self.main_window = main_window
         self.load_log()
-        self.logger = logging.getLogger(__name__)
-        self.logger.addHandler(logging.StreamHandler())
+        self.logger = logging.getLogger("rc")
 
         self.logger.info("Log window loaded.")
 

@@ -19,7 +19,7 @@ import re
 class MainWindow(QMainWindow):
     def __init__(self):
         super(MainWindow, self).__init__()
-        self.run_number = ""
+        self.run_id = ""
         self.ev_number = None
 
         self.ui = Ui_MainWindow()
@@ -31,11 +31,12 @@ class MainWindow(QMainWindow):
         self.stopping_run = False
 
         # logger initialization
-        self.logger = logging.getLogger(__name__)
+        self.logger = logging.getLogger("rc")
         self.log_filename = self.config_class.config["general"]["log_path"]
-        log_format = "%(asctime)s %(levelname)s > %(message)s"
+        self.log_format = "%(asctime)s %(levelname)s > %(message)s"
+        self.log_formatter = logging.Formatter(self.log_format)
         logging.basicConfig(
-            filename=self.log_filename, format=log_format, level=logging.INFO
+            filename=self.log_filename, format=self.log_format, level=logging.INFO
         )
         self.logger.addHandler(logging.StreamHandler())
 
@@ -198,19 +199,19 @@ class MainWindow(QMainWindow):
             int(re.search(r"\d+", r[9:])[0]) for r in os.listdir(data_dir) if today in r
         ]
         num = 0 if len(todays_runs) == 0 else max(todays_runs) + 1
-        # self.run_number = f"{today}_{num:02d}" # minimum two digits
-        self.run_number = f"{today}_{num}"
+        # self.run_id = f"{today}_{num:02d}" # minimum two digits
+        self.run_id = f"{today}_{num}"
 
-        self.run_dir = os.path.join(data_dir, self.run_number)
+        self.run_dir = os.path.join(data_dir, self.run_id)
         if not os.path.exists(self.run_dir):
             os.mkdir(self.run_dir)
-        self.ui.run_edit.setText(self.run_number)
+        self.ui.run_id_edit.setText(self.run_id)
 
     def active_monitor(self):
         if self.run_state == self.run_states.Active:
             if (
                 self.event_timer.elapsed()
-                > self.config_class.config["run"]["max_ev_time"] * 1000
+                > self.config_class.config["general"]["max_ev_time"] * 1000
             ):
                 self.stop_event()
 
@@ -294,10 +295,10 @@ class MainWindow(QMainWindow):
             self.logger.info(f"Event {self.ev_number} active.")
             stop_run_but_available = True
         elif self.run_state == self.run_states["Starting"]:
-            self.logger.info(f"Starting Run {self.run_number}.")
+            self.logger.info(f"Starting Run {self.run_id}.")
             stop_run_but_available = True
         elif self.run_state == self.run_states["Stopping"]:
-            self.logger.info(f"Stopping Run {self.run_number}.")
+            self.logger.info(f"Stopping Run {self.run_id}.")
         elif self.run_state == self.run_states["Expanding"]:
             self.logger.info(f"Event {self.ev_number} expanding")
             stop_run_but_available = True

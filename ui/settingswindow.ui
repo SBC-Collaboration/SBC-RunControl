@@ -49,7 +49,7 @@
     <item row="0" column="0">
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>4</number>
       </property>
       <property name="tabsClosable">
        <bool>false</bool>
@@ -173,7 +173,7 @@
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                 </property>
                 <property name="buddy">
-                 <cstring>data_dir_edit</cstring>
+                 <cstring>log_path_edit</cstring>
                 </property>
                </widget>
               </item>
@@ -267,6 +267,9 @@
                 <property name="alignment">
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                 </property>
+                <property name="buddy">
+                 <cstring>max_ev_time_box</cstring>
+                </property>
                </widget>
               </item>
               <item row="0" column="2">
@@ -278,7 +281,7 @@
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                 </property>
                 <property name="buddy">
-                 <cstring>max_ev_time_box</cstring>
+                 <cstring>max_num_ev_box</cstring>
                 </property>
                </widget>
               </item>
@@ -378,6 +381,9 @@
                 <property name="alignment">
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                 </property>
+                <property name="buddy">
+                 <cstring>sipm_ip_addr_edit</cstring>
+                </property>
                </widget>
               </item>
               <item row="2" column="1">
@@ -411,6 +417,9 @@
                 <property name="alignment">
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                 </property>
+                <property name="buddy">
+                 <cstring>sipm_qp_box</cstring>
+                </property>
                </widget>
               </item>
               <item row="2" column="0">
@@ -420,6 +429,9 @@
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_bias_box</cstring>
                 </property>
                </widget>
               </item>
@@ -469,6 +481,9 @@
                 <property name="alignment">
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                 </property>
+                <property name="buddy">
+                 <cstring>caen_polarity_box</cstring>
+                </property>
                </widget>
               </item>
               <item row="1" column="3">
@@ -489,6 +504,9 @@
                 <property name="alignment">
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                 </property>
+                <property name="buddy">
+                 <cstring>caen_io_box</cstring>
+                </property>
                </widget>
               </item>
               <item row="3" column="2">
@@ -498,6 +516,9 @@
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>caen_post_trig_box</cstring>
                 </property>
                </widget>
               </item>
@@ -552,6 +573,9 @@
                 <property name="alignment">
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                 </property>
+                <property name="buddy">
+                 <cstring>caen_conn_box</cstring>
+                </property>
                </widget>
               </item>
               <item row="7" column="0">
@@ -561,6 +585,9 @@
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>caen_ext_trig_box</cstring>
                 </property>
                </widget>
               </item>
@@ -603,6 +630,9 @@
                 <property name="alignment">
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                 </property>
+                <property name="buddy">
+                 <cstring>caen_overlap_box</cstring>
+                </property>
                </widget>
               </item>
               <item row="5" column="1">
@@ -626,6 +656,9 @@
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>caen_evs_box</cstring>
                 </property>
                </widget>
               </item>
@@ -681,6 +714,9 @@
                 <property name="alignment">
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                 </property>
+                <property name="buddy">
+                 <cstring>caen_model_box</cstring>
+                </property>
                </widget>
               </item>
               <item row="1" column="2">
@@ -690,6 +726,9 @@
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>caen_port_box</cstring>
                 </property>
                </widget>
               </item>
@@ -701,6 +740,9 @@
                 <property name="alignment">
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                 </property>
+                <property name="buddy">
+                 <cstring>caen_sw_trig_box</cstring>
+                </property>
                </widget>
               </item>
               <item row="3" column="0">
@@ -710,6 +752,9 @@
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>caen_length_box</cstring>
                 </property>
                </widget>
               </item>
@@ -731,6 +776,9 @@
                 <property name="alignment">
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                 </property>
+                <property name="buddy">
+                 <cstring>caen_decimation_box</cstring>
+                </property>
                </widget>
               </item>
               <item row="4" column="0">
@@ -740,6 +788,9 @@
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>caen_trigin_box</cstring>
                 </property>
                </widget>
               </item>
@@ -789,6 +840,9 @@
                 <property name="alignment">
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                 </property>
+                <property name="buddy">
+                 <cstring>caen_g0_enable_box</cstring>
+                </property>
                </widget>
               </item>
               <item row="1" column="1">
@@ -815,6 +869,9 @@
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>caen_g0_thres_box</cstring>
                 </property>
                </widget>
               </item>
@@ -2266,6 +2323,9 @@
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
               </property>
+              <property name="buddy">
+               <cstring>cam1_state_comm_pin</cstring>
+              </property>
              </widget>
             </item>
             <item row="11" column="2">
@@ -2294,6 +2354,9 @@
               </property>
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+              <property name="buddy">
+               <cstring>cam1_trig_enbl_pin</cstring>
               </property>
              </widget>
             </item>
@@ -2328,6 +2391,9 @@
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
               </property>
+              <property name="buddy">
+               <cstring>cam1_image_format</cstring>
+              </property>
              </widget>
             </item>
             <item row="21" column="0">
@@ -2344,6 +2410,9 @@
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
               </property>
+              <property name="buddy">
+               <cstring>cam1_trig_latch_pin</cstring>
+              </property>
              </widget>
             </item>
             <item row="10" column="0">
@@ -2359,6 +2428,9 @@
               </property>
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+              <property name="buddy">
+               <cstring>cam1_buffer_len</cstring>
               </property>
              </widget>
             </item>
@@ -2408,6 +2480,9 @@
               </property>
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+              <property name="buddy">
+               <cstring>cam1_config_path</cstring>
               </property>
              </widget>
             </item>
@@ -2480,6 +2555,9 @@
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
               </property>
+              <property name="buddy">
+               <cstring>cam1_post_trig_len</cstring>
+              </property>
              </widget>
             </item>
             <item row="3" column="0">
@@ -2495,6 +2573,9 @@
               </property>
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+              <property name="buddy">
+               <cstring>cam1_ip_addr</cstring>
               </property>
              </widget>
             </item>
@@ -2626,6 +2707,9 @@
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
               </property>
+              <property name="buddy">
+               <cstring>cam1_pix_threshold</cstring>
+              </property>
              </widget>
             </item>
             <item row="18" column="1">
@@ -2651,6 +2735,9 @@
               </property>
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+              <property name="buddy">
+               <cstring>cam1_date_format</cstring>
               </property>
              </widget>
             </item>
@@ -2686,6 +2773,9 @@
               </property>
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+              <property name="buddy">
+               <cstring>cam1_state_pin</cstring>
               </property>
              </widget>
             </item>
@@ -2801,6 +2891,9 @@
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
               </property>
+              <property name="buddy">
+               <cstring>cam1_data_path</cstring>
+              </property>
              </widget>
             </item>
             <item row="10" column="3">
@@ -2845,6 +2938,9 @@
               </property>
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+              <property name="buddy">
+               <cstring>cam1_exposure</cstring>
               </property>
              </widget>
             </item>
@@ -2953,6 +3049,9 @@
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
               </property>
+              <property name="buddy">
+               <cstring>cam1_adc_threshold</cstring>
+              </property>
              </widget>
             </item>
             <item row="22" column="1">
@@ -3015,6 +3114,9 @@
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
               </property>
+              <property name="buddy">
+               <cstring>cam1_trig_pin</cstring>
+              </property>
              </widget>
             </item>
             <item row="2" column="3">
@@ -3033,6 +3135,9 @@
               </property>
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+              <property name="buddy">
+               <cstring>cam1_mode</cstring>
               </property>
              </widget>
             </item>
@@ -3098,6 +3203,9 @@
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
               </property>
+              <property name="buddy">
+               <cstring>cam1_trig_wait</cstring>
+              </property>
              </widget>
             </item>
            </layout>
@@ -3144,7 +3252,7 @@
            <property name="geometry">
             <rect>
              <x>0</x>
-             <y>0</y>
+             <y>-73</y>
              <width>371</width>
              <height>515</height>
             </rect>
@@ -3314,6 +3422,9 @@
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>trig_or_pin_edit</cstring>
                 </property>
                </widget>
               </item>
