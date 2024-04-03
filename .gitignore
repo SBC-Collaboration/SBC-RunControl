@@ -2,3 +2,4 @@
 *.log
 __pycache__
 run-data
+dependencies/arduino-cli

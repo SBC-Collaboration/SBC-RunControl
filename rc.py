@@ -36,7 +36,7 @@ class MainWindow(QMainWindow):
         self.log_format = "%(asctime)s %(levelname)s > %(message)s"
         self.log_formatter = logging.Formatter(self.log_format)
         logging.basicConfig(
-            filename=self.log_filename, format=self.log_format, level=logging.INFO
+            filename=self.log_filename, format=self.log_format, level=logging.DEBUG
         )
         self.logger.addHandler(logging.StreamHandler())
 
@@ -234,7 +234,6 @@ class MainWindow(QMainWindow):
         self.ui.event_time_edit.setText(self.format_time(0))
         self.ui.run_live_time_edit.setText(self.format_time(0))
         self.ui.event_num_edit.setText(f"{0:2d}")
-
         self.run_handling_thread.started.disconnect()
         self.run_handling_thread.started.connect(self.run_handling_worker.start_run)
         self.run_handling_thread.start()

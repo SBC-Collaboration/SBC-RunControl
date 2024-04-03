@@ -77,6 +77,7 @@ class RunHandlingWorker(QObject):
         self.main.event_dir = os.path.join(self.main.run_dir, str(self.main.ev_number))
         if not os.path.exists(self.main.event_dir):
             os.mkdir(self.main.event_dir)
+        self.main.camera_class.start_camera()
 
         time.sleep(1)
 

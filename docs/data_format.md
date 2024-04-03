@@ -53,7 +53,7 @@ The master configuration file is saved in `.json` format. The data structure is:
 - `cam`
   - `cam1`, `cam2`, `cam3`
     - `config_path` (`str`)
-    - `data_path` (`str`)
+    - `data_path` (`str`): Data Path for the current event on the camera pi (mounted directory). For the main config file, this will be the mounted directory of the master data file. For the config file saved on camera for each event, it will be that path joined with run and event id.
     - `ip_addr` (`str`)
     - `mode` (`int`)
     - `trig_wait` (`float`)

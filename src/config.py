@@ -80,6 +80,7 @@ class Config:
 
         cam_config = self.config["cam"]
         cam1_config = cam_config["cam1"]
+        ui.cam1_rc_config_path.setText(cam1_config["rc_config_path"])
         ui.cam1_config_path.setText(cam1_config["config_path"])
         ui.cam1_data_path.setText(cam1_config["data_path"])
         ui.cam1_ip_addr.setText(cam1_config["ip_addr"])
@@ -99,6 +100,7 @@ class Config:
         ui.cam1_trig_pin.setValue(cam1_config["trig_pin"])
 
         cam2_config = cam_config["cam2"]
+        ui.cam2_rc_config_path.setText(cam2_config["rc_config_path"])
         ui.cam2_config_path.setText(cam2_config["config_path"])
         ui.cam2_data_path.setText(cam2_config["data_path"])
         ui.cam2_ip_addr.setText(cam2_config["ip_addr"])
@@ -118,6 +120,7 @@ class Config:
         ui.cam2_trig_pin.setValue(cam2_config["trig_pin"])
 
         cam3_config = cam_config["cam3"]
+        ui.cam3_rc_config_path.setText(cam3_config["rc_config_path"])
         ui.cam3_config_path.setText(cam3_config["config_path"])
         ui.cam3_data_path.setText(cam3_config["data_path"])
         ui.cam3_ip_addr.setText(cam3_config["ip_addr"])
@@ -292,6 +295,7 @@ class Config:
 
         cam_config = {
             "cam1": {
+                "rc_config_path": ui.cam1_rc_config_path.text(),
                 "config_path": ui.cam1_config_path.text(),
                 "data_path": ui.cam1_data_path.text(),
                 "ip_addr": ui.cam1_ip_addr.text(),
@@ -311,6 +315,7 @@ class Config:
                 "trig_pin": ui.cam1_trig_pin.value()
             },
             "cam2": {
+                "rc_config_path": ui.cam2_rc_config_path.text(),
                 "config_path": ui.cam2_config_path.text(),
                 "data_path": ui.cam2_data_path.text(),
                 "ip_addr": ui.cam2_ip_addr.text(),
@@ -330,6 +335,7 @@ class Config:
                 "trig_pin": ui.cam2_trig_pin.value()
             },
             "cam3": {
+                "rc_config_path": ui.cam3_rc_config_path.text(),
                 "config_path": ui.cam3_config_path.text(),
                 "data_path": ui.cam3_data_path.text(),
                 "ip_addr": ui.cam3_ip_addr.text(),
