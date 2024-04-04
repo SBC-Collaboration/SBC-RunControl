@@ -47,10 +47,9 @@ class SiPMAmp:
         self.config = main_window.config_class.config
         self.logger = logging.getLogger("rc")
         os.putenv("PATH", "/home/sbc/packages")
-        self.username = "pi"
+        self.username = "root"
         self.client = pm.client.SSHClient()
         self.client.set_missing_host_key_policy(pm.AutoAddPolicy())
-        self.save_config()
         self.logger.debug("SiPM amp class initialized.")
 
     def exec_commands(self, host, command):
@@ -75,13 +74,13 @@ class SiPMAmp:
             self.exec_commands(amp_config["ip_addr"], commands)
 
     def unbias_sipm_amp(self):
+        commands = [
+            "dactest -v hv 1 0",  # set HV rail to 0V
+            "enhv disable",  # disable HV rails
+            "setPin ENQP lo",  # enable charge pump
+        ]
         for amp in ["amp1", "amp2"]:
             amp_config = self.config["scint"][amp]
-            if not amp_config["enabled"]:
-                continue
-            commands = [
-                "dactest -v hv 1 0",  # set HV rail to 0V
-                "enhv disable",  # disable HV rails
-                "setPin ENQP lo"  # enable charge pump
-            ]
+            # if not amp_config["enabled"]:
+            #     # still check if ssh can be connected. if so, still unbias
             self.exec_commands(amp_config["ip_addr"], commands)

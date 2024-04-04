@@ -8,6 +8,7 @@ from src.workers import *
 from src.ui_loader import *
 from src.arduinos import *
 from src.cameras import *
+from src.sipm_amp import *
 import logging
 from enum import Enum
 import datetime
@@ -43,6 +44,7 @@ class MainWindow(QMainWindow):
         # initialize arduino class
         self.arduinos_class = Arduinos(self)
         self.camera_class = Cameras(self)
+        self.sipm_amp_class = SiPMAmp(self)
 
         # define four run states
         self.run_states = Enum(

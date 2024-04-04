@@ -126,6 +126,7 @@ class RunHandlingWorker(QObject):
         ) as event_writer:
             event_writer.write(self.event_data)
         self.run_data.append(self.event_data)
+        self.main.sipm_amp_class.unbias_sipm_amp()
 
         time.sleep(1)
         self.event_stopped.emit()
