@@ -14,7 +14,7 @@ class Cameras:
         self.client.set_missing_host_key_policy(pm.AutoAddPolicy())
         self.logger.debug("Cameras class initialized.")
 
-    def connect_camera(self, host, commands):
+    def exec_commands(self, host, commands):
         self.client.connect(host, username=self.username)
         for command in commands:
             _stdin, _stdout, _stderr = self.client.exec_command(command)
@@ -23,9 +23,10 @@ class Cameras:
 
     def save_config(self):
         for cam in ["cam1", "cam2", "cam3"]:
-            cam_config = self.main.config_class.config["cam"][cam].copy()
+            cam_config = self.config["cam"][cam].copy()
             # skip camera if not enabled
-            if not cam_config["enabled"]: continue
+            if not cam_config["enabled"]:
+                continue
             cam_config["data_path"] = os.path.join(cam_config["data_path"], self.main.run_id, str(self.main.ev_number))
             with open(cam_config["rc_config_path"], "w") as file:
                 json.dump(cam_config, file, indent=2)
@@ -33,8 +34,9 @@ class Cameras:
 
     def start_camera(self):
         self.save_config()
-        # commands = ["cd /home/pi/RPi_CameraServers", "python3 imdaq.py"]
-        # for cam in ["cam1", "cam2", "cam3"]:
-        #     cam_config = self.main.config_class.config["cam"][cam]
-        #     if not cam_config["enabled"]: continue
-        #     self.connect_camera(cam_config["ip_addr"], commands)
+        commands = ["cd /home/pi/RPi_CameraServers", "python3 imdaq.py"]
+        for cam in ["cam1", "cam2", "cam3"]:
+            cam_config = self.config["cam"][cam]
+            if not cam_config["enabled"]:
+                continue
+            self.exec_commands(cam_config["ip_addr"], commands)
