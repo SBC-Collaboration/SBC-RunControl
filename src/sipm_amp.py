@@ -14,13 +14,9 @@ class SiPMAmp:
         self.save_config()
         self.logger.debug("Cameras class initialized.")
 
-    def connect_camera(self, host, command):
+    def connect_sipm_amp(self, host, command):
         self.client.connect(host, username=self.username)
         _stdin, _stdout, _stderr = self.client.exec_command(command)
         print(_stdout.read().decode())
         self.client.close()
 
-    def save_config(self):
-        for cam in ["cam1", "cam2", "cam3"]:
-            cam_config = self.main.config_class.config["cam"][cam]
-            print(cam_config)

@@ -28,10 +28,17 @@ class Config:
         ui.max_ev_time_box.setValue(general_config["max_ev_time"])
         ui.max_num_ev_box.setValue(general_config["max_num_evs"])
 
-        sipm_config = self.config["scint"]["amp"]
-        ui.sipm_ip_addr_edit.setText(sipm_config["ip_addr"])
-        ui.sipm_bias_box.setValue(sipm_config["bias"])
-        ui.sipm_qp_box.setValue(sipm_config["qp"])
+        sipm_amp1_config = self.config["scint"]["amp1"]
+        ui.sipm_amp1_enabled_box.setChecked(sipm_amp1_config["enabled"])
+        ui.sipm_amp1_ip_addr_edit.setText(sipm_amp1_config["ip_addr"])
+        ui.sipm_amp1_bias_box.setValue(sipm_amp1_config["bias"])
+        ui.sipm_amp1_qp_box.setValue(sipm_amp1_config["qp"])
+
+        sipm_amp2_config = self.config["scint"]["amp2"]
+        ui.sipm_amp2_enabled_box.setChecked(sipm_amp2_config["enabled"])
+        ui.sipm_amp2_ip_addr_edit.setText(sipm_amp2_config["ip_addr"])
+        ui.sipm_amp2_bias_box.setValue(sipm_amp2_config["bias"])
+        ui.sipm_amp2_qp_box.setValue(sipm_amp2_config["qp"])
 
         caen_config = self.config["scint"]["caen"]
         ui.caen_model_box.setCurrentText(caen_config["model"])
@@ -80,6 +87,7 @@ class Config:
 
         cam_config = self.config["cam"]
         cam1_config = cam_config["cam1"]
+        ui.cam1_enabled_box.setChecked(cam1_config["enabled"])
         ui.cam1_rc_config_path.setText(cam1_config["rc_config_path"])
         ui.cam1_config_path.setText(cam1_config["config_path"])
         ui.cam1_data_path.setText(cam1_config["data_path"])
@@ -100,6 +108,7 @@ class Config:
         ui.cam1_trig_pin.setValue(cam1_config["trig_pin"])
 
         cam2_config = cam_config["cam2"]
+        ui.cam2_enabled_box.setChecked(cam2_config["enabled"])
         ui.cam2_rc_config_path.setText(cam2_config["rc_config_path"])
         ui.cam2_config_path.setText(cam2_config["config_path"])
         ui.cam2_data_path.setText(cam2_config["data_path"])
@@ -120,6 +129,7 @@ class Config:
         ui.cam2_trig_pin.setValue(cam2_config["trig_pin"])
 
         cam3_config = cam_config["cam3"]
+        ui.cam3_enabled_box.setChecked(cam3_config["enabled"])
         ui.cam3_rc_config_path.setText(cam3_config["rc_config_path"])
         ui.cam3_config_path.setText(cam3_config["config_path"])
         ui.cam3_data_path.setText(cam3_config["data_path"])
@@ -161,10 +171,18 @@ class Config:
             "max_num_evs": ui.max_num_ev_box.value(),
         }
 
-        sipm_config = {
-            "ip_addr": ui.sipm_ip_addr_edit.text(),
-            "bias": ui.sipm_bias_box.value(),
-            "qp": ui.sipm_qp_box.value(),
+        sipm_amp1_config = {
+            "enabled": ui.sipm_amp1.enabled_box.isChecked(),
+            "ip_addr": ui.sipm_amp1_ip_addr_edit.text(),
+            "bias": ui.sipm_amp1_bias_box.value(),
+            "qp": ui.sipm_amp1_qp_box.value(),
+        }
+
+        sipm_amp2_config = {
+            "enabled": ui.sipm_amp2.enabled_box.isChecked(),
+            "ip_addr": ui.sipm_amp2_ip_addr_edit.text(),
+            "bias": ui.sipm_amp2_bias_box.value(),
+            "qp": ui.sipm_amp2_qp_box.value(),
         }
 
         caen_config = {
@@ -295,6 +313,7 @@ class Config:
 
         cam_config = {
             "cam1": {
+                "enabled": ui.cam1_enabled_box.isChecked(),
                 "rc_config_path": ui.cam1_rc_config_path.text(),
                 "config_path": ui.cam1_config_path.text(),
                 "data_path": ui.cam1_data_path.text(),
@@ -312,9 +331,10 @@ class Config:
                 "trig_en_pin": ui.cam1_trig_enbl_pin.value(),
                 "trig_latch_pin": ui.cam1_trig_latch_pin.value(),
                 "state_pin": ui.cam1_state_pin.value(),
-                "trig_pin": ui.cam1_trig_pin.value()
+                "trig_pin": ui.cam1_trig_pin.value(),
             },
             "cam2": {
+                "enabled": ui.cam2_enabled_box.isChecked(),
                 "rc_config_path": ui.cam2_rc_config_path.text(),
                 "config_path": ui.cam2_config_path.text(),
                 "data_path": ui.cam2_data_path.text(),
@@ -332,9 +352,10 @@ class Config:
                 "trig_en_pin": ui.cam2_trig_enbl_pin.value(),
                 "trig_latch_pin": ui.cam2_trig_latch_pin.value(),
                 "state_pin": ui.cam2_state_pin.value(),
-                "trig_pin": ui.cam2_trig_pin.value()
+                "trig_pin": ui.cam2_trig_pin.value(),
             },
             "cam3": {
+                "enabled": ui.cam3_enabled_box.isChecked(),
                 "rc_config_path": ui.cam3_rc_config_path.text(),
                 "config_path": ui.cam3_config_path.text(),
                 "data_path": ui.cam3_data_path.text(),
@@ -352,7 +373,7 @@ class Config:
                 "trig_en_pin": ui.cam3_trig_enbl_pin.value(),
                 "trig_latch_pin": ui.cam3_trig_latch_pin.value(),
                 "state_pin": ui.cam3_state_pin.value(),
-                "trig_pin": ui.cam3_trig_pin.value()
+                "trig_pin": ui.cam3_trig_pin.value(),
             },
         }
 
@@ -374,7 +395,8 @@ class Config:
         self.config = {
             "general": general_config,
             "scint": {
-                "amp": sipm_config,
+                "amp1": sipm_amp1_config,
+                "amp2": sipm_amp2_config,
                 "caen": caen_config,
                 "caen_g0": caen_g0_config,
             },

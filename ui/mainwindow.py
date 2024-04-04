@@ -373,7 +373,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 342, 113))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 846, 729))
         self.verticalLayout_2 = QVBoxLayout(self.scrollAreaWidgetContents)
         self.verticalLayout_2.setSpacing(3)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
@@ -550,6 +550,16 @@ class Ui_MainWindow(object):
         self.toolBar.setObjectName(u"toolBar")
         self.toolBar.setAutoFillBackground(False)
         MainWindow.addToolBar(Qt.TopToolBarArea, self.toolBar)
+#if QT_CONFIG(shortcut)
+        self.run_id_label.setBuddy(self.run_id_edit)
+        self.event_num_label.setBuddy(self.event_num_edit)
+        self.event_time_label.setBuddy(self.event_time_edit)
+        self.run_live_time_label.setBuddy(self.run_live_time_edit)
+        self.source_location_label.setBuddy(self.source_location_box)
+        self.source_label.setBuddy(self.source_box)
+        self.pressure_setpoint_label.setBuddy(self.pressure_setpoint_box)
+        self.image_num_label.setBuddy(self.image_num_box)
+#endif // QT_CONFIG(shortcut)
 
         self.toolBar.addAction(self.action_quit)
         self.toolBar.addAction(self.action_settings)
@@ -563,7 +573,7 @@ class Ui_MainWindow(object):
         self.stop_run_but.clicked.connect(MainWindow.stop_run_but_pressed)
         self.sw_trigger_but.clicked.connect(MainWindow.sw_trigger)
 
-        self.tabs_widget.setCurrentIndex(0)
+        self.tabs_widget.setCurrentIndex(3)
 
 
         QMetaObject.connectSlotsByName(MainWindow)

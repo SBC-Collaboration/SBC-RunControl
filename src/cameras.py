@@ -24,6 +24,8 @@ class Cameras:
     def save_config(self):
         for cam in ["cam1", "cam2", "cam3"]:
             cam_config = self.main.config_class.config["cam"][cam].copy()
+            # skip camera if not enabled
+            if not cam_config["enabled"]: continue
             cam_config["data_path"] = os.path.join(cam_config["data_path"], self.main.run_id, str(self.main.ev_number))
             with open(cam_config["rc_config_path"], "w") as file:
                 json.dump(cam_config, file, indent=2)
@@ -34,4 +36,5 @@ class Cameras:
         # commands = ["cd /home/pi/RPi_CameraServers", "python3 imdaq.py"]
         # for cam in ["cam1", "cam2", "cam3"]:
         #     cam_config = self.main.config_class.config["cam"][cam]
+        #     if not cam_config["enabled"]: continue
         #     self.connect_camera(cam_config["ip_addr"], commands)

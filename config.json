@@ -1,14 +1,21 @@
 {
   "general": {
-    "config_path": "/home/sbc/RunControl/config.json",
-    "log_path": "/home/sbc/RunControl/logs/rc.log",
-    "data_dir": "/home/sbc/RunControl/run-data",
+    "config_path": "./config.json",
+    "log_path": "./logs/rc.log",
+    "data_dir": "./run-data",
     "max_ev_time": 2.0,
     "max_num_evs": 5
   },
   "scint": {
-    "amp": {
+    "amp1": {
+      "enabled": true,
       "ip_addr": "192.168.137.21",
+      "bias": 48.0,
+      "qp": 70.0
+    },
+    "amp2": {
+      "enabled": false,
+      "ip_addr": "192.168.137.22",
       "bias": 48.0,
       "qp": 70.0
     },
@@ -72,7 +79,7 @@
     },
     "per_channel": {
       "ch1": {
-        "enabled": true,
+        "enabled": false,
         "range": 0,
         "offset": 0,
         "trig": false,
@@ -80,7 +87,7 @@
         "threshold": 0
       },
       "ch2": {
-        "enabled": true,
+        "enabled": false,
         "range": 0,
         "offset": 0,
         "trig": false,
@@ -88,7 +95,7 @@
         "threshold": 0
       },
       "ch3": {
-        "enabled": true,
+        "enabled": false,
         "range": 0,
         "offset": 0,
         "trig": false,
@@ -96,7 +103,7 @@
         "threshold": 0
       },
       "ch4": {
-        "enabled": true,
+        "enabled": false,
         "range": 0,
         "offset": 0,
         "trig": false,
@@ -104,7 +111,7 @@
         "threshold": 0
       },
       "ch5": {
-        "enabled": true,
+        "enabled": false,
         "range": 0,
         "offset": 0,
         "trig": false,
@@ -112,7 +119,7 @@
         "threshold": 0
       },
       "ch6": {
-        "enabled": true,
+        "enabled": false,
         "range": 0,
         "offset": 0,
         "trig": false,
@@ -120,7 +127,7 @@
         "threshold": 0
       },
       "ch7": {
-        "enabled": true,
+        "enabled": false,
         "range": 0,
         "offset": 0,
         "trig": false,
@@ -128,7 +135,7 @@
         "threshold": 0
       },
       "ch8": {
-        "enabled": true,
+        "enabled": false,
         "range": 0,
         "offset": 0,
         "trig": false,
@@ -139,6 +146,7 @@
   },
   "cam": {
     "cam1": {
+      "enabled": true,
       "rc_config_path": "/home/sbc/RunControl/run-data/config/cam1-config.json",
       "config_path": "/mnt/rc-data/config/cam1-config.json",
       "data_path": "/mnt/rc-data/",
@@ -159,6 +167,7 @@
       "trig_pin": 24
     },
     "cam2": {
+      "enabled": false,
       "rc_config_path": "/home/sbc/RunControl/run-data/config/cam2-config.json",
       "config_path": "/mnt/rc-data/config/cam2-config.json",
       "data_path": "/mnt/rc-data/",
@@ -179,6 +188,7 @@
       "trig_pin": 24
     },
     "cam3": {
+      "enabled": false,
       "rc_config_path": "/home/sbc/RunControl/run-data/config/cam3-config.json",
       "config_path": "/mnt/rc-data/config/cam3-config.json",
       "data_path": "/mnt/rc-data/",
