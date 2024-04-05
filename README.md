@@ -2,6 +2,16 @@
 # SBC-RunControl
 Data acquisition software for SBC.
 
+# Documentations
+- [*Project structure*](docs/project_structure.md): Folders and files in this repository, and what do they do.
+- [*Data structure*](docs/data_format.md): Definition of data files saved by run control and related modules.
+  - [*Configuration*](docs/data_format.md#configuration-file): Master configuration json file used by run control 
+    software. Configuration files are generated from this file for each module.
+  - [*Run Data*](docs/data_format.md#run-data): The run data is saved in the `RunData` tables in the slow control SQL 
+    database. There is one line per run.
+  - [*Event Data](docs/data_format.md#event-data): This data is saved in the SBC binary format using SBCBinaryFormat 
+    library at the end of each event.
+
 # Installing Dependencies
 1. Install [Miniconda3](https://docs.conda.io/projects/miniconda/en/latest/miniconda-install.html) or [Anaconda3](https://docs.anaconda.com/free/anaconda/install/index.html).
 2. Open conda prompt inside this directory.
