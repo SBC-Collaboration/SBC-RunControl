@@ -1,45 +1,46 @@
 import paramiko as pm
 import logging
 import os
+import datetime
 
 
 class SiPMAmp:
     daq_mapping = {  # the two numbers are DAC address and DAC channel number
-        1: [5, 0],
-        2: [5, 1],
-        3: [5, 2],
-        4: [5, 3],
-        5: [5, 4],
-        6: [5, 5],
-        7: [5, 6],
-        8: [5, 7],
-        9: [2, 0],
-        10: [2, 1],
-        11: [2, 2],
-        12: [2, 3],
-        13: [2, 4],
-        14: [2, 5],
-        15: [2, 6],
-        16: [2, 7],
+        1: "5 0",
+        2: "5 1",
+        3: "5 2",
+        4: "5 3",
+        5: "5 4",
+        6: "5 5",
+        7: "5 6",
+        8: "5 7",
+        9: "2 0",
+        10: "2 1",
+        11: "2 2",
+        12: "2 3",
+        13: "2 4",
+        14: "2 5",
+        15: "2 6",
+        16: "2 7",
     }
 
     adc_mapping = {  # the three numbers are ADC address and ADC POS/NEG channel number
-        1: [6, 0, 1],
-        2: [6, 4, 5],
-        3: [6, 6, 7],
-        4: [6, 2, 3],
-        5: [4, 0, 1],
-        6: [4, 4, 5],
-        7: [4, 6, 7],
-        8: [4, 2, 3],
-        9: [3, 0, 1],
-        10: [3, 4, 5],
-        11: [3, 6, 7],
-        12: [3, 2, 3],
-        13: [1, 0, 1],
-        14: [1, 4, 5],
-        15: [1, 6, 7],
-        16: [1, 2, 3],
+        1: "6 0 1",
+        2: "6 4 5",
+        3: "6 6 7",
+        4: "6 2 3",
+        5: "4 0 1",
+        6: "4 4 5",
+        7: "4 6 7",
+        8: "4 2 3",
+        9: "3 0 1",
+        10: "3 4 5",
+        11: "3 6 7",
+        12: "3 2 3",
+        13: "1 0 1",
+        14: "1 4 5",
+        15: "1 6 7",
+        16: "1 2 3",
     }
 
     def __init__(self, main_window):
@@ -84,3 +85,20 @@ class SiPMAmp:
             # if not amp_config["enabled"]:
             #     # still check if ssh can be connected. if so, still unbias
             self.exec_commands(amp_config["ip_addr"], commands)
+
+    def run_iv_curve(self):
+        for amp in ["amp1", "amp2"]:
+            amp_config = self.config["scint"][amp]
+            if not amp_config["enabled"] or not amp_config["iv_enabled"]:
+                continue
+            start_v = amp_config["iv_start"]
+            stop_v = amp_config["iv_stop"]
+            step = amp_config["iv_step"]
+            adc_rate = 4 # 80 sps
+            num_readings =  6
+            now = datetime.date.today().strftime("%Y%m%d%H%M")
+            filename = os.path.join(amp_config["iv_data_dir"], str(now))
+            commands = [
+                "cd /root/nanopi",
+                f"iv_cmd.py --start_v {start_v} --stop_v {stop_v} --step {step} --adc_rate {adc_rate} --num_readings {num_readings} --file {filename}"
+            ]

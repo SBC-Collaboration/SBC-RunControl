@@ -319,7 +319,7 @@ class MainWindow(QMainWindow):
             self.ui.stop_run_but.setEnabled(False)
 
     def sw_trigger(self):
-        pass
+        time.sleep(1)
 
 
 if __name__ == "__main__":

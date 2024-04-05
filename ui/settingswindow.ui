@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>511</height>
+    <width>727</width>
+    <height>496</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -46,10 +46,10 @@
     <property name="spacing">
      <number>3</number>
     </property>
-    <item row="0" column="0">
+    <item row="0" column="1">
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>4</number>
+       <number>1</number>
       </property>
       <property name="tabsClosable">
        <bool>false</bool>
@@ -96,8 +96,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>388</width>
-             <height>442</height>
+             <width>717</width>
+             <height>423</height>
             </rect>
            </property>
            <property name="maximumSize">
@@ -340,10 +340,10 @@
           <widget class="QWidget" name="scrollAreaWidgetContents_2">
            <property name="geometry">
             <rect>
-             <x>0</x>
+             <x>-1</x>
              <y>0</y>
-             <width>371</width>
-             <height>512</height>
+             <width>704</width>
+             <height>430</height>
             </rect>
            </property>
            <property name="maximumSize">
@@ -369,7 +369,7 @@
              <number>0</number>
             </property>
             <item>
-             <layout class="QGridLayout" name="gridLayout_4">
+             <layout class="QGridLayout" name="sipm_amp1_grid">
               <property name="topMargin">
                <number>6</number>
               </property>
@@ -379,20 +379,65 @@
               <property name="spacing">
                <number>3</number>
               </property>
-              <item row="2" column="2">
-               <widget class="QLabel" name="sipm_amp1_qp_label">
+              <item row="2" column="4">
+               <widget class="QDoubleSpinBox" name="sipm_amp1_iv_step_box">
+                <property name="suffix">
+                 <string>V</string>
+                </property>
+                <property name="decimals">
+                 <number>2</number>
+                </property>
+                <property name="minimum">
+                 <double>0.000000000000000</double>
+                </property>
+                <property name="maximum">
+                 <double>10.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.050000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1">
+               <widget class="QLabel" name="sipm_amp1_ip_addr_label">
                 <property name="text">
-                 <string>QP Voltage</string>
+                 <string>IP Addr</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                 </property>
                 <property name="buddy">
-                 <cstring>sipm_amp1_qp_box</cstring>
+                 <cstring>sipm_amp1_ip_addr_edit</cstring>
                 </property>
                </widget>
               </item>
-              <item row="2" column="0">
+              <item row="1" column="8">
+               <widget class="QDoubleSpinBox" name="sipm_amp1_qp_box">
+                <property name="suffix">
+                 <string>V</string>
+                </property>
+                <property name="decimals">
+                 <number>1</number>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="3">
+               <widget class="QLabel" name="sipm_amp1_iv_step_label">
+                <property name="text">
+                 <string>IV Step</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp1_bias_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="5">
                <widget class="QLabel" name="sipm_amp1_bias_label">
                 <property name="text">
                  <string>Bias Voltage</string>
@@ -405,37 +450,7 @@
                 </property>
                </widget>
               </item>
-              <item row="0" column="3">
-               <widget class="QCheckBox" name="sipm_amp1_enabled_box">
-                <property name="text">
-                 <string>Enabled</string>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="1" colspan="3">
-               <widget class="QLineEdit" name="sipm_amp1_ip_addr_edit"/>
-              </item>
-              <item row="2" column="1">
-               <widget class="QDoubleSpinBox" name="sipm_amp1_bias_box">
-                <property name="suffix">
-                 <string>V</string>
-                </property>
-                <property name="decimals">
-                 <number>1</number>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="3">
-               <widget class="QDoubleSpinBox" name="sipm_amp1_qp_box">
-                <property name="suffix">
-                 <string>V</string>
-                </property>
-                <property name="decimals">
-                 <number>1</number>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="0" colspan="3">
+              <item row="0" column="1" colspan="7">
                <widget class="QLabel" name="sipm_amp1_label">
                 <property name="font">
                  <font>
@@ -450,34 +465,62 @@
                 </property>
                </widget>
               </item>
-              <item row="1" column="0">
-               <widget class="QLabel" name="sipm_amp1_ip_addr_label">
-                <property name="text">
-                 <string>IP Addr</string>
+              <item row="1" column="6">
+               <widget class="QDoubleSpinBox" name="sipm_amp1_bias_box">
+                <property name="suffix">
+                 <string>V</string>
                 </property>
-                <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                <property name="decimals">
+                 <number>1</number>
                 </property>
-                <property name="buddy">
-                 <cstring>sipm_amp1_ip_addr_edit</cstring>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
                 </property>
                </widget>
               </item>
-             </layout>
-            </item>
-            <item>
-             <layout class="QGridLayout" name="gridLayout_10">
-              <property name="topMargin">
-               <number>6</number>
-              </property>
-              <property name="bottomMargin">
-               <number>6</number>
-              </property>
-              <property name="spacing">
-               <number>3</number>
-              </property>
-              <item row="2" column="2">
-               <widget class="QLabel" name="sipm_amp2_qp_label">
+              <item row="2" column="6">
+               <widget class="QDoubleSpinBox" name="sipm_amp1_iv_start_box">
+                <property name="suffix">
+                 <string>V</string>
+                </property>
+                <property name="decimals">
+                 <number>1</number>
+                </property>
+                <property name="minimum">
+                 <double>-10.000000000000000</double>
+                </property>
+                <property name="maximum">
+                 <double>70.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="8">
+               <widget class="QDoubleSpinBox" name="sipm_amp1_iv_stop_box">
+                <property name="suffix">
+                 <string>V</string>
+                </property>
+                <property name="decimals">
+                 <number>1</number>
+                </property>
+                <property name="minimum">
+                 <double>-10.000000000000000</double>
+                </property>
+                <property name="maximum">
+                 <double>70.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="2">
+               <widget class="QLineEdit" name="sipm_amp1_ip_addr_edit"/>
+              </item>
+              <item row="1" column="7">
+               <widget class="QLabel" name="sipm_amp1_qp_label">
                 <property name="text">
                  <string>QP Voltage</string>
                 </property>
@@ -490,9 +533,52 @@
                </widget>
               </item>
               <item row="1" column="0">
-               <widget class="QLabel" name="sipm_amp2_ip_addr_label">
+               <widget class="QCheckBox" name="sipm_amp1_enabled_box">
                 <property name="text">
-                 <string>IP Addr</string>
+                 <string>Enabled</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="5">
+               <widget class="QLabel" name="sipm_amp1_iv_start_label">
+                <property name="text">
+                 <string>IV Start</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp1_bias_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="7">
+               <widget class="QLabel" name="sipm_amp1_iv_stop_label">
+                <property name="text">
+                 <string>IV Stop</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp1_bias_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QCheckBox" name="sipm_amp1_iv_enabled_box">
+                <property name="layoutDirection">
+                 <enum>Qt::LeftToRight</enum>
+                </property>
+                <property name="text">
+                 <string>IV Enabled</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="QLabel" name="sipm_amp1_iv_data_dir_label">
+                <property name="text">
+                 <string>Data Dir</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -502,17 +588,23 @@
                 </property>
                </widget>
               </item>
-              <item row="2" column="1">
-               <widget class="QDoubleSpinBox" name="sipm_amp2_bias_box">
-                <property name="suffix">
-                 <string>V</string>
-                </property>
-                <property name="decimals">
-                 <number>1</number>
-                </property>
-               </widget>
+              <item row="2" column="2">
+               <widget class="QLineEdit" name="sipm_amp1_iv_data_dir_edit"/>
               </item>
-              <item row="2" column="0">
+             </layout>
+            </item>
+            <item>
+             <layout class="QGridLayout" name="sipm_amp2_grid">
+              <property name="topMargin">
+               <number>6</number>
+              </property>
+              <property name="bottomMargin">
+               <number>6</number>
+              </property>
+              <property name="spacing">
+               <number>3</number>
+              </property>
+              <item row="1" column="6">
                <widget class="QLabel" name="sipm_amp2_bias_label">
                 <property name="text">
                  <string>Bias Voltage</string>
@@ -525,27 +617,55 @@
                 </property>
                </widget>
               </item>
-              <item row="2" column="3">
-               <widget class="QDoubleSpinBox" name="sipm_amp2_qp_box">
+              <item row="2" column="2" colspan="2">
+               <widget class="QLineEdit" name="sipm_amp2_iv_data_dir_edit"/>
+              </item>
+              <item row="2" column="9">
+               <widget class="QDoubleSpinBox" name="sipm_amp2_iv_stop_box">
                 <property name="suffix">
                  <string>V</string>
                 </property>
                 <property name="decimals">
                  <number>1</number>
                 </property>
-               </widget>
-              </item>
-              <item row="1" column="1" colspan="3">
-               <widget class="QLineEdit" name="sipm_amp2_ip_addr_edit"/>
-              </item>
-              <item row="0" column="3">
-               <widget class="QCheckBox" name="sipm_amp2_enabled_box">
-                <property name="text">
-                 <string>Enabled</string>
+                <property name="minimum">
+                 <double>-10.000000000000000</double>
+                </property>
+                <property name="maximum">
+                 <double>70.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
                 </property>
                </widget>
               </item>
-              <item row="0" column="0" colspan="3">
+              <item row="1" column="7">
+               <widget class="QDoubleSpinBox" name="sipm_amp2_bias_box">
+                <property name="suffix">
+                 <string>V</string>
+                </property>
+                <property name="decimals">
+                 <number>1</number>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="QLabel" name="sipm_amp2_ip_addr_label_2">
+                <property name="text">
+                 <string>Data Dir</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp1_ip_addr_edit</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0" colspan="10">
                <widget class="QLabel" name="sipm_amp2_label">
                 <property name="font">
                  <font>
@@ -560,6 +680,142 @@
                 </property>
                </widget>
               </item>
+              <item row="1" column="2" colspan="2">
+               <widget class="QLineEdit" name="sipm_amp2_ip_addr_edit"/>
+              </item>
+              <item row="2" column="4">
+               <widget class="QLabel" name="sipm_amp2_iv_step_label">
+                <property name="text">
+                 <string>IV Step</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp1_bias_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1">
+               <widget class="QLabel" name="sipm_amp2_ip_addr_label">
+                <property name="text">
+                 <string>IP Addr</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp1_ip_addr_edit</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="5">
+               <widget class="QDoubleSpinBox" name="sipm_amp2_iv_step_box">
+                <property name="suffix">
+                 <string>V</string>
+                </property>
+                <property name="decimals">
+                 <number>2</number>
+                </property>
+                <property name="minimum">
+                 <double>0.000000000000000</double>
+                </property>
+                <property name="maximum">
+                 <double>10.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.050000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="8">
+               <widget class="QLabel" name="sipm_amp2_iv_stop_label">
+                <property name="text">
+                 <string>IV Stop</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp1_bias_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="8">
+               <widget class="QLabel" name="sipm_amp2_qp_label">
+                <property name="text">
+                 <string>QP Voltage</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp1_qp_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="9">
+               <widget class="QDoubleSpinBox" name="sipm_amp2_qp_box">
+                <property name="suffix">
+                 <string>V</string>
+                </property>
+                <property name="decimals">
+                 <number>1</number>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="6">
+               <widget class="QLabel" name="sipm_amp2_iv_start_label">
+                <property name="text">
+                 <string>IV Start</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp1_bias_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QCheckBox" name="sipm_amp2_iv_enabled_box">
+                <property name="layoutDirection">
+                 <enum>Qt::LeftToRight</enum>
+                </property>
+                <property name="text">
+                 <string>IV Enabled</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="7">
+               <widget class="QDoubleSpinBox" name="sipm_amp2_iv_start_box">
+                <property name="suffix">
+                 <string>V</string>
+                </property>
+                <property name="decimals">
+                 <number>1</number>
+                </property>
+                <property name="minimum">
+                 <double>-10.000000000000000</double>
+                </property>
+                <property name="maximum">
+                 <double>70.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QCheckBox" name="sipm_amp2_enabled_box">
+                <property name="text">
+                 <string>Enabled</string>
+                </property>
+               </widget>
+              </item>
              </layout>
             </item>
             <item>
@@ -570,7 +826,7 @@
              </widget>
             </item>
             <item>
-             <layout class="QGridLayout" name="gridLayout_6">
+             <layout class="QGridLayout" name="caen_general_grid">
               <property name="topMargin">
                <number>6</number>
               </property>
@@ -580,70 +836,40 @@
               <property name="spacing">
                <number>3</number>
               </property>
-              <item row="6" column="1">
-               <widget class="QComboBox" name="caen_polarity_box">
-                <item>
-                 <property name="text">
-                  <string>Positive</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Negative</string>
-                 </property>
-                </item>
+              <item row="2" column="5">
+               <widget class="QCheckBox" name="caen_overlap_box">
+                <property name="text">
+                 <string>Overlap Reject</string>
+                </property>
                </widget>
               </item>
-              <item row="6" column="0">
-               <widget class="QLabel" name="caen_polarity_label">
+              <item row="2" column="0">
+               <widget class="QLabel" name="caen_length_label">
                 <property name="text">
-                 <string>Polarity</string>
+                 <string>Record Length</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                 </property>
                 <property name="buddy">
-                 <cstring>caen_polarity_box</cstring>
+                 <cstring>caen_length_box</cstring>
                 </property>
                </widget>
               </item>
-              <item row="1" column="3">
-               <widget class="QSpinBox" name="caen_port_box">
-                <property name="minimumSize">
-                 <size>
-                  <width>50</width>
-                  <height>0</height>
-                 </size>
-                </property>
-               </widget>
-              </item>
-              <item row="6" column="2">
-               <widget class="QLabel" name="caen_io_label">
+              <item row="3" column="6">
+               <widget class="QLabel" name="caen_sw_trig_label">
                 <property name="text">
-                 <string>IO Level</string>
+                 <string>SW Trig Mode</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                 </property>
                 <property name="buddy">
-                 <cstring>caen_io_box</cstring>
+                 <cstring>caen_sw_trig_box</cstring>
                 </property>
                </widget>
               </item>
-              <item row="3" column="2">
-               <widget class="QLabel" name="caen_post_trig_label">
-                <property name="text">
-                 <string>Post Trig</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>caen_post_trig_box</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="7" column="1">
+              <item row="3" column="5">
                <widget class="QComboBox" name="caen_ext_trig_box">
                 <item>
                  <property name="text">
@@ -667,162 +893,16 @@
                 </item>
                </widget>
               </item>
-              <item row="1" column="1">
-               <widget class="QComboBox" name="caen_model_box">
-                <item>
-                 <property name="text">
-                  <string>DT5740D</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>DT5730B</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>V1740D</string>
-                 </property>
-                </item>
-               </widget>
-              </item>
-              <item row="2" column="0">
-               <widget class="QLabel" name="caen_conn_label">
-                <property name="text">
-                 <string>Connection Type</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>caen_conn_box</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="7" column="0">
-               <widget class="QLabel" name="caen_ext_trig_label">
-                <property name="text">
-                 <string>Ext Trig Mode</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>caen_ext_trig_box</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="7" column="3">
-               <widget class="QComboBox" name="caen_sw_trig_box">
-                <item>
-                 <property name="text">
-                  <string>Disabled</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>ACQ Only</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>EXT Only</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>ACQ+EXT</string>
-                 </property>
-                </item>
-               </widget>
-              </item>
-              <item row="2" column="3">
-               <widget class="QSpinBox" name="caen_evs_box">
-                <property name="maximum">
-                 <number>10000</number>
-                </property>
-               </widget>
-              </item>
-              <item row="5" column="0">
-               <widget class="QLabel" name="caen_overlap_label">
-                <property name="text">
-                 <string>Overlap Reject</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>caen_overlap_box</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="5" column="1">
-               <widget class="QCheckBox" name="caen_overlap_box">
-                <property name="text">
+              <item row="2" column="7">
+               <widget class="QSpinBox" name="caen_decimation_box">
+                <property name="prefix">
                  <string/>
                 </property>
-               </widget>
-              </item>
-              <item row="3" column="1">
-               <widget class="QSpinBox" name="caen_length_box">
+                <property name="minimum">
+                 <number>1</number>
+                </property>
                 <property name="maximum">
-                 <number>10000</number>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="2">
-               <widget class="QLabel" name="caen_evs_label">
-                <property name="text">
-                 <string>Evs Per Read</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>caen_evs_box</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="6" column="3">
-               <widget class="QComboBox" name="caen_io_box">
-                <item>
-                 <property name="text">
-                  <string>TTL</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>NIM</string>
-                 </property>
-                </item>
-               </widget>
-              </item>
-              <item row="2" column="1">
-               <widget class="QComboBox" name="caen_conn_box">
-                <item>
-                 <property name="text">
-                  <string>USB</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>PCI</string>
-                 </property>
-                </item>
-               </widget>
-              </item>
-              <item row="0" column="0" colspan="4">
-               <widget class="QLabel" name="caen_general_label">
-                <property name="font">
-                 <font>
-                  <bold>true</bold>
-                 </font>
-                </property>
-                <property name="text">
-                 <string>CAEN Digitizer General</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
+                 <number>7</number>
                 </property>
                </widget>
               </item>
@@ -858,33 +938,157 @@
                 </property>
                </widget>
               </item>
-              <item row="7" column="2">
-               <widget class="QLabel" name="caen_sw_trig_label">
+              <item row="1" column="4">
+               <widget class="QLabel" name="caen_conn_label">
                 <property name="text">
-                 <string>SW Trig Mode</string>
+                 <string>Connection Type</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                 </property>
                 <property name="buddy">
-                 <cstring>caen_sw_trig_box</cstring>
+                 <cstring>caen_conn_box</cstring>
                 </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="QSpinBox" name="caen_length_box">
+                <property name="maximum">
+                 <number>10000</number>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="7">
+               <widget class="QComboBox" name="caen_sw_trig_box">
+                <item>
+                 <property name="text">
+                  <string>Disabled</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>ACQ Only</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>EXT Only</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>ACQ+EXT</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="1" column="6">
+               <widget class="QLabel" name="caen_evs_label">
+                <property name="text">
+                 <string>Evs Per Read</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>caen_evs_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="2">
+               <widget class="QLabel" name="caen_post_trig_label">
+                <property name="text">
+                 <string>Post Trig</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>caen_post_trig_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1">
+               <widget class="QComboBox" name="caen_model_box">
+                <item>
+                 <property name="text">
+                  <string>DT5740D</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>DT5730B</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>V1740D</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="3" column="4">
+               <widget class="QLabel" name="caen_ext_trig_label">
+                <property name="text">
+                 <string>Ext Trig Mode</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>caen_ext_trig_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="5">
+               <widget class="QComboBox" name="caen_conn_box">
+                <item>
+                 <property name="text">
+                  <string>USB</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>PCI</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="2" column="4">
+               <widget class="QCheckBox" name="caen_trigin_box">
+                <property name="text">
+                 <string>TRIG-IN as Gate</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="1">
+               <widget class="QComboBox" name="caen_polarity_box">
+                <item>
+                 <property name="text">
+                  <string>Positive</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Negative</string>
+                 </property>
+                </item>
                </widget>
               </item>
               <item row="3" column="0">
-               <widget class="QLabel" name="caen_length_label">
+               <widget class="QLabel" name="caen_polarity_label">
                 <property name="text">
-                 <string>Record Length</string>
+                 <string>Polarity</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                 </property>
                 <property name="buddy">
-                 <cstring>caen_length_box</cstring>
+                 <cstring>caen_polarity_box</cstring>
                 </property>
                </widget>
               </item>
-              <item row="3" column="3">
+              <item row="2" column="3">
                <widget class="QSpinBox" name="caen_post_trig_box">
                 <property name="suffix">
                  <string>%</string>
@@ -894,7 +1098,51 @@
                 </property>
                </widget>
               </item>
-              <item row="4" column="2">
+              <item row="3" column="2">
+               <widget class="QLabel" name="caen_io_label">
+                <property name="text">
+                 <string>IO Level</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>caen_io_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="7">
+               <widget class="QCheckBox" name="caen_enabled_box">
+                <property name="text">
+                 <string>Enabled</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="3">
+               <widget class="QComboBox" name="caen_io_box">
+                <item>
+                 <property name="text">
+                  <string>TTL</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>NIM</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="1" column="3">
+               <widget class="QSpinBox" name="caen_port_box">
+                <property name="minimumSize">
+                 <size>
+                  <width>50</width>
+                  <height>0</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="6">
                <widget class="QLabel" name="caen_decimation_label">
                 <property name="text">
                  <string>Decimation</string>
@@ -907,36 +1155,25 @@
                 </property>
                </widget>
               </item>
-              <item row="4" column="0">
-               <widget class="QLabel" name="caen_trigin_label">
+              <item row="0" column="0" colspan="7">
+               <widget class="QLabel" name="caen_general_label">
+                <property name="font">
+                 <font>
+                  <bold>true</bold>
+                 </font>
+                </property>
                 <property name="text">
-                 <string>TRG-IN as Gate</string>
+                 <string>CAEN Digitizer General</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>caen_trigin_box</cstring>
+                 <set>Qt::AlignCenter</set>
                 </property>
                </widget>
               </item>
-              <item row="4" column="1">
-               <widget class="QCheckBox" name="caen_trigin_box">
-                <property name="text">
-                 <string/>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="3">
-               <widget class="QSpinBox" name="caen_decimation_box">
-                <property name="prefix">
-                 <string/>
-                </property>
-                <property name="minimum">
-                 <number>1</number>
-                </property>
+              <item row="1" column="7">
+               <widget class="QSpinBox" name="caen_evs_box">
                 <property name="maximum">
-                 <number>7</number>
+                 <number>10000</number>
                 </property>
                </widget>
               </item>
@@ -1460,8 +1697,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>388</width>
-             <height>442</height>
+             <width>717</width>
+             <height>423</height>
             </rect>
            </property>
            <property name="maximumSize">
@@ -1494,10 +1731,28 @@
               <property name="spacing">
                <number>3</number>
               </property>
-              <item row="3" column="3">
-               <widget class="QSpinBox" name="acous_trig_delay_box"/>
+              <item row="2" column="3">
+               <widget class="QSpinBox" name="acous_post_trig_box"/>
               </item>
-              <item row="3" column="0">
+              <item row="0" column="0" colspan="6">
+               <widget class="QLabel" name="label">
+                <property name="font">
+                 <font>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>General</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="5">
+               <widget class="QSpinBox" name="acous_trig_timeout_box"/>
+              </item>
+              <item row="2" column="2">
                <widget class="QLabel" name="acous_post_trig_label">
                 <property name="text">
                  <string>Post Trig Length</string>
@@ -1509,38 +1764,6 @@
                  <cstring>acous_post_trig_box</cstring>
                 </property>
                </widget>
-              </item>
-              <item row="3" column="2">
-               <widget class="QLabel" name="acous_trig_delay_label">
-                <property name="text">
-                 <string>Trig Delay</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>acous_trig_delay_box</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="2">
-               <widget class="QLabel" name="acous_trig_timeout_label">
-                <property name="text">
-                 <string>Trig Timeout</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>acous_trig_timeout_box</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="1">
-               <widget class="QSpinBox" name="acous_post_trig_box"/>
-              </item>
-              <item row="2" column="1">
-               <widget class="QSpinBox" name="acous_pre_trig_box"/>
               </item>
               <item row="1" column="0">
                <widget class="QLabel" name="acous_sample_rate_label">
@@ -1555,10 +1778,23 @@
                 </property>
                </widget>
               </item>
-              <item row="2" column="3">
-               <widget class="QSpinBox" name="acous_trig_timeout_box"/>
+              <item row="2" column="5">
+               <widget class="QSpinBox" name="acous_trig_delay_box"/>
               </item>
-              <item row="1" column="1" colspan="3">
+              <item row="2" column="4">
+               <widget class="QLabel" name="acous_trig_delay_label">
+                <property name="text">
+                 <string>Trig Delay</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>acous_trig_delay_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1">
                <widget class="QComboBox" name="acous_sample_rate_box">
                 <item>
                  <property name="text">
@@ -1567,7 +1803,23 @@
                 </item>
                </widget>
               </item>
-              <item row="2" column="0">
+              <item row="1" column="3">
+               <widget class="QSpinBox" name="acous_pre_trig_box"/>
+              </item>
+              <item row="1" column="4">
+               <widget class="QLabel" name="acous_trig_timeout_label">
+                <property name="text">
+                 <string>Trig Timeout</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>acous_trig_timeout_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="2">
                <widget class="QLabel" name="acous_pre_trig_label">
                 <property name="text">
                  <string>Pre Trig Length</string>
@@ -1577,21 +1829,6 @@
                 </property>
                 <property name="buddy">
                  <cstring>acous_pre_trig_box</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="0" colspan="4">
-               <widget class="QLabel" name="label">
-                <property name="font">
-                 <font>
-                  <bold>true</bold>
-                 </font>
-                </property>
-                <property name="text">
-                 <string>General</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
                 </property>
                </widget>
               </item>
@@ -2401,8 +2638,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>371</width>
-             <height>474</height>
+             <width>703</width>
+             <height>505</height>
             </rect>
            </property>
            <property name="maximumSize">
@@ -2411,7 +2648,7 @@
              <height>16777215</height>
             </size>
            </property>
-           <layout class="QGridLayout" name="gridLayout_5" columnstretch="1,0,0,0">
+           <layout class="QGridLayout" name="gridLayout_5" columnstretch="0,1,1,1">
             <property name="sizeConstraint">
              <enum>QLayout::SetDefaultConstraint</enum>
             </property>
@@ -3452,8 +3689,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>371</width>
-             <height>515</height>
+             <width>703</width>
+             <height>534</height>
             </rect>
            </property>
            <property name="maximumSize">
@@ -4348,21 +4585,12 @@
   <tabstop>acoustics_scroll_area</tabstop>
   <tabstop>cam_scroll_area</tabstop>
   <tabstop>dio_scroll_area</tabstop>
-  <tabstop>sipm_amp1_ip_addr_edit</tabstop>
-  <tabstop>sipm_amp1_bias_box</tabstop>
-  <tabstop>sipm_amp1_qp_box</tabstop>
   <tabstop>caen_model_box</tabstop>
   <tabstop>caen_port_box</tabstop>
-  <tabstop>caen_conn_box</tabstop>
-  <tabstop>caen_evs_box</tabstop>
   <tabstop>caen_length_box</tabstop>
   <tabstop>caen_post_trig_box</tabstop>
-  <tabstop>caen_trigin_box</tabstop>
-  <tabstop>caen_overlap_box</tabstop>
   <tabstop>caen_polarity_box</tabstop>
   <tabstop>caen_io_box</tabstop>
-  <tabstop>caen_ext_trig_box</tabstop>
-  <tabstop>caen_sw_trig_box</tabstop>
   <tabstop>caen_g0_enable_box</tabstop>
   <tabstop>caen_g0_thres_box</tabstop>
   <tabstop>caen_g0_trig_mask_0</tabstop>
@@ -4381,11 +4609,6 @@
   <tabstop>caen_g0_acq_mask_5</tabstop>
   <tabstop>caen_g0_acq_mask_6</tabstop>
   <tabstop>caen_g0_acq_mask_7</tabstop>
-  <tabstop>acous_sample_rate_box</tabstop>
-  <tabstop>acous_pre_trig_box</tabstop>
-  <tabstop>acous_trig_timeout_box</tabstop>
-  <tabstop>acous_post_trig_box</tabstop>
-  <tabstop>acous_trig_delay_box</tabstop>
   <tabstop>acous_enable_ch1</tabstop>
   <tabstop>acous_range_ch1</tabstop>
   <tabstop>acous_dc_offset_ch1</tabstop>

@@ -1,4 +1,7 @@
-import paramiko as pm
+import warnings
+with warnings.catch_warnings():
+    warnings.filterwarnings("ignore")
+    import paramiko as pm
 import logging
 import os
 import json

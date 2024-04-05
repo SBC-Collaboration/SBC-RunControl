@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'settingswindow.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.6.0
+## Created by: Qt User Interface Compiler version 6.6.2
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -27,8 +27,8 @@ class Ui_SettingsWindow(object):
     def setupUi(self, SettingsWindow):
         if not SettingsWindow.objectName():
             SettingsWindow.setObjectName(u"SettingsWindow")
-        SettingsWindow.resize(400, 511)
-        sizePolicy = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Fixed)
+        SettingsWindow.resize(727, 496)
+        sizePolicy = QSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(SettingsWindow.sizePolicy().hasHeightForWidth())
@@ -88,7 +88,7 @@ class Ui_SettingsWindow(object):
         self.files_scroll_area.setWidgetResizable(True)
         self.scrollAreaWidgetContents_5 = QWidget()
         self.scrollAreaWidgetContents_5.setObjectName(u"scrollAreaWidgetContents_5")
-        self.scrollAreaWidgetContents_5.setGeometry(QRect(0, 0, 388, 442))
+        self.scrollAreaWidgetContents_5.setGeometry(QRect(0, 0, 717, 423))
         self.scrollAreaWidgetContents_5.setMaximumSize(QSize(1000, 16777215))
         self.verticalLayout_10 = QVBoxLayout(self.scrollAreaWidgetContents_5)
         self.verticalLayout_10.setSpacing(3)
@@ -187,7 +187,7 @@ class Ui_SettingsWindow(object):
 
         self.verticalLayout_10.addLayout(self.gridLayout_9)
 
-        self.verticalSpacer = QSpacerItem(20, 336, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.verticalSpacer = QSpacerItem(20, 336, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
         self.verticalLayout_10.addItem(self.verticalSpacer)
 
@@ -211,91 +211,50 @@ class Ui_SettingsWindow(object):
         self.sipm_scroll_area.setWidgetResizable(True)
         self.scrollAreaWidgetContents_2 = QWidget()
         self.scrollAreaWidgetContents_2.setObjectName(u"scrollAreaWidgetContents_2")
-        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, 0, 371, 480))
+        self.scrollAreaWidgetContents_2.setGeometry(QRect(-1, 0, 704, 430))
         self.scrollAreaWidgetContents_2.setMaximumSize(QSize(1000, 16777215))
         self.verticalLayout_9 = QVBoxLayout(self.scrollAreaWidgetContents_2)
         self.verticalLayout_9.setSpacing(3)
         self.verticalLayout_9.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_9.setObjectName(u"verticalLayout_9")
         self.verticalLayout_9.setContentsMargins(0, 0, 0, 0)
-        self.gridLayout_4 = QGridLayout()
-        self.gridLayout_4.setSpacing(3)
-        self.gridLayout_4.setObjectName(u"gridLayout_4")
-        self.gridLayout_4.setVerticalSpacing(3)
-        self.sipm_amp1_qp_label = QLabel(self.scrollAreaWidgetContents_2)
-        self.sipm_amp1_qp_label.setObjectName(u"sipm_amp1_qp_label")
-        self.sipm_amp1_qp_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.sipm_amp1_grid = QGridLayout()
+        self.sipm_amp1_grid.setSpacing(3)
+        self.sipm_amp1_grid.setObjectName(u"sipm_amp1_grid")
+        self.sipm_amp1_grid.setContentsMargins(-1, 6, -1, 6)
+        self.sipm_amp1_iv_step_box = QDoubleSpinBox(self.scrollAreaWidgetContents_2)
+        self.sipm_amp1_iv_step_box.setObjectName(u"sipm_amp1_iv_step_box")
+        self.sipm_amp1_iv_step_box.setDecimals(2)
+        self.sipm_amp1_iv_step_box.setMinimum(0.000000000000000)
+        self.sipm_amp1_iv_step_box.setMaximum(10.000000000000000)
+        self.sipm_amp1_iv_step_box.setSingleStep(0.050000000000000)
 
-        self.gridLayout_4.addWidget(self.sipm_amp1_qp_label, 2, 2, 1, 1)
-
-        self.sipm_amp2_ip_addr_label = QLabel(self.scrollAreaWidgetContents_2)
-        self.sipm_amp2_ip_addr_label.setObjectName(u"sipm_amp2_ip_addr_label")
-        self.sipm_amp2_ip_addr_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
-
-        self.gridLayout_4.addWidget(self.sipm_amp2_ip_addr_label, 4, 0, 1, 1)
-
-        self.sipm_amp1_qp_box = QDoubleSpinBox(self.scrollAreaWidgetContents_2)
-        self.sipm_amp1_qp_box.setObjectName(u"sipm_amp1_qp_box")
-        self.sipm_amp1_qp_box.setDecimals(1)
-
-        self.gridLayout_4.addWidget(self.sipm_amp1_qp_box, 2, 3, 1, 1)
-
-        self.sipm_amp1_bias_box = QDoubleSpinBox(self.scrollAreaWidgetContents_2)
-        self.sipm_amp1_bias_box.setObjectName(u"sipm_amp1_bias_box")
-        self.sipm_amp1_bias_box.setDecimals(1)
-
-        self.gridLayout_4.addWidget(self.sipm_amp1_bias_box, 2, 1, 1, 1)
+        self.sipm_amp1_grid.addWidget(self.sipm_amp1_iv_step_box, 2, 4, 1, 1)
 
         self.sipm_amp1_ip_addr_label = QLabel(self.scrollAreaWidgetContents_2)
         self.sipm_amp1_ip_addr_label.setObjectName(u"sipm_amp1_ip_addr_label")
         self.sipm_amp1_ip_addr_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
-        self.gridLayout_4.addWidget(self.sipm_amp1_ip_addr_label, 1, 0, 1, 1)
+        self.sipm_amp1_grid.addWidget(self.sipm_amp1_ip_addr_label, 1, 1, 1, 1)
+
+        self.sipm_amp1_qp_box = QDoubleSpinBox(self.scrollAreaWidgetContents_2)
+        self.sipm_amp1_qp_box.setObjectName(u"sipm_amp1_qp_box")
+        self.sipm_amp1_qp_box.setDecimals(1)
+        self.sipm_amp1_qp_box.setSingleStep(0.100000000000000)
+
+        self.sipm_amp1_grid.addWidget(self.sipm_amp1_qp_box, 1, 8, 1, 1)
+
+        self.sipm_amp1_iv_step_label = QLabel(self.scrollAreaWidgetContents_2)
+        self.sipm_amp1_iv_step_label.setObjectName(u"sipm_amp1_iv_step_label")
+        self.sipm_amp1_iv_step_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.sipm_amp1_grid.addWidget(self.sipm_amp1_iv_step_label, 2, 3, 1, 1)
 
         self.sipm_amp1_bias_label = QLabel(self.scrollAreaWidgetContents_2)
         self.sipm_amp1_bias_label.setObjectName(u"sipm_amp1_bias_label")
         self.sipm_amp1_bias_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
-        self.gridLayout_4.addWidget(self.sipm_amp1_bias_label, 2, 0, 1, 1)
-
-        self.sipm_amp1_ip_addr_edit = QLineEdit(self.scrollAreaWidgetContents_2)
-        self.sipm_amp1_ip_addr_edit.setObjectName(u"sipm_amp1_ip_addr_edit")
-
-        self.gridLayout_4.addWidget(self.sipm_amp1_ip_addr_edit, 1, 1, 1, 3)
-
-        self.sipm_amp2_bias_label = QLabel(self.scrollAreaWidgetContents_2)
-        self.sipm_amp2_bias_label.setObjectName(u"sipm_amp2_bias_label")
-        self.sipm_amp2_bias_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
-
-        self.gridLayout_4.addWidget(self.sipm_amp2_bias_label, 5, 0, 1, 1)
-
-        self.sipm_amp2_bias_box = QDoubleSpinBox(self.scrollAreaWidgetContents_2)
-        self.sipm_amp2_bias_box.setObjectName(u"sipm_amp2_bias_box")
-        self.sipm_amp2_bias_box.setDecimals(1)
-
-        self.gridLayout_4.addWidget(self.sipm_amp2_bias_box, 5, 1, 1, 1)
-
-        self.sipm_amp2_qp_label = QLabel(self.scrollAreaWidgetContents_2)
-        self.sipm_amp2_qp_label.setObjectName(u"sipm_amp2_qp_label")
-        self.sipm_amp2_qp_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
-
-        self.gridLayout_4.addWidget(self.sipm_amp2_qp_label, 5, 2, 1, 1)
-
-        self.sipm_amp2_qp_box = QDoubleSpinBox(self.scrollAreaWidgetContents_2)
-        self.sipm_amp2_qp_box.setObjectName(u"sipm_amp2_qp_box")
-        self.sipm_amp2_qp_box.setDecimals(1)
-
-        self.gridLayout_4.addWidget(self.sipm_amp2_qp_box, 5, 3, 1, 1)
-
-        self.sipm_amp2_ip_addr_edit = QLineEdit(self.scrollAreaWidgetContents_2)
-        self.sipm_amp2_ip_addr_edit.setObjectName(u"sipm_amp2_ip_addr_edit")
-
-        self.gridLayout_4.addWidget(self.sipm_amp2_ip_addr_edit, 4, 1, 1, 3)
-
-        self.sipm_amp1_enabled_box = QCheckBox(self.scrollAreaWidgetContents_2)
-        self.sipm_amp1_enabled_box.setObjectName(u"sipm_amp1_enabled_box")
-
-        self.gridLayout_4.addWidget(self.sipm_amp1_enabled_box, 0, 3, 1, 1)
+        self.sipm_amp1_grid.addWidget(self.sipm_amp1_bias_label, 1, 5, 1, 1)
 
         self.sipm_amp1_label = QLabel(self.scrollAreaWidgetContents_2)
         self.sipm_amp1_label.setObjectName(u"sipm_amp1_label")
@@ -304,22 +263,198 @@ class Ui_SettingsWindow(object):
         self.sipm_amp1_label.setFont(font)
         self.sipm_amp1_label.setAlignment(Qt.AlignCenter)
 
-        self.gridLayout_4.addWidget(self.sipm_amp1_label, 0, 0, 1, 3)
+        self.sipm_amp1_grid.addWidget(self.sipm_amp1_label, 0, 1, 1, 7)
+
+        self.sipm_amp1_bias_box = QDoubleSpinBox(self.scrollAreaWidgetContents_2)
+        self.sipm_amp1_bias_box.setObjectName(u"sipm_amp1_bias_box")
+        self.sipm_amp1_bias_box.setDecimals(1)
+        self.sipm_amp1_bias_box.setSingleStep(0.100000000000000)
+
+        self.sipm_amp1_grid.addWidget(self.sipm_amp1_bias_box, 1, 6, 1, 1)
+
+        self.sipm_amp1_iv_start_box = QDoubleSpinBox(self.scrollAreaWidgetContents_2)
+        self.sipm_amp1_iv_start_box.setObjectName(u"sipm_amp1_iv_start_box")
+        self.sipm_amp1_iv_start_box.setDecimals(1)
+        self.sipm_amp1_iv_start_box.setMinimum(-10.000000000000000)
+        self.sipm_amp1_iv_start_box.setMaximum(70.000000000000000)
+        self.sipm_amp1_iv_start_box.setSingleStep(0.100000000000000)
+
+        self.sipm_amp1_grid.addWidget(self.sipm_amp1_iv_start_box, 2, 6, 1, 1)
+
+        self.sipm_amp1_iv_stop_box = QDoubleSpinBox(self.scrollAreaWidgetContents_2)
+        self.sipm_amp1_iv_stop_box.setObjectName(u"sipm_amp1_iv_stop_box")
+        self.sipm_amp1_iv_stop_box.setDecimals(1)
+        self.sipm_amp1_iv_stop_box.setMinimum(-10.000000000000000)
+        self.sipm_amp1_iv_stop_box.setMaximum(70.000000000000000)
+        self.sipm_amp1_iv_stop_box.setSingleStep(0.100000000000000)
+
+        self.sipm_amp1_grid.addWidget(self.sipm_amp1_iv_stop_box, 2, 8, 1, 1)
+
+        self.sipm_amp1_ip_addr_edit = QLineEdit(self.scrollAreaWidgetContents_2)
+        self.sipm_amp1_ip_addr_edit.setObjectName(u"sipm_amp1_ip_addr_edit")
+
+        self.sipm_amp1_grid.addWidget(self.sipm_amp1_ip_addr_edit, 1, 2, 1, 1)
+
+        self.sipm_amp1_qp_label = QLabel(self.scrollAreaWidgetContents_2)
+        self.sipm_amp1_qp_label.setObjectName(u"sipm_amp1_qp_label")
+        self.sipm_amp1_qp_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.sipm_amp1_grid.addWidget(self.sipm_amp1_qp_label, 1, 7, 1, 1)
+
+        self.sipm_amp1_enabled_box = QCheckBox(self.scrollAreaWidgetContents_2)
+        self.sipm_amp1_enabled_box.setObjectName(u"sipm_amp1_enabled_box")
+
+        self.sipm_amp1_grid.addWidget(self.sipm_amp1_enabled_box, 1, 0, 1, 1)
+
+        self.sipm_amp1_iv_start_label = QLabel(self.scrollAreaWidgetContents_2)
+        self.sipm_amp1_iv_start_label.setObjectName(u"sipm_amp1_iv_start_label")
+        self.sipm_amp1_iv_start_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.sipm_amp1_grid.addWidget(self.sipm_amp1_iv_start_label, 2, 5, 1, 1)
+
+        self.sipm_amp1_iv_stop_label = QLabel(self.scrollAreaWidgetContents_2)
+        self.sipm_amp1_iv_stop_label.setObjectName(u"sipm_amp1_iv_stop_label")
+        self.sipm_amp1_iv_stop_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.sipm_amp1_grid.addWidget(self.sipm_amp1_iv_stop_label, 2, 7, 1, 1)
+
+        self.sipm_amp1_iv_enabled_box = QCheckBox(self.scrollAreaWidgetContents_2)
+        self.sipm_amp1_iv_enabled_box.setObjectName(u"sipm_amp1_iv_enabled_box")
+        self.sipm_amp1_iv_enabled_box.setLayoutDirection(Qt.LeftToRight)
+
+        self.sipm_amp1_grid.addWidget(self.sipm_amp1_iv_enabled_box, 2, 0, 1, 1)
+
+        self.sipm_amp1_iv_data_dir_label = QLabel(self.scrollAreaWidgetContents_2)
+        self.sipm_amp1_iv_data_dir_label.setObjectName(u"sipm_amp1_iv_data_dir_label")
+        self.sipm_amp1_iv_data_dir_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.sipm_amp1_grid.addWidget(self.sipm_amp1_iv_data_dir_label, 2, 1, 1, 1)
+
+        self.sipm_amp1_iv_data_dir_edit = QLineEdit(self.scrollAreaWidgetContents_2)
+        self.sipm_amp1_iv_data_dir_edit.setObjectName(u"sipm_amp1_iv_data_dir_edit")
+
+        self.sipm_amp1_grid.addWidget(self.sipm_amp1_iv_data_dir_edit, 2, 2, 1, 1)
+
+
+        self.verticalLayout_9.addLayout(self.sipm_amp1_grid)
+
+        self.sipm_amp2_grid = QGridLayout()
+        self.sipm_amp2_grid.setSpacing(3)
+        self.sipm_amp2_grid.setObjectName(u"sipm_amp2_grid")
+        self.sipm_amp2_grid.setContentsMargins(-1, 6, -1, 6)
+        self.sipm_amp2_bias_label = QLabel(self.scrollAreaWidgetContents_2)
+        self.sipm_amp2_bias_label.setObjectName(u"sipm_amp2_bias_label")
+        self.sipm_amp2_bias_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.sipm_amp2_grid.addWidget(self.sipm_amp2_bias_label, 1, 6, 1, 1)
+
+        self.sipm_amp2_iv_data_dir_edit = QLineEdit(self.scrollAreaWidgetContents_2)
+        self.sipm_amp2_iv_data_dir_edit.setObjectName(u"sipm_amp2_iv_data_dir_edit")
+
+        self.sipm_amp2_grid.addWidget(self.sipm_amp2_iv_data_dir_edit, 2, 2, 1, 2)
+
+        self.sipm_amp2_iv_stop_box = QDoubleSpinBox(self.scrollAreaWidgetContents_2)
+        self.sipm_amp2_iv_stop_box.setObjectName(u"sipm_amp2_iv_stop_box")
+        self.sipm_amp2_iv_stop_box.setDecimals(1)
+        self.sipm_amp2_iv_stop_box.setMinimum(-10.000000000000000)
+        self.sipm_amp2_iv_stop_box.setMaximum(70.000000000000000)
+        self.sipm_amp2_iv_stop_box.setSingleStep(0.100000000000000)
+
+        self.sipm_amp2_grid.addWidget(self.sipm_amp2_iv_stop_box, 2, 9, 1, 1)
+
+        self.sipm_amp2_bias_box = QDoubleSpinBox(self.scrollAreaWidgetContents_2)
+        self.sipm_amp2_bias_box.setObjectName(u"sipm_amp2_bias_box")
+        self.sipm_amp2_bias_box.setDecimals(1)
+        self.sipm_amp2_bias_box.setSingleStep(0.100000000000000)
+
+        self.sipm_amp2_grid.addWidget(self.sipm_amp2_bias_box, 1, 7, 1, 1)
+
+        self.sipm_amp2_ip_addr_label_2 = QLabel(self.scrollAreaWidgetContents_2)
+        self.sipm_amp2_ip_addr_label_2.setObjectName(u"sipm_amp2_ip_addr_label_2")
+        self.sipm_amp2_ip_addr_label_2.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.sipm_amp2_grid.addWidget(self.sipm_amp2_ip_addr_label_2, 2, 1, 1, 1)
 
         self.sipm_amp2_label = QLabel(self.scrollAreaWidgetContents_2)
         self.sipm_amp2_label.setObjectName(u"sipm_amp2_label")
         self.sipm_amp2_label.setFont(font)
         self.sipm_amp2_label.setAlignment(Qt.AlignCenter)
 
-        self.gridLayout_4.addWidget(self.sipm_amp2_label, 3, 0, 1, 3)
+        self.sipm_amp2_grid.addWidget(self.sipm_amp2_label, 0, 0, 1, 10)
+
+        self.sipm_amp2_ip_addr_edit = QLineEdit(self.scrollAreaWidgetContents_2)
+        self.sipm_amp2_ip_addr_edit.setObjectName(u"sipm_amp2_ip_addr_edit")
+
+        self.sipm_amp2_grid.addWidget(self.sipm_amp2_ip_addr_edit, 1, 2, 1, 2)
+
+        self.sipm_amp2_iv_step_label = QLabel(self.scrollAreaWidgetContents_2)
+        self.sipm_amp2_iv_step_label.setObjectName(u"sipm_amp2_iv_step_label")
+        self.sipm_amp2_iv_step_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.sipm_amp2_grid.addWidget(self.sipm_amp2_iv_step_label, 2, 4, 1, 1)
+
+        self.sipm_amp2_ip_addr_label = QLabel(self.scrollAreaWidgetContents_2)
+        self.sipm_amp2_ip_addr_label.setObjectName(u"sipm_amp2_ip_addr_label")
+        self.sipm_amp2_ip_addr_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.sipm_amp2_grid.addWidget(self.sipm_amp2_ip_addr_label, 1, 1, 1, 1)
+
+        self.sipm_amp2_iv_step_box = QDoubleSpinBox(self.scrollAreaWidgetContents_2)
+        self.sipm_amp2_iv_step_box.setObjectName(u"sipm_amp2_iv_step_box")
+        self.sipm_amp2_iv_step_box.setDecimals(2)
+        self.sipm_amp2_iv_step_box.setMinimum(0.000000000000000)
+        self.sipm_amp2_iv_step_box.setMaximum(10.000000000000000)
+        self.sipm_amp2_iv_step_box.setSingleStep(0.050000000000000)
+
+        self.sipm_amp2_grid.addWidget(self.sipm_amp2_iv_step_box, 2, 5, 1, 1)
+
+        self.sipm_amp2_iv_stop_label = QLabel(self.scrollAreaWidgetContents_2)
+        self.sipm_amp2_iv_stop_label.setObjectName(u"sipm_amp2_iv_stop_label")
+        self.sipm_amp2_iv_stop_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.sipm_amp2_grid.addWidget(self.sipm_amp2_iv_stop_label, 2, 8, 1, 1)
+
+        self.sipm_amp2_qp_label = QLabel(self.scrollAreaWidgetContents_2)
+        self.sipm_amp2_qp_label.setObjectName(u"sipm_amp2_qp_label")
+        self.sipm_amp2_qp_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.sipm_amp2_grid.addWidget(self.sipm_amp2_qp_label, 1, 8, 1, 1)
+
+        self.sipm_amp2_qp_box = QDoubleSpinBox(self.scrollAreaWidgetContents_2)
+        self.sipm_amp2_qp_box.setObjectName(u"sipm_amp2_qp_box")
+        self.sipm_amp2_qp_box.setDecimals(1)
+        self.sipm_amp2_qp_box.setSingleStep(0.100000000000000)
+
+        self.sipm_amp2_grid.addWidget(self.sipm_amp2_qp_box, 1, 9, 1, 1)
+
+        self.sipm_amp2_iv_start_label = QLabel(self.scrollAreaWidgetContents_2)
+        self.sipm_amp2_iv_start_label.setObjectName(u"sipm_amp2_iv_start_label")
+        self.sipm_amp2_iv_start_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.sipm_amp2_grid.addWidget(self.sipm_amp2_iv_start_label, 2, 6, 1, 1)
+
+        self.sipm_amp2_iv_enabled_box = QCheckBox(self.scrollAreaWidgetContents_2)
+        self.sipm_amp2_iv_enabled_box.setObjectName(u"sipm_amp2_iv_enabled_box")
+        self.sipm_amp2_iv_enabled_box.setLayoutDirection(Qt.LeftToRight)
+
+        self.sipm_amp2_grid.addWidget(self.sipm_amp2_iv_enabled_box, 2, 0, 1, 1)
+
+        self.sipm_amp2_iv_start_box = QDoubleSpinBox(self.scrollAreaWidgetContents_2)
+        self.sipm_amp2_iv_start_box.setObjectName(u"sipm_amp2_iv_start_box")
+        self.sipm_amp2_iv_start_box.setDecimals(1)
+        self.sipm_amp2_iv_start_box.setMinimum(-10.000000000000000)
+        self.sipm_amp2_iv_start_box.setMaximum(70.000000000000000)
+        self.sipm_amp2_iv_start_box.setSingleStep(0.100000000000000)
+
+        self.sipm_amp2_grid.addWidget(self.sipm_amp2_iv_start_box, 2, 7, 1, 1)
 
         self.sipm_amp2_enabled_box = QCheckBox(self.scrollAreaWidgetContents_2)
         self.sipm_amp2_enabled_box.setObjectName(u"sipm_amp2_enabled_box")
 
-        self.gridLayout_4.addWidget(self.sipm_amp2_enabled_box, 3, 3, 1, 1)
+        self.sipm_amp2_grid.addWidget(self.sipm_amp2_enabled_box, 1, 0, 1, 1)
 
 
-        self.verticalLayout_9.addLayout(self.gridLayout_4)
+        self.verticalLayout_9.addLayout(self.sipm_amp2_grid)
 
         self.line = QFrame(self.scrollAreaWidgetContents_2)
         self.line.setObjectName(u"line")
@@ -328,39 +463,26 @@ class Ui_SettingsWindow(object):
 
         self.verticalLayout_9.addWidget(self.line)
 
-        self.gridLayout_6 = QGridLayout()
-        self.gridLayout_6.setSpacing(3)
-        self.gridLayout_6.setObjectName(u"gridLayout_6")
-        self.caen_polarity_box = QComboBox(self.scrollAreaWidgetContents_2)
-        self.caen_polarity_box.addItem("")
-        self.caen_polarity_box.addItem("")
-        self.caen_polarity_box.setObjectName(u"caen_polarity_box")
+        self.caen_general_grid = QGridLayout()
+        self.caen_general_grid.setSpacing(3)
+        self.caen_general_grid.setObjectName(u"caen_general_grid")
+        self.caen_general_grid.setContentsMargins(-1, 6, -1, 6)
+        self.caen_overlap_box = QCheckBox(self.scrollAreaWidgetContents_2)
+        self.caen_overlap_box.setObjectName(u"caen_overlap_box")
 
-        self.gridLayout_6.addWidget(self.caen_polarity_box, 6, 1, 1, 1)
+        self.caen_general_grid.addWidget(self.caen_overlap_box, 2, 5, 1, 1)
 
-        self.caen_polarity_label = QLabel(self.scrollAreaWidgetContents_2)
-        self.caen_polarity_label.setObjectName(u"caen_polarity_label")
-        self.caen_polarity_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.caen_length_label = QLabel(self.scrollAreaWidgetContents_2)
+        self.caen_length_label.setObjectName(u"caen_length_label")
+        self.caen_length_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
-        self.gridLayout_6.addWidget(self.caen_polarity_label, 6, 0, 1, 1)
+        self.caen_general_grid.addWidget(self.caen_length_label, 2, 0, 1, 1)
 
-        self.caen_port_box = QSpinBox(self.scrollAreaWidgetContents_2)
-        self.caen_port_box.setObjectName(u"caen_port_box")
-        self.caen_port_box.setMinimumSize(QSize(50, 0))
+        self.caen_sw_trig_label = QLabel(self.scrollAreaWidgetContents_2)
+        self.caen_sw_trig_label.setObjectName(u"caen_sw_trig_label")
+        self.caen_sw_trig_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
-        self.gridLayout_6.addWidget(self.caen_port_box, 1, 3, 1, 1)
-
-        self.caen_io_label = QLabel(self.scrollAreaWidgetContents_2)
-        self.caen_io_label.setObjectName(u"caen_io_label")
-        self.caen_io_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
-
-        self.gridLayout_6.addWidget(self.caen_io_label, 6, 2, 1, 1)
-
-        self.caen_post_trig_label = QLabel(self.scrollAreaWidgetContents_2)
-        self.caen_post_trig_label.setObjectName(u"caen_post_trig_label")
-        self.caen_post_trig_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
-
-        self.gridLayout_6.addWidget(self.caen_post_trig_label, 3, 2, 1, 1)
+        self.caen_general_grid.addWidget(self.caen_sw_trig_label, 3, 6, 1, 1)
 
         self.caen_ext_trig_box = QComboBox(self.scrollAreaWidgetContents_2)
         self.caen_ext_trig_box.addItem("")
@@ -369,27 +491,43 @@ class Ui_SettingsWindow(object):
         self.caen_ext_trig_box.addItem("")
         self.caen_ext_trig_box.setObjectName(u"caen_ext_trig_box")
 
-        self.gridLayout_6.addWidget(self.caen_ext_trig_box, 7, 1, 1, 1)
+        self.caen_general_grid.addWidget(self.caen_ext_trig_box, 3, 5, 1, 1)
 
-        self.caen_model_box = QComboBox(self.scrollAreaWidgetContents_2)
-        self.caen_model_box.addItem("")
-        self.caen_model_box.addItem("")
-        self.caen_model_box.addItem("")
-        self.caen_model_box.setObjectName(u"caen_model_box")
+        self.caen_decimation_box = QSpinBox(self.scrollAreaWidgetContents_2)
+        self.caen_decimation_box.setObjectName(u"caen_decimation_box")
+        self.caen_decimation_box.setMinimum(1)
+        self.caen_decimation_box.setMaximum(7)
 
-        self.gridLayout_6.addWidget(self.caen_model_box, 1, 1, 1, 1)
+        self.caen_general_grid.addWidget(self.caen_decimation_box, 2, 7, 1, 1)
+
+        self.caen_model_label = QLabel(self.scrollAreaWidgetContents_2)
+        self.caen_model_label.setObjectName(u"caen_model_label")
+        sizePolicy1 = QSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Preferred)
+        sizePolicy1.setHorizontalStretch(0)
+        sizePolicy1.setVerticalStretch(0)
+        sizePolicy1.setHeightForWidth(self.caen_model_label.sizePolicy().hasHeightForWidth())
+        self.caen_model_label.setSizePolicy(sizePolicy1)
+        self.caen_model_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.caen_general_grid.addWidget(self.caen_model_label, 1, 0, 1, 1)
+
+        self.caen_port_label = QLabel(self.scrollAreaWidgetContents_2)
+        self.caen_port_label.setObjectName(u"caen_port_label")
+        self.caen_port_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.caen_general_grid.addWidget(self.caen_port_label, 1, 2, 1, 1)
 
         self.caen_conn_label = QLabel(self.scrollAreaWidgetContents_2)
         self.caen_conn_label.setObjectName(u"caen_conn_label")
         self.caen_conn_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
-        self.gridLayout_6.addWidget(self.caen_conn_label, 2, 0, 1, 1)
+        self.caen_general_grid.addWidget(self.caen_conn_label, 1, 4, 1, 1)
 
-        self.caen_ext_trig_label = QLabel(self.scrollAreaWidgetContents_2)
-        self.caen_ext_trig_label.setObjectName(u"caen_ext_trig_label")
-        self.caen_ext_trig_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.caen_length_box = QSpinBox(self.scrollAreaWidgetContents_2)
+        self.caen_length_box.setObjectName(u"caen_length_box")
+        self.caen_length_box.setMaximum(10000)
 
-        self.gridLayout_6.addWidget(self.caen_ext_trig_label, 7, 0, 1, 1)
+        self.caen_general_grid.addWidget(self.caen_length_box, 2, 1, 1, 1)
 
         self.caen_sw_trig_box = QComboBox(self.scrollAreaWidgetContents_2)
         self.caen_sw_trig_box.addItem("")
@@ -398,119 +536,110 @@ class Ui_SettingsWindow(object):
         self.caen_sw_trig_box.addItem("")
         self.caen_sw_trig_box.setObjectName(u"caen_sw_trig_box")
 
-        self.gridLayout_6.addWidget(self.caen_sw_trig_box, 7, 3, 1, 1)
-
-        self.caen_evs_box = QSpinBox(self.scrollAreaWidgetContents_2)
-        self.caen_evs_box.setObjectName(u"caen_evs_box")
-        self.caen_evs_box.setMaximum(10000)
-
-        self.gridLayout_6.addWidget(self.caen_evs_box, 2, 3, 1, 1)
-
-        self.caen_overlap_label = QLabel(self.scrollAreaWidgetContents_2)
-        self.caen_overlap_label.setObjectName(u"caen_overlap_label")
-        self.caen_overlap_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
-
-        self.gridLayout_6.addWidget(self.caen_overlap_label, 5, 0, 1, 1)
-
-        self.caen_overlap_box = QCheckBox(self.scrollAreaWidgetContents_2)
-        self.caen_overlap_box.setObjectName(u"caen_overlap_box")
-
-        self.gridLayout_6.addWidget(self.caen_overlap_box, 5, 1, 1, 1)
-
-        self.caen_length_box = QSpinBox(self.scrollAreaWidgetContents_2)
-        self.caen_length_box.setObjectName(u"caen_length_box")
-        self.caen_length_box.setMaximum(10000)
-
-        self.gridLayout_6.addWidget(self.caen_length_box, 3, 1, 1, 1)
+        self.caen_general_grid.addWidget(self.caen_sw_trig_box, 3, 7, 1, 1)
 
         self.caen_evs_label = QLabel(self.scrollAreaWidgetContents_2)
         self.caen_evs_label.setObjectName(u"caen_evs_label")
         self.caen_evs_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
-        self.gridLayout_6.addWidget(self.caen_evs_label, 2, 2, 1, 1)
+        self.caen_general_grid.addWidget(self.caen_evs_label, 1, 6, 1, 1)
 
-        self.caen_io_box = QComboBox(self.scrollAreaWidgetContents_2)
-        self.caen_io_box.addItem("")
-        self.caen_io_box.addItem("")
-        self.caen_io_box.setObjectName(u"caen_io_box")
+        self.caen_post_trig_label = QLabel(self.scrollAreaWidgetContents_2)
+        self.caen_post_trig_label.setObjectName(u"caen_post_trig_label")
+        self.caen_post_trig_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
-        self.gridLayout_6.addWidget(self.caen_io_box, 6, 3, 1, 1)
+        self.caen_general_grid.addWidget(self.caen_post_trig_label, 2, 2, 1, 1)
+
+        self.caen_model_box = QComboBox(self.scrollAreaWidgetContents_2)
+        self.caen_model_box.addItem("")
+        self.caen_model_box.addItem("")
+        self.caen_model_box.addItem("")
+        self.caen_model_box.setObjectName(u"caen_model_box")
+
+        self.caen_general_grid.addWidget(self.caen_model_box, 1, 1, 1, 1)
+
+        self.caen_ext_trig_label = QLabel(self.scrollAreaWidgetContents_2)
+        self.caen_ext_trig_label.setObjectName(u"caen_ext_trig_label")
+        self.caen_ext_trig_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.caen_general_grid.addWidget(self.caen_ext_trig_label, 3, 4, 1, 1)
 
         self.caen_conn_box = QComboBox(self.scrollAreaWidgetContents_2)
         self.caen_conn_box.addItem("")
         self.caen_conn_box.addItem("")
         self.caen_conn_box.setObjectName(u"caen_conn_box")
 
-        self.gridLayout_6.addWidget(self.caen_conn_box, 2, 1, 1, 1)
+        self.caen_general_grid.addWidget(self.caen_conn_box, 1, 5, 1, 1)
+
+        self.caen_trigin_box = QCheckBox(self.scrollAreaWidgetContents_2)
+        self.caen_trigin_box.setObjectName(u"caen_trigin_box")
+
+        self.caen_general_grid.addWidget(self.caen_trigin_box, 2, 4, 1, 1)
+
+        self.caen_polarity_box = QComboBox(self.scrollAreaWidgetContents_2)
+        self.caen_polarity_box.addItem("")
+        self.caen_polarity_box.addItem("")
+        self.caen_polarity_box.setObjectName(u"caen_polarity_box")
+
+        self.caen_general_grid.addWidget(self.caen_polarity_box, 3, 1, 1, 1)
+
+        self.caen_polarity_label = QLabel(self.scrollAreaWidgetContents_2)
+        self.caen_polarity_label.setObjectName(u"caen_polarity_label")
+        self.caen_polarity_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.caen_general_grid.addWidget(self.caen_polarity_label, 3, 0, 1, 1)
+
+        self.caen_post_trig_box = QSpinBox(self.scrollAreaWidgetContents_2)
+        self.caen_post_trig_box.setObjectName(u"caen_post_trig_box")
+        self.caen_post_trig_box.setMaximum(100)
+
+        self.caen_general_grid.addWidget(self.caen_post_trig_box, 2, 3, 1, 1)
+
+        self.caen_io_label = QLabel(self.scrollAreaWidgetContents_2)
+        self.caen_io_label.setObjectName(u"caen_io_label")
+        self.caen_io_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.caen_general_grid.addWidget(self.caen_io_label, 3, 2, 1, 1)
+
+        self.caen_enabled_box = QCheckBox(self.scrollAreaWidgetContents_2)
+        self.caen_enabled_box.setObjectName(u"caen_enabled_box")
+
+        self.caen_general_grid.addWidget(self.caen_enabled_box, 0, 7, 1, 1)
+
+        self.caen_io_box = QComboBox(self.scrollAreaWidgetContents_2)
+        self.caen_io_box.addItem("")
+        self.caen_io_box.addItem("")
+        self.caen_io_box.setObjectName(u"caen_io_box")
+
+        self.caen_general_grid.addWidget(self.caen_io_box, 3, 3, 1, 1)
+
+        self.caen_port_box = QSpinBox(self.scrollAreaWidgetContents_2)
+        self.caen_port_box.setObjectName(u"caen_port_box")
+        self.caen_port_box.setMinimumSize(QSize(50, 0))
+
+        self.caen_general_grid.addWidget(self.caen_port_box, 1, 3, 1, 1)
+
+        self.caen_decimation_label = QLabel(self.scrollAreaWidgetContents_2)
+        self.caen_decimation_label.setObjectName(u"caen_decimation_label")
+        self.caen_decimation_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.caen_general_grid.addWidget(self.caen_decimation_label, 2, 6, 1, 1)
 
         self.caen_general_label = QLabel(self.scrollAreaWidgetContents_2)
         self.caen_general_label.setObjectName(u"caen_general_label")
         self.caen_general_label.setFont(font)
         self.caen_general_label.setAlignment(Qt.AlignCenter)
 
-        self.gridLayout_6.addWidget(self.caen_general_label, 0, 0, 1, 4)
+        self.caen_general_grid.addWidget(self.caen_general_label, 0, 0, 1, 7)
 
-        self.caen_model_label = QLabel(self.scrollAreaWidgetContents_2)
-        self.caen_model_label.setObjectName(u"caen_model_label")
-        sizePolicy1 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Preferred)
-        sizePolicy1.setHorizontalStretch(0)
-        sizePolicy1.setVerticalStretch(0)
-        sizePolicy1.setHeightForWidth(self.caen_model_label.sizePolicy().hasHeightForWidth())
-        self.caen_model_label.setSizePolicy(sizePolicy1)
-        self.caen_model_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.caen_evs_box = QSpinBox(self.scrollAreaWidgetContents_2)
+        self.caen_evs_box.setObjectName(u"caen_evs_box")
+        self.caen_evs_box.setMaximum(10000)
 
-        self.gridLayout_6.addWidget(self.caen_model_label, 1, 0, 1, 1)
-
-        self.caen_port_label = QLabel(self.scrollAreaWidgetContents_2)
-        self.caen_port_label.setObjectName(u"caen_port_label")
-        self.caen_port_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
-
-        self.gridLayout_6.addWidget(self.caen_port_label, 1, 2, 1, 1)
-
-        self.caen_sw_trig_label = QLabel(self.scrollAreaWidgetContents_2)
-        self.caen_sw_trig_label.setObjectName(u"caen_sw_trig_label")
-        self.caen_sw_trig_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
-
-        self.gridLayout_6.addWidget(self.caen_sw_trig_label, 7, 2, 1, 1)
-
-        self.caen_length_label = QLabel(self.scrollAreaWidgetContents_2)
-        self.caen_length_label.setObjectName(u"caen_length_label")
-        self.caen_length_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
-
-        self.gridLayout_6.addWidget(self.caen_length_label, 3, 0, 1, 1)
-
-        self.caen_post_trig_box = QSpinBox(self.scrollAreaWidgetContents_2)
-        self.caen_post_trig_box.setObjectName(u"caen_post_trig_box")
-        self.caen_post_trig_box.setMaximum(100)
-
-        self.gridLayout_6.addWidget(self.caen_post_trig_box, 3, 3, 1, 1)
-
-        self.caen_decimation_label = QLabel(self.scrollAreaWidgetContents_2)
-        self.caen_decimation_label.setObjectName(u"caen_decimation_label")
-        self.caen_decimation_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
-
-        self.gridLayout_6.addWidget(self.caen_decimation_label, 4, 2, 1, 1)
-
-        self.caen_trigin_label = QLabel(self.scrollAreaWidgetContents_2)
-        self.caen_trigin_label.setObjectName(u"caen_trigin_label")
-        self.caen_trigin_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
-
-        self.gridLayout_6.addWidget(self.caen_trigin_label, 4, 0, 1, 1)
-
-        self.caen_trigin_box = QCheckBox(self.scrollAreaWidgetContents_2)
-        self.caen_trigin_box.setObjectName(u"caen_trigin_box")
-
-        self.gridLayout_6.addWidget(self.caen_trigin_box, 4, 1, 1, 1)
-
-        self.caen_decimation_box = QSpinBox(self.scrollAreaWidgetContents_2)
-        self.caen_decimation_box.setObjectName(u"caen_decimation_box")
-        self.caen_decimation_box.setMinimum(1)
-        self.caen_decimation_box.setMaximum(7)
-
-        self.gridLayout_6.addWidget(self.caen_decimation_box, 4, 3, 1, 1)
+        self.caen_general_grid.addWidget(self.caen_evs_box, 1, 7, 1, 1)
 
 
-        self.verticalLayout_9.addLayout(self.gridLayout_6)
+        self.verticalLayout_9.addLayout(self.caen_general_grid)
 
         self.line_2 = QFrame(self.scrollAreaWidgetContents_2)
         self.line_2.setObjectName(u"line_2")
@@ -789,7 +918,7 @@ class Ui_SettingsWindow(object):
 
         self.verticalLayout_9.addLayout(self.gridLayout_8)
 
-        self.verticalSpacer_4 = QSpacerItem(20, 368, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.verticalSpacer_4 = QSpacerItem(20, 368, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
         self.verticalLayout_9.addItem(self.verticalSpacer_4)
 
@@ -813,7 +942,7 @@ class Ui_SettingsWindow(object):
         self.acoustics_scroll_area.setWidgetResizable(True)
         self.scrollAreaWidgetContents_6 = QWidget()
         self.scrollAreaWidgetContents_6.setObjectName(u"scrollAreaWidgetContents_6")
-        self.scrollAreaWidgetContents_6.setGeometry(QRect(0, 0, 388, 442))
+        self.scrollAreaWidgetContents_6.setGeometry(QRect(0, 0, 717, 423))
         self.scrollAreaWidgetContents_6.setMaximumSize(QSize(1000, 16777215))
         self.verticalLayout_8 = QVBoxLayout(self.scrollAreaWidgetContents_6)
         self.verticalLayout_8.setSpacing(3)
@@ -823,38 +952,29 @@ class Ui_SettingsWindow(object):
         self.acous_general_grid = QGridLayout()
         self.acous_general_grid.setSpacing(3)
         self.acous_general_grid.setObjectName(u"acous_general_grid")
-        self.acous_trig_delay_box = QSpinBox(self.scrollAreaWidgetContents_6)
-        self.acous_trig_delay_box.setObjectName(u"acous_trig_delay_box")
+        self.acous_general_grid.setContentsMargins(-1, 6, -1, 6)
+        self.acous_post_trig_box = QSpinBox(self.scrollAreaWidgetContents_6)
+        self.acous_post_trig_box.setObjectName(u"acous_post_trig_box")
 
-        self.acous_general_grid.addWidget(self.acous_trig_delay_box, 3, 3, 1, 1)
+        self.acous_general_grid.addWidget(self.acous_post_trig_box, 2, 3, 1, 1)
+
+        self.label = QLabel(self.scrollAreaWidgetContents_6)
+        self.label.setObjectName(u"label")
+        self.label.setFont(font)
+        self.label.setAlignment(Qt.AlignCenter)
+
+        self.acous_general_grid.addWidget(self.label, 0, 0, 1, 6)
+
+        self.acous_trig_timeout_box = QSpinBox(self.scrollAreaWidgetContents_6)
+        self.acous_trig_timeout_box.setObjectName(u"acous_trig_timeout_box")
+
+        self.acous_general_grid.addWidget(self.acous_trig_timeout_box, 1, 5, 1, 1)
 
         self.acous_post_trig_label = QLabel(self.scrollAreaWidgetContents_6)
         self.acous_post_trig_label.setObjectName(u"acous_post_trig_label")
         self.acous_post_trig_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
-        self.acous_general_grid.addWidget(self.acous_post_trig_label, 3, 0, 1, 1)
-
-        self.acous_trig_delay_label = QLabel(self.scrollAreaWidgetContents_6)
-        self.acous_trig_delay_label.setObjectName(u"acous_trig_delay_label")
-        self.acous_trig_delay_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
-
-        self.acous_general_grid.addWidget(self.acous_trig_delay_label, 3, 2, 1, 1)
-
-        self.acous_trig_timeout_label = QLabel(self.scrollAreaWidgetContents_6)
-        self.acous_trig_timeout_label.setObjectName(u"acous_trig_timeout_label")
-        self.acous_trig_timeout_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
-
-        self.acous_general_grid.addWidget(self.acous_trig_timeout_label, 2, 2, 1, 1)
-
-        self.acous_post_trig_box = QSpinBox(self.scrollAreaWidgetContents_6)
-        self.acous_post_trig_box.setObjectName(u"acous_post_trig_box")
-
-        self.acous_general_grid.addWidget(self.acous_post_trig_box, 3, 1, 1, 1)
-
-        self.acous_pre_trig_box = QSpinBox(self.scrollAreaWidgetContents_6)
-        self.acous_pre_trig_box.setObjectName(u"acous_pre_trig_box")
-
-        self.acous_general_grid.addWidget(self.acous_pre_trig_box, 2, 1, 1, 1)
+        self.acous_general_grid.addWidget(self.acous_post_trig_label, 2, 2, 1, 1)
 
         self.acous_sample_rate_label = QLabel(self.scrollAreaWidgetContents_6)
         self.acous_sample_rate_label.setObjectName(u"acous_sample_rate_label")
@@ -862,29 +982,39 @@ class Ui_SettingsWindow(object):
 
         self.acous_general_grid.addWidget(self.acous_sample_rate_label, 1, 0, 1, 1)
 
-        self.acous_trig_timeout_box = QSpinBox(self.scrollAreaWidgetContents_6)
-        self.acous_trig_timeout_box.setObjectName(u"acous_trig_timeout_box")
+        self.acous_trig_delay_box = QSpinBox(self.scrollAreaWidgetContents_6)
+        self.acous_trig_delay_box.setObjectName(u"acous_trig_delay_box")
 
-        self.acous_general_grid.addWidget(self.acous_trig_timeout_box, 2, 3, 1, 1)
+        self.acous_general_grid.addWidget(self.acous_trig_delay_box, 2, 5, 1, 1)
+
+        self.acous_trig_delay_label = QLabel(self.scrollAreaWidgetContents_6)
+        self.acous_trig_delay_label.setObjectName(u"acous_trig_delay_label")
+        self.acous_trig_delay_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.acous_general_grid.addWidget(self.acous_trig_delay_label, 2, 4, 1, 1)
 
         self.acous_sample_rate_box = QComboBox(self.scrollAreaWidgetContents_6)
         self.acous_sample_rate_box.addItem("")
         self.acous_sample_rate_box.setObjectName(u"acous_sample_rate_box")
 
-        self.acous_general_grid.addWidget(self.acous_sample_rate_box, 1, 1, 1, 3)
+        self.acous_general_grid.addWidget(self.acous_sample_rate_box, 1, 1, 1, 1)
+
+        self.acous_pre_trig_box = QSpinBox(self.scrollAreaWidgetContents_6)
+        self.acous_pre_trig_box.setObjectName(u"acous_pre_trig_box")
+
+        self.acous_general_grid.addWidget(self.acous_pre_trig_box, 1, 3, 1, 1)
+
+        self.acous_trig_timeout_label = QLabel(self.scrollAreaWidgetContents_6)
+        self.acous_trig_timeout_label.setObjectName(u"acous_trig_timeout_label")
+        self.acous_trig_timeout_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.acous_general_grid.addWidget(self.acous_trig_timeout_label, 1, 4, 1, 1)
 
         self.acous_pre_trig_label = QLabel(self.scrollAreaWidgetContents_6)
         self.acous_pre_trig_label.setObjectName(u"acous_pre_trig_label")
         self.acous_pre_trig_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
-        self.acous_general_grid.addWidget(self.acous_pre_trig_label, 2, 0, 1, 1)
-
-        self.label = QLabel(self.scrollAreaWidgetContents_6)
-        self.label.setObjectName(u"label")
-        self.label.setFont(font)
-        self.label.setAlignment(Qt.AlignCenter)
-
-        self.acous_general_grid.addWidget(self.label, 0, 0, 1, 4)
+        self.acous_general_grid.addWidget(self.acous_pre_trig_label, 1, 2, 1, 1)
 
 
         self.verticalLayout_8.addLayout(self.acous_general_grid)
@@ -899,6 +1029,7 @@ class Ui_SettingsWindow(object):
         self.acous_per_ch_grid = QGridLayout()
         self.acous_per_ch_grid.setSpacing(3)
         self.acous_per_ch_grid.setObjectName(u"acous_per_ch_grid")
+        self.acous_per_ch_grid.setContentsMargins(-1, 6, -1, 6)
         self.acous_enable_ch7 = QCheckBox(self.scrollAreaWidgetContents_6)
         self.acous_enable_ch7.setObjectName(u"acous_enable_ch7")
 
@@ -1313,7 +1444,7 @@ class Ui_SettingsWindow(object):
 
         self.verticalLayout_8.addLayout(self.acous_per_ch_grid)
 
-        self.acous_spacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.acous_spacer = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
         self.verticalLayout_8.addItem(self.acous_spacer)
 
@@ -1339,7 +1470,7 @@ class Ui_SettingsWindow(object):
         self.cam_scroll_area.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 371, 474))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 703, 505))
         self.scrollAreaWidgetContents.setMaximumSize(QSize(1000, 16777215))
         self.gridLayout_5 = QGridLayout(self.scrollAreaWidgetContents)
         self.gridLayout_5.setSpacing(3)
@@ -1349,7 +1480,7 @@ class Ui_SettingsWindow(object):
         self.gridLayout_5.setContentsMargins(0, 0, 0, 0)
         self.post_trig_len_label = QLabel(self.scrollAreaWidgetContents)
         self.post_trig_len_label.setObjectName(u"post_trig_len_label")
-        sizePolicy2 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
+        sizePolicy2 = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Preferred)
         sizePolicy2.setHorizontalStretch(0)
         sizePolicy2.setVerticalStretch(0)
         sizePolicy2.setHeightForWidth(self.post_trig_len_label.sizePolicy().hasHeightForWidth())
@@ -1360,7 +1491,7 @@ class Ui_SettingsWindow(object):
 
         self.cam1_buffer_len = QSpinBox(self.scrollAreaWidgetContents)
         self.cam1_buffer_len.setObjectName(u"cam1_buffer_len")
-        sizePolicy3 = QSizePolicy(QSizePolicy.MinimumExpanding, QSizePolicy.Fixed)
+        sizePolicy3 = QSizePolicy(QSizePolicy.Policy.MinimumExpanding, QSizePolicy.Policy.Fixed)
         sizePolicy3.setHorizontalStretch(0)
         sizePolicy3.setVerticalStretch(0)
         sizePolicy3.setHeightForWidth(self.cam1_buffer_len.sizePolicy().hasHeightForWidth())
@@ -1391,7 +1522,7 @@ class Ui_SettingsWindow(object):
 
         self.gridLayout_5.addWidget(self.trig_enbl_pin_label, 22, 0, 1, 1)
 
-        self.cam_spacer = QSpacerItem(20, 10, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.cam_spacer = QSpacerItem(20, 10, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
         self.gridLayout_5.addItem(self.cam_spacer, 26, 0, 1, 4)
 
@@ -1450,7 +1581,7 @@ class Ui_SettingsWindow(object):
 
         self.cam3_label = QLabel(self.scrollAreaWidgetContents)
         self.cam3_label.setObjectName(u"cam3_label")
-        sizePolicy4 = QSizePolicy(QSizePolicy.MinimumExpanding, QSizePolicy.Preferred)
+        sizePolicy4 = QSizePolicy(QSizePolicy.Policy.MinimumExpanding, QSizePolicy.Policy.Preferred)
         sizePolicy4.setHorizontalStretch(0)
         sizePolicy4.setVerticalStretch(0)
         sizePolicy4.setHeightForWidth(self.cam3_label.sizePolicy().hasHeightForWidth())
@@ -1915,7 +2046,9 @@ class Ui_SettingsWindow(object):
 
         self.gridLayout_5.addWidget(self.cam3_enabled_box, 1, 3, 1, 1)
 
-        self.gridLayout_5.setColumnStretch(0, 1)
+        self.gridLayout_5.setColumnStretch(1, 1)
+        self.gridLayout_5.setColumnStretch(2, 1)
+        self.gridLayout_5.setColumnStretch(3, 1)
         self.cam_scroll_area.setWidget(self.scrollAreaWidgetContents)
 
         self.verticalLayout_3.addWidget(self.cam_scroll_area)
@@ -1936,7 +2069,7 @@ class Ui_SettingsWindow(object):
         self.dio_scroll_area.setWidgetResizable(True)
         self.scrollAreaWidgetContents_3 = QWidget()
         self.scrollAreaWidgetContents_3.setObjectName(u"scrollAreaWidgetContents_3")
-        self.scrollAreaWidgetContents_3.setGeometry(QRect(0, 0, 371, 515))
+        self.scrollAreaWidgetContents_3.setGeometry(QRect(0, 0, 703, 534))
         self.scrollAreaWidgetContents_3.setMaximumSize(QSize(1000, 16777215))
         self.verticalLayout_2 = QVBoxLayout(self.scrollAreaWidgetContents_3)
         self.verticalLayout_2.setSpacing(6)
@@ -2485,7 +2618,7 @@ class Ui_SettingsWindow(object):
 
         self.verticalLayout_2.addLayout(self.gate_grid_layout)
 
-        self.dio_spacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.dio_spacer = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
         self.verticalLayout_2.addItem(self.dio_spacer)
 
@@ -2495,7 +2628,7 @@ class Ui_SettingsWindow(object):
 
         self.tabWidget.addTab(self.dio_tab, "")
 
-        self.gridLayout.addWidget(self.tabWidget, 0, 0, 1, 1)
+        self.gridLayout.addWidget(self.tabWidget, 0, 1, 1, 1)
 
         SettingsWindow.setCentralWidget(self.centralwidget)
         self.toolBar = QToolBar(SettingsWindow)
@@ -2507,31 +2640,37 @@ class Ui_SettingsWindow(object):
         self.data_dir_label.setBuddy(self.data_dir_edit)
         self.max_num_ev_label.setBuddy(self.max_ev_time_box)
         self.max_ev_time_label.setBuddy(self.max_num_ev_box)
-        self.sipm_amp1_qp_label.setBuddy(self.sipm_amp1_qp_box)
-        self.sipm_amp2_ip_addr_label.setBuddy(self.sipm_amp1_ip_addr_edit)
         self.sipm_amp1_ip_addr_label.setBuddy(self.sipm_amp1_ip_addr_edit)
+        self.sipm_amp1_iv_step_label.setBuddy(self.sipm_amp1_bias_box)
         self.sipm_amp1_bias_label.setBuddy(self.sipm_amp1_bias_box)
+        self.sipm_amp1_qp_label.setBuddy(self.sipm_amp1_qp_box)
+        self.sipm_amp1_iv_start_label.setBuddy(self.sipm_amp1_bias_box)
+        self.sipm_amp1_iv_stop_label.setBuddy(self.sipm_amp1_bias_box)
+        self.sipm_amp1_iv_data_dir_label.setBuddy(self.sipm_amp1_ip_addr_edit)
         self.sipm_amp2_bias_label.setBuddy(self.sipm_amp1_bias_box)
+        self.sipm_amp2_ip_addr_label_2.setBuddy(self.sipm_amp1_ip_addr_edit)
+        self.sipm_amp2_iv_step_label.setBuddy(self.sipm_amp1_bias_box)
+        self.sipm_amp2_ip_addr_label.setBuddy(self.sipm_amp1_ip_addr_edit)
+        self.sipm_amp2_iv_stop_label.setBuddy(self.sipm_amp1_bias_box)
         self.sipm_amp2_qp_label.setBuddy(self.sipm_amp1_qp_box)
-        self.caen_polarity_label.setBuddy(self.caen_polarity_box)
-        self.caen_io_label.setBuddy(self.caen_io_box)
-        self.caen_post_trig_label.setBuddy(self.caen_post_trig_box)
-        self.caen_conn_label.setBuddy(self.caen_conn_box)
-        self.caen_ext_trig_label.setBuddy(self.caen_ext_trig_box)
-        self.caen_overlap_label.setBuddy(self.caen_overlap_box)
-        self.caen_evs_label.setBuddy(self.caen_evs_box)
+        self.sipm_amp2_iv_start_label.setBuddy(self.sipm_amp1_bias_box)
+        self.caen_length_label.setBuddy(self.caen_length_box)
+        self.caen_sw_trig_label.setBuddy(self.caen_sw_trig_box)
         self.caen_model_label.setBuddy(self.caen_model_box)
         self.caen_port_label.setBuddy(self.caen_port_box)
-        self.caen_sw_trig_label.setBuddy(self.caen_sw_trig_box)
-        self.caen_length_label.setBuddy(self.caen_length_box)
+        self.caen_conn_label.setBuddy(self.caen_conn_box)
+        self.caen_evs_label.setBuddy(self.caen_evs_box)
+        self.caen_post_trig_label.setBuddy(self.caen_post_trig_box)
+        self.caen_ext_trig_label.setBuddy(self.caen_ext_trig_box)
+        self.caen_polarity_label.setBuddy(self.caen_polarity_box)
+        self.caen_io_label.setBuddy(self.caen_io_box)
         self.caen_decimation_label.setBuddy(self.caen_decimation_box)
-        self.caen_trigin_label.setBuddy(self.caen_trigin_box)
         self.caen_g0_enable_label.setBuddy(self.caen_g0_enable_box)
         self.caen_g0_thres_label.setBuddy(self.caen_g0_thres_box)
         self.acous_post_trig_label.setBuddy(self.acous_post_trig_box)
+        self.acous_sample_rate_label.setBuddy(self.acous_sample_rate_box)
         self.acous_trig_delay_label.setBuddy(self.acous_trig_delay_box)
         self.acous_trig_timeout_label.setBuddy(self.acous_trig_timeout_box)
-        self.acous_sample_rate_label.setBuddy(self.acous_sample_rate_box)
         self.acous_pre_trig_label.setBuddy(self.acous_pre_trig_box)
         self.acous_ch5_label.setBuddy(self.acous_enable_ch5)
         self.acous_ch2_label.setBuddy(self.acous_enable_ch2)
@@ -2569,22 +2708,13 @@ class Ui_SettingsWindow(object):
         QWidget.setTabOrder(self.sipm_scroll_area, self.acoustics_scroll_area)
         QWidget.setTabOrder(self.acoustics_scroll_area, self.cam_scroll_area)
         QWidget.setTabOrder(self.cam_scroll_area, self.dio_scroll_area)
-        QWidget.setTabOrder(self.dio_scroll_area, self.sipm_amp1_ip_addr_edit)
-        QWidget.setTabOrder(self.sipm_amp1_ip_addr_edit, self.sipm_amp1_bias_box)
-        QWidget.setTabOrder(self.sipm_amp1_bias_box, self.sipm_amp1_qp_box)
-        QWidget.setTabOrder(self.sipm_amp1_qp_box, self.caen_model_box)
+        QWidget.setTabOrder(self.dio_scroll_area, self.caen_model_box)
         QWidget.setTabOrder(self.caen_model_box, self.caen_port_box)
-        QWidget.setTabOrder(self.caen_port_box, self.caen_conn_box)
-        QWidget.setTabOrder(self.caen_conn_box, self.caen_evs_box)
-        QWidget.setTabOrder(self.caen_evs_box, self.caen_length_box)
+        QWidget.setTabOrder(self.caen_port_box, self.caen_length_box)
         QWidget.setTabOrder(self.caen_length_box, self.caen_post_trig_box)
-        QWidget.setTabOrder(self.caen_post_trig_box, self.caen_trigin_box)
-        QWidget.setTabOrder(self.caen_trigin_box, self.caen_overlap_box)
-        QWidget.setTabOrder(self.caen_overlap_box, self.caen_polarity_box)
+        QWidget.setTabOrder(self.caen_post_trig_box, self.caen_polarity_box)
         QWidget.setTabOrder(self.caen_polarity_box, self.caen_io_box)
-        QWidget.setTabOrder(self.caen_io_box, self.caen_ext_trig_box)
-        QWidget.setTabOrder(self.caen_ext_trig_box, self.caen_sw_trig_box)
-        QWidget.setTabOrder(self.caen_sw_trig_box, self.caen_g0_enable_box)
+        QWidget.setTabOrder(self.caen_io_box, self.caen_g0_enable_box)
         QWidget.setTabOrder(self.caen_g0_enable_box, self.caen_g0_thres_box)
         QWidget.setTabOrder(self.caen_g0_thres_box, self.caen_g0_trig_mask_0)
         QWidget.setTabOrder(self.caen_g0_trig_mask_0, self.caen_g0_trig_mask_1)
@@ -2602,12 +2732,7 @@ class Ui_SettingsWindow(object):
         QWidget.setTabOrder(self.caen_g0_acq_mask_4, self.caen_g0_acq_mask_5)
         QWidget.setTabOrder(self.caen_g0_acq_mask_5, self.caen_g0_acq_mask_6)
         QWidget.setTabOrder(self.caen_g0_acq_mask_6, self.caen_g0_acq_mask_7)
-        QWidget.setTabOrder(self.caen_g0_acq_mask_7, self.acous_sample_rate_box)
-        QWidget.setTabOrder(self.acous_sample_rate_box, self.acous_pre_trig_box)
-        QWidget.setTabOrder(self.acous_pre_trig_box, self.acous_trig_timeout_box)
-        QWidget.setTabOrder(self.acous_trig_timeout_box, self.acous_post_trig_box)
-        QWidget.setTabOrder(self.acous_post_trig_box, self.acous_trig_delay_box)
-        QWidget.setTabOrder(self.acous_trig_delay_box, self.acous_enable_ch1)
+        QWidget.setTabOrder(self.caen_g0_acq_mask_7, self.acous_enable_ch1)
         QWidget.setTabOrder(self.acous_enable_ch1, self.acous_range_ch1)
         QWidget.setTabOrder(self.acous_range_ch1, self.acous_dc_offset_ch1)
         QWidget.setTabOrder(self.acous_dc_offset_ch1, self.acous_trig_ch1)
@@ -2827,61 +2952,76 @@ class Ui_SettingsWindow(object):
         self.max_ev_time_label.setText(QCoreApplication.translate("SettingsWindow", u"Max Event Time", None))
         self.max_ev_time_box.setSuffix(QCoreApplication.translate("SettingsWindow", u"s", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.general_tab), QCoreApplication.translate("SettingsWindow", u"General", None))
-        self.sipm_amp1_qp_label.setText(QCoreApplication.translate("SettingsWindow", u"QP Voltage", None))
-        self.sipm_amp2_ip_addr_label.setText(QCoreApplication.translate("SettingsWindow", u"IP Addr", None))
-        self.sipm_amp1_qp_box.setSuffix(QCoreApplication.translate("SettingsWindow", u"V", None))
-        self.sipm_amp1_bias_box.setSuffix(QCoreApplication.translate("SettingsWindow", u"V", None))
+        self.sipm_amp1_iv_step_box.setSuffix(QCoreApplication.translate("SettingsWindow", u"V", None))
         self.sipm_amp1_ip_addr_label.setText(QCoreApplication.translate("SettingsWindow", u"IP Addr", None))
+        self.sipm_amp1_qp_box.setSuffix(QCoreApplication.translate("SettingsWindow", u"V", None))
+        self.sipm_amp1_iv_step_label.setText(QCoreApplication.translate("SettingsWindow", u"IV Step", None))
         self.sipm_amp1_bias_label.setText(QCoreApplication.translate("SettingsWindow", u"Bias Voltage", None))
+        self.sipm_amp1_label.setText(QCoreApplication.translate("SettingsWindow", u"SiPM Amplifier 1", None))
+        self.sipm_amp1_bias_box.setSuffix(QCoreApplication.translate("SettingsWindow", u"V", None))
+        self.sipm_amp1_iv_start_box.setSuffix(QCoreApplication.translate("SettingsWindow", u"V", None))
+        self.sipm_amp1_iv_stop_box.setSuffix(QCoreApplication.translate("SettingsWindow", u"V", None))
+        self.sipm_amp1_qp_label.setText(QCoreApplication.translate("SettingsWindow", u"QP Voltage", None))
+        self.sipm_amp1_enabled_box.setText(QCoreApplication.translate("SettingsWindow", u"Enabled", None))
+        self.sipm_amp1_iv_start_label.setText(QCoreApplication.translate("SettingsWindow", u"IV Start", None))
+        self.sipm_amp1_iv_stop_label.setText(QCoreApplication.translate("SettingsWindow", u"IV Stop", None))
+        self.sipm_amp1_iv_enabled_box.setText(QCoreApplication.translate("SettingsWindow", u"IV Enabled", None))
+        self.sipm_amp1_iv_data_dir_label.setText(QCoreApplication.translate("SettingsWindow", u"Data Dir", None))
         self.sipm_amp2_bias_label.setText(QCoreApplication.translate("SettingsWindow", u"Bias Voltage", None))
+        self.sipm_amp2_iv_stop_box.setSuffix(QCoreApplication.translate("SettingsWindow", u"V", None))
         self.sipm_amp2_bias_box.setSuffix(QCoreApplication.translate("SettingsWindow", u"V", None))
+        self.sipm_amp2_ip_addr_label_2.setText(QCoreApplication.translate("SettingsWindow", u"Data Dir", None))
+        self.sipm_amp2_label.setText(QCoreApplication.translate("SettingsWindow", u"SiPM Amplifier 2", None))
+        self.sipm_amp2_iv_step_label.setText(QCoreApplication.translate("SettingsWindow", u"IV Step", None))
+        self.sipm_amp2_ip_addr_label.setText(QCoreApplication.translate("SettingsWindow", u"IP Addr", None))
+        self.sipm_amp2_iv_step_box.setSuffix(QCoreApplication.translate("SettingsWindow", u"V", None))
+        self.sipm_amp2_iv_stop_label.setText(QCoreApplication.translate("SettingsWindow", u"IV Stop", None))
         self.sipm_amp2_qp_label.setText(QCoreApplication.translate("SettingsWindow", u"QP Voltage", None))
         self.sipm_amp2_qp_box.setSuffix(QCoreApplication.translate("SettingsWindow", u"V", None))
-        self.sipm_amp1_enabled_box.setText(QCoreApplication.translate("SettingsWindow", u"Enabled", None))
-        self.sipm_amp1_label.setText(QCoreApplication.translate("SettingsWindow", u"SiPM Amplifier 1", None))
-        self.sipm_amp2_label.setText(QCoreApplication.translate("SettingsWindow", u"SiPM Amplifier 2", None))
+        self.sipm_amp2_iv_start_label.setText(QCoreApplication.translate("SettingsWindow", u"IV Start", None))
+        self.sipm_amp2_iv_enabled_box.setText(QCoreApplication.translate("SettingsWindow", u"IV Enabled", None))
+        self.sipm_amp2_iv_start_box.setSuffix(QCoreApplication.translate("SettingsWindow", u"V", None))
         self.sipm_amp2_enabled_box.setText(QCoreApplication.translate("SettingsWindow", u"Enabled", None))
-        self.caen_polarity_box.setItemText(0, QCoreApplication.translate("SettingsWindow", u"Positive", None))
-        self.caen_polarity_box.setItemText(1, QCoreApplication.translate("SettingsWindow", u"Negative", None))
-
-        self.caen_polarity_label.setText(QCoreApplication.translate("SettingsWindow", u"Polarity", None))
-        self.caen_io_label.setText(QCoreApplication.translate("SettingsWindow", u"IO Level", None))
-        self.caen_post_trig_label.setText(QCoreApplication.translate("SettingsWindow", u"Post Trig", None))
+        self.caen_overlap_box.setText(QCoreApplication.translate("SettingsWindow", u"Overlap Reject", None))
+        self.caen_length_label.setText(QCoreApplication.translate("SettingsWindow", u"Record Length", None))
+        self.caen_sw_trig_label.setText(QCoreApplication.translate("SettingsWindow", u"SW Trig Mode", None))
         self.caen_ext_trig_box.setItemText(0, QCoreApplication.translate("SettingsWindow", u"Disabled", None))
         self.caen_ext_trig_box.setItemText(1, QCoreApplication.translate("SettingsWindow", u"ACQ Only", None))
         self.caen_ext_trig_box.setItemText(2, QCoreApplication.translate("SettingsWindow", u"EXT Only", None))
         self.caen_ext_trig_box.setItemText(3, QCoreApplication.translate("SettingsWindow", u"ACQ+EXT", None))
 
-        self.caen_model_box.setItemText(0, QCoreApplication.translate("SettingsWindow", u"DT5740D", None))
-        self.caen_model_box.setItemText(1, QCoreApplication.translate("SettingsWindow", u"DT5730B", None))
-        self.caen_model_box.setItemText(2, QCoreApplication.translate("SettingsWindow", u"V1740D", None))
-
+        self.caen_decimation_box.setPrefix("")
+        self.caen_model_label.setText(QCoreApplication.translate("SettingsWindow", u"Model", None))
+        self.caen_port_label.setText(QCoreApplication.translate("SettingsWindow", u"Port", None))
         self.caen_conn_label.setText(QCoreApplication.translate("SettingsWindow", u"Connection Type", None))
-        self.caen_ext_trig_label.setText(QCoreApplication.translate("SettingsWindow", u"Ext Trig Mode", None))
         self.caen_sw_trig_box.setItemText(0, QCoreApplication.translate("SettingsWindow", u"Disabled", None))
         self.caen_sw_trig_box.setItemText(1, QCoreApplication.translate("SettingsWindow", u"ACQ Only", None))
         self.caen_sw_trig_box.setItemText(2, QCoreApplication.translate("SettingsWindow", u"EXT Only", None))
         self.caen_sw_trig_box.setItemText(3, QCoreApplication.translate("SettingsWindow", u"ACQ+EXT", None))
 
-        self.caen_overlap_label.setText(QCoreApplication.translate("SettingsWindow", u"Overlap Reject", None))
-        self.caen_overlap_box.setText("")
         self.caen_evs_label.setText(QCoreApplication.translate("SettingsWindow", u"Evs Per Read", None))
-        self.caen_io_box.setItemText(0, QCoreApplication.translate("SettingsWindow", u"TTL", None))
-        self.caen_io_box.setItemText(1, QCoreApplication.translate("SettingsWindow", u"NIM", None))
+        self.caen_post_trig_label.setText(QCoreApplication.translate("SettingsWindow", u"Post Trig", None))
+        self.caen_model_box.setItemText(0, QCoreApplication.translate("SettingsWindow", u"DT5740D", None))
+        self.caen_model_box.setItemText(1, QCoreApplication.translate("SettingsWindow", u"DT5730B", None))
+        self.caen_model_box.setItemText(2, QCoreApplication.translate("SettingsWindow", u"V1740D", None))
 
+        self.caen_ext_trig_label.setText(QCoreApplication.translate("SettingsWindow", u"Ext Trig Mode", None))
         self.caen_conn_box.setItemText(0, QCoreApplication.translate("SettingsWindow", u"USB", None))
         self.caen_conn_box.setItemText(1, QCoreApplication.translate("SettingsWindow", u"PCI", None))
 
-        self.caen_general_label.setText(QCoreApplication.translate("SettingsWindow", u"CAEN Digitizer General", None))
-        self.caen_model_label.setText(QCoreApplication.translate("SettingsWindow", u"Model", None))
-        self.caen_port_label.setText(QCoreApplication.translate("SettingsWindow", u"Port", None))
-        self.caen_sw_trig_label.setText(QCoreApplication.translate("SettingsWindow", u"SW Trig Mode", None))
-        self.caen_length_label.setText(QCoreApplication.translate("SettingsWindow", u"Record Length", None))
+        self.caen_trigin_box.setText(QCoreApplication.translate("SettingsWindow", u"TRIG-IN as Gate", None))
+        self.caen_polarity_box.setItemText(0, QCoreApplication.translate("SettingsWindow", u"Positive", None))
+        self.caen_polarity_box.setItemText(1, QCoreApplication.translate("SettingsWindow", u"Negative", None))
+
+        self.caen_polarity_label.setText(QCoreApplication.translate("SettingsWindow", u"Polarity", None))
         self.caen_post_trig_box.setSuffix(QCoreApplication.translate("SettingsWindow", u"%", None))
+        self.caen_io_label.setText(QCoreApplication.translate("SettingsWindow", u"IO Level", None))
+        self.caen_enabled_box.setText(QCoreApplication.translate("SettingsWindow", u"Enabled", None))
+        self.caen_io_box.setItemText(0, QCoreApplication.translate("SettingsWindow", u"TTL", None))
+        self.caen_io_box.setItemText(1, QCoreApplication.translate("SettingsWindow", u"NIM", None))
+
         self.caen_decimation_label.setText(QCoreApplication.translate("SettingsWindow", u"Decimation", None))
-        self.caen_trigin_label.setText(QCoreApplication.translate("SettingsWindow", u"TRG-IN as Gate", None))
-        self.caen_trigin_box.setText("")
-        self.caen_decimation_box.setPrefix("")
+        self.caen_general_label.setText(QCoreApplication.translate("SettingsWindow", u"CAEN Digitizer General", None))
         self.caen_g0_enable_label.setText(QCoreApplication.translate("SettingsWindow", u"Enabled", None))
         self.caen_g0_enable_box.setText("")
         self.caen_g0_label.setText(QCoreApplication.translate("SettingsWindow", u"Group 0", None))
@@ -2914,14 +3054,14 @@ class Ui_SettingsWindow(object):
         self.label_24.setText(QCoreApplication.translate("SettingsWindow", u"Ch1", None))
         self.label_32.setText(QCoreApplication.translate("SettingsWindow", u"Ch0", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.scint_tab), QCoreApplication.translate("SettingsWindow", u"Scint", None))
+        self.label.setText(QCoreApplication.translate("SettingsWindow", u"General", None))
         self.acous_post_trig_label.setText(QCoreApplication.translate("SettingsWindow", u"Post Trig Length", None))
-        self.acous_trig_delay_label.setText(QCoreApplication.translate("SettingsWindow", u"Trig Delay", None))
-        self.acous_trig_timeout_label.setText(QCoreApplication.translate("SettingsWindow", u"Trig Timeout", None))
         self.acous_sample_rate_label.setText(QCoreApplication.translate("SettingsWindow", u"Sample Rate", None))
+        self.acous_trig_delay_label.setText(QCoreApplication.translate("SettingsWindow", u"Trig Delay", None))
         self.acous_sample_rate_box.setItemText(0, QCoreApplication.translate("SettingsWindow", u"100 MS/s", None))
 
+        self.acous_trig_timeout_label.setText(QCoreApplication.translate("SettingsWindow", u"Trig Timeout", None))
         self.acous_pre_trig_label.setText(QCoreApplication.translate("SettingsWindow", u"Pre Trig Length", None))
-        self.label.setText(QCoreApplication.translate("SettingsWindow", u"General", None))
         self.acous_enable_ch7.setText("")
         self.acous_enable_ch3.setText("")
         self.acous_trig_label.setText(QCoreApplication.translate("SettingsWindow", u"Trigger", None))

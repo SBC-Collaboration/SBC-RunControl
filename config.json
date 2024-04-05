@@ -11,13 +11,23 @@
       "enabled": true,
       "ip_addr": "192.168.137.21",
       "bias": 48.0,
-      "qp": 70.0
+      "qp": 70.0,
+      "iv_enabled": true,
+      "iv_data_dir": "/mnt/rc-data/iv-curves/",
+      "iv_start": 45.0,
+      "iv_stop": 50.0,
+      "iv_step": 0.5
     },
     "amp2": {
       "enabled": false,
       "ip_addr": "192.168.137.22",
       "bias": 48.0,
-      "qp": 70.0
+      "qp": 70.0,
+      "iv_enabled": true,
+      "iv_data_dir": "/mnt/rc-data/iv-curves/",
+      "iv_start": 45.0,
+      "iv_stop": 50.0,
+      "iv_step": 0.5
     },
     "caen": {
       "model": "DT5740D",

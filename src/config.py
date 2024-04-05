@@ -33,12 +33,22 @@ class Config:
         ui.sipm_amp1_ip_addr_edit.setText(sipm_amp1_config["ip_addr"])
         ui.sipm_amp1_bias_box.setValue(sipm_amp1_config["bias"])
         ui.sipm_amp1_qp_box.setValue(sipm_amp1_config["qp"])
+        ui.sipm_amp1_iv_enabled_box.setChecked(sipm_amp1_config["iv_enabled"])
+        ui.sipm_amp1_iv_data_dir_edit.setText(sipm_amp1_config["iv_data_dir"])
+        ui.sipm_amp1_iv_start_box.setValue(sipm_amp1_config["iv_start"])
+        ui.sipm_amp1_iv_stop_box.setValue(sipm_amp1_config["iv_stop"])
+        ui.sipm_amp1_iv_step_box.setValue(sipm_amp1_config["iv_step"])
 
         sipm_amp2_config = self.config["scint"]["amp2"]
         ui.sipm_amp2_enabled_box.setChecked(sipm_amp2_config["enabled"])
         ui.sipm_amp2_ip_addr_edit.setText(sipm_amp2_config["ip_addr"])
         ui.sipm_amp2_bias_box.setValue(sipm_amp2_config["bias"])
         ui.sipm_amp2_qp_box.setValue(sipm_amp2_config["qp"])
+        ui.sipm_amp2_iv_enabled_box.setChecked(sipm_amp2_config["iv_enabled"])
+        ui.sipm_amp2_iv_data_dir_edit.setText(sipm_amp2_config["iv_data_dir"])
+        ui.sipm_amp2_iv_start_box.setValue(sipm_amp2_config["iv_start"])
+        ui.sipm_amp2_iv_stop_box.setValue(sipm_amp2_config["iv_stop"])
+        ui.sipm_amp2_iv_step_box.setValue(sipm_amp2_config["iv_step"])
 
         caen_config = self.config["scint"]["caen"]
         ui.caen_model_box.setCurrentText(caen_config["model"])
@@ -172,17 +182,27 @@ class Config:
         }
 
         sipm_amp1_config = {
-            "enabled": ui.sipm_amp1.enabled_box.isChecked(),
+            "enabled": ui.sipm_amp1_enabled_box.isChecked(),
             "ip_addr": ui.sipm_amp1_ip_addr_edit.text(),
             "bias": ui.sipm_amp1_bias_box.value(),
             "qp": ui.sipm_amp1_qp_box.value(),
+            "iv_enabled": ui.sipm_amp1_iv_enabled_box.isChecked(),
+            "iv_data_dir": ui.sipm_amp1_iv_data_dir_edit.text(),
+            "iv_start": ui.sipm_amp1_iv_start_box.value(),
+            "iv_stop": ui.sipm_amp1_iv_stop_box.value(),
+            "iv_step": ui.sipm_amp1_iv_step_box.value(),
         }
 
         sipm_amp2_config = {
-            "enabled": ui.sipm_amp2.enabled_box.isChecked(),
+            "enabled": ui.sipm_amp2_enabled_box.isChecked(),
             "ip_addr": ui.sipm_amp2_ip_addr_edit.text(),
             "bias": ui.sipm_amp2_bias_box.value(),
             "qp": ui.sipm_amp2_qp_box.value(),
+            "iv_enabled": ui.sipm_amp2_iv_enabled_box.isChecked(),
+            "iv_data_dir": ui.sipm_amp2_iv_data_dir_edit.text(),
+            "iv_start": ui.sipm_amp2_iv_start_box.value(),
+            "iv_stop": ui.sipm_amp2_iv_stop_box.value(),
+            "iv_step": ui.sipm_amp2_iv_step_box.value(),
         }
 
         caen_config = {

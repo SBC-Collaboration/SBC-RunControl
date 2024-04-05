@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1000</width>
-    <height>800</height>
+    <height>750</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -454,8 +454,8 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>846</width>
-               <height>729</height>
+               <width>893</width>
+               <height>798</height>
               </rect>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_8">
@@ -737,8 +737,8 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>846</width>
-               <height>729</height>
+               <width>855</width>
+               <height>675</height>
               </rect>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_2">
