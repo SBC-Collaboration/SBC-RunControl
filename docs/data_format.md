@@ -5,13 +5,16 @@ This documentation contains information for the data structures of different sav
 The master configuration file is saved in `.json` format. The data structure is:
 - `general`: General configuration for the run control software. This includes paths that the software uses in 
   normal operation. This information generally doesn't change across runs and different days.
-  - `config_path` (`str`): Path for the master config file.
-  - `log_path` (`str`): Path where the log file is saved.
-  - `data_dir` (`str`)
-  - `max_ev_time` (`int`, s)
-  - `max_num_evs` (`int`)
+  - `config_path` (`str`): Path to the master config file.
+  - `log_path` (`str`): Path to the log file.
+  - `data_dir` (`str`): Main directory where all of the data is saved.
+  - `max_ev_time` (`int`, s): Max time an event can last. After the maximum is reached, A software trigger is sent 
+    from run control.
+  - `max_num_evs` (`int`): Max number of events that a run can have. If the max number is reached, then the run will 
+    end, instead of starting a new event.
 - `scint`
-  - `amp`
+  - `amp1`
+    - `enabled` (`bool`)
     - `ip_addr` (`str`)
     - `bias` (`float`, V)
     - `qp` (`float`, V)
@@ -52,7 +55,9 @@ The master configuration file is saved in `.json` format. The data structure is:
       - `threshold` (`int`)
 - `cam`
   - `cam1`, `cam2`, `cam3`
-    - `config_path` (`str`)
+    - `enabled` (`bool`): Whether this camera is enabled. If not, this camera will be skipped
+    - `rc_config_path`: Path of config file in the run control system.
+    - `config_path` (`str`): Path of the config file in camera's raspberry pi system.
     - `data_path` (`str`): Data Path for the current event on the camera pi (mounted directory). For the main config file, this will be the mounted directory of the master data file. For the config file saved on camera for each event, it will be that path joined with run and event id.
     - `ip_addr` (`str`)
     - `mode` (`int`)
