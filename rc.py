@@ -66,7 +66,7 @@ class MainWindow(QMainWindow):
         self.timer = QTimer()
         self.timer.setInterval(10)
         self.timer.timeout.connect(self.update)
-        self.timer.timeout.connect(self.active_monitor)
+        self.timer.timeout.connect(self.event_loop)
         self.timer.start()
         # event timer
         self.event_timer = QElapsedTimer()
@@ -76,15 +76,10 @@ class MainWindow(QMainWindow):
         # sbc_writer = Writer()
 
         # set up run handling thread and the worker
-        self.run_handling_thread = QThread()
-        self.run_handling_worker = RunHandlingWorker(self)
-        self.run_handling_worker.state.connect(self.update_state)
-        self.run_handling_worker.moveToThread(self.run_handling_thread)
+        self.threadpool = QThreadPool()
+        self.threadpool.setMaxThreadCount(18)
+        self.start_program()
 
-        self.run_handling_worker.program_started.connect(
-            self.run_handling_thread.terminate
-        )
-        self.run_handling_worker.run_started.connect(self.run_handling_thread.terminate)
         self.run_handling_worker.run_stopped.connect(self.run_handling_thread.terminate)
         self.run_handling_worker.event_started.connect(
             self.run_handling_thread.terminate
@@ -110,7 +105,6 @@ class MainWindow(QMainWindow):
 
         # choose whether stop run or start another event after this
         self.run_handling_thread.started.connect(self.run_handling_worker.start_program)
-        self.run_handling_thread.start()
 
     # TODO: handle closing during run
     def closeEvent(self, event):
@@ -209,7 +203,7 @@ class MainWindow(QMainWindow):
             os.mkdir(self.run_dir)
         self.ui.run_id_edit.setText(self.run_id)
 
-    def active_monitor(self):
+    def event_loop(self):
         if self.run_state == self.run_states.Active:
             if (
                 self.event_timer.elapsed()
@@ -217,11 +211,45 @@ class MainWindow(QMainWindow):
             ):
                 self.stop_event()
 
+    def start_program(self):
+        self.start_program_worker = StartProgramWorker(self)
+        self.start_program_worker.state.connect(self.update_state)
+        self.start_program_worker.program_started.connect(self.start_run)
+        self.start_program_worker.program_started.connect(
+            self.start_program_worker.deleteLater
+        )
+        self.threadpool.start(self.start_program_worker)
+
+    def start_run(self):
+        # reset event number and livetimes
+        self.ev_number = 0
+        self.ev_livetime = 0.0
+        self.run_livetime = 0.0
+        self.ui.event_num_edit.setText(f"{self.ev_number:2d}")
+        self.ui.event_time_edit.setText(self.format_time(self.ev_livetime))
+        self.ui.run_live_time_edit.setText(self.format_time(self.run_livetime))
+
+        self.start_run_worker = StartProgramWorker(self)
+        self.start_run_worker.state.connect(self.update_state)
+        self.start_run_worker.run_json_path.connect(self.run_json_path)
+        self.start_run_worker.run_log_path.connect(self.run_log_path)
+        self.start_run_worker.file_handler.connect(self.file_handler)
+
+        self.start_run_worker.started.connect(self.start_run)
+        self.threadpool.start(self.start_run_worker)
+
+    def stop_run(self):
+        # set up multithreading thread and workers
+        self.stopping_run = False
+        self.stop_run_worker = StopRunWorker()
+        self.threadpool.start(stop_run_worker)
+
     def start_event(self):
+
         self.ui.event_time_edit.setText(self.format_time(0))
-        self.run_handling_thread.started.disconnect()
-        self.run_handling_thread.started.connect(self.run_handling_worker.start_event)
-        self.run_handling_thread.start()
+        self.start_event_worker = StartEventWorker(self)
+        self.start_event_worker.event_started.connect(self.event_loop)
+        self.threadpool.start(self.start_event_worker)
 
     def stop_event(self):
         """
@@ -232,14 +260,6 @@ class MainWindow(QMainWindow):
         self.run_handling_thread.started.connect(self.run_handling_worker.stop_event)
         self.run_handling_thread.start()
 
-    def start_run(self):
-        self.ui.event_time_edit.setText(self.format_time(0))
-        self.ui.run_live_time_edit.setText(self.format_time(0))
-        self.ui.event_num_edit.setText(f"{0:2d}")
-        self.run_handling_thread.started.disconnect()
-        self.run_handling_thread.started.connect(self.run_handling_worker.start_run)
-        self.run_handling_thread.start()
-
     def check_event(self):
         self.run_handling_thread.started.disconnect()
         self.run_handling_thread.started.connect(self.run_handling_worker.check_event)
@@ -248,12 +268,6 @@ class MainWindow(QMainWindow):
     def stop_run_but_pressed(self):
         self.stopping_run = True
         self.ui.stop_run_but.setEnabled(False)
-
-    def stop_run(self):
-        # set up multithreading thread and workers
-        self.run_handling_thread.started.disconnect()
-        self.run_handling_thread.started.connect(self.run_handling_worker.stop_run)
-        self.run_handling_thread.start()
 
     def update_state(self, s):
         """

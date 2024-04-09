@@ -10,27 +10,17 @@ from src.ui_loader import SettingsWindow
 from dependencies.SBCBinaryFormat.python.sbcbinaryformat.files import Writer
 
 
-class RunHandlingWorker(QObject):
-    """
-    Woeker class for starting the program, starting and stopping a run, and starting and stopping each individual
-    events.
-    """
-
+class StartProgramWorker(QObject):
     state = Signal(str)
     program_started = Signal()
-    run_started = Signal()
-    event_started = Signal()
-    event_stopped = Signal()
-    run_stopped = Signal()
-    stopping = Signal()
-    continuing = Signal()
 
     def __init__(self, main_window):
         super(RunHandlingWorker, self).__init__()
         self.main = main_window
         self.logger = logging.getLogger("rc")
-        self.logger.debug("Worker class initialized.")
+        self.logger.debug("Start program worker class initialized.")
 
+    @Slot()
     def start_program(self):
         """Processes to start program"""
         # for arduino in ["trigger", "clock", "position"]:
@@ -40,12 +30,29 @@ class RunHandlingWorker(QObject):
         self.state.emit("Idle")
         self.program_started.emit()
 
-    def start_run(self):
+
+class StartRunWorker(QObject):
+    state = Signal(str)
+    run_started = Signal()
+    run_json_path = Signal(str)
+    run_log_path = Signal(str)
+    file_handler = Signal(logging.FileHandler)
+
+    def __init__(self, main_window):
+        super(RunHandlingWorker, self).__init__()
+        self.main = main_window
+        self.logger = logging.getLogger("rc")
+        self.logger.debug("Start run worker class initialized.")
+
+    def run(self):
         """Processes to start run"""
         self.main.create_run_directory()
         self.state.emit("Starting")
         run_json_path = os.path.join(self.main.run_dir, f"{self.main.run_id}.json")
+        self.run_json_path.emit(run_json_path)
         run_log_path = os.path.join(self.main.run_dir, f"{self.main.run_id}.log")
+        self.run_log_path.emit(run_log_path)
+
         file_handler = logging.FileHandler(run_log_path, mode="a")
         file_handler.setLevel(logging.INFO)
         file_handler.setFormatter(self.main.log_formatter)
@@ -55,21 +62,40 @@ class RunHandlingWorker(QObject):
         self.run_data = []
 
         time.sleep(1)
-        self.main.ev_number = 0
-        self.main.run_livetime = 0
         self.run_started.emit()
 
-    def stop_run(self):
+
+class StopRunWorker(QObject):
+    state = Signal(str)
+    run_stopped = Signal()
+
+    def __init__(self, main_window):
+        super(RunHandlingWorker, self).__init__()
+        self.main = main_window
+        self.logger = logging.getLogger("rc")
+        self.logger.debug("Stop run worker class initialized.")
+
+    def run(self):
         """Processes to start run"""
         self.state.emit("Stopping")
-        self.main.stopping_run = False
 
         time.sleep(1)
         self.logger.removeHandler(self.logger.handlers[-1])
         self.state.emit("Idle")
         self.run_stopped.emit()
 
-    def start_event(self):
+
+class StartEventWorker(QObject):
+    state = Signal(str)
+    event_started = Signal()
+
+    def __init__(self, main_window):
+        super(RunHandlingWorker, self).__init__()
+        self.main = main_window
+        self.logger = logging.getLogger("rc")
+        self.logger.debug("Start event worker class initialized.")
+
+    def run(self):
         """Processes to start run"""
 
         self.state.emit("Expanding")
@@ -84,6 +110,25 @@ class RunHandlingWorker(QObject):
         self.main.event_timer.start()
         self.state.emit("Active")
         self.event_started.emit()
+
+
+class RunHandlingWorker(QObject):
+    """
+    Woeker class for starting the program, starting and stopping a run, and starting and stopping each individual
+    events.
+    """
+
+    state = Signal(str)
+    event_stopped = Signal()
+    run_stopped = Signal()
+    stopping = Signal()
+    continuing = Signal()
+
+    def __init__(self, main_window):
+        super(RunHandlingWorker, self).__init__()
+        self.main = main_window
+        self.logger = logging.getLogger("rc")
+        self.logger.debug("Worker class initialized.")
 
     def stop_event(self):
         """Processes to stop event"""
