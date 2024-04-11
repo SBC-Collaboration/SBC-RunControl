@@ -94,8 +94,9 @@ The run data is saved in the `RunData` tables in the slow control SQL database. 
 - `run_livetime` (`TIME(3)`, `NOT NULL`): Total livetime of the run, with ms precision.
 - `comment` (`TEXT`): Any comments entered by the user during the run.
 - `active_datastream` (`SET('imaging', 'scintillation', 'acoustics')`, `NOT NULL`): A list of active data streams for the run. It can have zero, one, or multiple entries, from the predetermined list. If it has zero elements, it is saved as an empty string, and not NULL.
+- `pset_mode` (`ENUM('random', 'sequential')`, `NOT NULL`): Mode of pressure setpoint in this run. If `random`, then run control will choose randomly from the list. If `sequential`, then run control will cycle through the pressure setpoints in the list in order.
 - `pset` (`FLOAT`, `NOT NULL`): Pressure set point of the run. If the run is doing pressure ramping, then the higher setpoint of the ramp
-- `pset_low` (`FLOAT`): Null if not using a pressure ramping. Lower pressure setpoint if using ramping.
+- `pset_hi` (`FLOAT`): Null if not using a pressure ramping. Lower pressure setpoint if using ramping.
 - `start_time` (`TIMESTAMP(3)`, `NOT NULL`): UTC timestamp of when the run starts, with ms precision
 - `end_time` (`TIMESTAMP(3)`, `NOT NULL`): UTC timestamp of when the run ends, with ms precision
 - `source1_ID` (`VARCHAR(100)`): Name of source 1
@@ -114,6 +115,7 @@ This data is saved in the SBC binary format using `SBCBinaryFormat` library. The
 - `ev_livetime` (`uint64`): Event livetime in milliseconds. This is the time from when all modules are ready to 
   when a trigger is received by the run control.
 - `run_livetime` (`uint64`): Run livetime in milliseconds. This is the sum of the current and all previous events.
+- `pset` (`float`): Pressure setpoint for this event. In case of pressure ramping or random sampling, the pressure setpoint could be different for each event. 
 - `trigger_source` (`uint8`): Trigger source encoded in number. The list is:
   - `0`: Camera 1 motion detection;
   - `1`: Camera 2 motion detection;
@@ -122,6 +124,6 @@ This data is saved in the SBC binary format using `SBCBinaryFormat` library. The
   - `4`: Run control timeout trigger;
   - `5`: PLC trigger, see PLC data for detail;
   - `6`: Kulite Ar trigger, high resolution trigger directly from Kulite (doesn't exist yet);
-  - `7`: Kulite CF4 trigger, high resolution trigger directly from Kulite (does't exist yet);
+  - `7`: Kulite CF4 trigger, high resolution trigger directly from Kulite (doesn't exist yet);
   - `8`: External button manual trigger (doesn't exist yet);
   - `9`: Unknown.
