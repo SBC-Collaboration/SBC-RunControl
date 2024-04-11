@@ -12,6 +12,7 @@ from PySide6.QtCore import QTimer, QObject, Slot, Signal
 class Cameras(QObject):
     camera_started = Signal(str)
     camera_connected = Signal(str)
+    camera_closed = Signal(str)
 
     def __init__(self, main_window, cam_name):
         super().__init__()
@@ -35,6 +36,7 @@ class Cameras(QObject):
     def periodic_task(self):
         pass
 
+    @Slot()
     def test_rpi(self):
         if not self.config["enabled"]:
             return
@@ -46,13 +48,6 @@ class Cameras(QObject):
             self.camera_connected.emit(self.cam_name)
         except:
             self.logger.error(f"Camera {self.cam_name} not connected.")
-
-    def exec_commands(self, host, commands):
-        self.client.connect(host, username=self.username)
-        for command in commands:
-            _stdin, _stdout, _stderr = self.client.exec_command(command)
-            self.logger.info(_stdout.read())
-        self.client.close()
 
     def save_config(self):
         # skip camera if not enabled
@@ -71,7 +66,17 @@ class Cameras(QObject):
             return
         self.save_config()
         self.logger.info(f"Starting camera {self.cam_name}")
-        commands = ["cd /home/pi/RPi_CameraServers", "python3 imdaq.py"]
-        self.exec_commands(self.config["ip_addr"], commands)
-        time.sleep(1)
+        # make ssh connection
+        self.client.connect(self.config["ip_addr"], username=self.username)
         self.camera_started.emit(self.cam_name)
+        time.sleep(3)
+
+        # start executing command
+        commands = ["cd /home/pi/RPi_CameraServers && python3 imdaq.py"]
+        for command in commands:
+            _stdin, _stdout, _stderr = self.client.exec_command(command)
+            self.logger.debug(_stdout.read())
+            self.logger.debug(_stderr.read())
+        self.client.close()
+        self.camera_closed.emit(self.cam_name)
+

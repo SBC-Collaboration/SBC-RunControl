@@ -97,6 +97,7 @@ class MainWindow(QMainWindow):
         self.cam1_worker = Cameras(self, "cam1")
         self.cam1_worker.camera_connected.connect(self.starting_run_wait)
         self.cam1_worker.camera_started.connect(self.starting_event_wait)
+        self.cam1_worker.camera_closed.connect(self.stopping_event_wait)
         self.cam1_thread = QThread()
         self.cam1_worker.moveToThread(self.cam1_thread)
         self.cam1_thread.started.connect(self.cam1_worker.run)
@@ -107,6 +108,7 @@ class MainWindow(QMainWindow):
         self.cam2_worker = Cameras(self, "cam2")
         self.cam2_worker.camera_connected.connect(self.starting_run_wait)
         self.cam2_worker.camera_started.connect(self.starting_event_wait)
+        self.cam2_worker.camera_closed.connect(self.stopping_event_wait)
         self.cam2_thread = QThread()
         self.cam2_worker.moveToThread(self.cam2_thread)
         self.cam2_thread.started.connect(self.cam2_worker.run)
@@ -117,6 +119,7 @@ class MainWindow(QMainWindow):
         self.cam3_worker = Cameras(self, "cam3")
         self.cam3_worker.camera_connected.connect(self.starting_run_wait)
         self.cam3_worker.camera_started.connect(self.starting_event_wait)
+        self.cam3_worker.camera_closed.connect(self.stopping_event_wait)
         self.cam3_thread = QThread()
         self.cam3_worker.moveToThread(self.cam3_thread)
         self.cam3_thread.started.connect(self.cam3_worker.run)
@@ -209,6 +212,9 @@ class MainWindow(QMainWindow):
         elif self.run_state == self.run_states["starting_event"]:
             if len(self.starting_event_ready) >= 1:
                 self.update_state("active")
+        elif self.run_state == self.run_states["stopping_event"]:
+            if len(self.starting_event_ready) >= 1:
+                self.update_state("idle")
 
         self.display_image(
             "resources/cam1.png",
@@ -271,8 +277,8 @@ class MainWindow(QMainWindow):
 
     def start_run(self):
         self.create_run_directory()
-        self.update_state("starting_run")
         self.starting_run_ready = []
+        self.update_state("starting_run")
         # reset event number and livetimes
         self.event_id = 0
         self.ev_livetime = 0
@@ -298,6 +304,7 @@ class MainWindow(QMainWindow):
         self.signals.run_stopping.emit()
 
     def start_event(self):
+        self.starting_event_ready = []
         self.update_state("starting_event")
         self.ev_livetime = 0
         self.ui.event_id_edit.setText(f"{self.event_id:2d}")
@@ -313,6 +320,7 @@ class MainWindow(QMainWindow):
         are reached, then it will enter into "stopping" state. Otherwise, it will start another event.
         """
         self.signals.event_stopping.emit()
+        self.stopping_event_ready = []
         self.update_state("stopping_event")
 
         # check if stopping run now or start new event
