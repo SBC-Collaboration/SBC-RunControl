@@ -94,7 +94,6 @@ class StartEventWorker(QObject):
         self.logger = logging.getLogger("rc")
         self.logger.debug("Start event worker class initialized.")
 
-
     def run(self):
         """Processes to start run"""
 
@@ -172,7 +171,3 @@ class StopEventWorker(QObject):
 
         time.sleep(1)
         self.event_stopped.emit()
-
-    def check_event(self):
-        """Check between events to stop or continue"""
-

@@ -17,11 +17,11 @@ import re
 
 class MainSignals(QObject):
     # initialize signals
-    program_started = Signal()
-    run_started = Signal()
-    run_stopped = Signal()
-    event_started = Signal()
-    event_stopped = Signal()
+    program_starting = Signal()
+    run_starting = Signal()
+    run_stopping = Signal()
+    event_starting = Signal()
+    event_stopping = Signal()
 
 # Loads Main window
 class MainWindow(QMainWindow):
@@ -58,26 +58,32 @@ class MainWindow(QMainWindow):
         self.run_states = Enum(
             "State",
             [
-                "Idle",
-                "Preparing",
-                "Active",
-                "Starting",
-                "Stopping",
-                "Expanding",
-                "Compressing",
+                "idle",
+                "preparing",
+                "active",
+                "starting_run",
+                "stopping_run",
+                "starting_event",
+                "stopping_event",
             ],
         )
 
-        self.update_state("Preparing")
+        self.update_state("preparing")
 
         # timer for event loop
         self.timer = QTimer()
-        self.timer.setInterval(10)
+        self.timer.setInterval(100)
         self.timer.timeout.connect(self.update)
         self.timer.start()
         # event timer
         self.event_timer = QElapsedTimer()
         self.run_livetime = 0
+        self.ev_livetime = 0
+        # List populated by ready modules at each state. After all modules are ready, it will proceed to the next state
+        self.starting_run_ready = []
+        self.stopping_run_ready = []
+        self.starting_event_ready = []
+        self.stopping_event_ready = []
 
         # initialize writer for sbc binary format
         # sbc_writer = Writer()
@@ -87,29 +93,42 @@ class MainWindow(QMainWindow):
     def set_up_workers(self):
         self.signals = MainSignals()
 
-        self.signals.run_started.connect(self.start_event)
-
         # set up run handling thread and the worker
         self.cam1_worker = Cameras(self, "cam1")
+        self.cam1_worker.camera_connected.connect(self.starting_run_wait)
+        self.cam1_worker.camera_started.connect(self.starting_event_wait)
         self.cam1_thread = QThread()
         self.cam1_worker.moveToThread(self.cam1_thread)
         self.cam1_thread.started.connect(self.cam1_worker.run)
-        self.signals.run_started.connect(self.cam1_worker.start_run)
+        self.signals.run_starting.connect(self.cam1_worker.test_rpi)
+        self.signals.event_starting.connect(self.cam1_worker.start_camera)
+        self.cam1_thread.start()
 
         self.cam2_worker = Cameras(self, "cam2")
+        self.cam2_worker.camera_connected.connect(self.starting_run_wait)
+        self.cam2_worker.camera_started.connect(self.starting_event_wait)
         self.cam2_thread = QThread()
         self.cam2_worker.moveToThread(self.cam2_thread)
         self.cam2_thread.started.connect(self.cam2_worker.run)
-        self.signals.run_started.connect(self.cam2_worker.start_run)
+        self.signals.run_starting.connect(self.cam2_worker.test_rpi)
+        self.signals.event_starting.connect(self.cam2_worker.start_camera)
+        self.cam2_thread.start()
 
         self.cam3_worker = Cameras(self, "cam3")
+        self.cam3_worker.camera_connected.connect(self.starting_run_wait)
+        self.cam3_worker.camera_started.connect(self.starting_event_wait)
         self.cam3_thread = QThread()
         self.cam3_worker.moveToThread(self.cam3_thread)
         self.cam3_thread.started.connect(self.cam3_worker.run)
-        self.signals.run_started.connect(self.cam3_worker.start_run)
+        self.signals.run_starting.connect(self.cam3_worker.test_rpi)
+        self.signals.event_starting.connect(self.cam3_worker.start_camera)
+        self.cam3_thread.start()
 
     # TODO: handle closing during run
     def closeEvent(self, event):
+        """
+        Custom function overriding the close event behavior. It will close both log and settings window, and also leave message in the logger.
+        """
         # close other opened windows before closing
         try:
             self.log_window.close()
@@ -136,6 +155,9 @@ class MainWindow(QMainWindow):
     def format_time(self, t):
         """
         Time formatting helper function for event time display. t is in milliseconds
+        If time is under a minute, it will return "12s 345"
+        If time ie between a minute and an hour, it will return "12m 34s 567"
+        If time is more than an hour, it will return "12h 34m 56s 789"
         """
         seconds, milliseconds = divmod(t, 1000)
         minutes, seconds = divmod(seconds, 60)
@@ -148,6 +170,9 @@ class MainWindow(QMainWindow):
             return f"{seconds}s {milliseconds:03d}"
 
     def display_image(self, path, label, checked=True):
+        """
+        Function that controls image display of last event
+        """
         # display image when checkbox checked
         # TODO: make it only render when checkbox changed
         if checked:
@@ -161,7 +186,12 @@ class MainWindow(QMainWindow):
     # event loop
     @Slot()
     def update(self):
-        if self.run_state == self.run_states.Active:
+        """
+        Event loop function. Every 100ms this function will run.
+        In the active state, it will update event and run timer, and check if max event time is reached. If so, it will end the event.
+
+        """
+        if self.run_state == self.run_states["active"]:
             self.ui.event_time_edit.setText(
                 self.format_time(self.event_timer.elapsed())
             )
@@ -173,6 +203,12 @@ class MainWindow(QMainWindow):
                 > self.config_class.config["general"]["max_ev_time"] * 1000
             ):
                 self.stop_event()
+        elif self.run_state == self.run_states["starting_run"]:
+            if len(self.starting_run_ready) >= 1:
+                self.start_event()
+        elif self.run_state == self.run_states["starting_event"]:
+            if len(self.starting_event_ready) >= 1:
+                self.update_state("active")
 
         self.display_image(
             "resources/cam1.png",
@@ -189,6 +225,23 @@ class MainWindow(QMainWindow):
             self.ui.cam3_image,
             self.ui.cam3_image_check.isChecked(),
         )
+
+    @Slot(str)
+    def starting_run_wait(self, dev):
+        self.starting_run_ready.append(dev)
+
+    @Slot(str)
+    def stopping_run_wait(self, dev):
+        self.stopping_run_ready.append(dev)
+
+    @Slot(str)
+    def starting_event_wait(self, dev):
+        self.starting_event_ready.append(dev)
+
+    @Slot(str)
+    def stopping_event_wait(self, dev):
+        self.stopping_event_ready.append(dev)
+
 
     def create_run_directory(self):
         """
@@ -213,11 +266,13 @@ class MainWindow(QMainWindow):
         self.ui.run_id_edit.setText(self.run_id)
 
     def start_program(self):
-        self.signals.program_started.emit()
-        self.update_state("Idle")
+        self.signals.program_starting.emit()
+        self.update_state("idle")
 
     def start_run(self):
-        self.update_state("Starting")
+        self.create_run_directory()
+        self.update_state("starting_run")
+        self.starting_run_ready = []
         # reset event number and livetimes
         self.event_id = 0
         self.ev_livetime = 0
@@ -225,7 +280,6 @@ class MainWindow(QMainWindow):
         self.ui.event_id_edit.setText(f"{self.event_id:2d}")
         self.ui.event_time_edit.setText(self.format_time(self.ev_livetime))
         self.ui.run_live_time_edit.setText(self.format_time(self.run_livetime))
-        self.create_run_directory()
         self.run_json_path = os.path.join(self.run_dir, f"{self.run_id}.json")
         self.run_log_path = os.path.join(self.run_dir, f"{self.run_id}.log")
 
@@ -234,31 +288,35 @@ class MainWindow(QMainWindow):
         file_handler.setFormatter(self.log_formatter)
         self.logger.addHandler(file_handler)
 
-        self.update_state("Expanding")
-        self.signals.run_started.emit()
+        self.signals.run_starting.emit()
 
     def stop_run(self):
-        self.update_state("Stopping")
+        self.update_state("stopping_run")
         # set up multithreading thread and workers
         self.stopping_run = False
-        self.update_state("Idle")
-        self.signals.run_stopped.emit()
+        self.update_state("idle")
+        self.signals.run_stopping.emit()
 
     def start_event(self):
+        self.update_state("starting_event")
+        self.ev_livetime = 0
         self.ui.event_id_edit.setText(f"{self.event_id:2d}")
         self.ui.event_time_edit.setText(self.format_time(0))
-        self.signals.event_started.emit()
+        self.event_dir = os.path.join(self.run_dir, str(self.event_id))
+        if not os.path.exists(self.event_dir):
+            os.mkdir(self.event_dir)
+        self.signals.event_starting.emit()
 
     def stop_event(self):
         """
         Stop the event. Enter into compressing state. If the "Stop Run" button is pressed or the max number of events
         are reached, then it will enter into "stopping" state. Otherwise, it will start another event.
         """
-        self.signals.event_stopped.emit()
+        self.signals.event_stopping.emit()
+        self.update_state("stopping_event")
 
-    def check_run_stopping(self):
+        # check if stopping run now or start new event
         self.event_id += 1
-        # check if needs to stop run
         if (
                 self.event_id
                 >= self.config_class.config["general"]["max_num_evs"]
@@ -277,6 +335,7 @@ class MainWindow(QMainWindow):
         """
         The update_state function will change the self.run_state variable to the current state, and also change the GUI
         to reflect it. The "Start Run" and "Stop Run" buttons are enabled and disabled accordingly. The states are:
+        - "Preparing": The program is starting up. Initializing necessary variables.
         - Idle: The program is idling. Settings can be changed and a new run can be started
         - Starting: The run is starting. A configuration file is used for the entire run.
         - Stopping: The running is stopping.
@@ -305,24 +364,25 @@ class MainWindow(QMainWindow):
         stop_run_but_available = False
 
         self.ui.stop_run_but.setEnabled(False)
-        if self.run_state == self.run_states["Idle"]:
+        if self.run_state == self.run_states["idle"]:
             self.logger.info(f"Entering into Idle state.")
             start_run_but_available = True
-        elif self.run_state == self.run_states["Preparing"]:
+        elif self.run_state == self.run_states["preparing"]:
             self.logger.info(f"Run control starting.")
-        elif self.run_state == self.run_states["Active"]:
+        elif self.run_state == self.run_states["active"]:
             self.logger.info(f"Event {self.event_id} active.")
+            self.event_timer.start()
             stop_run_but_available = True
-        elif self.run_state == self.run_states["Starting"]:
+        elif self.run_state == self.run_states["starting_run"]:
             self.logger.info(f"Starting Run {self.run_id}.")
             stop_run_but_available = True
-        elif self.run_state == self.run_states["Stopping"]:
+        elif self.run_state == self.run_states["stopping_run"]:
             self.logger.info(f"Stopping Run {self.run_id}.")
-        elif self.run_state == self.run_states["Expanding"]:
-            self.logger.info(f"Event {self.event_id} expanding")
+        elif self.run_state == self.run_states["starting_event"]:
+            self.logger.info(f"Event {self.event_id} starting")
             stop_run_but_available = True
-        elif self.run_state == self.run_states["Compressing"]:
-            self.logger.info(f"Event {self.event_id} compressing")
+        elif self.run_state == self.run_states["stopping_event"]:
+            self.logger.info(f"Event {self.event_id} stopping")
             stop_run_but_available = True
         else:
             pass

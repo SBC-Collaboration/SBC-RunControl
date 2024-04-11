@@ -1,5 +1,6 @@
 import os.path
 from sshtunnel import SSHTunnelForwarder
+from PySide6.QtCore import Signal, Slot
 import mysql.connector
 import datetime
 import time as tm
@@ -57,7 +58,7 @@ class mydatabase():
         self.mycursor = self.db.cursor()
         self.stack= pd.DataFrame(columns=['Instrument', 'Time', 'Value'])
 
-    def query(self,statement):
+    def query(self, statement):
         try:
             self.mycursor.execute(statement)
         except:
@@ -155,12 +156,12 @@ class DataBase():
         # save the password in ENV at sbcslowcontrol machine
         self.home = os.path.expanduser('~')
         self.sql_hostname = 'localhost'
-        self.sql_username = 'slowcontrol'
+        self.sql_username = 'hep'
         self.sql_password = os.environ.get("SLOWCONTROL_SQL_TOKEN")
         self.sql_main_database = 'run_data'
         self.sql_port = 3306
         self.ssh_host = 'sbcslowcontrol.fnal.gov'
-        self.ssh_password = os.environ.get("SLOWCONTROL_SSH_TOKEN")
+        self.ssh_pkey = "/home/sbc/.ssh/id_rsa"
         self.ssh_user = 'hep'
         self.ssh_port = 22
 
@@ -168,12 +169,11 @@ class DataBase():
         with SSHTunnelForwarder(
                 (self.ssh_host, self.ssh_port),
                 ssh_username=self.ssh_user,
-                ssh_password= self.ssh_password,
+                ssh_pkey=self.ssh_pkey,
                 remote_bind_address=(self.sql_hostname, self.sql_port)) as tunnel:
 
             self.db = pymysql.connect(host="localhost", user=self.sql_username, passwd=self.sql_password, database=self.sql_main_database, port=tunnel.local_bind_port)
             self.mycursor = self.db.cursor()
-            self.update_alarm()
             self.close_database()
 
             # conn = pymysql.connect(host='127.0.0.1', user=sql_username,
@@ -213,6 +213,7 @@ class DataBase():
             print(str("Alarm_info"+"| {} | {} | {}".format(datime,alarm_state, alarm_message)))
 
 
+    @Slot()
     def close_database(self):
         self.mycursor.close()
         self.db.close()
