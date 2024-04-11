@@ -49,7 +49,7 @@
     <item row="0" column="1">
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>1</number>
+       <number>4</number>
       </property>
       <property name="tabsClosable">
        <bool>false</bool>
@@ -80,10 +80,10 @@
         <item>
          <widget class="QScrollArea" name="files_scroll_area">
           <property name="frameShape">
-           <enum>QFrame::NoFrame</enum>
+           <enum>QFrame::Shape::NoFrame</enum>
           </property>
           <property name="frameShadow">
-           <enum>QFrame::Plain</enum>
+           <enum>QFrame::Shadow::Plain</enum>
           </property>
           <property name="lineWidth">
            <number>0</number>
@@ -96,8 +96,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>717</width>
-             <height>423</height>
+             <width>370</width>
+             <height>105</height>
             </rect>
            </property>
            <property name="maximumSize">
@@ -154,7 +154,7 @@
                  <string>Config Path</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
                  <cstring>config_path_edit</cstring>
@@ -170,7 +170,7 @@
                  <string>Log Path</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
                  <cstring>log_path_edit</cstring>
@@ -203,7 +203,7 @@
                  <string>Data Dir</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
                  <cstring>data_dir_edit</cstring>
@@ -242,7 +242,7 @@
                  <string>Max Num of Events</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
                  <cstring>max_ev_time_box</cstring>
@@ -255,7 +255,7 @@
                  <string>Max Event Time</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
                  <cstring>max_num_ev_box</cstring>
@@ -290,7 +290,7 @@
             <item>
              <spacer name="verticalSpacer">
               <property name="orientation">
-               <enum>Qt::Vertical</enum>
+               <enum>Qt::Orientation::Vertical</enum>
               </property>
               <property name="sizeHint" stdset="0">
                <size>
@@ -326,10 +326,10 @@
         <item>
          <widget class="QScrollArea" name="sipm_scroll_area">
           <property name="frameShape">
-           <enum>QFrame::NoFrame</enum>
+           <enum>QFrame::Shape::NoFrame</enum>
           </property>
           <property name="frameShadow">
-           <enum>QFrame::Plain</enum>
+           <enum>QFrame::Shadow::Plain</enum>
           </property>
           <property name="lineWidth">
            <number>0</number>
@@ -340,7 +340,7 @@
           <widget class="QWidget" name="scrollAreaWidgetContents_2">
            <property name="geometry">
             <rect>
-             <x>-1</x>
+             <x>0</x>
              <y>0</y>
              <width>704</width>
              <height>430</height>
@@ -404,7 +404,7 @@
                  <string>IP Addr</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
                  <cstring>sipm_amp1_ip_addr_edit</cstring>
@@ -430,7 +430,7 @@
                  <string>IV Step</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
                  <cstring>sipm_amp1_bias_box</cstring>
@@ -443,7 +443,7 @@
                  <string>Bias Voltage</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
                  <cstring>sipm_amp1_bias_box</cstring>
@@ -461,7 +461,7 @@
                  <string>SiPM Amplifier 1</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignCenter</set>
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
                 </property>
                </widget>
               </item>
@@ -525,7 +525,7 @@
                  <string>QP Voltage</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
                  <cstring>sipm_amp1_qp_box</cstring>
@@ -545,7 +545,7 @@
                  <string>IV Start</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
                  <cstring>sipm_amp1_bias_box</cstring>
@@ -558,7 +558,7 @@
                  <string>IV Stop</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
                  <cstring>sipm_amp1_bias_box</cstring>
@@ -568,7 +568,7 @@
               <item row="2" column="0">
                <widget class="QCheckBox" name="sipm_amp1_iv_enabled_box">
                 <property name="layoutDirection">
-                 <enum>Qt::LeftToRight</enum>
+                 <enum>Qt::LayoutDirection::LeftToRight</enum>
                 </property>
                 <property name="text">
                  <string>IV Enabled</string>
@@ -581,7 +581,7 @@
                  <string>Data Dir</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
                  <cstring>sipm_amp1_ip_addr_edit</cstring>
@@ -610,7 +610,7 @@
                  <string>Bias Voltage</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
                  <cstring>sipm_amp1_bias_box</cstring>
@@ -658,7 +658,7 @@
                  <string>Data Dir</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
                  <cstring>sipm_amp1_ip_addr_edit</cstring>
@@ -676,7 +676,7 @@
                  <string>SiPM Amplifier 2</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignCenter</set>
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
                 </property>
                </widget>
               </item>
@@ -689,7 +689,7 @@
                  <string>IV Step</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
                  <cstring>sipm_amp1_bias_box</cstring>
@@ -702,7 +702,7 @@
                  <string>IP Addr</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
                  <cstring>sipm_amp1_ip_addr_edit</cstring>
@@ -734,7 +734,7 @@
                  <string>IV Stop</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
                  <cstring>sipm_amp1_bias_box</cstring>
@@ -747,7 +747,7 @@
                  <string>QP Voltage</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
                  <cstring>sipm_amp1_qp_box</cstring>
@@ -773,7 +773,7 @@
                  <string>IV Start</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
                  <cstring>sipm_amp1_bias_box</cstring>
@@ -783,7 +783,7 @@
               <item row="2" column="0">
                <widget class="QCheckBox" name="sipm_amp2_iv_enabled_box">
                 <property name="layoutDirection">
-                 <enum>Qt::LeftToRight</enum>
+                 <enum>Qt::LayoutDirection::LeftToRight</enum>
                 </property>
                 <property name="text">
                  <string>IV Enabled</string>
@@ -821,7 +821,7 @@
             <item>
              <widget class="Line" name="line">
               <property name="orientation">
-               <enum>Qt::Horizontal</enum>
+               <enum>Qt::Orientation::Horizontal</enum>
               </property>
              </widget>
             </item>
@@ -849,7 +849,7 @@
                  <string>Record Length</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
                  <cstring>caen_length_box</cstring>
@@ -862,7 +862,7 @@
                  <string>SW Trig Mode</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
                  <cstring>caen_sw_trig_box</cstring>
@@ -918,7 +918,7 @@
                  <string>Model</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
                  <cstring>caen_model_box</cstring>
@@ -931,7 +931,7 @@
                  <string>Port</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
                  <cstring>caen_port_box</cstring>
@@ -944,7 +944,7 @@
                  <string>Connection Type</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
                  <cstring>caen_conn_box</cstring>
@@ -988,7 +988,7 @@
                  <string>Evs Per Read</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
                  <cstring>caen_evs_box</cstring>
@@ -1001,7 +1001,7 @@
                  <string>Post Trig</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
                  <cstring>caen_post_trig_box</cstring>
@@ -1033,7 +1033,7 @@
                  <string>Ext Trig Mode</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
                  <cstring>caen_ext_trig_box</cstring>
@@ -1081,7 +1081,7 @@
                  <string>Polarity</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
                  <cstring>caen_polarity_box</cstring>
@@ -1104,7 +1104,7 @@
                  <string>IO Level</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
                  <cstring>caen_io_box</cstring>
@@ -1148,7 +1148,7 @@
                  <string>Decimation</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
                  <cstring>caen_decimation_box</cstring>
@@ -1166,7 +1166,7 @@
                  <string>CAEN Digitizer General</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignCenter</set>
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
                 </property>
                </widget>
               </item>
@@ -1182,7 +1182,7 @@
             <item>
              <widget class="Line" name="line_2">
               <property name="orientation">
-               <enum>Qt::Horizontal</enum>
+               <enum>Qt::Orientation::Horizontal</enum>
               </property>
              </widget>
             </item>
@@ -1201,7 +1201,7 @@
                  <string>Enabled</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
                  <cstring>caen_g0_enable_box</cstring>
@@ -1226,7 +1226,7 @@
                  <string>Group 0</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignCenter</set>
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
                 </property>
                </widget>
               </item>
@@ -1236,7 +1236,7 @@
                  <string>Threshold</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
                  <cstring>caen_g0_thres_box</cstring>
@@ -1260,7 +1260,7 @@
                  <string>Trig Mask</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                </widget>
               </item>
@@ -1305,7 +1305,7 @@
                  <string>Acq Mask</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                </widget>
               </item>
@@ -1371,7 +1371,7 @@
                  <string>Offsets</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                </widget>
               </item>
@@ -1456,7 +1456,7 @@
                  <bool>false</bool>
                 </property>
                 <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::NoButtons</enum>
+                 <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
                 </property>
                 <property name="showGroupSeparator" stdset="0">
                  <bool>false</bool>
@@ -1480,7 +1480,7 @@
                  <bool>false</bool>
                 </property>
                 <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::NoButtons</enum>
+                 <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
                 </property>
                 <property name="showGroupSeparator" stdset="0">
                  <bool>false</bool>
@@ -1504,7 +1504,7 @@
                  <bool>false</bool>
                 </property>
                 <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::NoButtons</enum>
+                 <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
                 </property>
                 <property name="showGroupSeparator" stdset="0">
                  <bool>false</bool>
@@ -1528,7 +1528,7 @@
                  <bool>false</bool>
                 </property>
                 <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::NoButtons</enum>
+                 <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
                 </property>
                 <property name="showGroupSeparator" stdset="0">
                  <bool>false</bool>
@@ -1552,7 +1552,7 @@
                  <bool>false</bool>
                 </property>
                 <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::NoButtons</enum>
+                 <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
                 </property>
                 <property name="showGroupSeparator" stdset="0">
                  <bool>false</bool>
@@ -1576,7 +1576,7 @@
                  <bool>false</bool>
                 </property>
                 <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::NoButtons</enum>
+                 <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
                 </property>
                 <property name="showGroupSeparator" stdset="0">
                  <bool>false</bool>
@@ -1600,7 +1600,7 @@
                  <bool>false</bool>
                 </property>
                 <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::NoButtons</enum>
+                 <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
                 </property>
                 <property name="showGroupSeparator" stdset="0">
                  <bool>false</bool>
@@ -1624,7 +1624,7 @@
                  <bool>false</bool>
                 </property>
                 <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::NoButtons</enum>
+                 <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
                 </property>
                 <property name="showGroupSeparator" stdset="0">
                  <bool>false</bool>
@@ -1642,10 +1642,10 @@
             <item>
              <spacer name="verticalSpacer_4">
               <property name="orientation">
-               <enum>Qt::Vertical</enum>
+               <enum>Qt::Orientation::Vertical</enum>
               </property>
               <property name="sizeType">
-               <enum>QSizePolicy::Expanding</enum>
+               <enum>QSizePolicy::Policy::Expanding</enum>
               </property>
               <property name="sizeHint" stdset="0">
                <size>
@@ -1681,10 +1681,10 @@
         <item>
          <widget class="QScrollArea" name="acoustics_scroll_area">
           <property name="frameShape">
-           <enum>QFrame::NoFrame</enum>
+           <enum>QFrame::Shape::NoFrame</enum>
           </property>
           <property name="frameShadow">
-           <enum>QFrame::Plain</enum>
+           <enum>QFrame::Shadow::Plain</enum>
           </property>
           <property name="lineWidth">
            <number>0</number>
@@ -1697,8 +1697,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>717</width>
-             <height>423</height>
+             <width>432</width>
+             <height>361</height>
             </rect>
            </property>
            <property name="maximumSize">
@@ -1745,7 +1745,7 @@
                  <string>General</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignCenter</set>
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
                 </property>
                </widget>
               </item>
@@ -1758,7 +1758,7 @@
                  <string>Post Trig Length</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
                  <cstring>acous_post_trig_box</cstring>
@@ -1771,7 +1771,7 @@
                  <string>Sample Rate</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
                  <cstring>acous_sample_rate_box</cstring>
@@ -1787,7 +1787,7 @@
                  <string>Trig Delay</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
                  <cstring>acous_trig_delay_box</cstring>
@@ -1812,7 +1812,7 @@
                  <string>Trig Timeout</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
                  <cstring>acous_trig_timeout_box</cstring>
@@ -1825,7 +1825,7 @@
                  <string>Pre Trig Length</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
                  <cstring>acous_pre_trig_box</cstring>
@@ -1837,7 +1837,7 @@
             <item>
              <widget class="Line" name="acous_line">
               <property name="orientation">
-               <enum>Qt::Horizontal</enum>
+               <enum>Qt::Orientation::Horizontal</enum>
               </property>
              </widget>
             </item>
@@ -1872,7 +1872,7 @@
                  <string>Trigger</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignCenter</set>
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
                 </property>
                </widget>
               </item>
@@ -1885,7 +1885,7 @@
                  <string>Polarity</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignCenter</set>
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
                 </property>
                </widget>
               </item>
@@ -1895,7 +1895,7 @@
                  <string>Ch 5</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
                  <cstring>acous_enable_ch5</cstring>
@@ -1931,7 +1931,7 @@
                  <string>Ch 2</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
                  <cstring>acous_enable_ch2</cstring>
@@ -1997,7 +1997,7 @@
                  <string>Range</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignCenter</set>
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
                 </property>
                </widget>
               </item>
@@ -2021,7 +2021,7 @@
                  <string>Ch 1</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
                  <cstring>acous_enable_ch1</cstring>
@@ -2059,7 +2059,7 @@
                  </font>
                 </property>
                 <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::NoButtons</enum>
+                 <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
                 </property>
                 <property name="suffix">
                  <string>mV</string>
@@ -2072,7 +2072,7 @@
                  <string>Ch 6</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
                  <cstring>acous_enable_ch6</cstring>
@@ -2118,7 +2118,7 @@
                  <string>Ch 7</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
                  <cstring>acous_enable_ch7</cstring>
@@ -2167,7 +2167,7 @@
                  </font>
                 </property>
                 <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::NoButtons</enum>
+                 <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
                 </property>
                 <property name="suffix">
                  <string>mV</string>
@@ -2206,7 +2206,7 @@
                  <string>Ch 3</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
                  <cstring>acous_enable_ch3</cstring>
@@ -2224,7 +2224,7 @@
                  </font>
                 </property>
                 <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::NoButtons</enum>
+                 <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
                 </property>
                 <property name="suffix">
                  <string>mV</string>
@@ -2261,7 +2261,7 @@
                  <string>Ch 8</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
                  <cstring>acous_enable_ch8</cstring>
@@ -2284,7 +2284,7 @@
                  <string>DC Offset</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignCenter</set>
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
                 </property>
                </widget>
               </item>
@@ -2324,7 +2324,7 @@
                  <string>Enabled</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignCenter</set>
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
                 </property>
                </widget>
               </item>
@@ -2343,7 +2343,7 @@
                  </font>
                 </property>
                 <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::NoButtons</enum>
+                 <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
                 </property>
                 <property name="suffix">
                  <string>mV</string>
@@ -2356,7 +2356,7 @@
                  <string>Ch 4</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
                  <cstring>acous_enable_ch4</cstring>
@@ -2371,7 +2371,7 @@
                  </font>
                 </property>
                 <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::NoButtons</enum>
+                 <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
                 </property>
                 <property name="suffix">
                  <string>mV</string>
@@ -2407,7 +2407,7 @@
                  </font>
                 </property>
                 <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::NoButtons</enum>
+                 <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
                 </property>
                 <property name="suffix">
                  <string>mV</string>
@@ -2458,13 +2458,13 @@
                  </font>
                 </property>
                 <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::NoButtons</enum>
+                 <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
                 </property>
                 <property name="suffix">
                  <string>mV</string>
                 </property>
                 <property name="stepType">
-                 <enum>QAbstractSpinBox::DefaultStepType</enum>
+                 <enum>QAbstractSpinBox::StepType::DefaultStepType</enum>
                 </property>
                </widget>
               </item>
@@ -2476,7 +2476,7 @@
                  </font>
                 </property>
                 <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::NoButtons</enum>
+                 <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
                 </property>
                 <property name="suffix">
                  <string>mV</string>
@@ -2506,7 +2506,7 @@
                  <string>Threshold</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignCenter</set>
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
                 </property>
                </widget>
               </item>
@@ -2545,7 +2545,7 @@
                  <string>Ext</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                </widget>
               </item>
@@ -2575,7 +2575,7 @@
             <item>
              <spacer name="acous_spacer">
               <property name="orientation">
-               <enum>Qt::Vertical</enum>
+               <enum>Qt::Orientation::Vertical</enum>
               </property>
               <property name="sizeHint" stdset="0">
                <size>
@@ -2622,10 +2622,10 @@
            </font>
           </property>
           <property name="frameShape">
-           <enum>QFrame::NoFrame</enum>
+           <enum>QFrame::Shape::NoFrame</enum>
           </property>
           <property name="frameShadow">
-           <enum>QFrame::Plain</enum>
+           <enum>QFrame::Shadow::Plain</enum>
           </property>
           <property name="lineWidth">
            <number>0</number>
@@ -2638,7 +2638,7 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>703</width>
+             <width>346</width>
              <height>505</height>
             </rect>
            </property>
@@ -2650,7 +2650,7 @@
            </property>
            <layout class="QGridLayout" name="gridLayout_5" columnstretch="0,1,1,1">
             <property name="sizeConstraint">
-             <enum>QLayout::SetDefaultConstraint</enum>
+             <enum>QLayout::SizeConstraint::SetDefaultConstraint</enum>
             </property>
             <property name="leftMargin">
              <number>0</number>
@@ -2679,7 +2679,7 @@
                <string>Post-Trig Length</string>
               </property>
               <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
               </property>
               <property name="buddy">
                <cstring>cam1_post_trig_len</cstring>
@@ -2734,7 +2734,7 @@
                <string>Trig Enable Pin</string>
               </property>
               <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
               </property>
               <property name="buddy">
                <cstring>cam1_trig_enbl_pin</cstring>
@@ -2744,10 +2744,10 @@
             <item row="26" column="0" colspan="4">
              <spacer name="cam_spacer">
               <property name="orientation">
-               <enum>Qt::Vertical</enum>
+               <enum>Qt::Orientation::Vertical</enum>
               </property>
               <property name="sizeType">
-               <enum>QSizePolicy::Expanding</enum>
+               <enum>QSizePolicy::Policy::Expanding</enum>
               </property>
               <property name="sizeHint" stdset="0">
                <size>
@@ -2811,7 +2811,7 @@
                <string>Buffer Length</string>
               </property>
               <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
               </property>
               <property name="buddy">
                <cstring>cam1_buffer_len</cstring>
@@ -2843,7 +2843,7 @@
                <string>Cam 3</string>
               </property>
               <property name="alignment">
-               <set>Qt::AlignCenter</set>
+               <set>Qt::AlignmentFlag::AlignCenter</set>
               </property>
              </widget>
             </item>
@@ -2878,7 +2878,7 @@
                <string>Cam 1</string>
               </property>
               <property name="alignment">
-               <set>Qt::AlignCenter</set>
+               <set>Qt::AlignmentFlag::AlignCenter</set>
               </property>
              </widget>
             </item>
@@ -2937,7 +2937,7 @@
                <string>RC Config Path</string>
               </property>
               <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
               </property>
               <property name="buddy">
                <cstring>cam1_config_path</cstring>
@@ -2985,7 +2985,7 @@
                <string>Image Format</string>
               </property>
               <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
               </property>
               <property name="buddy">
                <cstring>cam1_image_format</cstring>
@@ -3024,7 +3024,7 @@
                <string>ADC Threshold</string>
               </property>
               <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
               </property>
               <property name="buddy">
                <cstring>cam1_adc_threshold</cstring>
@@ -3069,7 +3069,7 @@
                <string>Cam 2</string>
               </property>
               <property name="alignment">
-               <set>Qt::AlignCenter</set>
+               <set>Qt::AlignmentFlag::AlignCenter</set>
               </property>
              </widget>
             </item>
@@ -3085,7 +3085,7 @@
                <string>Trig Latch Pin</string>
               </property>
               <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
               </property>
               <property name="buddy">
                <cstring>cam1_trig_latch_pin</cstring>
@@ -3114,7 +3114,7 @@
                <string>Mode</string>
               </property>
               <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
               </property>
               <property name="buddy">
                <cstring>cam1_mode</cstring>
@@ -3146,7 +3146,7 @@
                <string>Pixel Treshold</string>
               </property>
               <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
               </property>
               <property name="buddy">
                <cstring>cam1_pix_threshold</cstring>
@@ -3165,7 +3165,7 @@
                <string>IP Address</string>
               </property>
               <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
               </property>
               <property name="buddy">
                <cstring>cam1_ip_addr</cstring>
@@ -3194,7 +3194,7 @@
                <string>Trigger Wait</string>
               </property>
               <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
               </property>
               <property name="buddy">
                <cstring>cam1_trig_wait</cstring>
@@ -3251,7 +3251,7 @@
                <string>Pi Data Path</string>
               </property>
               <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
               </property>
               <property name="buddy">
                <cstring>cam1_data_path</cstring>
@@ -3371,7 +3371,7 @@
                <string>State Comm Pin</string>
               </property>
               <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
               </property>
               <property name="buddy">
                <cstring>cam1_state_comm_pin</cstring>
@@ -3419,7 +3419,7 @@
                <string>Trigger Pin</string>
               </property>
               <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
               </property>
               <property name="buddy">
                <cstring>cam1_trig_pin</cstring>
@@ -3487,7 +3487,7 @@
                <string>State Pin</string>
               </property>
               <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
               </property>
               <property name="buddy">
                <cstring>cam1_state_pin</cstring>
@@ -3523,7 +3523,7 @@
                <string>Pi Config Path</string>
               </property>
               <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
               </property>
               <property name="buddy">
                <cstring>cam1_config_path</cstring>
@@ -3555,7 +3555,7 @@
                <string>Date Format</string>
               </property>
               <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
               </property>
               <property name="buddy">
                <cstring>cam1_date_format</cstring>
@@ -3574,7 +3574,7 @@
                <string>Exposure</string>
               </property>
               <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
               </property>
               <property name="buddy">
                <cstring>cam1_exposure</cstring>
@@ -3673,10 +3673,10 @@
         <item>
          <widget class="QScrollArea" name="dio_scroll_area">
           <property name="frameShape">
-           <enum>QFrame::NoFrame</enum>
+           <enum>QFrame::Shape::NoFrame</enum>
           </property>
           <property name="frameShadow">
-           <enum>QFrame::Plain</enum>
+           <enum>QFrame::Shadow::Plain</enum>
           </property>
           <property name="lineWidth">
            <number>0</number>
@@ -3690,7 +3690,7 @@
              <x>0</x>
              <y>0</y>
              <width>703</width>
-             <height>534</height>
+             <height>629</height>
             </rect>
            </property>
            <property name="maximumSize">
@@ -3731,7 +3731,7 @@
                  <string>General</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignCenter</set>
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
                 </property>
                </widget>
               </item>
@@ -3812,9 +3812,265 @@
              </layout>
             </item>
             <item>
+             <widget class="Line" name="dio_line_5">
+              <property name="orientation">
+               <enum>Qt::Orientation::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="SwappingTableWidget" name="niusb_table">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>80</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <kerning>true</kerning>
+               </font>
+              </property>
+              <property name="layoutDirection">
+               <enum>Qt::LayoutDirection::LeftToRight</enum>
+              </property>
+              <property name="autoFillBackground">
+               <bool>false</bool>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::Shape::NoFrame</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Shadow::Plain</enum>
+              </property>
+              <property name="verticalScrollBarPolicy">
+               <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
+              </property>
+              <property name="horizontalScrollBarPolicy">
+               <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
+              </property>
+              <property name="sizeAdjustPolicy">
+               <enum>QAbstractScrollArea::SizeAdjustPolicy::AdjustToContents</enum>
+              </property>
+              <property name="autoScroll">
+               <bool>true</bool>
+              </property>
+              <property name="autoScrollMargin">
+               <number>0</number>
+              </property>
+              <property name="editTriggers">
+               <set>QAbstractItemView::EditTrigger::DoubleClicked|QAbstractItemView::EditTrigger::EditKeyPressed</set>
+              </property>
+              <property name="dragEnabled">
+               <bool>true</bool>
+              </property>
+              <property name="dragDropOverwriteMode">
+               <bool>false</bool>
+              </property>
+              <property name="dragDropMode">
+               <enum>QAbstractItemView::DragDropMode::InternalMove</enum>
+              </property>
+              <property name="defaultDropAction">
+               <enum>Qt::DropAction::MoveAction</enum>
+              </property>
+              <property name="alternatingRowColors">
+               <bool>true</bool>
+              </property>
+              <property name="showGrid">
+               <bool>true</bool>
+              </property>
+              <property name="cornerButtonEnabled">
+               <bool>false</bool>
+              </property>
+              <attribute name="horizontalHeaderCascadingSectionResizes">
+               <bool>true</bool>
+              </attribute>
+              <attribute name="horizontalHeaderDefaultSectionSize">
+               <number>82</number>
+              </attribute>
+              <attribute name="verticalHeaderCascadingSectionResizes">
+               <bool>false</bool>
+              </attribute>
+              <attribute name="verticalHeaderDefaultSectionSize">
+               <number>20</number>
+              </attribute>
+              <row>
+               <property name="text">
+                <string>Port0</string>
+               </property>
+              </row>
+              <row>
+               <property name="text">
+                <string>Port1</string>
+               </property>
+              </row>
+              <row>
+               <property name="text">
+                <string>Port2</string>
+               </property>
+              </row>
+              <column>
+               <property name="text">
+                <string>Pin0</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>Pin1</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>Pin2</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>Pin3</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>Pin4</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>Pin5</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>Pin6</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>Pin7</string>
+               </property>
+              </column>
+              <item row="0" column="0">
+               <property name="text">
+                <string/>
+               </property>
+              </item>
+              <item row="0" column="1">
+               <property name="text">
+                <string/>
+               </property>
+              </item>
+              <item row="0" column="2">
+               <property name="text">
+                <string/>
+               </property>
+              </item>
+              <item row="0" column="3">
+               <property name="text">
+                <string/>
+               </property>
+              </item>
+              <item row="0" column="4">
+               <property name="text">
+                <string/>
+               </property>
+              </item>
+              <item row="0" column="5">
+               <property name="text">
+                <string/>
+               </property>
+              </item>
+              <item row="0" column="6">
+               <property name="text">
+                <string/>
+               </property>
+              </item>
+              <item row="0" column="7">
+               <property name="text">
+                <string/>
+               </property>
+              </item>
+              <item row="1" column="0">
+               <property name="text">
+                <string/>
+               </property>
+              </item>
+              <item row="1" column="1">
+               <property name="text">
+                <string/>
+               </property>
+              </item>
+              <item row="1" column="2">
+               <property name="text">
+                <string/>
+               </property>
+              </item>
+              <item row="1" column="3">
+               <property name="text">
+                <string/>
+               </property>
+              </item>
+              <item row="1" column="4">
+               <property name="text">
+                <string/>
+               </property>
+              </item>
+              <item row="1" column="5">
+               <property name="text">
+                <string/>
+               </property>
+              </item>
+              <item row="1" column="6">
+               <property name="text">
+                <string/>
+               </property>
+              </item>
+              <item row="1" column="7">
+               <property name="text">
+                <string/>
+               </property>
+              </item>
+              <item row="2" column="0">
+               <property name="text">
+                <string/>
+               </property>
+              </item>
+              <item row="2" column="1">
+               <property name="text">
+                <string/>
+               </property>
+              </item>
+              <item row="2" column="2">
+               <property name="text">
+                <string/>
+               </property>
+              </item>
+              <item row="2" column="3">
+               <property name="text">
+                <string/>
+               </property>
+              </item>
+              <item row="2" column="4">
+               <property name="text">
+                <string/>
+               </property>
+              </item>
+              <item row="2" column="5">
+               <property name="text">
+                <string/>
+               </property>
+              </item>
+             </widget>
+            </item>
+            <item>
              <widget class="Line" name="dio_line">
               <property name="orientation">
-               <enum>Qt::Horizontal</enum>
+               <enum>Qt::Orientation::Horizontal</enum>
               </property>
              </widget>
             </item>
@@ -3835,7 +4091,7 @@
                  <string>Trig Latch Pins</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
                  <cstring>trig_latch_pins_edit</cstring>
@@ -3857,7 +4113,7 @@
                  <string>Trig Or Pin</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
                  <cstring>trig_or_pin_edit</cstring>
@@ -3870,7 +4126,7 @@
                  <string>Heartbeat Pin</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
                  <cstring>heartbeat_pin_edit</cstring>
@@ -3880,7 +4136,7 @@
               <item row="4" column="3">
                <widget class="QSpinBox" name="heartbeat_pin_edit">
                 <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
                 </property>
                </widget>
               </item>
@@ -3890,7 +4146,7 @@
                  <string>Trig Reset Pin</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
                  <cstring>trig_reset_pin_edit</cstring>
@@ -3903,7 +4159,7 @@
                  <string>Trig In Pins</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
                  <cstring>trig_in_pins_edit</cstring>
@@ -3919,7 +4175,7 @@
                  <string>On-Time Pin</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
                  <cstring>on_time_pin_edit</cstring>
@@ -3937,14 +4193,14 @@
                  <string>Trig FIFO Arduino</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignCenter</set>
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
                 </property>
                </widget>
               </item>
               <item row="3" column="3">
                <widget class="QSpinBox" name="trig_or_pin_edit">
                 <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
                 </property>
                </widget>
               </item>
@@ -3953,7 +4209,7 @@
             <item>
              <widget class="Line" name="dio_line_3">
               <property name="orientation">
-               <enum>Qt::Horizontal</enum>
+               <enum>Qt::Orientation::Horizontal</enum>
               </property>
              </widget>
             </item>
@@ -4022,7 +4278,7 @@
                  <string>Wave 1</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                 <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                </widget>
               </item>
@@ -4032,7 +4288,7 @@
                  <string>Wave 3</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                 <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                </widget>
               </item>
@@ -4042,7 +4298,7 @@
                  <string>Pin</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                 <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                </widget>
               </item>
@@ -4055,7 +4311,7 @@
               <item row="3" column="3">
                <widget class="QSpinBox" name="gate_phase_wave1">
                 <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::UpDownArrows</enum>
+                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
                 </property>
                 <property name="keyboardTracking">
                  <bool>true</bool>
@@ -4081,7 +4337,7 @@
                  <string>Wave 4</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                 <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                </widget>
               </item>
@@ -4132,7 +4388,7 @@
                  <string>Polarity</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                 <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                </widget>
               </item>
@@ -4156,7 +4412,7 @@
                  <string>Wave 6</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                 <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                </widget>
               </item>
@@ -4193,7 +4449,7 @@
                  <string>Wave 5</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                 <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                </widget>
               </item>
@@ -4247,7 +4503,7 @@
                  <string>Phase</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                 <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                </widget>
               </item>
@@ -4257,7 +4513,7 @@
                  <string>Wave 2</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                 <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                </widget>
               </item>
@@ -4302,7 +4558,7 @@
                  <string>Duty</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                 <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                </widget>
               </item>
@@ -4312,7 +4568,7 @@
                  <string>Wave 7</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                 <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                </widget>
               </item>
@@ -4328,7 +4584,7 @@
                  <string>Wave 9</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                 <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                </widget>
               </item>
@@ -4338,7 +4594,7 @@
                  <string>Period</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                 <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                </widget>
               </item>
@@ -4430,7 +4686,7 @@
                  <string>Wave 8</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                 <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                </widget>
               </item>
@@ -4462,7 +4718,7 @@
                  <string>Gate Arduino</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignCenter</set>
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
                 </property>
                 <property name="margin">
                  <number>0</number>
@@ -4474,7 +4730,7 @@
             <item>
              <spacer name="dio_spacer">
               <property name="orientation">
-               <enum>Qt::Vertical</enum>
+               <enum>Qt::Orientation::Vertical</enum>
               </property>
               <property name="sizeHint" stdset="0">
                <size>
@@ -4495,6 +4751,12 @@
    </layout>
   </widget>
   <widget class="QToolBar" name="toolBar">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
    <property name="windowTitle">
     <string>toolBar</string>
    </property>
@@ -4524,7 +4786,7 @@
     <string>Ctrl+R</string>
    </property>
    <property name="menuRole">
-    <enum>QAction::NoRole</enum>
+    <enum>QAction::MenuRole::NoRole</enum>
    </property>
   </action>
   <action name="actionSaveConfig">
@@ -4542,7 +4804,7 @@
     <string>Ctrl+S</string>
    </property>
    <property name="menuRole">
-    <enum>QAction::NoRole</enum>
+    <enum>QAction::MenuRole::NoRole</enum>
    </property>
   </action>
   <action name="actionApply_config">
@@ -4557,7 +4819,7 @@
     <string>Apply config</string>
    </property>
    <property name="menuRole">
-    <enum>QAction::NoRole</enum>
+    <enum>QAction::MenuRole::NoRole</enum>
    </property>
   </action>
   <action name="actionClose_Window">
@@ -4575,16 +4837,22 @@
     <string>Ctrl+W</string>
    </property>
    <property name="menuRole">
-    <enum>QAction::QuitRole</enum>
+    <enum>QAction::MenuRole::QuitRole</enum>
    </property>
   </action>
  </widget>
  <layoutdefault spacing="3" margin="0"/>
+ <customwidgets>
+  <customwidget>
+   <class>SwappingTableWidget</class>
+   <extends>QTableWidget</extends>
+   <header>ui.swappingtablewidget</header>
+  </customwidget>
+ </customwidgets>
  <tabstops>
   <tabstop>sipm_scroll_area</tabstop>
   <tabstop>acoustics_scroll_area</tabstop>
   <tabstop>cam_scroll_area</tabstop>
-  <tabstop>dio_scroll_area</tabstop>
   <tabstop>caen_model_box</tabstop>
   <tabstop>caen_port_box</tabstop>
   <tabstop>caen_length_box</tabstop>

@@ -87,6 +87,8 @@ class MainWindow(QMainWindow):
     def set_up_workers(self):
         self.signals = MainSignals()
 
+        self.signals.run_started.connect(self.start_event)
+
         # set up run handling thread and the worker
         self.cam1_worker = Cameras(self, "cam1")
         self.cam1_thread = QThread()
@@ -215,6 +217,7 @@ class MainWindow(QMainWindow):
         self.update_state("Idle")
 
     def start_run(self):
+        self.update_state("Starting")
         # reset event number and livetimes
         self.event_id = 0
         self.ev_livetime = 0
@@ -222,11 +225,23 @@ class MainWindow(QMainWindow):
         self.ui.event_id_edit.setText(f"{self.event_id:2d}")
         self.ui.event_time_edit.setText(self.format_time(self.ev_livetime))
         self.ui.run_live_time_edit.setText(self.format_time(self.run_livetime))
+        self.create_run_directory()
+        self.run_json_path = os.path.join(self.run_dir, f"{self.run_id}.json")
+        self.run_log_path = os.path.join(self.run_dir, f"{self.run_id}.log")
+
+        file_handler = logging.FileHandler(self.run_log_path, mode="a")
+        file_handler.setLevel(logging.INFO)
+        file_handler.setFormatter(self.log_formatter)
+        self.logger.addHandler(file_handler)
+
+        self.update_state("Expanding")
         self.signals.run_started.emit()
 
     def stop_run(self):
+        self.update_state("Stopping")
         # set up multithreading thread and workers
         self.stopping_run = False
+        self.update_state("Idle")
         self.signals.run_stopped.emit()
 
     def start_event(self):

@@ -13,7 +13,7 @@ class Cameras(QObject):
         super().__init__()
         self.main = main_window
         self.cam_name = cam_name
-        self.config = main_window.config_class.config
+        self.config = main_window.config_class.config["cam"][self.cam_name]
         self.logger = logging.getLogger("rc")
         os.putenv("PATH", "/home/sbc/packages")
         self.username = "pi"
@@ -43,7 +43,7 @@ class Cameras(QObject):
         self.client.close()
 
     def save_config(self):
-        cam_config = self.config["cam"][self.cam_name].copy()
+        cam_config = self.config.copy()
         # skip camera if not enabled
         if not cam_config["enabled"]:
             return
@@ -55,7 +55,6 @@ class Cameras(QObject):
     def start_camera(self):
         self.save_config()
         commands = ["cd /home/pi/RPi_CameraServers", "python3 imdaq.py"]
-        cam_config = self.config["cam"][self.cam_name]
-        if not cam_config["enabled"]:
+        if not self.config["enabled"]:
             return
-        self.exec_commands(cam_config["ip_addr"], commands)
+        self.exec_commands(self.config["ip_addr"], commands)

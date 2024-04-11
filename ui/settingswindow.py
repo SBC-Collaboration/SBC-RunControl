@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'settingswindow.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.6.2
+## Created by: Qt User Interface Compiler version 6.7.0
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -16,11 +16,14 @@ from PySide6.QtGui import (QAction, QBrush, QColor, QConicalGradient,
     QIcon, QImage, QKeySequence, QLinearGradient,
     QPainter, QPalette, QPixmap, QRadialGradient,
     QTransform)
-from PySide6.QtWidgets import (QAbstractSpinBox, QApplication, QCheckBox, QComboBox,
-    QDoubleSpinBox, QFrame, QGridLayout, QLabel,
-    QLayout, QLineEdit, QMainWindow, QScrollArea,
-    QSizePolicy, QSpacerItem, QSpinBox, QTabWidget,
+from PySide6.QtWidgets import (QAbstractItemView, QAbstractScrollArea, QAbstractSpinBox, QApplication,
+    QCheckBox, QComboBox, QDoubleSpinBox, QFrame,
+    QGridLayout, QHeaderView, QLabel, QLayout,
+    QLineEdit, QMainWindow, QScrollArea, QSizePolicy,
+    QSpacerItem, QSpinBox, QTabWidget, QTableWidgetItem,
     QToolBar, QToolButton, QVBoxLayout, QWidget)
+
+from ui.swappingtablewidget import SwappingTableWidget
 import resources_rc
 
 class Ui_SettingsWindow(object):
@@ -42,25 +45,25 @@ class Ui_SettingsWindow(object):
         icon1 = QIcon()
         icon1.addFile(u":/icons/reload.png", QSize(), QIcon.Normal, QIcon.Off)
         self.actionReloadConfig.setIcon(icon1)
-        self.actionReloadConfig.setMenuRole(QAction.NoRole)
+        self.actionReloadConfig.setMenuRole(QAction.MenuRole.NoRole)
         self.actionSaveConfig = QAction(SettingsWindow)
         self.actionSaveConfig.setObjectName(u"actionSaveConfig")
         icon2 = QIcon()
         icon2.addFile(u":/icons/save.png", QSize(), QIcon.Normal, QIcon.Off)
         self.actionSaveConfig.setIcon(icon2)
-        self.actionSaveConfig.setMenuRole(QAction.NoRole)
+        self.actionSaveConfig.setMenuRole(QAction.MenuRole.NoRole)
         self.actionApply_config = QAction(SettingsWindow)
         self.actionApply_config.setObjectName(u"actionApply_config")
         icon3 = QIcon()
         icon3.addFile(u":/icons/check.png", QSize(), QIcon.Normal, QIcon.Off)
         self.actionApply_config.setIcon(icon3)
-        self.actionApply_config.setMenuRole(QAction.NoRole)
+        self.actionApply_config.setMenuRole(QAction.MenuRole.NoRole)
         self.actionClose_Window = QAction(SettingsWindow)
         self.actionClose_Window.setObjectName(u"actionClose_Window")
         icon4 = QIcon()
         icon4.addFile(u":/icons/quit.png", QSize(), QIcon.Normal, QIcon.Off)
         self.actionClose_Window.setIcon(icon4)
-        self.actionClose_Window.setMenuRole(QAction.QuitRole)
+        self.actionClose_Window.setMenuRole(QAction.MenuRole.QuitRole)
         self.centralwidget = QWidget(SettingsWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.gridLayout = QGridLayout(self.centralwidget)
@@ -82,13 +85,13 @@ class Ui_SettingsWindow(object):
         self.verticalLayout_4.setContentsMargins(0, 0, 0, 0)
         self.files_scroll_area = QScrollArea(self.general_tab)
         self.files_scroll_area.setObjectName(u"files_scroll_area")
-        self.files_scroll_area.setFrameShape(QFrame.NoFrame)
-        self.files_scroll_area.setFrameShadow(QFrame.Plain)
+        self.files_scroll_area.setFrameShape(QFrame.Shape.NoFrame)
+        self.files_scroll_area.setFrameShadow(QFrame.Shadow.Plain)
         self.files_scroll_area.setLineWidth(0)
         self.files_scroll_area.setWidgetResizable(True)
         self.scrollAreaWidgetContents_5 = QWidget()
         self.scrollAreaWidgetContents_5.setObjectName(u"scrollAreaWidgetContents_5")
-        self.scrollAreaWidgetContents_5.setGeometry(QRect(0, 0, 717, 423))
+        self.scrollAreaWidgetContents_5.setGeometry(QRect(0, 0, 370, 105))
         self.scrollAreaWidgetContents_5.setMaximumSize(QSize(1000, 16777215))
         self.verticalLayout_10 = QVBoxLayout(self.scrollAreaWidgetContents_5)
         self.verticalLayout_10.setSpacing(3)
@@ -108,14 +111,14 @@ class Ui_SettingsWindow(object):
         self.config_path_label.setObjectName(u"config_path_label")
         self.config_path_label.setMinimumSize(QSize(0, 0))
         self.config_path_label.setLineWidth(0)
-        self.config_path_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.config_path_label.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.gridLayout_3.addWidget(self.config_path_label, 0, 0, 1, 1)
 
         self.log_path_label = QLabel(self.scrollAreaWidgetContents_5)
         self.log_path_label.setObjectName(u"log_path_label")
         self.log_path_label.setLineWidth(0)
-        self.log_path_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.log_path_label.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.gridLayout_3.addWidget(self.log_path_label, 1, 0, 1, 1)
 
@@ -137,7 +140,7 @@ class Ui_SettingsWindow(object):
         self.data_dir_label = QLabel(self.scrollAreaWidgetContents_5)
         self.data_dir_label.setObjectName(u"data_dir_label")
         self.data_dir_label.setLineWidth(0)
-        self.data_dir_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.data_dir_label.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.gridLayout_3.addWidget(self.data_dir_label, 2, 0, 1, 1)
 
@@ -160,13 +163,13 @@ class Ui_SettingsWindow(object):
         self.gridLayout_9.setContentsMargins(-1, 0, 0, 0)
         self.max_num_ev_label = QLabel(self.scrollAreaWidgetContents_5)
         self.max_num_ev_label.setObjectName(u"max_num_ev_label")
-        self.max_num_ev_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.max_num_ev_label.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.gridLayout_9.addWidget(self.max_num_ev_label, 0, 0, 1, 1)
 
         self.max_ev_time_label = QLabel(self.scrollAreaWidgetContents_5)
         self.max_ev_time_label.setObjectName(u"max_ev_time_label")
-        self.max_ev_time_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.max_ev_time_label.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.gridLayout_9.addWidget(self.max_ev_time_label, 0, 2, 1, 1)
 
@@ -205,13 +208,13 @@ class Ui_SettingsWindow(object):
         self.verticalLayout_5.setContentsMargins(0, 0, 0, 0)
         self.sipm_scroll_area = QScrollArea(self.scint_tab)
         self.sipm_scroll_area.setObjectName(u"sipm_scroll_area")
-        self.sipm_scroll_area.setFrameShape(QFrame.NoFrame)
-        self.sipm_scroll_area.setFrameShadow(QFrame.Plain)
+        self.sipm_scroll_area.setFrameShape(QFrame.Shape.NoFrame)
+        self.sipm_scroll_area.setFrameShadow(QFrame.Shadow.Plain)
         self.sipm_scroll_area.setLineWidth(0)
         self.sipm_scroll_area.setWidgetResizable(True)
         self.scrollAreaWidgetContents_2 = QWidget()
         self.scrollAreaWidgetContents_2.setObjectName(u"scrollAreaWidgetContents_2")
-        self.scrollAreaWidgetContents_2.setGeometry(QRect(-1, 0, 704, 430))
+        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, 0, 704, 430))
         self.scrollAreaWidgetContents_2.setMaximumSize(QSize(1000, 16777215))
         self.verticalLayout_9 = QVBoxLayout(self.scrollAreaWidgetContents_2)
         self.verticalLayout_9.setSpacing(3)
@@ -233,7 +236,7 @@ class Ui_SettingsWindow(object):
 
         self.sipm_amp1_ip_addr_label = QLabel(self.scrollAreaWidgetContents_2)
         self.sipm_amp1_ip_addr_label.setObjectName(u"sipm_amp1_ip_addr_label")
-        self.sipm_amp1_ip_addr_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.sipm_amp1_ip_addr_label.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.sipm_amp1_grid.addWidget(self.sipm_amp1_ip_addr_label, 1, 1, 1, 1)
 
@@ -246,13 +249,13 @@ class Ui_SettingsWindow(object):
 
         self.sipm_amp1_iv_step_label = QLabel(self.scrollAreaWidgetContents_2)
         self.sipm_amp1_iv_step_label.setObjectName(u"sipm_amp1_iv_step_label")
-        self.sipm_amp1_iv_step_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.sipm_amp1_iv_step_label.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.sipm_amp1_grid.addWidget(self.sipm_amp1_iv_step_label, 2, 3, 1, 1)
 
         self.sipm_amp1_bias_label = QLabel(self.scrollAreaWidgetContents_2)
         self.sipm_amp1_bias_label.setObjectName(u"sipm_amp1_bias_label")
-        self.sipm_amp1_bias_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.sipm_amp1_bias_label.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.sipm_amp1_grid.addWidget(self.sipm_amp1_bias_label, 1, 5, 1, 1)
 
@@ -261,7 +264,7 @@ class Ui_SettingsWindow(object):
         font = QFont()
         font.setBold(True)
         self.sipm_amp1_label.setFont(font)
-        self.sipm_amp1_label.setAlignment(Qt.AlignCenter)
+        self.sipm_amp1_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.sipm_amp1_grid.addWidget(self.sipm_amp1_label, 0, 1, 1, 7)
 
@@ -297,7 +300,7 @@ class Ui_SettingsWindow(object):
 
         self.sipm_amp1_qp_label = QLabel(self.scrollAreaWidgetContents_2)
         self.sipm_amp1_qp_label.setObjectName(u"sipm_amp1_qp_label")
-        self.sipm_amp1_qp_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.sipm_amp1_qp_label.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.sipm_amp1_grid.addWidget(self.sipm_amp1_qp_label, 1, 7, 1, 1)
 
@@ -308,25 +311,25 @@ class Ui_SettingsWindow(object):
 
         self.sipm_amp1_iv_start_label = QLabel(self.scrollAreaWidgetContents_2)
         self.sipm_amp1_iv_start_label.setObjectName(u"sipm_amp1_iv_start_label")
-        self.sipm_amp1_iv_start_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.sipm_amp1_iv_start_label.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.sipm_amp1_grid.addWidget(self.sipm_amp1_iv_start_label, 2, 5, 1, 1)
 
         self.sipm_amp1_iv_stop_label = QLabel(self.scrollAreaWidgetContents_2)
         self.sipm_amp1_iv_stop_label.setObjectName(u"sipm_amp1_iv_stop_label")
-        self.sipm_amp1_iv_stop_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.sipm_amp1_iv_stop_label.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.sipm_amp1_grid.addWidget(self.sipm_amp1_iv_stop_label, 2, 7, 1, 1)
 
         self.sipm_amp1_iv_enabled_box = QCheckBox(self.scrollAreaWidgetContents_2)
         self.sipm_amp1_iv_enabled_box.setObjectName(u"sipm_amp1_iv_enabled_box")
-        self.sipm_amp1_iv_enabled_box.setLayoutDirection(Qt.LeftToRight)
+        self.sipm_amp1_iv_enabled_box.setLayoutDirection(Qt.LayoutDirection.LeftToRight)
 
         self.sipm_amp1_grid.addWidget(self.sipm_amp1_iv_enabled_box, 2, 0, 1, 1)
 
         self.sipm_amp1_iv_data_dir_label = QLabel(self.scrollAreaWidgetContents_2)
         self.sipm_amp1_iv_data_dir_label.setObjectName(u"sipm_amp1_iv_data_dir_label")
-        self.sipm_amp1_iv_data_dir_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.sipm_amp1_iv_data_dir_label.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.sipm_amp1_grid.addWidget(self.sipm_amp1_iv_data_dir_label, 2, 1, 1, 1)
 
@@ -344,7 +347,7 @@ class Ui_SettingsWindow(object):
         self.sipm_amp2_grid.setContentsMargins(-1, 6, -1, 6)
         self.sipm_amp2_bias_label = QLabel(self.scrollAreaWidgetContents_2)
         self.sipm_amp2_bias_label.setObjectName(u"sipm_amp2_bias_label")
-        self.sipm_amp2_bias_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.sipm_amp2_bias_label.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.sipm_amp2_grid.addWidget(self.sipm_amp2_bias_label, 1, 6, 1, 1)
 
@@ -371,14 +374,14 @@ class Ui_SettingsWindow(object):
 
         self.sipm_amp2_ip_addr_label_2 = QLabel(self.scrollAreaWidgetContents_2)
         self.sipm_amp2_ip_addr_label_2.setObjectName(u"sipm_amp2_ip_addr_label_2")
-        self.sipm_amp2_ip_addr_label_2.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.sipm_amp2_ip_addr_label_2.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.sipm_amp2_grid.addWidget(self.sipm_amp2_ip_addr_label_2, 2, 1, 1, 1)
 
         self.sipm_amp2_label = QLabel(self.scrollAreaWidgetContents_2)
         self.sipm_amp2_label.setObjectName(u"sipm_amp2_label")
         self.sipm_amp2_label.setFont(font)
-        self.sipm_amp2_label.setAlignment(Qt.AlignCenter)
+        self.sipm_amp2_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.sipm_amp2_grid.addWidget(self.sipm_amp2_label, 0, 0, 1, 10)
 
@@ -389,13 +392,13 @@ class Ui_SettingsWindow(object):
 
         self.sipm_amp2_iv_step_label = QLabel(self.scrollAreaWidgetContents_2)
         self.sipm_amp2_iv_step_label.setObjectName(u"sipm_amp2_iv_step_label")
-        self.sipm_amp2_iv_step_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.sipm_amp2_iv_step_label.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.sipm_amp2_grid.addWidget(self.sipm_amp2_iv_step_label, 2, 4, 1, 1)
 
         self.sipm_amp2_ip_addr_label = QLabel(self.scrollAreaWidgetContents_2)
         self.sipm_amp2_ip_addr_label.setObjectName(u"sipm_amp2_ip_addr_label")
-        self.sipm_amp2_ip_addr_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.sipm_amp2_ip_addr_label.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.sipm_amp2_grid.addWidget(self.sipm_amp2_ip_addr_label, 1, 1, 1, 1)
 
@@ -410,13 +413,13 @@ class Ui_SettingsWindow(object):
 
         self.sipm_amp2_iv_stop_label = QLabel(self.scrollAreaWidgetContents_2)
         self.sipm_amp2_iv_stop_label.setObjectName(u"sipm_amp2_iv_stop_label")
-        self.sipm_amp2_iv_stop_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.sipm_amp2_iv_stop_label.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.sipm_amp2_grid.addWidget(self.sipm_amp2_iv_stop_label, 2, 8, 1, 1)
 
         self.sipm_amp2_qp_label = QLabel(self.scrollAreaWidgetContents_2)
         self.sipm_amp2_qp_label.setObjectName(u"sipm_amp2_qp_label")
-        self.sipm_amp2_qp_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.sipm_amp2_qp_label.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.sipm_amp2_grid.addWidget(self.sipm_amp2_qp_label, 1, 8, 1, 1)
 
@@ -429,13 +432,13 @@ class Ui_SettingsWindow(object):
 
         self.sipm_amp2_iv_start_label = QLabel(self.scrollAreaWidgetContents_2)
         self.sipm_amp2_iv_start_label.setObjectName(u"sipm_amp2_iv_start_label")
-        self.sipm_amp2_iv_start_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.sipm_amp2_iv_start_label.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.sipm_amp2_grid.addWidget(self.sipm_amp2_iv_start_label, 2, 6, 1, 1)
 
         self.sipm_amp2_iv_enabled_box = QCheckBox(self.scrollAreaWidgetContents_2)
         self.sipm_amp2_iv_enabled_box.setObjectName(u"sipm_amp2_iv_enabled_box")
-        self.sipm_amp2_iv_enabled_box.setLayoutDirection(Qt.LeftToRight)
+        self.sipm_amp2_iv_enabled_box.setLayoutDirection(Qt.LayoutDirection.LeftToRight)
 
         self.sipm_amp2_grid.addWidget(self.sipm_amp2_iv_enabled_box, 2, 0, 1, 1)
 
@@ -458,8 +461,8 @@ class Ui_SettingsWindow(object):
 
         self.line = QFrame(self.scrollAreaWidgetContents_2)
         self.line.setObjectName(u"line")
-        self.line.setFrameShape(QFrame.HLine)
-        self.line.setFrameShadow(QFrame.Sunken)
+        self.line.setFrameShape(QFrame.Shape.HLine)
+        self.line.setFrameShadow(QFrame.Shadow.Sunken)
 
         self.verticalLayout_9.addWidget(self.line)
 
@@ -474,13 +477,13 @@ class Ui_SettingsWindow(object):
 
         self.caen_length_label = QLabel(self.scrollAreaWidgetContents_2)
         self.caen_length_label.setObjectName(u"caen_length_label")
-        self.caen_length_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.caen_length_label.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.caen_general_grid.addWidget(self.caen_length_label, 2, 0, 1, 1)
 
         self.caen_sw_trig_label = QLabel(self.scrollAreaWidgetContents_2)
         self.caen_sw_trig_label.setObjectName(u"caen_sw_trig_label")
-        self.caen_sw_trig_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.caen_sw_trig_label.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.caen_general_grid.addWidget(self.caen_sw_trig_label, 3, 6, 1, 1)
 
@@ -507,19 +510,19 @@ class Ui_SettingsWindow(object):
         sizePolicy1.setVerticalStretch(0)
         sizePolicy1.setHeightForWidth(self.caen_model_label.sizePolicy().hasHeightForWidth())
         self.caen_model_label.setSizePolicy(sizePolicy1)
-        self.caen_model_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.caen_model_label.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.caen_general_grid.addWidget(self.caen_model_label, 1, 0, 1, 1)
 
         self.caen_port_label = QLabel(self.scrollAreaWidgetContents_2)
         self.caen_port_label.setObjectName(u"caen_port_label")
-        self.caen_port_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.caen_port_label.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.caen_general_grid.addWidget(self.caen_port_label, 1, 2, 1, 1)
 
         self.caen_conn_label = QLabel(self.scrollAreaWidgetContents_2)
         self.caen_conn_label.setObjectName(u"caen_conn_label")
-        self.caen_conn_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.caen_conn_label.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.caen_general_grid.addWidget(self.caen_conn_label, 1, 4, 1, 1)
 
@@ -540,13 +543,13 @@ class Ui_SettingsWindow(object):
 
         self.caen_evs_label = QLabel(self.scrollAreaWidgetContents_2)
         self.caen_evs_label.setObjectName(u"caen_evs_label")
-        self.caen_evs_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.caen_evs_label.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.caen_general_grid.addWidget(self.caen_evs_label, 1, 6, 1, 1)
 
         self.caen_post_trig_label = QLabel(self.scrollAreaWidgetContents_2)
         self.caen_post_trig_label.setObjectName(u"caen_post_trig_label")
-        self.caen_post_trig_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.caen_post_trig_label.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.caen_general_grid.addWidget(self.caen_post_trig_label, 2, 2, 1, 1)
 
@@ -560,7 +563,7 @@ class Ui_SettingsWindow(object):
 
         self.caen_ext_trig_label = QLabel(self.scrollAreaWidgetContents_2)
         self.caen_ext_trig_label.setObjectName(u"caen_ext_trig_label")
-        self.caen_ext_trig_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.caen_ext_trig_label.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.caen_general_grid.addWidget(self.caen_ext_trig_label, 3, 4, 1, 1)
 
@@ -585,7 +588,7 @@ class Ui_SettingsWindow(object):
 
         self.caen_polarity_label = QLabel(self.scrollAreaWidgetContents_2)
         self.caen_polarity_label.setObjectName(u"caen_polarity_label")
-        self.caen_polarity_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.caen_polarity_label.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.caen_general_grid.addWidget(self.caen_polarity_label, 3, 0, 1, 1)
 
@@ -597,7 +600,7 @@ class Ui_SettingsWindow(object):
 
         self.caen_io_label = QLabel(self.scrollAreaWidgetContents_2)
         self.caen_io_label.setObjectName(u"caen_io_label")
-        self.caen_io_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.caen_io_label.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.caen_general_grid.addWidget(self.caen_io_label, 3, 2, 1, 1)
 
@@ -621,14 +624,14 @@ class Ui_SettingsWindow(object):
 
         self.caen_decimation_label = QLabel(self.scrollAreaWidgetContents_2)
         self.caen_decimation_label.setObjectName(u"caen_decimation_label")
-        self.caen_decimation_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.caen_decimation_label.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.caen_general_grid.addWidget(self.caen_decimation_label, 2, 6, 1, 1)
 
         self.caen_general_label = QLabel(self.scrollAreaWidgetContents_2)
         self.caen_general_label.setObjectName(u"caen_general_label")
         self.caen_general_label.setFont(font)
-        self.caen_general_label.setAlignment(Qt.AlignCenter)
+        self.caen_general_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.caen_general_grid.addWidget(self.caen_general_label, 0, 0, 1, 7)
 
@@ -643,8 +646,8 @@ class Ui_SettingsWindow(object):
 
         self.line_2 = QFrame(self.scrollAreaWidgetContents_2)
         self.line_2.setObjectName(u"line_2")
-        self.line_2.setFrameShape(QFrame.HLine)
-        self.line_2.setFrameShadow(QFrame.Sunken)
+        self.line_2.setFrameShape(QFrame.Shape.HLine)
+        self.line_2.setFrameShadow(QFrame.Shadow.Sunken)
 
         self.verticalLayout_9.addWidget(self.line_2)
 
@@ -659,7 +662,7 @@ class Ui_SettingsWindow(object):
 
         self.caen_g0_enable_label = QLabel(self.scrollAreaWidgetContents_2)
         self.caen_g0_enable_label.setObjectName(u"caen_g0_enable_label")
-        self.caen_g0_enable_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.caen_g0_enable_label.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.gridLayout_7.addWidget(self.caen_g0_enable_label, 1, 0, 1, 1)
 
@@ -671,13 +674,13 @@ class Ui_SettingsWindow(object):
         self.caen_g0_label = QLabel(self.scrollAreaWidgetContents_2)
         self.caen_g0_label.setObjectName(u"caen_g0_label")
         self.caen_g0_label.setFont(font)
-        self.caen_g0_label.setAlignment(Qt.AlignCenter)
+        self.caen_g0_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.gridLayout_7.addWidget(self.caen_g0_label, 0, 0, 1, 4)
 
         self.caen_g0_thres_label = QLabel(self.scrollAreaWidgetContents_2)
         self.caen_g0_thres_label.setObjectName(u"caen_g0_thres_label")
-        self.caen_g0_thres_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.caen_g0_thres_label.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.gridLayout_7.addWidget(self.caen_g0_thres_label, 1, 2, 1, 1)
 
@@ -694,7 +697,7 @@ class Ui_SettingsWindow(object):
 
         self.label_21 = QLabel(self.scrollAreaWidgetContents_2)
         self.label_21.setObjectName(u"label_21")
-        self.label_21.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.label_21.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.gridLayout_8.addWidget(self.label_21, 1, 0, 1, 1)
 
@@ -725,7 +728,7 @@ class Ui_SettingsWindow(object):
 
         self.label_22 = QLabel(self.scrollAreaWidgetContents_2)
         self.label_22.setObjectName(u"label_22")
-        self.label_22.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.label_22.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.gridLayout_8.addWidget(self.label_22, 2, 0, 1, 1)
 
@@ -771,7 +774,7 @@ class Ui_SettingsWindow(object):
 
         self.label_23 = QLabel(self.scrollAreaWidgetContents_2)
         self.label_23.setObjectName(u"label_23")
-        self.label_23.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.label_23.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.gridLayout_8.addWidget(self.label_23, 3, 0, 1, 1)
 
@@ -831,7 +834,7 @@ class Ui_SettingsWindow(object):
         font1.setKerning(True)
         self.caen_g0_offset_0.setFont(font1)
         self.caen_g0_offset_0.setWrapping(False)
-        self.caen_g0_offset_0.setButtonSymbols(QAbstractSpinBox.NoButtons)
+        self.caen_g0_offset_0.setButtonSymbols(QAbstractSpinBox.ButtonSymbols.NoButtons)
         self.caen_g0_offset_0.setProperty("showGroupSeparator", False)
         self.caen_g0_offset_0.setMaximum(255)
         self.caen_g0_offset_0.setValue(0)
@@ -842,7 +845,7 @@ class Ui_SettingsWindow(object):
         self.caen_g0_offset_1.setObjectName(u"caen_g0_offset_1")
         self.caen_g0_offset_1.setFont(font1)
         self.caen_g0_offset_1.setWrapping(False)
-        self.caen_g0_offset_1.setButtonSymbols(QAbstractSpinBox.NoButtons)
+        self.caen_g0_offset_1.setButtonSymbols(QAbstractSpinBox.ButtonSymbols.NoButtons)
         self.caen_g0_offset_1.setProperty("showGroupSeparator", False)
         self.caen_g0_offset_1.setMaximum(255)
         self.caen_g0_offset_1.setValue(0)
@@ -853,7 +856,7 @@ class Ui_SettingsWindow(object):
         self.caen_g0_offset_2.setObjectName(u"caen_g0_offset_2")
         self.caen_g0_offset_2.setFont(font1)
         self.caen_g0_offset_2.setWrapping(False)
-        self.caen_g0_offset_2.setButtonSymbols(QAbstractSpinBox.NoButtons)
+        self.caen_g0_offset_2.setButtonSymbols(QAbstractSpinBox.ButtonSymbols.NoButtons)
         self.caen_g0_offset_2.setProperty("showGroupSeparator", False)
         self.caen_g0_offset_2.setMaximum(255)
         self.caen_g0_offset_2.setValue(0)
@@ -864,7 +867,7 @@ class Ui_SettingsWindow(object):
         self.caen_g0_offset_3.setObjectName(u"caen_g0_offset_3")
         self.caen_g0_offset_3.setFont(font1)
         self.caen_g0_offset_3.setWrapping(False)
-        self.caen_g0_offset_3.setButtonSymbols(QAbstractSpinBox.NoButtons)
+        self.caen_g0_offset_3.setButtonSymbols(QAbstractSpinBox.ButtonSymbols.NoButtons)
         self.caen_g0_offset_3.setProperty("showGroupSeparator", False)
         self.caen_g0_offset_3.setMaximum(255)
         self.caen_g0_offset_3.setValue(0)
@@ -875,7 +878,7 @@ class Ui_SettingsWindow(object):
         self.caen_g0_offset_4.setObjectName(u"caen_g0_offset_4")
         self.caen_g0_offset_4.setFont(font1)
         self.caen_g0_offset_4.setWrapping(False)
-        self.caen_g0_offset_4.setButtonSymbols(QAbstractSpinBox.NoButtons)
+        self.caen_g0_offset_4.setButtonSymbols(QAbstractSpinBox.ButtonSymbols.NoButtons)
         self.caen_g0_offset_4.setProperty("showGroupSeparator", False)
         self.caen_g0_offset_4.setMaximum(255)
         self.caen_g0_offset_4.setValue(0)
@@ -886,7 +889,7 @@ class Ui_SettingsWindow(object):
         self.caen_g0_offset_5.setObjectName(u"caen_g0_offset_5")
         self.caen_g0_offset_5.setFont(font1)
         self.caen_g0_offset_5.setWrapping(False)
-        self.caen_g0_offset_5.setButtonSymbols(QAbstractSpinBox.NoButtons)
+        self.caen_g0_offset_5.setButtonSymbols(QAbstractSpinBox.ButtonSymbols.NoButtons)
         self.caen_g0_offset_5.setProperty("showGroupSeparator", False)
         self.caen_g0_offset_5.setMaximum(255)
         self.caen_g0_offset_5.setValue(0)
@@ -897,7 +900,7 @@ class Ui_SettingsWindow(object):
         self.caen_g0_offset_6.setObjectName(u"caen_g0_offset_6")
         self.caen_g0_offset_6.setFont(font1)
         self.caen_g0_offset_6.setWrapping(False)
-        self.caen_g0_offset_6.setButtonSymbols(QAbstractSpinBox.NoButtons)
+        self.caen_g0_offset_6.setButtonSymbols(QAbstractSpinBox.ButtonSymbols.NoButtons)
         self.caen_g0_offset_6.setProperty("showGroupSeparator", False)
         self.caen_g0_offset_6.setMaximum(255)
         self.caen_g0_offset_6.setValue(0)
@@ -908,7 +911,7 @@ class Ui_SettingsWindow(object):
         self.caen_g0_offset_7.setObjectName(u"caen_g0_offset_7")
         self.caen_g0_offset_7.setFont(font1)
         self.caen_g0_offset_7.setWrapping(False)
-        self.caen_g0_offset_7.setButtonSymbols(QAbstractSpinBox.NoButtons)
+        self.caen_g0_offset_7.setButtonSymbols(QAbstractSpinBox.ButtonSymbols.NoButtons)
         self.caen_g0_offset_7.setProperty("showGroupSeparator", False)
         self.caen_g0_offset_7.setMaximum(255)
         self.caen_g0_offset_7.setValue(0)
@@ -936,13 +939,13 @@ class Ui_SettingsWindow(object):
         self.verticalLayout_7.setContentsMargins(0, 0, 0, 0)
         self.acoustics_scroll_area = QScrollArea(self.acoustics_tab)
         self.acoustics_scroll_area.setObjectName(u"acoustics_scroll_area")
-        self.acoustics_scroll_area.setFrameShape(QFrame.NoFrame)
-        self.acoustics_scroll_area.setFrameShadow(QFrame.Plain)
+        self.acoustics_scroll_area.setFrameShape(QFrame.Shape.NoFrame)
+        self.acoustics_scroll_area.setFrameShadow(QFrame.Shadow.Plain)
         self.acoustics_scroll_area.setLineWidth(0)
         self.acoustics_scroll_area.setWidgetResizable(True)
         self.scrollAreaWidgetContents_6 = QWidget()
         self.scrollAreaWidgetContents_6.setObjectName(u"scrollAreaWidgetContents_6")
-        self.scrollAreaWidgetContents_6.setGeometry(QRect(0, 0, 717, 423))
+        self.scrollAreaWidgetContents_6.setGeometry(QRect(0, 0, 432, 361))
         self.scrollAreaWidgetContents_6.setMaximumSize(QSize(1000, 16777215))
         self.verticalLayout_8 = QVBoxLayout(self.scrollAreaWidgetContents_6)
         self.verticalLayout_8.setSpacing(3)
@@ -961,7 +964,7 @@ class Ui_SettingsWindow(object):
         self.label = QLabel(self.scrollAreaWidgetContents_6)
         self.label.setObjectName(u"label")
         self.label.setFont(font)
-        self.label.setAlignment(Qt.AlignCenter)
+        self.label.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.acous_general_grid.addWidget(self.label, 0, 0, 1, 6)
 
@@ -972,13 +975,13 @@ class Ui_SettingsWindow(object):
 
         self.acous_post_trig_label = QLabel(self.scrollAreaWidgetContents_6)
         self.acous_post_trig_label.setObjectName(u"acous_post_trig_label")
-        self.acous_post_trig_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.acous_post_trig_label.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.acous_general_grid.addWidget(self.acous_post_trig_label, 2, 2, 1, 1)
 
         self.acous_sample_rate_label = QLabel(self.scrollAreaWidgetContents_6)
         self.acous_sample_rate_label.setObjectName(u"acous_sample_rate_label")
-        self.acous_sample_rate_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.acous_sample_rate_label.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.acous_general_grid.addWidget(self.acous_sample_rate_label, 1, 0, 1, 1)
 
@@ -989,7 +992,7 @@ class Ui_SettingsWindow(object):
 
         self.acous_trig_delay_label = QLabel(self.scrollAreaWidgetContents_6)
         self.acous_trig_delay_label.setObjectName(u"acous_trig_delay_label")
-        self.acous_trig_delay_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.acous_trig_delay_label.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.acous_general_grid.addWidget(self.acous_trig_delay_label, 2, 4, 1, 1)
 
@@ -1006,13 +1009,13 @@ class Ui_SettingsWindow(object):
 
         self.acous_trig_timeout_label = QLabel(self.scrollAreaWidgetContents_6)
         self.acous_trig_timeout_label.setObjectName(u"acous_trig_timeout_label")
-        self.acous_trig_timeout_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.acous_trig_timeout_label.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.acous_general_grid.addWidget(self.acous_trig_timeout_label, 1, 4, 1, 1)
 
         self.acous_pre_trig_label = QLabel(self.scrollAreaWidgetContents_6)
         self.acous_pre_trig_label.setObjectName(u"acous_pre_trig_label")
-        self.acous_pre_trig_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.acous_pre_trig_label.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.acous_general_grid.addWidget(self.acous_pre_trig_label, 1, 2, 1, 1)
 
@@ -1021,8 +1024,8 @@ class Ui_SettingsWindow(object):
 
         self.acous_line = QFrame(self.scrollAreaWidgetContents_6)
         self.acous_line.setObjectName(u"acous_line")
-        self.acous_line.setFrameShape(QFrame.HLine)
-        self.acous_line.setFrameShadow(QFrame.Sunken)
+        self.acous_line.setFrameShape(QFrame.Shape.HLine)
+        self.acous_line.setFrameShadow(QFrame.Shadow.Sunken)
 
         self.verticalLayout_8.addWidget(self.acous_line)
 
@@ -1042,7 +1045,7 @@ class Ui_SettingsWindow(object):
 
         self.acous_trig_label = QLabel(self.scrollAreaWidgetContents_6)
         self.acous_trig_label.setObjectName(u"acous_trig_label")
-        self.acous_trig_label.setAlignment(Qt.AlignCenter)
+        self.acous_trig_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.acous_per_ch_grid.addWidget(self.acous_trig_label, 0, 4, 1, 1)
 
@@ -1053,13 +1056,13 @@ class Ui_SettingsWindow(object):
 
         self.acous_polarity_label = QLabel(self.scrollAreaWidgetContents_6)
         self.acous_polarity_label.setObjectName(u"acous_polarity_label")
-        self.acous_polarity_label.setAlignment(Qt.AlignCenter)
+        self.acous_polarity_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.acous_per_ch_grid.addWidget(self.acous_polarity_label, 0, 5, 1, 1)
 
         self.acous_ch5_label = QLabel(self.scrollAreaWidgetContents_6)
         self.acous_ch5_label.setObjectName(u"acous_ch5_label")
-        self.acous_ch5_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.acous_ch5_label.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.acous_per_ch_grid.addWidget(self.acous_ch5_label, 5, 0, 1, 1)
 
@@ -1074,7 +1077,7 @@ class Ui_SettingsWindow(object):
 
         self.acous_ch2_label = QLabel(self.scrollAreaWidgetContents_6)
         self.acous_ch2_label.setObjectName(u"acous_ch2_label")
-        self.acous_ch2_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.acous_ch2_label.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.acous_per_ch_grid.addWidget(self.acous_ch2_label, 2, 0, 1, 1)
 
@@ -1103,7 +1106,7 @@ class Ui_SettingsWindow(object):
 
         self.acous_range_label = QLabel(self.scrollAreaWidgetContents_6)
         self.acous_range_label.setObjectName(u"acous_range_label")
-        self.acous_range_label.setAlignment(Qt.AlignCenter)
+        self.acous_range_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.acous_per_ch_grid.addWidget(self.acous_range_label, 0, 2, 1, 1)
 
@@ -1119,7 +1122,7 @@ class Ui_SettingsWindow(object):
 
         self.acous_ch1_label = QLabel(self.scrollAreaWidgetContents_6)
         self.acous_ch1_label.setObjectName(u"acous_ch1_label")
-        self.acous_ch1_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.acous_ch1_label.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.acous_per_ch_grid.addWidget(self.acous_ch1_label, 1, 0, 1, 1)
 
@@ -1137,13 +1140,13 @@ class Ui_SettingsWindow(object):
         font2 = QFont()
         font2.setKerning(False)
         self.acous_range_ch8.setFont(font2)
-        self.acous_range_ch8.setButtonSymbols(QAbstractSpinBox.NoButtons)
+        self.acous_range_ch8.setButtonSymbols(QAbstractSpinBox.ButtonSymbols.NoButtons)
 
         self.acous_per_ch_grid.addWidget(self.acous_range_ch8, 8, 2, 1, 1)
 
         self.acous_ch6_label = QLabel(self.scrollAreaWidgetContents_6)
         self.acous_ch6_label.setObjectName(u"acous_ch6_label")
-        self.acous_ch6_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.acous_ch6_label.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.acous_per_ch_grid.addWidget(self.acous_ch6_label, 6, 0, 1, 1)
 
@@ -1168,7 +1171,7 @@ class Ui_SettingsWindow(object):
 
         self.acous_ch7_label = QLabel(self.scrollAreaWidgetContents_6)
         self.acous_ch7_label.setObjectName(u"acous_ch7_label")
-        self.acous_ch7_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.acous_ch7_label.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.acous_per_ch_grid.addWidget(self.acous_ch7_label, 7, 0, 1, 1)
 
@@ -1201,7 +1204,7 @@ class Ui_SettingsWindow(object):
         self.acous_range_ch3 = QSpinBox(self.scrollAreaWidgetContents_6)
         self.acous_range_ch3.setObjectName(u"acous_range_ch3")
         self.acous_range_ch3.setFont(font2)
-        self.acous_range_ch3.setButtonSymbols(QAbstractSpinBox.NoButtons)
+        self.acous_range_ch3.setButtonSymbols(QAbstractSpinBox.ButtonSymbols.NoButtons)
 
         self.acous_per_ch_grid.addWidget(self.acous_range_ch3, 3, 2, 1, 1)
 
@@ -1221,7 +1224,7 @@ class Ui_SettingsWindow(object):
 
         self.acous_ch3_label = QLabel(self.scrollAreaWidgetContents_6)
         self.acous_ch3_label.setObjectName(u"acous_ch3_label")
-        self.acous_ch3_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.acous_ch3_label.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.acous_per_ch_grid.addWidget(self.acous_ch3_label, 3, 0, 1, 1)
 
@@ -1233,7 +1236,7 @@ class Ui_SettingsWindow(object):
         self.acous_range_ch6 = QSpinBox(self.scrollAreaWidgetContents_6)
         self.acous_range_ch6.setObjectName(u"acous_range_ch6")
         self.acous_range_ch6.setFont(font2)
-        self.acous_range_ch6.setButtonSymbols(QAbstractSpinBox.NoButtons)
+        self.acous_range_ch6.setButtonSymbols(QAbstractSpinBox.ButtonSymbols.NoButtons)
 
         self.acous_per_ch_grid.addWidget(self.acous_range_ch6, 6, 2, 1, 1)
 
@@ -1259,7 +1262,7 @@ class Ui_SettingsWindow(object):
 
         self.acous_ch8_label = QLabel(self.scrollAreaWidgetContents_6)
         self.acous_ch8_label.setObjectName(u"acous_ch8_label")
-        self.acous_ch8_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.acous_ch8_label.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.acous_per_ch_grid.addWidget(self.acous_ch8_label, 8, 0, 1, 1)
 
@@ -1275,7 +1278,7 @@ class Ui_SettingsWindow(object):
 
         self.acous_dc_offset_label = QLabel(self.scrollAreaWidgetContents_6)
         self.acous_dc_offset_label.setObjectName(u"acous_dc_offset_label")
-        self.acous_dc_offset_label.setAlignment(Qt.AlignCenter)
+        self.acous_dc_offset_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.acous_per_ch_grid.addWidget(self.acous_dc_offset_label, 0, 3, 1, 1)
 
@@ -1295,7 +1298,7 @@ class Ui_SettingsWindow(object):
 
         self.acous_enabled_label = QLabel(self.scrollAreaWidgetContents_6)
         self.acous_enabled_label.setObjectName(u"acous_enabled_label")
-        self.acous_enabled_label.setAlignment(Qt.AlignCenter)
+        self.acous_enabled_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.acous_per_ch_grid.addWidget(self.acous_enabled_label, 0, 1, 1, 1)
 
@@ -1307,20 +1310,20 @@ class Ui_SettingsWindow(object):
         self.acous_range_ch2 = QSpinBox(self.scrollAreaWidgetContents_6)
         self.acous_range_ch2.setObjectName(u"acous_range_ch2")
         self.acous_range_ch2.setFont(font2)
-        self.acous_range_ch2.setButtonSymbols(QAbstractSpinBox.NoButtons)
+        self.acous_range_ch2.setButtonSymbols(QAbstractSpinBox.ButtonSymbols.NoButtons)
 
         self.acous_per_ch_grid.addWidget(self.acous_range_ch2, 2, 2, 1, 1)
 
         self.acous_ch4_label = QLabel(self.scrollAreaWidgetContents_6)
         self.acous_ch4_label.setObjectName(u"acous_ch4_label")
-        self.acous_ch4_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.acous_ch4_label.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.acous_per_ch_grid.addWidget(self.acous_ch4_label, 4, 0, 1, 1)
 
         self.acous_range_ch7 = QSpinBox(self.scrollAreaWidgetContents_6)
         self.acous_range_ch7.setObjectName(u"acous_range_ch7")
         self.acous_range_ch7.setFont(font2)
-        self.acous_range_ch7.setButtonSymbols(QAbstractSpinBox.NoButtons)
+        self.acous_range_ch7.setButtonSymbols(QAbstractSpinBox.ButtonSymbols.NoButtons)
 
         self.acous_per_ch_grid.addWidget(self.acous_range_ch7, 7, 2, 1, 1)
 
@@ -1342,7 +1345,7 @@ class Ui_SettingsWindow(object):
         self.acous_range_ch5 = QSpinBox(self.scrollAreaWidgetContents_6)
         self.acous_range_ch5.setObjectName(u"acous_range_ch5")
         self.acous_range_ch5.setFont(font2)
-        self.acous_range_ch5.setButtonSymbols(QAbstractSpinBox.NoButtons)
+        self.acous_range_ch5.setButtonSymbols(QAbstractSpinBox.ButtonSymbols.NoButtons)
 
         self.acous_per_ch_grid.addWidget(self.acous_range_ch5, 5, 2, 1, 1)
 
@@ -1373,15 +1376,15 @@ class Ui_SettingsWindow(object):
         self.acous_range_ch1 = QSpinBox(self.scrollAreaWidgetContents_6)
         self.acous_range_ch1.setObjectName(u"acous_range_ch1")
         self.acous_range_ch1.setFont(font2)
-        self.acous_range_ch1.setButtonSymbols(QAbstractSpinBox.NoButtons)
-        self.acous_range_ch1.setStepType(QAbstractSpinBox.DefaultStepType)
+        self.acous_range_ch1.setButtonSymbols(QAbstractSpinBox.ButtonSymbols.NoButtons)
+        self.acous_range_ch1.setStepType(QAbstractSpinBox.StepType.DefaultStepType)
 
         self.acous_per_ch_grid.addWidget(self.acous_range_ch1, 1, 2, 1, 1)
 
         self.acous_range_ch4 = QSpinBox(self.scrollAreaWidgetContents_6)
         self.acous_range_ch4.setObjectName(u"acous_range_ch4")
         self.acous_range_ch4.setFont(font2)
-        self.acous_range_ch4.setButtonSymbols(QAbstractSpinBox.NoButtons)
+        self.acous_range_ch4.setButtonSymbols(QAbstractSpinBox.ButtonSymbols.NoButtons)
 
         self.acous_per_ch_grid.addWidget(self.acous_range_ch4, 4, 2, 1, 1)
 
@@ -1398,7 +1401,7 @@ class Ui_SettingsWindow(object):
 
         self.acous_threshold_label = QLabel(self.scrollAreaWidgetContents_6)
         self.acous_threshold_label.setObjectName(u"acous_threshold_label")
-        self.acous_threshold_label.setAlignment(Qt.AlignCenter)
+        self.acous_threshold_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.acous_per_ch_grid.addWidget(self.acous_threshold_label, 0, 6, 1, 1)
 
@@ -1415,7 +1418,7 @@ class Ui_SettingsWindow(object):
 
         self.acous_ext_label = QLabel(self.scrollAreaWidgetContents_6)
         self.acous_ext_label.setObjectName(u"acous_ext_label")
-        self.acous_ext_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.acous_ext_label.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.acous_per_ch_grid.addWidget(self.acous_ext_label, 9, 0, 1, 1)
 
@@ -1464,19 +1467,19 @@ class Ui_SettingsWindow(object):
         self.cam_scroll_area.setObjectName(u"cam_scroll_area")
         self.cam_scroll_area.setSizeIncrement(QSize(0, 0))
         self.cam_scroll_area.setFont(font1)
-        self.cam_scroll_area.setFrameShape(QFrame.NoFrame)
-        self.cam_scroll_area.setFrameShadow(QFrame.Plain)
+        self.cam_scroll_area.setFrameShape(QFrame.Shape.NoFrame)
+        self.cam_scroll_area.setFrameShadow(QFrame.Shadow.Plain)
         self.cam_scroll_area.setLineWidth(0)
         self.cam_scroll_area.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 703, 505))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 346, 505))
         self.scrollAreaWidgetContents.setMaximumSize(QSize(1000, 16777215))
         self.gridLayout_5 = QGridLayout(self.scrollAreaWidgetContents)
         self.gridLayout_5.setSpacing(3)
         self.gridLayout_5.setContentsMargins(0, 0, 0, 0)
         self.gridLayout_5.setObjectName(u"gridLayout_5")
-        self.gridLayout_5.setSizeConstraint(QLayout.SetDefaultConstraint)
+        self.gridLayout_5.setSizeConstraint(QLayout.SizeConstraint.SetDefaultConstraint)
         self.gridLayout_5.setContentsMargins(0, 0, 0, 0)
         self.post_trig_len_label = QLabel(self.scrollAreaWidgetContents)
         self.post_trig_len_label.setObjectName(u"post_trig_len_label")
@@ -1485,7 +1488,7 @@ class Ui_SettingsWindow(object):
         sizePolicy2.setVerticalStretch(0)
         sizePolicy2.setHeightForWidth(self.post_trig_len_label.sizePolicy().hasHeightForWidth())
         self.post_trig_len_label.setSizePolicy(sizePolicy2)
-        self.post_trig_len_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.post_trig_len_label.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.gridLayout_5.addWidget(self.post_trig_len_label, 13, 0, 1, 1)
 
@@ -1518,7 +1521,7 @@ class Ui_SettingsWindow(object):
         self.trig_enbl_pin_label.setObjectName(u"trig_enbl_pin_label")
         sizePolicy2.setHeightForWidth(self.trig_enbl_pin_label.sizePolicy().hasHeightForWidth())
         self.trig_enbl_pin_label.setSizePolicy(sizePolicy2)
-        self.trig_enbl_pin_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.trig_enbl_pin_label.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.gridLayout_5.addWidget(self.trig_enbl_pin_label, 22, 0, 1, 1)
 
@@ -1567,7 +1570,7 @@ class Ui_SettingsWindow(object):
         self.buffer_len_label.setObjectName(u"buffer_len_label")
         sizePolicy2.setHeightForWidth(self.buffer_len_label.sizePolicy().hasHeightForWidth())
         self.buffer_len_label.setSizePolicy(sizePolicy2)
-        self.buffer_len_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.buffer_len_label.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.gridLayout_5.addWidget(self.buffer_len_label, 12, 0, 1, 1)
 
@@ -1586,7 +1589,7 @@ class Ui_SettingsWindow(object):
         sizePolicy4.setVerticalStretch(0)
         sizePolicy4.setHeightForWidth(self.cam3_label.sizePolicy().hasHeightForWidth())
         self.cam3_label.setSizePolicy(sizePolicy4)
-        self.cam3_label.setAlignment(Qt.AlignCenter)
+        self.cam3_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.gridLayout_5.addWidget(self.cam3_label, 0, 3, 1, 1)
 
@@ -1602,7 +1605,7 @@ class Ui_SettingsWindow(object):
         self.cam1_label.setObjectName(u"cam1_label")
         sizePolicy4.setHeightForWidth(self.cam1_label.sizePolicy().hasHeightForWidth())
         self.cam1_label.setSizePolicy(sizePolicy4)
-        self.cam1_label.setAlignment(Qt.AlignCenter)
+        self.cam1_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.gridLayout_5.addWidget(self.cam1_label, 0, 1, 1, 1)
 
@@ -1638,7 +1641,7 @@ class Ui_SettingsWindow(object):
         self.cam_rc_config_path_label.setObjectName(u"cam_rc_config_path_label")
         sizePolicy2.setHeightForWidth(self.cam_rc_config_path_label.sizePolicy().hasHeightForWidth())
         self.cam_rc_config_path_label.setSizePolicy(sizePolicy2)
-        self.cam_rc_config_path_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.cam_rc_config_path_label.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.gridLayout_5.addWidget(self.cam_rc_config_path_label, 2, 0, 1, 1)
 
@@ -1671,7 +1674,7 @@ class Ui_SettingsWindow(object):
         self.image_format_label.setObjectName(u"image_format_label")
         sizePolicy2.setHeightForWidth(self.image_format_label.sizePolicy().hasHeightForWidth())
         self.image_format_label.setSizePolicy(sizePolicy2)
-        self.image_format_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.image_format_label.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.gridLayout_5.addWidget(self.image_format_label, 18, 0, 1, 1)
 
@@ -1693,7 +1696,7 @@ class Ui_SettingsWindow(object):
         self.adc_threshold_label.setObjectName(u"adc_threshold_label")
         sizePolicy2.setHeightForWidth(self.adc_threshold_label.sizePolicy().hasHeightForWidth())
         self.adc_threshold_label.setSizePolicy(sizePolicy2)
-        self.adc_threshold_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.adc_threshold_label.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.gridLayout_5.addWidget(self.adc_threshold_label, 14, 0, 1, 1)
 
@@ -1721,7 +1724,7 @@ class Ui_SettingsWindow(object):
         self.cam2_label.setObjectName(u"cam2_label")
         sizePolicy4.setHeightForWidth(self.cam2_label.sizePolicy().hasHeightForWidth())
         self.cam2_label.setSizePolicy(sizePolicy4)
-        self.cam2_label.setAlignment(Qt.AlignCenter)
+        self.cam2_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.gridLayout_5.addWidget(self.cam2_label, 0, 2, 1, 1)
 
@@ -1729,7 +1732,7 @@ class Ui_SettingsWindow(object):
         self.trig_latch_pin_label.setObjectName(u"trig_latch_pin_label")
         sizePolicy2.setHeightForWidth(self.trig_latch_pin_label.sizePolicy().hasHeightForWidth())
         self.trig_latch_pin_label.setSizePolicy(sizePolicy2)
-        self.trig_latch_pin_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.trig_latch_pin_label.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.gridLayout_5.addWidget(self.trig_latch_pin_label, 23, 0, 1, 1)
 
@@ -1744,7 +1747,7 @@ class Ui_SettingsWindow(object):
         self.mode_label.setObjectName(u"mode_label")
         sizePolicy2.setHeightForWidth(self.mode_label.sizePolicy().hasHeightForWidth())
         self.mode_label.setSizePolicy(sizePolicy2)
-        self.mode_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.mode_label.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.gridLayout_5.addWidget(self.mode_label, 6, 0, 1, 1)
 
@@ -1760,7 +1763,7 @@ class Ui_SettingsWindow(object):
         self.pix_threshold_label.setObjectName(u"pix_threshold_label")
         sizePolicy2.setHeightForWidth(self.pix_threshold_label.sizePolicy().hasHeightForWidth())
         self.pix_threshold_label.setSizePolicy(sizePolicy2)
-        self.pix_threshold_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.pix_threshold_label.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.gridLayout_5.addWidget(self.pix_threshold_label, 15, 0, 1, 1)
 
@@ -1768,7 +1771,7 @@ class Ui_SettingsWindow(object):
         self.ip_addr_label.setObjectName(u"ip_addr_label")
         sizePolicy2.setHeightForWidth(self.ip_addr_label.sizePolicy().hasHeightForWidth())
         self.ip_addr_label.setSizePolicy(sizePolicy2)
-        self.ip_addr_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.ip_addr_label.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.gridLayout_5.addWidget(self.ip_addr_label, 5, 0, 1, 1)
 
@@ -1783,7 +1786,7 @@ class Ui_SettingsWindow(object):
         self.trig_wait_label.setObjectName(u"trig_wait_label")
         sizePolicy2.setHeightForWidth(self.trig_wait_label.sizePolicy().hasHeightForWidth())
         self.trig_wait_label.setSizePolicy(sizePolicy2)
-        self.trig_wait_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.trig_wait_label.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.gridLayout_5.addWidget(self.trig_wait_label, 10, 0, 1, 1)
 
@@ -1813,7 +1816,7 @@ class Ui_SettingsWindow(object):
         self.data_path_label.setObjectName(u"data_path_label")
         sizePolicy2.setHeightForWidth(self.data_path_label.sizePolicy().hasHeightForWidth())
         self.data_path_label.setSizePolicy(sizePolicy2)
-        self.data_path_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.data_path_label.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.gridLayout_5.addWidget(self.data_path_label, 4, 0, 1, 1)
 
@@ -1884,7 +1887,7 @@ class Ui_SettingsWindow(object):
         self.state_comm_pin_label.setObjectName(u"state_comm_pin_label")
         sizePolicy2.setHeightForWidth(self.state_comm_pin_label.sizePolicy().hasHeightForWidth())
         self.state_comm_pin_label.setSizePolicy(sizePolicy2)
-        self.state_comm_pin_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.state_comm_pin_label.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.gridLayout_5.addWidget(self.state_comm_pin_label, 20, 0, 1, 1)
 
@@ -1908,7 +1911,7 @@ class Ui_SettingsWindow(object):
         self.trig_pin_label.setObjectName(u"trig_pin_label")
         sizePolicy2.setHeightForWidth(self.trig_pin_label.sizePolicy().hasHeightForWidth())
         self.trig_pin_label.setSizePolicy(sizePolicy2)
-        self.trig_pin_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.trig_pin_label.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.gridLayout_5.addWidget(self.trig_pin_label, 25, 0, 1, 1)
 
@@ -1951,7 +1954,7 @@ class Ui_SettingsWindow(object):
         self.state_pin_label.setObjectName(u"state_pin_label")
         sizePolicy2.setHeightForWidth(self.state_pin_label.sizePolicy().hasHeightForWidth())
         self.state_pin_label.setSizePolicy(sizePolicy2)
-        self.state_pin_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.state_pin_label.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.gridLayout_5.addWidget(self.state_pin_label, 24, 0, 1, 1)
 
@@ -1971,7 +1974,7 @@ class Ui_SettingsWindow(object):
         self.cam_config_path_label.setObjectName(u"cam_config_path_label")
         sizePolicy2.setHeightForWidth(self.cam_config_path_label.sizePolicy().hasHeightForWidth())
         self.cam_config_path_label.setSizePolicy(sizePolicy2)
-        self.cam_config_path_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.cam_config_path_label.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.gridLayout_5.addWidget(self.cam_config_path_label, 3, 0, 1, 1)
 
@@ -1991,7 +1994,7 @@ class Ui_SettingsWindow(object):
         self.date_format_label.setObjectName(u"date_format_label")
         sizePolicy2.setHeightForWidth(self.date_format_label.sizePolicy().hasHeightForWidth())
         self.date_format_label.setSizePolicy(sizePolicy2)
-        self.date_format_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.date_format_label.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.gridLayout_5.addWidget(self.date_format_label, 19, 0, 1, 1)
 
@@ -1999,7 +2002,7 @@ class Ui_SettingsWindow(object):
         self.exposure_label.setObjectName(u"exposure_label")
         sizePolicy2.setHeightForWidth(self.exposure_label.sizePolicy().hasHeightForWidth())
         self.exposure_label.setSizePolicy(sizePolicy2)
-        self.exposure_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.exposure_label.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.gridLayout_5.addWidget(self.exposure_label, 11, 0, 1, 1)
 
@@ -2063,13 +2066,13 @@ class Ui_SettingsWindow(object):
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
         self.dio_scroll_area = QScrollArea(self.dio_tab)
         self.dio_scroll_area.setObjectName(u"dio_scroll_area")
-        self.dio_scroll_area.setFrameShape(QFrame.NoFrame)
-        self.dio_scroll_area.setFrameShadow(QFrame.Plain)
+        self.dio_scroll_area.setFrameShape(QFrame.Shape.NoFrame)
+        self.dio_scroll_area.setFrameShadow(QFrame.Shadow.Plain)
         self.dio_scroll_area.setLineWidth(0)
         self.dio_scroll_area.setWidgetResizable(True)
         self.scrollAreaWidgetContents_3 = QWidget()
         self.scrollAreaWidgetContents_3.setObjectName(u"scrollAreaWidgetContents_3")
-        self.scrollAreaWidgetContents_3.setGeometry(QRect(0, 0, 703, 534))
+        self.scrollAreaWidgetContents_3.setGeometry(QRect(0, 0, 703, 629))
         self.scrollAreaWidgetContents_3.setMaximumSize(QSize(1000, 16777215))
         self.verticalLayout_2 = QVBoxLayout(self.scrollAreaWidgetContents_3)
         self.verticalLayout_2.setSpacing(6)
@@ -2082,7 +2085,7 @@ class Ui_SettingsWindow(object):
         self.dio_general_label = QLabel(self.scrollAreaWidgetContents_3)
         self.dio_general_label.setObjectName(u"dio_general_label")
         self.dio_general_label.setFont(font)
-        self.dio_general_label.setAlignment(Qt.AlignCenter)
+        self.dio_general_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.dio_general_grid_layout.addWidget(self.dio_general_label, 0, 0, 1, 3)
 
@@ -2159,10 +2162,117 @@ class Ui_SettingsWindow(object):
 
         self.verticalLayout_2.addLayout(self.dio_general_grid_layout)
 
+        self.dio_line_5 = QFrame(self.scrollAreaWidgetContents_3)
+        self.dio_line_5.setObjectName(u"dio_line_5")
+        self.dio_line_5.setFrameShape(QFrame.Shape.HLine)
+        self.dio_line_5.setFrameShadow(QFrame.Shadow.Sunken)
+
+        self.verticalLayout_2.addWidget(self.dio_line_5)
+
+        self.niusb_table = SwappingTableWidget(self.scrollAreaWidgetContents_3)
+        if (self.niusb_table.columnCount() < 8):
+            self.niusb_table.setColumnCount(8)
+        __qtablewidgetitem = QTableWidgetItem()
+        self.niusb_table.setHorizontalHeaderItem(0, __qtablewidgetitem)
+        __qtablewidgetitem1 = QTableWidgetItem()
+        self.niusb_table.setHorizontalHeaderItem(1, __qtablewidgetitem1)
+        __qtablewidgetitem2 = QTableWidgetItem()
+        self.niusb_table.setHorizontalHeaderItem(2, __qtablewidgetitem2)
+        __qtablewidgetitem3 = QTableWidgetItem()
+        self.niusb_table.setHorizontalHeaderItem(3, __qtablewidgetitem3)
+        __qtablewidgetitem4 = QTableWidgetItem()
+        self.niusb_table.setHorizontalHeaderItem(4, __qtablewidgetitem4)
+        __qtablewidgetitem5 = QTableWidgetItem()
+        self.niusb_table.setHorizontalHeaderItem(5, __qtablewidgetitem5)
+        __qtablewidgetitem6 = QTableWidgetItem()
+        self.niusb_table.setHorizontalHeaderItem(6, __qtablewidgetitem6)
+        __qtablewidgetitem7 = QTableWidgetItem()
+        self.niusb_table.setHorizontalHeaderItem(7, __qtablewidgetitem7)
+        if (self.niusb_table.rowCount() < 3):
+            self.niusb_table.setRowCount(3)
+        __qtablewidgetitem8 = QTableWidgetItem()
+        self.niusb_table.setVerticalHeaderItem(0, __qtablewidgetitem8)
+        __qtablewidgetitem9 = QTableWidgetItem()
+        self.niusb_table.setVerticalHeaderItem(1, __qtablewidgetitem9)
+        __qtablewidgetitem10 = QTableWidgetItem()
+        self.niusb_table.setVerticalHeaderItem(2, __qtablewidgetitem10)
+        __qtablewidgetitem11 = QTableWidgetItem()
+        self.niusb_table.setItem(0, 0, __qtablewidgetitem11)
+        __qtablewidgetitem12 = QTableWidgetItem()
+        self.niusb_table.setItem(0, 1, __qtablewidgetitem12)
+        __qtablewidgetitem13 = QTableWidgetItem()
+        self.niusb_table.setItem(0, 2, __qtablewidgetitem13)
+        __qtablewidgetitem14 = QTableWidgetItem()
+        self.niusb_table.setItem(0, 3, __qtablewidgetitem14)
+        __qtablewidgetitem15 = QTableWidgetItem()
+        self.niusb_table.setItem(0, 4, __qtablewidgetitem15)
+        __qtablewidgetitem16 = QTableWidgetItem()
+        self.niusb_table.setItem(0, 5, __qtablewidgetitem16)
+        __qtablewidgetitem17 = QTableWidgetItem()
+        self.niusb_table.setItem(0, 6, __qtablewidgetitem17)
+        __qtablewidgetitem18 = QTableWidgetItem()
+        self.niusb_table.setItem(0, 7, __qtablewidgetitem18)
+        __qtablewidgetitem19 = QTableWidgetItem()
+        self.niusb_table.setItem(1, 0, __qtablewidgetitem19)
+        __qtablewidgetitem20 = QTableWidgetItem()
+        self.niusb_table.setItem(1, 1, __qtablewidgetitem20)
+        __qtablewidgetitem21 = QTableWidgetItem()
+        self.niusb_table.setItem(1, 2, __qtablewidgetitem21)
+        __qtablewidgetitem22 = QTableWidgetItem()
+        self.niusb_table.setItem(1, 3, __qtablewidgetitem22)
+        __qtablewidgetitem23 = QTableWidgetItem()
+        self.niusb_table.setItem(1, 4, __qtablewidgetitem23)
+        __qtablewidgetitem24 = QTableWidgetItem()
+        self.niusb_table.setItem(1, 5, __qtablewidgetitem24)
+        __qtablewidgetitem25 = QTableWidgetItem()
+        self.niusb_table.setItem(1, 6, __qtablewidgetitem25)
+        __qtablewidgetitem26 = QTableWidgetItem()
+        self.niusb_table.setItem(1, 7, __qtablewidgetitem26)
+        __qtablewidgetitem27 = QTableWidgetItem()
+        self.niusb_table.setItem(2, 0, __qtablewidgetitem27)
+        __qtablewidgetitem28 = QTableWidgetItem()
+        self.niusb_table.setItem(2, 1, __qtablewidgetitem28)
+        __qtablewidgetitem29 = QTableWidgetItem()
+        self.niusb_table.setItem(2, 2, __qtablewidgetitem29)
+        __qtablewidgetitem30 = QTableWidgetItem()
+        self.niusb_table.setItem(2, 3, __qtablewidgetitem30)
+        __qtablewidgetitem31 = QTableWidgetItem()
+        self.niusb_table.setItem(2, 4, __qtablewidgetitem31)
+        __qtablewidgetitem32 = QTableWidgetItem()
+        self.niusb_table.setItem(2, 5, __qtablewidgetitem32)
+        self.niusb_table.setObjectName(u"niusb_table")
+        sizePolicy4.setHeightForWidth(self.niusb_table.sizePolicy().hasHeightForWidth())
+        self.niusb_table.setSizePolicy(sizePolicy4)
+        self.niusb_table.setMinimumSize(QSize(0, 80))
+        self.niusb_table.setFont(font1)
+        self.niusb_table.setLayoutDirection(Qt.LayoutDirection.LeftToRight)
+        self.niusb_table.setAutoFillBackground(False)
+        self.niusb_table.setFrameShape(QFrame.Shape.NoFrame)
+        self.niusb_table.setFrameShadow(QFrame.Shadow.Plain)
+        self.niusb_table.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAsNeeded)
+        self.niusb_table.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAsNeeded)
+        self.niusb_table.setSizeAdjustPolicy(QAbstractScrollArea.SizeAdjustPolicy.AdjustToContents)
+        self.niusb_table.setAutoScroll(True)
+        self.niusb_table.setAutoScrollMargin(0)
+        self.niusb_table.setEditTriggers(QAbstractItemView.EditTrigger.DoubleClicked|QAbstractItemView.EditTrigger.EditKeyPressed)
+        self.niusb_table.setDragEnabled(True)
+        self.niusb_table.setDragDropOverwriteMode(False)
+        self.niusb_table.setDragDropMode(QAbstractItemView.DragDropMode.InternalMove)
+        self.niusb_table.setDefaultDropAction(Qt.DropAction.MoveAction)
+        self.niusb_table.setAlternatingRowColors(True)
+        self.niusb_table.setShowGrid(True)
+        self.niusb_table.setCornerButtonEnabled(False)
+        self.niusb_table.horizontalHeader().setCascadingSectionResizes(True)
+        self.niusb_table.horizontalHeader().setDefaultSectionSize(82)
+        self.niusb_table.verticalHeader().setCascadingSectionResizes(False)
+        self.niusb_table.verticalHeader().setDefaultSectionSize(20)
+
+        self.verticalLayout_2.addWidget(self.niusb_table)
+
         self.dio_line = QFrame(self.scrollAreaWidgetContents_3)
         self.dio_line.setObjectName(u"dio_line")
-        self.dio_line.setFrameShape(QFrame.HLine)
-        self.dio_line.setFrameShadow(QFrame.Sunken)
+        self.dio_line.setFrameShape(QFrame.Shape.HLine)
+        self.dio_line.setFrameShadow(QFrame.Shadow.Sunken)
 
         self.verticalLayout_2.addWidget(self.dio_line)
 
@@ -2172,7 +2282,7 @@ class Ui_SettingsWindow(object):
         self.fifo_grid_layout.setContentsMargins(-1, 0, -1, 0)
         self.trig_latch_pins_label = QLabel(self.scrollAreaWidgetContents_3)
         self.trig_latch_pins_label.setObjectName(u"trig_latch_pins_label")
-        self.trig_latch_pins_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.trig_latch_pins_label.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.fifo_grid_layout.addWidget(self.trig_latch_pins_label, 2, 0, 1, 1)
 
@@ -2193,31 +2303,31 @@ class Ui_SettingsWindow(object):
 
         self.trig_or_pin_label = QLabel(self.scrollAreaWidgetContents_3)
         self.trig_or_pin_label.setObjectName(u"trig_or_pin_label")
-        self.trig_or_pin_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.trig_or_pin_label.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.fifo_grid_layout.addWidget(self.trig_or_pin_label, 3, 2, 1, 1)
 
         self.heartbeat_pin_label = QLabel(self.scrollAreaWidgetContents_3)
         self.heartbeat_pin_label.setObjectName(u"heartbeat_pin_label")
-        self.heartbeat_pin_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.heartbeat_pin_label.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.fifo_grid_layout.addWidget(self.heartbeat_pin_label, 4, 2, 1, 1)
 
         self.heartbeat_pin_edit = QSpinBox(self.scrollAreaWidgetContents_3)
         self.heartbeat_pin_edit.setObjectName(u"heartbeat_pin_edit")
-        self.heartbeat_pin_edit.setFocusPolicy(Qt.StrongFocus)
+        self.heartbeat_pin_edit.setFocusPolicy(Qt.FocusPolicy.StrongFocus)
 
         self.fifo_grid_layout.addWidget(self.heartbeat_pin_edit, 4, 3, 1, 1)
 
         self.trig_reset_pin_label = QLabel(self.scrollAreaWidgetContents_3)
         self.trig_reset_pin_label.setObjectName(u"trig_reset_pin_label")
-        self.trig_reset_pin_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.trig_reset_pin_label.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.fifo_grid_layout.addWidget(self.trig_reset_pin_label, 3, 0, 1, 1)
 
         self.trig_in_pins_label = QLabel(self.scrollAreaWidgetContents_3)
         self.trig_in_pins_label.setObjectName(u"trig_in_pins_label")
-        self.trig_in_pins_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.trig_in_pins_label.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.fifo_grid_layout.addWidget(self.trig_in_pins_label, 1, 0, 1, 1)
 
@@ -2228,20 +2338,20 @@ class Ui_SettingsWindow(object):
 
         self.on_time_pin_label = QLabel(self.scrollAreaWidgetContents_3)
         self.on_time_pin_label.setObjectName(u"on_time_pin_label")
-        self.on_time_pin_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.on_time_pin_label.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.fifo_grid_layout.addWidget(self.on_time_pin_label, 4, 0, 1, 1)
 
         self.fifo_layout = QLabel(self.scrollAreaWidgetContents_3)
         self.fifo_layout.setObjectName(u"fifo_layout")
         self.fifo_layout.setFont(font)
-        self.fifo_layout.setAlignment(Qt.AlignCenter)
+        self.fifo_layout.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.fifo_grid_layout.addWidget(self.fifo_layout, 0, 0, 1, 4)
 
         self.trig_or_pin_edit = QSpinBox(self.scrollAreaWidgetContents_3)
         self.trig_or_pin_edit.setObjectName(u"trig_or_pin_edit")
-        self.trig_or_pin_edit.setFocusPolicy(Qt.StrongFocus)
+        self.trig_or_pin_edit.setFocusPolicy(Qt.FocusPolicy.StrongFocus)
 
         self.fifo_grid_layout.addWidget(self.trig_or_pin_edit, 3, 3, 1, 1)
 
@@ -2250,8 +2360,8 @@ class Ui_SettingsWindow(object):
 
         self.dio_line_3 = QFrame(self.scrollAreaWidgetContents_3)
         self.dio_line_3.setObjectName(u"dio_line_3")
-        self.dio_line_3.setFrameShape(QFrame.HLine)
-        self.dio_line_3.setFrameShadow(QFrame.Sunken)
+        self.dio_line_3.setFrameShape(QFrame.Shape.HLine)
+        self.dio_line_3.setFrameShadow(QFrame.Shadow.Sunken)
 
         self.verticalLayout_2.addWidget(self.dio_line_3)
 
@@ -2292,19 +2402,19 @@ class Ui_SettingsWindow(object):
 
         self.wave1_label = QLabel(self.scrollAreaWidgetContents_3)
         self.wave1_label.setObjectName(u"wave1_label")
-        self.wave1_label.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
+        self.wave1_label.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
 
         self.gate_grid_layout.addWidget(self.wave1_label, 3, 0, 1, 1)
 
         self.wave3_label = QLabel(self.scrollAreaWidgetContents_3)
         self.wave3_label.setObjectName(u"wave3_label")
-        self.wave3_label.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
+        self.wave3_label.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
 
         self.gate_grid_layout.addWidget(self.wave3_label, 5, 0, 1, 1)
 
         self.gate_pin_label = QLabel(self.scrollAreaWidgetContents_3)
         self.gate_pin_label.setObjectName(u"gate_pin_label")
-        self.gate_pin_label.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
+        self.gate_pin_label.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
 
         self.gate_grid_layout.addWidget(self.gate_pin_label, 1, 1, 1, 1)
 
@@ -2320,7 +2430,7 @@ class Ui_SettingsWindow(object):
 
         self.gate_phase_wave1 = QSpinBox(self.scrollAreaWidgetContents_3)
         self.gate_phase_wave1.setObjectName(u"gate_phase_wave1")
-        self.gate_phase_wave1.setButtonSymbols(QAbstractSpinBox.UpDownArrows)
+        self.gate_phase_wave1.setButtonSymbols(QAbstractSpinBox.ButtonSymbols.UpDownArrows)
         self.gate_phase_wave1.setKeyboardTracking(True)
         self.gate_phase_wave1.setMaximum(100)
 
@@ -2334,7 +2444,7 @@ class Ui_SettingsWindow(object):
 
         self.wave4_label = QLabel(self.scrollAreaWidgetContents_3)
         self.wave4_label.setObjectName(u"wave4_label")
-        self.wave4_label.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
+        self.wave4_label.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
 
         self.gate_grid_layout.addWidget(self.wave4_label, 6, 0, 1, 1)
 
@@ -2365,7 +2475,7 @@ class Ui_SettingsWindow(object):
 
         self.gate_polarity_label = QLabel(self.scrollAreaWidgetContents_3)
         self.gate_polarity_label.setObjectName(u"gate_polarity_label")
-        self.gate_polarity_label.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
+        self.gate_polarity_label.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
 
         self.gate_grid_layout.addWidget(self.gate_polarity_label, 1, 5, 1, 1)
 
@@ -2383,7 +2493,7 @@ class Ui_SettingsWindow(object):
 
         self.wave6_label = QLabel(self.scrollAreaWidgetContents_3)
         self.wave6_label.setObjectName(u"wave6_label")
-        self.wave6_label.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
+        self.wave6_label.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
 
         self.gate_grid_layout.addWidget(self.wave6_label, 8, 0, 1, 1)
 
@@ -2412,7 +2522,7 @@ class Ui_SettingsWindow(object):
 
         self.wave5_label = QLabel(self.scrollAreaWidgetContents_3)
         self.wave5_label.setObjectName(u"wave5_label")
-        self.wave5_label.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
+        self.wave5_label.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
 
         self.gate_grid_layout.addWidget(self.wave5_label, 7, 0, 1, 1)
 
@@ -2448,13 +2558,13 @@ class Ui_SettingsWindow(object):
 
         self.gate_phase_label = QLabel(self.scrollAreaWidgetContents_3)
         self.gate_phase_label.setObjectName(u"gate_phase_label")
-        self.gate_phase_label.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
+        self.gate_phase_label.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
 
         self.gate_grid_layout.addWidget(self.gate_phase_label, 1, 3, 1, 1)
 
         self.wave2_label = QLabel(self.scrollAreaWidgetContents_3)
         self.wave2_label.setObjectName(u"wave2_label")
-        self.wave2_label.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
+        self.wave2_label.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
 
         self.gate_grid_layout.addWidget(self.wave2_label, 4, 0, 1, 1)
 
@@ -2497,13 +2607,13 @@ class Ui_SettingsWindow(object):
 
         self.duty_label = QLabel(self.scrollAreaWidgetContents_3)
         self.duty_label.setObjectName(u"duty_label")
-        self.duty_label.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
+        self.duty_label.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
 
         self.gate_grid_layout.addWidget(self.duty_label, 1, 4, 1, 1)
 
         self.wave7_label = QLabel(self.scrollAreaWidgetContents_3)
         self.wave7_label.setObjectName(u"wave7_label")
-        self.wave7_label.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
+        self.wave7_label.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
 
         self.gate_grid_layout.addWidget(self.wave7_label, 9, 0, 1, 1)
 
@@ -2519,13 +2629,13 @@ class Ui_SettingsWindow(object):
 
         self.wave9_label = QLabel(self.scrollAreaWidgetContents_3)
         self.wave9_label.setObjectName(u"wave9_label")
-        self.wave9_label.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
+        self.wave9_label.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
 
         self.gate_grid_layout.addWidget(self.wave9_label, 11, 0, 1, 1)
 
         self.gate_period_label = QLabel(self.scrollAreaWidgetContents_3)
         self.gate_period_label.setObjectName(u"gate_period_label")
-        self.gate_period_label.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
+        self.gate_period_label.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
 
         self.gate_grid_layout.addWidget(self.gate_period_label, 1, 2, 1, 1)
 
@@ -2591,7 +2701,7 @@ class Ui_SettingsWindow(object):
 
         self.wave8_label = QLabel(self.scrollAreaWidgetContents_3)
         self.wave8_label.setObjectName(u"wave8_label")
-        self.wave8_label.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
+        self.wave8_label.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
 
         self.gate_grid_layout.addWidget(self.wave8_label, 10, 0, 1, 1)
 
@@ -2610,7 +2720,7 @@ class Ui_SettingsWindow(object):
         self.gate_label = QLabel(self.scrollAreaWidgetContents_3)
         self.gate_label.setObjectName(u"gate_label")
         self.gate_label.setFont(font)
-        self.gate_label.setAlignment(Qt.AlignCenter)
+        self.gate_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.gate_label.setMargin(0)
 
         self.gate_grid_layout.addWidget(self.gate_label, 0, 0, 1, 6)
@@ -2633,7 +2743,9 @@ class Ui_SettingsWindow(object):
         SettingsWindow.setCentralWidget(self.centralwidget)
         self.toolBar = QToolBar(SettingsWindow)
         self.toolBar.setObjectName(u"toolBar")
-        SettingsWindow.addToolBar(Qt.TopToolBarArea, self.toolBar)
+        sizePolicy2.setHeightForWidth(self.toolBar.sizePolicy().hasHeightForWidth())
+        self.toolBar.setSizePolicy(sizePolicy2)
+        SettingsWindow.addToolBar(Qt.ToolBarArea.TopToolBarArea, self.toolBar)
 #if QT_CONFIG(shortcut)
         self.config_path_label.setBuddy(self.config_path_edit)
         self.log_path_label.setBuddy(self.log_path_edit)
@@ -2707,8 +2819,7 @@ class Ui_SettingsWindow(object):
 #endif // QT_CONFIG(shortcut)
         QWidget.setTabOrder(self.sipm_scroll_area, self.acoustics_scroll_area)
         QWidget.setTabOrder(self.acoustics_scroll_area, self.cam_scroll_area)
-        QWidget.setTabOrder(self.cam_scroll_area, self.dio_scroll_area)
-        QWidget.setTabOrder(self.dio_scroll_area, self.caen_model_box)
+        QWidget.setTabOrder(self.cam_scroll_area, self.caen_model_box)
         QWidget.setTabOrder(self.caen_model_box, self.caen_port_box)
         QWidget.setTabOrder(self.caen_port_box, self.caen_length_box)
         QWidget.setTabOrder(self.caen_length_box, self.caen_post_trig_box)
@@ -2909,7 +3020,7 @@ class Ui_SettingsWindow(object):
         self.clock_sketch_but.clicked.connect(SettingsWindow.select_clock_sketch_dir)
         self.config_path_but.clicked.connect(SettingsWindow.select_config_path)
 
-        self.tabWidget.setCurrentIndex(1)
+        self.tabWidget.setCurrentIndex(4)
 
 
         QMetaObject.connectSlotsByName(SettingsWindow)
@@ -3191,6 +3302,33 @@ class Ui_SettingsWindow(object):
         self.sketch_location_label.setText(QCoreApplication.translate("SettingsWindow", u"Sketch Location", None))
         self.clock_sketch_but.setText(QCoreApplication.translate("SettingsWindow", u"...", None))
         self.position_sketch_but.setText(QCoreApplication.translate("SettingsWindow", u"...", None))
+        ___qtablewidgetitem = self.niusb_table.horizontalHeaderItem(0)
+        ___qtablewidgetitem.setText(QCoreApplication.translate("SettingsWindow", u"Pin0", None));
+        ___qtablewidgetitem1 = self.niusb_table.horizontalHeaderItem(1)
+        ___qtablewidgetitem1.setText(QCoreApplication.translate("SettingsWindow", u"Pin1", None));
+        ___qtablewidgetitem2 = self.niusb_table.horizontalHeaderItem(2)
+        ___qtablewidgetitem2.setText(QCoreApplication.translate("SettingsWindow", u"Pin2", None));
+        ___qtablewidgetitem3 = self.niusb_table.horizontalHeaderItem(3)
+        ___qtablewidgetitem3.setText(QCoreApplication.translate("SettingsWindow", u"Pin3", None));
+        ___qtablewidgetitem4 = self.niusb_table.horizontalHeaderItem(4)
+        ___qtablewidgetitem4.setText(QCoreApplication.translate("SettingsWindow", u"Pin4", None));
+        ___qtablewidgetitem5 = self.niusb_table.horizontalHeaderItem(5)
+        ___qtablewidgetitem5.setText(QCoreApplication.translate("SettingsWindow", u"Pin5", None));
+        ___qtablewidgetitem6 = self.niusb_table.horizontalHeaderItem(6)
+        ___qtablewidgetitem6.setText(QCoreApplication.translate("SettingsWindow", u"Pin6", None));
+        ___qtablewidgetitem7 = self.niusb_table.horizontalHeaderItem(7)
+        ___qtablewidgetitem7.setText(QCoreApplication.translate("SettingsWindow", u"Pin7", None));
+        ___qtablewidgetitem8 = self.niusb_table.verticalHeaderItem(0)
+        ___qtablewidgetitem8.setText(QCoreApplication.translate("SettingsWindow", u"Port0", None));
+        ___qtablewidgetitem9 = self.niusb_table.verticalHeaderItem(1)
+        ___qtablewidgetitem9.setText(QCoreApplication.translate("SettingsWindow", u"Port1", None));
+        ___qtablewidgetitem10 = self.niusb_table.verticalHeaderItem(2)
+        ___qtablewidgetitem10.setText(QCoreApplication.translate("SettingsWindow", u"Port2", None));
+
+        __sortingEnabled = self.niusb_table.isSortingEnabled()
+        self.niusb_table.setSortingEnabled(False)
+        self.niusb_table.setSortingEnabled(__sortingEnabled)
+
         self.trig_latch_pins_label.setText(QCoreApplication.translate("SettingsWindow", u"Trig Latch Pins", None))
         self.trig_or_pin_label.setText(QCoreApplication.translate("SettingsWindow", u"Trig Or Pin", None))
         self.heartbeat_pin_label.setText(QCoreApplication.translate("SettingsWindow", u"Heartbeat Pin", None))
