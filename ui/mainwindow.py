@@ -161,14 +161,14 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_6.addWidget(self.event_num_label)
 
-        self.event_num_edit = QLineEdit(self.centralwidget)
-        self.event_num_edit.setObjectName(u"event_num_edit")
-        sizePolicy2.setHeightForWidth(self.event_num_edit.sizePolicy().hasHeightForWidth())
-        self.event_num_edit.setSizePolicy(sizePolicy2)
-        self.event_num_edit.setAlignment(Qt.AlignCenter)
-        self.event_num_edit.setReadOnly(True)
+        self.event_id_edit = QLineEdit(self.centralwidget)
+        self.event_id_edit.setObjectName(u"event_id_edit")
+        sizePolicy2.setHeightForWidth(self.event_id_edit.sizePolicy().hasHeightForWidth())
+        self.event_id_edit.setSizePolicy(sizePolicy2)
+        self.event_id_edit.setAlignment(Qt.AlignCenter)
+        self.event_id_edit.setReadOnly(True)
 
-        self.verticalLayout_6.addWidget(self.event_num_edit)
+        self.verticalLayout_6.addWidget(self.event_id_edit)
 
         self.event_time_label = QLabel(self.centralwidget)
         self.event_time_label.setObjectName(u"event_time_label")
@@ -552,7 +552,7 @@ class Ui_MainWindow(object):
         MainWindow.addToolBar(Qt.TopToolBarArea, self.toolBar)
 #if QT_CONFIG(shortcut)
         self.run_id_label.setBuddy(self.run_id_edit)
-        self.event_num_label.setBuddy(self.event_num_edit)
+        self.event_num_label.setBuddy(self.event_id_edit)
         self.event_time_label.setBuddy(self.event_time_edit)
         self.run_live_time_label.setBuddy(self.run_live_time_edit)
         self.source_location_label.setBuddy(self.source_location_box)
