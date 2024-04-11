@@ -52,6 +52,12 @@ class MainWindow(QMainWindow):
         self.arduinos_class = Arduinos(self)
         self.sipm_amp_class = SiPMAmp(self)
 
+
+        # List populated by ready modules at each state. After all modules are ready, it will proceed to the next state
+        self.starting_run_ready = []
+        self.stopping_run_ready = []
+        self.starting_event_ready = []
+        self.stopping_event_ready = []
         self.set_up_workers()
 
         # define four run states
@@ -79,11 +85,6 @@ class MainWindow(QMainWindow):
         self.event_timer = QElapsedTimer()
         self.run_livetime = 0
         self.ev_livetime = 0
-        # List populated by ready modules at each state. After all modules are ready, it will proceed to the next state
-        self.starting_run_ready = []
-        self.stopping_run_ready = []
-        self.starting_event_ready = []
-        self.stopping_event_ready = []
 
         # initialize writer for sbc binary format
         # sbc_writer = Writer()
@@ -234,6 +235,9 @@ class MainWindow(QMainWindow):
 
     @Slot(str)
     def starting_run_wait(self, dev):
+        """
+        A slot method to append ready module names to the list. When the length of the list reaches the threshold, the run can start.
+        """
         self.starting_run_ready.append(dev)
 
     @Slot(str)
