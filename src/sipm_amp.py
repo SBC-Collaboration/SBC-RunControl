@@ -2,9 +2,10 @@ import paramiko as pm
 import logging
 import os
 import datetime
+from PySide6.QtCore import QTimer, QObject, Slot
 
 
-class SiPMAmp:
+class SiPMAmp(QObject):
     daq_mapping = {  # the two numbers are DAC address and DAC channel number
         1: "5 0",
         2: "5 1",

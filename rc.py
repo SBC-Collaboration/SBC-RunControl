@@ -1,5 +1,5 @@
 from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog
-from PySide6.QtCore import QElapsedTimer, QTimer, Qt, QIODevice
+from PySide6.QtCore import QElapsedTimer, QTimer
 from PySide6.QtUiTools import QUiLoader
 from PySide6.QtGui import QPixmap
 from ui.mainwindow import Ui_MainWindow
@@ -15,13 +15,20 @@ import datetime
 import time
 import re
 
+class MainSignals(QObject):
+    # initialize signals
+    program_started = Signal()
+    run_started = Signal()
+    run_stopped = Signal()
+    event_started = Signal()
+    event_stopped = Signal()
 
 # Loads Main window
 class MainWindow(QMainWindow):
     def __init__(self):
         super(MainWindow, self).__init__()
         self.run_id = ""
-        self.ev_number = None
+        self.event_id = None
 
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
@@ -43,8 +50,9 @@ class MainWindow(QMainWindow):
 
         # initialize arduino class
         self.arduinos_class = Arduinos(self)
-        self.camera_class = Cameras(self)
         self.sipm_amp_class = SiPMAmp(self)
+
+        self.set_up_workers()
 
         # define four run states
         self.run_states = Enum(
@@ -66,7 +74,6 @@ class MainWindow(QMainWindow):
         self.timer = QTimer()
         self.timer.setInterval(10)
         self.timer.timeout.connect(self.update)
-        self.timer.timeout.connect(self.event_loop)
         self.timer.start()
         # event timer
         self.event_timer = QElapsedTimer()
@@ -75,36 +82,29 @@ class MainWindow(QMainWindow):
         # initialize writer for sbc binary format
         # sbc_writer = Writer()
 
-        # set up run handling thread and the worker
-        self.threadpool = QThreadPool()
-        self.threadpool.setMaxThreadCount(18)
         self.start_program()
 
-        self.run_handling_worker.run_stopped.connect(self.run_handling_thread.terminate)
-        self.run_handling_worker.event_started.connect(
-            self.run_handling_thread.terminate
-        )
-        self.run_handling_worker.event_stopped.connect(
-            self.run_handling_thread.terminate
-        )
-        self.run_handling_worker.stopping.connect(self.run_handling_thread.terminate)
-        self.run_handling_worker.continuing.connect(self.run_handling_thread.terminate)
+    def set_up_workers(self):
+        self.signals = MainSignals()
 
-        self.run_handling_worker.run_started.connect(self.start_event)
-        self.run_handling_worker.event_stopped.connect(self.check_event)
-        # display event number after changed in the worker
-        self.run_handling_worker.run_started.connect(
-            lambda: self.ui.event_num_edit.setText(f"{self.ev_number:2d}")
-        )
-        self.run_handling_worker.continuing.connect(
-            lambda: self.ui.event_num_edit.setText(f"{self.ev_number:2d}")
-        )
-        self.run_handling_worker.stopping.connect(self.stop_run)
+        # set up run handling thread and the worker
+        self.cam1_worker = Cameras(self, "cam1")
+        self.cam1_thread = QThread()
+        self.cam1_worker.moveToThread(self.cam1_thread)
+        self.cam1_thread.started.connect(self.cam1_worker.run)
+        self.signals.run_started.connect(self.cam1_worker.start_run)
 
-        self.run_handling_worker.continuing.connect(self.start_event)
+        self.cam2_worker = Cameras(self, "cam2")
+        self.cam2_thread = QThread()
+        self.cam2_worker.moveToThread(self.cam2_thread)
+        self.cam2_thread.started.connect(self.cam2_worker.run)
+        self.signals.run_started.connect(self.cam2_worker.start_run)
 
-        # choose whether stop run or start another event after this
-        self.run_handling_thread.started.connect(self.run_handling_worker.start_program)
+        self.cam3_worker = Cameras(self, "cam3")
+        self.cam3_thread = QThread()
+        self.cam3_worker.moveToThread(self.cam3_thread)
+        self.cam3_thread.started.connect(self.cam3_worker.run)
+        self.signals.run_started.connect(self.cam3_worker.start_run)
 
     # TODO: handle closing during run
     def closeEvent(self, event):
@@ -133,7 +133,7 @@ class MainWindow(QMainWindow):
 
     def format_time(self, t):
         """
-        Time formatting helper function for event time display
+        Time formatting helper function for event time display. t is in milliseconds
         """
         seconds, milliseconds = divmod(t, 1000)
         minutes, seconds = divmod(seconds, 60)
@@ -157,6 +157,7 @@ class MainWindow(QMainWindow):
             label.clear()
 
     # event loop
+    @Slot()
     def update(self):
         if self.run_state == self.run_states.Active:
             self.ui.event_time_edit.setText(
@@ -165,6 +166,12 @@ class MainWindow(QMainWindow):
             self.ui.run_live_time_edit.setText(
                 self.format_time(self.event_timer.elapsed() + self.run_livetime)
             )
+            if (
+                self.event_timer.elapsed()
+                > self.config_class.config["general"]["max_ev_time"] * 1000
+            ):
+                self.stop_event()
+
         self.display_image(
             "resources/cam1.png",
             self.ui.cam1_image,
@@ -203,67 +210,49 @@ class MainWindow(QMainWindow):
             os.mkdir(self.run_dir)
         self.ui.run_id_edit.setText(self.run_id)
 
-    def event_loop(self):
-        if self.run_state == self.run_states.Active:
-            if (
-                self.event_timer.elapsed()
-                > self.config_class.config["general"]["max_ev_time"] * 1000
-            ):
-                self.stop_event()
-
     def start_program(self):
-        self.start_program_worker = StartProgramWorker(self)
-        self.start_program_worker.state.connect(self.update_state)
-        self.start_program_worker.program_started.connect(self.start_run)
-        self.start_program_worker.program_started.connect(
-            self.start_program_worker.deleteLater
-        )
-        self.threadpool.start(self.start_program_worker)
+        self.signals.program_started.emit()
+        self.update_state("Idle")
 
     def start_run(self):
         # reset event number and livetimes
-        self.ev_number = 0
-        self.ev_livetime = 0.0
-        self.run_livetime = 0.0
-        self.ui.event_num_edit.setText(f"{self.ev_number:2d}")
+        self.event_id = 0
+        self.ev_livetime = 0
+        self.run_livetime = 0
+        self.ui.event_id_edit.setText(f"{self.event_id:2d}")
         self.ui.event_time_edit.setText(self.format_time(self.ev_livetime))
         self.ui.run_live_time_edit.setText(self.format_time(self.run_livetime))
-
-        self.start_run_worker = StartProgramWorker(self)
-        self.start_run_worker.state.connect(self.update_state)
-        self.start_run_worker.run_json_path.connect(self.run_json_path)
-        self.start_run_worker.run_log_path.connect(self.run_log_path)
-        self.start_run_worker.file_handler.connect(self.file_handler)
-
-        self.start_run_worker.started.connect(self.start_run)
-        self.threadpool.start(self.start_run_worker)
+        self.signals.run_started.emit()
 
     def stop_run(self):
         # set up multithreading thread and workers
         self.stopping_run = False
-        self.stop_run_worker = StopRunWorker()
-        self.threadpool.start(stop_run_worker)
+        self.signals.run_stopped.emit()
 
     def start_event(self):
-
+        self.ui.event_id_edit.setText(f"{self.event_id:2d}")
         self.ui.event_time_edit.setText(self.format_time(0))
-        self.start_event_worker = StartEventWorker(self)
-        self.start_event_worker.event_started.connect(self.event_loop)
-        self.threadpool.start(self.start_event_worker)
+        self.signals.event_started.emit()
 
     def stop_event(self):
         """
         Stop the event. Enter into compressing state. If the "Stop Run" button is pressed or the max number of events
-        are reached, then it will enter into "stopping" state. Otherwise it will start another event.
+        are reached, then it will enter into "stopping" state. Otherwise, it will start another event.
         """
-        self.run_handling_thread.started.disconnect()
-        self.run_handling_thread.started.connect(self.run_handling_worker.stop_event)
-        self.run_handling_thread.start()
+        self.signals.event_stopped.emit()
 
-    def check_event(self):
-        self.run_handling_thread.started.disconnect()
-        self.run_handling_thread.started.connect(self.run_handling_worker.check_event)
-        self.run_handling_thread.start()
+    def check_run_stopping(self):
+        self.event_id += 1
+        # check if needs to stop run
+        if (
+                self.event_id
+                >= self.config_class.config["general"]["max_num_evs"]
+        ):
+            self.stopping_run = True
+        if self.stopping_run:
+            self.stop_run()
+        else:
+            self.start_event()
 
     def stop_run_but_pressed(self):
         self.stopping_run = True
@@ -307,7 +296,7 @@ class MainWindow(QMainWindow):
         elif self.run_state == self.run_states["Preparing"]:
             self.logger.info(f"Run control starting.")
         elif self.run_state == self.run_states["Active"]:
-            self.logger.info(f"Event {self.ev_number} active.")
+            self.logger.info(f"Event {self.event_id} active.")
             stop_run_but_available = True
         elif self.run_state == self.run_states["Starting"]:
             self.logger.info(f"Starting Run {self.run_id}.")
@@ -315,10 +304,10 @@ class MainWindow(QMainWindow):
         elif self.run_state == self.run_states["Stopping"]:
             self.logger.info(f"Stopping Run {self.run_id}.")
         elif self.run_state == self.run_states["Expanding"]:
-            self.logger.info(f"Event {self.ev_number} expanding")
+            self.logger.info(f"Event {self.event_id} expanding")
             stop_run_but_available = True
         elif self.run_state == self.run_states["Compressing"]:
-            self.logger.info(f"Event {self.ev_number} compressing")
+            self.logger.info(f"Event {self.event_id} compressing")
             stop_run_but_available = True
         else:
             pass

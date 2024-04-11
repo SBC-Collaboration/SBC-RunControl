@@ -15,13 +15,12 @@ class StartProgramWorker(QObject):
     program_started = Signal()
 
     def __init__(self, main_window):
-        super(RunHandlingWorker, self).__init__()
+        super(StartProgramWorker, self).__init__()
         self.main = main_window
         self.logger = logging.getLogger("rc")
         self.logger.debug("Start program worker class initialized.")
 
-    @Slot()
-    def start_program(self):
+    def run(self):
         """Processes to start program"""
         # for arduino in ["trigger", "clock", "position"]:
         #     self.main_window.arduinos_class.upload_sketch(arduino)
@@ -39,7 +38,7 @@ class StartRunWorker(QObject):
     file_handler = Signal(logging.FileHandler)
 
     def __init__(self, main_window):
-        super(RunHandlingWorker, self).__init__()
+        super(StartRunWorker, self).__init__()
         self.main = main_window
         self.logger = logging.getLogger("rc")
         self.logger.debug("Start run worker class initialized.")
@@ -70,7 +69,7 @@ class StopRunWorker(QObject):
     run_stopped = Signal()
 
     def __init__(self, main_window):
-        super(RunHandlingWorker, self).__init__()
+        super(StopRunWorker, self).__init__()
         self.main = main_window
         self.logger = logging.getLogger("rc")
         self.logger.debug("Stop run worker class initialized.")
@@ -90,17 +89,18 @@ class StartEventWorker(QObject):
     event_started = Signal()
 
     def __init__(self, main_window):
-        super(RunHandlingWorker, self).__init__()
+        super(StartEventWorker, self).__init__()
         self.main = main_window
         self.logger = logging.getLogger("rc")
         self.logger.debug("Start event worker class initialized.")
+
 
     def run(self):
         """Processes to start run"""
 
         self.state.emit("Expanding")
 
-        self.main.event_dir = os.path.join(self.main.run_dir, str(self.main.ev_number))
+        self.main.event_dir = os.path.join(self.main.run_dir, str(self.main.event_id))
         if not os.path.exists(self.main.event_dir):
             os.mkdir(self.main.event_dir)
         self.main.camera_class.start_camera()
@@ -112,7 +112,7 @@ class StartEventWorker(QObject):
         self.event_started.emit()
 
 
-class RunHandlingWorker(QObject):
+class StopEventWorker(QObject):
     """
     Woeker class for starting the program, starting and stopping a run, and starting and stopping each individual
     events.
@@ -120,17 +120,14 @@ class RunHandlingWorker(QObject):
 
     state = Signal(str)
     event_stopped = Signal()
-    run_stopped = Signal()
-    stopping = Signal()
-    continuing = Signal()
 
     def __init__(self, main_window):
-        super(RunHandlingWorker, self).__init__()
+        super(StopEventWorker, self).__init__()
         self.main = main_window
         self.logger = logging.getLogger("rc")
-        self.logger.debug("Worker class initialized.")
+        self.logger.debug("Stop Event worker class initialized.")
 
-    def stop_event(self):
+    def run(self):
         """Processes to stop event"""
         self.event_livetime = self.main.event_timer.elapsed()
         self.main.run_livetime += self.event_livetime
@@ -151,9 +148,9 @@ class RunHandlingWorker(QObject):
 
         # event data tuple and save data to disk
         ev_number = [int(i) for i in self.main.run_id.split("_")]
-        ev_number.append(self.main.ev_number)
+        ev_number.append(self.main.event_id)
         self.event_data = {
-            "ev_number": ev_number,
+            "event_id": ev_number,
             # list of date, run number, event number: [20240101, 0, 0]
             "ev_livetime": self.event_livetime,  # event livetime (ms)
             "run_livetime": self.main.run_livetime,  # event livetime (ms)
@@ -163,9 +160,9 @@ class RunHandlingWorker(QObject):
         }
         with Writer(
             os.path.join(
-                self.main.event_dir, f"{self.main.run_id}_{self.main.ev_number}.sbc"
+                self.main.event_dir, f"{self.main.run_id}_{self.main.event_id}.sbc"
             ),
-            ["ev_number", "ev_livetime", "run_livetime", "trigger_source"],
+            ["event_id", "ev_livetime", "run_livetime", "trigger_source"],
             ["u4", "u8", "u8", "u1"],
             [[3], [1], [1], [1]],
         ) as event_writer:
@@ -178,16 +175,4 @@ class RunHandlingWorker(QObject):
 
     def check_event(self):
         """Check between events to stop or continue"""
-        self.main.ev_number += 1
 
-        # check if needs to stop run
-        if (
-            self.main.ev_number
-            >= self.main.config_class.config["general"]["max_num_evs"]
-        ):
-            self.main.stopping_run = True
-
-        if self.main.stopping_run:
-            self.stopping.emit()
-        else:
-            self.continuing.emit()
