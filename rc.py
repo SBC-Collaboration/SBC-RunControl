@@ -129,7 +129,7 @@ class MainWindow(QMainWindow):
         self.signals.event_starting.connect(self.cam3_worker.start_camera)
         self.cam3_thread.start()
 
-        self.sql_worker = SQL()
+        self.sql_worker = SQL(self)
 
 
     # TODO: handle closing during run

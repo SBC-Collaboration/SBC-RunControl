@@ -12,12 +12,12 @@ from src.workers import *
 
 # Loads settings window
 class SettingsWindow(QMainWindow):
-    def __init__(self, main_window):
+    def __init__(self, mainwindow):
         super(SettingsWindow, self).__init__()
         self.ui = Ui_SettingsWindow()
         self.ui.setupUi(self)
-        self.main_window = main_window
-        self.config_class = self.main_window.config_class
+        self.main = mainwindow
+        self.config_class = self.main.config_class
         self.config = self.config_class.config
         self.load_config()
         self.logger = logging.getLogger("rc")
@@ -31,7 +31,7 @@ class SettingsWindow(QMainWindow):
         self.config_class.apply_config(self.ui)
 
     def save_config(self):
-        self.config_class.save_config_from_ui(self.ui, self.main_window.config_class.path)
+        self.config_class.save_config_from_ui(self.ui, self.main.config_class.path)
 
     def select_config_path(self):
         config_path, _ = QFileDialog.getOpenFileName(self, self.config["general"]["config_path"])

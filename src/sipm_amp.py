@@ -44,9 +44,9 @@ class SiPMAmp(QObject):
         16: "1 2 3",
     }
 
-    def __init__(self, main_window):
-        self.main = main_window
-        self.config = main_window.config_class.config
+    def __init__(self, mainwindow):
+        self.main = mainwindow
+        self.config = mainwindow.config_class.config
         self.logger = logging.getLogger("rc")
         os.putenv("PATH", "/home/sbc/packages")
         self.username = "root"

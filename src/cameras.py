@@ -15,11 +15,11 @@ class Cameras(QObject):
     camera_connected = Signal(str)
     camera_closed = Signal(str)
 
-    def __init__(self, main_window, cam_name):
+    def __init__(self, mainwindow, cam_name):
         super().__init__()
-        self.main = main_window
+        self.main = mainwindow
         self.cam_name = cam_name
-        self.config = main_window.config_class.config["cam"][self.cam_name]
+        self.config = mainwindow.config_class.config["cam"][self.cam_name]
         self.logger = logging.getLogger("rc")
         os.putenv("PATH", "/home/sbc/packages")
         self.username = "pi"

@@ -8,8 +8,8 @@ class Config:
     Class object to load and save run config files
     """
 
-    def __init__(self, main_window, path):
-        self.main_window = main_window
+    def __init__(self, mainwindow, path):
+        self.main = mainwindow
         self.path = path
         self.config = {}
         self.logger = logging.getLogger("rc")

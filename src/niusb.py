@@ -2,9 +2,9 @@ from dependencies.NI_USB6501.ni_usb_6501 import *
 import logging
 
 class NIUSB:
-    def __init__(self, main_window):
-        self.main = main_window
-        self.config = main_window.config_class.config
+    def __init__(self, mainwindow):
+        self.main = mainwindow
+        self.config = mainwindow.config_class.config
         self.logger = logging.getLogger("rc")
         self.logger.debug("NI_USB class initialized.")
         self.dev = get_adapter()
