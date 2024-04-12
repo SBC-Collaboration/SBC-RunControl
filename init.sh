@@ -5,13 +5,13 @@ echo "Starting initialization script for run control."
 echo "Setting up conda environment..."
 conda update -y -n base conda
 if conda info --envs | grep -q runcontrol; then
-  echo "Conda environment \"runcontrol\" already exists";
+  echo "Conda environment \"runcontrol\" already exists. Updating...";
+  conda env update --file ./dependencies/conda_rc.yml --prune;
 else
-  echo "Conda environment \"runcontrol\" doesn't exist. Creating environment";
+  echo "Conda environment \"runcontrol\" doesn't exist. Creating environment...";
   conda env create -y -n runcontrol --file ./dependencies/conda_rc.yml;
 fi
 conda activate runcontrol;
-conda update -y --all
 
 # install arduino packages
 echo "Setting up Arduino cli and libraries..."
