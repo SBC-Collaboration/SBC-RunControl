@@ -8,6 +8,7 @@ import paramiko, pymysql
 import random
 import pandas as pd
 # import matplotlib as plot
+import logging
 
 """
 Modified from SBC-SlowControl Database_SBC.py
@@ -16,37 +17,37 @@ You can also get it from SBC mysql document configuration
 https://docs.google.com/document/d/1o2LEL3cKEVQ6zuR_jJgt-p3UgnVysMm6LkXXOvfMZeE/edit
 """
 
-
-def datetime_in_s():
-    d=datetime.datetime.now()
-    timeR = int(d.microsecond%1e6)
-    delta=datetime.timedelta(microseconds=timeR)
-    x=d-delta
-    return x
-
-def datetime_in_1e5micro():
-    d=datetime.datetime.now()
-    timeR = int(d.microsecond%1e5)
-    delta=datetime.timedelta(microseconds=timeR)
-    x=d-delta
-    return x
-
-def early_datetime():
-    d = datetime.datetime.now()
-    timeR = int(d.microsecond % 1e5)
-    delta = datetime.timedelta(microseconds=timeR)
-    x = d - delta - datetime.timedelta(microseconds=1e5)
-    return x
-
-def later_datetime():
-    d = datetime.datetime.now()
-    timeR = int(d.microsecond % 1e5)
-    delta = datetime.timedelta(microseconds=timeR)
-    x = d - delta + datetime.timedelta(microseconds=1e5)
-    return x
-
-def UNIX_time(self):
-    return int(tm.time())
+#
+# def datetime_in_s():
+#     d=datetime.datetime.now()
+#     timeR = int(d.microsecond%1e6)
+#     delta=datetime.timedelta(microseconds=timeR)
+#     x=d-delta
+#     return x
+#
+# def datetime_in_1e5micro():
+#     d=datetime.datetime.now()
+#     timeR = int(d.microsecond%1e5)
+#     delta=datetime.timedelta(microseconds=timeR)
+#     x=d-delta
+#     return x
+#
+# def early_datetime():
+#     d = datetime.datetime.now()
+#     timeR = int(d.microsecond % 1e5)
+#     delta = datetime.timedelta(microseconds=timeR)
+#     x = d - delta - datetime.timedelta(microseconds=1e5)
+#     return x
+#
+# def later_datetime():
+#     d = datetime.datetime.now()
+#     timeR = int(d.microsecond % 1e5)
+#     delta = datetime.timedelta(microseconds=timeR)
+#     x = d - delta + datetime.timedelta(microseconds=1e5)
+#     return x
+#
+# def UNIX_time(self):
+#     return int(tm.time())
 
 
 
@@ -152,70 +153,78 @@ class mydatabase():
 
 
 class SQL:
-    def __init__(self):
+    def __init__(self, mainwindow):
+        self.main = mainwindow
+        self.logger = logging.getLogger("rc")
+
+        self.config = mainwindow.config_class.config["general"]["sql"]
         # save the password in ENV at sbcslowcontrol machine
-        self.home = os.path.expanduser('~')
-        self.sql_hostname = 'localhost'
-        self.sql_username = 'slowcontrol'
-        self.sql_password = os.environ.get("SLOWCONTROL_SQL_TOKEN")
-        self.sql_main_database = 'run_data'
-        self.sql_port = 3306
-        self.ssh_host = 'sbcslowcontrol.fnal.gov'
-        self.ssh_pkey = "/home/sbc/.ssh/id_rsa"
-        self.ssh_user = 'hep'
-        self.ssh_port = 22
+        # self.home = os.path.expanduser('~')
+        self.hostname = self.config["hostname"]
+        self.user = self.config["user"]
+        self.token = os.environ.get(self.config["token"])
+        self.database = self.config["database"]
+        self.run_table = self.config["run_table"]
+        self.event_table = self.config["event_table"]
+        self.port = self.config["port"]
+        self.ssh_host = self.config["ssh_host"]
+        self.ssh_pkey = self.config["ssh_pkey"]
+        self.ssh_user = self.config["ssh_user"]
+        self.ssh_port = self.config["ssh_port"]
+        self.ssh_keep_alive = 30.0 # time interval after which a dummy packet is sent to keep connection alive
 
-    def ssh_write(self):
-        with SSHTunnelForwarder(
-                (self.ssh_host, self.ssh_port),
-                ssh_username=self.ssh_user,
-                ssh_pkey=self.ssh_pkey,
-                remote_bind_address=(self.sql_hostname, self.sql_port)) as tunnel:
+    def setup_connection(self):
+        self.tunnel = SSHTunnelForwarder(
+            (self.ssh_host, self.ssh_port),
+            ssh_username=self.ssh_user,
+            ssh_pkey=self.ssh_pkey,
+            remote_bind_address=(self.hostname, self.port),
+            set_keepalive=self.ssh_keep_alive)
 
-            self.db = pymysql.connect(host="localhost", user=self.sql_username, passwd=self.sql_password, database=self.sql_main_database, port=tunnel.local_bind_port)
-            self.mycursor = self.db.cursor()
-            self.close_database()
+        self.db = pymysql.connect(host=self.hostname, user=self.user, passwd=self.token,
+                                  database=self.database, port=tunnel.local_bind_port)
+        self.cursor = self.db.cursor()
 
-            # conn = pymysql.connect(host='127.0.0.1', user=sql_username,
-            #                        passwd=sql_password, db=sql_main_database,
-            #                        port=tunnel.local_bind_port)
-            # query = '''SELECT VERSION();'''
-            # data = pd.read_sql_query(query, conn)
-            # conn.close()
-
-    def ssh_select(self):
-        with SSHTunnelForwarder(
-                (self.ssh_host, self.ssh_port),
-                ssh_username=self.ssh_user,
-                ssh_password= self.ssh_password,
-                remote_bind_address=(self.sql_hostname, self.sql_port)) as tunnel:
-            print("pointer 0")
-            print(tunnel.local_bind_port)
-            self.db = pymysql.connect(host="127.0.0.1", user=self.sql_username, passwd=self.sql_password, database=self.sql_main_database, port=tunnel.local_bind_port)
-            # self.db = mysql.connector.connect(host="127.0.0.1", user=self.sql_username, passwd=self.sql_password, database=self.sql_main_database, port=tunnel.local_bind_port)
-            print(1)
-            self.mycursor = self.db.cursor()
-            self.show_data()
-            self.close_database()
-
-            # conn = pymysql.connect(host='127.0.0.1', user=sql_username,
-            #                        passwd=sql_password, db=sql_main_database,
-            #                        port=tunnel.local_bind_port)
-            # query = '''SELECT VERSION();'''
-            # data = pd.read_sql_query(query, conn)
-            # conn.close()
-    def show_data(self,start_time=None, end_time=None):
-        # if start_time==None or end_time==None:
-        print(start_time,end_time)
-        query = "SELECT * FROM sbc_FNAL_alarms"
-        self.mycursor.execute(query)
-        for (id,datime,alarm_state, alarm_message) in self.mycursor:
-            print(str("Alarm_info"+"| {} | {} | {}".format(datime,alarm_state, alarm_message)))
-
-
-    @Slot()
-    def close_database(self):
-        self.mycursor.close()
+    def close_connection(self):
+        self.cursor.close()
         self.db.close()
+
+    def connect_and_execute(self, query):
+        self.setup_connection()
+        self.cursor.execute(query)
+        self.close_connection
+
+    def generate_run_query(self):
+        data["ID"] = "NULL" # placeholder for auto generated id number
+        data["run_ID"] = self.main.run_id
+        data["num_events"] = self.main.run_livetime # total livetime of the run
+        data["comments"] = self.main.ui.comment_edit.text()
+        data["active_datastreams"] = ""
+        data["pset_mode"] = "random"
+        data["pset"] = self.main.ui.pressure_setpoint_box.value()
+        data["pset_hi"] = "NULL"
+        data["source1_ID"] = self.main.ui.source_box.currentText()
+        return data
+    def insert_run_data(self, data):
+        self.db.ping() # ping mysql server to make sure it's alive
+        # TODO: data validation steps ...
+        query = f"""
+                INSERT INTO {self.run_table}
+                VALUES ({data["ID"]},
+                        '{data["run_ID"]}',
+                        {data["num_events"]},
+                        '{data["comments"]}',
+                        '{data["active_datastreams"]}',
+                        '{data["pset_mode"]}',
+                        {data["pset"]},
+                        {data["pset_hi"]}
+                        )
+                """
+        try:
+            self.cursor.execute(query)
+        except:
+            self.logger.error(f"SQL data insertion for run {self.main.run_id} failed.")
+        self.db.commit()
+
 
 
