@@ -269,18 +269,18 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
            </sizepolicy>
           </property>
           <property name="text">
-           <string>Event Num</string>
+           <string>Event ID</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
           </property>
           <property name="buddy">
-           <cstring>event_num_edit</cstring>
+           <cstring>event_id_edit</cstring>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="event_num_edit">
+         <widget class="QLineEdit" name="event_id_edit">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -454,8 +454,8 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>846</width>
-               <height>679</height>
+               <width>425</width>
+               <height>135</height>
               </rect>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_8">
@@ -737,8 +737,8 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>846</width>
-               <height>679</height>
+               <width>342</width>
+               <height>113</height>
               </rect>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_2">

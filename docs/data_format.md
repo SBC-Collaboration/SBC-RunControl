@@ -12,6 +12,18 @@ The master configuration file is saved in `.json` format. The data structure is:
     from run control.
   - `max_num_evs` (`int`): Max number of events that a run can have. If the max number is reached, then the run will 
     end, instead of starting a new event.
+  - `sql`: SQL configurations
+    - `ssh_host` (`str`): Host address of SSH server
+    - `ssh_port` (`int`): Port used by SSH
+    - `ssh_user` (`str`): User name for SSH
+    - `ssh_pkey` (`str`): Path to local private key used in SSH connection.
+    - `hostname` (`str`): Host name of SQL server
+    - `port` (`int`): Port used by SQL server
+    - `user` (`str`): User name for SQL connection
+    - `token` (`str`): Environment variable of the password used for SQL connection
+    - `database` (`str`): Name of database to which the data is saved
+    - `run_table` (`str`): Name of the table in the database that the information for the run is saved to
+    - `event_table` (`str`): Name of the table in the database that the event data is saved to.
 - `scint`
   - `amp1`
     - `enabled` (`bool`)
@@ -59,21 +71,26 @@ The master configuration file is saved in `.json` format. The data structure is:
     - `rc_config_path`: Path of config file in the run control system.
     - `config_path` (`str`): Path of the config file in camera's raspberry pi system.
     - `data_path` (`str`): Data Path for the current event on the camera pi (mounted directory). For the main config file, this will be the mounted directory of the master data file. For the config file saved on camera for each event, it will be that path joined with run and event id.
-    - `ip_addr` (`str`)
-    - `mode` (`int`)
-    - `trig_wait` (`float`)
-    - `exposure` (`int`)
-    - `buffer_len` (`int`)
-    - `post_trig` (`int`)
-    - `adc_threshold` (`int`)
-    - `pix_threshold` (`int`)
-    - `image_format` (`str`)
+    - `ip_addr` (`str`): IP address of camera raspberry pi. This should be in the local subnet.
+    - `mode` (`int`): Mode of the camera, which determines the resolution, pixel format, and trigger mode. Useful 
+      modes for this camera is mode 5 (1280x800, self trigger) and mode 11 (1280x800, external trigger)
+    - `trig_wait` (`float`, s): Time after event start before the `trig_en` signal is sent by the run control. This 
+      variable is used only by run control and not the RPi.
+    - `exposure` (`int`): The exposure time of camera module. This number is in units of 7.7us.
+    - `buffer_len` (`int`): Number of images to keep in the ring buffer.
+    - `post_trig` (`int`): Number of images to take after a trigger is received.
+    - `adc_threshold` (`int`): The threshold of adc value change between two consecutive images before the pixel is 
+      counted as different. The image is taken in 8bit.
+    - `pix_threshold` (`int`): The threshold of number of pixels that need to be different between two consecutive 
+      images before the trigger condition is satisfied.
+    - `image_format` (`str`): The format in which the image is saved. For example it can be "bmp", "png", or "jpg".
     - `date_format` (`str`)
-    - `state_comm_pin` (`int`)
-    - `trig_en_pin` (`int`)
-    - `trig_latch_pin` (`int`)
-    - `state_pin` (`int`)
-    - `trig_pin` (`int`)
+    - `state_comm_pin` (`int`): The pin number on the raspberry pi for the state_comm pin. This is the BCM pin 
+      number (GPIOx) and not the physical pin number.
+    - `trig_en_pin` (`int`): The pin at which the trigger enable signal is received.
+    - `trig_latch_pin` (`int`): The pin at which the trigger latch signal from the trigger arduino is received.
+    - `state_pin` (`int`): The output pin for state communication back to run control.
+    - `trig_pin` (`int`): The output pin when the trigger condition is satisfied to trigger arduino.
 - `dio`
   - `arduinos`
     - `trigger`
