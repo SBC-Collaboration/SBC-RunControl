@@ -28,6 +28,19 @@ class Config:
         ui.max_ev_time_box.setValue(general_config["max_ev_time"])
         ui.max_num_ev_box.setValue(general_config["max_num_evs"])
 
+        sql_config = self.config["general"]["sql"]
+        ui.sql_ssh_host_edit.setText(sql_config["ssh_host"])
+        ui.sql_ssh_port_box.setValue(sql_config["ssh_port"])
+        ui.sql_ssh_user_edit.setText(sql_config["ssh_user"])
+        ui.sql_ssh_pkey_edit.setText(sql_config["ssh_pkey"])
+        ui.sql_hostname_edit.setText(sql_config["hostname"])
+        ui.sql_port_box.setValue(sql_config["port"])
+        ui.sql_user_edit.setText(sql_config["user"])
+        ui.sql_token_edit.setText(sql_config["token"])
+        ui.sql_database_edit.setText(sql_config["database"])
+        ui.sql_run_table_edit.setText(sql_config["run_table"])
+        ui.sql_event_table_edit.setText(sql_config["event_table"])
+
         sipm_amp1_config = self.config["scint"]["amp1"]
         ui.sipm_amp1_enabled_box.setChecked(sipm_amp1_config["enabled"])
         ui.sipm_amp1_ip_addr_edit.setText(sipm_amp1_config["ip_addr"])
@@ -173,12 +186,27 @@ class Config:
 
     def apply_config(self, ui):
         # apply general config
+        sql_config = {
+            "ssh_host": ui.sql_ssh_host_edit.text(),
+            "ssh_port": ui.sql_ssh_port_box.value(),
+            "ssh_user": ui.sql_ssh_user_edit.text(),
+            "ssh_pkey": ui.sql_ssh_pkey_edit.text(),
+            "hostname": ui.sql_hostname_edit.text(),
+            "port": ui.sql_port_box.value(),
+            "user": ui.sql_user_edit.text(),
+            "token": ui.sql_token_edit.text(),
+            "database": ui.sql_database_edit.text(),
+            "run_table": ui.sql_run_table_edit.text(),
+            "event_table": ui.sql_event_table_edit.text(),
+        }
+
         general_config = {
             "config_path": ui.config_path_edit.text(),
             "log_path": ui.log_path_edit.text(),
             "data_dir": ui.data_dir_edit.text(),
             "max_ev_time": ui.max_ev_time_box.value(),
             "max_num_evs": ui.max_num_ev_box.value(),
+            "sql": sql_config
         }
 
         sipm_amp1_config = {

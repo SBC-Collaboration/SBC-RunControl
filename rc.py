@@ -9,6 +9,7 @@ from src.ui_loader import *
 from src.arduinos import *
 from src.cameras import *
 from src.sipm_amp import *
+from src.sql import *
 import logging
 from enum import Enum
 import datetime
@@ -127,6 +128,9 @@ class MainWindow(QMainWindow):
         self.signals.run_starting.connect(self.cam3_worker.test_rpi)
         self.signals.event_starting.connect(self.cam3_worker.start_camera)
         self.cam3_thread.start()
+
+        self.sql_worker = SQL()
+
 
     # TODO: handle closing during run
     def closeEvent(self, event):

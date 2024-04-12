@@ -7,6 +7,7 @@ import os
 import json
 import time
 from PySide6.QtCore import QTimer, QObject, Slot, Signal
+import subprocess
 
 
 class Cameras(QObject):
@@ -41,12 +42,10 @@ class Cameras(QObject):
         if not self.config["enabled"]:
             return
         host = self.config["ip_addr"]
-        try:
-            self.client.connect(host, username=self.username)
-            self.client.close()
+
+        if not subprocess.call(f"ping -n 1 {host}"):
             self.logger.debug(f"Camera {self.cam_name} connected.")
-            self.camera_connected.emit(self.cam_name)
-        except:
+        else:
             self.logger.error(f"Camera {self.cam_name} not connected.")
 
     def save_config(self):

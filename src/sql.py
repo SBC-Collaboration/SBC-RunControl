@@ -151,12 +151,12 @@ class mydatabase():
         self.db.close()
 
 
-class DataBase():
+class SQL:
     def __init__(self):
         # save the password in ENV at sbcslowcontrol machine
         self.home = os.path.expanduser('~')
         self.sql_hostname = 'localhost'
-        self.sql_username = 'hep'
+        self.sql_username = 'slowcontrol'
         self.sql_password = os.environ.get("SLOWCONTROL_SQL_TOKEN")
         self.sql_main_database = 'run_data'
         self.sql_port = 3306
