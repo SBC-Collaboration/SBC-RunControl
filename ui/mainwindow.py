@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'mainwindow.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.7.0
+## Created by: Qt User Interface Compiler version 6.6.0
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -29,7 +29,7 @@ class Ui_MainWindow(object):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
         MainWindow.resize(1000, 750)
-        sizePolicy = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
+        sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(MainWindow.sizePolicy().hasHeightForWidth())
@@ -44,7 +44,7 @@ class Ui_MainWindow(object):
         icon1 = QIcon()
         icon1.addFile(u":/icons/settings.png", QSize(), QIcon.Normal, QIcon.Off)
         self.action_settings.setIcon(icon1)
-        self.action_settings.setMenuRole(QAction.MenuRole.PreferencesRole)
+        self.action_settings.setMenuRole(QAction.PreferencesRole)
         self.action_log = QAction(MainWindow)
         self.action_log.setObjectName(u"action_log")
         icon2 = QIcon()
@@ -55,10 +55,10 @@ class Ui_MainWindow(object):
         icon3 = QIcon()
         icon3.addFile(u":/icons/quit.png", QSize(), QIcon.Normal, QIcon.Off)
         self.action_quit.setIcon(icon3)
-        self.action_quit.setMenuRole(QAction.MenuRole.NoRole)
+        self.action_quit.setMenuRole(QAction.NoRole)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
-        sizePolicy1 = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Preferred)
+        sizePolicy1 = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
         sizePolicy1.setHorizontalStretch(0)
         sizePolicy1.setVerticalStretch(0)
         sizePolicy1.setHeightForWidth(self.centralwidget.sizePolicy().hasHeightForWidth())
@@ -75,10 +75,10 @@ class Ui_MainWindow(object):
         self.verticalLayout_6 = QVBoxLayout()
         self.verticalLayout_6.setSpacing(3)
         self.verticalLayout_6.setObjectName(u"verticalLayout_6")
-        self.verticalLayout_6.setSizeConstraint(QLayout.SizeConstraint.SetDefaultConstraint)
+        self.verticalLayout_6.setSizeConstraint(QLayout.SetDefaultConstraint)
         self.start_run_but = QPushButton(self.centralwidget)
         self.start_run_but.setObjectName(u"start_run_but")
-        sizePolicy2 = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Fixed)
+        sizePolicy2 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Fixed)
         sizePolicy2.setHorizontalStretch(0)
         sizePolicy2.setVerticalStretch(0)
         sizePolicy2.setHeightForWidth(self.start_run_but.sizePolicy().hasHeightForWidth())
@@ -125,13 +125,13 @@ class Ui_MainWindow(object):
 
         self.run_state_label = QLabel(self.centralwidget)
         self.run_state_label.setObjectName(u"run_state_label")
-        sizePolicy3 = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.MinimumExpanding)
+        sizePolicy3 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.MinimumExpanding)
         sizePolicy3.setHorizontalStretch(0)
         sizePolicy3.setVerticalStretch(0)
         sizePolicy3.setHeightForWidth(self.run_state_label.sizePolicy().hasHeightForWidth())
         self.run_state_label.setSizePolicy(sizePolicy3)
         self.run_state_label.setMinimumSize(QSize(0, 50))
-        self.run_state_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.run_state_label.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_6.addWidget(self.run_state_label)
 
@@ -139,7 +139,7 @@ class Ui_MainWindow(object):
         self.run_id_label.setObjectName(u"run_id_label")
         sizePolicy2.setHeightForWidth(self.run_id_label.sizePolicy().hasHeightForWidth())
         self.run_id_label.setSizePolicy(sizePolicy2)
-        self.run_id_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.run_id_label.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_6.addWidget(self.run_id_label)
 
@@ -147,35 +147,35 @@ class Ui_MainWindow(object):
         self.run_id_edit.setObjectName(u"run_id_edit")
         sizePolicy2.setHeightForWidth(self.run_id_edit.sizePolicy().hasHeightForWidth())
         self.run_id_edit.setSizePolicy(sizePolicy2)
-        self.run_id_edit.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.run_id_edit.setAlignment(Qt.AlignCenter)
         self.run_id_edit.setReadOnly(True)
         self.run_id_edit.setClearButtonEnabled(False)
 
         self.verticalLayout_6.addWidget(self.run_id_edit)
 
-        self.event_id_label = QLabel(self.centralwidget)
-        self.event_id_label.setObjectName(u"event_id_label")
-        sizePolicy2.setHeightForWidth(self.event_id_label.sizePolicy().hasHeightForWidth())
-        self.event_id_label.setSizePolicy(sizePolicy2)
-        self.event_id_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.event_num_label = QLabel(self.centralwidget)
+        self.event_num_label.setObjectName(u"event_num_label")
+        sizePolicy2.setHeightForWidth(self.event_num_label.sizePolicy().hasHeightForWidth())
+        self.event_num_label.setSizePolicy(sizePolicy2)
+        self.event_num_label.setAlignment(Qt.AlignCenter)
 
-        self.verticalLayout_6.addWidget(self.event_id_label)
+        self.verticalLayout_6.addWidget(self.event_num_label)
 
-        self.event_id_edit = QLineEdit(self.centralwidget)
-        self.event_id_edit.setObjectName(u"event_id_edit")
-        sizePolicy2.setHeightForWidth(self.event_id_edit.sizePolicy().hasHeightForWidth())
-        self.event_id_edit.setSizePolicy(sizePolicy2)
-        self.event_id_edit.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        self.event_id_edit.setReadOnly(True)
+        self.event_num_edit = QLineEdit(self.centralwidget)
+        self.event_num_edit.setObjectName(u"event_num_edit")
+        sizePolicy2.setHeightForWidth(self.event_num_edit.sizePolicy().hasHeightForWidth())
+        self.event_num_edit.setSizePolicy(sizePolicy2)
+        self.event_num_edit.setAlignment(Qt.AlignCenter)
+        self.event_num_edit.setReadOnly(True)
 
-        self.verticalLayout_6.addWidget(self.event_id_edit)
+        self.verticalLayout_6.addWidget(self.event_num_edit)
 
         self.event_time_label = QLabel(self.centralwidget)
         self.event_time_label.setObjectName(u"event_time_label")
         sizePolicy2.setHeightForWidth(self.event_time_label.sizePolicy().hasHeightForWidth())
         self.event_time_label.setSizePolicy(sizePolicy2)
         self.event_time_label.setLineWidth(1)
-        self.event_time_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.event_time_label.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_6.addWidget(self.event_time_label)
 
@@ -183,7 +183,7 @@ class Ui_MainWindow(object):
         self.event_time_edit.setObjectName(u"event_time_edit")
         sizePolicy2.setHeightForWidth(self.event_time_edit.sizePolicy().hasHeightForWidth())
         self.event_time_edit.setSizePolicy(sizePolicy2)
-        self.event_time_edit.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.event_time_edit.setAlignment(Qt.AlignCenter)
         self.event_time_edit.setReadOnly(True)
 
         self.verticalLayout_6.addWidget(self.event_time_edit)
@@ -193,7 +193,7 @@ class Ui_MainWindow(object):
         sizePolicy2.setHeightForWidth(self.run_live_time_label.sizePolicy().hasHeightForWidth())
         self.run_live_time_label.setSizePolicy(sizePolicy2)
         self.run_live_time_label.setLineWidth(1)
-        self.run_live_time_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.run_live_time_label.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_6.addWidget(self.run_live_time_label)
 
@@ -201,13 +201,13 @@ class Ui_MainWindow(object):
         self.run_live_time_edit.setObjectName(u"run_live_time_edit")
         sizePolicy2.setHeightForWidth(self.run_live_time_edit.sizePolicy().hasHeightForWidth())
         self.run_live_time_edit.setSizePolicy(sizePolicy2)
-        self.run_live_time_edit.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.run_live_time_edit.setAlignment(Qt.AlignCenter)
         self.run_live_time_edit.setDragEnabled(False)
         self.run_live_time_edit.setReadOnly(True)
 
         self.verticalLayout_6.addWidget(self.run_live_time_edit)
 
-        self.verticalSpacer_2 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+        self.verticalSpacer_2 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
         self.verticalLayout_6.addItem(self.verticalSpacer_2)
 
@@ -219,7 +219,7 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(self.tabs_widget.sizePolicy().hasHeightForWidth())
         self.tabs_widget.setSizePolicy(sizePolicy)
         self.tabs_widget.setSizeIncrement(QSize(100, 0))
-        self.tabs_widget.setTabShape(QTabWidget.TabShape.Rounded)
+        self.tabs_widget.setTabShape(QTabWidget.Rounded)
         self.tabs_widget.setDocumentMode(False)
         self.tabs_widget.setTabsClosable(False)
         self.tabs_widget.setMovable(True)
@@ -231,12 +231,12 @@ class Ui_MainWindow(object):
         self.verticalLayout_7.setContentsMargins(0, 0, 0, 0)
         self.scrollArea_2 = QScrollArea(self.general_tab)
         self.scrollArea_2.setObjectName(u"scrollArea_2")
-        self.scrollArea_2.setFrameShape(QFrame.Shape.NoFrame)
-        self.scrollArea_2.setFrameShadow(QFrame.Shadow.Plain)
+        self.scrollArea_2.setFrameShape(QFrame.NoFrame)
+        self.scrollArea_2.setFrameShadow(QFrame.Plain)
         self.scrollArea_2.setWidgetResizable(True)
         self.scrollAreaWidgetContents_2 = QWidget()
         self.scrollAreaWidgetContents_2.setObjectName(u"scrollAreaWidgetContents_2")
-        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, 0, 472, 139))
+        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, 0, 846, 679))
         self.verticalLayout_8 = QVBoxLayout(self.scrollAreaWidgetContents_2)
         self.verticalLayout_8.setSpacing(3)
         self.verticalLayout_8.setObjectName(u"verticalLayout_8")
@@ -244,7 +244,7 @@ class Ui_MainWindow(object):
         self.comment_grid = QGridLayout()
         self.comment_grid.setSpacing(3)
         self.comment_grid.setObjectName(u"comment_grid")
-        self.comment_grid.setSizeConstraint(QLayout.SizeConstraint.SetDefaultConstraint)
+        self.comment_grid.setSizeConstraint(QLayout.SetDefaultConstraint)
         self.source_box = QComboBox(self.scrollAreaWidgetContents_2)
         self.source_box.addItem("")
         self.source_box.addItem("")
@@ -262,7 +262,7 @@ class Ui_MainWindow(object):
 
         self.source_location_label = QLabel(self.scrollAreaWidgetContents_2)
         self.source_location_label.setObjectName(u"source_location_label")
-        sizePolicy4 = QSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Minimum)
+        sizePolicy4 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Minimum)
         sizePolicy4.setHorizontalStretch(0)
         sizePolicy4.setVerticalStretch(0)
         sizePolicy4.setHeightForWidth(self.source_location_label.sizePolicy().hasHeightForWidth())
@@ -270,13 +270,13 @@ class Ui_MainWindow(object):
         font1 = QFont()
         font1.setKerning(True)
         self.source_location_label.setFont(font1)
-        self.source_location_label.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
+        self.source_location_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
         self.comment_grid.addWidget(self.source_location_label, 3, 0, 1, 1)
 
         self.source_label = QLabel(self.scrollAreaWidgetContents_2)
         self.source_label.setObjectName(u"source_label")
-        self.source_label.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
+        self.source_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
         self.comment_grid.addWidget(self.source_label, 2, 0, 1, 1)
 
@@ -297,7 +297,7 @@ class Ui_MainWindow(object):
 
         self.pressure_setpoint_label = QLabel(self.scrollAreaWidgetContents_2)
         self.pressure_setpoint_label.setObjectName(u"pressure_setpoint_label")
-        self.pressure_setpoint_label.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
+        self.pressure_setpoint_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
         self.comment_grid.addWidget(self.pressure_setpoint_label, 4, 0, 1, 1)
 
@@ -311,15 +311,15 @@ class Ui_MainWindow(object):
 
         self.comment_edit = QPlainTextEdit(self.scrollAreaWidgetContents_2)
         self.comment_edit.setObjectName(u"comment_edit")
-        sizePolicy5 = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Preferred)
+        sizePolicy5 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
         sizePolicy5.setHorizontalStretch(0)
         sizePolicy5.setVerticalStretch(0)
         sizePolicy5.setHeightForWidth(self.comment_edit.sizePolicy().hasHeightForWidth())
         self.comment_edit.setSizePolicy(sizePolicy5)
         self.comment_edit.setFont(font1)
-        self.comment_edit.setFrameShape(QFrame.Shape.NoFrame)
-        self.comment_edit.setSizeAdjustPolicy(QAbstractScrollArea.SizeAdjustPolicy.AdjustToContents)
-        self.comment_edit.setTextInteractionFlags(Qt.TextInteractionFlag.LinksAccessibleByKeyboard|Qt.TextInteractionFlag.LinksAccessibleByMouse|Qt.TextInteractionFlag.TextBrowserInteraction|Qt.TextInteractionFlag.TextEditable|Qt.TextInteractionFlag.TextEditorInteraction|Qt.TextInteractionFlag.TextSelectableByKeyboard|Qt.TextInteractionFlag.TextSelectableByMouse)
+        self.comment_edit.setFrameShape(QFrame.NoFrame)
+        self.comment_edit.setSizeAdjustPolicy(QAbstractScrollArea.AdjustToContents)
+        self.comment_edit.setTextInteractionFlags(Qt.LinksAccessibleByKeyboard|Qt.LinksAccessibleByMouse|Qt.TextBrowserInteraction|Qt.TextEditable|Qt.TextEditorInteraction|Qt.TextSelectableByKeyboard|Qt.TextSelectableByMouse)
 
         self.comment_grid.addWidget(self.comment_edit, 2, 2, 3, 3)
 
@@ -344,7 +344,7 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_8.addLayout(self.horizontalLayout_6)
 
-        self.verticalSpacer_3 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+        self.verticalSpacer_3 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
         self.verticalLayout_8.addItem(self.verticalSpacer_3)
 
@@ -367,13 +367,13 @@ class Ui_MainWindow(object):
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
         self.scrollArea = QScrollArea(self.camera_tab)
         self.scrollArea.setObjectName(u"scrollArea")
-        self.scrollArea.setFrameShape(QFrame.Shape.NoFrame)
-        self.scrollArea.setFrameShadow(QFrame.Shadow.Plain)
+        self.scrollArea.setFrameShape(QFrame.NoFrame)
+        self.scrollArea.setFrameShadow(QFrame.Plain)
         self.scrollArea.setLineWidth(0)
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 855, 675))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 846, 679))
         self.verticalLayout_2 = QVBoxLayout(self.scrollAreaWidgetContents)
         self.verticalLayout_2.setSpacing(3)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
@@ -388,13 +388,13 @@ class Ui_MainWindow(object):
 
         self.camera_status_label = QLabel(self.scrollAreaWidgetContents)
         self.camera_status_label.setObjectName(u"camera_status_label")
-        sizePolicy6 = QSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Preferred)
+        sizePolicy6 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Preferred)
         sizePolicy6.setHorizontalStretch(0)
         sizePolicy6.setVerticalStretch(0)
         sizePolicy6.setHeightForWidth(self.camera_status_label.sizePolicy().hasHeightForWidth())
         self.camera_status_label.setSizePolicy(sizePolicy6)
-        self.camera_status_label.setLayoutDirection(Qt.LayoutDirection.LeftToRight)
-        self.camera_status_label.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
+        self.camera_status_label.setLayoutDirection(Qt.LeftToRight)
+        self.camera_status_label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
         self.horizontalLayout.addWidget(self.camera_status_label)
 
@@ -402,7 +402,7 @@ class Ui_MainWindow(object):
         self.cam1_status_light.setObjectName(u"cam1_status_light")
         self.cam1_status_light.setStyleSheet(u"color: rgb(255, 255, 255);\n"
 "background-color: rgb(150, 150, 150);")
-        self.cam1_status_light.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.cam1_status_light.setAlignment(Qt.AlignCenter)
 
         self.horizontalLayout.addWidget(self.cam1_status_light)
 
@@ -410,7 +410,7 @@ class Ui_MainWindow(object):
         self.cam2_status_light.setObjectName(u"cam2_status_light")
         self.cam2_status_light.setStyleSheet(u"color: rgb(255, 255, 255);\n"
 "background-color: rgb(150, 150, 150);")
-        self.cam2_status_light.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.cam2_status_light.setAlignment(Qt.AlignCenter)
 
         self.horizontalLayout.addWidget(self.cam2_status_light)
 
@@ -418,7 +418,7 @@ class Ui_MainWindow(object):
         self.cam3_status_light.setObjectName(u"cam3_status_light")
         self.cam3_status_light.setStyleSheet(u"color: rgb(255, 255, 255);\n"
 "background-color: rgb(150, 150, 150);")
-        self.cam3_status_light.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.cam3_status_light.setAlignment(Qt.AlignCenter)
 
         self.horizontalLayout.addWidget(self.cam3_status_light)
 
@@ -481,7 +481,7 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_2.addLayout(self.verticalLayout_5)
 
-        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.horizontalLayout_2.addItem(self.horizontalSpacer)
 
@@ -490,7 +490,7 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_3 = QHBoxLayout()
         self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
-        self.horizontalLayout_3.setSizeConstraint(QLayout.SizeConstraint.SetDefaultConstraint)
+        self.horizontalLayout_3.setSizeConstraint(QLayout.SetDefaultConstraint)
         self.image_num_label = QLabel(self.scrollAreaWidgetContents)
         self.image_num_label.setObjectName(u"image_num_label")
 
@@ -509,7 +509,7 @@ class Ui_MainWindow(object):
 
         self.next_imag_but = QToolButton(self.scrollAreaWidgetContents)
         self.next_imag_but.setObjectName(u"next_imag_but")
-        sizePolicy7 = QSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Fixed)
+        sizePolicy7 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Fixed)
         sizePolicy7.setHorizontalStretch(0)
         sizePolicy7.setVerticalStretch(0)
         sizePolicy7.setHeightForWidth(self.next_imag_but.sizePolicy().hasHeightForWidth())
@@ -530,7 +530,7 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_2.addLayout(self.horizontalLayout_3)
 
-        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
         self.verticalLayout_2.addItem(self.verticalSpacer)
 
@@ -549,10 +549,10 @@ class Ui_MainWindow(object):
         self.toolBar = QToolBar(MainWindow)
         self.toolBar.setObjectName(u"toolBar")
         self.toolBar.setAutoFillBackground(False)
-        MainWindow.addToolBar(Qt.ToolBarArea.TopToolBarArea, self.toolBar)
+        MainWindow.addToolBar(Qt.TopToolBarArea, self.toolBar)
 #if QT_CONFIG(shortcut)
         self.run_id_label.setBuddy(self.run_id_edit)
-        self.event_id_label.setBuddy(self.event_id_edit)
+        self.event_num_label.setBuddy(self.event_num_edit)
         self.event_time_label.setBuddy(self.event_time_edit)
         self.run_live_time_label.setBuddy(self.run_live_time_edit)
         self.source_location_label.setBuddy(self.source_location_box)
@@ -573,7 +573,7 @@ class Ui_MainWindow(object):
         self.stop_run_but.clicked.connect(MainWindow.stop_run_but_pressed)
         self.sw_trigger_but.clicked.connect(MainWindow.sw_trigger)
 
-        self.tabs_widget.setCurrentIndex(3)
+        self.tabs_widget.setCurrentIndex(2)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -602,7 +602,7 @@ class Ui_MainWindow(object):
         self.run_state_label.setText(QCoreApplication.translate("MainWindow", u"RunState", None))
         self.run_id_label.setText(QCoreApplication.translate("MainWindow", u"Run ID", None))
         self.run_id_edit.setPlaceholderText("")
-        self.event_id_label.setText(QCoreApplication.translate("MainWindow", u"Event ID", None))
+        self.event_num_label.setText(QCoreApplication.translate("MainWindow", u"Event Num", None))
         self.event_time_label.setText(QCoreApplication.translate("MainWindow", u"Event Time", None))
         self.run_live_time_label.setText(QCoreApplication.translate("MainWindow", u"Run Live Time", None))
         self.source_box.setItemText(0, QCoreApplication.translate("MainWindow", u"Bg", None))

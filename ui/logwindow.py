@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'logwindow.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.7.0
+## Created by: Qt User Interface Compiler version 6.6.0
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -25,7 +25,7 @@ class Ui_LogWindow(object):
         if not LogWindow.objectName():
             LogWindow.setObjectName(u"LogWindow")
         LogWindow.resize(350, 400)
-        sizePolicy = QSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Fixed)
+        sizePolicy = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(LogWindow.sizePolicy().hasHeightForWidth())
@@ -72,7 +72,7 @@ class Ui_LogWindow(object):
         LogWindow.setCentralWidget(self.centralwidget)
         self.toolBar = QToolBar(LogWindow)
         self.toolBar.setObjectName(u"toolBar")
-        LogWindow.addToolBar(Qt.ToolBarArea.TopToolBarArea, self.toolBar)
+        LogWindow.addToolBar(Qt.TopToolBarArea, self.toolBar)
 
         self.toolBar.addAction(self.actionClose_Window)
         self.toolBar.addAction(self.actionReload_Log)

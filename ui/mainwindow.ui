@@ -81,7 +81,7 @@
          <number>3</number>
         </property>
         <property name="sizeConstraint">
-         <enum>QLayout::SizeConstraint::SetDefaultConstraint</enum>
+         <enum>QLayout::SetDefaultConstraint</enum>
         </property>
         <item>
          <widget class="QPushButton" name="start_run_but">
@@ -215,7 +215,7 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
            <string>RunState</string>
           </property>
           <property name="alignment">
-           <set>Qt::AlignmentFlag::AlignCenter</set>
+           <set>Qt::AlignCenter</set>
           </property>
          </widget>
         </item>
@@ -231,7 +231,7 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
            <string>Run ID</string>
           </property>
           <property name="alignment">
-           <set>Qt::AlignmentFlag::AlignCenter</set>
+           <set>Qt::AlignCenter</set>
           </property>
           <property name="buddy">
            <cstring>run_id_edit</cstring>
@@ -247,7 +247,7 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
            </sizepolicy>
           </property>
           <property name="alignment">
-           <set>Qt::AlignmentFlag::AlignCenter</set>
+           <set>Qt::AlignCenter</set>
           </property>
           <property name="readOnly">
            <bool>true</bool>
@@ -261,7 +261,7 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="event_id_label">
+         <widget class="QLabel" name="event_num_label">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -269,18 +269,18 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
            </sizepolicy>
           </property>
           <property name="text">
-           <string>Event ID</string>
+           <string>Event Num</string>
           </property>
           <property name="alignment">
-           <set>Qt::AlignmentFlag::AlignCenter</set>
+           <set>Qt::AlignCenter</set>
           </property>
           <property name="buddy">
-           <cstring>event_id_edit</cstring>
+           <cstring>event_num_edit</cstring>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="event_id_edit">
+         <widget class="QLineEdit" name="event_num_edit">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -288,7 +288,7 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
            </sizepolicy>
           </property>
           <property name="alignment">
-           <set>Qt::AlignmentFlag::AlignCenter</set>
+           <set>Qt::AlignCenter</set>
           </property>
           <property name="readOnly">
            <bool>true</bool>
@@ -310,7 +310,7 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
            <string>Event Time</string>
           </property>
           <property name="alignment">
-           <set>Qt::AlignmentFlag::AlignCenter</set>
+           <set>Qt::AlignCenter</set>
           </property>
           <property name="buddy">
            <cstring>event_time_edit</cstring>
@@ -326,7 +326,7 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
            </sizepolicy>
           </property>
           <property name="alignment">
-           <set>Qt::AlignmentFlag::AlignCenter</set>
+           <set>Qt::AlignCenter</set>
           </property>
           <property name="readOnly">
            <bool>true</bool>
@@ -348,7 +348,7 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
            <string>Run Live Time</string>
           </property>
           <property name="alignment">
-           <set>Qt::AlignmentFlag::AlignCenter</set>
+           <set>Qt::AlignCenter</set>
           </property>
           <property name="buddy">
            <cstring>run_live_time_edit</cstring>
@@ -364,7 +364,7 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
            </sizepolicy>
           </property>
           <property name="alignment">
-           <set>Qt::AlignmentFlag::AlignCenter</set>
+           <set>Qt::AlignCenter</set>
           </property>
           <property name="dragEnabled">
            <bool>false</bool>
@@ -377,7 +377,7 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
         <item>
          <spacer name="verticalSpacer_2">
           <property name="orientation">
-           <enum>Qt::Orientation::Vertical</enum>
+           <enum>Qt::Vertical</enum>
           </property>
           <property name="sizeHint" stdset="0">
            <size>
@@ -404,10 +404,10 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
          </size>
         </property>
         <property name="tabShape">
-         <enum>QTabWidget::TabShape::Rounded</enum>
+         <enum>QTabWidget::Rounded</enum>
         </property>
         <property name="currentIndex">
-         <number>3</number>
+         <number>2</number>
         </property>
         <property name="documentMode">
          <bool>false</bool>
@@ -441,10 +441,10 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
           <item>
            <widget class="QScrollArea" name="scrollArea_2">
             <property name="frameShape">
-             <enum>QFrame::Shape::NoFrame</enum>
+             <enum>QFrame::NoFrame</enum>
             </property>
             <property name="frameShadow">
-             <enum>QFrame::Shadow::Plain</enum>
+             <enum>QFrame::Plain</enum>
             </property>
             <property name="widgetResizable">
              <bool>true</bool>
@@ -454,8 +454,8 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>472</width>
-               <height>139</height>
+               <width>846</width>
+               <height>679</height>
               </rect>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_8">
@@ -477,7 +477,7 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
               <item>
                <layout class="QGridLayout" name="comment_grid" rowstretch="0,0,0,0,0,0">
                 <property name="sizeConstraint">
-                 <enum>QLayout::SizeConstraint::SetDefaultConstraint</enum>
+                 <enum>QLayout::SetDefaultConstraint</enum>
                 </property>
                 <property name="spacing">
                  <number>3</number>
@@ -529,7 +529,7 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
                    <string>Location</string>
                   </property>
                   <property name="alignment">
-                   <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                   <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                   </property>
                   <property name="buddy">
                    <cstring>source_location_box</cstring>
@@ -542,7 +542,7 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
                    <string>Source</string>
                   </property>
                   <property name="alignment">
-                   <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                   <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                   </property>
                   <property name="buddy">
                    <cstring>source_box</cstring>
@@ -576,7 +576,7 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
                    <string>Pressure Setpoint</string>
                   </property>
                   <property name="alignment">
-                   <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                   <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                   </property>
                   <property name="buddy">
                    <cstring>pressure_setpoint_box</cstring>
@@ -615,13 +615,13 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
                    </font>
                   </property>
                   <property name="frameShape">
-                   <enum>QFrame::Shape::NoFrame</enum>
+                   <enum>QFrame::NoFrame</enum>
                   </property>
                   <property name="sizeAdjustPolicy">
-                   <enum>QAbstractScrollArea::SizeAdjustPolicy::AdjustToContents</enum>
+                   <enum>QAbstractScrollArea::AdjustToContents</enum>
                   </property>
                   <property name="textInteractionFlags">
-                   <set>Qt::TextInteractionFlag::LinksAccessibleByKeyboard|Qt::TextInteractionFlag::LinksAccessibleByMouse|Qt::TextInteractionFlag::TextBrowserInteraction|Qt::TextInteractionFlag::TextEditable|Qt::TextInteractionFlag::TextEditorInteraction|Qt::TextInteractionFlag::TextSelectableByKeyboard|Qt::TextInteractionFlag::TextSelectableByMouse</set>
+                   <set>Qt::LinksAccessibleByKeyboard|Qt::LinksAccessibleByMouse|Qt::TextBrowserInteraction|Qt::TextEditable|Qt::TextEditorInteraction|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
                   </property>
                   <property name="placeholderText">
                    <string>Enter run comments here.</string>
@@ -672,7 +672,7 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
               <item>
                <spacer name="verticalSpacer_3">
                 <property name="orientation">
-                 <enum>Qt::Orientation::Vertical</enum>
+                 <enum>Qt::Vertical</enum>
                 </property>
                 <property name="sizeHint" stdset="0">
                  <size>
@@ -721,10 +721,10 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
           <item>
            <widget class="QScrollArea" name="scrollArea">
             <property name="frameShape">
-             <enum>QFrame::Shape::NoFrame</enum>
+             <enum>QFrame::NoFrame</enum>
             </property>
             <property name="frameShadow">
-             <enum>QFrame::Shadow::Plain</enum>
+             <enum>QFrame::Plain</enum>
             </property>
             <property name="lineWidth">
              <number>0</number>
@@ -737,8 +737,8 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>855</width>
-               <height>675</height>
+               <width>846</width>
+               <height>679</height>
               </rect>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -781,13 +781,13 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
                    </sizepolicy>
                   </property>
                   <property name="layoutDirection">
-                   <enum>Qt::LayoutDirection::LeftToRight</enum>
+                   <enum>Qt::LeftToRight</enum>
                   </property>
                   <property name="text">
                    <string>Camera Status:</string>
                   </property>
                   <property name="alignment">
-                   <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                   <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                   </property>
                  </widget>
                 </item>
@@ -801,7 +801,7 @@ background-color: rgb(150, 150, 150);</string>
                    <string>Cam 1</string>
                   </property>
                   <property name="alignment">
-                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                   <set>Qt::AlignCenter</set>
                   </property>
                  </widget>
                 </item>
@@ -815,7 +815,7 @@ background-color: rgb(150, 150, 150);</string>
                    <string>Cam 2</string>
                   </property>
                   <property name="alignment">
-                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                   <set>Qt::AlignCenter</set>
                   </property>
                  </widget>
                 </item>
@@ -829,7 +829,7 @@ background-color: rgb(150, 150, 150);</string>
                    <string>Cam 3</string>
                   </property>
                   <property name="alignment">
-                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                   <set>Qt::AlignCenter</set>
                   </property>
                  </widget>
                 </item>
@@ -930,7 +930,7 @@ background-color: rgb(150, 150, 150);</string>
                 <item>
                  <spacer name="horizontalSpacer">
                   <property name="orientation">
-                   <enum>Qt::Orientation::Horizontal</enum>
+                   <enum>Qt::Horizontal</enum>
                   </property>
                   <property name="sizeHint" stdset="0">
                    <size>
@@ -945,7 +945,7 @@ background-color: rgb(150, 150, 150);</string>
               <item>
                <layout class="QHBoxLayout" name="horizontalLayout_3">
                 <property name="sizeConstraint">
-                 <enum>QLayout::SizeConstraint::SetDefaultConstraint</enum>
+                 <enum>QLayout::SetDefaultConstraint</enum>
                 </property>
                 <item>
                  <widget class="QLabel" name="image_num_label">
@@ -1006,7 +1006,7 @@ background-color: rgb(150, 150, 150);</string>
               <item>
                <spacer name="verticalSpacer">
                 <property name="orientation">
-                 <enum>Qt::Orientation::Vertical</enum>
+                 <enum>Qt::Vertical</enum>
                 </property>
                 <property name="sizeHint" stdset="0">
                  <size>
@@ -1057,7 +1057,7 @@ background-color: rgb(150, 150, 150);</string>
     <string>Ctrl+Shift+S</string>
    </property>
    <property name="menuRole">
-    <enum>QAction::MenuRole::PreferencesRole</enum>
+    <enum>QAction::PreferencesRole</enum>
    </property>
   </action>
   <action name="action_log">
@@ -1087,7 +1087,7 @@ background-color: rgb(150, 150, 150);</string>
     <string>quit</string>
    </property>
    <property name="menuRole">
-    <enum>QAction::MenuRole::NoRole</enum>
+    <enum>QAction::NoRole</enum>
    </property>
   </action>
  </widget>
