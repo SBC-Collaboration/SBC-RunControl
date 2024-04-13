@@ -26,7 +26,7 @@ This is the state then the run is stopping.
 When the `starting_run` state ends, or then `stopping_event` state ends, and neither "Stop Run" button is pressed, or maximum number of events is reached, the program will start a new event. It will send out a `Signal` to all modules. When all modules are ready, it will enter `active` state.
 - GUI: set event ID and event livetime display.
 - Writer: Create folder for the event.
-- Cameras: Send config file. Start `imdaq` script.
+- Camera: Send config file. Start `imdaq` script.
 - NIUSB: sends out `trig_reset` signal. Set outputs to camera.
 - CAEN: save config file. Start data acquisition.
 - Acoustics: save config file. Start data acquisition.

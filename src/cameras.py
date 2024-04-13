@@ -6,11 +6,11 @@ import logging
 import os
 import json
 import time
-from PySide6.QtCore import QTimer, QObject, Slot, Signal
+from PySide6.QtCore import QTimer, QObject, QThread, Slot, Signal
 import subprocess
 
 
-class Cameras(QObject):
+class Camera(QObject):
     camera_started = Signal(str)
     camera_connected = Signal(str)
     camera_closed = Signal(str)
@@ -25,13 +25,14 @@ class Cameras(QObject):
         self.username = "pi"
         self.client = pm.client.SSHClient()
         self.client.set_missing_host_key_policy(pm.AutoAddPolicy())
-        self.logger.debug(f"Cameras class {self.cam_name} initialized.")
         self.timer = QTimer(self)
-        self.timer.setInterval(10)
+        self.timer.setInterval(100)
         self.timer.timeout.connect(self.periodic_task)
 
+    @Slot()
     def run(self):
         self.timer.start()
+        self.logger.debug(f"Camera {self.cam_name} module initialized in {QThread.currentThread().objectName()}.")
 
     @Slot()
     def periodic_task(self):
@@ -43,10 +44,11 @@ class Cameras(QObject):
             return
         host = self.config["ip_addr"]
 
-        if not subprocess.call(f"ping -n 1 {host}"):
+        # ping with 1 packet, and 1s timeout
+        if not subprocess.call(f"ping -n 1 -w 1 {host}"):
             self.logger.debug(f"Camera {self.cam_name} connected.")
         else:
-            self.logger.error(f"Camera {self.cam_name} not connected.")
+            self.logger.error(f"Camera {self.cam_name} at {host} not connected.")
 
     def save_config(self):
         # skip camera if not enabled
@@ -63,6 +65,8 @@ class Cameras(QObject):
         if not self.config["enabled"]:
             self.logger.info(f"Camera {self.cam_name} disabled.")
             return
+        else:
+            self.test_rpi()
         self.save_config()
         self.logger.info(f"Starting camera {self.cam_name}")
         # make ssh connection

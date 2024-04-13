@@ -1,9 +1,12 @@
-import paramiko as pm
+import warnings
+with warnings.catch_warnings():
+    warnings.filterwarnings("ignore")
+    import paramiko as pm
 import logging
 import os
 import datetime
-from PySide6.QtCore import QTimer, QObject, Slot
-
+from PySide6.QtCore import QTimer, QObject, Slot, Signal, QThread
+import subprocess
 
 class SiPMAmp(QObject):
     daq_mapping = {  # the two numbers are DAC address and DAC channel number
@@ -44,62 +47,97 @@ class SiPMAmp(QObject):
         16: "1 2 3",
     }
 
-    def __init__(self, mainwindow):
+    sipm_biased = Signal(str)
+    sipm_unbiased = Signal(str)
+
+    def __init__(self, mainwindow, amp):
+        super().__init__()
         self.main = mainwindow
-        self.config = mainwindow.config_class.config
+        self.amp = amp
+        self.config = mainwindow.config_class.config["scint"][amp]
         self.logger = logging.getLogger("rc")
         os.putenv("PATH", "/home/sbc/packages")
         self.username = "root"
         self.client = pm.client.SSHClient()
         self.client.set_missing_host_key_policy(pm.AutoAddPolicy())
-        self.logger.debug("SiPM amp class initialized.")
+        self.timer = QTimer(self)
+        self.timer.setInterval(100)
+        self.timer.timeout.connect(self.periodic_task)
 
-    def exec_commands(self, host, command):
+    @Slot()
+    def run(self):
+        self.timer.start()
+        self.logger.debug(f"SiPM {self.amp} module initialized in {QThread.currentThread().objectName()}.")
+
+    @Slot()
+    def periodic_task(self):
+        pass
+
+    @Slot()
+    def test_sipm_amp(self):
+        if not self.config["enabled"]:
+            return
+        host = self.config["ip_addr"]
+
+        # ping with 1 packet, and 1s timeout
+        if not subprocess.call(f"ping -n 1 -w 1 {host}"):
+            self.logger.debug(f"SiPM {self.amp} connected.")
+        else:
+            self.logger.error(f"SiPM {self.amp} at {host} not connected.")
+
+    def exec_commands(self, host, commands):
         self.client.connect(host, username=self.username)
+        command = "; ".join(commands)
         _stdin, _stdout, _stderr = self.client.exec_command(command)
         print(_stdout.read().decode())
         self.client.close()
 
-    def bias_sipm_amp(self):
-        for amp in ["amp1", "amp2"]:
-            amp_config = self.config["scint"][amp]
-            if not amp_config["enabled"]:
-                continue
-            commands = [
-                "dactest -v hv 1 0",  # set HV rail to 0V
-                "setPin ENQP hi",  # enable charge pump
-                f"dactest -v hv 0 {amp_config['qp']}",  # set charge pump voltage
-                "enhv enable",  # enable HV rail
-                f"dactest -v hv 1 {amp_config['bias']}",  # set HV rail voltage
-                "adctest -l 1000 -r 8 hv 1 0",  # readback HV rail voltage
-            ]
-            self.exec_commands(amp_config["ip_addr"], commands)
+    @Slot()
+    def bias_sipm(self):
+        self.test_sipm_amp()
+        if not self.config["enabled"]:
+            return
+        commands = [
+            "dactest -v hv 1 0",  # set HV rail to 0V
+            "setPin ENQP hi",  # enable charge pump
+            f"dactest -v hv 0 {self.config['qp']}",  # set charge pump voltage
+            "enhv enable",  # enable HV rail
+            f"dactest -v hv 1 {self.config['bias']}",  # set HV rail voltage
+            "adctest -l 1000 -r 8 hv 1 0",  # readback HV rail voltage
+        ]
+        self.exec_commands(self.config["ip_addr"], commands)
+        self.sipm_biased.emit(self.amp)
 
-    def unbias_sipm_amp(self):
+    @Slot()
+    def unbias_sipm(self):
+        # if not enabled, try pinging the IP address
+        # if ping successes, still unbias. if not, quit
+        # ping with only 1 packet, with 1s timeout
+        if not self.config["enabled"]:
+            if subprocess.call(f"ping -n 1 -w 1 {sel.config["ip_addr"]}"):
+                return
+
         commands = [
             "dactest -v hv 1 0",  # set HV rail to 0V
             "enhv disable",  # disable HV rails
             "setPin ENQP lo",  # enable charge pump
         ]
-        for amp in ["amp1", "amp2"]:
-            amp_config = self.config["scint"][amp]
-            # if not amp_config["enabled"]:
-            #     # still check if ssh can be connected. if so, still unbias
-            self.exec_commands(amp_config["ip_addr"], commands)
+        self.exec_commands(self.config["ip_addr"], commands)
+        self.sipm_unbiased.emit(self.amp)
 
+    @Slot()
     def run_iv_curve(self):
-        for amp in ["amp1", "amp2"]:
-            amp_config = self.config["scint"][amp]
-            if not amp_config["enabled"] or not amp_config["iv_enabled"]:
-                continue
-            start_v = amp_config["iv_start"]
-            stop_v = amp_config["iv_stop"]
-            step = amp_config["iv_step"]
-            adc_rate = 4 # 80 sps
-            num_readings =  6
-            now = datetime.date.today().strftime("%Y%m%d%H%M")
-            filename = os.path.join(amp_config["iv_data_dir"], str(now))
-            commands = [
-                "cd /root/nanopi",
-                f"iv_cmd.py --start_v {start_v} --stop_v {stop_v} --step {step} --adc_rate {adc_rate} --num_readings {num_readings} --file {filename}"
-            ]
+        if not self.config["enabled"] or not self.config["iv_enabled"]:
+            return
+        start_v = self.config["iv_start"]
+        stop_v = self.config["iv_stop"]
+        step = self.config["iv_step"]
+        adc_rate = 4 # 80 sps
+        num_readings =  6
+        now = datetime.date.today().strftime("%Y%m%d%H%M")
+        filename = os.path.join(self.config["iv_data_dir"], str(now))
+        commands = [
+            "cd /root/nanopi",
+            f"iv_cmd.py --start_v {start_v} --stop_v {stop_v} --step {step} --adc_rate {adc_rate} --num_readings {num_readings} --file {filename}"
+        ]
+        self.exec_commands(self.config["ip_addr"], commands)
