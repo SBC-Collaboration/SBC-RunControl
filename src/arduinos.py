@@ -31,10 +31,14 @@ class Arduino(QObject):
             os.stat(self.config["port"])
         except:
             self.logger.error(f"Arduino {self.arduino} not connected.")
+            return 1
         self.logger.debug(f"Arduino {self.arduino} connected")
+        return 0
 
     @Slot()
     def upload_sketch(self):
+        if self.check_arduino():
+            return
         # TODO: copy json
         fqbn = "arduino:avr:mega"
         port = self.config["port"]

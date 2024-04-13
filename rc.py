@@ -11,6 +11,7 @@ from src.cameras import *
 from src.sipm_amp import *
 from src.sql import *
 from src.niusb import *
+from src.writer import *
 import logging
 from enum import Enum
 import datetime
@@ -24,6 +25,7 @@ class MainSignals(QObject):
     run_stopping = Signal()
     event_starting = Signal()
     event_stopping = Signal()
+    program_stopping = Signal()
 
 # Loads Main window
 class MainWindow(QMainWindow):
@@ -195,6 +197,16 @@ class MainWindow(QMainWindow):
         self.niusb_thread.start()
         time.sleep(0.001)
 
+        self.writer_worker = Writer(self)
+        self.writer_worker.event_data_saved.connect(self.starting_event_wait)
+        self.writer_thread = QThread()
+        self.writer_thread.setObjectName("writer_thread")
+        self.writer_worker.moveToThread(self.writer_thread)
+        self.writer_thread.started.connect(self.writer_worker.run)
+        self.signals.event_stopping.connect(self.writer_worker.write_event_data)
+        self.writer_thread.start()
+        time.sleep(0.001)
+
         self.sql_worker = SQL(self)
 
     # TODO: handle closing during run
@@ -222,6 +234,7 @@ class MainWindow(QMainWindow):
         self.arduino_clock_thread.quit()
         self.arduino_position_thread.quit()
         self.niusb_thread.quit()
+        self.writer_thread.quit()
 
         self.cam1_thread.wait()
         self.cam2_thread.wait()
@@ -232,6 +245,7 @@ class MainWindow(QMainWindow):
         self.arduino_clock_thread.wait()
         self.arduino_position_thread.wait()
         self.niusb_thread.wait()
+        self.writer_thread.wait()
 
         self.logger.info("Quitting run control.\n")
 

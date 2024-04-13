@@ -7,7 +7,6 @@ import time as tm
 import paramiko, pymysql
 import random
 import pandas as pd
-# import matplotlib as plot
 import logging
 
 """
@@ -16,40 +15,6 @@ PASSWORD IN THIS DOCUMENT are saved as enviroment variable at slowcontrol machin
 You can also get it from SBC mysql document configuration
 https://docs.google.com/document/d/1o2LEL3cKEVQ6zuR_jJgt-p3UgnVysMm6LkXXOvfMZeE/edit
 """
-
-#
-# def datetime_in_s():
-#     d=datetime.datetime.now()
-#     timeR = int(d.microsecond%1e6)
-#     delta=datetime.timedelta(microseconds=timeR)
-#     x=d-delta
-#     return x
-#
-# def datetime_in_1e5micro():
-#     d=datetime.datetime.now()
-#     timeR = int(d.microsecond%1e5)
-#     delta=datetime.timedelta(microseconds=timeR)
-#     x=d-delta
-#     return x
-#
-# def early_datetime():
-#     d = datetime.datetime.now()
-#     timeR = int(d.microsecond % 1e5)
-#     delta = datetime.timedelta(microseconds=timeR)
-#     x = d - delta - datetime.timedelta(microseconds=1e5)
-#     return x
-#
-# def later_datetime():
-#     d = datetime.datetime.now()
-#     timeR = int(d.microsecond % 1e5)
-#     delta = datetime.timedelta(microseconds=timeR)
-#     x = d - delta + datetime.timedelta(microseconds=1e5)
-#     return x
-#
-# def UNIX_time(self):
-#     return int(tm.time())
-
-
 
 class mydatabase():
     def __init__(self):
