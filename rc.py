@@ -10,6 +10,7 @@ from src.arduinos import *
 from src.cameras import *
 from src.sipm_amp import *
 from src.sql import *
+from src.niusb import *
 import logging
 from enum import Enum
 import datetime
@@ -102,7 +103,7 @@ class MainWindow(QMainWindow):
         self.signals.run_starting.connect(self.cam1_worker.test_rpi)
         self.signals.event_starting.connect(self.cam1_worker.start_camera)
         self.cam1_thread.start()
-        time.sleep(0.001)
+        time.sleep(0.001) # 1ms separation of worker and thread initialization so that the log is easier to read
 
         self.cam2_worker = Camera(self, "cam2")
         self.cam2_worker.camera_connected.connect(self.starting_run_wait)
@@ -154,7 +155,7 @@ class MainWindow(QMainWindow):
         self.amp2_thread.start()
         time.sleep(0.001)
 
-        self.arduino_trig_worker = Arduino(self, "clock")
+        self.arduino_trig_worker = Arduino(self, "trigger")
         self.arduino_trig_worker.arduino_sketch_uploaded.connect(self.starting_run_wait)
         self.arduino_trig_thread = QThread()
         self.arduino_trig_thread.setObjectName('arduino_trig_thread')
@@ -184,6 +185,16 @@ class MainWindow(QMainWindow):
         self.arduino_position_thread.start()
         time.sleep(0.001)
 
+        self.niusb_worker = NIUSB(self)
+        self.niusb_worker.event_started.connect(self.starting_event_wait)
+        self.niusb_thread = QThread()
+        self.niusb_thread.setObjectName("niusb_thread")
+        self.niusb_worker.moveToThread(self.niusb_thread)
+        self.niusb_thread.started.connect(self.niusb_worker.run)
+        self.signals.event_starting.connect(self.niusb_worker.start_event)
+        self.niusb_thread.start()
+        time.sleep(0.001)
+
         self.sql_worker = SQL(self)
 
     # TODO: handle closing during run
@@ -210,6 +221,7 @@ class MainWindow(QMainWindow):
         self.arduino_trig_thread.quit()
         self.arduino_clock_thread.quit()
         self.arduino_position_thread.quit()
+        self.niusb_thread.quit()
 
         self.cam1_thread.wait()
         self.cam2_thread.wait()
@@ -219,6 +231,7 @@ class MainWindow(QMainWindow):
         self.arduino_trig_thread.wait()
         self.arduino_clock_thread.wait()
         self.arduino_position_thread.wait()
+        self.niusb_thread.wait()
 
         self.logger.info("Quitting run control.\n")
 
