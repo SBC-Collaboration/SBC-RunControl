@@ -147,7 +147,7 @@ class SQL:
             set_keepalive=self.ssh_keep_alive)
 
         self.db = pymysql.connect(host=self.hostname, user=self.user, passwd=self.token,
-                                  database=self.database, port=tunnel.local_bind_port)
+                                  database=self.database, port=self.tunnel.local_bind_port)
         self.cursor = self.db.cursor()
 
     def close_connection(self):
@@ -160,6 +160,7 @@ class SQL:
         self.close_connection
 
     def generate_run_query(self):
+        data = {}
         data["ID"] = "NULL" # placeholder for auto generated id number
         data["run_ID"] = self.main.run_id
         data["num_events"] = self.main.run_livetime # total livetime of the run
@@ -170,26 +171,22 @@ class SQL:
         data["pset_hi"] = "NULL"
         data["source1_ID"] = self.main.ui.source_box.currentText()
         return data
+
     def insert_run_data(self, data):
         self.db.ping() # ping mysql server to make sure it's alive
         # TODO: data validation steps ...
-        query = f"""
-                INSERT INTO {self.run_table}
-                VALUES ({data["ID"]},
-                        '{data["run_ID"]}',
-                        {data["num_events"]},
-                        '{data["comments"]}',
-                        '{data["active_datastreams"]}',
-                        '{data["pset_mode"]}',
-                        {data["pset"]},
-                        {data["pset_hi"]}
-                        )
-                """
+        query = (f"INSERT INTO {self.run_table}"
+                 f"VALUES ({data["ID"]},"
+                 f"        '{data["run_ID"]}',"
+                 f"        {data["num_events"]},"
+                 f"        '{data["comments"]}',"
+                 f"        '{data["active_datastreams"]}',"
+                 f"        '{data["pset_mode"]}',"
+                 f"        {data["pset"]},"
+                 f"        {data["pset_hi"]}")
+        print(query)
         try:
             self.cursor.execute(query)
         except:
             self.logger.error(f"SQL data insertion for run {self.main.run_id} failed.")
         self.db.commit()
-
-
-
