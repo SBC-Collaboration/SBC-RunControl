@@ -69,6 +69,7 @@ class MainWindow(QMainWindow):
         self.update_state("preparing")
 
         # List populated by ready modules at each state. After all modules are ready, it will proceed to the next state
+        self.starting_program_ready = []
         self.starting_run_ready = []
         self.stopping_run_ready = []
         self.starting_event_ready = []
@@ -339,23 +340,27 @@ class MainWindow(QMainWindow):
         )
 
     @Slot(str)
-    def starting_run_wait(self, dev):
+    def starting_program_wait(self, module):
+        self.starting_program_ready.append(module)
+
+    @Slot(str)
+    def starting_run_wait(self, module):
         """
         A slot method to append ready module names to the list. When the length of the list reaches the threshold, the run can start.
         """
-        self.starting_run_ready.append(dev)
+        self.starting_run_ready.append(module)
 
     @Slot(str)
-    def stopping_run_wait(self, dev):
-        self.stopping_run_ready.append(dev)
+    def stopping_run_wait(self, module):
+        self.stopping_run_ready.append(module)
 
     @Slot(str)
-    def starting_event_wait(self, dev):
-        self.starting_event_ready.append(dev)
+    def starting_event_wait(self, module):
+        self.starting_event_ready.append(module)
 
     @Slot(str)
-    def stopping_event_wait(self, dev):
-        self.stopping_event_ready.append(dev)
+    def stopping_event_wait(self, module):
+        self.stopping_event_ready.append(module)
 
     def create_run_directory(self):
         """

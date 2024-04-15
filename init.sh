@@ -20,7 +20,7 @@ export PATH=$PATH:$PWD/dependencies
 echo "Setting up Arduino cli and libraries..."
 curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | BINDIR=./dependencies sh
 arduino-cli config init
+arduino-cli update
+arduino-cli upgrade
 arduino-cli core install arduino:avr
-arduino-cli lib update-index
-arduino-cli lib upgrade
 arduino-cli lib install incbin ArduinoJson Ethernet

@@ -46,31 +46,40 @@ class Arduino(QObject):
         port = self.config["port"]
         sketch_path = self.config["sketch"]
         build_path = os.path.join(sketch_path, "build")
+
         if not os.path.exists(build_path):
             os.mkdir(build_path)
             checksum = 0
-        elif not (hex_files := glob.glob(os.path.join(build_path, "*.ino.hex"))):
-            # check if a .hex file exists in the build folder, without "bootloader" in the filename
+        elif not (archives := glob.glob(os.path.join(build_path, "*.zip"))):
+            # check if a zip file exists in the build folder, without in the filename
             checksum = 0
-            self.logger.debug(f"Binary file doesn't exist for {self.arduino} arduino.")
-        elif len(hex_files)==1:
-            # generate checksum for old binary file
-            with open(hex_files[0], "rb") as f:
+            self.logger.debug(f"Sketch archive doesn't exist for {self.arduino} arduino.")
+        elif len(archives)==1:
+            # generate checksum for old zip file
+            with open(archives[0], "rb") as f:
                 checksum = hashlib.sha256(f.read()).digest()
         else:
-            self.logger.error(f"More than one compiled binary files for {self.arduino} arduino.")
+            self.logger.error(f"More than one sketch archive for {self.arduino} arduino.")
+            cheskum = 0
 
+        # generate a new zip archive of sketch
         os.environ["PATH"] += os.pathsep + os.path.join(os.path.dirname(os.path.dirname(__file__)), "dependencies")
-        os.system(f"cd {sketch_path} && arduino-cli compile -b {fqbn} --build-path {build_path} {sketch_path}")
-        hex_files_new = glob.glob(os.path.join(build_path, "*.ino.hex"))
-        with open(hex_files_new[0], "rb") as f:
-            # comparing the new compiled binary file with old checksum
-            # if there is no difference, then skip uploading
-            checksum_new = hashlib.sha256(f.read()).digest()
-            if checksum == checksum_new:
-                self.logger.info(f"Sketch for {self.arduino} arduino not changed. Skipping upload.")
-            else:
-                os.system(f"arduino-cli upload -p {port} -b {fqbn} --input-dir {build_path}")
-                self.logger.info(f"Sketch successfully uploaded for {self.arduino} arduino.")
+        command = (f"cd {sketch_path} && rm {build_path}/*.zip && "
+                   f"arduino-cli sketch archive ./ {build_path}")
+        os.system(command)
+
+        # check if hash of new archive is the same as the old
+        if archives := glob.glob(os.path.join(build_path, "*.zip")) and len(archives)==1:
+            with open(archives[0], "rb") as f:
+                if checksum == hashlib.sha256(f.read()).digest():
+                    self.logger.info(f"Sketch for {self.arduino} arduino not changed. Skipping upload.")
+                    return
+
+        # if not the same, compile and upload
+        command = (f"cd {sketch_path} && "
+                   f"arduino-cli compile -b {fqbn} --build-path {build_path} {sketch_path} && "
+                   f"arduino-cli upload -p {port} -b {fqbn} --input-dir {build_path}")
+        os.system(command)
+        self.logger.info(f"Sketch successfully uploaded for {self.arduino} arduino.")
 
         self.arduino_sketch_uploaded.emit(self.arduino)
