@@ -1,4 +1,5 @@
 import os
+import subprocess
 import glob
 import hashlib
 import logging
@@ -64,12 +65,13 @@ class Arduino(QObject):
 
         # generate a new zip archive of sketch
         os.environ["PATH"] += os.pathsep + os.path.join(os.path.dirname(os.path.dirname(__file__)), "dependencies")
-        command = (f"cd {sketch_path} && rm {build_path}/*.zip && "
-                   f"arduino-cli sketch archive ./ {build_path}")
-        os.system(command)
+        command = (f"cd {sketch_path} && rm -f {build_path}/*.zip && "
+                   f"arduino-cli sketch archive {sketch_path} {build_path}")
+        result = subprocess.run(command, shell=True, capture_output=True)
+        # self.logger.debug(result.stdout)
 
         # check if hash of new archive is the same as the old
-        if archives := glob.glob(os.path.join(build_path, "*.zip")) and len(archives)==1:
+        if (archives := glob.glob(os.path.join(build_path, "*.zip"))) and len(archives)==1:
             with open(archives[0], "rb") as f:
                 if checksum == hashlib.sha256(f.read()).digest():
                     self.logger.info(f"Sketch for {self.arduino} arduino not changed. Skipping upload.")
@@ -79,7 +81,7 @@ class Arduino(QObject):
         command = (f"cd {sketch_path} && "
                    f"arduino-cli compile -b {fqbn} --build-path {build_path} {sketch_path} && "
                    f"arduino-cli upload -p {port} -b {fqbn} --input-dir {build_path}")
-        os.system(command)
+        result = subprocess.run(command, shell=True, capture_output=True)
         self.logger.info(f"Sketch successfully uploaded for {self.arduino} arduino.")
 
         self.arduino_sketch_uploaded.emit(self.arduino)
