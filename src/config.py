@@ -180,6 +180,14 @@ class Config:
         ui.position_port_edit.setText(arduinos_config["position"]["port"])
         ui.position_sketch_edit.setText(arduinos_config["position"]["sketch"])
 
+        niusb_config = self.config["dio"]["niusb"]
+        for port in range(3):
+            for pin in range(8):
+                try:
+                    ui.niusb_table.item(port, pin).setText(niusb_config[f"{port}.{pin}"])
+                except:
+                    pass
+
         self.logger.info("Configuration loaded from file.")
 
         # TODO: implement loading and saving for more settings components
@@ -440,6 +448,11 @@ class Config:
             },
         }
 
+        niusb_config = {}
+        for port in range(3):
+            for pin in range(8):
+                niusb_config[f"{port}.{pin}"] = ui.niusb_table.item(port, pin).text()
+
         self.config = {
             "general": general_config,
             "scint": {
@@ -450,7 +463,7 @@ class Config:
             },
             "acous": {"general": acous_general_config, "per_channel": acous_ch_config},
             "cam": cam_config,
-            "dio": {"arduinos": arduinos_config},
+            "dio": {"arduinos": arduinos_config, "niusb": niusb_config},
         }
 
         self.logger.info("Configuration applied.")

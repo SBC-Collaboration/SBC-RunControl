@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>727</width>
-    <height>496</height>
+    <width>750</width>
+    <height>454</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -49,7 +49,7 @@
     <item row="0" column="0">
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>4</number>
       </property>
       <property name="tabsClosable">
        <bool>false</bool>
@@ -93,8 +93,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>698</width>
-             <height>586</height>
+             <width>738</width>
+             <height>385</height>
             </rect>
            </property>
            <property name="maximumSize">
@@ -520,6 +520,9 @@
             </item>
             <item>
              <spacer name="verticalSpacer">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
               <property name="sizeHint" stdset="0">
                <size>
                 <width>20</width>
@@ -567,7 +570,7 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>698</width>
+             <width>721</width>
              <height>779</height>
             </rect>
            </property>
@@ -1764,6 +1767,9 @@
             </item>
             <item>
              <spacer name="verticalSpacer_4">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
               <property name="sizeType">
                <enum>QSizePolicy::Fixed</enum>
               </property>
@@ -1814,8 +1820,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>715</width>
-             <height>427</height>
+             <width>738</width>
+             <height>385</height>
             </rect>
            </property>
            <property name="maximumSize">
@@ -2628,6 +2634,9 @@
             </item>
             <item>
              <spacer name="acous_spacer">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
               <property name="sizeHint" stdset="0">
                <size>
                 <width>20</width>
@@ -2686,7 +2695,7 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>698</width>
+             <width>721</width>
              <height>484</height>
             </rect>
            </property>
@@ -2785,6 +2794,9 @@
             </item>
             <item row="26" column="0" colspan="4">
              <spacer name="cam_spacer">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
               <property name="sizeType">
                <enum>QSizePolicy::Fixed</enum>
               </property>
@@ -3668,8 +3680,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>698</width>
-             <height>641</height>
+             <width>721</width>
+             <height>621</height>
             </rect>
            </property>
            <property name="maximumSize">
@@ -3695,7 +3707,7 @@
              <number>0</number>
             </property>
             <item>
-             <layout class="QGridLayout" name="dio_general_grid_layout">
+             <layout class="QGridLayout" name="dio_general_grid_layout" columnstretch="0,1,2,0">
               <property name="spacing">
                <number>3</number>
               </property>
@@ -3805,7 +3817,7 @@
               <property name="minimumSize">
                <size>
                 <width>0</width>
-                <height>80</height>
+                <height>100</height>
                </size>
               </property>
               <property name="font">
@@ -3829,7 +3841,7 @@
                <enum>Qt::ScrollBarAsNeeded</enum>
               </property>
               <property name="sizeAdjustPolicy">
-               <enum>QAbstractScrollArea::AdjustIgnored</enum>
+               <enum>QAbstractScrollArea::AdjustToContents</enum>
               </property>
               <property name="autoScroll">
                <bool>true</bool>
@@ -3838,7 +3850,7 @@
                <number>0</number>
               </property>
               <property name="editTriggers">
-               <set>QAbstractItemView::NoEditTriggers</set>
+               <set>QAbstractItemView::DoubleClicked|QAbstractItemView::SelectedClicked</set>
               </property>
               <property name="dragEnabled">
                <bool>true</bool>
@@ -4038,6 +4050,16 @@
                 <string/>
                </property>
               </item>
+              <item row="2" column="6">
+               <property name="text">
+                <string/>
+               </property>
+              </item>
+              <item row="2" column="7">
+               <property name="text">
+                <string/>
+               </property>
+              </item>
              </widget>
             </item>
             <item>
@@ -4176,32 +4198,8 @@
               <property name="spacing">
                <number>3</number>
               </property>
-              <item row="7" column="2">
-               <widget class="QSpinBox" name="gate_period_wave5">
-                <property name="maximum">
-                 <number>1000000</number>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="1">
-               <widget class="QSpinBox" name="gate_pin_wave1"/>
-              </item>
-              <item row="3" column="5">
-               <widget class="QComboBox" name="gate_polarity_wave1">
-                <item>
-                 <property name="text">
-                  <string>Normal</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Reverse</string>
-                 </property>
-                </item>
-               </widget>
-              </item>
-              <item row="7" column="5">
-               <widget class="QComboBox" name="gate_polarity_wave5">
+              <item row="8" column="5">
+               <widget class="QComboBox" name="gate_polarity_wave6">
                 <item>
                  <property name="text">
                   <string>Normal</string>
@@ -4224,40 +4222,68 @@
                 </property>
                </widget>
               </item>
-              <item row="3" column="0">
-               <widget class="QLabel" name="wave1_label">
+              <item row="9" column="1">
+               <widget class="QSpinBox" name="gate_pin_wave7"/>
+              </item>
+              <item row="11" column="1">
+               <widget class="QSpinBox" name="gate_pin_wave9"/>
+              </item>
+              <item row="8" column="0">
+               <widget class="QLabel" name="wave6_label">
                 <property name="text">
-                 <string>Wave 1</string>
+                 <string>Wave 6</string>
                 </property>
                </widget>
               </item>
-              <item row="5" column="0">
-               <widget class="QLabel" name="wave3_label">
+              <item row="5" column="1">
+               <widget class="QSpinBox" name="gate_pin_wave3"/>
+              </item>
+              <item row="9" column="0">
+               <widget class="QLabel" name="wave7_label">
                 <property name="text">
-                 <string>Wave 3</string>
+                 <string>Wave 7</string>
                 </property>
                </widget>
               </item>
-              <item row="1" column="1">
-               <widget class="QLabel" name="gate_pin_label">
-                <property name="text">
-                 <string>Pin</string>
+              <item row="3" column="2">
+               <widget class="QSpinBox" name="gate_period_wave1">
+                <property name="maximum">
+                 <number>1000000</number>
                 </property>
                </widget>
               </item>
-              <item row="8" column="1">
-               <widget class="QSpinBox" name="gate_pin_wave6"/>
+              <item row="10" column="5">
+               <widget class="QComboBox" name="gate_polarity_wave8">
+                <item>
+                 <property name="text">
+                  <string>Normal</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Reverse</string>
+                 </property>
+                </item>
+               </widget>
               </item>
-              <item row="9" column="3">
-               <widget class="QSpinBox" name="gate_phase_wave7"/>
-              </item>
-              <item row="3" column="3">
-               <widget class="QSpinBox" name="gate_phase_wave1">
-                <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::UpDownArrows</enum>
+              <item row="4" column="0">
+               <widget class="QLabel" name="wave2_label">
+                <property name="text">
+                 <string>Wave 2</string>
                 </property>
-                <property name="keyboardTracking">
-                 <bool>true</bool>
+               </widget>
+              </item>
+              <item row="6" column="2">
+               <widget class="QSpinBox" name="gate_period_wave4">
+                <property name="maximum">
+                 <number>1000000</number>
+                </property>
+               </widget>
+              </item>
+              <item row="9" column="4">
+               <widget class="QSpinBox" name="duty_wave7">
+                <property name="suffix">
+                 <string>%</string>
                 </property>
                 <property name="maximum">
                  <number>100</number>
@@ -4274,15 +4300,8 @@
                 </property>
                </widget>
               </item>
-              <item row="6" column="0">
-               <widget class="QLabel" name="wave4_label">
-                <property name="text">
-                 <string>Wave 4</string>
-                </property>
-               </widget>
-              </item>
-              <item row="5" column="4">
-               <widget class="QSpinBox" name="duty_wave3">
+              <item row="3" column="4">
+               <widget class="QSpinBox" name="duty_wave1">
                 <property name="suffix">
                  <string>%</string>
                 </property>
@@ -4291,11 +4310,15 @@
                 </property>
                </widget>
               </item>
-              <item row="6" column="3">
-               <widget class="QSpinBox" name="gate_phase_wave4"/>
+              <item row="1" column="2">
+               <widget class="QLabel" name="gate_period_label">
+                <property name="text">
+                 <string>Period</string>
+                </property>
+               </widget>
               </item>
-              <item row="10" column="5">
-               <widget class="QComboBox" name="gate_polarity_wave8">
+              <item row="11" column="5">
+               <widget class="QComboBox" name="gate_polarity_wave9">
                 <item>
                  <property name="text">
                   <string>Normal</string>
@@ -4308,89 +4331,18 @@
                 </item>
                </widget>
               </item>
-              <item row="9" column="5">
-               <widget class="QComboBox" name="gate_polarity_wave7">
-                <item>
-                 <property name="text">
-                  <string>Normal</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Reverse</string>
-                 </property>
-                </item>
-               </widget>
-              </item>
-              <item row="1" column="5">
-               <widget class="QLabel" name="gate_polarity_label">
+              <item row="0" column="0" colspan="6">
+               <widget class="QLabel" name="gate_label">
+                <property name="font">
+                 <font>
+                  <bold>true</bold>
+                 </font>
+                </property>
                 <property name="text">
-                 <string>Polarity</string>
+                 <string>Gate Arduino</string>
                 </property>
-               </widget>
-              </item>
-              <item row="6" column="2">
-               <widget class="QSpinBox" name="gate_period_wave4">
-                <property name="maximum">
-                 <number>1000000</number>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="2">
-               <widget class="QSpinBox" name="gate_period_wave2">
-                <property name="maximum">
-                 <number>1000000</number>
-                </property>
-               </widget>
-              </item>
-              <item row="8" column="0">
-               <widget class="QLabel" name="wave6_label">
-                <property name="text">
-                 <string>Wave 6</string>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="1">
-               <widget class="QSpinBox" name="gate_pin_wave2"/>
-              </item>
-              <item row="11" column="2">
-               <widget class="QSpinBox" name="gate_period_wave9">
-                <property name="maximum">
-                 <number>1000000</number>
-                </property>
-               </widget>
-              </item>
-              <item row="6" column="4">
-               <widget class="QSpinBox" name="duty_wave4">
-                <property name="suffix">
-                 <string>%</string>
-                </property>
-                <property name="maximum">
-                 <number>100</number>
-                </property>
-               </widget>
-              </item>
-              <item row="9" column="2">
-               <widget class="QSpinBox" name="gate_period_wave7">
-                <property name="maximum">
-                 <number>1000000</number>
-                </property>
-               </widget>
-              </item>
-              <item row="7" column="0">
-               <widget class="QLabel" name="wave5_label">
-                <property name="text">
-                 <string>Wave 5</string>
-                </property>
-               </widget>
-              </item>
-              <item row="8" column="4">
-               <widget class="QSpinBox" name="duty_wave6">
-                <property name="suffix">
-                 <string>%</string>
-                </property>
-                <property name="maximum">
-                 <number>100</number>
+                <property name="margin">
+                 <number>0</number>
                 </property>
                </widget>
               </item>
@@ -4408,8 +4360,56 @@
                 </item>
                </widget>
               </item>
-              <item row="10" column="3">
-               <widget class="QSpinBox" name="gate_phase_wave8"/>
+              <item row="7" column="2">
+               <widget class="QSpinBox" name="gate_period_wave5">
+                <property name="maximum">
+                 <number>1000000</number>
+                </property>
+               </widget>
+              </item>
+              <item row="10" column="1">
+               <widget class="QSpinBox" name="gate_pin_wave8"/>
+              </item>
+              <item row="10" column="0">
+               <widget class="QLabel" name="wave8_label">
+                <property name="text">
+                 <string>Wave 8</string>
+                </property>
+               </widget>
+              </item>
+              <item row="11" column="0">
+               <widget class="QLabel" name="wave9_label">
+                <property name="text">
+                 <string>Wave 9</string>
+                </property>
+               </widget>
+              </item>
+              <item row="8" column="4">
+               <widget class="QSpinBox" name="duty_wave6">
+                <property name="suffix">
+                 <string>%</string>
+                </property>
+                <property name="maximum">
+                 <number>100</number>
+                </property>
+               </widget>
+              </item>
+              <item row="9" column="2">
+               <widget class="QSpinBox" name="gate_period_wave7">
+                <property name="maximum">
+                 <number>1000000</number>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="4">
+               <widget class="QLabel" name="duty_label">
+                <property name="text">
+                 <string>Duty</string>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="3">
+               <widget class="QSpinBox" name="gate_phase_wave3"/>
               </item>
               <item row="10" column="2">
                <widget class="QSpinBox" name="gate_period_wave8">
@@ -4417,52 +4417,6 @@
                  <number>1000000</number>
                 </property>
                </widget>
-              </item>
-              <item row="9" column="4">
-               <widget class="QSpinBox" name="duty_wave7">
-                <property name="suffix">
-                 <string>%</string>
-                </property>
-                <property name="maximum">
-                 <number>100</number>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="3">
-               <widget class="QLabel" name="gate_phase_label">
-                <property name="text">
-                 <string>Phase</string>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="0">
-               <widget class="QLabel" name="wave2_label">
-                <property name="text">
-                 <string>Wave 2</string>
-                </property>
-               </widget>
-              </item>
-              <item row="8" column="3">
-               <widget class="QSpinBox" name="gate_phase_wave6"/>
-              </item>
-              <item row="7" column="1">
-               <widget class="QSpinBox" name="gate_pin_wave5"/>
-              </item>
-              <item row="3" column="4">
-               <widget class="QSpinBox" name="duty_wave1">
-                <property name="suffix">
-                 <string>%</string>
-                </property>
-                <property name="maximum">
-                 <number>100</number>
-                </property>
-               </widget>
-              </item>
-              <item row="7" column="3">
-               <widget class="QSpinBox" name="gate_phase_wave5"/>
-              </item>
-              <item row="9" column="1">
-               <widget class="QSpinBox" name="gate_pin_wave7"/>
               </item>
               <item row="11" column="4">
                <widget class="QSpinBox" name="duty_wave9">
@@ -4474,40 +4428,79 @@
                 </property>
                </widget>
               </item>
-              <item row="5" column="1">
-               <widget class="QSpinBox" name="gate_pin_wave3"/>
-              </item>
-              <item row="1" column="4">
-               <widget class="QLabel" name="duty_label">
-                <property name="text">
-                 <string>Duty</string>
+              <item row="7" column="4">
+               <widget class="QSpinBox" name="duty_wave5">
+                <property name="suffix">
+                 <string>%</string>
+                </property>
+                <property name="maximum">
+                 <number>100</number>
                 </property>
                </widget>
               </item>
-              <item row="9" column="0">
-               <widget class="QLabel" name="wave7_label">
-                <property name="text">
-                 <string>Wave 7</string>
+              <item row="8" column="3">
+               <widget class="QSpinBox" name="gate_phase_wave6"/>
+              </item>
+              <item row="4" column="3">
+               <widget class="QSpinBox" name="gate_phase_wave2"/>
+              </item>
+              <item row="6" column="4">
+               <widget class="QSpinBox" name="duty_wave4">
+                <property name="suffix">
+                 <string>%</string>
+                </property>
+                <property name="maximum">
+                 <number>100</number>
                 </property>
                </widget>
+              </item>
+              <item row="4" column="2">
+               <widget class="QSpinBox" name="gate_period_wave2">
+                <property name="maximum">
+                 <number>1000000</number>
+                </property>
+               </widget>
+              </item>
+              <item row="10" column="3">
+               <widget class="QSpinBox" name="gate_phase_wave8"/>
               </item>
               <item row="6" column="1">
                <widget class="QSpinBox" name="gate_pin_wave4"/>
               </item>
-              <item row="10" column="1">
-               <widget class="QSpinBox" name="gate_pin_wave8"/>
-              </item>
-              <item row="11" column="0">
-               <widget class="QLabel" name="wave9_label">
+              <item row="3" column="0">
+               <widget class="QLabel" name="wave1_label">
                 <property name="text">
-                 <string>Wave 9</string>
+                 <string>Wave 1</string>
                 </property>
                </widget>
               </item>
-              <item row="1" column="2">
-               <widget class="QLabel" name="gate_period_label">
-                <property name="text">
-                 <string>Period</string>
+              <item row="8" column="1">
+               <widget class="QSpinBox" name="gate_pin_wave6"/>
+              </item>
+              <item row="9" column="5">
+               <widget class="QComboBox" name="gate_polarity_wave7">
+                <item>
+                 <property name="text">
+                  <string>Normal</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Reverse</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="3" column="3">
+               <widget class="QSpinBox" name="gate_phase_wave1">
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::UpDownArrows</enum>
+                </property>
+                <property name="keyboardTracking">
+                 <bool>true</bool>
+                </property>
+                <property name="maximum">
+                 <number>100</number>
                 </property>
                </widget>
               </item>
@@ -4525,18 +4518,11 @@
                 </item>
                </widget>
               </item>
-              <item row="3" column="2">
-               <widget class="QSpinBox" name="gate_period_wave1">
-                <property name="maximum">
-                 <number>1000000</number>
-                </property>
-               </widget>
+              <item row="3" column="1">
+               <widget class="QSpinBox" name="gate_pin_wave1"/>
               </item>
-              <item row="5" column="3">
-               <widget class="QSpinBox" name="gate_phase_wave3"/>
-              </item>
-              <item row="11" column="5">
-               <widget class="QComboBox" name="gate_polarity_wave9">
+              <item row="3" column="5">
+               <widget class="QComboBox" name="gate_polarity_wave1">
                 <item>
                  <property name="text">
                   <string>Normal</string>
@@ -4549,11 +4535,25 @@
                 </item>
                </widget>
               </item>
-              <item row="11" column="3">
-               <widget class="QSpinBox" name="gate_phase_wave9"/>
+              <item row="5" column="0">
+               <widget class="QLabel" name="wave3_label">
+                <property name="text">
+                 <string>Wave 3</string>
+                </property>
+               </widget>
               </item>
-              <item row="7" column="4">
-               <widget class="QSpinBox" name="duty_wave5">
+              <item row="9" column="3">
+               <widget class="QSpinBox" name="gate_phase_wave7"/>
+              </item>
+              <item row="1" column="3">
+               <widget class="QLabel" name="gate_phase_label">
+                <property name="text">
+                 <string>Phase</string>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="4">
+               <widget class="QSpinBox" name="duty_wave3">
                 <property name="suffix">
                  <string>%</string>
                 </property>
@@ -4561,6 +4561,42 @@
                  <number>100</number>
                 </property>
                </widget>
+              </item>
+              <item row="11" column="3">
+               <widget class="QSpinBox" name="gate_phase_wave9"/>
+              </item>
+              <item row="5" column="2">
+               <widget class="QSpinBox" name="gate_period_wave3">
+                <property name="maximum">
+                 <number>1000000</number>
+                </property>
+               </widget>
+              </item>
+              <item row="7" column="3">
+               <widget class="QSpinBox" name="gate_phase_wave5"/>
+              </item>
+              <item row="4" column="1">
+               <widget class="QSpinBox" name="gate_pin_wave2"/>
+              </item>
+              <item row="6" column="3">
+               <widget class="QSpinBox" name="gate_phase_wave4"/>
+              </item>
+              <item row="7" column="5">
+               <widget class="QComboBox" name="gate_polarity_wave5">
+                <item>
+                 <property name="text">
+                  <string>Normal</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Reverse</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="7" column="1">
+               <widget class="QSpinBox" name="gate_pin_wave5"/>
               </item>
               <item row="5" column="5">
                <widget class="QComboBox" name="gate_polarity_wave3">
@@ -4576,8 +4612,19 @@
                 </item>
                </widget>
               </item>
-              <item row="4" column="3">
-               <widget class="QSpinBox" name="gate_phase_wave2"/>
+              <item row="7" column="0">
+               <widget class="QLabel" name="wave5_label">
+                <property name="text">
+                 <string>Wave 5</string>
+                </property>
+               </widget>
+              </item>
+              <item row="11" column="2">
+               <widget class="QSpinBox" name="gate_period_wave9">
+                <property name="maximum">
+                 <number>1000000</number>
+                </property>
+               </widget>
               </item>
               <item row="8" column="2">
                <widget class="QSpinBox" name="gate_period_wave6">
@@ -4586,49 +4633,24 @@
                 </property>
                </widget>
               </item>
-              <item row="5" column="2">
-               <widget class="QSpinBox" name="gate_period_wave3">
-                <property name="maximum">
-                 <number>1000000</number>
-                </property>
-               </widget>
-              </item>
-              <item row="10" column="0">
-               <widget class="QLabel" name="wave8_label">
+              <item row="1" column="5">
+               <widget class="QLabel" name="gate_polarity_label">
                 <property name="text">
-                 <string>Wave 8</string>
+                 <string>Polarity</string>
                 </property>
                </widget>
               </item>
-              <item row="8" column="5">
-               <widget class="QComboBox" name="gate_polarity_wave6">
-                <item>
-                 <property name="text">
-                  <string>Normal</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Reverse</string>
-                 </property>
-                </item>
-               </widget>
-              </item>
-              <item row="11" column="1">
-               <widget class="QSpinBox" name="gate_pin_wave9"/>
-              </item>
-              <item row="0" column="0" colspan="6">
-               <widget class="QLabel" name="gate_label">
-                <property name="font">
-                 <font>
-                  <bold>true</bold>
-                 </font>
-                </property>
+              <item row="1" column="1">
+               <widget class="QLabel" name="gate_pin_label">
                 <property name="text">
-                 <string>Gate Arduino</string>
+                 <string>Pin</string>
                 </property>
-                <property name="margin">
-                 <number>0</number>
+               </widget>
+              </item>
+              <item row="6" column="0">
+               <widget class="QLabel" name="wave4_label">
+                <property name="text">
+                 <string>Wave 4</string>
                 </property>
                </widget>
               </item>
@@ -4636,6 +4658,9 @@
             </item>
             <item>
              <spacer name="dio_spacer">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
               <property name="sizeHint" stdset="0">
                <size>
                 <width>20</width>

@@ -246,6 +246,32 @@
         "port": "/dev/arduinoPOS",
         "sketch": "/home/sbc/RunControl/dependencies/ArduinoSketches/position/"
       }
+    },
+    "niusb": {
+      "0.0": "state_cam1",
+      "0.1": "comm_cam1",
+      "0.2": "trigen-cam1",
+      "0.3": "state_cam2",
+      "0.4": "comm_cam2",
+      "0.5": "trigen_cam2",
+      "0.6": "state_cam3",
+      "0.7": "comm_cam3",
+      "1.0": "trigen_cam3",
+      "1.1": "trig",
+      "1.2": "latch",
+      "1.3": "reset",
+      "1.4": "trigff_rc",
+      "1.5": "trigff_p",
+      "1.6": "trigff_but",
+      "1.7": "",
+      "2.0": "trigff_cam1",
+      "2.1": "trigff_cam2",
+      "2.2": "trigff_cam3",
+      "2.3": "trigff_piezo",
+      "2.4": "trigff_ar",
+      "2.5": "trigff_cf4",
+      "2.6": "",
+      "2.7": ""
     }
   }
 }
