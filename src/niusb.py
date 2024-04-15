@@ -1,34 +1,37 @@
 from dependencies.NI_USB6501.ni_usb_6501 import *
 import logging
 from PySide6.QtCore import QTimer, QObject, QThread, Slot, Signal
+import numpy as np
+import os
 
 class NIUSB(QObject):
-    pin_definition = { # input / output from run control
-        "trig": "out", #trigger
-        "latch": "in", # trigger latch
-        "reset": "out", # trigger reset
-        "state_cam1": "in", # state confirmation from pi
-        "comm_cam1": "out", # state comm to pi
-        "trigen-cam1": "out", # trigger enable signal
-        "state_cam2": "in",
-        "comm_cam2": "out",
-        "trigen_cam2": "out",
-        "state_cam3": "in",
-        "comm_cam3": "out",
-        "trigen_cam3": "out",
-        "trigff_rc": "in", # trigger first fault, run control
-        "trigff_p": "in", # pressure
-        "trigff_but": "in", # external button
-        "trigff_cam1": "in", # camera video trigger
-        "trigff_cam2": "in",
-        "trigff_cam3": "in",
-        "trigff_piezo": "in", # piezo acoustic trigger
-        "trigff_ar": "in", # Kulite trigger for Ar
-        "trigff_cf4": "in", # kulite trigger for CF4
+    pin_definition = {  # input / output from run control
+        "trig": "output",  # trigger
+        "latch": "input",  # trigger latch
+        "reset": "output",  # trigger reset
+        "state_cam1": "input",  # state confirmation from pi
+        "comm_cam1": "output",  # state comm to pi
+        "trigen-cam1": "output",  # trigger enable signal
+        "state_cam2": "input",
+        "comm_cam2": "output",
+        "trigen_cam2": "output",
+        "state_cam3": "input",
+        "comm_cam3": "output",
+        "trigen_cam3": "output",
+        "trigff_rc": "input",  # trigger first fault, run control
+        "trigff_p": "input",  # pressure
+        "trigff_but": "input",  # external button
+        "trigff_cam1": "input",  # camera video trigger
+        "trigff_cam2": "input",
+        "trigff_cam3": "input",
+        "trigff_piezo": "input",  # piezo acoustic trigger
+        "trigff_ar": "input",  # Kulite trigger for Ar
+        "trigff_cf4": "input",  # kulite trigger for CF
+        "": "input",
         # and more ...
     }
 
-    event_started = Signal(str)
+    pins_set = Signal(str)
 
     def __init__(self, mainwindow):
         super().__init__()
@@ -75,13 +78,16 @@ class NIUSB(QObject):
                 self.reverse_config[self.config[k]] = (port, pin)
                 if self.pin_definition[self.config[k]] == "output":
                     io[port, pin] = 1
-            except:
+                else:
+                    io[port, pin] = 0  # check again to make sure port, pin in range
+            except IndexError:
                 self.logger.error(f"Pin {k} {self.config[k]} invalid.")
+                continue
         # convert an array of 1s and 0s to binary mask
         io_mask = [int("".join(str(bit) for bit in mask),2) for mask in io]
 
         self.dev.set_io_mode(*io_mask)
-        io_set.emit("nuisb")
+        self.pins_set.emit("nuisb")
 
     @Slot()
     def start_event(self):

@@ -189,7 +189,7 @@ class MainWindow(QMainWindow):
         time.sleep(0.001)
 
         self.niusb_worker = NIUSB(self)
-        self.niusb_worker.event_started.connect(self.starting_event_wait)
+        self.niusb_worker.pins_set.connect(self.starting_event_wait)
         self.niusb_thread = QThread()
         self.niusb_thread.setObjectName("niusb_thread")
         self.niusb_worker.moveToThread(self.niusb_thread)
