@@ -21,7 +21,7 @@
   },
   "scint": {
     "amp1": {
-      "enabled": true,
+      "enabled": false,
       "ip_addr": "192.168.137.21",
       "bias": 48.0,
       "qp": 70.0,

@@ -45,10 +45,12 @@ class Camera(QObject):
         host = self.config["ip_addr"]
 
         # ping with 1 packet, and 1s timeout
-        if not subprocess.call(f"ping -n 1 -w 1 {host}"):
+        command = ["ping", "-c", "1", "-W", "1", host]
+        if not subprocess.call(command):
             self.logger.debug(f"Camera {self.cam_name} connected.")
         else:
             self.logger.error(f"Camera {self.cam_name} at {host} not connected.")
+            raise ConnectionError
 
     def save_config(self):
         # skip camera if not enabled

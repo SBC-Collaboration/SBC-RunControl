@@ -1,4 +1,6 @@
 import os
+import glob
+import hashlib
 import logging
 from PySide6.QtCore import QTimer, QObject, QThread, Slot, Signal
 
@@ -44,8 +46,31 @@ class Arduino(QObject):
         port = self.config["port"]
         sketch_path = self.config["sketch"]
         build_path = os.path.join(sketch_path, "build")
+        if not os.path.exists(build_path):
+            os.mkdir(build_path)
+            checksum = 0
+        elif not (hex_files := glob.glob(os.path.join(build_path, "*.ino.hex"))):
+            # check if a .hex file exists in the build folder, without "bootloader" in the filename
+            checksum = 0
+            self.logger.debug(f"Binary file doesn't exist for {self.arduino} arduino.")
+        elif len(hex_files)==1:
+            # generate checksum for old binary file
+            with open(hex_files[0], "rb") as f:
+                checksum = hashlib.sha256(f.read())
+        else:
+            self.logger.error(f"More than one compiled binary files for {self.arduino} arduino.")
 
+        os.environ["PATH"] += os.pathsep + os.path.join(os.path.dirname(os.path.dirname(__file__)), "dependencies")
+        os.chdir(sketch_path)
         os.system(f"arduino-cli compile -b {fqbn} --build-path {build_path} {sketch_path}")
-        os.system(f"arduino-cli upload -p {port} -b {fqbn} --input-dir {build_path}")
-        self.logger.info(f"Sketch uploaded for {self.arduino} is completed.")
+        hex_files_new = glob.glob(os.path.join(build_path, "*.ino.hex"))
+        with open(hex_files_new[0], "rb") as f:
+            # comparing the new compiled binary file with old checksum
+            # if there is no difference, then skip uploading
+            checksum_new = hashlib.sha256(f.read())
+            if checksum.digest() == checksum_new.digest():
+                self.logger.info(f"Sketch for {self.arduino} arduino not changed. Skipping upload.")
+            else:
+                os.system(f"arduino-cli upload -p {port} -b {fqbn} --input-dir {build_path}")
+                self.logger.info(f"Sketch successfully uploaded for {self.arduino} arduino.")
 

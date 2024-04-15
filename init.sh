@@ -13,10 +13,14 @@ else
 fi
 conda activate runcontrol;
 
+# add dependencies folder to PATH
+export PATH=$PATH:$PWD/dependencies
+
 # install arduino packages
 echo "Setting up Arduino cli and libraries..."
 curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | BINDIR=./dependencies sh
-./dependencies/arduino-cli config init
-./dependencies/arduino-cli lib update-index
-./dependencies/arduino-cli lib upgrade
-./dependencies/arduino-cli lib install incbin ArduinoJson
+arduino-cli config init
+arduino-cli core install arduino:avr
+arduino-cli lib update-index
+arduino-cli lib upgrade
+arduino-cli lib install incbin ArduinoJson Ethernet

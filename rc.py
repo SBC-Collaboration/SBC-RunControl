@@ -193,7 +193,7 @@ class MainWindow(QMainWindow):
         self.niusb_thread.setObjectName("niusb_thread")
         self.niusb_worker.moveToThread(self.niusb_thread)
         self.niusb_thread.started.connect(self.niusb_worker.run)
-        self.signals.event_starting.connect(self.niusb_worker.start_event)
+        self.signals.run_starting.connect(self.niusb_worker.start_event)
         self.niusb_thread.start()
         time.sleep(0.001)
 
