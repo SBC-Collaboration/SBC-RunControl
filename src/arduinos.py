@@ -56,21 +56,21 @@ class Arduino(QObject):
         elif len(hex_files)==1:
             # generate checksum for old binary file
             with open(hex_files[0], "rb") as f:
-                checksum = hashlib.sha256(f.read())
+                checksum = hashlib.sha256(f.read()).digest()
         else:
             self.logger.error(f"More than one compiled binary files for {self.arduino} arduino.")
 
         os.environ["PATH"] += os.pathsep + os.path.join(os.path.dirname(os.path.dirname(__file__)), "dependencies")
-        os.chdir(sketch_path)
-        os.system(f"arduino-cli compile -b {fqbn} --build-path {build_path} {sketch_path}")
+        os.system(f"cd {sketch_path} && arduino-cli compile -b {fqbn} --build-path {build_path} {sketch_path}")
         hex_files_new = glob.glob(os.path.join(build_path, "*.ino.hex"))
         with open(hex_files_new[0], "rb") as f:
             # comparing the new compiled binary file with old checksum
             # if there is no difference, then skip uploading
-            checksum_new = hashlib.sha256(f.read())
-            if checksum.digest() == checksum_new.digest():
+            checksum_new = hashlib.sha256(f.read()).digest()
+            if checksum == checksum_new:
                 self.logger.info(f"Sketch for {self.arduino} arduino not changed. Skipping upload.")
             else:
                 os.system(f"arduino-cli upload -p {port} -b {fqbn} --input-dir {build_path}")
                 self.logger.info(f"Sketch successfully uploaded for {self.arduino} arduino.")
 
+        self.arduino_sketch_uploaded.emit(self.arduino)

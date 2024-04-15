@@ -313,10 +313,10 @@ class MainWindow(QMainWindow):
             ):
                 self.stop_event()
         elif self.run_state == self.run_states["starting_run"]:
-            if len(self.starting_run_ready) >= 1:
+            if len(self.starting_run_ready) >= 3:
                 self.start_event()
         elif self.run_state == self.run_states["starting_event"]:
-            if len(self.starting_event_ready) >= 1:
+            if len(self.starting_event_ready) >= 3:
                 self.update_state("active")
         elif self.run_state == self.run_states["stopping_event"]:
             if len(self.starting_event_ready) >= 1:
@@ -356,7 +356,6 @@ class MainWindow(QMainWindow):
     @Slot(str)
     def stopping_event_wait(self, dev):
         self.stopping_event_ready.append(dev)
-
 
     def create_run_directory(self):
         """

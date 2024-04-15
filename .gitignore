@@ -3,3 +3,4 @@
 __pycache__
 run-data
 dependencies/arduino-cli
+build/
