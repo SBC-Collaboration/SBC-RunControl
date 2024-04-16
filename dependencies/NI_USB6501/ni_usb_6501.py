@@ -124,6 +124,31 @@ class NiUsb6501:
 
         return response
 
+    def read_pin(self, port, pin):
+        """
+        Read one pin from a port. This does not make sure that the IO mode is correct
+        """
+        port_response = read_port(port)
+
+        # bit operation to get the bit at pin
+        return (port_response & (1<<pin)) >> pin
+
+    def write_pin(self, port, pin, bit):
+        """
+        Write one pin in a port. This should perserve all other output pins in the port
+        Bit will be interpereted as a boolean
+        """
+        port_response = read_port(port)
+
+        if bit:
+            mask = port_response | (1<<pin)
+        else:
+            mask = port_response & ~(1<<pin)
+
+        write_response = write_port(port, mask)
+
+        return (write_response & (1<<pin)) >> pin
+
     ##########################################################
     # TODO: COUNTERS ARE NOT YET IMPLEMENTED
     ##########################################################
