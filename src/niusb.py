@@ -5,6 +5,7 @@ import numpy as np
 import os
 import time
 
+
 class NIUSB(QObject):
     pin_definition = {  # input / output from run control
         "trig": "output",  # trigger
@@ -32,9 +33,23 @@ class NIUSB(QObject):
         # and more ...
     }
 
+    ff_dict = {  # dictionary for display name of first faults
+        "trigff_rc": "Run Control",  # trigger first fault, run control
+        "trigff_p": "Pressure",  # pressure
+        "trigff_but": "Ext Button",  # external button
+        "trigff_cam1": "Cam1",  # camera video trigger
+        "trigff_cam2": "Cam2",
+        "trigff_cam3": "Cam3",
+        "trigff_piezo": "Piezo",  # piezo acoustic trigger
+        "trigff_ar": "Kulite Ar",  # Kulite trigger for Ar
+        "trigff_cf4": "Kulite CF4",  # kulite trigger for CF
+    }
+
     run_started = Signal(str)
     event_started = Signal(str)
-    trigger_received = Signal()
+    trigger_detected = Signal()
+    event_stopped = Signal(str)
+    run_stopped = Signal(str)
 
     def __init__(self, mainwindow):
         super().__init__()
@@ -43,8 +58,9 @@ class NIUSB(QObject):
         self.logger = logging.getLogger("rc")
 
         self.timer = QTimer(self)
-        self.timer.setInterval(100)
+        self.timer.setInterval(10)
         self.timer.timeout.connect(self.periodic_task)
+        self.ff_pin = ""
 
     @Slot()
     def run(self):
@@ -53,19 +69,23 @@ class NIUSB(QObject):
 
     @Slot()
     def periodic_task(self):
-        pass
+        # when state is active and a trigger latch is detected, send out signal
+        if (self.main.run_state == self.main.run_states["active"] and
+                self.dev and
+                self.dev.read_pin(*self.reverse_config["latch"])):
+            self.trigger_detected.emit()
 
     @Slot()
     def check_niusb(self):
         try:
-            os.stat(self.config["dio"]["port"])
+            os.stat("/dev/niusb")
         except:
             self.logger.error(f"NIUSB not connected.")
-        self.logger.debug(f"Arduino connected")
+        self.logger.debug(f"NIUSB connected")
 
-    @Slot()
-    def send_trigger(self):
-
+    @Slot(str)
+    def send_trigger(self, source):
+        self.ff_pin = source
         self.dev.write_pin(*self.reverse_config["trig"], 1)
 
     @Slot()
@@ -96,6 +116,8 @@ class NIUSB(QObject):
 
     @Slot()
     def start_event(self):
+        # unset first faults
+        self.ff_pin = ""
         # lower trigger pin
         self.dev.write_pin(*self.reverse_config["trig"], 0)
         # send out trigger reset signal
@@ -109,5 +131,31 @@ class NIUSB(QObject):
 
     @Slot()
     def stop_event(self):
-        pass
+        # lower trigger pin
+        self.dev.write_pin(*self.reverse_config["trig"], 0)
+        # read FF pins
+        for k in [k for k in self.reverse_config.keys() if "trigff" in k]:
+            self.logger.debug(self.reverse_config[k])
+            self.logger.debug(self.dev.read_pin(*self.reverse_config[k]))
+            if self.dev.read_pin(*self.reverse_config[k]):
+                self.logger.debug(k)
+                # if no previous ff pin, set ff_pin to the pin name
+                if self.ff_pin == "":
+                    self.ff_pin = self.ff_dict[k]
+                # if already set by RC signal, then pass
+                elif self.ff_dict[k] == "Run Control" and self.ff_pin in ["Timeout", "Software"]:
+                    continue
+                # if more than one pin, report error
+                else:
+                    self.logger.warning(f"More than one first fault detected: {self.ff_pin} and {self.ff_dict[k]}")
+        if self.ff_pin == "":
+            self.logger.warning(f"No first fault pin detected.")
+        else:
+            self.logger.debug(f"First fault pin for the event is {self.ff_pin}")
+        self.event_stopped.emit("nuisb")
 
+    @Slot()
+    def stop_run(self):
+        self.dev.release_interface()
+        self.logger.debug("NIUSB device released")
+        self.run_stopped.emit("niusb")

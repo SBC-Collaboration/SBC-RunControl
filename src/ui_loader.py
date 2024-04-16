@@ -1,13 +1,11 @@
 import sys
 from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog
-from PySide6.QtCore import QFile, Qt, QIODevice
 import logging
 from enum import Enum
 import time
 from ui.settingswindow import Ui_SettingsWindow
 from ui.logwindow import Ui_LogWindow
-from src.config import *
-from src.workers import *
+from src.config import Config
 
 
 # Loads settings window

@@ -1,22 +1,22 @@
 from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog
-from PySide6.QtCore import QElapsedTimer, QTimer
-from PySide6.QtUiTools import QUiLoader
+from PySide6.QtCore import QObject, QThread, Signal, Slot, QElapsedTimer, QTimer, Qt
 from PySide6.QtGui import QPixmap
 from ui.mainwindow import Ui_MainWindow
-from src.config import *
-from src.workers import *
-from src.ui_loader import *
-from src.arduinos import *
-from src.cameras import *
-from src.sipm_amp import *
-from src.sql import *
-from src.niusb import *
-from src.writer import *
+from src.config import Config
+from src.ui_loader import SettingsWindow, LogWindow
+from src.arduinos import Arduino
+from src.cameras import Camera
+from src.sipm_amp import SiPMAmp
+from src.sql import SQL
+from src.niusb import NIUSB
+from src.writer import Writer
 import logging
 from enum import Enum
 import datetime
 import time
 import re
+import os
+import sys
 
 class MainSignals(QObject):
     # initialize signals
@@ -25,7 +25,7 @@ class MainSignals(QObject):
     run_stopping = Signal()
     event_starting = Signal()
     event_stopping = Signal()
-    send_trigger = Signal()
+    send_trigger = Signal(str)
     program_stopping = Signal()
 
 # Loads Main window
@@ -192,13 +192,17 @@ class MainWindow(QMainWindow):
         self.niusb_worker = NIUSB(self)
         self.niusb_worker.run_started.connect(self.starting_run_wait)
         self.niusb_worker.event_started.connect(self.starting_event_wait)
-        self.niusb_worker.trigger_received.connect(self.stop_event)
+        self.niusb_worker.event_stopped.connect(self.stopping_event_wait)
+        self.niusb_worker.run_stopped.connect(self.stopping_run_wait)
+        self.niusb_worker.trigger_detected.connect(self.stop_event)
         self.niusb_thread = QThread()
         self.niusb_thread.setObjectName("niusb_thread")
         self.niusb_worker.moveToThread(self.niusb_thread)
         self.niusb_thread.started.connect(self.niusb_worker.run)
         self.signals.run_starting.connect(self.niusb_worker.start_run)
         self.signals.event_starting.connect(self.niusb_worker.start_event)
+        self.signals.event_stopping.connect(self.niusb_worker.stop_event)
+        self.signals.run_stopping.connect(self.niusb_worker.stop_run)
         self.signals.send_trigger.connect(self.niusb_worker.send_trigger)
         self.niusb_thread.start()
         time.sleep(0.001)
@@ -317,7 +321,7 @@ class MainWindow(QMainWindow):
                 self.event_timer.elapsed()
                 > self.config_class.config["general"]["max_ev_time"] * 1000
             ):
-                self.stop_event()
+                self.signals.send_trigger.emit("Timeout")
         elif self.run_state == self.run_states["starting_run"]:
             print(self.starting_run_ready)
             if len(self.starting_run_ready) >= 3:
@@ -427,6 +431,7 @@ class MainWindow(QMainWindow):
         self.signals.run_stopping.emit()
 
     def start_event(self):
+        time.sleep(1)
         self.starting_event_ready = []
         self.update_state("starting_event")
         self.ev_livetime = 0
@@ -528,7 +533,7 @@ class MainWindow(QMainWindow):
             self.ui.stop_run_but.setEnabled(False)
 
     def sw_trigger(self):
-        self.signals.send_trigger.emit()
+        self.signals.send_trigger.emit("Software")
 
 
 if __name__ == "__main__":

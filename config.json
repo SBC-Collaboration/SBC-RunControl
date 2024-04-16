@@ -3,8 +3,8 @@
     "config_path": "./config.json",
     "log_path": "./logs/rc.log",
     "data_dir": "./run-data",
-    "max_ev_time": 2.0,
-    "max_num_evs": 5,
+    "max_ev_time": 1000.0,
+    "max_num_evs": 500,
     "sql": {
       "ssh_host": "sbcslowcontrol.fnal.gov",
       "ssh_port": 22,
@@ -267,10 +267,10 @@
       "2.0": "trigff_cam1",
       "2.1": "trigff_cam2",
       "2.2": "trigff_cam3",
-      "2.3": "trigff_piezo",
-      "2.4": "trigff_ar",
-      "2.5": "trigff_cf4",
-      "2.6": "",
+      "2.3": "",
+      "2.4": "trigff_piezo",
+      "2.5": "trigff_ar",
+      "2.6": "trigff_cf4",
       "2.7": ""
     }
   }
