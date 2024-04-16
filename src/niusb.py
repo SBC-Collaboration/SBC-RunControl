@@ -3,6 +3,7 @@ import logging
 from PySide6.QtCore import QTimer, QObject, QThread, Slot, Signal
 import numpy as np
 import os
+import time
 
 class NIUSB(QObject):
     pin_definition = {  # input / output from run control
@@ -31,9 +32,9 @@ class NIUSB(QObject):
         # and more ...
     }
 
-    pins_set = Signal(str)
+    run_started = Signal(str)
+    event_started = Signal(str)
     trigger_received = Signal()
-    pins_read = Signal(str)
 
     def __init__(self, mainwindow):
         super().__init__()
@@ -63,56 +64,48 @@ class NIUSB(QObject):
         self.logger.debug(f"Arduino connected")
 
     @Slot()
-    def set_io(self):
+    def send_trigger(self):
+
+        self.dev.write_pin(*self.reverse_config["trig"], 1)
+
+    @Slot()
+    def start_run(self):
+        # check serial connection and initialize object
         self.check_niusb()
         self.dev = get_adapter()
         if not self.dev:
             self.logger.error("NI USB device not found!")
 
+        # get config
         self.config = self.main.config_class.config["dio"]["niusb"]
         self.reverse_config = {}
-        io = np.zeros([3, 8], dtype=int)
+
         # use output/input table to get io mask
         # if undefined, set as input
         for k in self.config.keys():
             port, pin = [int(s) for s in k.split(".")]
             try:
                 self.reverse_config[self.config[k]] = (port, pin)
-                if self.pin_definition[self.config[k]] == "output":
-                    io[port, pin] = 1
-                else:
-                    io[port, pin] = 0  # check again to make sure port, pin in range
+                # set io of pin to 1 if output, else 0
+                self.dev.change_pin_io(port, pin, self.pin_definition[self.config[k]] == "output")
             except IndexError:
                 self.logger.error(f"Pin {k} {self.config[k]} invalid.")
                 continue
-        # convert an array of 1s and 0s to binary mask
-        io_mask = [int("".join(str(bit) for bit in mask), 2) for mask in io]
 
-        self.dev.set_io_mode(*io_mask)
-
-    @Slot()
-    def send_trigger(self):
-        self.set_io()
-
-        trig_port, trig_pin = self.reverse_config["trig"]
-        self.dev.write_port(trig_port, 1<<trig_pin)
+        self.run_started.emit("niusb")
 
     @Slot()
     def start_event(self):
-        self.set_io()
+        # lower trigger pin
+        self.dev.write_pin(*self.reverse_config["trig"], 0)
+        # send out trigger reset signal
+        self.dev.send_pulse(*self.reverse_config["reset"])
+        # wait until trigger latch is low
+        while self.dev.read_pin(*self.reverse_config["latch"]):
+            self.dev.write_pin(*self.reverse_config["trig"], 0)
+            self.dev.send_pulse(*self.reverse_config["reset"])
 
-        # send trig reset pin
-        reset_port, reset_pin = self.reverse_config["reset"]
-        latch_port, latch_pin = self.reverse_config["latch"]
-        print(self.dev.read_port(reset_port))
-        self.dev.write_port(reset_port, 1<<reset_pin)
-        print(self.dev.read_port(latch_port))
-        while (self.dev.read_port(latch_port) & (1<<latch_pin)):
-            # wait until trigger latch is low
-            time.sleep(0.001)
-        self.dev.write_port(reset_port, 0<<reset_pin)
-
-        self.pins_set.emit("nuisb")
+        self.event_started.emit("nuisb")
 
     @Slot()
     def stop_event(self):

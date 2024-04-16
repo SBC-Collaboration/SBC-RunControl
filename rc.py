@@ -190,13 +190,14 @@ class MainWindow(QMainWindow):
         time.sleep(0.001)
 
         self.niusb_worker = NIUSB(self)
-        self.niusb_worker.pins_set.connect(self.starting_event_wait)
+        self.niusb_worker.run_started.connect(self.starting_run_wait)
+        self.niusb_worker.event_started.connect(self.starting_event_wait)
         self.niusb_worker.trigger_received.connect(self.stop_event)
-        self.niusb_worker.pins_read.connect(self.stopping_event_wait)
         self.niusb_thread = QThread()
         self.niusb_thread.setObjectName("niusb_thread")
         self.niusb_worker.moveToThread(self.niusb_thread)
         self.niusb_thread.started.connect(self.niusb_worker.run)
+        self.signals.run_starting.connect(self.niusb_worker.start_run)
         self.signals.event_starting.connect(self.niusb_worker.start_event)
         self.signals.send_trigger.connect(self.niusb_worker.send_trigger)
         self.niusb_thread.start()
@@ -318,10 +319,11 @@ class MainWindow(QMainWindow):
             ):
                 self.stop_event()
         elif self.run_state == self.run_states["starting_run"]:
+            print(self.starting_run_ready)
             if len(self.starting_run_ready) >= 3:
                 self.start_event()
         elif self.run_state == self.run_states["starting_event"]:
-            if len(self.starting_event_ready) >= 3:
+            if len(self.starting_event_ready) >= 1:
                 self.update_state("active")
         elif self.run_state == self.run_states["stopping_event"]:
             if len(self.starting_event_ready) >= 1:

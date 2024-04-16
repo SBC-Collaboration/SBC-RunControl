@@ -75,6 +75,7 @@ class Arduino(QObject):
             with open(archives[0], "rb") as f:
                 if checksum == hashlib.sha256(f.read()).digest():
                     self.logger.info(f"Sketch for {self.arduino} arduino not changed. Skipping upload.")
+                    self.arduino_sketch_uploaded.emit(self.arduino)
                     return
 
         # if not the same, compile and upload

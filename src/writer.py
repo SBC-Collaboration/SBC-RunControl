@@ -4,7 +4,7 @@ import datetime
 import time as tm
 import random
 import logging
-from dependencies.SBCBinaryFormat.python.sbcbinaryformat.files import Writer
+from dependencies.SBCBinaryFormat.python.sbcbinaryformat.files import Writer as SBCWriter
 
 class Writer(QObject):
 
@@ -44,6 +44,7 @@ class Writer(QObject):
     def write_event_data(self):
         ev_number = [int(i) for i in self.main.run_id.split("_")]
         ev_number.append(self.main.event_id)
+        self.trigger_source = "cam1"
         self.event_data = {
             "event_id": ev_number,
             # list of date, run number, event number: [20240101, 0, 0]
@@ -53,7 +54,7 @@ class Writer(QObject):
                 self.trigger_source
             ],  # trigger source (dict)
         }
-        with Writer(
+        with SBCWriter(
                 os.path.join(
                     self.main.event_dir, f"{self.main.run_id}_{self.main.event_id}.sbc"
                 ),
