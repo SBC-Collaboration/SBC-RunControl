@@ -16,7 +16,6 @@ After the "Start Run" button is pressed, the program will enter this state. When
 - GUI: set run ID, event ID, event livetime, run livetime
 - Writer: create run folder. Save current config file. Create log file and add to logger. Initialize run_data variable.
 - SiPM amp: bias SiPMs
-- NIUSB: set input/output mask
 - Config: save current config to run folder.
 ### `stopping_run`
 This is the state then the run is stopping.
@@ -27,7 +26,7 @@ When the `starting_run` state ends, or then `stopping_event` state ends, and nei
 - GUI: set event ID and event livetime display.
 - Writer: Create folder for the event.
 - Camera: Send config file. Start `imdaq` script.
-- NIUSB: sends out `trig_reset` signal. Set outputs to camera.
+- NIUSB: set input/output pins. Sends out `trig_reset` signal. Set outputs to camera.
 - CAEN: save config file. Start data acquisition.
 - Acoustics: save config file. Start data acquisition.
 ### `stopping_event`

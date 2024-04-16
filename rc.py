@@ -25,6 +25,7 @@ class MainSignals(QObject):
     run_stopping = Signal()
     event_starting = Signal()
     event_stopping = Signal()
+    send_trigger = Signal()
     program_stopping = Signal()
 
 # Loads Main window
@@ -190,11 +191,14 @@ class MainWindow(QMainWindow):
 
         self.niusb_worker = NIUSB(self)
         self.niusb_worker.pins_set.connect(self.starting_event_wait)
+        self.niusb_worker.trigger_received.connect(self.stop_event)
+        self.niusb_worker.pins_read.connect(self.stopping_event_wait)
         self.niusb_thread = QThread()
         self.niusb_thread.setObjectName("niusb_thread")
         self.niusb_worker.moveToThread(self.niusb_thread)
         self.niusb_thread.started.connect(self.niusb_worker.run)
-        self.signals.run_starting.connect(self.niusb_worker.set_pins)
+        self.signals.event_starting.connect(self.niusb_worker.start_event)
+        self.signals.send_trigger.connect(self.niusb_worker.send_trigger)
         self.niusb_thread.start()
         time.sleep(0.001)
 
@@ -522,7 +526,7 @@ class MainWindow(QMainWindow):
             self.ui.stop_run_but.setEnabled(False)
 
     def sw_trigger(self):
-        time.sleep(1)
+        self.signals.send_trigger.emit()
 
 
 if __name__ == "__main__":

@@ -32,6 +32,8 @@ class NIUSB(QObject):
     }
 
     pins_set = Signal(str)
+    trigger_received = Signal()
+    pins_read = Signal(str)
 
     def __init__(self, mainwindow):
         super().__init__()
@@ -61,7 +63,7 @@ class NIUSB(QObject):
         self.logger.debug(f"Arduino connected")
 
     @Slot()
-    def set_pins(self):
+    def set_io(self):
         self.check_niusb()
         self.dev = get_adapter()
         if not self.dev:
@@ -69,7 +71,7 @@ class NIUSB(QObject):
 
         self.config = self.main.config_class.config["dio"]["niusb"]
         self.reverse_config = {}
-        io = np.zeros([3,8], dtype=int)
+        io = np.zeros([3, 8], dtype=int)
         # use output/input table to get io mask
         # if undefined, set as input
         for k in self.config.keys():
@@ -84,11 +86,35 @@ class NIUSB(QObject):
                 self.logger.error(f"Pin {k} {self.config[k]} invalid.")
                 continue
         # convert an array of 1s and 0s to binary mask
-        io_mask = [int("".join(str(bit) for bit in mask),2) for mask in io]
+        io_mask = [int("".join(str(bit) for bit in mask), 2) for mask in io]
 
         self.dev.set_io_mode(*io_mask)
-        self.pins_set.emit("nuisb")
+
+    @Slot()
+    def send_trigger(self):
+        self.set_io()
+
+        trig_port, trig_pin = self.reverse_config["trig"]
+        self.dev.write_port(trig_port, 1<<trig_pin)
 
     @Slot()
     def start_event(self):
+        self.set_io()
+
+        # send trig reset pin
+        reset_port, reset_pin = self.reverse_config["reset"]
+        latch_port, latch_pin = self.reverse_config["latch"]
+        print(self.dev.read_port(reset_port))
+        self.dev.write_port(reset_port, 1<<reset_pin)
+        print(self.dev.read_port(latch_port))
+        while (self.dev.read_port(latch_port) & (1<<latch_pin)):
+            # wait until trigger latch is low
+            time.sleep(0.001)
+        self.dev.write_port(reset_port, 0<<reset_pin)
+
+        self.pins_set.emit("nuisb")
+
+    @Slot()
+    def stop_event(self):
         pass
+
