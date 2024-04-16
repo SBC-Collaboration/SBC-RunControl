@@ -68,6 +68,7 @@ class NiUsb6501:
         cfg = self.device.get_active_configuration()
         print(cfg)
         self.interface_number = cfg[(0, 0)].bInterfaceNumber
+        self.io_mask = [0, 0, 0]  # All pins initialize to inputs
 
         if self.device.is_kernel_driver_active(self.interface_number):
             self.device.detach_kernel_driver(self.interface_number)
@@ -88,8 +89,25 @@ class NiUsb6501:
         buf[6] = port0
         buf[7] = port1
         buf[8] = port2
+        self.io_mask = [port0, port1, port2]
 
         return self.send_request(0x12, buf)
+
+    def change_port_io(self, port, mode_mask):
+        """
+        Set IO mode of one port. mode_mask is an 8 bit integer
+        """
+        self.io_mask[port] = mode_mask
+        self.set_io_mode(*self.io_mask)
+
+    def change_pin_io(self, port, pin, mode):
+        """
+        Set the IO mode of one pin. If self.set_io_mode not called, the default for all pins is low
+        Mode parameter is treated as a boolean
+        """
+        port_mask = self.io_mask[port]
+        port_mask = port_mask | (1 << pin) if mode else port_mask & ~(1 << pin)
+        self.change_port_io(port, port_mask)
 
     def read_port(self, port):
         """
@@ -128,26 +146,30 @@ class NiUsb6501:
         """
         Read one pin from a port. This does not make sure that the IO mode is correct
         """
-        port_response = read_port(port)
+        port_response = self.read_port(port)
 
         # bit operation to get the bit at pin
-        return (port_response & (1<<pin)) >> pin
+        return (port_response & (1 << pin)) >> pin
 
     def write_pin(self, port, pin, bit):
         """
         Write one pin in a port. This should perserve all other output pins in the port
         Bit will be interpereted as a boolean
         """
-        port_response = read_port(port)
 
-        if bit:
-            mask = port_response | (1<<pin)
-        else:
-            mask = port_response & ~(1<<pin)
+        write_mask = self.read_port(port)
+        # update write_mask with bit
+        write_mask = write_mask | (1 << pin) if bit else write_mask & ~(1 << pin)
+        write_response = int.from_bytes(self.write_port(port, write_mask))
 
-        write_response = write_port(port, mask)
+        return (write_response & (1 << pin)) >> pin
 
-        return (write_response & (1<<pin)) >> pin
+    def send_pulse(self, port, pin):
+        """
+        Write high to the pin then immediately write low.
+        """
+        self.write_pin(port, pin, 1)
+        self.write_pin(port, pin, 0)
 
     ##########################################################
     # TODO: COUNTERS ARE NOT YET IMPLEMENTED
