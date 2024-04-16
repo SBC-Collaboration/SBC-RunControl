@@ -5,3 +5,5 @@ run-data
 dependencies/arduino-cli
 build/
 playground/
+ui/*.py
+resources_rc.py

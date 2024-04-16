@@ -13,6 +13,14 @@ else
 fi
 conda activate runcontrol;
 
+# generate all ui and resources files
+echo "Generating Qt UI and resources files."
+for f in ./ui/*.ui; do
+  name="${f%%.ui}";
+  pyside6-uic $f -o "$name.py";
+done
+pyside6-rcc ./resources/resources.qrc -o ./resources_rc.py
+
 # add dependencies folder to PATH
 export PATH=$PATH:$PWD/dependencies
 
