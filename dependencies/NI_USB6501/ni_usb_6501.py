@@ -79,12 +79,21 @@ class NiUsb6501:
         # due to "Resource busy"
         usb.util.dispose_resources(self.device)
 
-    def set_io_mode(self, port0, port1, port2):
+    def set_io_mode(self, port0=None, port1=None, port2=None):
         """
         Set mode for every IO pin. PIN modes are given in three groups (bitmasks represented by integers)
         bit = 0: read
         bit = 1: write
         """
+        # check if mask is a valid 8 bit number
+        self.check_valid_mask(port0)
+        self.check_valid_mask(port1)
+        self.check_valid_mask(port2)
+        # if no arguments, use saved io mask
+        port0 = self.io_mask[0] if port0 is None else port0
+        port1 = self.io_mask[1] if port1 is None else port1
+        port2 = self.io_mask[2] if port2 is None else port2
+
         buf = bytearray(b"\x02\x10\x00\x00\x00\x05\x00\x00\x00\x00\x05\x00\x00\x00\x00\x00")
         buf[6] = port0
         buf[7] = port1
@@ -97,6 +106,8 @@ class NiUsb6501:
         """
         Set IO mode of one port. mode_mask is an 8 bit integer
         """
+        self.check_valid_port_pin(port)
+        self.check_valid_mask(mode_mask)
         self.io_mask[port] = mode_mask
         self.set_io_mode(*self.io_mask)
 
@@ -105,6 +116,7 @@ class NiUsb6501:
         Set the IO mode of one pin. If self.set_io_mode not called, the default for all pins is low
         Mode parameter is treated as a boolean
         """
+        self.check_valid_port_pin(port, pin)
         port_mask = self.io_mask[port]
         port_mask = port_mask | (1 << pin) if mode else port_mask & ~(1 << pin)
         self.change_port_io(port, port_mask)
@@ -114,6 +126,7 @@ class NiUsb6501:
         Read the value from all read-mode pins from one of the 8 PIN ports
         port is 0, 1 or 2
         """
+        self.check_valid_port_pin(port)
         buf = bytearray(b"\x02\x10\x00\x00\x00\x03\x00\x00")
         buf[6] = port
 
@@ -131,6 +144,8 @@ class NiUsb6501:
         port is 0, 1 or 2
         value is 8 bits represented by integer
         """
+        self.check_valid_port_pin(port)
+        self.check_valid_mask(value)
         buf = bytearray(b"\x02\x10\x00\x00\x00\x03\x00\x00\x03\x00\x00\x00")
         buf[6] = port
         buf[9] = value
@@ -146,6 +161,7 @@ class NiUsb6501:
         """
         Read one pin from a port. This does not make sure that the IO mode is correct
         """
+        self.check_valid_port_pin(port, pin)
         port_response = self.read_port(port)
 
         # bit operation to get the bit at pin
@@ -156,7 +172,7 @@ class NiUsb6501:
         Write one pin in a port. This should perserve all other output pins in the port
         Bit will be interpereted as a boolean
         """
-
+        self.check_valid_port_pin(port, pin)
         write_mask = self.read_port(port)
         # update write_mask with bit
         write_mask = write_mask | (1 << pin) if bit else write_mask & ~(1 << pin)
@@ -209,6 +225,7 @@ class NiUsb6501:
 
         return ret[self.HEADER_PACKET:]
 
+
     def packet_matches(self, actual, expected, mask):
         if len(actual) != len(expected):
             print(actual.hex(" "))
@@ -223,7 +240,20 @@ class NiUsb6501:
                 expected: %s
                 mask:     %s
                 """ % (repr(actual), repr(expected), repr(mask)))
-    
+
+
+    def check_valid_port_pin(self, port=None, pin=None):
+        if port is not None and port not in range(3):
+            raise IndexError("Port number is not valid!")
+        if pin is not None and port not in range(8):
+            raise IndexError("Pin number is not valid!")
+
+
+    def check_valid_mask(self, mask):
+        if mask is not None and mask not in range(256):
+            raise ValueError("Mask is not valid!")
+
+
     def release_interface(self):
         """
         Free all resources, then the device can be used once again
