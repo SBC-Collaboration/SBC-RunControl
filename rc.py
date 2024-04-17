@@ -450,6 +450,7 @@ class MainWindow(QMainWindow):
         self.signals.event_stopping.emit()
         self.stopping_event_ready = []
         self.update_state("stopping_event")
+        self.run_livetime += self.event_timer.elapsed()
 
         # check if stopping run now or start new event
         self.event_id += 1

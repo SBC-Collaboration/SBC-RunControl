@@ -135,8 +135,6 @@ class NIUSB(QObject):
         self.dev.write_pin(*self.reverse_config["trig"], 0)
         # read FF pins
         for k in [k for k in self.reverse_config.keys() if "trigff" in k]:
-            self.logger.debug(self.reverse_config[k])
-            self.logger.debug(self.dev.read_pin(*self.reverse_config[k]))
             if self.dev.read_pin(*self.reverse_config[k]):
                 self.logger.debug(k)
                 # if no previous ff pin, set ff_pin to the pin name
