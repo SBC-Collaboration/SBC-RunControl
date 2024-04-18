@@ -386,7 +386,7 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
            <number>1</number>
           </property>
           <property name="text">
-           <string>Trigger</string>
+           <string>Last Trigger</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -495,8 +495,8 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>472</width>
-               <height>139</height>
+               <width>855</width>
+               <height>675</height>
               </rect>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_8">
@@ -778,8 +778,8 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>361</width>
-               <height>111</height>
+               <width>855</width>
+               <height>675</height>
               </rect>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_2">

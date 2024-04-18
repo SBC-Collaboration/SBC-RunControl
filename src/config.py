@@ -21,6 +21,8 @@ class Config:
             self.config = json.load(file)
 
     def load_config_to_window(self, ui):
+        widgets = ui.__dict__
+
         general_config = self.config["general"]
         ui.config_path_edit.setText(general_config["config_path"])
         ui.log_path_edit.setText(general_config["log_path"])
@@ -81,104 +83,56 @@ class Config:
         caen_g0_config = self.config["scint"]["caen_g0"]
         ui.caen_g0_enable_box.setChecked(caen_g0_config["enabled"])
         ui.caen_g0_thres_box.setValue(caen_g0_config["threshold"])
-        ui.caen_g0_trig_mask_0.setChecked(caen_g0_config["trig_mask"][0])
-        ui.caen_g0_trig_mask_1.setChecked(caen_g0_config["trig_mask"][1])
-        ui.caen_g0_trig_mask_2.setChecked(caen_g0_config["trig_mask"][2])
-        ui.caen_g0_trig_mask_3.setChecked(caen_g0_config["trig_mask"][3])
-        ui.caen_g0_trig_mask_4.setChecked(caen_g0_config["trig_mask"][4])
-        ui.caen_g0_trig_mask_5.setChecked(caen_g0_config["trig_mask"][5])
-        ui.caen_g0_trig_mask_6.setChecked(caen_g0_config["trig_mask"][6])
-        ui.caen_g0_trig_mask_7.setChecked(caen_g0_config["trig_mask"][7])
-        ui.caen_g0_acq_mask_0.setChecked(caen_g0_config["acq_mask"][0])
-        ui.caen_g0_acq_mask_1.setChecked(caen_g0_config["acq_mask"][1])
-        ui.caen_g0_acq_mask_2.setChecked(caen_g0_config["acq_mask"][2])
-        ui.caen_g0_acq_mask_3.setChecked(caen_g0_config["acq_mask"][3])
-        ui.caen_g0_acq_mask_4.setChecked(caen_g0_config["acq_mask"][4])
-        ui.caen_g0_acq_mask_5.setChecked(caen_g0_config["acq_mask"][5])
-        ui.caen_g0_acq_mask_6.setChecked(caen_g0_config["acq_mask"][6])
-        ui.caen_g0_acq_mask_7.setChecked(caen_g0_config["acq_mask"][7])
-        ui.caen_g0_offset_0.setValue(caen_g0_config["offsets"][0])
-        ui.caen_g0_offset_1.setValue(caen_g0_config["offsets"][1])
-        ui.caen_g0_offset_2.setValue(caen_g0_config["offsets"][2])
-        ui.caen_g0_offset_3.setValue(caen_g0_config["offsets"][3])
-        ui.caen_g0_offset_4.setValue(caen_g0_config["offsets"][4])
-        ui.caen_g0_offset_5.setValue(caen_g0_config["offsets"][5])
-        ui.caen_g0_offset_6.setValue(caen_g0_config["offsets"][6])
-        ui.caen_g0_offset_7.setValue(caen_g0_config["offsets"][7])
+        for ch in range(8):
+            widgets[f"caen_g0_trig_mask_{ch}"].setChecked(caen_g0_config["trig_mask"][ch])
+            widgets[f"caen_g0_acq_mask_{ch}"].setChecked(caen_g0_config["acq_mask"][ch])
+            widgets[f"caen_g0_offset_{ch}"].setValue(caen_g0_config["offsets"][ch])
 
         acous_config = self.config["acous"]
 
         cam_config = self.config["cam"]
-        cam1_config = cam_config["cam1"]
-        ui.cam1_enabled_box.setChecked(cam1_config["enabled"])
-        ui.cam1_rc_config_path.setText(cam1_config["rc_config_path"])
-        ui.cam1_config_path.setText(cam1_config["config_path"])
-        ui.cam1_data_path.setText(cam1_config["data_path"])
-        ui.cam1_ip_addr.setText(cam1_config["ip_addr"])
-        ui.cam1_mode.setValue(cam1_config["mode"])
-        ui.cam1_trig_wait.setValue(cam1_config["trig_wait"])
-        ui.cam1_exposure.setValue(cam1_config["exposure"])
-        ui.cam1_buffer_len.setValue(cam1_config["buffer_len"])
-        ui.cam1_post_trig_len.setValue(cam1_config["post_trig"])
-        ui.cam1_adc_threshold.setValue(cam1_config["adc_threshold"])
-        ui.cam1_pix_threshold.setValue(cam1_config["pix_threshold"])
-        ui.cam1_image_format.setCurrentText(cam1_config["image_format"])
-        ui.cam1_date_format.setText(cam1_config["date_format"])
-        ui.cam1_state_comm_pin.setValue(cam1_config["state_comm_pin"])
-        ui.cam1_trig_enbl_pin.setValue(cam1_config["trig_en_pin"])
-        ui.cam1_trig_latch_pin.setValue(cam1_config["trig_latch_pin"])
-        ui.cam1_state_pin.setValue(cam1_config["state_pin"])
-        ui.cam1_trig_pin.setValue(cam1_config["trig_pin"])
-
-        cam2_config = cam_config["cam2"]
-        ui.cam2_enabled_box.setChecked(cam2_config["enabled"])
-        ui.cam2_rc_config_path.setText(cam2_config["rc_config_path"])
-        ui.cam2_config_path.setText(cam2_config["config_path"])
-        ui.cam2_data_path.setText(cam2_config["data_path"])
-        ui.cam2_ip_addr.setText(cam2_config["ip_addr"])
-        ui.cam2_mode.setValue(cam2_config["mode"])
-        ui.cam2_trig_wait.setValue(cam2_config["trig_wait"])
-        ui.cam2_exposure.setValue(cam2_config["exposure"])
-        ui.cam2_buffer_len.setValue(cam2_config["buffer_len"])
-        ui.cam2_post_trig_len.setValue(cam2_config["post_trig"])
-        ui.cam2_adc_threshold.setValue(cam2_config["adc_threshold"])
-        ui.cam2_pix_threshold.setValue(cam2_config["pix_threshold"])
-        ui.cam2_image_format.setCurrentText(cam2_config["image_format"])
-        ui.cam2_date_format.setText(cam2_config["date_format"])
-        ui.cam2_state_comm_pin.setValue(cam2_config["state_comm_pin"])
-        ui.cam2_trig_enbl_pin.setValue(cam2_config["trig_en_pin"])
-        ui.cam2_trig_latch_pin.setValue(cam2_config["trig_latch_pin"])
-        ui.cam2_state_pin.setValue(cam2_config["state_pin"])
-        ui.cam2_trig_pin.setValue(cam2_config["trig_pin"])
-
-        cam3_config = cam_config["cam3"]
-        ui.cam3_enabled_box.setChecked(cam3_config["enabled"])
-        ui.cam3_rc_config_path.setText(cam3_config["rc_config_path"])
-        ui.cam3_config_path.setText(cam3_config["config_path"])
-        ui.cam3_data_path.setText(cam3_config["data_path"])
-        ui.cam3_ip_addr.setText(cam3_config["ip_addr"])
-        ui.cam3_mode.setValue(cam3_config["mode"])
-        ui.cam3_trig_wait.setValue(cam3_config["trig_wait"])
-        ui.cam3_exposure.setValue(cam3_config["exposure"])
-        ui.cam3_buffer_len.setValue(cam3_config["buffer_len"])
-        ui.cam3_post_trig_len.setValue(cam3_config["post_trig"])
-        ui.cam3_adc_threshold.setValue(cam3_config["adc_threshold"])
-        ui.cam3_pix_threshold.setValue(cam3_config["pix_threshold"])
-        ui.cam3_image_format.setCurrentText(cam3_config["image_format"])
-        ui.cam3_date_format.setText(cam3_config["date_format"])
-        ui.cam3_state_comm_pin.setValue(cam3_config["state_comm_pin"])
-        ui.cam3_trig_enbl_pin.setValue(cam3_config["trig_en_pin"])
-        ui.cam3_trig_latch_pin.setValue(cam3_config["trig_latch_pin"])
-        ui.cam3_state_pin.setValue(cam3_config["state_pin"])
-        ui.cam3_trig_pin.setValue(cam3_config["trig_pin"])
+        for cam in ["cam1", "cam2", "cam3"]:
+            config = cam_config[cam]
+            widgets[f"{cam}_enabled_box"].setChecked(config["enabled"])
+            widgets[f"{cam}_rc_config_path"].setText(config["rc_config_path"])
+            widgets[f"{cam}_config_path"].setText(config["config_path"])
+            widgets[f"{cam}_data_path"].setText(config["data_path"])
+            widgets[f"{cam}_ip_addr"].setText(config["ip_addr"])
+            widgets[f"{cam}_mode"].setValue(config["mode"])
+            widgets[f"{cam}_trig_wait"].setValue(config["trig_wait"])
+            widgets[f"{cam}_exposure"].setValue(config["exposure"])
+            widgets[f"{cam}_buffer_len"].setValue(config["buffer_len"])
+            widgets[f"{cam}_post_trig_len"].setValue(config["post_trig"])
+            widgets[f"{cam}_adc_threshold"].setValue(config["adc_threshold"])
+            widgets[f"{cam}_pix_threshold"].setValue(config["pix_threshold"])
+            widgets[f"{cam}_image_format"].setCurrentText(config["image_format"])
+            widgets[f"{cam}_date_format"].setText(config["date_format"])
+            widgets[f"{cam}_state_comm_pin"].setValue(config["state_comm_pin"])
+            widgets[f"{cam}_trig_enbl_pin"].setValue(config["trig_en_pin"])
+            widgets[f"{cam}_trig_latch_pin"].setValue(config["trig_latch_pin"])
+            widgets[f"{cam}_state_pin"].setValue(config["state_pin"])
+            widgets[f"{cam}_trig_pin"].setValue(config["trig_pin"])
 
         arduinos_config = self.config["dio"]["arduinos"]
-        ui.trigger_port_edit.setText(arduinos_config["trigger"]["port"])
-        ui.trigger_sketch_edit.setText(arduinos_config["trigger"]["sketch"])
-        ui.clock_port_edit.setText(arduinos_config["clock"]["port"])
-        ui.clock_sketch_edit.setText(arduinos_config["clock"]["sketch"])
-        ui.position_port_edit.setText(arduinos_config["position"]["port"])
-        ui.position_sketch_edit.setText(arduinos_config["position"]["sketch"])
+        trigger_config = arduinos_config["trigger"]
+        ui.trigger_port_edit.setText(trigger_config["port"])
+        ui.trigger_sketch_edit.setText(trigger_config["sketch"])
+
+        clock_config = arduinos_config["clock"]
+        ui.clock_port_edit.setText(clock_config["port"])
+        ui.clock_sketch_edit.setText(clock_config["sketch"])
+        for w in [f"wave{i}" for i in range(1,17)]:
+            config = clock_config[w]
+            widgets[f"{w}_enabled"].setChecked(config["enabled"])
+            widgets[f"clock_name_{w}"].setText(config["name"])
+            widgets[f"clock_period_{w}"].setValue(config["period"])
+            widgets[f"clock_phase_{w}"].setValue(config["phase"])
+            widgets[f"clock_duty_{w}"].setValue(config["duty"])
+            widgets[f"clock_polarity_{w}"].setCurrentText("Normal" if config["polarity"] else "Reverse")
+
+        position_config = arduinos_config["position"]
+        ui.position_port_edit.setText(position_config["port"])
+        ui.position_sketch_edit.setText(position_config["sketch"])
 
         niusb_config = self.config["dio"]["niusb"]
         for port in range(3):
@@ -193,6 +147,8 @@ class Config:
         # TODO: implement loading and saving for more settings components
 
     def apply_config(self, ui):
+        widgets = ui.__dict__
+
         # apply general config
         sql_config = {
             "ssh_host": ui.sql_ssh_host_edit.text(),
@@ -260,36 +216,9 @@ class Config:
         caen_g0_config = {
             "enabled": ui.caen_g0_enable_box.isChecked(),
             "threshold": ui.caen_g0_thres_box.value(),
-            "trig_mask": [
-                ui.caen_g0_trig_mask_0.isChecked(),
-                ui.caen_g0_trig_mask_1.isChecked(),
-                ui.caen_g0_trig_mask_2.isChecked(),
-                ui.caen_g0_trig_mask_3.isChecked(),
-                ui.caen_g0_trig_mask_4.isChecked(),
-                ui.caen_g0_trig_mask_5.isChecked(),
-                ui.caen_g0_trig_mask_6.isChecked(),
-                ui.caen_g0_trig_mask_7.isChecked(),
-            ],
-            "acq_mask": [
-                ui.caen_g0_acq_mask_0.isChecked(),
-                ui.caen_g0_acq_mask_1.isChecked(),
-                ui.caen_g0_acq_mask_2.isChecked(),
-                ui.caen_g0_acq_mask_3.isChecked(),
-                ui.caen_g0_acq_mask_4.isChecked(),
-                ui.caen_g0_acq_mask_5.isChecked(),
-                ui.caen_g0_acq_mask_6.isChecked(),
-                ui.caen_g0_acq_mask_7.isChecked(),
-            ],
-            "offsets": [
-                ui.caen_g0_offset_0.value(),
-                ui.caen_g0_offset_1.value(),
-                ui.caen_g0_offset_2.value(),
-                ui.caen_g0_offset_3.value(),
-                ui.caen_g0_offset_4.value(),
-                ui.caen_g0_offset_5.value(),
-                ui.caen_g0_offset_6.value(),
-                ui.caen_g0_offset_7.value(),
-            ],
+            "trig_mask": [widgets[f"caen_g0_trig_mask_{ch}"].isChecked() for ch in range(8)],
+            "acq_mask": [widgets[f"caen_g0_acq_mask_{ch}"].isChecked() for ch in range(8)],
+            "offsets": [widgets[f"caen_g0_offset_{ch}"].value() for ch in range(8)],
         }
 
         acous_general_config = {
@@ -367,81 +296,50 @@ class Config:
             },
         }
 
-        cam_config = {
-            "cam1": {
-                "enabled": ui.cam1_enabled_box.isChecked(),
-                "rc_config_path": ui.cam1_rc_config_path.text(),
-                "config_path": ui.cam1_config_path.text(),
-                "data_path": ui.cam1_data_path.text(),
-                "ip_addr": ui.cam1_ip_addr.text(),
-                "mode": ui.cam1_mode.value(),
-                "trig_wait": ui.cam1_trig_wait.value(),
-                "exposure": ui.cam1_exposure.value(),
-                "buffer_len": ui.cam1_buffer_len.value(),
-                "post_trig": ui.cam1_post_trig_len.value(),
-                "adc_threshold": ui.cam1_adc_threshold.value(),
-                "pix_threshold": ui.cam1_pix_threshold.value(),
-                "image_format": ui.cam1_image_format.currentText(),
-                "date_format": ui.cam1_date_format.text(),
-                "state_comm_pin": ui.cam1_state_comm_pin.value(),
-                "trig_en_pin": ui.cam1_trig_enbl_pin.value(),
-                "trig_latch_pin": ui.cam1_trig_latch_pin.value(),
-                "state_pin": ui.cam1_state_pin.value(),
-                "trig_pin": ui.cam1_trig_pin.value(),
-            },
-            "cam2": {
-                "enabled": ui.cam2_enabled_box.isChecked(),
-                "rc_config_path": ui.cam2_rc_config_path.text(),
-                "config_path": ui.cam2_config_path.text(),
-                "data_path": ui.cam2_data_path.text(),
-                "ip_addr": ui.cam2_ip_addr.text(),
-                "mode": ui.cam2_mode.value(),
-                "trig_wait": ui.cam2_trig_wait.value(),
-                "exposure": ui.cam2_exposure.value(),
-                "buffer_len": ui.cam2_buffer_len.value(),
-                "post_trig": ui.cam2_post_trig_len.value(),
-                "adc_threshold": ui.cam2_adc_threshold.value(),
-                "pix_threshold": ui.cam2_pix_threshold.value(),
-                "image_format": ui.cam2_image_format.currentText(),
-                "date_format": ui.cam2_date_format.text(),
-                "state_comm_pin": ui.cam2_state_comm_pin.value(),
-                "trig_en_pin": ui.cam2_trig_enbl_pin.value(),
-                "trig_latch_pin": ui.cam2_trig_latch_pin.value(),
-                "state_pin": ui.cam2_state_pin.value(),
-                "trig_pin": ui.cam2_trig_pin.value(),
-            },
-            "cam3": {
-                "enabled": ui.cam3_enabled_box.isChecked(),
-                "rc_config_path": ui.cam3_rc_config_path.text(),
-                "config_path": ui.cam3_config_path.text(),
-                "data_path": ui.cam3_data_path.text(),
-                "ip_addr": ui.cam3_ip_addr.text(),
-                "mode": ui.cam3_mode.value(),
-                "trig_wait": ui.cam3_trig_wait.value(),
-                "exposure": ui.cam3_exposure.value(),
-                "buffer_len": ui.cam3_buffer_len.value(),
-                "post_trig": ui.cam3_post_trig_len.value(),
-                "adc_threshold": ui.cam3_adc_threshold.value(),
-                "pix_threshold": ui.cam3_pix_threshold.value(),
-                "image_format": ui.cam3_image_format.currentText(),
-                "date_format": ui.cam3_date_format.text(),
-                "state_comm_pin": ui.cam3_state_comm_pin.value(),
-                "trig_en_pin": ui.cam3_trig_enbl_pin.value(),
-                "trig_latch_pin": ui.cam3_trig_latch_pin.value(),
-                "state_pin": ui.cam3_state_pin.value(),
-                "trig_pin": ui.cam3_trig_pin.value(),
-            },
+        cam_config = {}
+        for cam in ["cam1", "cam2", "cam3"]:
+            cam_config[f"{cam}"] = {
+                "enabled": widgets[f"{cam}_enabled_box"].isChecked(),
+                "rc_config_path": widgets[f"{cam}_rc_config_path"].text(),
+                "config_path": widgets[f"{cam}_config_path"].text(),
+                "data_path": widgets[f"{cam}_data_path"].text(),
+                "ip_addr": widgets[f"{cam}_ip_addr"].text(),
+                "mode": widgets[f"{cam}_mode"].value(),
+                "trig_wait": widgets[f"{cam}_trig_wait"].value(),
+                "exposure": widgets[f"{cam}_exposure"].value(),
+                "buffer_len": widgets[f"{cam}_buffer_len"].value(),
+                "post_trig": widgets[f"{cam}_post_trig_len"].value(),
+                "adc_threshold": widgets[f"{cam}_adc_threshold"].value(),
+                "pix_threshold": widgets[f"{cam}_pix_threshold"].value(),
+                "image_format": widgets[f"{cam}_image_format"].currentText(),
+                "date_format": widgets[f"{cam}_date_format"].text(),
+                "state_comm_pin": widgets[f"{cam}_state_comm_pin"].value(),
+                "trig_en_pin": widgets[f"{cam}_trig_enbl_pin"].value(),
+                "trig_latch_pin": widgets[f"{cam}_trig_latch_pin"].value(),
+                "state_pin": widgets[f"{cam}_state_pin"].value(),
+                "trig_pin": widgets[f"{cam}_trig_pin"].value(),
+            }
+
+        clock_config = {
+            "port": ui.clock_port_edit.text(),
+            "sketch": ui.clock_sketch_edit.text(),
         }
+        for w in [f"wave{i}" for i in range(1,17)]:
+            clock_config[w] = {
+                "enabled": widgets[f"{w}_enabled"].isChecked(),
+                "name": widgets[f"clock_name_{w}"].text(),
+                "period": widgets[f"clock_period_{w}"].value(),
+                "phase": widgets[f"clock_phase_{w}"].value(),
+                "duty": widgets[f"clock_duty_{w}"].value(),
+                "polarity": widgets[f"clock_polarity_{w}"].currentText() == "Normal"
+            }
 
         arduinos_config = {
             "trigger": {
                 "port": ui.trigger_port_edit.text(),
                 "sketch": ui.trigger_sketch_edit.text(),
             },
-            "clock": {
-                "port": ui.clock_port_edit.text(),
-                "sketch": ui.clock_sketch_edit.text(),
-            },
+            "clock": clock_config,
             "position": {
                 "port": ui.position_port_edit.text(),
                 "sketch": ui.position_sketch_edit.text(),

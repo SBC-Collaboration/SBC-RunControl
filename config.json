@@ -3,7 +3,7 @@
     "config_path": "./config.json",
     "log_path": "./logs/rc.log",
     "data_dir": "./run-data",
-    "max_ev_time": 1000.0,
+    "max_ev_time": 10.0,
     "max_num_evs": 500,
     "sql": {
       "ssh_host": "sbcslowcontrol.fnal.gov",
@@ -240,7 +240,135 @@
       },
       "clock": {
         "port": "/dev/arduinoCLK",
-        "sketch": "/home/sbc/RunControl/dependencies/ArduinoSketches/clock/"
+        "sketch": "/home/sbc/RunControl/dependencies/ArduinoSketches/clock/",
+        "wave1": {
+          "enabled": true,
+          "name": "Cam1",
+          "period": 100,
+          "phase": 0,
+          "duty": 10,
+          "polarity": true
+        },
+        "wave2": {
+          "enabled": true,
+          "name": "Cam2",
+          "period": 100,
+          "phase": 0,
+          "duty": 10,
+          "polarity": true
+        },
+        "wave3": {
+          "enabled": true,
+          "name": "Cam3",
+          "period": 100,
+          "phase": 0,
+          "duty": 10,
+          "polarity": true
+        },
+        "wave4": {
+          "enabled": true,
+          "name": "LED1.1",
+          "period": 100,
+          "phase": 0,
+          "duty": 10,
+          "polarity": true
+        },
+        "wave5": {
+          "enabled": true,
+          "name": "LED1.2",
+          "period": 100,
+          "phase": 0,
+          "duty": 10,
+          "polarity": true
+        },
+        "wave6": {
+          "enabled": true,
+          "name": "LED1.3",
+          "period": 100,
+          "phase": 0,
+          "duty": 10,
+          "polarity": true
+        },
+        "wave7": {
+          "enabled": true,
+          "name": "LED2.1",
+          "period": 100,
+          "phase": 0,
+          "duty": 10,
+          "polarity": true
+        },
+        "wave8": {
+          "enabled": true,
+          "name": "LED2.2",
+          "period": 100,
+          "phase": 0,
+          "duty": 10,
+          "polarity": true
+        },
+        "wave9": {
+          "enabled": true,
+          "name": "LED2.3",
+          "period": 100,
+          "phase": 0,
+          "duty": 10,
+          "polarity": true
+        },
+        "wave10": {
+          "enabled": true,
+          "name": "LED3.1",
+          "period": 100,
+          "phase": 0,
+          "duty": 10,
+          "polarity": true
+        },
+        "wave11": {
+          "enabled": true,
+          "name": "LED3.2",
+          "period": 100,
+          "phase": 0,
+          "duty": 10,
+          "polarity": true
+        },
+        "wave12": {
+          "enabled": true,
+          "name": "LED3.3",
+          "period": 100,
+          "phase": 0,
+          "duty": 10,
+          "polarity": true
+        },
+        "wave13": {
+          "enabled": true,
+          "name": "CAEN",
+          "period": 100,
+          "phase": 0,
+          "duty": 10,
+          "polarity": true
+        },
+        "wave14": {
+          "enabled": false,
+          "name": "",
+          "period": 0,
+          "phase": 0,
+          "duty": 0,
+          "polarity": true
+        },
+        "wave15": {
+          "enabled": false,
+          "name": "",
+          "period": 0,
+          "phase": 0,
+          "duty": 0,
+          "polarity": true
+        },
+        "wave16": {
+          "enabled": false,
+          "name": "",
+          "period": 0,
+          "phase": 0,
+          "duty": 0,
+          "polarity": true
+        }
       },
       "position": {
         "port": "/dev/arduinoPOS",
