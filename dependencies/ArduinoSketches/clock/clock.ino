@@ -50,9 +50,10 @@ void setup(void) {
   for (JsonPair kv : conf.as<JsonObject>()) {
     int wave_num = atoi(kv.key().c_str());
     JsonObject v = kv.value().as<JsonObject>();
+    waves[wave_num].enabled = v["enabled"].as<bool>();
     waves[wave_num].period = v["period"].as<int>();
-    waves[wave_num].duty = v["duty"].as<int>();
-    waves[wave_num].phase = v["phase"].as<int>();
+    waves[wave_num].duty = v["duty"].as<int>() * waves[wave_num].period / 100;  // convert percentage to time
+    waves[wave_num].phase = v["phase"].as<int>() * waves[wave_num].period / 100;  // convert percentage to time
     waves[wave_num].polarity = v["polarity"].as<bool>();
     Serial.print(wave_num); Serial.print("\t");
     Serial.print(waves[wave_num].period); Serial.print("\t");
