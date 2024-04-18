@@ -67,7 +67,7 @@ class Arduino(QObject):
         53: "B0",
     }
 
-    arduino_sketch_uploaded = Signal(str)
+    sketch_uploaded = Signal(str)
 
     def __init__(self, mainwindow, arduino):
         super().__init__()
@@ -136,7 +136,7 @@ class Arduino(QObject):
             with open(archives[0], "rb") as f:
                 if checksum == hashlib.sha256(f.read()).digest():
                     self.logger.info(f"Sketch for {self.arduino} arduino not changed. Skipping upload.")
-                    self.arduino_sketch_uploaded.emit(self.arduino)
+                    self.sketch_uploaded.emit(self.arduino)
                     return
 
         # if not the same, compile and upload
@@ -146,4 +146,4 @@ class Arduino(QObject):
         result = subprocess.run(command, shell=True, capture_output=True)
         self.logger.info(f"Sketch successfully uploaded for {self.arduino} arduino.")
 
-        self.arduino_sketch_uploaded.emit(self.arduino)
+        self.sketch_uploaded.emit(self.arduino)

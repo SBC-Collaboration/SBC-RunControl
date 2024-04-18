@@ -100,98 +100,44 @@ class MainWindow(QMainWindow):
         self.signals = MainSignals()
 
         # set up run handling thread and the worker
-        self.cam1_worker = Camera(self, "cam1")
-        self.cam1_worker.camera_connected.connect(self.starting_run_wait)
-        self.cam1_worker.camera_started.connect(self.starting_event_wait)
-        self.cam1_worker.camera_closed.connect(self.stopping_event_wait)
-        self.cam1_thread = QThread()
-        self.cam1_thread.setObjectName("cam1_thread")
-        self.cam1_worker.moveToThread(self.cam1_thread)
-        self.cam1_thread.started.connect(self.cam1_worker.run)
-        self.signals.run_starting.connect(self.cam1_worker.test_rpi)
-        self.signals.event_starting.connect(self.cam1_worker.start_camera)
-        self.cam1_thread.start()
-        time.sleep(0.001) # 1ms separation of worker and thread initialization so that the log is easier to read
+        vars = self.__dict__
+        for cam in ["cam1", "cam2", "cam3"]:
+            vars[f"{cam}_worker"] = Camera(self, cam)
+            vars[f"{cam}_worker"].camera_connected.connect(self.starting_run_wait)
+            vars[f"{cam}_worker"].camera_started.connect(self.starting_event_wait)
+            vars[f"{cam}_worker"].camera_closed.connect(self.stopping_event_wait)
+            vars[f"{cam}_thread"] = QThread()
+            vars[f"{cam}_thread"].setObjectName(f"{cam}_thread")
+            vars[f"{cam}_worker"].moveToThread(vars[f"{cam}_thread"])
+            vars[f"{cam}_thread"].started.connect(vars[f"{cam}_worker"].run)
+            self.signals.run_starting.connect(vars[f"{cam}_worker"].test_rpi)
+            self.signals.event_starting.connect(vars[f"{cam}_worker"].start_camera)
+            vars[f"{cam}_thread"].start()
+            time.sleep(0.001)
 
-        self.cam2_worker = Camera(self, "cam2")
-        self.cam2_worker.camera_connected.connect(self.starting_run_wait)
-        self.cam2_worker.camera_started.connect(self.starting_event_wait)
-        self.cam2_worker.camera_closed.connect(self.stopping_event_wait)
-        self.cam2_thread = QThread()
-        self.cam2_thread.setObjectName("cam2_thread")
-        self.cam2_worker.moveToThread(self.cam2_thread)
-        self.cam2_thread.started.connect(self.cam2_worker.run)
-        self.signals.run_starting.connect(self.cam2_worker.test_rpi)
-        self.signals.event_starting.connect(self.cam2_worker.start_camera)
-        self.cam2_thread.start()
-        time.sleep(0.001)
+        for amp in ["amp1", "amp2"]:
+            vars[f"{amp}_worker"] = SiPMAmp(self, amp)
+            vars[f"{amp}_worker"].sipm_biased.connect(self.starting_run_wait)
+            vars[f"{amp}_worker"].sipm_unbiased.connect(self.stopping_run_wait)
+            vars[f"{amp}_thread"] = QThread()
+            vars[f"{amp}_thread"].setObjectName(f"{amp}_thread")
+            vars[f"{amp}_worker"].moveToThread(vars[f"{amp}_thread"])
+            vars[f"{amp}_thread"].started.connect(vars[f"{amp}_worker"].run)
+            self.signals.run_starting.connect(vars[f"{amp}_worker"].bias_sipm)
+            self.signals.run_stopping.connect(vars[f"{amp}_worker"].unbias_sipm)
+            vars[f"{amp}_thread"].start()
+            time.sleep(0.001)
 
-        self.cam3_worker = Camera(self, "cam3")
-        self.cam3_worker.camera_connected.connect(self.starting_run_wait)
-        self.cam3_worker.camera_started.connect(self.starting_event_wait)
-        self.cam3_worker.camera_closed.connect(self.stopping_event_wait)
-        self.cam3_thread = QThread()
-        self.cam3_thread.setObjectName("cam3_thread")
-        self.cam3_worker.moveToThread(self.cam3_thread)
-        self.cam3_thread.started.connect(self.cam3_worker.run)
-        self.signals.run_starting.connect(self.cam3_worker.test_rpi)
-        self.signals.event_starting.connect(self.cam3_worker.start_camera)
-        self.cam3_thread.start()
-        time.sleep(0.001)
-
-        self.amp1_worker = SiPMAmp(self, "amp1")
-        self.amp1_worker.sipm_biased.connect(self.starting_run_wait)
-        self.amp1_worker.sipm_unbiased.connect(self.stopping_run_wait)
-        self.amp1_thread = QThread()
-        self.amp1_thread.setObjectName('sipm_amp1_thread')
-        self.amp1_worker.moveToThread(self.amp1_thread)
-        self.amp1_thread.started.connect(self.amp1_worker.run)
-        self.signals.run_starting.connect(self.amp1_worker.bias_sipm)
-        self.signals.run_stopping.connect(self.amp1_worker.unbias_sipm)
-        self.amp1_thread.start()
-        time.sleep(0.001)
-
-        self.amp2_worker = SiPMAmp(self, "amp2")
-        self.amp2_worker.sipm_biased.connect(self.starting_run_wait)
-        self.amp2_worker.sipm_unbiased.connect(self.stopping_run_wait)
-        self.amp2_thread = QThread()
-        self.amp2_thread.setObjectName('sipm_amp2_thread')
-        self.amp2_worker.moveToThread(self.amp2_thread)
-        self.amp2_thread.started.connect(self.amp2_worker.run)
-        self.signals.run_starting.connect(self.amp2_worker.bias_sipm)
-        self.signals.run_stopping.connect(self.amp2_worker.unbias_sipm)
-        self.amp2_thread.start()
-        time.sleep(0.001)
-
-        self.arduino_trig_worker = Arduino(self, "trigger")
-        self.arduino_trig_worker.arduino_sketch_uploaded.connect(self.starting_run_wait)
-        self.arduino_trig_thread = QThread()
-        self.arduino_trig_thread.setObjectName('arduino_trig_thread')
-        self.arduino_trig_worker.moveToThread(self.arduino_trig_thread)
-        self.arduino_trig_thread.started.connect(self.arduino_trig_worker.run)
-        self.signals.run_starting.connect(self.arduino_trig_worker.upload_sketch)
-        self.arduino_trig_thread.start()
-        time.sleep(0.001)
-
-        self.arduino_clock_worker = Arduino(self, "clock")
-        self.arduino_clock_worker.arduino_sketch_uploaded.connect(self.starting_run_wait)
-        self.arduino_clock_thread = QThread()
-        self.arduino_clock_thread.setObjectName('arduino_clock_thread')
-        self.arduino_clock_worker.moveToThread(self.arduino_clock_thread)
-        self.arduino_clock_thread.started.connect(self.arduino_clock_worker.run)
-        self.signals.run_starting.connect(self.arduino_clock_worker.upload_sketch)
-        self.arduino_clock_thread.start()
-        time.sleep(0.001)
-
-        self.arduino_position_worker = Arduino(self, "position")
-        self.arduino_position_worker.arduino_sketch_uploaded.connect(self.starting_run_wait)
-        self.arduino_position_thread = QThread()
-        self.arduino_position_thread.setObjectName('arduino_position_thread')
-        self.arduino_position_worker.moveToThread(self.arduino_position_thread)
-        self.arduino_position_thread.started.connect(self.arduino_position_worker.run)
-        self.signals.run_starting.connect(self.arduino_position_worker.upload_sketch)
-        self.arduino_position_thread.start()
-        time.sleep(0.001)
+        for ino in ["trigger", "clock", "position"]:
+            vars[f"arduino_{ino}_worker"] = Arduino(self, ino)
+            vars[f"arduino_{ino}_worker"].sketch_uploaded.connect(self.starting_run_wait)
+            vars[f"arduino_{ino}_thread"] = QThread()
+            vars[f"arduino_{ino}_thread"].setObjectName(f"arduino_{ino}_thread")
+            vars[f"arduino_{ino}_worker"].moveToThread(vars[f"arduino_{ino}_thread"])
+            vars[f"arduino_{ino}_thread"].started.connect(vars[f"arduino_{ino}_worker"].run)
+            self.signals.run_starting.connect(vars[f"arduino_{ino}_worker"].upload_sketch)
+            vars[f"arduino_{ino}_thread"].start()
+            time.sleep(0.001)
 
         self.niusb_worker = NIUSB(self)
         self.niusb_worker.run_started.connect(self.starting_run_wait)
@@ -328,14 +274,13 @@ class MainWindow(QMainWindow):
             ):
                 self.signals.send_trigger.emit("Timeout")
         elif self.run_state == self.run_states["starting_run"]:
-            print(self.starting_run_ready)
-            if len(self.starting_run_ready) >= 3:
+            if len(self.starting_run_ready) >= 4:
                 self.start_event()
         elif self.run_state == self.run_states["starting_event"]:
-            if len(self.starting_event_ready) >= 1:
+            if len(self.starting_event_ready) >= 2:
                 self.update_state("active")
         elif self.run_state == self.run_states["stopping_event"]:
-            if len(self.starting_event_ready) >= 1:
+            if len(self.stopping_event_ready) >= 2:
                 self.update_state("idle")
 
         self.display_image(
@@ -436,7 +381,6 @@ class MainWindow(QMainWindow):
         self.signals.run_stopping.emit()
 
     def start_event(self):
-        time.sleep(1)
         self.starting_event_ready = []
         self.update_state("starting_event")
         self.ev_livetime = 0
