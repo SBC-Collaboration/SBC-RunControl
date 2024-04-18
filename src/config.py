@@ -113,12 +113,12 @@ class Config:
             widgets[f"{cam}_state_pin"].setValue(config["state_pin"])
             widgets[f"{cam}_trig_pin"].setValue(config["trig_pin"])
 
-        arduinos_config = self.config["dio"]["arduinos"]
-        trigger_config = arduinos_config["trigger"]
+        dio_config = self.config["dio"]
+        trigger_config = dio_config["trigger"]
         ui.trigger_port_edit.setText(trigger_config["port"])
         ui.trigger_sketch_edit.setText(trigger_config["sketch"])
 
-        clock_config = arduinos_config["clock"]
+        clock_config = dio_config["clock"]
         ui.clock_port_edit.setText(clock_config["port"])
         ui.clock_sketch_edit.setText(clock_config["sketch"])
         for w in [f"wave{i}" for i in range(1,17)]:
@@ -130,11 +130,11 @@ class Config:
             widgets[f"clock_duty_{w}"].setValue(config["duty"])
             widgets[f"clock_polarity_{w}"].setCurrentText("Normal" if config["polarity"] else "Reverse")
 
-        position_config = arduinos_config["position"]
+        position_config = dio_config["position"]
         ui.position_port_edit.setText(position_config["port"])
         ui.position_sketch_edit.setText(position_config["sketch"])
 
-        niusb_config = self.config["dio"]["niusb"]
+        niusb_config = dio_config["niusb"]
         for port in range(3):
             for pin in range(8):
                 try:
@@ -334,16 +334,14 @@ class Config:
                 "polarity": widgets[f"clock_polarity_{w}"].currentText() == "Normal"
             }
 
-        arduinos_config = {
-            "trigger": {
-                "port": ui.trigger_port_edit.text(),
-                "sketch": ui.trigger_sketch_edit.text(),
-            },
-            "clock": clock_config,
-            "position": {
-                "port": ui.position_port_edit.text(),
-                "sketch": ui.position_sketch_edit.text(),
-            },
+        trigger_config = {
+            "port": ui.trigger_port_edit.text(),
+            "sketch": ui.trigger_sketch_edit.text(),
+        }
+
+        position_config = {
+            "port": ui.position_port_edit.text(),
+            "sketch": ui.position_sketch_edit.text(),
         }
 
         niusb_config = {}
@@ -361,7 +359,10 @@ class Config:
             },
             "acous": {"general": acous_general_config, "per_channel": acous_ch_config},
             "cam": cam_config,
-            "dio": {"arduinos": arduinos_config, "niusb": niusb_config},
+            "dio": {"trigger": trigger_config,
+                    "clock": clock_config,
+                    "position": position_config,
+                    "niusb": niusb_config},
         }
 
         self.logger.info("Configuration applied.")

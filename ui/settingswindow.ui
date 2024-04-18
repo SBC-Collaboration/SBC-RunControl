@@ -4063,9 +4063,9 @@
            <property name="geometry">
             <rect>
              <x>0</x>
-             <y>-198</y>
+             <y>0</y>
              <width>792</width>
-             <height>1172</height>
+             <height>1154</height>
             </rect>
            </property>
            <property name="maximumSize">
@@ -4091,7 +4091,7 @@
              <number>0</number>
             </property>
             <item>
-             <layout class="QGridLayout" name="dio_general_grid_layout" columnstretch="0,1,2,0">
+             <layout class="QGridLayout" name="dio_general_grid_layout" columnstretch="0,0,0,0">
               <property name="spacing">
                <number>3</number>
               </property>
@@ -4107,31 +4107,24 @@
                 </property>
                </widget>
               </item>
-              <item row="2" column="0">
-               <widget class="QLabel" name="trigger_arduino_label">
+              <item row="1" column="2" colspan="2">
+               <widget class="QLabel" name="sketch_location_label">
                 <property name="text">
-                 <string>Trigger</string>
+                 <string>Sketch Location</string>
                 </property>
                </widget>
               </item>
-              <item row="4" column="0">
-               <widget class="QLabel" name="position_arduino_label">
-                <property name="text">
-                 <string>Position</string>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="0">
-               <widget class="QLabel" name="clock_arduino_label">
-                <property name="text">
-                 <string>Clock</string>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="1">
+              <item row="2" column="1">
                <widget class="QLineEdit" name="position_port_edit"/>
               </item>
-              <item row="4" column="2">
+              <item row="2" column="3">
+               <widget class="QToolButton" name="position_sketch_but">
+                <property name="text">
+                 <string>...</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="2">
                <widget class="QLineEdit" name="position_sketch_edit"/>
               </item>
               <item row="1" column="1">
@@ -4141,30 +4134,10 @@
                 </property>
                </widget>
               </item>
-              <item row="2" column="2">
-               <widget class="QLineEdit" name="trigger_sketch_edit"/>
-              </item>
-              <item row="2" column="1">
-               <widget class="QLineEdit" name="trigger_port_edit"/>
-              </item>
-              <item row="2" column="3">
-               <widget class="QToolButton" name="trigger_sketch_but">
+              <item row="2" column="0">
+               <widget class="QLabel" name="position_arduino_label">
                 <property name="text">
-                 <string>...</string>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="2" colspan="2">
-               <widget class="QLabel" name="sketch_location_label">
-                <property name="text">
-                 <string>Sketch Location</string>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="3">
-               <widget class="QToolButton" name="position_sketch_but">
-                <property name="text">
-                 <string>...</string>
+                 <string>Position</string>
                 </property>
                </widget>
               </item>
@@ -4441,7 +4414,7 @@
              </widget>
             </item>
             <item>
-             <layout class="QGridLayout" name="fifo_grid_layout" columnstretch="0,1,1,1,0,1,0,1">
+             <layout class="QGridLayout" name="fifo_grid_layout" columnstretch="0,1,1,1,0,1,0,1,0">
               <property name="topMargin">
                <number>0</number>
               </property>
@@ -4451,14 +4424,31 @@
               <property name="spacing">
                <number>3</number>
               </property>
-              <item row="15" column="2">
-               <widget class="NoWheelSpinBox" name="trig_in_pin14_box">
+              <item row="14" column="5">
+               <widget class="NoWheelSpinBox" name="trig_latch_pin12_box">
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
                </widget>
               </item>
-              <item row="1" column="4" rowspan="17">
+              <item row="15" column="2">
+               <widget class="NoWheelSpinBox" name="trig_in_pin13_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+               </widget>
+              </item>
+              <item row="9" column="1">
+               <widget class="QLineEdit" name="trig_pin7_name_edit">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="4" rowspan="17">
                <widget class="Line" name="line_3">
                 <property name="enabled">
                  <bool>true</bool>
@@ -4480,147 +4470,41 @@
                 </property>
                </widget>
               </item>
-              <item row="7" column="7">
-               <widget class="QLabel" name="heartbeat_pin_label">
+              <item row="11" column="5">
+               <widget class="NoWheelSpinBox" name="trig_latch_pin9_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="0">
+               <widget class="QCheckBox" name="trig1_enabled_3">
+                <property name="layoutDirection">
+                 <enum>Qt::RightToLeft</enum>
+                </property>
                 <property name="text">
-                 <string>Heartbeat Pin</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>heartbeat_pin_box</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="9" column="3">
-               <widget class="NoWheelSpinBox" name="trig_ff_pin8_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="13" column="1">
-               <widget class="QLineEdit" name="trig_pin12_name_edit">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-               </widget>
-              </item>
-              <item row="17" column="1">
-               <widget class="QLineEdit" name="trig_pin16_name_edit">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="1">
-               <widget class="QLineEdit" name="trig_pin2_name_edit">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="5">
-               <widget class="NoWheelSpinBox" name="trig_latch_pin3_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="13" column="5">
-               <widget class="NoWheelSpinBox" name="trig_latch_pin12_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="12" column="5">
-               <widget class="NoWheelSpinBox" name="trig_latch_pin11_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="0">
-               <widget class="QLabel" name="trig_in_pin_label_2">
-                <property name="text">
-                 <string>Enabled</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
+                 <string>Trig In 3</string>
                 </property>
                </widget>
               </item>
               <item row="14" column="2">
-               <widget class="NoWheelSpinBox" name="trig_in_pin13_box">
+               <widget class="NoWheelSpinBox" name="trig_in_pin12_box">
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
                </widget>
               </item>
-              <item row="2" column="1">
-               <widget class="QLineEdit" name="trig_pin1_name_edit">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
+              <item row="13" column="0">
+               <widget class="QCheckBox" name="trig1_enabled_11">
+                <property name="layoutDirection">
+                 <enum>Qt::RightToLeft</enum>
+                </property>
+                <property name="text">
+                 <string>Trig In 11</string>
                 </property>
                </widget>
               </item>
-              <item row="8" column="7">
-               <widget class="NoWheelSpinBox" name="heartbeat_pin_box">
-                <property name="focusPolicy">
-                 <enum>Qt::NoFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="12" column="2">
-               <widget class="NoWheelSpinBox" name="trig_in_pin11_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="3">
-               <widget class="NoWheelSpinBox" name="trig_ff_pin2_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="15" column="5">
-               <widget class="NoWheelSpinBox" name="trig_latch_pin14_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="2">
-               <widget class="NoWheelSpinBox" name="trig_in_pin2_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="17" column="5">
-               <widget class="NoWheelSpinBox" name="trig_latch_pin16_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="6" column="1">
+              <item row="7" column="1">
                <widget class="QLineEdit" name="trig_pin5_name_edit">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
@@ -4630,93 +4514,38 @@
                 </property>
                </widget>
               </item>
-              <item row="11" column="5">
-               <widget class="NoWheelSpinBox" name="trig_latch_pin10_box">
+              <item row="5" column="3">
+               <widget class="NoWheelSpinBox" name="trig_ff_pin3_box">
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
                </widget>
               </item>
-              <item row="10" column="3">
-               <widget class="NoWheelSpinBox" name="trig_ff_pin9_box">
+              <item row="18" column="2">
+               <widget class="NoWheelSpinBox" name="trig_in_pin16_box">
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
                </widget>
               </item>
-              <item row="6" column="2">
-               <widget class="NoWheelSpinBox" name="trig_in_pin5_box">
+              <item row="6" column="5">
+               <widget class="NoWheelSpinBox" name="trig_latch_pin4_box">
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
                </widget>
               </item>
-              <item row="1" column="5">
-               <widget class="QLabel" name="trig_latch_pins_label">
+              <item row="2" column="0">
+               <widget class="QLabel" name="trig_in_pin_label_2">
                 <property name="text">
-                 <string>Trig Latch Pins</string>
+                 <string>Enabled</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignCenter</set>
                 </property>
                </widget>
               </item>
-              <item row="11" column="2">
-               <widget class="NoWheelSpinBox" name="trig_in_pin10_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="8" column="2">
-               <widget class="NoWheelSpinBox" name="trig_in_pin7_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="5">
-               <widget class="NoWheelSpinBox" name="trig_latch_pin1_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="14" column="1">
-               <widget class="QLineEdit" name="trig_pin13_name_edit">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-               </widget>
-              </item>
-              <item row="10" column="1">
-               <widget class="QLineEdit" name="trig_pin9_name_edit">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-               </widget>
-              </item>
-              <item row="17" column="3">
-               <widget class="NoWheelSpinBox" name="trig_ff_pin16_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="16" column="3">
-               <widget class="NoWheelSpinBox" name="trig_ff_pin15_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="2">
+              <item row="2" column="2">
                <widget class="QLabel" name="trig_in_pin_label">
                 <property name="text">
                  <string>Trig In Pin</string>
@@ -4726,35 +4555,123 @@
                 </property>
                </widget>
               </item>
-              <item row="12" column="3">
-               <widget class="NoWheelSpinBox" name="trig_ff_pin11_box">
+              <item row="5" column="1">
+               <widget class="QLineEdit" name="trig_pin3_name_edit">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+               </widget>
+              </item>
+              <item row="17" column="3">
+               <widget class="NoWheelSpinBox" name="trig_ff_pin15_box">
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
                </widget>
               </item>
-              <item row="6" column="3">
-               <widget class="NoWheelSpinBox" name="trig_ff_pin5_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
+              <item row="3" column="0">
+               <widget class="QCheckBox" name="trig1_enabled">
+                <property name="layoutDirection">
+                 <enum>Qt::RightToLeft</enum>
                 </property>
-               </widget>
-              </item>
-              <item row="1" column="7">
-               <widget class="QLabel" name="trig_reset_pin_label">
                 <property name="text">
-                 <string>Trig Reset Pin</string>
+                 <string>Trig In 1</string>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="1">
+               <widget class="QLineEdit" name="trig_pin2_name_edit">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+               </widget>
+              </item>
+              <item row="9" column="0">
+               <widget class="QCheckBox" name="trig1_enabled_7">
+                <property name="layoutDirection">
+                 <enum>Qt::RightToLeft</enum>
+                </property>
+                <property name="text">
+                 <string>Trig In 7</string>
+                </property>
+               </widget>
+              </item>
+              <item row="12" column="1">
+               <widget class="QLineEdit" name="trig_pin10_name_edit">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+               </widget>
+              </item>
+              <item row="15" column="0">
+               <widget class="QCheckBox" name="trig1_enabled_13">
+                <property name="layoutDirection">
+                 <enum>Qt::RightToLeft</enum>
+                </property>
+                <property name="text">
+                 <string>Trig In 13</string>
+                </property>
+               </widget>
+              </item>
+              <item row="12" column="5">
+               <widget class="NoWheelSpinBox" name="trig_latch_pin10_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+               </widget>
+              </item>
+              <item row="13" column="5">
+               <widget class="NoWheelSpinBox" name="trig_latch_pin11_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="3">
+               <widget class="QLabel" name="trig_ff_pin_label">
+                <property name="text">
+                 <string>Trig FF Pin</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignCenter</set>
                 </property>
-                <property name="buddy">
-                 <cstring>trig_reset_pin_box</cstring>
+               </widget>
+              </item>
+              <item row="8" column="0">
+               <widget class="QCheckBox" name="trig1_enabled_6">
+                <property name="layoutDirection">
+                 <enum>Qt::RightToLeft</enum>
+                </property>
+                <property name="text">
+                 <string>Trig In 6</string>
                 </property>
                </widget>
               </item>
-              <item row="16" column="1">
-               <widget class="QLineEdit" name="trig_pin15_name_edit">
+              <item row="3" column="3">
+               <widget class="NoWheelSpinBox" name="trig_ff_pin1_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+               </widget>
+              </item>
+              <item row="10" column="5">
+               <widget class="NoWheelSpinBox" name="trig_latch_pin8_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+               </widget>
+              </item>
+              <item row="14" column="1">
+               <widget class="QLineEdit" name="trig_pin12_name_edit">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                   <horstretch>0</horstretch>
@@ -4763,27 +4680,27 @@
                 </property>
                </widget>
               </item>
-              <item row="5" column="1">
-               <widget class="QLineEdit" name="trig_pin4_name_edit">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
+              <item row="1" column="0">
+               <widget class="QLabel" name="trigger_port_label">
+                <property name="text">
+                 <string>Serial Port</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                 </property>
                </widget>
               </item>
-              <item row="7" column="1">
-               <widget class="QLineEdit" name="trig_pin6_name_edit">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
+              <item row="6" column="0">
+               <widget class="QCheckBox" name="trig1_enabled_4">
+                <property name="layoutDirection">
+                 <enum>Qt::RightToLeft</enum>
+                </property>
+                <property name="text">
+                 <string>Trig In 4</string>
                 </property>
                </widget>
               </item>
-              <item row="1" column="6" rowspan="17">
+              <item row="2" column="6" rowspan="17">
                <widget class="Line" name="line_5">
                 <property name="enabled">
                  <bool>true</bool>
@@ -4805,193 +4722,72 @@
                 </property>
                </widget>
               </item>
-              <item row="4" column="3">
-               <widget class="NoWheelSpinBox" name="trig_ff_pin3_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="8" column="3">
-               <widget class="NoWheelSpinBox" name="trig_ff_pin7_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="7">
-               <widget class="NoWheelSpinBox" name="trig_reset_pin_box"/>
-              </item>
               <item row="14" column="3">
-               <widget class="NoWheelSpinBox" name="trig_ff_pin13_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="15" column="1">
-               <widget class="QLineEdit" name="trig_pin14_name_edit">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="7">
-               <widget class="QLabel" name="trig_or_pin_label">
-                <property name="text">
-                 <string>Trig Or Pin</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>trig_or_pin_box</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="7" column="2">
-               <widget class="NoWheelSpinBox" name="trig_in_pin6_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="10" column="2">
-               <widget class="NoWheelSpinBox" name="trig_in_pin9_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="17" column="2">
-               <widget class="NoWheelSpinBox" name="trig_in_pin16_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="7" column="5">
-               <widget class="NoWheelSpinBox" name="trig_latch_pin6_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="2">
-               <widget class="NoWheelSpinBox" name="trig_in_pin3_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="5" column="3">
-               <widget class="NoWheelSpinBox" name="trig_ff_pin4_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="8" column="1">
-               <widget class="QLineEdit" name="trig_pin7_name_edit">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-               </widget>
-              </item>
-              <item row="11" column="1">
-               <widget class="QLineEdit" name="trig_pin10_name_edit">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-               </widget>
-              </item>
-              <item row="8" column="5">
-               <widget class="NoWheelSpinBox" name="trig_latch_pin7_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="11" column="3">
-               <widget class="NoWheelSpinBox" name="trig_ff_pin10_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="16" column="2">
-               <widget class="NoWheelSpinBox" name="trig_in_pin15_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="15" column="3">
-               <widget class="NoWheelSpinBox" name="trig_ff_pin14_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="5">
-               <widget class="NoWheelSpinBox" name="trig_latch_pin2_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="2">
-               <widget class="NoWheelSpinBox" name="trig_in_pin1_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="5" column="5">
-               <widget class="NoWheelSpinBox" name="trig_latch_pin4_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="6" column="5">
-               <widget class="NoWheelSpinBox" name="trig_latch_pin5_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="9" column="2">
-               <widget class="NoWheelSpinBox" name="trig_in_pin8_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="9" column="5">
-               <widget class="NoWheelSpinBox" name="trig_latch_pin8_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="13" column="3">
                <widget class="NoWheelSpinBox" name="trig_ff_pin12_box">
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
                </widget>
               </item>
-              <item row="1" column="1">
+              <item row="10" column="0">
+               <widget class="QCheckBox" name="trig1_enabled_8">
+                <property name="layoutDirection">
+                 <enum>Qt::RightToLeft</enum>
+                </property>
+                <property name="text">
+                 <string>Trig In 8</string>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="2">
+               <widget class="NoWheelSpinBox" name="trig_in_pin2_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+               </widget>
+              </item>
+              <item row="8" column="1">
+               <widget class="QLineEdit" name="trig_pin6_name_edit">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+               </widget>
+              </item>
+              <item row="8" column="2">
+               <widget class="NoWheelSpinBox" name="trig_in_pin6_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+               </widget>
+              </item>
+              <item row="7" column="3">
+               <widget class="NoWheelSpinBox" name="trig_ff_pin5_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+               </widget>
+              </item>
+              <item row="11" column="0">
+               <widget class="QCheckBox" name="trig1_enabled_9">
+                <property name="layoutDirection">
+                 <enum>Qt::RightToLeft</enum>
+                </property>
+                <property name="text">
+                 <string>Trig In 9</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="2">
+               <widget class="NoWheelSpinBox" name="trig_in_pin1_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
                <widget class="QLabel" name="trig_in_name_label">
                 <property name="text">
                  <string>Name</string>
@@ -5001,90 +4797,21 @@
                 </property>
                </widget>
               </item>
-              <item row="14" column="5">
-               <widget class="NoWheelSpinBox" name="trig_latch_pin13_box">
+              <item row="1" column="4" colspan="4">
+               <widget class="QLineEdit" name="trigger_sketch_edit"/>
+              </item>
+              <item row="12" column="3">
+               <widget class="NoWheelSpinBox" name="trig_ff_pin10_box">
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
                </widget>
               </item>
-              <item row="10" column="5">
-               <widget class="NoWheelSpinBox" name="trig_latch_pin9_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-               </widget>
+              <item row="1" column="1" colspan="2">
+               <widget class="QLineEdit" name="trigger_port_edit"/>
               </item>
-              <item row="7" column="3">
-               <widget class="NoWheelSpinBox" name="trig_ff_pin6_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="5" column="2">
-               <widget class="NoWheelSpinBox" name="trig_in_pin4_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="6" column="7">
-               <widget class="NoWheelSpinBox" name="trig_or_pin_box">
-                <property name="focusPolicy">
-                 <enum>Qt::NoFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="3">
-               <widget class="NoWheelSpinBox" name="trig_ff_pin1_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="13" column="2">
-               <widget class="NoWheelSpinBox" name="trig_in_pin12_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="7">
-               <widget class="NoWheelSpinBox" name="on_time_pin_box"/>
-              </item>
-              <item row="1" column="3">
-               <widget class="QLabel" name="trig_ff_pin_label">
-                <property name="text">
-                 <string>Trig FF Pin</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="16" column="5">
-               <widget class="NoWheelSpinBox" name="trig_latch_pin15_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="5" column="7">
-               <widget class="QLabel" name="on_time_pin_label">
-                <property name="text">
-                 <string>On-Time Pin</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>on_time_pin_box</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="1">
-               <widget class="QLineEdit" name="trig_pin3_name_edit">
+              <item row="18" column="1">
+               <widget class="QLineEdit" name="trig_pin16_name_edit">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                   <horstretch>0</horstretch>
@@ -5093,7 +4820,90 @@
                 </property>
                </widget>
               </item>
-              <item row="9" column="1">
+              <item row="8" column="3">
+               <widget class="NoWheelSpinBox" name="trig_ff_pin6_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+               </widget>
+              </item>
+              <item row="11" column="3">
+               <widget class="NoWheelSpinBox" name="trig_ff_pin9_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="2">
+               <widget class="NoWheelSpinBox" name="trig_in_pin4_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+               </widget>
+              </item>
+              <item row="10" column="3">
+               <widget class="NoWheelSpinBox" name="trig_ff_pin8_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="3">
+               <widget class="NoWheelSpinBox" name="trig_ff_pin2_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="5">
+               <widget class="NoWheelSpinBox" name="trig_latch_pin1_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+               </widget>
+              </item>
+              <item row="15" column="5">
+               <widget class="NoWheelSpinBox" name="trig_latch_pin13_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+               </widget>
+              </item>
+              <item row="11" column="2">
+               <widget class="NoWheelSpinBox" name="trig_in_pin9_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+               </widget>
+              </item>
+              <item row="16" column="3">
+               <widget class="NoWheelSpinBox" name="trig_ff_pin14_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="0">
+               <widget class="QCheckBox" name="trig1_enabled_2">
+                <property name="layoutDirection">
+                 <enum>Qt::RightToLeft</enum>
+                </property>
+                <property name="text">
+                 <string>Trig In 2</string>
+                </property>
+               </widget>
+              </item>
+              <item row="16" column="0">
+               <widget class="QCheckBox" name="trig1_enabled_14">
+                <property name="layoutDirection">
+                 <enum>Qt::RightToLeft</enum>
+                </property>
+                <property name="text">
+                 <string>Trig In 14</string>
+                </property>
+               </widget>
+              </item>
+              <item row="10" column="1">
                <widget class="QLineEdit" name="trig_pin8_name_edit">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
@@ -5103,7 +4913,250 @@
                 </property>
                </widget>
               </item>
-              <item row="12" column="1">
+              <item row="12" column="2">
+               <widget class="NoWheelSpinBox" name="trig_in_pin10_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+               </widget>
+              </item>
+              <item row="11" column="1">
+               <widget class="QLineEdit" name="trig_pin9_name_edit">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+               </widget>
+              </item>
+              <item row="15" column="3">
+               <widget class="NoWheelSpinBox" name="trig_ff_pin13_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+               </widget>
+              </item>
+              <item row="17" column="1">
+               <widget class="QLineEdit" name="trig_pin15_name_edit">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+               </widget>
+              </item>
+              <item row="13" column="2">
+               <widget class="NoWheelSpinBox" name="trig_in_pin11_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="5">
+               <widget class="QLabel" name="trig_latch_pins_label">
+                <property name="text">
+                 <string>Trig Latch Pins</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="5">
+               <widget class="NoWheelSpinBox" name="trig_latch_pin2_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+               </widget>
+              </item>
+              <item row="18" column="0">
+               <widget class="QCheckBox" name="trig1_enabled_16">
+                <property name="layoutDirection">
+                 <enum>Qt::RightToLeft</enum>
+                </property>
+                <property name="text">
+                 <string>Trig In 16</string>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="1">
+               <widget class="QLineEdit" name="trig_pin4_name_edit">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+               </widget>
+              </item>
+              <item row="14" column="0">
+               <widget class="QCheckBox" name="trig1_enabled_12">
+                <property name="layoutDirection">
+                 <enum>Qt::RightToLeft</enum>
+                </property>
+                <property name="text">
+                 <string>Trig In 12</string>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="5">
+               <widget class="NoWheelSpinBox" name="trig_latch_pin3_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+               </widget>
+              </item>
+              <item row="16" column="1">
+               <widget class="QLineEdit" name="trig_pin14_name_edit">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+               </widget>
+              </item>
+              <item row="10" column="2">
+               <widget class="NoWheelSpinBox" name="trig_in_pin8_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+               </widget>
+              </item>
+              <item row="18" column="5">
+               <widget class="NoWheelSpinBox" name="trig_latch_pin16_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+               </widget>
+              </item>
+              <item row="17" column="2">
+               <widget class="NoWheelSpinBox" name="trig_in_pin15_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+               </widget>
+              </item>
+              <item row="15" column="1">
+               <widget class="QLineEdit" name="trig_pin13_name_edit">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+               </widget>
+              </item>
+              <item row="9" column="2">
+               <widget class="NoWheelSpinBox" name="trig_in_pin7_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+               </widget>
+              </item>
+              <item row="17" column="5">
+               <widget class="NoWheelSpinBox" name="trig_latch_pin15_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+               </widget>
+              </item>
+              <item row="13" column="3">
+               <widget class="NoWheelSpinBox" name="trig_ff_pin11_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+               </widget>
+              </item>
+              <item row="8" column="5">
+               <widget class="NoWheelSpinBox" name="trig_latch_pin6_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="2">
+               <widget class="NoWheelSpinBox" name="trig_in_pin3_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+               </widget>
+              </item>
+              <item row="9" column="3">
+               <widget class="NoWheelSpinBox" name="trig_ff_pin7_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+               </widget>
+              </item>
+              <item row="12" column="0">
+               <widget class="QCheckBox" name="trig1_enabled_10">
+                <property name="layoutDirection">
+                 <enum>Qt::RightToLeft</enum>
+                </property>
+                <property name="text">
+                 <string>Trig In 10</string>
+                </property>
+               </widget>
+              </item>
+              <item row="18" column="3">
+               <widget class="NoWheelSpinBox" name="trig_ff_pin16_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+               </widget>
+              </item>
+              <item row="9" column="5">
+               <widget class="NoWheelSpinBox" name="trig_latch_pin7_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+               </widget>
+              </item>
+              <item row="7" column="5">
+               <widget class="NoWheelSpinBox" name="trig_latch_pin5_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+               </widget>
+              </item>
+              <item row="7" column="2">
+               <widget class="NoWheelSpinBox" name="trig_in_pin5_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="1">
+               <widget class="QLineEdit" name="trig_pin1_name_edit">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="3">
+               <widget class="QLabel" name="trigger_sketch_label">
+                <property name="text">
+                 <string>Sketch Location</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="16" column="2">
+               <widget class="NoWheelSpinBox" name="trig_in_pin14_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+               </widget>
+              </item>
+              <item row="13" column="1">
                <widget class="QLineEdit" name="trig_pin11_name_edit">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
@@ -5113,7 +5166,61 @@
                 </property>
                </widget>
               </item>
-              <item row="0" column="0" colspan="8">
+              <item row="16" column="5">
+               <widget class="NoWheelSpinBox" name="trig_latch_pin14_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="3">
+               <widget class="NoWheelSpinBox" name="trig_ff_pin4_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+               </widget>
+              </item>
+              <item row="17" column="0">
+               <widget class="QCheckBox" name="trig1_enabled_15">
+                <property name="layoutDirection">
+                 <enum>Qt::RightToLeft</enum>
+                </property>
+                <property name="text">
+                 <string>Trig In 15</string>
+                </property>
+               </widget>
+              </item>
+              <item row="7" column="0">
+               <widget class="QCheckBox" name="trig1_enabled_5">
+                <property name="layoutDirection">
+                 <enum>Qt::RightToLeft</enum>
+                </property>
+                <property name="text">
+                 <string>Trig In 5</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="8">
+               <widget class="QToolButton" name="trigger_sketch_but">
+                <property name="text">
+                 <string>...</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="7" colspan="2">
+               <widget class="QLabel" name="trig_reset_pin_label">
+                <property name="text">
+                 <string>Trig Reset Pin</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>trig_reset_pin_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0" colspan="9">
                <widget class="QLabel" name="fifo_layout">
                 <property name="font">
                  <font>
@@ -5128,163 +5235,62 @@
                 </property>
                </widget>
               </item>
-              <item row="2" column="0">
-               <widget class="QCheckBox" name="trig1_enabled">
-                <property name="layoutDirection">
-                 <enum>Qt::RightToLeft</enum>
-                </property>
+              <item row="3" column="7" colspan="2">
+               <widget class="NoWheelSpinBox" name="trig_reset_pin_box"/>
+              </item>
+              <item row="4" column="7" colspan="2">
+               <widget class="QLabel" name="trig_or_pin_label">
                 <property name="text">
-                 <string>Trig In 1</string>
+                 <string>Trig Or Pin</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>trig_or_pin_box</cstring>
                 </property>
                </widget>
               </item>
-              <item row="3" column="0">
-               <widget class="QCheckBox" name="trig1_enabled_2">
-                <property name="layoutDirection">
-                 <enum>Qt::RightToLeft</enum>
-                </property>
+              <item row="5" column="7" colspan="2">
+               <widget class="NoWheelSpinBox" name="on_time_pin_box"/>
+              </item>
+              <item row="6" column="7" colspan="2">
+               <widget class="QLabel" name="on_time_pin_label">
                 <property name="text">
-                 <string>Trig In 1</string>
+                 <string>On-Time Pin</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>on_time_pin_box</cstring>
                 </property>
                </widget>
               </item>
-              <item row="4" column="0">
-               <widget class="QCheckBox" name="trig1_enabled_3">
-                <property name="layoutDirection">
-                 <enum>Qt::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>Trig In 1</string>
+              <item row="7" column="7" colspan="2">
+               <widget class="NoWheelSpinBox" name="trig_or_pin_box">
+                <property name="focusPolicy">
+                 <enum>Qt::NoFocus</enum>
                 </property>
                </widget>
               </item>
-              <item row="5" column="0">
-               <widget class="QCheckBox" name="trig1_enabled_4">
-                <property name="layoutDirection">
-                 <enum>Qt::RightToLeft</enum>
-                </property>
+              <item row="8" column="7" colspan="2">
+               <widget class="QLabel" name="heartbeat_pin_label">
                 <property name="text">
-                 <string>Trig In 1</string>
+                 <string>Heartbeat Pin</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>heartbeat_pin_box</cstring>
                 </property>
                </widget>
               </item>
-              <item row="6" column="0">
-               <widget class="QCheckBox" name="trig1_enabled_5">
-                <property name="layoutDirection">
-                 <enum>Qt::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>Trig In 1</string>
-                </property>
-               </widget>
-              </item>
-              <item row="7" column="0">
-               <widget class="QCheckBox" name="trig1_enabled_6">
-                <property name="layoutDirection">
-                 <enum>Qt::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>Trig In 1</string>
-                </property>
-               </widget>
-              </item>
-              <item row="8" column="0">
-               <widget class="QCheckBox" name="trig1_enabled_7">
-                <property name="layoutDirection">
-                 <enum>Qt::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>Trig In 1</string>
-                </property>
-               </widget>
-              </item>
-              <item row="9" column="0">
-               <widget class="QCheckBox" name="trig1_enabled_8">
-                <property name="layoutDirection">
-                 <enum>Qt::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>Trig In 1</string>
-                </property>
-               </widget>
-              </item>
-              <item row="10" column="0">
-               <widget class="QCheckBox" name="trig1_enabled_9">
-                <property name="layoutDirection">
-                 <enum>Qt::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>Trig In 1</string>
-                </property>
-               </widget>
-              </item>
-              <item row="11" column="0">
-               <widget class="QCheckBox" name="trig1_enabled_10">
-                <property name="layoutDirection">
-                 <enum>Qt::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>Trig In 1</string>
-                </property>
-               </widget>
-              </item>
-              <item row="12" column="0">
-               <widget class="QCheckBox" name="trig1_enabled_11">
-                <property name="layoutDirection">
-                 <enum>Qt::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>Trig In 1</string>
-                </property>
-               </widget>
-              </item>
-              <item row="13" column="0">
-               <widget class="QCheckBox" name="trig1_enabled_12">
-                <property name="layoutDirection">
-                 <enum>Qt::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>Trig In 1</string>
-                </property>
-               </widget>
-              </item>
-              <item row="14" column="0">
-               <widget class="QCheckBox" name="trig1_enabled_13">
-                <property name="layoutDirection">
-                 <enum>Qt::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>Trig In 1</string>
-                </property>
-               </widget>
-              </item>
-              <item row="15" column="0">
-               <widget class="QCheckBox" name="trig1_enabled_14">
-                <property name="layoutDirection">
-                 <enum>Qt::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>Trig In 1</string>
-                </property>
-               </widget>
-              </item>
-              <item row="16" column="0">
-               <widget class="QCheckBox" name="trig1_enabled_15">
-                <property name="layoutDirection">
-                 <enum>Qt::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>Trig In 1</string>
-                </property>
-               </widget>
-              </item>
-              <item row="17" column="0">
-               <widget class="QCheckBox" name="trig1_enabled_16">
-                <property name="layoutDirection">
-                 <enum>Qt::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>Trig In 1</string>
+              <item row="9" column="7" colspan="2">
+               <widget class="NoWheelSpinBox" name="heartbeat_pin_box">
+                <property name="focusPolicy">
+                 <enum>Qt::NoFocus</enum>
                 </property>
                </widget>
               </item>
@@ -6934,8 +6940,6 @@
   <tabstop>cam1_trig_pin</tabstop>
   <tabstop>cam2_trig_pin</tabstop>
   <tabstop>cam3_trig_pin</tabstop>
-  <tabstop>trigger_port_edit</tabstop>
-  <tabstop>trigger_sketch_edit</tabstop>
   <tabstop>position_port_edit</tabstop>
   <tabstop>position_sketch_edit</tabstop>
   <tabstop>clock_pin_wave1</tabstop>

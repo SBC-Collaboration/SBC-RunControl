@@ -73,7 +73,7 @@ class Arduino(QObject):
         super().__init__()
         self.main = mainwindow
         self.arduino = arduino
-        self.config = mainwindow.config_class.config["dio"]["arduinos"][arduino]
+        self.config = mainwindow.config_class.config["dio"][arduino]
         self.logger = logging.getLogger("rc")
         os.putenv("PATH", "/home/sbc/packages")
         self.timer = QTimer(self)

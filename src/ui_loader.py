@@ -1,5 +1,7 @@
 import sys
 from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog
+from PySide6.QtGui import QTextCursor
+from PySide6.QtCore import QTimer
 import logging
 from enum import Enum
 import time
@@ -44,16 +46,25 @@ class SettingsWindow(QMainWindow):
         self.ui.data_dir_edit.setText(data_dir)
 
     def select_trigger_sketch_dir(self):
-        trigger_sketch_dir = QFileDialog.getExistingDirectory(self, self.config["dio"]["general"]["trigger"]["sketch"])
-        self.ui.trigger_sketch_edit.setText(trigger_sketch_dir)
+        trigger_dir = QFileDialog.getExistingDirectory(
+            self,
+            caption="Trigger Arduino Sketch Directory",
+            dir=self.config["dio"]["trigger"]["sketch"])
+        self.ui.trigger_sketch_edit.setText(trigger_dir)
 
     def select_clock_sketch_dir(self):
-        trigger_clock_dir = QFileDialog.getExistingDirectory(self, self.config["dio"]["general"]["clock"]["sketch"])
-        self.ui.trigger_clock_edit.setText(trigger_clock_dir)
+        clock_dir = QFileDialog.getExistingDirectory(
+            self,
+            caption="Clock Arduino Sketch Directory",
+            dir=self.config["dio"]["clock"]["sketch"])
+        self.ui.clock_sketch_edit.setText(clock_dir)
 
     def select_position_sketch_dir(self):
-        trigger_position_dir = QFileDialog.getExistingDirectory(self, self.config["dio"]["general"]["position"]["sketch"])
-        self.ui.trigger_position_edit.setText(trigger_position_dir)
+        position_dir = QFileDialog.getExistingDirectory(
+            self,
+            caption="Position Arduino Sketch Directory",
+            dir=self.config["dio"]["position"]["sketch"])
+        self.ui.position_sketch_edit.setText(position_dir)
 
 
 # Loads log window
@@ -66,7 +77,15 @@ class LogWindow(QMainWindow):
         self.load_log()
         self.logger = logging.getLogger("rc")
 
+        self.timer = QTimer(self)
+        self.timer.setInterval(100)
+        self.timer.timeout.connect(self.periodic_task)
+        self.timer.start()
+
         self.logger.info("Log window loaded.")
+
+    def periodic_task(self):
+        self.load_log()
 
     def load_log(self):
         log = open(self.main_window.log_filename).read()
