@@ -1,3 +1,7 @@
+# recompile UI files before starting
+import os
+os.system('for ui in ui/*.ui; do name="${ui%%.*}"; pyside6-uic $ui -o "$name.py"; done')
+
 from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog
 from PySide6.QtCore import QObject, QThread, Signal, Slot, QElapsedTimer, QTimer, Qt
 from PySide6.QtGui import QPixmap
@@ -15,8 +19,8 @@ from enum import Enum
 import datetime
 import time
 import re
-import os
 import sys
+import os
 
 class MainSignals(QObject):
     # initialize signals
@@ -79,7 +83,7 @@ class MainWindow(QMainWindow):
 
         # timer for event loop
         self.timer = QTimer()
-        self.timer.setInterval(100)
+        self.timer.setInterval(10)
         self.timer.timeout.connect(self.update)
         self.timer.start()
         # event timer
@@ -195,6 +199,7 @@ class MainWindow(QMainWindow):
         self.niusb_worker.event_stopped.connect(self.stopping_event_wait)
         self.niusb_worker.run_stopped.connect(self.stopping_run_wait)
         self.niusb_worker.trigger_detected.connect(self.stop_event)
+        self.niusb_worker.trigger_ff.connect(self.ui.trigger_edit.setText)
         self.niusb_thread = QThread()
         self.niusb_thread.setObjectName("niusb_thread")
         self.niusb_worker.moveToThread(self.niusb_thread)
@@ -401,7 +406,7 @@ class MainWindow(QMainWindow):
     def start_run(self):
         self.create_run_directory()
         self.starting_run_ready = []
-        self.update_state("starting_run")
+
         # reset event number and livetimes
         self.event_id = 0
         self.ev_livetime = 0
@@ -409,17 +414,16 @@ class MainWindow(QMainWindow):
         self.ui.event_id_edit.setText(f"{self.event_id:2d}")
         self.ui.event_time_edit.setText(self.format_time(self.ev_livetime))
         self.ui.run_live_time_edit.setText(self.format_time(self.run_livetime))
+        self.ui.trigger_edit.setText("")
         self.run_json_path = os.path.join(self.run_dir, f"{self.run_id}.json")
         self.run_log_path = os.path.join(self.run_dir, f"{self.run_id}.log")
-
-        self.config = self.config_class.config
-        # self.run_dev_counts =
-        #     self.config[""]
+        self.config_class.save_config(self.run_json_path)
 
         file_handler = logging.FileHandler(self.run_log_path, mode="a")
         file_handler.setLevel(logging.INFO)
         file_handler.setFormatter(self.log_formatter)
         self.logger.addHandler(file_handler)
+        self.update_state("starting_run")
 
         self.signals.run_starting.emit()
 
@@ -428,6 +432,7 @@ class MainWindow(QMainWindow):
         # set up multithreading thread and workers
         self.stopping_run = False
         self.update_state("idle")
+
         self.signals.run_stopping.emit()
 
     def start_event(self):

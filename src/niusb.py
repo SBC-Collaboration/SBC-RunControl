@@ -50,6 +50,7 @@ class NIUSB(QObject):
     trigger_detected = Signal()
     event_stopped = Signal(str)
     run_stopped = Signal(str)
+    trigger_ff = Signal(str)
 
     def __init__(self, mainwindow):
         super().__init__()
@@ -73,6 +74,7 @@ class NIUSB(QObject):
         if (self.main.run_state == self.main.run_states["active"] and
                 self.dev and
                 self.dev.read_pin(*self.reverse_config["latch"])):
+
             self.trigger_detected.emit()
 
     @Slot()
@@ -150,6 +152,7 @@ class NIUSB(QObject):
             self.logger.warning(f"No first fault pin detected.")
         else:
             self.logger.debug(f"First fault pin for the event is {self.ff_pin}")
+        self.trigger_ff.emit(self.ff_pin)
         self.event_stopped.emit("nuisb")
 
     @Slot()
