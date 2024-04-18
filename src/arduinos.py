@@ -6,6 +6,67 @@ import logging
 from PySide6.QtCore import QTimer, QObject, QThread, Slot, Signal
 
 class Arduino(QObject):
+    # A map of pin number to port in Arduino Mega 2560
+    # Pin number is digital pin number (number on board)
+    # The letter is port name, and the number is location in the port
+    # It is ordered roughly according to the placement on the board
+    arduino_port_map = {
+        13: "B7",
+        12: "B6",
+        11: "B5",
+        10: "B4",
+        9:  "H6",
+        8:  "H5",
+        7:  "H4",
+        6:  "H3",
+        5:  "E3",
+        4:  "G5",
+        3:  "E5",
+        2:  "E4",
+        1:  "E1",
+        0:  "E0",
+        14: "J1",
+        15: "J0",
+        16: "H1",
+        17: "H0",
+        18: "D3",
+        19: "D2",
+        20: "D1",
+        21: "D0",
+        22: "A0",
+        23: "A1",
+        24: "A2",
+        25: "A3",
+        26: "A4",
+        27: "A5",
+        28: "A6",
+        29: "A7",
+        30: "C7",
+        31: "C6",
+        32: "C5",
+        33: "C4",
+        34: "C3",
+        35: "C2",
+        36: "C1",
+        37: "C0",
+        38: "D7",
+        39: "G2",
+        40: "G1",
+        41: "G0",
+        42: "L7",
+        43: "L6",
+        44: "L5",
+        45: "L4",
+        46: "L3",
+        47: "L2",
+        48: "L1",
+        49: "L0",
+        50: "B3",
+        51: "B2",
+        52: "B1",
+        53: "B0",
+    }
+
     arduino_sketch_uploaded = Signal(str)
 
     def __init__(self, mainwindow, arduino):
