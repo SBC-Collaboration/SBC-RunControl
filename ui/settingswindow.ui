@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>750</width>
+    <width>751</width>
     <height>454</height>
    </rect>
   </property>
@@ -93,7 +93,7 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>738</width>
+             <width>739</width>
              <height>385</height>
             </rect>
            </property>
@@ -570,7 +570,7 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>721</width>
+             <width>722</width>
              <height>779</height>
             </rect>
            </property>
@@ -1820,7 +1820,7 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>738</width>
+             <width>739</width>
              <height>385</height>
             </rect>
            </property>
@@ -2695,7 +2695,7 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>721</width>
+             <width>722</width>
              <height>484</height>
             </rect>
            </property>
@@ -3679,9 +3679,9 @@
            <property name="geometry">
             <rect>
              <x>0</x>
-             <y>0</y>
-             <width>721</width>
-             <height>621</height>
+             <y>-233</y>
+             <width>722</width>
+             <height>1000</height>
             </rect>
            </property>
            <property name="maximumSize">
@@ -4080,84 +4080,102 @@
               <property name="spacing">
                <number>3</number>
               </property>
-              <item row="2" column="0">
-               <widget class="QLabel" name="trig_latch_pins_label">
-                <property name="text">
-                 <string>Trig Latch Pins</string>
-                </property>
-                <property name="buddy">
-                 <cstring>trig_latch_pins_edit</cstring>
-                </property>
-               </widget>
+              <item row="2" column="2">
+               <widget class="QSpinBox" name="trig_in_pin1_box"/>
               </item>
-              <item row="2" column="1" colspan="3">
-               <widget class="QLineEdit" name="trig_latch_pins_edit"/>
+              <item row="13" column="2">
+               <widget class="QSpinBox" name="trig_in_pin12_box"/>
               </item>
-              <item row="3" column="1">
-               <widget class="QSpinBox" name="trig_reset_pin_edit"/>
+              <item row="10" column="3">
+               <widget class="QSpinBox" name="trig_ff_pin1_box_9"/>
               </item>
-              <item row="4" column="1">
-               <widget class="QSpinBox" name="on_time_pin_edit"/>
+              <item row="15" column="2">
+               <widget class="QSpinBox" name="trig_in_pin14_box"/>
               </item>
-              <item row="3" column="2">
-               <widget class="QLabel" name="trig_or_pin_label">
-                <property name="text">
-                 <string>Trig Or Pin</string>
-                </property>
-                <property name="buddy">
-                 <cstring>trig_or_pin_edit</cstring>
-                </property>
-               </widget>
+              <item row="7" column="2">
+               <widget class="QSpinBox" name="trig_in_pin6_box"/>
+              </item>
+              <item row="3" column="3">
+               <widget class="QSpinBox" name="trig_ff_pin1_box_2"/>
               </item>
               <item row="4" column="2">
-               <widget class="QLabel" name="heartbeat_pin_label">
-                <property name="text">
-                 <string>Heartbeat Pin</string>
-                </property>
-                <property name="buddy">
-                 <cstring>heartbeat_pin_edit</cstring>
-                </property>
-               </widget>
+               <widget class="QSpinBox" name="trig_in_pin3_box"/>
               </item>
-              <item row="4" column="3">
-               <widget class="QSpinBox" name="heartbeat_pin_edit">
-                <property name="focusPolicy">
-                 <enum>Qt::NoFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="0">
+              <item row="19" column="0">
                <widget class="QLabel" name="trig_reset_pin_label">
                 <property name="text">
                  <string>Trig Reset Pin</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                 </property>
                 <property name="buddy">
                  <cstring>trig_reset_pin_edit</cstring>
                 </property>
                </widget>
               </item>
-              <item row="1" column="0">
-               <widget class="QLabel" name="trig_in_pins_label">
-                <property name="text">
-                 <string>Trig In Pins</string>
-                </property>
-                <property name="buddy">
-                 <cstring>trig_in_pins_edit</cstring>
+              <item row="2" column="0">
+               <widget class="QLineEdit" name="trig_pin1_name_edit">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
                 </property>
                </widget>
               </item>
-              <item row="1" column="1" colspan="3">
-               <widget class="QLineEdit" name="trig_in_pins_edit"/>
+              <item row="9" column="3">
+               <widget class="QSpinBox" name="trig_ff_pin1_box_8"/>
               </item>
-              <item row="4" column="0">
-               <widget class="QLabel" name="on_time_pin_label">
+              <item row="1" column="3">
+               <widget class="QLabel" name="trig_ff_pin_label">
                 <property name="text">
-                 <string>On-Time Pin</string>
+                 <string>Trig FF Pin</string>
                 </property>
-                <property name="buddy">
-                 <cstring>on_time_pin_edit</cstring>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
                 </property>
                </widget>
+              </item>
+              <item row="8" column="3">
+               <widget class="QSpinBox" name="trig_ff_pin1_box_7"/>
+              </item>
+              <item row="13" column="3">
+               <widget class="QSpinBox" name="trig_ff_pin1_box_12"/>
+              </item>
+              <item row="19" column="2">
+               <widget class="QLabel" name="trig_or_pin_label">
+                <property name="text">
+                 <string>Trig Or Pin</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>trig_or_pin_edit</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="14" column="3">
+               <widget class="QSpinBox" name="trig_ff_pin1_box_13"/>
+              </item>
+              <item row="5" column="2">
+               <widget class="QSpinBox" name="trig_in_pin4_box"/>
+              </item>
+              <item row="12" column="2">
+               <widget class="QSpinBox" name="trig_in_pin11_box"/>
+              </item>
+              <item row="5" column="3">
+               <widget class="QSpinBox" name="trig_ff_pin1_box_4"/>
+              </item>
+              <item row="7" column="3">
+               <widget class="QSpinBox" name="trig_ff_pin1_box_6"/>
+              </item>
+              <item row="9" column="2">
+               <widget class="QSpinBox" name="trig_in_pin8_box"/>
+              </item>
+              <item row="18" column="1" colspan="3">
+               <widget class="QLineEdit" name="trig_latch_pins_edit"/>
               </item>
               <item row="0" column="0" colspan="4">
                <widget class="QLabel" name="fifo_layout">
@@ -4167,14 +4185,521 @@
                  </font>
                 </property>
                 <property name="text">
-                 <string>Trig FIFO Arduino</string>
+                 <string>Trigger FIFO Arduino</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
                 </property>
                </widget>
               </item>
-              <item row="3" column="3">
+              <item row="16" column="2">
+               <widget class="QSpinBox" name="trig_in_pin15_box"/>
+              </item>
+              <item row="1" column="2">
+               <widget class="QLabel" name="trig_in_pin_label">
+                <property name="text">
+                 <string>Trig In Pin</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="QComboBox" name="trig_pin1_type_box">
+                <item>
+                 <property name="text">
+                  <string>Fast</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Slow</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="3" column="2">
+               <widget class="QSpinBox" name="trig_in_pin2_box"/>
+              </item>
+              <item row="12" column="3">
+               <widget class="QSpinBox" name="trig_ff_pin1_box_11"/>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="trig_in_name_label">
+                <property name="text">
+                 <string>Name</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="3">
+               <widget class="NoWheelSpinBox" name="trig_ff_pin1_box"/>
+              </item>
+              <item row="6" column="2">
+               <widget class="QSpinBox" name="trig_in_pin5_box"/>
+              </item>
+              <item row="11" column="3">
+               <widget class="QSpinBox" name="trig_ff_pin1_box_10"/>
+              </item>
+              <item row="16" column="3">
+               <widget class="QSpinBox" name="trig_ff_pin1_box_15"/>
+              </item>
+              <item row="3" column="0">
+               <widget class="QLineEdit" name="trig_pin2_name_edit">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+               </widget>
+              </item>
+              <item row="17" column="3">
+               <widget class="QSpinBox" name="trig_ff_pin1_box_16"/>
+              </item>
+              <item row="19" column="3">
                <widget class="QSpinBox" name="trig_or_pin_edit">
                 <property name="focusPolicy">
                  <enum>Qt::NoFocus</enum>
+                </property>
+               </widget>
+              </item>
+              <item row="19" column="1">
+               <widget class="QSpinBox" name="trig_reset_pin_edit"/>
+              </item>
+              <item row="20" column="3">
+               <widget class="QSpinBox" name="heartbeat_pin_edit">
+                <property name="focusPolicy">
+                 <enum>Qt::NoFocus</enum>
+                </property>
+               </widget>
+              </item>
+              <item row="15" column="3">
+               <widget class="QSpinBox" name="trig_ff_pin1_box_14"/>
+              </item>
+              <item row="20" column="2">
+               <widget class="QLabel" name="heartbeat_pin_label">
+                <property name="text">
+                 <string>Heartbeat Pin</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>heartbeat_pin_edit</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="3">
+               <widget class="QSpinBox" name="trig_ff_pin1_box_5"/>
+              </item>
+              <item row="10" column="2">
+               <widget class="QSpinBox" name="trig_in_pin9_box"/>
+              </item>
+              <item row="17" column="2">
+               <widget class="QSpinBox" name="trig_in_pin16_box"/>
+              </item>
+              <item row="14" column="2">
+               <widget class="QSpinBox" name="trig_in_pin13_box"/>
+              </item>
+              <item row="20" column="0">
+               <widget class="QLabel" name="on_time_pin_label">
+                <property name="text">
+                 <string>On-Time Pin</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>on_time_pin_edit</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="3">
+               <widget class="QSpinBox" name="trig_ff_pin1_box_3"/>
+              </item>
+              <item row="3" column="1">
+               <widget class="QComboBox" name="trig_pin2_type_box">
+                <item>
+                 <property name="text">
+                  <string>Fast</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Slow</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="11" column="2">
+               <widget class="QSpinBox" name="trig_in_pin10_box"/>
+              </item>
+              <item row="20" column="1">
+               <widget class="QSpinBox" name="on_time_pin_edit"/>
+              </item>
+              <item row="1" column="1">
+               <widget class="QLabel" name="trig_in_type">
+                <property name="text">
+                 <string>Type</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="8" column="2">
+               <widget class="QSpinBox" name="trig_in_pin7_box"/>
+              </item>
+              <item row="18" column="0">
+               <widget class="QLabel" name="trig_latch_pins_label">
+                <property name="text">
+                 <string>Trig Latch Pins</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>trig_latch_pins_edit</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="1">
+               <widget class="QComboBox" name="trig_pin3_type_box">
+                <item>
+                 <property name="text">
+                  <string>Fast</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Slow</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="5" column="1">
+               <widget class="QComboBox" name="trig_pin4_type_box">
+                <item>
+                 <property name="text">
+                  <string>Fast</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Slow</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="6" column="1">
+               <widget class="QComboBox" name="trig_pin5_type_box">
+                <item>
+                 <property name="text">
+                  <string>Fast</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Slow</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="7" column="1">
+               <widget class="QComboBox" name="trig_pin6_type_box">
+                <item>
+                 <property name="text">
+                  <string>Fast</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Slow</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="8" column="1">
+               <widget class="QComboBox" name="trig_pin7_type_box">
+                <item>
+                 <property name="text">
+                  <string>Fast</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Slow</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="9" column="1">
+               <widget class="QComboBox" name="trig_pin8_type_box">
+                <item>
+                 <property name="text">
+                  <string>Fast</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Slow</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="10" column="1">
+               <widget class="QComboBox" name="trig_pin9_type_box">
+                <item>
+                 <property name="text">
+                  <string>Fast</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Slow</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="11" column="1">
+               <widget class="QComboBox" name="trig_pin10_type_box">
+                <item>
+                 <property name="text">
+                  <string>Fast</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Slow</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="12" column="1">
+               <widget class="QComboBox" name="trig_pin11_type_box">
+                <item>
+                 <property name="text">
+                  <string>Fast</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Slow</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="13" column="1">
+               <widget class="QComboBox" name="trig_pin12_type_box">
+                <item>
+                 <property name="text">
+                  <string>Fast</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Slow</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="14" column="1">
+               <widget class="QComboBox" name="trig_pin13_type_box">
+                <item>
+                 <property name="text">
+                  <string>Fast</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Slow</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="15" column="1">
+               <widget class="QComboBox" name="trig_pin14_type_box">
+                <item>
+                 <property name="text">
+                  <string>Fast</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Slow</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="16" column="1">
+               <widget class="QComboBox" name="trig_pin15_type_box">
+                <item>
+                 <property name="text">
+                  <string>Fast</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Slow</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="17" column="1">
+               <widget class="QComboBox" name="trig_pin16_type_box">
+                <item>
+                 <property name="text">
+                  <string>Fast</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Slow</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="4" column="0">
+               <widget class="QLineEdit" name="trig_pin3_name_edit">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="0">
+               <widget class="QLineEdit" name="trig_pin4_name_edit">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="0">
+               <widget class="QLineEdit" name="trig_pin5_name_edit">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+               </widget>
+              </item>
+              <item row="7" column="0">
+               <widget class="QLineEdit" name="trig_pin6_name_edit">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+               </widget>
+              </item>
+              <item row="8" column="0">
+               <widget class="QLineEdit" name="trig_pin7_name_edit">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+               </widget>
+              </item>
+              <item row="9" column="0">
+               <widget class="QLineEdit" name="trig_pin8_name_edit">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+               </widget>
+              </item>
+              <item row="10" column="0">
+               <widget class="QLineEdit" name="trig_pin9_name_edit">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+               </widget>
+              </item>
+              <item row="11" column="0">
+               <widget class="QLineEdit" name="trig_pin10_name_edit">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+               </widget>
+              </item>
+              <item row="12" column="0">
+               <widget class="QLineEdit" name="trig_pin11_name_edit">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+               </widget>
+              </item>
+              <item row="13" column="0">
+               <widget class="QLineEdit" name="trig_pin12_name_edit">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+               </widget>
+              </item>
+              <item row="14" column="0">
+               <widget class="QLineEdit" name="trig_pin13_name_edit">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+               </widget>
+              </item>
+              <item row="15" column="0">
+               <widget class="QLineEdit" name="trig_pin14_name_edit">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+               </widget>
+              </item>
+              <item row="16" column="0">
+               <widget class="QLineEdit" name="trig_pin15_name_edit">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+               </widget>
+              </item>
+              <item row="17" column="0">
+               <widget class="QLineEdit" name="trig_pin16_name_edit">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
                 </property>
                </widget>
               </item>
@@ -4188,7 +4713,7 @@
              </widget>
             </item>
             <item>
-             <layout class="QGridLayout" name="gate_grid_layout">
+             <layout class="QGridLayout" name="clock_grid_layout">
               <property name="leftMargin">
                <number>0</number>
               </property>
@@ -4199,7 +4724,7 @@
                <number>3</number>
               </property>
               <item row="8" column="5">
-               <widget class="QComboBox" name="gate_polarity_wave6">
+               <widget class="QComboBox" name="clock_polarity_wave6">
                 <item>
                  <property name="text">
                   <string>Normal</string>
@@ -4223,10 +4748,10 @@
                </widget>
               </item>
               <item row="9" column="1">
-               <widget class="QSpinBox" name="gate_pin_wave7"/>
+               <widget class="QSpinBox" name="clock_pin_wave7"/>
               </item>
               <item row="11" column="1">
-               <widget class="QSpinBox" name="gate_pin_wave9"/>
+               <widget class="QSpinBox" name="clock_pin_wave9"/>
               </item>
               <item row="8" column="0">
                <widget class="QLabel" name="wave6_label">
@@ -4236,7 +4761,7 @@
                </widget>
               </item>
               <item row="5" column="1">
-               <widget class="QSpinBox" name="gate_pin_wave3"/>
+               <widget class="QSpinBox" name="clock_pin_wave3"/>
               </item>
               <item row="9" column="0">
                <widget class="QLabel" name="wave7_label">
@@ -4246,14 +4771,14 @@
                </widget>
               </item>
               <item row="3" column="2">
-               <widget class="QSpinBox" name="gate_period_wave1">
+               <widget class="QSpinBox" name="clock_period_wave1">
                 <property name="maximum">
                  <number>1000000</number>
                 </property>
                </widget>
               </item>
               <item row="10" column="5">
-               <widget class="QComboBox" name="gate_polarity_wave8">
+               <widget class="QComboBox" name="clock_polarity_wave8">
                 <item>
                  <property name="text">
                   <string>Normal</string>
@@ -4274,7 +4799,7 @@
                </widget>
               </item>
               <item row="6" column="2">
-               <widget class="QSpinBox" name="gate_period_wave4">
+               <widget class="QSpinBox" name="clock_period_wave4">
                 <property name="maximum">
                  <number>1000000</number>
                 </property>
@@ -4311,14 +4836,14 @@
                </widget>
               </item>
               <item row="1" column="2">
-               <widget class="QLabel" name="gate_period_label">
+               <widget class="QLabel" name="clock_period_label">
                 <property name="text">
                  <string>Period</string>
                 </property>
                </widget>
               </item>
               <item row="11" column="5">
-               <widget class="QComboBox" name="gate_polarity_wave9">
+               <widget class="QComboBox" name="clock_polarity_wave9">
                 <item>
                  <property name="text">
                   <string>Normal</string>
@@ -4332,14 +4857,17 @@
                </widget>
               </item>
               <item row="0" column="0" colspan="6">
-               <widget class="QLabel" name="gate_label">
+               <widget class="QLabel" name="clock_label">
                 <property name="font">
                  <font>
                   <bold>true</bold>
                  </font>
                 </property>
                 <property name="text">
-                 <string>Gate Arduino</string>
+                 <string>Clock Arduino</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
                 </property>
                 <property name="margin">
                  <number>0</number>
@@ -4347,7 +4875,7 @@
                </widget>
               </item>
               <item row="4" column="5">
-               <widget class="QComboBox" name="gate_polarity_wave2">
+               <widget class="QComboBox" name="clock_polarity_wave2">
                 <item>
                  <property name="text">
                   <string>Normal</string>
@@ -4361,14 +4889,14 @@
                </widget>
               </item>
               <item row="7" column="2">
-               <widget class="QSpinBox" name="gate_period_wave5">
+               <widget class="QSpinBox" name="clock_period_wave5">
                 <property name="maximum">
                  <number>1000000</number>
                 </property>
                </widget>
               </item>
               <item row="10" column="1">
-               <widget class="QSpinBox" name="gate_pin_wave8"/>
+               <widget class="QSpinBox" name="clock_pin_wave8"/>
               </item>
               <item row="10" column="0">
                <widget class="QLabel" name="wave8_label">
@@ -4395,7 +4923,7 @@
                </widget>
               </item>
               <item row="9" column="2">
-               <widget class="QSpinBox" name="gate_period_wave7">
+               <widget class="QSpinBox" name="clock_period_wave7">
                 <property name="maximum">
                  <number>1000000</number>
                 </property>
@@ -4409,10 +4937,10 @@
                </widget>
               </item>
               <item row="5" column="3">
-               <widget class="QSpinBox" name="gate_phase_wave3"/>
+               <widget class="QSpinBox" name="clock_phase_wave3"/>
               </item>
               <item row="10" column="2">
-               <widget class="QSpinBox" name="gate_period_wave8">
+               <widget class="QSpinBox" name="clock_period_wave8">
                 <property name="maximum">
                  <number>1000000</number>
                 </property>
@@ -4439,10 +4967,10 @@
                </widget>
               </item>
               <item row="8" column="3">
-               <widget class="QSpinBox" name="gate_phase_wave6"/>
+               <widget class="QSpinBox" name="clock_phase_wave6"/>
               </item>
               <item row="4" column="3">
-               <widget class="QSpinBox" name="gate_phase_wave2"/>
+               <widget class="QSpinBox" name="clock_phase_wave2"/>
               </item>
               <item row="6" column="4">
                <widget class="QSpinBox" name="duty_wave4">
@@ -4455,17 +4983,17 @@
                </widget>
               </item>
               <item row="4" column="2">
-               <widget class="QSpinBox" name="gate_period_wave2">
+               <widget class="QSpinBox" name="clock_period_wave2">
                 <property name="maximum">
                  <number>1000000</number>
                 </property>
                </widget>
               </item>
               <item row="10" column="3">
-               <widget class="QSpinBox" name="gate_phase_wave8"/>
+               <widget class="QSpinBox" name="clock_phase_wave8"/>
               </item>
               <item row="6" column="1">
-               <widget class="QSpinBox" name="gate_pin_wave4"/>
+               <widget class="QSpinBox" name="clock_pin_wave4"/>
               </item>
               <item row="3" column="0">
                <widget class="QLabel" name="wave1_label">
@@ -4475,10 +5003,10 @@
                </widget>
               </item>
               <item row="8" column="1">
-               <widget class="QSpinBox" name="gate_pin_wave6"/>
+               <widget class="QSpinBox" name="clock_pin_wave6"/>
               </item>
               <item row="9" column="5">
-               <widget class="QComboBox" name="gate_polarity_wave7">
+               <widget class="QComboBox" name="clock_polarity_wave7">
                 <item>
                  <property name="text">
                   <string>Normal</string>
@@ -4492,7 +5020,7 @@
                </widget>
               </item>
               <item row="3" column="3">
-               <widget class="QSpinBox" name="gate_phase_wave1">
+               <widget class="QSpinBox" name="clock_phase_wave1">
                 <property name="buttonSymbols">
                  <enum>QAbstractSpinBox::UpDownArrows</enum>
                 </property>
@@ -4505,7 +5033,7 @@
                </widget>
               </item>
               <item row="6" column="5">
-               <widget class="QComboBox" name="gate_polarity_wave4">
+               <widget class="QComboBox" name="clock_polarity_wave4">
                 <item>
                  <property name="text">
                   <string>Normal</string>
@@ -4519,10 +5047,10 @@
                </widget>
               </item>
               <item row="3" column="1">
-               <widget class="QSpinBox" name="gate_pin_wave1"/>
+               <widget class="QSpinBox" name="clock_pin_wave1"/>
               </item>
               <item row="3" column="5">
-               <widget class="QComboBox" name="gate_polarity_wave1">
+               <widget class="QComboBox" name="clock_polarity_wave1">
                 <item>
                  <property name="text">
                   <string>Normal</string>
@@ -4543,10 +5071,10 @@
                </widget>
               </item>
               <item row="9" column="3">
-               <widget class="QSpinBox" name="gate_phase_wave7"/>
+               <widget class="QSpinBox" name="clock_phase_wave7"/>
               </item>
               <item row="1" column="3">
-               <widget class="QLabel" name="gate_phase_label">
+               <widget class="QLabel" name="clock_phase_label">
                 <property name="text">
                  <string>Phase</string>
                 </property>
@@ -4563,26 +5091,26 @@
                </widget>
               </item>
               <item row="11" column="3">
-               <widget class="QSpinBox" name="gate_phase_wave9"/>
+               <widget class="QSpinBox" name="clock_phase_wave9"/>
               </item>
               <item row="5" column="2">
-               <widget class="QSpinBox" name="gate_period_wave3">
+               <widget class="QSpinBox" name="clock_period_wave3">
                 <property name="maximum">
                  <number>1000000</number>
                 </property>
                </widget>
               </item>
               <item row="7" column="3">
-               <widget class="QSpinBox" name="gate_phase_wave5"/>
+               <widget class="QSpinBox" name="clock_phase_wave5"/>
               </item>
               <item row="4" column="1">
-               <widget class="QSpinBox" name="gate_pin_wave2"/>
+               <widget class="QSpinBox" name="clock_pin_wave2"/>
               </item>
               <item row="6" column="3">
-               <widget class="QSpinBox" name="gate_phase_wave4"/>
+               <widget class="QSpinBox" name="clock_phase_wave4"/>
               </item>
               <item row="7" column="5">
-               <widget class="QComboBox" name="gate_polarity_wave5">
+               <widget class="QComboBox" name="clock_polarity_wave5">
                 <item>
                  <property name="text">
                   <string>Normal</string>
@@ -4596,10 +5124,10 @@
                </widget>
               </item>
               <item row="7" column="1">
-               <widget class="QSpinBox" name="gate_pin_wave5"/>
+               <widget class="QSpinBox" name="clock_pin_wave5"/>
               </item>
               <item row="5" column="5">
-               <widget class="QComboBox" name="gate_polarity_wave3">
+               <widget class="QComboBox" name="clock_polarity_wave3">
                 <item>
                  <property name="text">
                   <string>Normal</string>
@@ -4620,28 +5148,28 @@
                </widget>
               </item>
               <item row="11" column="2">
-               <widget class="QSpinBox" name="gate_period_wave9">
+               <widget class="QSpinBox" name="clock_period_wave9">
                 <property name="maximum">
                  <number>1000000</number>
                 </property>
                </widget>
               </item>
               <item row="8" column="2">
-               <widget class="QSpinBox" name="gate_period_wave6">
+               <widget class="QSpinBox" name="clock_period_wave6">
                 <property name="maximum">
                  <number>1000000</number>
                 </property>
                </widget>
               </item>
               <item row="1" column="5">
-               <widget class="QLabel" name="gate_polarity_label">
+               <widget class="QLabel" name="clock_polarity_label">
                 <property name="text">
                  <string>Polarity</string>
                 </property>
                </widget>
               </item>
               <item row="1" column="1">
-               <widget class="QLabel" name="gate_pin_label">
+               <widget class="QLabel" name="clock_pin_label">
                 <property name="text">
                  <string>Pin</string>
                 </property>
@@ -4775,7 +5303,12 @@
   <customwidget>
    <class>SwappingTableWidget</class>
    <extends>QTableWidget</extends>
-   <header>ui.swappingtablewidget</header>
+   <header>ui.custom_widgets</header>
+  </customwidget>
+  <customwidget>
+   <class>NoWheelSpinBox</class>
+   <extends>QSpinBox</extends>
+   <header>ui.custom_widgets</header>
   </customwidget>
  </customwidgets>
  <tabstops>
@@ -4914,57 +5447,56 @@
   <tabstop>clock_sketch_edit</tabstop>
   <tabstop>position_port_edit</tabstop>
   <tabstop>position_sketch_edit</tabstop>
-  <tabstop>trig_in_pins_edit</tabstop>
   <tabstop>trig_latch_pins_edit</tabstop>
   <tabstop>trig_reset_pin_edit</tabstop>
   <tabstop>trig_or_pin_edit</tabstop>
   <tabstop>on_time_pin_edit</tabstop>
   <tabstop>heartbeat_pin_edit</tabstop>
-  <tabstop>gate_pin_wave1</tabstop>
-  <tabstop>gate_period_wave1</tabstop>
-  <tabstop>gate_phase_wave1</tabstop>
+  <tabstop>clock_pin_wave1</tabstop>
+  <tabstop>clock_period_wave1</tabstop>
+  <tabstop>clock_phase_wave1</tabstop>
   <tabstop>duty_wave1</tabstop>
-  <tabstop>gate_polarity_wave1</tabstop>
-  <tabstop>gate_pin_wave2</tabstop>
-  <tabstop>gate_period_wave2</tabstop>
-  <tabstop>gate_phase_wave2</tabstop>
+  <tabstop>clock_polarity_wave1</tabstop>
+  <tabstop>clock_pin_wave2</tabstop>
+  <tabstop>clock_period_wave2</tabstop>
+  <tabstop>clock_phase_wave2</tabstop>
   <tabstop>duty_wave2</tabstop>
-  <tabstop>gate_polarity_wave2</tabstop>
-  <tabstop>gate_pin_wave3</tabstop>
-  <tabstop>gate_period_wave3</tabstop>
-  <tabstop>gate_phase_wave3</tabstop>
+  <tabstop>clock_polarity_wave2</tabstop>
+  <tabstop>clock_pin_wave3</tabstop>
+  <tabstop>clock_period_wave3</tabstop>
+  <tabstop>clock_phase_wave3</tabstop>
   <tabstop>duty_wave3</tabstop>
-  <tabstop>gate_polarity_wave3</tabstop>
-  <tabstop>gate_pin_wave4</tabstop>
-  <tabstop>gate_period_wave4</tabstop>
-  <tabstop>gate_phase_wave4</tabstop>
+  <tabstop>clock_polarity_wave3</tabstop>
+  <tabstop>clock_pin_wave4</tabstop>
+  <tabstop>clock_period_wave4</tabstop>
+  <tabstop>clock_phase_wave4</tabstop>
   <tabstop>duty_wave4</tabstop>
-  <tabstop>gate_polarity_wave4</tabstop>
-  <tabstop>gate_pin_wave5</tabstop>
-  <tabstop>gate_period_wave5</tabstop>
-  <tabstop>gate_phase_wave5</tabstop>
+  <tabstop>clock_polarity_wave4</tabstop>
+  <tabstop>clock_pin_wave5</tabstop>
+  <tabstop>clock_period_wave5</tabstop>
+  <tabstop>clock_phase_wave5</tabstop>
   <tabstop>duty_wave5</tabstop>
-  <tabstop>gate_polarity_wave5</tabstop>
-  <tabstop>gate_pin_wave6</tabstop>
-  <tabstop>gate_period_wave6</tabstop>
-  <tabstop>gate_phase_wave6</tabstop>
+  <tabstop>clock_polarity_wave5</tabstop>
+  <tabstop>clock_pin_wave6</tabstop>
+  <tabstop>clock_period_wave6</tabstop>
+  <tabstop>clock_phase_wave6</tabstop>
   <tabstop>duty_wave6</tabstop>
-  <tabstop>gate_polarity_wave6</tabstop>
-  <tabstop>gate_pin_wave7</tabstop>
-  <tabstop>gate_period_wave7</tabstop>
-  <tabstop>gate_phase_wave7</tabstop>
+  <tabstop>clock_polarity_wave6</tabstop>
+  <tabstop>clock_pin_wave7</tabstop>
+  <tabstop>clock_period_wave7</tabstop>
+  <tabstop>clock_phase_wave7</tabstop>
   <tabstop>duty_wave7</tabstop>
-  <tabstop>gate_polarity_wave7</tabstop>
-  <tabstop>gate_pin_wave8</tabstop>
-  <tabstop>gate_period_wave8</tabstop>
-  <tabstop>gate_phase_wave8</tabstop>
+  <tabstop>clock_polarity_wave7</tabstop>
+  <tabstop>clock_pin_wave8</tabstop>
+  <tabstop>clock_period_wave8</tabstop>
+  <tabstop>clock_phase_wave8</tabstop>
   <tabstop>duty_wave8</tabstop>
-  <tabstop>gate_polarity_wave8</tabstop>
-  <tabstop>gate_pin_wave9</tabstop>
-  <tabstop>gate_period_wave9</tabstop>
-  <tabstop>gate_phase_wave9</tabstop>
+  <tabstop>clock_polarity_wave8</tabstop>
+  <tabstop>clock_pin_wave9</tabstop>
+  <tabstop>clock_period_wave9</tabstop>
+  <tabstop>clock_phase_wave9</tabstop>
   <tabstop>duty_wave9</tabstop>
-  <tabstop>gate_polarity_wave9</tabstop>
+  <tabstop>clock_polarity_wave9</tabstop>
  </tabstops>
  <resources>
   <include location="../resources/resources.qrc"/>
