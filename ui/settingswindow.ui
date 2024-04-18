@@ -260,7 +260,7 @@
                </widget>
               </item>
               <item row="0" column="3">
-               <widget class="QDoubleSpinBox" name="max_ev_time_box">
+               <widget class="NoWheelDoubleSpinBox" name="max_ev_time_box">
                 <property name="suffix">
                  <string>s</string>
                 </property>
@@ -270,7 +270,7 @@
                </widget>
               </item>
               <item row="0" column="1">
-               <widget class="QSpinBox" name="max_num_ev_box">
+               <widget class="NoWheelSpinBox" name="max_num_ev_box">
                 <property name="minimum">
                  <number>1</number>
                 </property>
@@ -382,14 +382,14 @@
                </widget>
               </item>
               <item row="3" column="6">
-               <widget class="QSpinBox" name="sql_port_box">
+               <widget class="NoWheelSpinBox" name="sql_port_box">
                 <property name="maximum">
                  <number>65535</number>
                 </property>
                </widget>
               </item>
               <item row="1" column="6">
-               <widget class="QSpinBox" name="sql_ssh_port_box">
+               <widget class="NoWheelSpinBox" name="sql_ssh_port_box">
                 <property name="maximum">
                  <number>65535</number>
                 </property>
@@ -608,7 +608,7 @@
                <number>3</number>
               </property>
               <item row="2" column="4">
-               <widget class="QDoubleSpinBox" name="sipm_amp1_iv_step_box">
+               <widget class="NoWheelDoubleSpinBox" name="sipm_amp1_iv_step_box">
                 <property name="suffix">
                  <string>V</string>
                 </property>
@@ -637,7 +637,7 @@
                </widget>
               </item>
               <item row="1" column="8">
-               <widget class="QDoubleSpinBox" name="sipm_amp1_qp_box">
+               <widget class="NoWheelDoubleSpinBox" name="sipm_amp1_qp_box">
                 <property name="suffix">
                  <string>V</string>
                 </property>
@@ -670,7 +670,7 @@
                </widget>
               </item>
               <item row="1" column="6">
-               <widget class="QDoubleSpinBox" name="sipm_amp1_bias_box">
+               <widget class="NoWheelDoubleSpinBox" name="sipm_amp1_bias_box">
                 <property name="suffix">
                  <string>V</string>
                 </property>
@@ -683,7 +683,7 @@
                </widget>
               </item>
               <item row="2" column="6">
-               <widget class="QDoubleSpinBox" name="sipm_amp1_iv_start_box">
+               <widget class="NoWheelDoubleSpinBox" name="sipm_amp1_iv_start_box">
                 <property name="suffix">
                  <string>V</string>
                 </property>
@@ -702,7 +702,7 @@
                </widget>
               </item>
               <item row="2" column="8">
-               <widget class="QDoubleSpinBox" name="sipm_amp1_iv_stop_box">
+               <widget class="NoWheelDoubleSpinBox" name="sipm_amp1_iv_stop_box">
                 <property name="suffix">
                  <string>V</string>
                 </property>
@@ -822,7 +822,7 @@
                <widget class="QLineEdit" name="sipm_amp2_iv_data_dir_edit"/>
               </item>
               <item row="2" column="9">
-               <widget class="QDoubleSpinBox" name="sipm_amp2_iv_stop_box">
+               <widget class="NoWheelDoubleSpinBox" name="sipm_amp2_iv_stop_box">
                 <property name="suffix">
                  <string>V</string>
                 </property>
@@ -841,7 +841,7 @@
                </widget>
               </item>
               <item row="1" column="7">
-               <widget class="QDoubleSpinBox" name="sipm_amp2_bias_box">
+               <widget class="NoWheelDoubleSpinBox" name="sipm_amp2_bias_box">
                 <property name="suffix">
                  <string>V</string>
                 </property>
@@ -899,7 +899,7 @@
                </widget>
               </item>
               <item row="2" column="5">
-               <widget class="QDoubleSpinBox" name="sipm_amp2_iv_step_box">
+               <widget class="NoWheelDoubleSpinBox" name="sipm_amp2_iv_step_box">
                 <property name="suffix">
                  <string>V</string>
                 </property>
@@ -938,7 +938,7 @@
                </widget>
               </item>
               <item row="1" column="9">
-               <widget class="QDoubleSpinBox" name="sipm_amp2_qp_box">
+               <widget class="NoWheelDoubleSpinBox" name="sipm_amp2_qp_box">
                 <property name="suffix">
                  <string>V</string>
                 </property>
@@ -971,7 +971,7 @@
                </widget>
               </item>
               <item row="2" column="7">
-               <widget class="QDoubleSpinBox" name="sipm_amp2_iv_start_box">
+               <widget class="NoWheelDoubleSpinBox" name="sipm_amp2_iv_start_box">
                 <property name="suffix">
                  <string>V</string>
                 </property>
@@ -1068,7 +1068,7 @@
                </widget>
               </item>
               <item row="2" column="7">
-               <widget class="QSpinBox" name="caen_decimation_box">
+               <widget class="NoWheelSpinBox" name="caen_decimation_box">
                 <property name="prefix">
                  <string/>
                 </property>
@@ -1117,7 +1117,7 @@
                </widget>
               </item>
               <item row="2" column="1">
-               <widget class="QSpinBox" name="caen_length_box">
+               <widget class="NoWheelSpinBox" name="caen_length_box">
                 <property name="maximum">
                  <number>10000</number>
                 </property>
@@ -1242,7 +1242,7 @@
                </widget>
               </item>
               <item row="2" column="3">
-               <widget class="QSpinBox" name="caen_post_trig_box">
+               <widget class="NoWheelSpinBox" name="caen_post_trig_box">
                 <property name="suffix">
                  <string>%</string>
                 </property>
@@ -1283,7 +1283,7 @@
                </widget>
               </item>
               <item row="1" column="3">
-               <widget class="QSpinBox" name="caen_port_box">
+               <widget class="NoWheelSpinBox" name="caen_port_box">
                 <property name="minimumSize">
                  <size>
                   <width>50</width>
@@ -1315,7 +1315,7 @@
                </widget>
               </item>
               <item row="1" column="7">
-               <widget class="QSpinBox" name="caen_evs_box">
+               <widget class="NoWheelSpinBox" name="caen_evs_box">
                 <property name="maximum">
                  <number>10000</number>
                 </property>
@@ -1333,7 +1333,7 @@
             <item>
              <layout class="QGridLayout" name="gridLayout_7">
               <item row="1" column="3">
-               <widget class="QSpinBox" name="caen_g0_thres_box">
+               <widget class="NoWheelSpinBox" name="caen_g0_thres_box">
                 <property name="maximum">
                  <number>65536</number>
                 </property>
@@ -1572,7 +1572,7 @@
                </widget>
               </item>
               <item row="3" column="1">
-               <widget class="QSpinBox" name="caen_g0_offset_0">
+               <widget class="NoWheelSpinBox" name="caen_g0_offset_0">
                 <property name="font">
                  <font>
                   <kerning>true</kerning>
@@ -1596,7 +1596,7 @@
                </widget>
               </item>
               <item row="3" column="2">
-               <widget class="QSpinBox" name="caen_g0_offset_1">
+               <widget class="NoWheelSpinBox" name="caen_g0_offset_1">
                 <property name="font">
                  <font>
                   <kerning>true</kerning>
@@ -1620,7 +1620,7 @@
                </widget>
               </item>
               <item row="3" column="3">
-               <widget class="QSpinBox" name="caen_g0_offset_2">
+               <widget class="NoWheelSpinBox" name="caen_g0_offset_2">
                 <property name="font">
                  <font>
                   <kerning>true</kerning>
@@ -1644,7 +1644,7 @@
                </widget>
               </item>
               <item row="3" column="4">
-               <widget class="QSpinBox" name="caen_g0_offset_3">
+               <widget class="NoWheelSpinBox" name="caen_g0_offset_3">
                 <property name="font">
                  <font>
                   <kerning>true</kerning>
@@ -1668,7 +1668,7 @@
                </widget>
               </item>
               <item row="3" column="5">
-               <widget class="QSpinBox" name="caen_g0_offset_4">
+               <widget class="NoWheelSpinBox" name="caen_g0_offset_4">
                 <property name="font">
                  <font>
                   <kerning>true</kerning>
@@ -1692,7 +1692,7 @@
                </widget>
               </item>
               <item row="3" column="6">
-               <widget class="QSpinBox" name="caen_g0_offset_5">
+               <widget class="NoWheelSpinBox" name="caen_g0_offset_5">
                 <property name="font">
                  <font>
                   <kerning>true</kerning>
@@ -1716,7 +1716,7 @@
                </widget>
               </item>
               <item row="3" column="7">
-               <widget class="QSpinBox" name="caen_g0_offset_6">
+               <widget class="NoWheelSpinBox" name="caen_g0_offset_6">
                 <property name="font">
                  <font>
                   <kerning>true</kerning>
@@ -1740,7 +1740,7 @@
                </widget>
               </item>
               <item row="3" column="8">
-               <widget class="QSpinBox" name="caen_g0_offset_7">
+               <widget class="NoWheelSpinBox" name="caen_g0_offset_7">
                 <property name="font">
                  <font>
                   <kerning>true</kerning>
@@ -1855,7 +1855,7 @@
                <number>3</number>
               </property>
               <item row="2" column="3">
-               <widget class="QSpinBox" name="acous_post_trig_box"/>
+               <widget class="NoWheelSpinBox" name="acous_post_trig_box"/>
               </item>
               <item row="0" column="0" colspan="6">
                <widget class="QLabel" name="label">
@@ -1870,7 +1870,7 @@
                </widget>
               </item>
               <item row="1" column="5">
-               <widget class="QSpinBox" name="acous_trig_timeout_box"/>
+               <widget class="NoWheelSpinBox" name="acous_trig_timeout_box"/>
               </item>
               <item row="2" column="2">
                <widget class="QLabel" name="acous_post_trig_label">
@@ -1893,7 +1893,7 @@
                </widget>
               </item>
               <item row="2" column="5">
-               <widget class="QSpinBox" name="acous_trig_delay_box"/>
+               <widget class="NoWheelSpinBox" name="acous_trig_delay_box"/>
               </item>
               <item row="2" column="4">
                <widget class="QLabel" name="acous_trig_delay_label">
@@ -1915,7 +1915,7 @@
                </widget>
               </item>
               <item row="1" column="3">
-               <widget class="QSpinBox" name="acous_pre_trig_box"/>
+               <widget class="NoWheelSpinBox" name="acous_pre_trig_box"/>
               </item>
               <item row="1" column="4">
                <widget class="QLabel" name="acous_trig_timeout_label">
@@ -1979,7 +1979,7 @@
                </widget>
               </item>
               <item row="4" column="6">
-               <widget class="QSpinBox" name="acous_threshold_ch4"/>
+               <widget class="NoWheelSpinBox" name="acous_threshold_ch4"/>
               </item>
               <item row="0" column="5">
                <widget class="QLabel" name="acous_polarity_label">
@@ -2078,7 +2078,7 @@
                </widget>
               </item>
               <item row="7" column="3">
-               <widget class="QSpinBox" name="acous_dc_offset_ch7">
+               <widget class="NoWheelSpinBox" name="acous_dc_offset_ch7">
                 <property name="suffix">
                  <string>%</string>
                 </property>
@@ -2139,7 +2139,7 @@
                </widget>
               </item>
               <item row="8" column="2">
-               <widget class="QSpinBox" name="acous_range_ch8">
+               <widget class="NoWheelSpinBox" name="acous_range_ch8">
                 <property name="font">
                  <font>
                   <kerning>false</kerning>
@@ -2187,10 +2187,10 @@
                </widget>
               </item>
               <item row="1" column="6">
-               <widget class="QSpinBox" name="acous_threshold_ch1"/>
+               <widget class="NoWheelSpinBox" name="acous_threshold_ch1"/>
               </item>
               <item row="4" column="3">
-               <widget class="QSpinBox" name="acous_dc_offset_ch4">
+               <widget class="NoWheelSpinBox" name="acous_dc_offset_ch4">
                 <property name="suffix">
                  <string>%</string>
                 </property>
@@ -2217,14 +2217,14 @@
                </widget>
               </item>
               <item row="8" column="3">
-               <widget class="QSpinBox" name="acous_dc_offset_ch8">
+               <widget class="NoWheelSpinBox" name="acous_dc_offset_ch8">
                 <property name="suffix">
                  <string>%</string>
                 </property>
                </widget>
               </item>
               <item row="3" column="6">
-               <widget class="QSpinBox" name="acous_threshold_ch3"/>
+               <widget class="NoWheelSpinBox" name="acous_threshold_ch3"/>
               </item>
               <item row="6" column="4">
                <widget class="QCheckBox" name="acous_trig_ch6">
@@ -2241,7 +2241,7 @@
                </widget>
               </item>
               <item row="3" column="2">
-               <widget class="QSpinBox" name="acous_range_ch3">
+               <widget class="NoWheelSpinBox" name="acous_range_ch3">
                 <property name="font">
                  <font>
                   <kerning>false</kerning>
@@ -2279,7 +2279,7 @@
                </widget>
               </item>
               <item row="7" column="6">
-               <widget class="QSpinBox" name="acous_threshold_ch7"/>
+               <widget class="NoWheelSpinBox" name="acous_threshold_ch7"/>
               </item>
               <item row="3" column="0">
                <widget class="QLabel" name="acous_ch3_label">
@@ -2292,10 +2292,10 @@
                </widget>
               </item>
               <item row="8" column="6">
-               <widget class="QSpinBox" name="acous_threshold_ch8"/>
+               <widget class="NoWheelSpinBox" name="acous_threshold_ch8"/>
               </item>
               <item row="6" column="2">
-               <widget class="QSpinBox" name="acous_range_ch6">
+               <widget class="NoWheelSpinBox" name="acous_range_ch6">
                 <property name="font">
                  <font>
                   <kerning>false</kerning>
@@ -2310,7 +2310,7 @@
                </widget>
               </item>
               <item row="2" column="6">
-               <widget class="QSpinBox" name="acous_threshold_ch2"/>
+               <widget class="NoWheelSpinBox" name="acous_threshold_ch2"/>
               </item>
               <item row="4" column="4">
                <widget class="QCheckBox" name="acous_trig_ch4">
@@ -2320,7 +2320,7 @@
                </widget>
               </item>
               <item row="1" column="3">
-               <widget class="QSpinBox" name="acous_dc_offset_ch1">
+               <widget class="NoWheelSpinBox" name="acous_dc_offset_ch1">
                 <property name="suffix">
                  <string>%</string>
                 </property>
@@ -2344,10 +2344,10 @@
                </widget>
               </item>
               <item row="9" column="6">
-               <widget class="QSpinBox" name="acous_threshold_ext"/>
+               <widget class="NoWheelSpinBox" name="acous_threshold_ext"/>
               </item>
               <item row="5" column="3">
-               <widget class="QSpinBox" name="acous_dc_offset_ch5">
+               <widget class="NoWheelSpinBox" name="acous_dc_offset_ch5">
                 <property name="suffix">
                  <string>%</string>
                 </property>
@@ -2405,7 +2405,7 @@
                </widget>
               </item>
               <item row="2" column="2">
-               <widget class="QSpinBox" name="acous_range_ch2">
+               <widget class="NoWheelSpinBox" name="acous_range_ch2">
                 <property name="font">
                  <font>
                   <kerning>false</kerning>
@@ -2430,7 +2430,7 @@
                </widget>
               </item>
               <item row="7" column="2">
-               <widget class="QSpinBox" name="acous_range_ch7">
+               <widget class="NoWheelSpinBox" name="acous_range_ch7">
                 <property name="font">
                  <font>
                   <kerning>false</kerning>
@@ -2459,14 +2459,14 @@
                </widget>
               </item>
               <item row="2" column="3">
-               <widget class="QSpinBox" name="acous_dc_offset_ch2">
+               <widget class="NoWheelSpinBox" name="acous_dc_offset_ch2">
                 <property name="suffix">
                  <string>%</string>
                 </property>
                </widget>
               </item>
               <item row="5" column="2">
-               <widget class="QSpinBox" name="acous_range_ch5">
+               <widget class="NoWheelSpinBox" name="acous_range_ch5">
                 <property name="font">
                  <font>
                   <kerning>false</kerning>
@@ -2481,10 +2481,10 @@
                </widget>
               </item>
               <item row="5" column="6">
-               <widget class="QSpinBox" name="acous_threshold_ch5"/>
+               <widget class="NoWheelSpinBox" name="acous_threshold_ch5"/>
               </item>
               <item row="6" column="6">
-               <widget class="QSpinBox" name="acous_threshold_ch6"/>
+               <widget class="NoWheelSpinBox" name="acous_threshold_ch6"/>
               </item>
               <item row="7" column="5">
                <widget class="QComboBox" name="acous_polarity_ch7">
@@ -2517,7 +2517,7 @@
                </widget>
               </item>
               <item row="1" column="2">
-               <widget class="QSpinBox" name="acous_range_ch1">
+               <widget class="NoWheelSpinBox" name="acous_range_ch1">
                 <property name="font">
                  <font>
                   <kerning>false</kerning>
@@ -2535,7 +2535,7 @@
                </widget>
               </item>
               <item row="4" column="2">
-               <widget class="QSpinBox" name="acous_range_ch4">
+               <widget class="NoWheelSpinBox" name="acous_range_ch4">
                 <property name="font">
                  <font>
                   <kerning>false</kerning>
@@ -2617,14 +2617,14 @@
                </widget>
               </item>
               <item row="3" column="3">
-               <widget class="QSpinBox" name="acous_dc_offset_ch3">
+               <widget class="NoWheelSpinBox" name="acous_dc_offset_ch3">
                 <property name="suffix">
                  <string>%</string>
                 </property>
                </widget>
               </item>
               <item row="6" column="3">
-               <widget class="QSpinBox" name="acous_dc_offset_ch6">
+               <widget class="NoWheelSpinBox" name="acous_dc_offset_ch6">
                 <property name="suffix">
                  <string>%</string>
                 </property>
@@ -2741,7 +2741,7 @@
              </widget>
             </item>
             <item row="12" column="1">
-             <widget class="QSpinBox" name="cam1_buffer_len">
+             <widget class="NoWheelSpinBox" name="cam1_buffer_len">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -2757,7 +2757,7 @@
              </widget>
             </item>
             <item row="15" column="3">
-             <widget class="QSpinBox" name="cam3_pix_threshold">
+             <widget class="NoWheelSpinBox" name="cam3_pix_threshold">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -2809,7 +2809,7 @@
              </spacer>
             </item>
             <item row="13" column="2">
-             <widget class="QSpinBox" name="cam2_post_trig_len">
+             <widget class="NoWheelSpinBox" name="cam2_post_trig_len">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -2828,7 +2828,7 @@
              <widget class="QLineEdit" name="cam2_date_format"/>
             </item>
             <item row="23" column="2">
-             <widget class="QSpinBox" name="cam2_trig_latch_pin">
+             <widget class="NoWheelSpinBox" name="cam2_trig_latch_pin">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -2841,7 +2841,7 @@
              <widget class="QLineEdit" name="cam3_data_path"/>
             </item>
             <item row="23" column="3">
-             <widget class="QSpinBox" name="cam3_trig_latch_pin">
+             <widget class="NoWheelSpinBox" name="cam3_trig_latch_pin">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -2867,7 +2867,7 @@
              </widget>
             </item>
             <item row="11" column="1">
-             <widget class="QSpinBox" name="cam1_exposure">
+             <widget class="NoWheelSpinBox" name="cam1_exposure">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -2925,7 +2925,7 @@
              </widget>
             </item>
             <item row="12" column="2">
-             <widget class="QSpinBox" name="cam2_buffer_len">
+             <widget class="NoWheelSpinBox" name="cam2_buffer_len">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -2941,7 +2941,7 @@
              </widget>
             </item>
             <item row="24" column="1">
-             <widget class="QSpinBox" name="cam1_state_pin">
+             <widget class="NoWheelSpinBox" name="cam1_state_pin">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -2951,7 +2951,7 @@
              </widget>
             </item>
             <item row="6" column="2">
-             <widget class="QSpinBox" name="cam2_mode">
+             <widget class="NoWheelSpinBox" name="cam2_mode">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -2990,7 +2990,7 @@
              <widget class="QLineEdit" name="cam3_config_path"/>
             </item>
             <item row="11" column="3">
-             <widget class="QSpinBox" name="cam3_exposure">
+             <widget class="NoWheelSpinBox" name="cam3_exposure">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -3003,7 +3003,7 @@
              </widget>
             </item>
             <item row="25" column="3">
-             <widget class="QSpinBox" name="cam3_trig_pin">
+             <widget class="NoWheelSpinBox" name="cam3_trig_pin">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -3029,7 +3029,7 @@
              </widget>
             </item>
             <item row="23" column="1">
-             <widget class="QSpinBox" name="cam1_trig_latch_pin">
+             <widget class="NoWheelSpinBox" name="cam1_trig_latch_pin">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -3039,7 +3039,7 @@
              </widget>
             </item>
             <item row="25" column="1">
-             <widget class="QSpinBox" name="cam1_trig_pin">
+             <widget class="NoWheelSpinBox" name="cam1_trig_pin">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -3065,7 +3065,7 @@
              </widget>
             </item>
             <item row="20" column="2">
-             <widget class="QSpinBox" name="cam2_state_comm_pin">
+             <widget class="NoWheelSpinBox" name="cam2_state_comm_pin">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -3078,7 +3078,7 @@
              <widget class="QLineEdit" name="cam1_rc_config_path"/>
             </item>
             <item row="14" column="3">
-             <widget class="QSpinBox" name="cam3_adc_threshold">
+             <widget class="NoWheelSpinBox" name="cam3_adc_threshold">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -3120,7 +3120,7 @@
              </widget>
             </item>
             <item row="6" column="3">
-             <widget class="QSpinBox" name="cam3_mode">
+             <widget class="NoWheelSpinBox" name="cam3_mode">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -3146,7 +3146,7 @@
              </widget>
             </item>
             <item row="14" column="1">
-             <widget class="QSpinBox" name="cam1_adc_threshold">
+             <widget class="NoWheelSpinBox" name="cam1_adc_threshold">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -3191,7 +3191,7 @@
              </widget>
             </item>
             <item row="25" column="2">
-             <widget class="QSpinBox" name="cam2_trig_pin">
+             <widget class="NoWheelSpinBox" name="cam2_trig_pin">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -3220,7 +3220,7 @@
              <widget class="QLineEdit" name="cam2_ip_addr"/>
             </item>
             <item row="12" column="3">
-             <widget class="QSpinBox" name="cam3_buffer_len">
+             <widget class="NoWheelSpinBox" name="cam3_buffer_len">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -3271,7 +3271,7 @@
              </widget>
             </item>
             <item row="6" column="1">
-             <widget class="QSpinBox" name="cam1_mode">
+             <widget class="NoWheelSpinBox" name="cam1_mode">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -3281,7 +3281,7 @@
              </widget>
             </item>
             <item row="24" column="3">
-             <widget class="QSpinBox" name="cam3_state_pin">
+             <widget class="NoWheelSpinBox" name="cam3_state_pin">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -3320,7 +3320,7 @@
              </widget>
             </item>
             <item row="13" column="3">
-             <widget class="QSpinBox" name="cam3_post_trig_len">
+             <widget class="NoWheelSpinBox" name="cam3_post_trig_len">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -3333,7 +3333,7 @@
              </widget>
             </item>
             <item row="20" column="1">
-             <widget class="QSpinBox" name="cam1_state_comm_pin">
+             <widget class="NoWheelSpinBox" name="cam1_state_comm_pin">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -3343,7 +3343,7 @@
              </widget>
             </item>
             <item row="14" column="2">
-             <widget class="QSpinBox" name="cam2_adc_threshold">
+             <widget class="NoWheelSpinBox" name="cam2_adc_threshold">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -3356,7 +3356,7 @@
              </widget>
             </item>
             <item row="10" column="3">
-             <widget class="QDoubleSpinBox" name="cam3_trig_wait">
+             <widget class="NoWheelDoubleSpinBox" name="cam3_trig_wait">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -3388,7 +3388,7 @@
              </widget>
             </item>
             <item row="15" column="2">
-             <widget class="QSpinBox" name="cam2_pix_threshold">
+             <widget class="NoWheelSpinBox" name="cam2_pix_threshold">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -3401,7 +3401,7 @@
              </widget>
             </item>
             <item row="10" column="2">
-             <widget class="QDoubleSpinBox" name="cam2_trig_wait">
+             <widget class="NoWheelDoubleSpinBox" name="cam2_trig_wait">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -3433,7 +3433,7 @@
              </widget>
             </item>
             <item row="20" column="3">
-             <widget class="QSpinBox" name="cam3_state_comm_pin">
+             <widget class="NoWheelSpinBox" name="cam3_state_comm_pin">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -3446,7 +3446,7 @@
              <widget class="QLineEdit" name="cam3_rc_config_path"/>
             </item>
             <item row="13" column="1">
-             <widget class="QSpinBox" name="cam1_post_trig_len">
+             <widget class="NoWheelSpinBox" name="cam1_post_trig_len">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -3459,7 +3459,7 @@
              </widget>
             </item>
             <item row="11" column="2">
-             <widget class="QSpinBox" name="cam2_exposure">
+             <widget class="NoWheelSpinBox" name="cam2_exposure">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -3472,7 +3472,7 @@
              </widget>
             </item>
             <item row="22" column="1">
-             <widget class="QSpinBox" name="cam1_trig_enbl_pin">
+             <widget class="NoWheelSpinBox" name="cam1_trig_enbl_pin">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -3498,7 +3498,7 @@
              </widget>
             </item>
             <item row="22" column="2">
-             <widget class="QSpinBox" name="cam2_trig_enbl_pin">
+             <widget class="NoWheelSpinBox" name="cam2_trig_enbl_pin">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -3534,7 +3534,7 @@
              <widget class="QLineEdit" name="cam1_ip_addr"/>
             </item>
             <item row="24" column="2">
-             <widget class="QSpinBox" name="cam2_state_pin">
+             <widget class="NoWheelSpinBox" name="cam2_state_pin">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -3576,7 +3576,7 @@
              </widget>
             </item>
             <item row="22" column="3">
-             <widget class="QSpinBox" name="cam3_trig_enbl_pin">
+             <widget class="NoWheelSpinBox" name="cam3_trig_enbl_pin">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -3586,7 +3586,7 @@
              </widget>
             </item>
             <item row="15" column="1">
-             <widget class="QSpinBox" name="cam1_pix_threshold">
+             <widget class="NoWheelSpinBox" name="cam1_pix_threshold">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -3602,7 +3602,7 @@
              <widget class="QLineEdit" name="cam1_data_path"/>
             </item>
             <item row="10" column="1">
-             <widget class="QDoubleSpinBox" name="cam1_trig_wait">
+             <widget class="NoWheelDoubleSpinBox" name="cam1_trig_wait">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -3679,7 +3679,7 @@
            <property name="geometry">
             <rect>
              <x>0</x>
-             <y>-233</y>
+             <y>0</y>
              <width>722</width>
              <height>1000</height>
             </rect>
@@ -4081,25 +4081,25 @@
                <number>3</number>
               </property>
               <item row="2" column="2">
-               <widget class="QSpinBox" name="trig_in_pin1_box"/>
+               <widget class="NoWheelSpinBox" name="trig_in_pin1_box"/>
               </item>
               <item row="13" column="2">
-               <widget class="QSpinBox" name="trig_in_pin12_box"/>
+               <widget class="NoWheelSpinBox" name="trig_in_pin12_box"/>
               </item>
               <item row="10" column="3">
-               <widget class="QSpinBox" name="trig_ff_pin1_box_9"/>
+               <widget class="NoWheelSpinBox" name="trig_ff_pin1_box_9"/>
               </item>
               <item row="15" column="2">
-               <widget class="QSpinBox" name="trig_in_pin14_box"/>
+               <widget class="NoWheelSpinBox" name="trig_in_pin14_box"/>
               </item>
               <item row="7" column="2">
-               <widget class="QSpinBox" name="trig_in_pin6_box"/>
+               <widget class="NoWheelSpinBox" name="trig_in_pin6_box"/>
               </item>
               <item row="3" column="3">
-               <widget class="QSpinBox" name="trig_ff_pin1_box_2"/>
+               <widget class="NoWheelSpinBox" name="trig_ff_pin1_box_2"/>
               </item>
               <item row="4" column="2">
-               <widget class="QSpinBox" name="trig_in_pin3_box"/>
+               <widget class="NoWheelSpinBox" name="trig_in_pin3_box"/>
               </item>
               <item row="19" column="0">
                <widget class="QLabel" name="trig_reset_pin_label">
@@ -4125,7 +4125,7 @@
                </widget>
               </item>
               <item row="9" column="3">
-               <widget class="QSpinBox" name="trig_ff_pin1_box_8"/>
+               <widget class="NoWheelSpinBox" name="trig_ff_pin1_box_8"/>
               </item>
               <item row="1" column="3">
                <widget class="QLabel" name="trig_ff_pin_label">
@@ -4138,10 +4138,10 @@
                </widget>
               </item>
               <item row="8" column="3">
-               <widget class="QSpinBox" name="trig_ff_pin1_box_7"/>
+               <widget class="NoWheelSpinBox" name="trig_ff_pin1_box_7"/>
               </item>
               <item row="13" column="3">
-               <widget class="QSpinBox" name="trig_ff_pin1_box_12"/>
+               <widget class="NoWheelSpinBox" name="trig_ff_pin1_box_12"/>
               </item>
               <item row="19" column="2">
                <widget class="QLabel" name="trig_or_pin_label">
@@ -4157,22 +4157,22 @@
                </widget>
               </item>
               <item row="14" column="3">
-               <widget class="QSpinBox" name="trig_ff_pin1_box_13"/>
+               <widget class="NoWheelSpinBox" name="trig_ff_pin1_box_13"/>
               </item>
               <item row="5" column="2">
-               <widget class="QSpinBox" name="trig_in_pin4_box"/>
+               <widget class="NoWheelSpinBox" name="trig_in_pin4_box"/>
               </item>
               <item row="12" column="2">
-               <widget class="QSpinBox" name="trig_in_pin11_box"/>
+               <widget class="NoWheelSpinBox" name="trig_in_pin11_box"/>
               </item>
               <item row="5" column="3">
-               <widget class="QSpinBox" name="trig_ff_pin1_box_4"/>
+               <widget class="NoWheelSpinBox" name="trig_ff_pin1_box_4"/>
               </item>
               <item row="7" column="3">
-               <widget class="QSpinBox" name="trig_ff_pin1_box_6"/>
+               <widget class="NoWheelSpinBox" name="trig_ff_pin1_box_6"/>
               </item>
               <item row="9" column="2">
-               <widget class="QSpinBox" name="trig_in_pin8_box"/>
+               <widget class="NoWheelSpinBox" name="trig_in_pin8_box"/>
               </item>
               <item row="18" column="1" colspan="3">
                <widget class="QLineEdit" name="trig_latch_pins_edit"/>
@@ -4193,7 +4193,7 @@
                </widget>
               </item>
               <item row="16" column="2">
-               <widget class="QSpinBox" name="trig_in_pin15_box"/>
+               <widget class="NoWheelSpinBox" name="trig_in_pin15_box"/>
               </item>
               <item row="1" column="2">
                <widget class="QLabel" name="trig_in_pin_label">
@@ -4220,10 +4220,10 @@
                </widget>
               </item>
               <item row="3" column="2">
-               <widget class="QSpinBox" name="trig_in_pin2_box"/>
+               <widget class="NoWheelSpinBox" name="trig_in_pin2_box"/>
               </item>
               <item row="12" column="3">
-               <widget class="QSpinBox" name="trig_ff_pin1_box_11"/>
+               <widget class="NoWheelSpinBox" name="trig_ff_pin1_box_11"/>
               </item>
               <item row="1" column="0">
                <widget class="QLabel" name="trig_in_name_label">
@@ -4239,13 +4239,13 @@
                <widget class="NoWheelSpinBox" name="trig_ff_pin1_box"/>
               </item>
               <item row="6" column="2">
-               <widget class="QSpinBox" name="trig_in_pin5_box"/>
+               <widget class="NoWheelSpinBox" name="trig_in_pin5_box"/>
               </item>
               <item row="11" column="3">
-               <widget class="QSpinBox" name="trig_ff_pin1_box_10"/>
+               <widget class="NoWheelSpinBox" name="trig_ff_pin1_box_10"/>
               </item>
               <item row="16" column="3">
-               <widget class="QSpinBox" name="trig_ff_pin1_box_15"/>
+               <widget class="NoWheelSpinBox" name="trig_ff_pin1_box_15"/>
               </item>
               <item row="3" column="0">
                <widget class="QLineEdit" name="trig_pin2_name_edit">
@@ -4258,27 +4258,27 @@
                </widget>
               </item>
               <item row="17" column="3">
-               <widget class="QSpinBox" name="trig_ff_pin1_box_16"/>
+               <widget class="NoWheelSpinBox" name="trig_ff_pin1_box_16"/>
               </item>
               <item row="19" column="3">
-               <widget class="QSpinBox" name="trig_or_pin_edit">
+               <widget class="NoWheelSpinBox" name="trig_or_pin_edit">
                 <property name="focusPolicy">
                  <enum>Qt::NoFocus</enum>
                 </property>
                </widget>
               </item>
               <item row="19" column="1">
-               <widget class="QSpinBox" name="trig_reset_pin_edit"/>
+               <widget class="NoWheelSpinBox" name="trig_reset_pin_edit"/>
               </item>
               <item row="20" column="3">
-               <widget class="QSpinBox" name="heartbeat_pin_edit">
+               <widget class="NoWheelSpinBox" name="heartbeat_pin_edit">
                 <property name="focusPolicy">
                  <enum>Qt::NoFocus</enum>
                 </property>
                </widget>
               </item>
               <item row="15" column="3">
-               <widget class="QSpinBox" name="trig_ff_pin1_box_14"/>
+               <widget class="NoWheelSpinBox" name="trig_ff_pin1_box_14"/>
               </item>
               <item row="20" column="2">
                <widget class="QLabel" name="heartbeat_pin_label">
@@ -4294,16 +4294,16 @@
                </widget>
               </item>
               <item row="6" column="3">
-               <widget class="QSpinBox" name="trig_ff_pin1_box_5"/>
+               <widget class="NoWheelSpinBox" name="trig_ff_pin1_box_5"/>
               </item>
               <item row="10" column="2">
-               <widget class="QSpinBox" name="trig_in_pin9_box"/>
+               <widget class="NoWheelSpinBox" name="trig_in_pin9_box"/>
               </item>
               <item row="17" column="2">
-               <widget class="QSpinBox" name="trig_in_pin16_box"/>
+               <widget class="NoWheelSpinBox" name="trig_in_pin16_box"/>
               </item>
               <item row="14" column="2">
-               <widget class="QSpinBox" name="trig_in_pin13_box"/>
+               <widget class="NoWheelSpinBox" name="trig_in_pin13_box"/>
               </item>
               <item row="20" column="0">
                <widget class="QLabel" name="on_time_pin_label">
@@ -4319,7 +4319,7 @@
                </widget>
               </item>
               <item row="4" column="3">
-               <widget class="QSpinBox" name="trig_ff_pin1_box_3"/>
+               <widget class="NoWheelSpinBox" name="trig_ff_pin1_box_3"/>
               </item>
               <item row="3" column="1">
                <widget class="QComboBox" name="trig_pin2_type_box">
@@ -4336,10 +4336,10 @@
                </widget>
               </item>
               <item row="11" column="2">
-               <widget class="QSpinBox" name="trig_in_pin10_box"/>
+               <widget class="NoWheelSpinBox" name="trig_in_pin10_box"/>
               </item>
               <item row="20" column="1">
-               <widget class="QSpinBox" name="on_time_pin_edit"/>
+               <widget class="NoWheelSpinBox" name="on_time_pin_edit"/>
               </item>
               <item row="1" column="1">
                <widget class="QLabel" name="trig_in_type">
@@ -4352,7 +4352,7 @@
                </widget>
               </item>
               <item row="8" column="2">
-               <widget class="QSpinBox" name="trig_in_pin7_box"/>
+               <widget class="NoWheelSpinBox" name="trig_in_pin7_box"/>
               </item>
               <item row="18" column="0">
                <widget class="QLabel" name="trig_latch_pins_label">
@@ -4738,7 +4738,7 @@
                </widget>
               </item>
               <item row="4" column="4">
-               <widget class="QSpinBox" name="duty_wave2">
+               <widget class="NoWheelSpinBox" name="duty_wave2">
                 <property name="suffix">
                  <string>%</string>
                 </property>
@@ -4748,10 +4748,10 @@
                </widget>
               </item>
               <item row="9" column="1">
-               <widget class="QSpinBox" name="clock_pin_wave7"/>
+               <widget class="NoWheelSpinBox" name="clock_pin_wave7"/>
               </item>
               <item row="11" column="1">
-               <widget class="QSpinBox" name="clock_pin_wave9"/>
+               <widget class="NoWheelSpinBox" name="clock_pin_wave9"/>
               </item>
               <item row="8" column="0">
                <widget class="QLabel" name="wave6_label">
@@ -4761,7 +4761,7 @@
                </widget>
               </item>
               <item row="5" column="1">
-               <widget class="QSpinBox" name="clock_pin_wave3"/>
+               <widget class="NoWheelSpinBox" name="clock_pin_wave3"/>
               </item>
               <item row="9" column="0">
                <widget class="QLabel" name="wave7_label">
@@ -4771,7 +4771,7 @@
                </widget>
               </item>
               <item row="3" column="2">
-               <widget class="QSpinBox" name="clock_period_wave1">
+               <widget class="NoWheelSpinBox" name="clock_period_wave1">
                 <property name="maximum">
                  <number>1000000</number>
                 </property>
@@ -4799,14 +4799,14 @@
                </widget>
               </item>
               <item row="6" column="2">
-               <widget class="QSpinBox" name="clock_period_wave4">
+               <widget class="NoWheelSpinBox" name="clock_period_wave4">
                 <property name="maximum">
                  <number>1000000</number>
                 </property>
                </widget>
               </item>
               <item row="9" column="4">
-               <widget class="QSpinBox" name="duty_wave7">
+               <widget class="NoWheelSpinBox" name="duty_wave7">
                 <property name="suffix">
                  <string>%</string>
                 </property>
@@ -4816,7 +4816,7 @@
                </widget>
               </item>
               <item row="10" column="4">
-               <widget class="QSpinBox" name="duty_wave8">
+               <widget class="NoWheelSpinBox" name="duty_wave8">
                 <property name="suffix">
                  <string>%</string>
                 </property>
@@ -4826,7 +4826,7 @@
                </widget>
               </item>
               <item row="3" column="4">
-               <widget class="QSpinBox" name="duty_wave1">
+               <widget class="NoWheelSpinBox" name="duty_wave1">
                 <property name="suffix">
                  <string>%</string>
                 </property>
@@ -4889,14 +4889,14 @@
                </widget>
               </item>
               <item row="7" column="2">
-               <widget class="QSpinBox" name="clock_period_wave5">
+               <widget class="NoWheelSpinBox" name="clock_period_wave5">
                 <property name="maximum">
                  <number>1000000</number>
                 </property>
                </widget>
               </item>
               <item row="10" column="1">
-               <widget class="QSpinBox" name="clock_pin_wave8"/>
+               <widget class="NoWheelSpinBox" name="clock_pin_wave8"/>
               </item>
               <item row="10" column="0">
                <widget class="QLabel" name="wave8_label">
@@ -4913,7 +4913,7 @@
                </widget>
               </item>
               <item row="8" column="4">
-               <widget class="QSpinBox" name="duty_wave6">
+               <widget class="NoWheelSpinBox" name="duty_wave6">
                 <property name="suffix">
                  <string>%</string>
                 </property>
@@ -4923,7 +4923,7 @@
                </widget>
               </item>
               <item row="9" column="2">
-               <widget class="QSpinBox" name="clock_period_wave7">
+               <widget class="NoWheelSpinBox" name="clock_period_wave7">
                 <property name="maximum">
                  <number>1000000</number>
                 </property>
@@ -4937,17 +4937,17 @@
                </widget>
               </item>
               <item row="5" column="3">
-               <widget class="QSpinBox" name="clock_phase_wave3"/>
+               <widget class="NoWheelSpinBox" name="clock_phase_wave3"/>
               </item>
               <item row="10" column="2">
-               <widget class="QSpinBox" name="clock_period_wave8">
+               <widget class="NoWheelSpinBox" name="clock_period_wave8">
                 <property name="maximum">
                  <number>1000000</number>
                 </property>
                </widget>
               </item>
               <item row="11" column="4">
-               <widget class="QSpinBox" name="duty_wave9">
+               <widget class="NoWheelSpinBox" name="duty_wave9">
                 <property name="suffix">
                  <string>%</string>
                 </property>
@@ -4957,7 +4957,7 @@
                </widget>
               </item>
               <item row="7" column="4">
-               <widget class="QSpinBox" name="duty_wave5">
+               <widget class="NoWheelSpinBox" name="duty_wave5">
                 <property name="suffix">
                  <string>%</string>
                 </property>
@@ -4967,13 +4967,13 @@
                </widget>
               </item>
               <item row="8" column="3">
-               <widget class="QSpinBox" name="clock_phase_wave6"/>
+               <widget class="NoWheelSpinBox" name="clock_phase_wave6"/>
               </item>
               <item row="4" column="3">
-               <widget class="QSpinBox" name="clock_phase_wave2"/>
+               <widget class="NoWheelSpinBox" name="clock_phase_wave2"/>
               </item>
               <item row="6" column="4">
-               <widget class="QSpinBox" name="duty_wave4">
+               <widget class="NoWheelSpinBox" name="duty_wave4">
                 <property name="suffix">
                  <string>%</string>
                 </property>
@@ -4983,17 +4983,17 @@
                </widget>
               </item>
               <item row="4" column="2">
-               <widget class="QSpinBox" name="clock_period_wave2">
+               <widget class="NoWheelSpinBox" name="clock_period_wave2">
                 <property name="maximum">
                  <number>1000000</number>
                 </property>
                </widget>
               </item>
               <item row="10" column="3">
-               <widget class="QSpinBox" name="clock_phase_wave8"/>
+               <widget class="NoWheelSpinBox" name="clock_phase_wave8"/>
               </item>
               <item row="6" column="1">
-               <widget class="QSpinBox" name="clock_pin_wave4"/>
+               <widget class="NoWheelSpinBox" name="clock_pin_wave4"/>
               </item>
               <item row="3" column="0">
                <widget class="QLabel" name="wave1_label">
@@ -5003,7 +5003,7 @@
                </widget>
               </item>
               <item row="8" column="1">
-               <widget class="QSpinBox" name="clock_pin_wave6"/>
+               <widget class="NoWheelSpinBox" name="clock_pin_wave6"/>
               </item>
               <item row="9" column="5">
                <widget class="QComboBox" name="clock_polarity_wave7">
@@ -5020,7 +5020,7 @@
                </widget>
               </item>
               <item row="3" column="3">
-               <widget class="QSpinBox" name="clock_phase_wave1">
+               <widget class="NoWheelSpinBox" name="clock_phase_wave1">
                 <property name="buttonSymbols">
                  <enum>QAbstractSpinBox::UpDownArrows</enum>
                 </property>
@@ -5047,7 +5047,7 @@
                </widget>
               </item>
               <item row="3" column="1">
-               <widget class="QSpinBox" name="clock_pin_wave1"/>
+               <widget class="NoWheelSpinBox" name="clock_pin_wave1"/>
               </item>
               <item row="3" column="5">
                <widget class="QComboBox" name="clock_polarity_wave1">
@@ -5071,7 +5071,7 @@
                </widget>
               </item>
               <item row="9" column="3">
-               <widget class="QSpinBox" name="clock_phase_wave7"/>
+               <widget class="NoWheelSpinBox" name="clock_phase_wave7"/>
               </item>
               <item row="1" column="3">
                <widget class="QLabel" name="clock_phase_label">
@@ -5081,7 +5081,7 @@
                </widget>
               </item>
               <item row="5" column="4">
-               <widget class="QSpinBox" name="duty_wave3">
+               <widget class="NoWheelSpinBox" name="duty_wave3">
                 <property name="suffix">
                  <string>%</string>
                 </property>
@@ -5091,23 +5091,23 @@
                </widget>
               </item>
               <item row="11" column="3">
-               <widget class="QSpinBox" name="clock_phase_wave9"/>
+               <widget class="NoWheelSpinBox" name="clock_phase_wave9"/>
               </item>
               <item row="5" column="2">
-               <widget class="QSpinBox" name="clock_period_wave3">
+               <widget class="NoWheelSpinBox" name="clock_period_wave3">
                 <property name="maximum">
                  <number>1000000</number>
                 </property>
                </widget>
               </item>
               <item row="7" column="3">
-               <widget class="QSpinBox" name="clock_phase_wave5"/>
+               <widget class="NoWheelSpinBox" name="clock_phase_wave5"/>
               </item>
               <item row="4" column="1">
-               <widget class="QSpinBox" name="clock_pin_wave2"/>
+               <widget class="NoWheelSpinBox" name="clock_pin_wave2"/>
               </item>
               <item row="6" column="3">
-               <widget class="QSpinBox" name="clock_phase_wave4"/>
+               <widget class="NoWheelSpinBox" name="clock_phase_wave4"/>
               </item>
               <item row="7" column="5">
                <widget class="QComboBox" name="clock_polarity_wave5">
@@ -5124,7 +5124,7 @@
                </widget>
               </item>
               <item row="7" column="1">
-               <widget class="QSpinBox" name="clock_pin_wave5"/>
+               <widget class="NoWheelSpinBox" name="clock_pin_wave5"/>
               </item>
               <item row="5" column="5">
                <widget class="QComboBox" name="clock_polarity_wave3">
@@ -5148,14 +5148,14 @@
                </widget>
               </item>
               <item row="11" column="2">
-               <widget class="QSpinBox" name="clock_period_wave9">
+               <widget class="NoWheelSpinBox" name="clock_period_wave9">
                 <property name="maximum">
                  <number>1000000</number>
                 </property>
                </widget>
               </item>
               <item row="8" column="2">
-               <widget class="QSpinBox" name="clock_period_wave6">
+               <widget class="NoWheelSpinBox" name="clock_period_wave6">
                 <property name="maximum">
                  <number>1000000</number>
                 </property>
@@ -5308,6 +5308,11 @@
   <customwidget>
    <class>NoWheelSpinBox</class>
    <extends>QSpinBox</extends>
+   <header>ui.custom_widgets</header>
+  </customwidget>
+  <customwidget>
+   <class>NoWheelDoubleSpinBox</class>
+   <extends>QDoubleSpinBox</extends>
    <header>ui.custom_widgets</header>
   </customwidget>
  </customwidgets>

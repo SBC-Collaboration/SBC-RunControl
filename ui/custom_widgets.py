@@ -13,3 +13,7 @@ class SwappingTableWidget(QtWidgets.QTableWidget):
 class NoWheelSpinBox(QtWidgets.QSpinBox):
     def wheelEvent(self, event):
         event.ignore()
+
+class NoWheelDoubleSpinBox(QtWidgets.QDoubleSpinBox):
+    def wheelEvent(self, event):
+        event.ignore()
