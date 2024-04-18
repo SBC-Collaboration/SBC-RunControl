@@ -1,6 +1,6 @@
-# recompile UI files before starting
-import os
-os.system('for ui in ui/*.ui; do name="${ui%%.*}"; pyside6-uic $ui -o "$name.py"; done')
+# # recompile UI files before starting
+# import os
+# os.system('for ui in ui/*.ui; do name="${ui%%.*}"; pyside6-uic $ui -o "$name.py"; done')
 
 from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog
 from PySide6.QtCore import QObject, QThread, Signal, Slot, QElapsedTimer, QTimer, Qt
@@ -185,28 +185,14 @@ class MainWindow(QMainWindow):
         except AttributeError:
             pass
 
-        # quit all created threads
-        self.cam1_thread.quit()
-        self.cam2_thread.quit()
-        self.cam3_thread.quit()
-        self.amp1_thread.quit()
-        self.amp2_thread.quit()
-        self.arduino_trig_thread.quit()
-        self.arduino_clock_thread.quit()
-        self.arduino_position_thread.quit()
-        self.niusb_thread.quit()
-        self.writer_thread.quit()
-
-        self.cam1_thread.wait()
-        self.cam2_thread.wait()
-        self.cam3_thread.wait()
-        self.amp1_thread.wait()
-        self.amp2_thread.wait()
-        self.arduino_trig_thread.wait()
-        self.arduino_clock_thread.wait()
-        self.arduino_position_thread.wait()
-        self.niusb_thread.wait()
-        self.writer_thread.wait()
+        # quit all created workers and threads
+        vars = self.__dict__
+        for name, var in vars.items():
+            if name.endswith("_worker"):
+                var.deleteLater()
+            elif name.endswith("_thread"):
+                var.quit()
+                var.wait()
 
         self.logger.info("Quitting run control.\n")
 
