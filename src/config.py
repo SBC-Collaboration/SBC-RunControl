@@ -1,25 +1,36 @@
 import json
 import os
 import logging
+from PySide6.QtCore import QTimer, QObject, QThread, Slot, Signal
 
 
-class Config:
+class Config(QObject):
     """
     Class object to load and save run config files
     """
+    run_config_saved = Signal()
 
     def __init__(self, mainwindow, path):
+        super().__init__()
         self.main = mainwindow
         self.path = path
         self.config = {}
         self.logger = logging.getLogger("rc")
+        self.timer = QTimer(self)
+        self.timer.setInterval(100)
+        self.timer.timeout.connect(self.periodic_task)
 
         self.logger.debug("Config class initialized.")
 
+    def periodic_task(self):
+        pass
+
+    @Slot()
     def load_config(self):
         with open(self.path, "r") as file:
             self.config = json.load(file)
 
+    @Slot()
     def load_config_to_window(self, ui):
         widgets = ui.__dict__
 
@@ -133,6 +144,10 @@ class Config:
         position_config = dio_config["position"]
         ui.position_port_edit.setText(position_config["port"])
         ui.position_sketch_edit.setText(position_config["sketch"])
+        ui.position_mac_edit.setText(position_config["mac_addr"])
+        ui.position_ip_edit.setText(position_config["ip_addr"])
+        ui.position_gateway_edit.setText(position_config["gateway"])
+        ui.position_subnet_edit.setText(position_config["subnet"])
 
         niusb_config = dio_config["niusb"]
         for port in range(3):
@@ -146,6 +161,7 @@ class Config:
 
         # TODO: implement loading and saving for more settings components
 
+    @Slot()
     def apply_config(self, ui):
         widgets = ui.__dict__
 
@@ -342,6 +358,10 @@ class Config:
         position_config = {
             "port": ui.position_port_edit.text(),
             "sketch": ui.position_sketch_edit.text(),
+            "mac_addr": ui.position_mac_edit.text(),
+            "ip_addr": ui.position_ip_edit.text(),
+            "gateway": ui.position_gateway_edit.text(),
+            "subnet": ui.position_subnet_edit.text(),
         }
 
         niusb_config = {}
@@ -367,13 +387,19 @@ class Config:
 
         self.logger.info("Configuration applied.")
 
+    @Slot()
     def save_config_from_ui(self, ui, path):
         self.apply_config(ui)
         with open(path, "w") as file:
             json.dump(self.config, file, indent=2)
         self.logger.info("Configuration saved to file.")
 
+    @Slot()
     def save_config(self, path):
         with open(path, "w") as file:
             json.dump(self.config, file, indent=2)
         self.logger.info("Configuration saved to file.")
+
+    @Slot()
+    def start_run(self):
+        pass

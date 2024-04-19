@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>816</width>
-    <height>904</height>
+    <width>800</width>
+    <height>600</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -49,7 +49,7 @@
     <item row="0" column="0">
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>4</number>
+       <number>0</number>
       </property>
       <property name="tabsClosable">
        <bool>false</bool>
@@ -93,8 +93,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>806</width>
-             <height>831</height>
+             <width>790</width>
+             <height>527</height>
             </rect>
            </property>
            <property name="maximumSize">
@@ -582,8 +582,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>806</width>
-             <height>831</height>
+             <width>736</width>
+             <height>792</height>
             </rect>
            </property>
            <property name="maximumSize">
@@ -1914,8 +1914,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>806</width>
-             <height>831</height>
+             <width>750</width>
+             <height>533</height>
             </rect>
            </property>
            <property name="maximumSize">
@@ -2888,8 +2888,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>806</width>
-             <height>831</height>
+             <width>750</width>
+             <height>533</height>
             </rect>
            </property>
            <property name="maximumSize">
@@ -4063,9 +4063,9 @@
            <property name="geometry">
             <rect>
              <x>0</x>
-             <y>0</y>
-             <width>792</width>
-             <height>1154</height>
+             <y>-673</y>
+             <width>736</width>
+             <height>1206</height>
             </rect>
            </property>
            <property name="maximumSize">
@@ -4091,59 +4091,6 @@
              <number>0</number>
             </property>
             <item>
-             <layout class="QGridLayout" name="dio_general_grid_layout" columnstretch="0,0,0,0">
-              <property name="spacing">
-               <number>3</number>
-              </property>
-              <item row="0" column="0" colspan="3">
-               <widget class="QLabel" name="dio_general_label">
-                <property name="font">
-                 <font>
-                  <bold>true</bold>
-                 </font>
-                </property>
-                <property name="text">
-                 <string>General</string>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="2" colspan="2">
-               <widget class="QLabel" name="sketch_location_label">
-                <property name="text">
-                 <string>Sketch Location</string>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="1">
-               <widget class="QLineEdit" name="position_port_edit"/>
-              </item>
-              <item row="2" column="3">
-               <widget class="QToolButton" name="position_sketch_but">
-                <property name="text">
-                 <string>...</string>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="2">
-               <widget class="QLineEdit" name="position_sketch_edit"/>
-              </item>
-              <item row="1" column="1">
-               <widget class="QLabel" name="arduino_port_label">
-                <property name="text">
-                 <string>Arduino Port</string>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="0">
-               <widget class="QLabel" name="position_arduino_label">
-                <property name="text">
-                 <string>Position</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </item>
-            <item>
              <widget class="Line" name="dio_line_5">
               <property name="orientation">
                <enum>Qt::Vertical</enum>
@@ -4151,260 +4098,294 @@
              </widget>
             </item>
             <item>
-             <widget class="SwappingTableWidget" name="niusb_table">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
+             <layout class="QVBoxLayout" name="verticalLayout_6">
+              <property name="spacing">
+               <number>3</number>
               </property>
-              <property name="minimumSize">
-               <size>
-                <width>0</width>
-                <height>100</height>
-               </size>
-              </property>
-              <property name="font">
-               <font>
-                <kerning>true</kerning>
-               </font>
-              </property>
-              <property name="layoutDirection">
-               <enum>Qt::LeftToRight</enum>
-              </property>
-              <property name="autoFillBackground">
-               <bool>false</bool>
-              </property>
-              <property name="frameShape">
-               <enum>QFrame::NoFrame</enum>
-              </property>
-              <property name="verticalScrollBarPolicy">
-               <enum>Qt::ScrollBarAsNeeded</enum>
-              </property>
-              <property name="horizontalScrollBarPolicy">
-               <enum>Qt::ScrollBarAsNeeded</enum>
-              </property>
-              <property name="sizeAdjustPolicy">
-               <enum>QAbstractScrollArea::AdjustToContents</enum>
-              </property>
-              <property name="autoScroll">
-               <bool>true</bool>
-              </property>
-              <property name="autoScrollMargin">
+              <property name="leftMargin">
                <number>0</number>
               </property>
-              <property name="editTriggers">
-               <set>QAbstractItemView::DoubleClicked|QAbstractItemView::SelectedClicked</set>
+              <property name="topMargin">
+               <number>0</number>
               </property>
-              <property name="dragEnabled">
-               <bool>true</bool>
+              <property name="rightMargin">
+               <number>0</number>
               </property>
-              <property name="dragDropOverwriteMode">
-               <bool>false</bool>
+              <property name="bottomMargin">
+               <number>0</number>
               </property>
-              <property name="dragDropMode">
-               <enum>QAbstractItemView::NoDragDrop</enum>
-              </property>
-              <property name="defaultDropAction">
-               <enum>Qt::IgnoreAction</enum>
-              </property>
-              <property name="alternatingRowColors">
-               <bool>true</bool>
-              </property>
-              <property name="showGrid">
-               <bool>true</bool>
-              </property>
-              <property name="cornerButtonEnabled">
-               <bool>false</bool>
-              </property>
-              <attribute name="horizontalHeaderCascadingSectionResizes">
-               <bool>true</bool>
-              </attribute>
-              <attribute name="horizontalHeaderDefaultSectionSize">
-               <number>82</number>
-              </attribute>
-              <attribute name="verticalHeaderCascadingSectionResizes">
-               <bool>false</bool>
-              </attribute>
-              <attribute name="verticalHeaderDefaultSectionSize">
-               <number>24</number>
-              </attribute>
-              <row>
-               <property name="text">
-                <string>Port0</string>
-               </property>
-              </row>
-              <row>
-               <property name="text">
-                <string>Port1</string>
-               </property>
-              </row>
-              <row>
-               <property name="text">
-                <string>Port2</string>
-               </property>
-              </row>
-              <column>
-               <property name="text">
-                <string>Pin0</string>
-               </property>
-              </column>
-              <column>
-               <property name="text">
-                <string>Pin1</string>
-               </property>
-              </column>
-              <column>
-               <property name="text">
-                <string>Pin2</string>
-               </property>
-              </column>
-              <column>
-               <property name="text">
-                <string>Pin3</string>
-               </property>
-              </column>
-              <column>
-               <property name="text">
-                <string>Pin4</string>
-               </property>
-              </column>
-              <column>
-               <property name="text">
-                <string>Pin5</string>
-               </property>
-              </column>
-              <column>
-               <property name="text">
-                <string>Pin6</string>
-               </property>
-              </column>
-              <column>
-               <property name="text">
-                <string>Pin7</string>
-               </property>
-              </column>
-              <item row="0" column="0">
-               <property name="text">
-                <string/>
-               </property>
+              <item>
+               <widget class="QLabel" name="label_2">
+                <property name="font">
+                 <font>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>NI USB</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
               </item>
-              <item row="0" column="1">
-               <property name="text">
-                <string/>
-               </property>
+              <item>
+               <widget class="SwappingTableWidget" name="niusb_table">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>100</height>
+                 </size>
+                </property>
+                <property name="font">
+                 <font>
+                  <kerning>true</kerning>
+                 </font>
+                </property>
+                <property name="layoutDirection">
+                 <enum>Qt::LeftToRight</enum>
+                </property>
+                <property name="autoFillBackground">
+                 <bool>false</bool>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::NoFrame</enum>
+                </property>
+                <property name="verticalScrollBarPolicy">
+                 <enum>Qt::ScrollBarAsNeeded</enum>
+                </property>
+                <property name="horizontalScrollBarPolicy">
+                 <enum>Qt::ScrollBarAsNeeded</enum>
+                </property>
+                <property name="sizeAdjustPolicy">
+                 <enum>QAbstractScrollArea::AdjustToContents</enum>
+                </property>
+                <property name="autoScroll">
+                 <bool>true</bool>
+                </property>
+                <property name="autoScrollMargin">
+                 <number>0</number>
+                </property>
+                <property name="editTriggers">
+                 <set>QAbstractItemView::DoubleClicked|QAbstractItemView::SelectedClicked</set>
+                </property>
+                <property name="dragEnabled">
+                 <bool>true</bool>
+                </property>
+                <property name="dragDropOverwriteMode">
+                 <bool>false</bool>
+                </property>
+                <property name="dragDropMode">
+                 <enum>QAbstractItemView::NoDragDrop</enum>
+                </property>
+                <property name="defaultDropAction">
+                 <enum>Qt::IgnoreAction</enum>
+                </property>
+                <property name="alternatingRowColors">
+                 <bool>true</bool>
+                </property>
+                <property name="showGrid">
+                 <bool>true</bool>
+                </property>
+                <property name="cornerButtonEnabled">
+                 <bool>false</bool>
+                </property>
+                <attribute name="horizontalHeaderCascadingSectionResizes">
+                 <bool>true</bool>
+                </attribute>
+                <attribute name="horizontalHeaderDefaultSectionSize">
+                 <number>82</number>
+                </attribute>
+                <attribute name="verticalHeaderCascadingSectionResizes">
+                 <bool>false</bool>
+                </attribute>
+                <attribute name="verticalHeaderDefaultSectionSize">
+                 <number>24</number>
+                </attribute>
+                <row>
+                 <property name="text">
+                  <string>Port0</string>
+                 </property>
+                </row>
+                <row>
+                 <property name="text">
+                  <string>Port1</string>
+                 </property>
+                </row>
+                <row>
+                 <property name="text">
+                  <string>Port2</string>
+                 </property>
+                </row>
+                <column>
+                 <property name="text">
+                  <string>Pin0</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>Pin1</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>Pin2</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>Pin3</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>Pin4</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>Pin5</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>Pin6</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>Pin7</string>
+                 </property>
+                </column>
+                <item row="0" column="0">
+                 <property name="text">
+                  <string/>
+                 </property>
+                </item>
+                <item row="0" column="1">
+                 <property name="text">
+                  <string/>
+                 </property>
+                </item>
+                <item row="0" column="2">
+                 <property name="text">
+                  <string/>
+                 </property>
+                </item>
+                <item row="0" column="3">
+                 <property name="text">
+                  <string/>
+                 </property>
+                </item>
+                <item row="0" column="4">
+                 <property name="text">
+                  <string/>
+                 </property>
+                </item>
+                <item row="0" column="5">
+                 <property name="text">
+                  <string/>
+                 </property>
+                </item>
+                <item row="0" column="6">
+                 <property name="text">
+                  <string/>
+                 </property>
+                </item>
+                <item row="0" column="7">
+                 <property name="text">
+                  <string/>
+                 </property>
+                </item>
+                <item row="1" column="0">
+                 <property name="text">
+                  <string/>
+                 </property>
+                </item>
+                <item row="1" column="1">
+                 <property name="text">
+                  <string/>
+                 </property>
+                </item>
+                <item row="1" column="2">
+                 <property name="text">
+                  <string/>
+                 </property>
+                </item>
+                <item row="1" column="3">
+                 <property name="text">
+                  <string/>
+                 </property>
+                </item>
+                <item row="1" column="4">
+                 <property name="text">
+                  <string/>
+                 </property>
+                </item>
+                <item row="1" column="5">
+                 <property name="text">
+                  <string/>
+                 </property>
+                </item>
+                <item row="1" column="6">
+                 <property name="text">
+                  <string/>
+                 </property>
+                </item>
+                <item row="1" column="7">
+                 <property name="text">
+                  <string/>
+                 </property>
+                </item>
+                <item row="2" column="0">
+                 <property name="text">
+                  <string/>
+                 </property>
+                </item>
+                <item row="2" column="1">
+                 <property name="text">
+                  <string/>
+                 </property>
+                </item>
+                <item row="2" column="2">
+                 <property name="text">
+                  <string/>
+                 </property>
+                </item>
+                <item row="2" column="3">
+                 <property name="text">
+                  <string/>
+                 </property>
+                </item>
+                <item row="2" column="4">
+                 <property name="text">
+                  <string/>
+                 </property>
+                </item>
+                <item row="2" column="5">
+                 <property name="text">
+                  <string/>
+                 </property>
+                </item>
+                <item row="2" column="6">
+                 <property name="text">
+                  <string/>
+                 </property>
+                </item>
+                <item row="2" column="7">
+                 <property name="text">
+                  <string/>
+                 </property>
+                </item>
+               </widget>
               </item>
-              <item row="0" column="2">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="0" column="3">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="0" column="4">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="0" column="5">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="0" column="6">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="0" column="7">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="1" column="0">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="1" column="1">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="1" column="2">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="1" column="3">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="1" column="4">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="1" column="5">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="1" column="6">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="1" column="7">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="2" column="0">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="2" column="1">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="2" column="2">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="2" column="3">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="2" column="4">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="2" column="5">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="2" column="6">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-              <item row="2" column="7">
-               <property name="text">
-                <string/>
-               </property>
-              </item>
-             </widget>
+             </layout>
             </item>
             <item>
              <widget class="Line" name="dio_line">
@@ -5304,7 +5285,7 @@
              </widget>
             </item>
             <item>
-             <layout class="QGridLayout" name="clock_grid_layout" columnstretch="0,1,1,1,1,1,0,0">
+             <layout class="QGridLayout" name="clock_grid_layout" columnstretch="0,0,0,0,0,0,0,0">
               <property name="leftMargin">
                <number>0</number>
               </property>
@@ -5314,54 +5295,22 @@
               <property name="spacing">
                <number>3</number>
               </property>
-              <item row="5" column="0">
-               <widget class="QCheckBox" name="wave3_enabled">
-                <property name="layoutDirection">
-                 <enum>Qt::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>Wave 3</string>
-                </property>
+              <item row="16" column="6" colspan="2">
+               <widget class="QComboBox" name="clock_polarity_wave14">
+                <item>
+                 <property name="text">
+                  <string>Normal</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Reverse</string>
+                 </property>
+                </item>
                </widget>
               </item>
-              <item row="16" column="5">
-               <widget class="NoWheelSpinBox" name="clock_duty_wave14">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-                <property name="suffix">
-                 <string>%</string>
-                </property>
-                <property name="maximum">
-                 <number>100</number>
-                </property>
-               </widget>
-              </item>
-              <item row="17" column="0">
-               <widget class="QCheckBox" name="wave15_enabled">
-                <property name="layoutDirection">
-                 <enum>Qt::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>Wave 15</string>
-                </property>
-               </widget>
-              </item>
-              <item row="6" column="5">
-               <widget class="NoWheelSpinBox" name="clock_duty_wave4">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-                <property name="suffix">
-                 <string>%</string>
-                </property>
-                <property name="maximum">
-                 <number>100</number>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="1">
-               <widget class="QLineEdit" name="clock_name_wave1">
+              <item row="11" column="1">
+               <widget class="QLineEdit" name="clock_name_wave9">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                   <horstretch>0</horstretch>
@@ -5370,48 +5319,8 @@
                 </property>
                </widget>
               </item>
-              <item row="2" column="5">
-               <widget class="QLabel" name="clock_duty_label">
-                <property name="text">
-                 <string>Duty</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="8" column="0">
-               <widget class="QCheckBox" name="wave6_enabled">
-                <property name="layoutDirection">
-                 <enum>Qt::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>Wave 6</string>
-                </property>
-               </widget>
-              </item>
-              <item row="14" column="3">
-               <widget class="NoWheelSpinBox" name="clock_period_wave12">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-                <property name="maximum">
-                 <number>1000000</number>
-                </property>
-               </widget>
-              </item>
-              <item row="16" column="3">
-               <widget class="NoWheelSpinBox" name="clock_period_wave14">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-                <property name="maximum">
-                 <number>1000000</number>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="3">
-               <widget class="NoWheelSpinBox" name="clock_period_wave1">
+              <item row="4" column="3">
+               <widget class="NoWheelSpinBox" name="clock_period_wave2">
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
@@ -5430,94 +5339,38 @@
                 </property>
                </widget>
               </item>
-              <item row="18" column="2">
-               <widget class="NoWheelSpinBox" name="clock_pin_wave16">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
+              <item row="2" column="3">
+               <widget class="QLabel" name="clock_period_label">
+                <property name="text">
+                 <string>Period (100us)</string>
                 </property>
-                <property name="readOnly">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-              <item row="6" column="4">
-               <widget class="NoWheelSpinBox" name="clock_phase_wave4">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-                <property name="suffix">
-                 <string>%</string>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
                 </property>
                </widget>
               </item>
-              <item row="12" column="1">
-               <widget class="QLineEdit" name="clock_name_wave10">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="0">
-               <widget class="QCheckBox" name="wave1_enabled">
+              <item row="15" column="0">
+               <widget class="QCheckBox" name="wave13_enabled">
                 <property name="layoutDirection">
                  <enum>Qt::RightToLeft</enum>
                 </property>
                 <property name="text">
-                 <string>Wave 1</string>
+                 <string>Wave 13</string>
                 </property>
                </widget>
               </item>
-              <item row="4" column="5">
-               <widget class="NoWheelSpinBox" name="clock_duty_wave2">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-                <property name="suffix">
-                 <string>%</string>
-                </property>
-                <property name="maximum">
-                 <number>100</number>
-                </property>
-               </widget>
-              </item>
-              <item row="8" column="5">
-               <widget class="NoWheelSpinBox" name="clock_duty_wave6">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-                <property name="suffix">
-                 <string>%</string>
-                </property>
-                <property name="maximum">
-                 <number>100</number>
-                </property>
-               </widget>
-              </item>
-              <item row="11" column="1">
-               <widget class="QLineEdit" name="clock_name_wave9">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-               </widget>
-              </item>
-              <item row="14" column="0">
-               <widget class="QCheckBox" name="wave12_enabled">
-                <property name="layoutDirection">
-                 <enum>Qt::RightToLeft</enum>
-                </property>
+              <item row="1" column="3">
+               <widget class="QLabel" name="clock_sketch_location_label">
                 <property name="text">
-                 <string>Wave 12</string>
+                 <string>Sketch Location</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                 </property>
                </widget>
               </item>
-              <item row="10" column="1">
-               <widget class="QLineEdit" name="clock_name_wave8">
+              <item row="6" column="1">
+               <widget class="QLineEdit" name="clock_name_wave4">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                   <horstretch>0</horstretch>
@@ -5536,8 +5389,8 @@
                 </property>
                </widget>
               </item>
-              <item row="6" column="3">
-               <widget class="NoWheelSpinBox" name="clock_period_wave4">
+              <item row="3" column="3">
+               <widget class="NoWheelSpinBox" name="clock_period_wave1">
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
@@ -5546,8 +5399,198 @@
                 </property>
                </widget>
               </item>
-              <item row="3" column="2">
-               <widget class="NoWheelSpinBox" name="clock_pin_wave1">
+              <item row="10" column="6" colspan="2">
+               <widget class="QComboBox" name="clock_polarity_wave8">
+                <item>
+                 <property name="text">
+                  <string>Normal</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Reverse</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="8" column="1">
+               <widget class="QLineEdit" name="clock_name_wave6">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+               </widget>
+              </item>
+              <item row="18" column="4">
+               <widget class="NoWheelSpinBox" name="clock_phase_wave16">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string>%</string>
+                </property>
+               </widget>
+              </item>
+              <item row="13" column="1">
+               <widget class="QLineEdit" name="clock_name_wave11">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+               </widget>
+              </item>
+              <item row="17" column="1">
+               <widget class="QLineEdit" name="clock_name_wave15">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+               </widget>
+              </item>
+              <item row="12" column="3">
+               <widget class="NoWheelSpinBox" name="clock_period_wave10">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="maximum">
+                 <number>1000000</number>
+                </property>
+               </widget>
+              </item>
+              <item row="17" column="5">
+               <widget class="NoWheelSpinBox" name="clock_duty_wave15">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string>%</string>
+                </property>
+                <property name="maximum">
+                 <number>100</number>
+                </property>
+               </widget>
+              </item>
+              <item row="12" column="4">
+               <widget class="NoWheelSpinBox" name="clock_phase_wave10">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string>%</string>
+                </property>
+               </widget>
+              </item>
+              <item row="10" column="1">
+               <widget class="QLineEdit" name="clock_name_wave8">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="1">
+               <widget class="QLineEdit" name="clock_name_wave2">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="3">
+               <widget class="NoWheelSpinBox" name="clock_period_wave3">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="maximum">
+                 <number>1000000</number>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="1">
+               <widget class="QLineEdit" name="clock_name_wave3">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="clock_port_label">
+                <property name="text">
+                 <string>Serial Port</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="7" column="3">
+               <widget class="NoWheelSpinBox" name="clock_period_wave5">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="maximum">
+                 <number>1000000</number>
+                </property>
+               </widget>
+              </item>
+              <item row="10" column="5">
+               <widget class="NoWheelSpinBox" name="clock_duty_wave8">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string>%</string>
+                </property>
+                <property name="maximum">
+                 <number>100</number>
+                </property>
+               </widget>
+              </item>
+              <item row="10" column="3">
+               <widget class="NoWheelSpinBox" name="clock_period_wave8">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="maximum">
+                 <number>1000000</number>
+                </property>
+               </widget>
+              </item>
+              <item row="8" column="3">
+               <widget class="NoWheelSpinBox" name="clock_period_wave6">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="maximum">
+                 <number>1000000</number>
+                </property>
+               </widget>
+              </item>
+              <item row="14" column="1">
+               <widget class="QLineEdit" name="clock_name_wave12">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+               </widget>
+              </item>
+              <item row="12" column="2">
+               <widget class="NoWheelSpinBox" name="clock_pin_wave10">
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
@@ -5556,36 +5599,109 @@
                 </property>
                </widget>
               </item>
-              <item row="1" column="3">
-               <widget class="QLabel" name="clock_sketch_location_label">
-                <property name="text">
-                 <string>Sketch Location</string>
+              <item row="8" column="6" colspan="2">
+               <widget class="QComboBox" name="clock_polarity_wave6">
+                <item>
+                 <property name="text">
+                  <string>Normal</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Reverse</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="10" column="2">
+               <widget class="NoWheelSpinBox" name="clock_pin_wave8">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
                 </property>
-                <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                <property name="readOnly">
+                 <bool>true</bool>
                 </property>
                </widget>
               </item>
-              <item row="11" column="0">
-               <widget class="QCheckBox" name="wave9_enabled">
+              <item row="12" column="6" colspan="2">
+               <widget class="QComboBox" name="clock_polarity_wave10">
+                <item>
+                 <property name="text">
+                  <string>Normal</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Reverse</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="14" column="3">
+               <widget class="NoWheelSpinBox" name="clock_period_wave12">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="maximum">
+                 <number>1000000</number>
+                </property>
+               </widget>
+              </item>
+              <item row="8" column="5">
+               <widget class="NoWheelSpinBox" name="clock_duty_wave6">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string>%</string>
+                </property>
+                <property name="maximum">
+                 <number>100</number>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0" colspan="8">
+               <widget class="QLabel" name="clock_label">
+                <property name="font">
+                 <font>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>Clock Arduino</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="margin">
+                 <number>0</number>
+                </property>
+               </widget>
+              </item>
+              <item row="12" column="1">
+               <widget class="QLineEdit" name="clock_name_wave10">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+               </widget>
+              </item>
+              <item row="12" column="0">
+               <widget class="QCheckBox" name="wave10_enabled">
                 <property name="layoutDirection">
                  <enum>Qt::RightToLeft</enum>
                 </property>
                 <property name="text">
-                 <string>Wave 9</string>
+                 <string>Wave 10</string>
                 </property>
                </widget>
               </item>
-              <item row="3" column="4">
-               <widget class="NoWheelSpinBox" name="clock_phase_wave1">
+              <item row="3" column="5">
+               <widget class="NoWheelSpinBox" name="clock_duty_wave1">
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
-                </property>
-                <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::UpDownArrows</enum>
-                </property>
-                <property name="keyboardTracking">
-                 <bool>true</bool>
                 </property>
                 <property name="suffix">
                  <string>%</string>
@@ -5605,216 +5721,6 @@
                 </property>
                </widget>
               </item>
-              <item row="18" column="4">
-               <widget class="NoWheelSpinBox" name="clock_phase_wave16">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-                <property name="suffix">
-                 <string>%</string>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="4">
-               <widget class="QLabel" name="clock_phase_label">
-                <property name="text">
-                 <string>Phase</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="13" column="2">
-               <widget class="NoWheelSpinBox" name="clock_pin_wave11">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-                <property name="readOnly">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-              <item row="7" column="2">
-               <widget class="NoWheelSpinBox" name="clock_pin_wave5">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-                <property name="readOnly">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="3">
-               <widget class="QLabel" name="clock_period_label">
-                <property name="text">
-                 <string>Period (100us)</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="8" column="4">
-               <widget class="NoWheelSpinBox" name="clock_phase_wave6">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-                <property name="suffix">
-                 <string>%</string>
-                </property>
-               </widget>
-              </item>
-              <item row="11" column="3">
-               <widget class="NoWheelSpinBox" name="clock_period_wave9">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-                <property name="maximum">
-                 <number>1000000</number>
-                </property>
-               </widget>
-              </item>
-              <item row="7" column="4">
-               <widget class="NoWheelSpinBox" name="clock_phase_wave5">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-                <property name="suffix">
-                 <string>%</string>
-                </property>
-               </widget>
-              </item>
-              <item row="5" column="4">
-               <widget class="NoWheelSpinBox" name="clock_phase_wave3">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-                <property name="suffix">
-                 <string>%</string>
-                </property>
-               </widget>
-              </item>
-              <item row="6" column="1">
-               <widget class="QLineEdit" name="clock_name_wave4">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-               </widget>
-              </item>
-              <item row="5" column="2">
-               <widget class="NoWheelSpinBox" name="clock_pin_wave3">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-                <property name="readOnly">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="0">
-               <widget class="QLabel" name="clock_port_label">
-                <property name="text">
-                 <string>Serial Port</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="14" column="4">
-               <widget class="NoWheelSpinBox" name="clock_phase_wave12">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-                <property name="suffix">
-                 <string>%</string>
-                </property>
-               </widget>
-              </item>
-              <item row="17" column="2">
-               <widget class="NoWheelSpinBox" name="clock_pin_wave15">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-                <property name="readOnly">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-              <item row="15" column="3">
-               <widget class="NoWheelSpinBox" name="clock_period_wave13">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-                <property name="maximum">
-                 <number>1000000</number>
-                </property>
-               </widget>
-              </item>
-              <item row="5" column="3">
-               <widget class="NoWheelSpinBox" name="clock_period_wave3">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-                <property name="maximum">
-                 <number>1000000</number>
-                </property>
-               </widget>
-              </item>
-              <item row="9" column="4">
-               <widget class="NoWheelSpinBox" name="clock_phase_wave7">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-                <property name="suffix">
-                 <string>%</string>
-                </property>
-               </widget>
-              </item>
-              <item row="5" column="1">
-               <widget class="QLineEdit" name="clock_name_wave3">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-               </widget>
-              </item>
-              <item row="7" column="3">
-               <widget class="NoWheelSpinBox" name="clock_period_wave5">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-                <property name="maximum">
-                 <number>1000000</number>
-                </property>
-               </widget>
-              </item>
-              <item row="9" column="0">
-               <widget class="QCheckBox" name="wave7_enabled">
-                <property name="layoutDirection">
-                 <enum>Qt::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>Wave 7</string>
-                </property>
-               </widget>
-              </item>
-              <item row="10" column="3">
-               <widget class="NoWheelSpinBox" name="clock_period_wave8">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-                <property name="maximum">
-                 <number>1000000</number>
-                </property>
-               </widget>
-              </item>
               <item row="15" column="1">
                <widget class="QLineEdit" name="clock_name_wave13">
                 <property name="sizePolicy">
@@ -5825,120 +5731,42 @@
                 </property>
                </widget>
               </item>
-              <item row="5" column="5">
-               <widget class="NoWheelSpinBox" name="clock_duty_wave3">
+              <item row="16" column="4">
+               <widget class="NoWheelSpinBox" name="clock_phase_wave14">
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
                 <property name="suffix">
                  <string>%</string>
                 </property>
-                <property name="maximum">
-                 <number>100</number>
-                </property>
                </widget>
               </item>
-              <item row="10" column="5">
-               <widget class="NoWheelSpinBox" name="clock_duty_wave8">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-                <property name="suffix">
-                 <string>%</string>
-                </property>
-                <property name="maximum">
-                 <number>100</number>
-                </property>
+              <item row="4" column="6" colspan="2">
+               <widget class="QComboBox" name="clock_polarity_wave2">
+                <item>
+                 <property name="text">
+                  <string>Normal</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Reverse</string>
+                 </property>
+                </item>
                </widget>
               </item>
-              <item row="15" column="5">
-               <widget class="NoWheelSpinBox" name="clock_duty_wave13">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-                <property name="suffix">
-                 <string>%</string>
-                </property>
-                <property name="maximum">
-                 <number>100</number>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="0">
-               <widget class="QCheckBox" name="wave2_enabled">
+              <item row="11" column="0">
+               <widget class="QCheckBox" name="wave9_enabled">
                 <property name="layoutDirection">
                  <enum>Qt::RightToLeft</enum>
                 </property>
                 <property name="text">
-                 <string>Wave 2</string>
+                 <string>Wave 9</string>
                 </property>
                </widget>
               </item>
-              <item row="15" column="0">
-               <widget class="QCheckBox" name="wave13_enabled">
-                <property name="layoutDirection">
-                 <enum>Qt::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>Wave 13</string>
-                </property>
-               </widget>
-              </item>
-              <item row="12" column="4">
-               <widget class="NoWheelSpinBox" name="clock_phase_wave10">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-                <property name="suffix">
-                 <string>%</string>
-                </property>
-               </widget>
-              </item>
-              <item row="12" column="0">
-               <widget class="QCheckBox" name="wave10_enabled">
-                <property name="layoutDirection">
-                 <enum>Qt::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>Wave 10</string>
-                </property>
-               </widget>
-              </item>
-              <item row="8" column="3">
-               <widget class="NoWheelSpinBox" name="clock_period_wave6">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-                <property name="maximum">
-                 <number>1000000</number>
-                </property>
-               </widget>
-              </item>
-              <item row="18" column="1">
-               <widget class="QLineEdit" name="clock_name_wave16">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-               </widget>
-              </item>
-              <item row="7" column="5">
-               <widget class="NoWheelSpinBox" name="clock_duty_wave5">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-                <property name="suffix">
-                 <string>%</string>
-                </property>
-                <property name="maximum">
-                 <number>100</number>
-                </property>
-               </widget>
-              </item>
-              <item row="8" column="2">
-               <widget class="NoWheelSpinBox" name="clock_pin_wave6">
+              <item row="18" column="2">
+               <widget class="NoWheelSpinBox" name="clock_pin_wave16">
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
@@ -5947,97 +5775,8 @@
                 </property>
                </widget>
               </item>
-              <item row="17" column="5">
-               <widget class="NoWheelSpinBox" name="clock_duty_wave15">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-                <property name="suffix">
-                 <string>%</string>
-                </property>
-                <property name="maximum">
-                 <number>100</number>
-                </property>
-               </widget>
-              </item>
-              <item row="17" column="4">
-               <widget class="NoWheelSpinBox" name="clock_phase_wave15">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-                <property name="suffix">
-                 <string>%</string>
-                </property>
-               </widget>
-              </item>
-              <item row="16" column="2">
-               <widget class="NoWheelSpinBox" name="clock_pin_wave14">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-                <property name="readOnly">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="2">
-               <widget class="NoWheelSpinBox" name="clock_pin_wave2">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-                <property name="readOnly">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-              <item row="6" column="0">
-               <widget class="QCheckBox" name="wave4_enabled">
-                <property name="layoutDirection">
-                 <enum>Qt::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>Wave 4</string>
-                </property>
-               </widget>
-              </item>
-              <item row="14" column="1">
-               <widget class="QLineEdit" name="clock_name_wave12">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-               </widget>
-              </item>
-              <item row="8" column="1">
-               <widget class="QLineEdit" name="clock_name_wave6">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-               </widget>
-              </item>
-              <item row="14" column="5">
-               <widget class="NoWheelSpinBox" name="clock_duty_wave12">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-                <property name="suffix">
-                 <string>%</string>
-                </property>
-                <property name="maximum">
-                 <number>100</number>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="4" colspan="3">
-               <widget class="QLineEdit" name="clock_sketch_edit"/>
-              </item>
-              <item row="9" column="2">
-               <widget class="NoWheelSpinBox" name="clock_pin_wave7">
+              <item row="5" column="2">
+               <widget class="NoWheelSpinBox" name="clock_pin_wave3">
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
@@ -6056,28 +5795,8 @@
                 </property>
                </widget>
               </item>
-              <item row="10" column="4">
-               <widget class="NoWheelSpinBox" name="clock_phase_wave8">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-                <property name="suffix">
-                 <string>%</string>
-                </property>
-               </widget>
-              </item>
-              <item row="16" column="0">
-               <widget class="QCheckBox" name="wave14_enabled">
-                <property name="layoutDirection">
-                 <enum>Qt::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>Wave 14</string>
-                </property>
-               </widget>
-              </item>
-              <item row="12" column="5">
-               <widget class="NoWheelSpinBox" name="clock_duty_wave10">
+              <item row="15" column="5">
+               <widget class="NoWheelSpinBox" name="clock_duty_wave13">
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
@@ -6089,8 +5808,28 @@
                 </property>
                </widget>
               </item>
-              <item row="11" column="4">
-               <widget class="NoWheelSpinBox" name="clock_phase_wave9">
+              <item row="14" column="0">
+               <widget class="QCheckBox" name="wave12_enabled">
+                <property name="layoutDirection">
+                 <enum>Qt::RightToLeft</enum>
+                </property>
+                <property name="text">
+                 <string>Wave 12</string>
+                </property>
+               </widget>
+              </item>
+              <item row="18" column="3">
+               <widget class="NoWheelSpinBox" name="clock_period_wave16">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="maximum">
+                 <number>1000000</number>
+                </property>
+               </widget>
+              </item>
+              <item row="14" column="4">
+               <widget class="NoWheelSpinBox" name="clock_phase_wave12">
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
@@ -6112,13 +5851,113 @@
                 </property>
                </widget>
               </item>
-              <item row="7" column="0">
-               <widget class="QCheckBox" name="wave5_enabled">
+              <item row="15" column="4">
+               <widget class="NoWheelSpinBox" name="clock_phase_wave13">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string>%</string>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="3">
+               <widget class="NoWheelSpinBox" name="clock_period_wave4">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="maximum">
+                 <number>1000000</number>
+                </property>
+               </widget>
+              </item>
+              <item row="8" column="0">
+               <widget class="QCheckBox" name="wave6_enabled">
                 <property name="layoutDirection">
                  <enum>Qt::RightToLeft</enum>
                 </property>
                 <property name="text">
-                 <string>Wave 5</string>
+                 <string>Wave 6</string>
+                </property>
+               </widget>
+              </item>
+              <item row="16" column="2">
+               <widget class="NoWheelSpinBox" name="clock_pin_wave14">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="8" column="4">
+               <widget class="NoWheelSpinBox" name="clock_phase_wave6">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string>%</string>
+                </property>
+               </widget>
+              </item>
+              <item row="7" column="4">
+               <widget class="NoWheelSpinBox" name="clock_phase_wave5">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string>%</string>
+                </property>
+               </widget>
+              </item>
+              <item row="14" column="5">
+               <widget class="NoWheelSpinBox" name="clock_duty_wave12">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string>%</string>
+                </property>
+                <property name="maximum">
+                 <number>100</number>
+                </property>
+               </widget>
+              </item>
+              <item row="15" column="3">
+               <widget class="NoWheelSpinBox" name="clock_period_wave13">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="maximum">
+                 <number>1000000</number>
+                </property>
+               </widget>
+              </item>
+              <item row="17" column="6" colspan="2">
+               <widget class="QComboBox" name="clock_polarity_wave15">
+                <item>
+                 <property name="text">
+                  <string>Normal</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Reverse</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="4" column="5">
+               <widget class="NoWheelSpinBox" name="clock_duty_wave2">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string>%</string>
+                </property>
+                <property name="maximum">
+                 <number>100</number>
                 </property>
                </widget>
               </item>
@@ -6135,142 +5974,6 @@
                 </property>
                </widget>
               </item>
-              <item row="13" column="1">
-               <widget class="QLineEdit" name="clock_name_wave11">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-               </widget>
-              </item>
-              <item row="10" column="2">
-               <widget class="NoWheelSpinBox" name="clock_pin_wave8">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-                <property name="readOnly">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-              <item row="17" column="3">
-               <widget class="NoWheelSpinBox" name="clock_period_wave15">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-                <property name="maximum">
-                 <number>1000000</number>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="5">
-               <widget class="NoWheelSpinBox" name="clock_duty_wave1">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-                <property name="suffix">
-                 <string>%</string>
-                </property>
-                <property name="maximum">
-                 <number>100</number>
-                </property>
-               </widget>
-              </item>
-              <item row="18" column="5">
-               <widget class="NoWheelSpinBox" name="clock_duty_wave16">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-                <property name="suffix">
-                 <string>%</string>
-                </property>
-                <property name="maximum">
-                 <number>100</number>
-                </property>
-               </widget>
-              </item>
-              <item row="17" column="1">
-               <widget class="QLineEdit" name="clock_name_wave15">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-               </widget>
-              </item>
-              <item row="9" column="3">
-               <widget class="NoWheelSpinBox" name="clock_period_wave7">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-                <property name="maximum">
-                 <number>1000000</number>
-                </property>
-               </widget>
-              </item>
-              <item row="13" column="4">
-               <widget class="NoWheelSpinBox" name="clock_phase_wave11">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-                <property name="suffix">
-                 <string>%</string>
-                </property>
-               </widget>
-              </item>
-              <item row="13" column="3">
-               <widget class="NoWheelSpinBox" name="clock_period_wave11">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-                <property name="maximum">
-                 <number>1000000</number>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="3">
-               <widget class="NoWheelSpinBox" name="clock_period_wave2">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-                <property name="maximum">
-                 <number>1000000</number>
-                </property>
-               </widget>
-              </item>
-              <item row="6" column="2">
-               <widget class="NoWheelSpinBox" name="clock_pin_wave4">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-                <property name="readOnly">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-              <item row="16" column="4">
-               <widget class="NoWheelSpinBox" name="clock_phase_wave14">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-                <property name="suffix">
-                 <string>%</string>
-                </property>
-               </widget>
-              </item>
-              <item row="18" column="3">
-               <widget class="NoWheelSpinBox" name="clock_period_wave16">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-                <property name="maximum">
-                 <number>1000000</number>
-                </property>
-               </widget>
-              </item>
               <item row="9" column="5">
                <widget class="NoWheelSpinBox" name="clock_duty_wave7">
                 <property name="focusPolicy">
@@ -6284,103 +5987,27 @@
                 </property>
                </widget>
               </item>
-              <item row="13" column="0">
-               <widget class="QCheckBox" name="wave11_enabled">
-                <property name="layoutDirection">
-                 <enum>Qt::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>Wave 11</string>
-                </property>
+              <item row="9" column="6" colspan="2">
+               <widget class="QComboBox" name="clock_polarity_wave7">
+                <item>
+                 <property name="text">
+                  <string>Normal</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Reverse</string>
+                 </property>
+                </item>
                </widget>
               </item>
-              <item row="4" column="1">
-               <widget class="QLineEdit" name="clock_name_wave2">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-               </widget>
-              </item>
-              <item row="7" column="1">
-               <widget class="QLineEdit" name="clock_name_wave5">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-               </widget>
-              </item>
-              <item row="12" column="3">
-               <widget class="NoWheelSpinBox" name="clock_period_wave10">
+              <item row="16" column="3">
+               <widget class="NoWheelSpinBox" name="clock_period_wave14">
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
                 <property name="maximum">
                  <number>1000000</number>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="2">
-               <widget class="QLabel" name="clock_pin_label">
-                <property name="text">
-                 <string>Pin</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="9" column="1">
-               <widget class="QLineEdit" name="clock_name_wave7">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="1">
-               <widget class="QLabel" name="clock_pin_label_2">
-                <property name="text">
-                 <string>Name</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="11" column="2">
-               <widget class="NoWheelSpinBox" name="clock_pin_wave9">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-                <property name="readOnly">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-              <item row="14" column="2">
-               <widget class="NoWheelSpinBox" name="clock_pin_wave12">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-                <property name="readOnly">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-              <item row="15" column="4">
-               <widget class="NoWheelSpinBox" name="clock_phase_wave13">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-                <property name="suffix">
-                 <string>%</string>
                 </property>
                </widget>
               </item>
@@ -6391,46 +6018,6 @@
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
-                </property>
-               </widget>
-              </item>
-              <item row="10" column="0">
-               <widget class="QCheckBox" name="wave8_enabled">
-                <property name="layoutDirection">
-                 <enum>Qt::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>Wave 8</string>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="1" colspan="2">
-               <widget class="QLineEdit" name="clock_port_edit"/>
-              </item>
-              <item row="12" column="2">
-               <widget class="NoWheelSpinBox" name="clock_pin_wave10">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-                <property name="readOnly">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="7">
-               <widget class="QToolButton" name="clock_sketch_but">
-                <property name="text">
-                 <string>...</string>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="6" colspan="2">
-               <widget class="QLabel" name="clock_polarity_label">
-                <property name="text">
-                 <string>Polarity</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
                 </property>
                </widget>
               </item>
@@ -6448,26 +6035,38 @@
                 </item>
                </widget>
               </item>
-              <item row="0" column="0" colspan="8">
-               <widget class="QLabel" name="clock_label">
-                <property name="font">
-                 <font>
-                  <bold>true</bold>
-                 </font>
+              <item row="16" column="0">
+               <widget class="QCheckBox" name="wave14_enabled">
+                <property name="layoutDirection">
+                 <enum>Qt::RightToLeft</enum>
                 </property>
                 <property name="text">
-                 <string>Clock Arduino</string>
+                 <string>Wave 14</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="6" colspan="2">
+               <widget class="QLabel" name="clock_polarity_label">
+                <property name="text">
+                 <string>Polarity</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignCenter</set>
                 </property>
-                <property name="margin">
-                 <number>0</number>
+               </widget>
+              </item>
+              <item row="13" column="4">
+               <widget class="NoWheelSpinBox" name="clock_phase_wave11">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string>%</string>
                 </property>
                </widget>
               </item>
-              <item row="4" column="6" colspan="2">
-               <widget class="QComboBox" name="clock_polarity_wave2">
+              <item row="7" column="6" colspan="2">
+               <widget class="QComboBox" name="clock_polarity_wave5">
                 <item>
                  <property name="text">
                   <string>Normal</string>
@@ -6480,8 +6079,52 @@
                 </item>
                </widget>
               </item>
-              <item row="5" column="6" colspan="2">
-               <widget class="QComboBox" name="clock_polarity_wave3">
+              <item row="7" column="1">
+               <widget class="QLineEdit" name="clock_name_wave5">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="0">
+               <widget class="QCheckBox" name="wave3_enabled">
+                <property name="layoutDirection">
+                 <enum>Qt::RightToLeft</enum>
+                </property>
+                <property name="text">
+                 <string>Wave 3</string>
+                </property>
+               </widget>
+              </item>
+              <item row="11" column="6" colspan="2">
+               <widget class="QComboBox" name="clock_polarity_wave9">
+                <item>
+                 <property name="text">
+                  <string>Normal</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Reverse</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="18" column="1">
+               <widget class="QLineEdit" name="clock_name_wave16">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+               </widget>
+              </item>
+              <item row="18" column="6" colspan="2">
+               <widget class="QComboBox" name="clock_polarity_wave16">
                 <item>
                  <property name="text">
                   <string>Normal</string>
@@ -6508,88 +6151,24 @@
                 </item>
                </widget>
               </item>
-              <item row="7" column="6" colspan="2">
-               <widget class="QComboBox" name="clock_polarity_wave5">
-                <item>
-                 <property name="text">
-                  <string>Normal</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Reverse</string>
-                 </property>
-                </item>
+              <item row="2" column="4">
+               <widget class="QLabel" name="clock_phase_label">
+                <property name="text">
+                 <string>Phase</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
                </widget>
               </item>
-              <item row="8" column="6" colspan="2">
-               <widget class="QComboBox" name="clock_polarity_wave6">
-                <item>
-                 <property name="text">
-                  <string>Normal</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Reverse</string>
-                 </property>
-                </item>
-               </widget>
-              </item>
-              <item row="9" column="6" colspan="2">
-               <widget class="QComboBox" name="clock_polarity_wave7">
-                <item>
-                 <property name="text">
-                  <string>Normal</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Reverse</string>
-                 </property>
-                </item>
-               </widget>
-              </item>
-              <item row="10" column="6" colspan="2">
-               <widget class="QComboBox" name="clock_polarity_wave8">
-                <item>
-                 <property name="text">
-                  <string>Normal</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Reverse</string>
-                 </property>
-                </item>
-               </widget>
-              </item>
-              <item row="11" column="6" colspan="2">
-               <widget class="QComboBox" name="clock_polarity_wave9">
-                <item>
-                 <property name="text">
-                  <string>Normal</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Reverse</string>
-                 </property>
-                </item>
-               </widget>
-              </item>
-              <item row="12" column="6" colspan="2">
-               <widget class="QComboBox" name="clock_polarity_wave10">
-                <item>
-                 <property name="text">
-                  <string>Normal</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Reverse</string>
-                 </property>
-                </item>
+              <item row="13" column="2">
+               <widget class="NoWheelSpinBox" name="clock_pin_wave11">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
                </widget>
               </item>
               <item row="13" column="6" colspan="2">
@@ -6606,6 +6185,119 @@
                 </item>
                </widget>
               </item>
+              <item row="11" column="4">
+               <widget class="NoWheelSpinBox" name="clock_phase_wave9">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string>%</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="0">
+               <widget class="QCheckBox" name="wave1_enabled">
+                <property name="layoutDirection">
+                 <enum>Qt::RightToLeft</enum>
+                </property>
+                <property name="text">
+                 <string>Wave 1</string>
+                </property>
+               </widget>
+              </item>
+              <item row="14" column="2">
+               <widget class="NoWheelSpinBox" name="clock_pin_wave12">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="7">
+               <widget class="QToolButton" name="clock_sketch_but">
+                <property name="text">
+                 <string>...</string>
+                </property>
+               </widget>
+              </item>
+              <item row="7" column="2">
+               <widget class="NoWheelSpinBox" name="clock_pin_wave5">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="9" column="4">
+               <widget class="NoWheelSpinBox" name="clock_phase_wave7">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string>%</string>
+                </property>
+               </widget>
+              </item>
+              <item row="10" column="4">
+               <widget class="NoWheelSpinBox" name="clock_phase_wave8">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string>%</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1" colspan="2">
+               <widget class="QLineEdit" name="clock_port_edit"/>
+              </item>
+              <item row="17" column="2">
+               <widget class="NoWheelSpinBox" name="clock_pin_wave15">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="7" column="5">
+               <widget class="NoWheelSpinBox" name="clock_duty_wave5">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string>%</string>
+                </property>
+                <property name="maximum">
+                 <number>100</number>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="2">
+               <widget class="NoWheelSpinBox" name="clock_pin_wave4">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="4">
+               <widget class="NoWheelSpinBox" name="clock_phase_wave3">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string>%</string>
+                </property>
+               </widget>
+              </item>
               <item row="14" column="6" colspan="2">
                <widget class="QComboBox" name="clock_polarity_wave12">
                 <item>
@@ -6618,6 +6310,108 @@
                   <string>Reverse</string>
                  </property>
                 </item>
+               </widget>
+              </item>
+              <item row="2" column="5">
+               <widget class="QLabel" name="clock_duty_label">
+                <property name="text">
+                 <string>Duty</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="QLabel" name="clock_pin_label_2">
+                <property name="text">
+                 <string>Name</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="4">
+               <widget class="NoWheelSpinBox" name="clock_phase_wave1">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::UpDownArrows</enum>
+                </property>
+                <property name="keyboardTracking">
+                 <bool>true</bool>
+                </property>
+                <property name="suffix">
+                 <string>%</string>
+                </property>
+                <property name="maximum">
+                 <number>100</number>
+                </property>
+               </widget>
+              </item>
+              <item row="11" column="2">
+               <widget class="NoWheelSpinBox" name="clock_pin_wave9">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="18" column="5">
+               <widget class="NoWheelSpinBox" name="clock_duty_wave16">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string>%</string>
+                </property>
+                <property name="maximum">
+                 <number>100</number>
+                </property>
+               </widget>
+              </item>
+              <item row="9" column="3">
+               <widget class="NoWheelSpinBox" name="clock_period_wave7">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="maximum">
+                 <number>1000000</number>
+                </property>
+               </widget>
+              </item>
+              <item row="13" column="3">
+               <widget class="NoWheelSpinBox" name="clock_period_wave11">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="maximum">
+                 <number>1000000</number>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="2">
+               <widget class="NoWheelSpinBox" name="clock_pin_wave1">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="2">
+               <widget class="QLabel" name="clock_pin_label">
+                <property name="text">
+                 <string>Pin</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
                </widget>
               </item>
               <item row="15" column="6" colspan="2">
@@ -6634,8 +6428,223 @@
                 </item>
                </widget>
               </item>
-              <item row="16" column="6" colspan="2">
-               <widget class="QComboBox" name="clock_polarity_wave14">
+              <item row="6" column="0">
+               <widget class="QCheckBox" name="wave4_enabled">
+                <property name="layoutDirection">
+                 <enum>Qt::RightToLeft</enum>
+                </property>
+                <property name="text">
+                 <string>Wave 4</string>
+                </property>
+               </widget>
+              </item>
+              <item row="9" column="1">
+               <widget class="QLineEdit" name="clock_name_wave7">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="2">
+               <widget class="NoWheelSpinBox" name="clock_pin_wave2">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="9" column="0">
+               <widget class="QCheckBox" name="wave7_enabled">
+                <property name="layoutDirection">
+                 <enum>Qt::RightToLeft</enum>
+                </property>
+                <property name="text">
+                 <string>Wave 7</string>
+                </property>
+               </widget>
+              </item>
+              <item row="12" column="5">
+               <widget class="NoWheelSpinBox" name="clock_duty_wave10">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string>%</string>
+                </property>
+                <property name="maximum">
+                 <number>100</number>
+                </property>
+               </widget>
+              </item>
+              <item row="10" column="0">
+               <widget class="QCheckBox" name="wave8_enabled">
+                <property name="layoutDirection">
+                 <enum>Qt::RightToLeft</enum>
+                </property>
+                <property name="text">
+                 <string>Wave 8</string>
+                </property>
+               </widget>
+              </item>
+              <item row="17" column="3">
+               <widget class="NoWheelSpinBox" name="clock_period_wave15">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="maximum">
+                 <number>1000000</number>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="5">
+               <widget class="NoWheelSpinBox" name="clock_duty_wave4">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string>%</string>
+                </property>
+                <property name="maximum">
+                 <number>100</number>
+                </property>
+               </widget>
+              </item>
+              <item row="13" column="0">
+               <widget class="QCheckBox" name="wave11_enabled">
+                <property name="layoutDirection">
+                 <enum>Qt::RightToLeft</enum>
+                </property>
+                <property name="text">
+                 <string>Wave 11</string>
+                </property>
+               </widget>
+              </item>
+              <item row="17" column="4">
+               <widget class="NoWheelSpinBox" name="clock_phase_wave15">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string>%</string>
+                </property>
+               </widget>
+              </item>
+              <item row="8" column="2">
+               <widget class="NoWheelSpinBox" name="clock_pin_wave6">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="4">
+               <widget class="NoWheelSpinBox" name="clock_phase_wave4">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string>%</string>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="0">
+               <widget class="QCheckBox" name="wave2_enabled">
+                <property name="layoutDirection">
+                 <enum>Qt::RightToLeft</enum>
+                </property>
+                <property name="text">
+                 <string>Wave 2</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="1">
+               <widget class="QLineEdit" name="clock_name_wave1">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+               </widget>
+              </item>
+              <item row="9" column="2">
+               <widget class="NoWheelSpinBox" name="clock_pin_wave7">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="16" column="5">
+               <widget class="NoWheelSpinBox" name="clock_duty_wave14">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string>%</string>
+                </property>
+                <property name="maximum">
+                 <number>100</number>
+                </property>
+               </widget>
+              </item>
+              <item row="11" column="3">
+               <widget class="NoWheelSpinBox" name="clock_period_wave9">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="maximum">
+                 <number>1000000</number>
+                </property>
+               </widget>
+              </item>
+              <item row="17" column="0">
+               <widget class="QCheckBox" name="wave15_enabled">
+                <property name="layoutDirection">
+                 <enum>Qt::RightToLeft</enum>
+                </property>
+                <property name="text">
+                 <string>Wave 15</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="4" colspan="3">
+               <widget class="QLineEdit" name="clock_sketch_edit"/>
+              </item>
+              <item row="5" column="5">
+               <widget class="NoWheelSpinBox" name="clock_duty_wave3">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string>%</string>
+                </property>
+                <property name="maximum">
+                 <number>100</number>
+                </property>
+               </widget>
+              </item>
+              <item row="7" column="0">
+               <widget class="QCheckBox" name="wave5_enabled">
+                <property name="layoutDirection">
+                 <enum>Qt::RightToLeft</enum>
+                </property>
+                <property name="text">
+                 <string>Wave 5</string>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="6" colspan="2">
+               <widget class="QComboBox" name="clock_polarity_wave3">
                 <item>
                  <property name="text">
                   <string>Normal</string>
@@ -6648,33 +6657,127 @@
                 </item>
                </widget>
               </item>
-              <item row="17" column="6" colspan="2">
-               <widget class="QComboBox" name="clock_polarity_wave15">
-                <item>
-                 <property name="text">
-                  <string>Normal</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Reverse</string>
-                 </property>
-                </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QGridLayout" name="gridLayout_6">
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+              <property name="spacing">
+               <number>3</number>
+              </property>
+              <item row="2" column="0">
+               <widget class="QLabel" name="position_mac_label">
+                <property name="text">
+                 <string>MAC Addr</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
                </widget>
               </item>
-              <item row="18" column="6" colspan="2">
-               <widget class="QComboBox" name="clock_polarity_wave16">
-                <item>
-                 <property name="text">
-                  <string>Normal</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Reverse</string>
-                 </property>
-                </item>
+              <item row="1" column="2">
+               <widget class="QLabel" name="position_sketch_label">
+                <property name="text">
+                 <string>Sketch Location</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
                </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="QLineEdit" name="position_mac_edit"/>
+              </item>
+              <item row="3" column="0">
+               <widget class="QLabel" name="position_gateway_label">
+                <property name="text">
+                 <string>Gateway</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="2">
+               <widget class="QLabel" name="position_ip_label">
+                <property name="text">
+                 <string>Ip Addr</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1">
+               <widget class="QLineEdit" name="position_port_edit"/>
+              </item>
+              <item row="1" column="3">
+               <widget class="QLineEdit" name="position_sketch_edit"/>
+              </item>
+              <item row="0" column="0" colspan="5">
+               <widget class="QLabel" name="position_label">
+                <property name="font">
+                 <font>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>Position Arduino</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="margin">
+                 <number>0</number>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="position_port_label">
+                <property name="text">
+                 <string>Serial Port</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="4">
+               <widget class="QToolButton" name="position_sketch_but">
+                <property name="text">
+                 <string>...</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="1">
+               <widget class="QLineEdit" name="position_gateway_edit"/>
+              </item>
+              <item row="3" column="2">
+               <widget class="QLabel" name="position_subnet_label">
+                <property name="text">
+                 <string>Subnet</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="3" colspan="2">
+               <widget class="QLineEdit" name="position_ip_edit"/>
+              </item>
+              <item row="3" column="3" colspan="2">
+               <widget class="QLineEdit" name="position_subnet_edit"/>
               </item>
              </layout>
             </item>
@@ -6940,8 +7043,6 @@
   <tabstop>cam1_trig_pin</tabstop>
   <tabstop>cam2_trig_pin</tabstop>
   <tabstop>cam3_trig_pin</tabstop>
-  <tabstop>position_port_edit</tabstop>
-  <tabstop>position_sketch_edit</tabstop>
   <tabstop>clock_pin_wave1</tabstop>
   <tabstop>clock_period_wave1</tabstop>
   <tabstop>clock_phase_wave1</tabstop>

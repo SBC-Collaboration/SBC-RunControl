@@ -371,7 +371,11 @@
     },
     "position": {
       "port": "/dev/arduinoPOS",
-      "sketch": "/home/sbc/RunControl/dependencies/ArduinoSketches/position/"
+      "sketch": "/home/sbc/RunControl/dependencies/ArduinoSketches/position/",
+      "mac_addr": "A8:61:0A:AE:87:43",
+      "ip_addr": "192.168.137.21",
+      "gateway": "192.168.137.1",
+      "subnet": "255.255.255.0"
     },
     "niusb": {
       "0.0": "state_cam1",

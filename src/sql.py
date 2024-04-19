@@ -138,6 +138,9 @@ class SQL:
         self.ssh_port = self.config["ssh_port"]
         self.ssh_keep_alive = 30.0 # time interval after which a dummy packet is sent to keep connection alive
 
+    def deleteLater(self):
+        pass
+
     def setup_connection(self):
         self.tunnel = SSHTunnelForwarder(
             (self.ssh_host, self.ssh_port),
