@@ -66,7 +66,6 @@ class NiUsb6501:
         """ used only internally via get_adapter() and find_adapters() """
         self.device = device
         cfg = self.device.get_active_configuration()
-        print(cfg)
         self.interface_number = cfg[(0, 0)].bInterfaceNumber
         self.io_mask = [0, 0, 0]  # All pins initialize to inputs
 
