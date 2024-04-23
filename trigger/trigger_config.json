@@ -1,0 +1,4 @@
+{
+  "port": "/dev/arduinoTRIG",
+  "sketch": "/home/sbc/RunControl/dependencies/ArduinoSketches/trigger"
+}

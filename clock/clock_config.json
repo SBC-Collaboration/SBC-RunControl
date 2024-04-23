@@ -1,98 +1,132 @@
 {
-  "0": {
+  "port": "/dev/arduinoCLK",
+  "sketch": "/home/sbc/RunControl/dependencies/ArduinoSketches/clock/",
+  "wave1": {
+    "enabled": true,
+    "name": "Cam1",
     "period": 100,
     "phase": 0,
     "duty": 10,
     "polarity": true
   },
-  "1": {
+  "wave2": {
+    "enabled": true,
+    "name": "Cam2",
     "period": 100,
     "phase": 0,
     "duty": 10,
     "polarity": true
   },
-  "2": {
+  "wave3": {
+    "enabled": true,
+    "name": "Cam3",
     "period": 100,
     "phase": 0,
     "duty": 10,
     "polarity": true
   },
-  "3": {
+  "wave4": {
+    "enabled": true,
+    "name": "LED1.1",
     "period": 100,
     "phase": 0,
     "duty": 10,
     "polarity": true
   },
-  "4": {
+  "wave5": {
+    "enabled": true,
+    "name": "LED1.2",
     "period": 100,
     "phase": 0,
     "duty": 10,
     "polarity": true
   },
-  "5": {
+  "wave6": {
+    "enabled": true,
+    "name": "LED1.3",
     "period": 100,
     "phase": 0,
     "duty": 10,
     "polarity": true
   },
-  "6": {
-    "period": 100,
-    "phase": 0,
-    "duty": 20,
-    "polarity": true
-  },
-  "7": {
-    "period": 100,
-    "phase": 0,
-    "duty": 10,
-    "polarity": false
-  },
-  "8": {
+  "wave7": {
+    "enabled": true,
+    "name": "LED2.1",
     "period": 100,
     "phase": 0,
     "duty": 10,
     "polarity": true
   },
-  "9": {
+  "wave8": {
+    "enabled": true,
+    "name": "LED2.2",
     "period": 100,
     "phase": 0,
     "duty": 10,
     "polarity": true
   },
-  "10": {
+  "wave9": {
+    "enabled": true,
+    "name": "LED2.3",
     "period": 100,
     "phase": 0,
     "duty": 10,
     "polarity": true
   },
-  "11": {
+  "wave10": {
+    "enabled": true,
+    "name": "LED3.1",
     "period": 100,
     "phase": 0,
     "duty": 10,
     "polarity": true
   },
-  "12": {
+  "wave11": {
+    "enabled": true,
+    "name": "LED3.2",
     "period": 100,
     "phase": 0,
     "duty": 10,
     "polarity": true
   },
-  "13": {
+  "wave12": {
+    "enabled": true,
+    "name": "LED3.3",
     "period": 100,
     "phase": 0,
     "duty": 10,
     "polarity": true
   },
-  "14": {
+  "wave13": {
+    "enabled": true,
+    "name": "CAEN",
     "period": 100,
     "phase": 0,
     "duty": 10,
     "polarity": true
   },
-  "15": {
-    "period": 100,
+  "wave14": {
+    "enabled": false,
+    "name": "",
+    "period": 0,
     "phase": 0,
-    "duty": 10,
-    "polarity": false
+    "duty": 0,
+    "polarity": true
+  },
+  "wave15": {
+    "enabled": false,
+    "name": "",
+    "period": 0,
+    "phase": 0,
+    "duty": 0,
+    "polarity": true
+  },
+  "wave16": {
+    "enabled": false,
+    "name": "",
+    "period": 0,
+    "phase": 0,
+    "duty": 0,
+    "polarity": true
   }
 }
