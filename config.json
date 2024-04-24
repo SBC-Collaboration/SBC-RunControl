@@ -235,7 +235,107 @@
   "dio": {
     "trigger": {
       "port": "/dev/arduinoTRIG",
-      "sketch": "/home/sbc/RunControl/dependencies/ArduinoSketches/trigger"
+      "sketch": "/home/sbc/RunControl/dependencies/ArduinoSketches/trigger",
+      "reset": 38,
+      "or": 39,
+      "on_time": 40,
+      "heartbeat": 41,
+      "trig1": {
+        "enabled": true,
+        "name": "Cam1",
+        "in": 22,
+        "first_fault": 53
+      },
+      "trig2": {
+        "enabled": true,
+        "name": "Cam2",
+        "in": 23,
+        "first_fault": 52
+      },
+      "trig3": {
+        "enabled": true,
+        "name": "Cam3",
+        "in": 24,
+        "first_fault": 51
+      },
+      "trig4": {
+        "enabled": false,
+        "name": "",
+        "in": 25,
+        "first_fault": 50
+      },
+      "trig5": {
+        "enabled": true,
+        "name": "Piezo",
+        "in": 26,
+        "first_fault": 10
+      },
+      "trig6": {
+        "enabled": true,
+        "name": "Kulite Ar",
+        "in": 27,
+        "first_fault": 11
+      },
+      "trig7": {
+        "enabled": true,
+        "name": "Kulite CF4",
+        "in": 28,
+        "first_fault": 12
+      },
+      "trig8": {
+        "enabled": false,
+        "name": "",
+        "in": 29,
+        "first_fault": 13
+      },
+      "trig9": {
+        "enabled": true,
+        "name": "RunControl",
+        "in": 37,
+        "first_fault": 49
+      },
+      "trig10": {
+        "enabled": true,
+        "name": "PLC Pressure",
+        "in": 36,
+        "first_fault": 48
+      },
+      "trig11": {
+        "enabled": true,
+        "name": "Button",
+        "in": 35,
+        "first_fault": 47
+      },
+      "trig12": {
+        "enabled": false,
+        "name": "",
+        "in": 34,
+        "first_fault": 46
+      },
+      "trig13": {
+        "enabled": false,
+        "name": "",
+        "in": 33,
+        "first_fault": 45
+      },
+      "trig14": {
+        "enabled": false,
+        "name": "",
+        "in": 32,
+        "first_fault": 44
+      },
+      "trig15": {
+        "enabled": false,
+        "name": "",
+        "in": 31,
+        "first_fault": 43
+      },
+      "trig16": {
+        "enabled": false,
+        "name": "",
+        "in": 30,
+        "first_fault": 42
+      }
     },
     "clock": {
       "port": "/dev/arduinoCLK",
@@ -373,7 +473,7 @@
       "port": "/dev/arduinoPOS",
       "sketch": "/home/sbc/RunControl/dependencies/ArduinoSketches/position/",
       "mac_addr": "A8:61:0A:AE:87:43",
-      "ip_addr": "192.168.137.21",
+      "ip_addr": "192.168.137.150",
       "gateway": "192.168.137.1",
       "subnet": "255.255.255.0"
     },

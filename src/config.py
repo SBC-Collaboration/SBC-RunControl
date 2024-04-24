@@ -2,6 +2,7 @@ import json
 import os
 import logging
 from PySide6.QtCore import QTimer, QObject, QThread, Slot, Signal
+import copy
 
 
 class Config(QObject):
@@ -15,6 +16,7 @@ class Config(QObject):
         self.main = mainwindow
         self.path = path
         self.config = {}
+        self.run_config = {}  # A copy of config for the run
         self.logger = logging.getLogger("rc")
         self.timer = QTimer(self)
         self.timer.setInterval(100)
@@ -128,14 +130,43 @@ class Config(QObject):
         trigger_config = dio_config["trigger"]
         ui.trigger_port_edit.setText(trigger_config["port"])
         ui.trigger_sketch_edit.setText(trigger_config["sketch"])
+        ui.trig_reset_pin_box.setValue(trigger_config["reset"])
+        ui.trig_or_pin_box.setValue(trigger_config["or"])
+        ui.trig_on_time_pin_box.setValue(trigger_config["on_time"])
+        ui.trig_heartbeat_pin_box.setValue(trigger_config["heartbeat"])
 
+        trig_in_ports = ["A", "C"]
+        trig_ff_ports = ["B", "L"]
+        speed = ["fast", "slow"]
+        for i in range(1, 17):
+            in_port_name = trig_in_ports[(i - 1) // 8] + str((i - 1) % 8)
+            in_pin = self.main.arduino_trigger_worker.reverse_port_map[in_port_name]
+            ff_port_name = trig_ff_ports[(i - 1) // 8] + str((i - 1) % 8)
+            ff_pin = self.main.arduino_trigger_worker.reverse_port_map[ff_port_name]
+
+            conf = trigger_config[f"trig{i}"]
+            widgets[f"trig{i}_enabled"].setChecked(conf["enabled"]),
+            widgets[f"trig_pin{i}_name_edit"].setText(conf["name"]),
+            widgets[f"trig_in_pin{i}_box"].setValue(in_pin)
+            widgets[f"trig_ff_pin{i}_box"].setValue(ff_pin)
+            widgets[f"trig{i}_compression"].setText(speed[(i - 1) // 8])
+
+        for i in range(1, 14):
+            latch_pin = self.main.arduino_trigger_worker.latch_pins[i-1]
+            widgets[f"trig_latch_pin{i}_box"].setValue(latch_pin)
+
+        clock_ports = ["C", "L"]
         clock_config = dio_config["clock"]
         ui.clock_port_edit.setText(clock_config["port"])
         ui.clock_sketch_edit.setText(clock_config["sketch"])
-        for w in [f"wave{i}" for i in range(1,17)]:
+        for i in range(1, 17):
+            w = f"wave{i}"
+            clock_port_name = clock_ports[(i - 1) // 8] + str((i - 1) % 8)
+            clock_pin = self.main.arduino_clock_worker.reverse_port_map[clock_port_name]
             config = clock_config[w]
             widgets[f"{w}_enabled"].setChecked(config["enabled"])
             widgets[f"clock_name_{w}"].setText(config["name"])
+            widgets[f"clock_pin_{w}"].setValue(clock_pin)
             widgets[f"clock_period_{w}"].setValue(config["period"])
             widgets[f"clock_phase_{w}"].setValue(config["phase"])
             widgets[f"clock_duty_{w}"].setValue(config["duty"])
@@ -340,7 +371,8 @@ class Config(QObject):
             "port": ui.clock_port_edit.text(),
             "sketch": ui.clock_sketch_edit.text(),
         }
-        for w in [f"wave{i}" for i in range(1,17)]:
+        for i in range(1, 17):
+            w = f"wave{i}"
             clock_config[w] = {
                 "enabled": widgets[f"{w}_enabled"].isChecked(),
                 "name": widgets[f"clock_name_{w}"].text(),
@@ -353,7 +385,19 @@ class Config(QObject):
         trigger_config = {
             "port": ui.trigger_port_edit.text(),
             "sketch": ui.trigger_sketch_edit.text(),
+            "reset": ui.trig_reset_pin_box.value(),
+            "or": ui.trig_or_pin_box.value(),
+            "on_time": ui.trig_on_time_pin_box.value(),
+            "heartbeat": ui.trig_heartbeat_pin_box.value(),
         }
+        for i in range(1, 17):
+            trigger_config[f"trig{i}"] = {
+                "enabled": widgets[f"trig{i}_enabled"].isChecked(),
+                "name": widgets[f"trig_pin{i}_name_edit"].text(),
+                "compression": widgets[f"trig{i}_compression"].text(),
+                "in": widgets[f"trig_in_pin{i}_box"].value(),
+                "first_fault": widgets[f"trig_ff_pin{i}_box"].value(),
+            }
 
         position_config = {
             "port": ui.position_port_edit.text(),
@@ -402,4 +446,43 @@ class Config(QObject):
 
     @Slot()
     def start_run(self):
-        pass
+        self.run_config = copy.deepcopy(self.config)
+        run_json_path = os.path.join(self.main.run_dir, f"{self.main.run_id}.json")
+        # save run config file
+        with open(run_json_path, "w") as file:
+            json.dump(self.run_config, file, indent=2)
+
+        # save arduino json files
+        for ino in ["trigger", "clock", "position"]:
+            ino_config = self.run_config["dio"][ino]
+            json_file = os.path.join(ino_config["sketch"], f"{ino}_config.json")
+
+            # comparing json file with config, and save if they are different
+            if os.path.exists(json_file):
+                with open(json_file, "r") as file:
+                    config_temp = json.load(file)
+            else:
+                config_temp = {}
+
+            if not ino_config == config_temp:
+                with open(json_file, "w") as file:
+                    json.dump(ino_config, file, indent=2)
+
+        self.logger.info(f"Configuration saved to file for run {self.main.run_id}.")
+        self.run_config_saved.emit()
+
+    @Slot()
+    def start_event(self):
+        # save camera json files
+        for cam in ["cam1", "cam2", "cam3"]:
+            cam_config = self.run_config["cam"][cam]
+            if not cam_config["enabled"]:
+                continue
+            cam_config["data_path"] = os.path.join(cam_config["data_path"], self.main.run_id, str(self.main.event_id))
+            with open(cam_config["rc_config_path"], "w") as file:
+                json.dump(cam_config, file, indent=2)
+            self.logger.debug(f"Configuration file saved for {cam}")
+
+    @Slot()
+    def stop_run(self):
+        self.run_config = self.config

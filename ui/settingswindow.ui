@@ -49,7 +49,7 @@
     <item row="0" column="0">
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>4</number>
       </property>
       <property name="tabsClosable">
        <bool>false</bool>
@@ -582,7 +582,7 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>736</width>
+             <width>776</width>
              <height>792</height>
             </rect>
            </property>
@@ -1114,7 +1114,7 @@
                </widget>
               </item>
               <item row="3" column="5">
-               <widget class="QComboBox" name="caen_ext_trig_box">
+               <widget class="NoWheelComboBox" name="caen_ext_trig_box">
                 <item>
                  <property name="text">
                   <string>Disabled</string>
@@ -1194,7 +1194,7 @@
                </widget>
               </item>
               <item row="3" column="7">
-               <widget class="QComboBox" name="caen_sw_trig_box">
+               <widget class="NoWheelComboBox" name="caen_sw_trig_box">
                 <item>
                  <property name="text">
                   <string>Disabled</string>
@@ -1238,7 +1238,7 @@
                </widget>
               </item>
               <item row="1" column="1">
-               <widget class="QComboBox" name="caen_model_box">
+               <widget class="NoWheelComboBox" name="caen_model_box">
                 <item>
                  <property name="text">
                   <string>DT5740D</string>
@@ -1267,7 +1267,7 @@
                </widget>
               </item>
               <item row="1" column="5">
-               <widget class="QComboBox" name="caen_conn_box">
+               <widget class="NoWheelComboBox" name="caen_conn_box">
                 <item>
                  <property name="text">
                   <string>USB</string>
@@ -1288,7 +1288,7 @@
                </widget>
               </item>
               <item row="3" column="1">
-               <widget class="QComboBox" name="caen_polarity_box">
+               <widget class="NoWheelComboBox" name="caen_polarity_box">
                 <item>
                  <property name="text">
                   <string>Positive</string>
@@ -1339,7 +1339,7 @@
                </widget>
               </item>
               <item row="3" column="3">
-               <widget class="QComboBox" name="caen_io_box">
+               <widget class="NoWheelComboBox" name="caen_io_box">
                 <item>
                  <property name="text">
                   <string>TTL</string>
@@ -1914,8 +1914,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>750</width>
-             <height>533</height>
+             <width>790</width>
+             <height>527</height>
             </rect>
            </property>
            <property name="maximumSize">
@@ -2012,7 +2012,7 @@
                </widget>
               </item>
               <item row="1" column="1">
-               <widget class="QComboBox" name="acous_sample_rate_box">
+               <widget class="NoWheelComboBox" name="acous_sample_rate_box">
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
@@ -2116,7 +2116,7 @@
                </widget>
               </item>
               <item row="4" column="5">
-               <widget class="QComboBox" name="acous_polarity_ch4">
+               <widget class="NoWheelComboBox" name="acous_polarity_ch4">
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
@@ -2152,7 +2152,7 @@
                </widget>
               </item>
               <item row="3" column="5">
-               <widget class="QComboBox" name="acous_polarity_ch3">
+               <widget class="NoWheelComboBox" name="acous_polarity_ch3">
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
@@ -2178,7 +2178,7 @@
                </widget>
               </item>
               <item row="5" column="5">
-               <widget class="QComboBox" name="acous_polarity_ch5">
+               <widget class="NoWheelComboBox" name="acous_polarity_ch5">
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
@@ -2293,7 +2293,7 @@
                </widget>
               </item>
               <item row="8" column="5">
-               <widget class="QComboBox" name="acous_polarity_ch8">
+               <widget class="NoWheelComboBox" name="acous_polarity_ch8">
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
@@ -2399,7 +2399,7 @@
                </widget>
               </item>
               <item row="6" column="5">
-               <widget class="QComboBox" name="acous_polarity_ch6">
+               <widget class="NoWheelComboBox" name="acous_polarity_ch6">
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
@@ -2522,7 +2522,7 @@
                </widget>
               </item>
               <item row="2" column="5">
-               <widget class="QComboBox" name="acous_polarity_ch2">
+               <widget class="NoWheelComboBox" name="acous_polarity_ch2">
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
@@ -2668,7 +2668,7 @@
                </widget>
               </item>
               <item row="7" column="5">
-               <widget class="QComboBox" name="acous_polarity_ch7">
+               <widget class="NoWheelComboBox" name="acous_polarity_ch7">
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
@@ -2764,7 +2764,7 @@
                </widget>
               </item>
               <item row="1" column="5">
-               <widget class="QComboBox" name="acous_polarity_ch1">
+               <widget class="NoWheelComboBox" name="acous_polarity_ch1">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                   <horstretch>0</horstretch>
@@ -2888,8 +2888,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>750</width>
-             <height>533</height>
+             <width>790</width>
+             <height>527</height>
             </rect>
            </property>
            <property name="maximumSize">
@@ -3122,7 +3122,7 @@
              </widget>
             </item>
             <item row="18" column="1">
-             <widget class="QComboBox" name="cam1_image_format">
+             <widget class="NoWheelComboBox" name="cam1_image_format">
               <property name="focusPolicy">
                <enum>Qt::StrongFocus</enum>
               </property>
@@ -3532,7 +3532,7 @@
              </widget>
             </item>
             <item row="18" column="2">
-             <widget class="QComboBox" name="cam2_image_format">
+             <widget class="NoWheelComboBox" name="cam2_image_format">
               <property name="focusPolicy">
                <enum>Qt::StrongFocus</enum>
               </property>
@@ -3613,7 +3613,7 @@
              </widget>
             </item>
             <item row="18" column="3">
-             <widget class="QComboBox" name="cam3_image_format">
+             <widget class="NoWheelComboBox" name="cam3_image_format">
               <property name="focusPolicy">
                <enum>Qt::StrongFocus</enum>
               </property>
@@ -4063,9 +4063,9 @@
            <property name="geometry">
             <rect>
              <x>0</x>
-             <y>-673</y>
-             <width>736</width>
-             <height>1206</height>
+             <y>-88</y>
+             <width>776</width>
+             <height>1194</height>
             </rect>
            </property>
            <property name="maximumSize">
@@ -4147,6 +4147,9 @@
                  <font>
                   <kerning>true</kerning>
                  </font>
+                </property>
+                <property name="toolTip">
+                 <string>Pinout for NI USB device. Enter text into corresponding cell.</string>
                 </property>
                 <property name="layoutDirection">
                  <enum>Qt::LeftToRight</enum>
@@ -4395,7 +4398,7 @@
              </widget>
             </item>
             <item>
-             <layout class="QGridLayout" name="fifo_grid_layout" columnstretch="0,1,1,1,0,1,0,1,0">
+             <layout class="QGridLayout" name="trigger_grid_layout" columnstretch="0,1,1,1,1,0,1,0,1,0">
               <property name="topMargin">
                <number>0</number>
               </property>
@@ -4405,31 +4408,7 @@
               <property name="spacing">
                <number>3</number>
               </property>
-              <item row="14" column="5">
-               <widget class="NoWheelSpinBox" name="trig_latch_pin12_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="15" column="2">
-               <widget class="NoWheelSpinBox" name="trig_in_pin13_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="9" column="1">
-               <widget class="QLineEdit" name="trig_pin7_name_edit">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="4" rowspan="17">
+              <item row="2" column="5" rowspan="17">
                <widget class="Line" name="line_3">
                 <property name="enabled">
                  <bool>true</bool>
@@ -4451,115 +4430,99 @@
                 </property>
                </widget>
               </item>
-              <item row="11" column="5">
-               <widget class="NoWheelSpinBox" name="trig_latch_pin9_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
+              <item row="6" column="0">
+               <widget class="QCheckBox" name="trig4_enabled">
+                <property name="toolTip">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Select whether to enable a trigger in. If disabled, it won't cause a trigger latch, and corresponding FF is also disabled.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
-               </widget>
-              </item>
-              <item row="5" column="0">
-               <widget class="QCheckBox" name="trig1_enabled_3">
                 <property name="layoutDirection">
                  <enum>Qt::RightToLeft</enum>
                 </property>
                 <property name="text">
-                 <string>Trig In 3</string>
+                 <string>Trig In 4</string>
                 </property>
                </widget>
               </item>
-              <item row="14" column="2">
-               <widget class="NoWheelSpinBox" name="trig_in_pin12_box">
+              <item row="7" column="4">
+               <widget class="NoWheelSpinBox" name="trig_ff_pin5_box">
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
-               </widget>
-              </item>
-              <item row="13" column="0">
-               <widget class="QCheckBox" name="trig1_enabled_11">
-                <property name="layoutDirection">
-                 <enum>Qt::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>Trig In 11</string>
-                </property>
-               </widget>
-              </item>
-              <item row="7" column="1">
-               <widget class="QLineEdit" name="trig_pin5_name_edit">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-               </widget>
-              </item>
-              <item row="5" column="3">
-               <widget class="NoWheelSpinBox" name="trig_ff_pin3_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="18" column="2">
-               <widget class="NoWheelSpinBox" name="trig_in_pin16_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="6" column="5">
-               <widget class="NoWheelSpinBox" name="trig_latch_pin4_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="0">
-               <widget class="QLabel" name="trig_in_pin_label_2">
-                <property name="text">
-                 <string>Enabled</string>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignCenter</set>
                 </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::NoButtons</enum>
+                </property>
+                <property name="maximum">
+                 <number>53</number>
+                </property>
                </widget>
               </item>
-              <item row="2" column="2">
-               <widget class="QLabel" name="trig_in_pin_label">
-                <property name="text">
-                 <string>Trig In Pin</string>
+              <item row="9" column="8" colspan="2">
+               <widget class="NoWheelSpinBox" name="trig_heartbeat_pin_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignCenter</set>
                 </property>
-               </widget>
-              </item>
-              <item row="5" column="1">
-               <widget class="QLineEdit" name="trig_pin3_name_edit">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-               </widget>
-              </item>
-              <item row="17" column="3">
-               <widget class="NoWheelSpinBox" name="trig_ff_pin15_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
+                <property name="maximum">
+                 <number>53</number>
                 </property>
                </widget>
               </item>
               <item row="3" column="0">
                <widget class="QCheckBox" name="trig1_enabled">
+                <property name="toolTip">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Select whether to enable a trigger in. If disabled, it won't cause a trigger latch, and corresponding FF is also disabled.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
                 <property name="layoutDirection">
                  <enum>Qt::RightToLeft</enum>
                 </property>
                 <property name="text">
                  <string>Trig In 1</string>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="4">
+               <widget class="NoWheelSpinBox" name="trig_ff_pin2_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::NoButtons</enum>
+                </property>
+                <property name="maximum">
+                 <number>53</number>
+                </property>
+               </widget>
+              </item>
+              <item row="8" column="1">
+               <widget class="QLineEdit" name="trig_pin6_name_edit">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
                 </property>
                </widget>
               </item>
@@ -4571,10 +4534,86 @@
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="18" column="3">
+               <widget class="NoWheelSpinBox" name="trig_in_pin16_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::NoButtons</enum>
+                </property>
+                <property name="maximum">
+                 <number>53</number>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QLabel" name="trig_enabled_label">
+                <property name="toolTip">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Select whether to enable a trigger in. If disabled, it won't cause a trigger latch, and corresponding FF is also disabled.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+                <property name="text">
+                 <string>Enabled</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="16" column="0">
+               <widget class="QCheckBox" name="trig14_enabled">
+                <property name="toolTip">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Select whether to enable a trigger in. If disabled, it won't cause a trigger latch, and corresponding FF is also disabled.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+                <property name="layoutDirection">
+                 <enum>Qt::RightToLeft</enum>
+                </property>
+                <property name="text">
+                 <string>Trig In 14</string>
+                </property>
+               </widget>
+              </item>
+              <item row="17" column="3">
+               <widget class="NoWheelSpinBox" name="trig_in_pin15_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::NoButtons</enum>
+                </property>
+                <property name="maximum">
+                 <number>53</number>
+                </property>
                </widget>
               </item>
               <item row="9" column="0">
-               <widget class="QCheckBox" name="trig1_enabled_7">
+               <widget class="QCheckBox" name="trig7_enabled">
+                <property name="toolTip">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Select whether to enable a trigger in. If disabled, it won't cause a trigger latch, and corresponding FF is also disabled.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
                 <property name="layoutDirection">
                  <enum>Qt::RightToLeft</enum>
                 </property>
@@ -4583,41 +4622,7 @@
                 </property>
                </widget>
               </item>
-              <item row="12" column="1">
-               <widget class="QLineEdit" name="trig_pin10_name_edit">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-               </widget>
-              </item>
-              <item row="15" column="0">
-               <widget class="QCheckBox" name="trig1_enabled_13">
-                <property name="layoutDirection">
-                 <enum>Qt::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>Trig In 13</string>
-                </property>
-               </widget>
-              </item>
-              <item row="12" column="5">
-               <widget class="NoWheelSpinBox" name="trig_latch_pin10_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="13" column="5">
-               <widget class="NoWheelSpinBox" name="trig_latch_pin11_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="3">
+              <item row="2" column="4">
                <widget class="QLabel" name="trig_ff_pin_label">
                 <property name="text">
                  <string>Trig FF Pin</string>
@@ -4627,37 +4632,99 @@
                 </property>
                </widget>
               </item>
-              <item row="8" column="0">
-               <widget class="QCheckBox" name="trig1_enabled_6">
-                <property name="layoutDirection">
-                 <enum>Qt::RightToLeft</enum>
-                </property>
+              <item row="8" column="8" colspan="2">
+               <widget class="QLabel" name="trig_heartbeat_pin_label">
                 <property name="text">
-                 <string>Trig In 6</string>
+                 <string>Heartbeat Pin</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>trig_heartbeat_pin_box</cstring>
                 </property>
                </widget>
               </item>
-              <item row="3" column="3">
-               <widget class="NoWheelSpinBox" name="trig_ff_pin1_box">
+              <item row="1" column="5" colspan="4">
+               <widget class="QLineEdit" name="trigger_sketch_edit"/>
+              </item>
+              <item row="8" column="4">
+               <widget class="NoWheelSpinBox" name="trig_ff_pin6_box">
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
-               </widget>
-              </item>
-              <item row="10" column="5">
-               <widget class="NoWheelSpinBox" name="trig_latch_pin8_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::NoButtons</enum>
+                </property>
+                <property name="maximum">
+                 <number>53</number>
                 </property>
                </widget>
               </item>
-              <item row="14" column="1">
-               <widget class="QLineEdit" name="trig_pin12_name_edit">
+              <item row="1" column="4">
+               <widget class="QLabel" name="trigger_sketch_label">
+                <property name="text">
+                 <string>Sketch Location</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="4">
+               <widget class="NoWheelSpinBox" name="trig_ff_pin4_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::NoButtons</enum>
+                </property>
+                <property name="maximum">
+                 <number>53</number>
+                </property>
+               </widget>
+              </item>
+              <item row="18" column="1">
+               <widget class="QLineEdit" name="trig_pin16_name_edit">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="10" column="1">
+               <widget class="QLineEdit" name="trig_pin8_name_edit">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
                 </property>
                </widget>
               </item>
@@ -4671,17 +4738,294 @@
                 </property>
                </widget>
               </item>
-              <item row="6" column="0">
-               <widget class="QCheckBox" name="trig1_enabled_4">
+              <item row="2" column="1">
+               <widget class="QLabel" name="trig_in_name_label">
+                <property name="text">
+                 <string>Name</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="6">
+               <widget class="QLabel" name="trig_latch_pins_label">
+                <property name="text">
+                 <string>Trig Latch Pins</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="8" colspan="2">
+               <widget class="NoWheelSpinBox" name="trig_reset_pin_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="maximum">
+                 <number>53</number>
+                </property>
+               </widget>
+              </item>
+              <item row="18" column="4">
+               <widget class="NoWheelSpinBox" name="trig_ff_pin16_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::NoButtons</enum>
+                </property>
+                <property name="maximum">
+                 <number>53</number>
+                </property>
+               </widget>
+              </item>
+              <item row="7" column="6">
+               <widget class="NoWheelSpinBox" name="trig_latch_pin5_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::NoButtons</enum>
+                </property>
+                <property name="maximum">
+                 <number>53</number>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="8" colspan="2">
+               <widget class="QLabel" name="trig_reset_pin_label">
+                <property name="text">
+                 <string>Trig Reset Pin</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>trig_reset_pin_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="15" column="4">
+               <widget class="NoWheelSpinBox" name="trig_ff_pin13_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::NoButtons</enum>
+                </property>
+                <property name="maximum">
+                 <number>53</number>
+                </property>
+               </widget>
+              </item>
+              <item row="13" column="0">
+               <widget class="QCheckBox" name="trig11_enabled">
+                <property name="toolTip">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Select whether to enable a trigger in. If disabled, it won't cause a trigger latch, and corresponding FF is also disabled.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
                 <property name="layoutDirection">
                  <enum>Qt::RightToLeft</enum>
                 </property>
                 <property name="text">
-                 <string>Trig In 4</string>
+                 <string>Trig In 11</string>
                 </property>
                </widget>
               </item>
-              <item row="2" column="6" rowspan="17">
+              <item row="11" column="6">
+               <widget class="NoWheelSpinBox" name="trig_latch_pin9_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::NoButtons</enum>
+                </property>
+                <property name="maximum">
+                 <number>53</number>
+                </property>
+               </widget>
+              </item>
+              <item row="15" column="1">
+               <widget class="QLineEdit" name="trig_pin13_name_edit">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="13" column="4">
+               <widget class="NoWheelSpinBox" name="trig_ff_pin11_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::NoButtons</enum>
+                </property>
+                <property name="maximum">
+                 <number>53</number>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="6">
+               <widget class="NoWheelSpinBox" name="trig_latch_pin2_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::NoButtons</enum>
+                </property>
+                <property name="maximum">
+                 <number>53</number>
+                </property>
+               </widget>
+              </item>
+              <item row="11" column="4">
+               <widget class="NoWheelSpinBox" name="trig_ff_pin9_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::NoButtons</enum>
+                </property>
+                <property name="maximum">
+                 <number>53</number>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="9">
+               <widget class="QToolButton" name="trigger_sketch_but">
+                <property name="text">
+                 <string>...</string>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="3">
+               <widget class="NoWheelSpinBox" name="trig_in_pin3_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::NoButtons</enum>
+                </property>
+                <property name="maximum">
+                 <number>53</number>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="3">
+               <widget class="QLabel" name="trig_in_pin_label">
+                <property name="text">
+                 <string>Trig In Pin</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="14" column="3">
+               <widget class="NoWheelSpinBox" name="trig_in_pin12_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::NoButtons</enum>
+                </property>
+                <property name="maximum">
+                 <number>53</number>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="7" rowspan="17">
                <widget class="Line" name="line_5">
                 <property name="enabled">
                  <bool>true</bool>
@@ -4703,201 +5047,174 @@
                 </property>
                </widget>
               </item>
-              <item row="14" column="3">
-               <widget class="NoWheelSpinBox" name="trig_ff_pin12_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
+              <item row="5" column="0">
+               <widget class="QCheckBox" name="trig3_enabled">
+                <property name="toolTip">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Select whether to enable a trigger in. If disabled, it won't cause a trigger latch, and corresponding FF is also disabled.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
-               </widget>
-              </item>
-              <item row="10" column="0">
-               <widget class="QCheckBox" name="trig1_enabled_8">
                 <property name="layoutDirection">
                  <enum>Qt::RightToLeft</enum>
                 </property>
                 <property name="text">
-                 <string>Trig In 8</string>
+                 <string>Trig In 3</string>
                 </property>
                </widget>
               </item>
-              <item row="4" column="2">
+              <item row="4" column="3">
                <widget class="NoWheelSpinBox" name="trig_in_pin2_box">
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::NoButtons</enum>
+                </property>
+                <property name="maximum">
+                 <number>53</number>
+                </property>
                </widget>
               </item>
-              <item row="8" column="1">
-               <widget class="QLineEdit" name="trig_pin6_name_edit">
+              <item row="10" column="3">
+               <widget class="NoWheelSpinBox" name="trig_in_pin8_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::NoButtons</enum>
+                </property>
+                <property name="maximum">
+                 <number>53</number>
+                </property>
+               </widget>
+              </item>
+              <item row="15" column="3">
+               <widget class="NoWheelSpinBox" name="trig_in_pin13_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::NoButtons</enum>
+                </property>
+                <property name="maximum">
+                 <number>53</number>
+                </property>
+               </widget>
+              </item>
+              <item row="14" column="0">
+               <widget class="QCheckBox" name="trig12_enabled">
+                <property name="toolTip">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Select whether to enable a trigger in. If disabled, it won't cause a trigger latch, and corresponding FF is also disabled.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+                <property name="layoutDirection">
+                 <enum>Qt::RightToLeft</enum>
+                </property>
+                <property name="text">
+                 <string>Trig In 12</string>
+                </property>
+               </widget>
+              </item>
+              <item row="12" column="1">
+               <widget class="QLineEdit" name="trig_pin10_name_edit">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
-                </property>
-               </widget>
-              </item>
-              <item row="8" column="2">
-               <widget class="NoWheelSpinBox" name="trig_in_pin6_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="7" column="3">
-               <widget class="NoWheelSpinBox" name="trig_ff_pin5_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="11" column="0">
-               <widget class="QCheckBox" name="trig1_enabled_9">
-                <property name="layoutDirection">
-                 <enum>Qt::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>Trig In 9</string>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="2">
-               <widget class="NoWheelSpinBox" name="trig_in_pin1_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="1">
-               <widget class="QLabel" name="trig_in_name_label">
-                <property name="text">
-                 <string>Name</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignCenter</set>
                 </property>
                </widget>
               </item>
-              <item row="1" column="4" colspan="4">
-               <widget class="QLineEdit" name="trigger_sketch_edit"/>
-              </item>
-              <item row="12" column="3">
-               <widget class="NoWheelSpinBox" name="trig_ff_pin10_box">
+              <item row="5" column="4">
+               <widget class="NoWheelSpinBox" name="trig_ff_pin3_box">
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
-               </widget>
-              </item>
-              <item row="1" column="1" colspan="2">
-               <widget class="QLineEdit" name="trigger_port_edit"/>
-              </item>
-              <item row="18" column="1">
-               <widget class="QLineEdit" name="trig_pin16_name_edit">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::NoButtons</enum>
+                </property>
+                <property name="maximum">
+                 <number>53</number>
                 </property>
                </widget>
               </item>
-              <item row="8" column="3">
-               <widget class="NoWheelSpinBox" name="trig_ff_pin6_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="11" column="3">
-               <widget class="NoWheelSpinBox" name="trig_ff_pin9_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="6" column="2">
+              <item row="6" column="3">
                <widget class="NoWheelSpinBox" name="trig_in_pin4_box">
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
-               </widget>
-              </item>
-              <item row="10" column="3">
-               <widget class="NoWheelSpinBox" name="trig_ff_pin8_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::NoButtons</enum>
+                </property>
+                <property name="maximum">
+                 <number>53</number>
                 </property>
                </widget>
               </item>
-              <item row="4" column="3">
-               <widget class="NoWheelSpinBox" name="trig_ff_pin2_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="5">
-               <widget class="NoWheelSpinBox" name="trig_latch_pin1_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="15" column="5">
+              <item row="15" column="6">
                <widget class="NoWheelSpinBox" name="trig_latch_pin13_box">
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
-               </widget>
-              </item>
-              <item row="11" column="2">
-               <widget class="NoWheelSpinBox" name="trig_in_pin9_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
                 </property>
-               </widget>
-              </item>
-              <item row="16" column="3">
-               <widget class="NoWheelSpinBox" name="trig_ff_pin14_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
                 </property>
-               </widget>
-              </item>
-              <item row="4" column="0">
-               <widget class="QCheckBox" name="trig1_enabled_2">
-                <property name="layoutDirection">
-                 <enum>Qt::RightToLeft</enum>
+                <property name="readOnly">
+                 <bool>true</bool>
                 </property>
-                <property name="text">
-                 <string>Trig In 2</string>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::NoButtons</enum>
                 </property>
-               </widget>
-              </item>
-              <item row="16" column="0">
-               <widget class="QCheckBox" name="trig1_enabled_14">
-                <property name="layoutDirection">
-                 <enum>Qt::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>Trig In 14</string>
-                </property>
-               </widget>
-              </item>
-              <item row="10" column="1">
-               <widget class="QLineEdit" name="trig_pin8_name_edit">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-               </widget>
-              </item>
-              <item row="12" column="2">
-               <widget class="NoWheelSpinBox" name="trig_in_pin10_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
+                <property name="maximum">
+                 <number>53</number>
                 </property>
                </widget>
               </item>
@@ -4909,299 +5226,25 @@
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
-               </widget>
-              </item>
-              <item row="15" column="3">
-               <widget class="NoWheelSpinBox" name="trig_ff_pin13_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="17" column="1">
-               <widget class="QLineEdit" name="trig_pin15_name_edit">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-               </widget>
-              </item>
-              <item row="13" column="2">
-               <widget class="NoWheelSpinBox" name="trig_in_pin11_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="5">
-               <widget class="QLabel" name="trig_latch_pins_label">
-                <property name="text">
-                 <string>Trig Latch Pins</string>
-                </property>
                 <property name="alignment">
                  <set>Qt::AlignCenter</set>
                 </property>
                </widget>
               </item>
-              <item row="4" column="5">
-               <widget class="NoWheelSpinBox" name="trig_latch_pin2_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
+              <item row="4" column="0">
+               <widget class="QCheckBox" name="trig2_enabled">
+                <property name="toolTip">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Select whether to enable a trigger in. If disabled, it won't cause a trigger latch, and corresponding FF is also disabled.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
-               </widget>
-              </item>
-              <item row="18" column="0">
-               <widget class="QCheckBox" name="trig1_enabled_16">
                 <property name="layoutDirection">
                  <enum>Qt::RightToLeft</enum>
                 </property>
                 <property name="text">
-                 <string>Trig In 16</string>
+                 <string>Trig In 2</string>
                 </property>
                </widget>
               </item>
-              <item row="6" column="1">
-               <widget class="QLineEdit" name="trig_pin4_name_edit">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-               </widget>
-              </item>
-              <item row="14" column="0">
-               <widget class="QCheckBox" name="trig1_enabled_12">
-                <property name="layoutDirection">
-                 <enum>Qt::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>Trig In 12</string>
-                </property>
-               </widget>
-              </item>
-              <item row="5" column="5">
-               <widget class="NoWheelSpinBox" name="trig_latch_pin3_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="16" column="1">
-               <widget class="QLineEdit" name="trig_pin14_name_edit">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-               </widget>
-              </item>
-              <item row="10" column="2">
-               <widget class="NoWheelSpinBox" name="trig_in_pin8_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="18" column="5">
-               <widget class="NoWheelSpinBox" name="trig_latch_pin16_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="17" column="2">
-               <widget class="NoWheelSpinBox" name="trig_in_pin15_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="15" column="1">
-               <widget class="QLineEdit" name="trig_pin13_name_edit">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-               </widget>
-              </item>
-              <item row="9" column="2">
-               <widget class="NoWheelSpinBox" name="trig_in_pin7_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="17" column="5">
-               <widget class="NoWheelSpinBox" name="trig_latch_pin15_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="13" column="3">
-               <widget class="NoWheelSpinBox" name="trig_ff_pin11_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="8" column="5">
-               <widget class="NoWheelSpinBox" name="trig_latch_pin6_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="5" column="2">
-               <widget class="NoWheelSpinBox" name="trig_in_pin3_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="9" column="3">
-               <widget class="NoWheelSpinBox" name="trig_ff_pin7_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="12" column="0">
-               <widget class="QCheckBox" name="trig1_enabled_10">
-                <property name="layoutDirection">
-                 <enum>Qt::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>Trig In 10</string>
-                </property>
-               </widget>
-              </item>
-              <item row="18" column="3">
-               <widget class="NoWheelSpinBox" name="trig_ff_pin16_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="9" column="5">
-               <widget class="NoWheelSpinBox" name="trig_latch_pin7_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="7" column="5">
-               <widget class="NoWheelSpinBox" name="trig_latch_pin5_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="7" column="2">
-               <widget class="NoWheelSpinBox" name="trig_in_pin5_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="1">
-               <widget class="QLineEdit" name="trig_pin1_name_edit">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="3">
-               <widget class="QLabel" name="trigger_sketch_label">
-                <property name="text">
-                 <string>Sketch Location</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="16" column="2">
-               <widget class="NoWheelSpinBox" name="trig_in_pin14_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="13" column="1">
-               <widget class="QLineEdit" name="trig_pin11_name_edit">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-               </widget>
-              </item>
-              <item row="16" column="5">
-               <widget class="NoWheelSpinBox" name="trig_latch_pin14_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="6" column="3">
-               <widget class="NoWheelSpinBox" name="trig_ff_pin4_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="17" column="0">
-               <widget class="QCheckBox" name="trig1_enabled_15">
-                <property name="layoutDirection">
-                 <enum>Qt::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>Trig In 15</string>
-                </property>
-               </widget>
-              </item>
-              <item row="7" column="0">
-               <widget class="QCheckBox" name="trig1_enabled_5">
-                <property name="layoutDirection">
-                 <enum>Qt::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>Trig In 5</string>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="8">
-               <widget class="QToolButton" name="trigger_sketch_but">
-                <property name="text">
-                 <string>...</string>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="7" colspan="2">
-               <widget class="QLabel" name="trig_reset_pin_label">
-                <property name="text">
-                 <string>Trig Reset Pin</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>trig_reset_pin_box</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="0" colspan="9">
+              <item row="0" column="0" colspan="10">
                <widget class="QLabel" name="fifo_layout">
                 <property name="font">
                  <font>
@@ -5216,10 +5259,217 @@
                 </property>
                </widget>
               </item>
-              <item row="3" column="7" colspan="2">
-               <widget class="NoWheelSpinBox" name="trig_reset_pin_box"/>
+              <item row="8" column="6">
+               <widget class="NoWheelSpinBox" name="trig_latch_pin6_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::NoButtons</enum>
+                </property>
+                <property name="maximum">
+                 <number>53</number>
+                </property>
+               </widget>
               </item>
-              <item row="4" column="7" colspan="2">
+              <item row="9" column="6">
+               <widget class="NoWheelSpinBox" name="trig_latch_pin7_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::NoButtons</enum>
+                </property>
+                <property name="maximum">
+                 <number>53</number>
+                </property>
+               </widget>
+              </item>
+              <item row="8" column="3">
+               <widget class="NoWheelSpinBox" name="trig_in_pin6_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::NoButtons</enum>
+                </property>
+                <property name="maximum">
+                 <number>53</number>
+                </property>
+               </widget>
+              </item>
+              <item row="8" column="0">
+               <widget class="QCheckBox" name="trig6_enabled">
+                <property name="toolTip">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Select whether to enable a trigger in. If disabled, it won't cause a trigger latch, and corresponding FF is also disabled.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+                <property name="layoutDirection">
+                 <enum>Qt::RightToLeft</enum>
+                </property>
+                <property name="text">
+                 <string>Trig In 6</string>
+                </property>
+               </widget>
+              </item>
+              <item row="7" column="1">
+               <widget class="QLineEdit" name="trig_pin5_name_edit">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="1">
+               <widget class="QLineEdit" name="trig_pin1_name_edit">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="7" column="8" colspan="2">
+               <widget class="NoWheelSpinBox" name="trig_on_time_pin_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="maximum">
+                 <number>53</number>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="3">
+               <widget class="NoWheelSpinBox" name="trig_in_pin1_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::NoButtons</enum>
+                </property>
+                <property name="maximum">
+                 <number>53</number>
+                </property>
+               </widget>
+              </item>
+              <item row="17" column="4">
+               <widget class="NoWheelSpinBox" name="trig_ff_pin15_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::NoButtons</enum>
+                </property>
+                <property name="maximum">
+                 <number>53</number>
+                </property>
+               </widget>
+              </item>
+              <item row="16" column="3">
+               <widget class="NoWheelSpinBox" name="trig_in_pin14_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::NoButtons</enum>
+                </property>
+                <property name="maximum">
+                 <number>53</number>
+                </property>
+               </widget>
+              </item>
+              <item row="7" column="0">
+               <widget class="QCheckBox" name="trig5_enabled">
+                <property name="toolTip">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Select whether to enable a trigger in. If disabled, it won't cause a trigger latch, and corresponding FF is also disabled.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+                <property name="layoutDirection">
+                 <enum>Qt::RightToLeft</enum>
+                </property>
+                <property name="text">
+                 <string>Trig In 5</string>
+                </property>
+               </widget>
+              </item>
+              <item row="11" column="0">
+               <widget class="QCheckBox" name="trig9_enabled">
+                <property name="toolTip">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Select whether to enable a trigger in. If disabled, it won't cause a trigger latch, and corresponding FF is also disabled.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+                <property name="layoutDirection">
+                 <enum>Qt::RightToLeft</enum>
+                </property>
+                <property name="text">
+                 <string>Trig In 9</string>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="8" colspan="2">
                <widget class="QLabel" name="trig_or_pin_label">
                 <property name="text">
                  <string>Trig Or Pin</string>
@@ -5232,11 +5482,420 @@
                 </property>
                </widget>
               </item>
-              <item row="5" column="7" colspan="2">
-               <widget class="NoWheelSpinBox" name="on_time_pin_box"/>
+              <item row="15" column="0">
+               <widget class="QCheckBox" name="trig13_enabled">
+                <property name="toolTip">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Select whether to enable a trigger in. If disabled, it won't cause a trigger latch, and corresponding FF is also disabled.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+                <property name="layoutDirection">
+                 <enum>Qt::RightToLeft</enum>
+                </property>
+                <property name="text">
+                 <string>Trig In 13</string>
+                </property>
+               </widget>
               </item>
-              <item row="6" column="7" colspan="2">
-               <widget class="QLabel" name="on_time_pin_label">
+              <item row="5" column="6">
+               <widget class="NoWheelSpinBox" name="trig_latch_pin3_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::NoButtons</enum>
+                </property>
+                <property name="maximum">
+                 <number>53</number>
+                </property>
+               </widget>
+              </item>
+              <item row="13" column="6">
+               <widget class="NoWheelSpinBox" name="trig_latch_pin11_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::NoButtons</enum>
+                </property>
+                <property name="maximum">
+                 <number>53</number>
+                </property>
+               </widget>
+              </item>
+              <item row="10" column="6">
+               <widget class="NoWheelSpinBox" name="trig_latch_pin8_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::NoButtons</enum>
+                </property>
+                <property name="maximum">
+                 <number>53</number>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="4">
+               <widget class="NoWheelSpinBox" name="trig_ff_pin1_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::NoButtons</enum>
+                </property>
+                <property name="maximum">
+                 <number>53</number>
+                </property>
+               </widget>
+              </item>
+              <item row="13" column="1">
+               <widget class="QLineEdit" name="trig_pin11_name_edit">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="17" column="1">
+               <widget class="QLineEdit" name="trig_pin15_name_edit">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="14" column="6">
+               <widget class="NoWheelSpinBox" name="trig_latch_pin12_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::NoButtons</enum>
+                </property>
+                <property name="maximum">
+                 <number>53</number>
+                </property>
+               </widget>
+              </item>
+              <item row="13" column="3">
+               <widget class="NoWheelSpinBox" name="trig_in_pin11_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::NoButtons</enum>
+                </property>
+                <property name="maximum">
+                 <number>53</number>
+                </property>
+               </widget>
+              </item>
+              <item row="10" column="4">
+               <widget class="NoWheelSpinBox" name="trig_ff_pin8_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::NoButtons</enum>
+                </property>
+                <property name="maximum">
+                 <number>53</number>
+                </property>
+               </widget>
+              </item>
+              <item row="9" column="4">
+               <widget class="NoWheelSpinBox" name="trig_ff_pin7_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::NoButtons</enum>
+                </property>
+                <property name="maximum">
+                 <number>53</number>
+                </property>
+               </widget>
+              </item>
+              <item row="12" column="0">
+               <widget class="QCheckBox" name="trig10_enabled">
+                <property name="toolTip">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Select whether to enable a trigger in. If disabled, it won't cause a trigger latch, and corresponding FF is also disabled.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+                <property name="layoutDirection">
+                 <enum>Qt::RightToLeft</enum>
+                </property>
+                <property name="text">
+                 <string>Trig In 10</string>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="1">
+               <widget class="QLineEdit" name="trig_pin3_name_edit">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="16" column="4">
+               <widget class="NoWheelSpinBox" name="trig_ff_pin14_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::NoButtons</enum>
+                </property>
+                <property name="maximum">
+                 <number>53</number>
+                </property>
+               </widget>
+              </item>
+              <item row="12" column="3">
+               <widget class="NoWheelSpinBox" name="trig_in_pin10_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::NoButtons</enum>
+                </property>
+                <property name="maximum">
+                 <number>53</number>
+                </property>
+               </widget>
+              </item>
+              <item row="14" column="4">
+               <widget class="NoWheelSpinBox" name="trig_ff_pin12_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::NoButtons</enum>
+                </property>
+                <property name="maximum">
+                 <number>53</number>
+                </property>
+               </widget>
+              </item>
+              <item row="11" column="3">
+               <widget class="NoWheelSpinBox" name="trig_in_pin9_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::NoButtons</enum>
+                </property>
+                <property name="maximum">
+                 <number>53</number>
+                </property>
+               </widget>
+              </item>
+              <item row="14" column="1">
+               <widget class="QLineEdit" name="trig_pin12_name_edit">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="10" column="0">
+               <widget class="QCheckBox" name="trig8_enabled">
+                <property name="toolTip">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Select whether to enable a trigger in. If disabled, it won't cause a trigger latch, and corresponding FF is also disabled.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+                <property name="layoutDirection">
+                 <enum>Qt::RightToLeft</enum>
+                </property>
+                <property name="text">
+                 <string>Trig In 8</string>
+                </property>
+               </widget>
+              </item>
+              <item row="7" column="3">
+               <widget class="NoWheelSpinBox" name="trig_in_pin5_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::NoButtons</enum>
+                </property>
+                <property name="maximum">
+                 <number>53</number>
+                </property>
+               </widget>
+              </item>
+              <item row="9" column="1">
+               <widget class="QLineEdit" name="trig_pin7_name_edit">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="6">
+               <widget class="NoWheelSpinBox" name="trig_latch_pin4_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::NoButtons</enum>
+                </property>
+                <property name="maximum">
+                 <number>53</number>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="8" colspan="2">
+               <widget class="QLabel" name="trig_on_time_pin_label">
                 <property name="text">
                  <string>On-Time Pin</string>
                 </property>
@@ -5244,34 +5903,525 @@
                  <set>Qt::AlignCenter</set>
                 </property>
                 <property name="buddy">
-                 <cstring>on_time_pin_box</cstring>
+                 <cstring>trig_on_time_pin_box</cstring>
                 </property>
                </widget>
               </item>
-              <item row="7" column="7" colspan="2">
-               <widget class="NoWheelSpinBox" name="trig_or_pin_box">
-                <property name="focusPolicy">
-                 <enum>Qt::NoFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="8" column="7" colspan="2">
-               <widget class="QLabel" name="heartbeat_pin_label">
-                <property name="text">
-                 <string>Heartbeat Pin</string>
+              <item row="16" column="1">
+               <widget class="QLineEdit" name="trig_pin14_name_edit">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignCenter</set>
                 </property>
-                <property name="buddy">
-                 <cstring>heartbeat_pin_box</cstring>
+               </widget>
+              </item>
+              <item row="12" column="6">
+               <widget class="NoWheelSpinBox" name="trig_latch_pin10_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::NoButtons</enum>
+                </property>
+                <property name="maximum">
+                 <number>53</number>
                 </property>
                </widget>
               </item>
-              <item row="9" column="7" colspan="2">
-               <widget class="NoWheelSpinBox" name="heartbeat_pin_box">
+              <item row="9" column="3">
+               <widget class="NoWheelSpinBox" name="trig_in_pin7_box">
                 <property name="focusPolicy">
-                 <enum>Qt::NoFocus</enum>
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::NoButtons</enum>
+                </property>
+                <property name="maximum">
+                 <number>53</number>
+                </property>
+               </widget>
+              </item>
+              <item row="18" column="0">
+               <widget class="QCheckBox" name="trig16_enabled">
+                <property name="toolTip">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Select whether to enable a trigger in. If disabled, it won't cause a trigger latch, and corresponding FF is also disabled.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+                <property name="layoutDirection">
+                 <enum>Qt::RightToLeft</enum>
+                </property>
+                <property name="text">
+                 <string>Trig In 16</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1" colspan="3">
+               <widget class="QLineEdit" name="trigger_port_edit"/>
+              </item>
+              <item row="17" column="0">
+               <widget class="QCheckBox" name="trig15_enabled">
+                <property name="toolTip">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Select whether to enable a trigger in. If disabled, it won't cause a trigger latch, and corresponding FF is also disabled.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+                <property name="layoutDirection">
+                 <enum>Qt::RightToLeft</enum>
+                </property>
+                <property name="text">
+                 <string>Trig In 15</string>
+                </property>
+               </widget>
+              </item>
+              <item row="12" column="4">
+               <widget class="NoWheelSpinBox" name="trig_ff_pin10_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::NoButtons</enum>
+                </property>
+                <property name="maximum">
+                 <number>53</number>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="6">
+               <widget class="NoWheelSpinBox" name="trig_latch_pin1_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::NoButtons</enum>
+                </property>
+                <property name="maximum">
+                 <number>53</number>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="8" colspan="2">
+               <widget class="NoWheelSpinBox" name="trig_or_pin_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="maximum">
+                 <number>53</number>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="1">
+               <widget class="QLineEdit" name="trig_pin4_name_edit">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="2">
+               <widget class="QLineEdit" name="trig3_compression">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="toolTip">
+                 <string/>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="2">
+               <widget class="QLabel" name="trig_compression_label">
+                <property name="text">
+                 <string>Compression</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="2">
+               <widget class="QLineEdit" name="trig2_compression">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="toolTip">
+                 <string/>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="2">
+               <widget class="QLineEdit" name="trig1_compression">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="toolTip">
+                 <string/>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="2">
+               <widget class="QLineEdit" name="trig4_compression">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="toolTip">
+                 <string/>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="7" column="2">
+               <widget class="QLineEdit" name="trig5_compression">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="toolTip">
+                 <string/>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="8" column="2">
+               <widget class="QLineEdit" name="trig6_compression">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="toolTip">
+                 <string/>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="9" column="2">
+               <widget class="QLineEdit" name="trig7_compression">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="toolTip">
+                 <string/>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="10" column="2">
+               <widget class="QLineEdit" name="trig8_compression">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="toolTip">
+                 <string/>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="11" column="2">
+               <widget class="QLineEdit" name="trig9_compression">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="toolTip">
+                 <string/>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="12" column="2">
+               <widget class="QLineEdit" name="trig10_compression">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="toolTip">
+                 <string/>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="13" column="2">
+               <widget class="QLineEdit" name="trig11_compression">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="toolTip">
+                 <string/>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="14" column="2">
+               <widget class="QLineEdit" name="trig12_compression">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="toolTip">
+                 <string/>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="15" column="2">
+               <widget class="QLineEdit" name="trig13_compression">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="toolTip">
+                 <string/>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="16" column="2">
+               <widget class="QLineEdit" name="trig14_compression">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="toolTip">
+                 <string/>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="17" column="2">
+               <widget class="QLineEdit" name="trig15_compression">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="toolTip">
+                 <string/>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="18" column="2">
+               <widget class="QLineEdit" name="trig16_compression">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="toolTip">
+                 <string/>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
                 </property>
                </widget>
               </item>
@@ -5296,7 +6446,10 @@
                <number>3</number>
               </property>
               <item row="16" column="6" colspan="2">
-               <widget class="QComboBox" name="clock_polarity_wave14">
+               <widget class="NoWheelComboBox" name="clock_polarity_wave14">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
                 <item>
                  <property name="text">
                   <string>Normal</string>
@@ -5317,12 +6470,18 @@
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
                </widget>
               </item>
               <item row="4" column="3">
                <widget class="NoWheelSpinBox" name="clock_period_wave2">
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
                 </property>
                 <property name="maximum">
                  <number>1000000</number>
@@ -5377,6 +6536,9 @@
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
                </widget>
               </item>
               <item row="15" column="2">
@@ -5384,8 +6546,20 @@
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
                 <property name="readOnly">
                  <bool>true</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::NoButtons</enum>
+                </property>
+                <property name="maximum">
+                 <number>53</number>
                 </property>
                </widget>
               </item>
@@ -5394,13 +6568,19 @@
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
                 <property name="maximum">
                  <number>1000000</number>
                 </property>
                </widget>
               </item>
               <item row="10" column="6" colspan="2">
-               <widget class="QComboBox" name="clock_polarity_wave8">
+               <widget class="NoWheelComboBox" name="clock_polarity_wave8">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
                 <item>
                  <property name="text">
                   <string>Normal</string>
@@ -5421,12 +6601,18 @@
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
                </widget>
               </item>
               <item row="18" column="4">
                <widget class="NoWheelSpinBox" name="clock_phase_wave16">
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
                 </property>
                 <property name="suffix">
                  <string>%</string>
@@ -5441,6 +6627,9 @@
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
                </widget>
               </item>
               <item row="17" column="1">
@@ -5451,12 +6640,18 @@
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
                </widget>
               </item>
               <item row="12" column="3">
                <widget class="NoWheelSpinBox" name="clock_period_wave10">
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
                 </property>
                 <property name="maximum">
                  <number>1000000</number>
@@ -5467,6 +6662,9 @@
                <widget class="NoWheelSpinBox" name="clock_duty_wave15">
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
                 </property>
                 <property name="suffix">
                  <string>%</string>
@@ -5481,6 +6679,9 @@
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
                 <property name="suffix">
                  <string>%</string>
                 </property>
@@ -5494,6 +6695,9 @@
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
                </widget>
               </item>
               <item row="4" column="1">
@@ -5504,12 +6708,18 @@
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
                </widget>
               </item>
               <item row="5" column="3">
                <widget class="NoWheelSpinBox" name="clock_period_wave3">
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
                 </property>
                 <property name="maximum">
                  <number>1000000</number>
@@ -5523,6 +6733,9 @@
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
                 </property>
                </widget>
               </item>
@@ -5541,6 +6754,9 @@
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
                 <property name="maximum">
                  <number>1000000</number>
                 </property>
@@ -5550,6 +6766,9 @@
                <widget class="NoWheelSpinBox" name="clock_duty_wave8">
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
                 </property>
                 <property name="suffix">
                  <string>%</string>
@@ -5564,6 +6783,9 @@
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
                 <property name="maximum">
                  <number>1000000</number>
                 </property>
@@ -5573,6 +6795,9 @@
                <widget class="NoWheelSpinBox" name="clock_period_wave6">
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
                 </property>
                 <property name="maximum">
                  <number>1000000</number>
@@ -5587,6 +6812,9 @@
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
                </widget>
               </item>
               <item row="12" column="2">
@@ -5594,13 +6822,28 @@
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
                 <property name="readOnly">
                  <bool>true</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::NoButtons</enum>
+                </property>
+                <property name="maximum">
+                 <number>53</number>
                 </property>
                </widget>
               </item>
               <item row="8" column="6" colspan="2">
-               <widget class="QComboBox" name="clock_polarity_wave6">
+               <widget class="NoWheelComboBox" name="clock_polarity_wave6">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
                 <item>
                  <property name="text">
                   <string>Normal</string>
@@ -5618,13 +6861,28 @@
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
                 <property name="readOnly">
                  <bool>true</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::NoButtons</enum>
+                </property>
+                <property name="maximum">
+                 <number>53</number>
                 </property>
                </widget>
               </item>
               <item row="12" column="6" colspan="2">
-               <widget class="QComboBox" name="clock_polarity_wave10">
+               <widget class="NoWheelComboBox" name="clock_polarity_wave10">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
                 <item>
                  <property name="text">
                   <string>Normal</string>
@@ -5642,6 +6900,9 @@
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
                 <property name="maximum">
                  <number>1000000</number>
                 </property>
@@ -5651,6 +6912,9 @@
                <widget class="NoWheelSpinBox" name="clock_duty_wave6">
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
                 </property>
                 <property name="suffix">
                  <string>%</string>
@@ -5686,6 +6950,9 @@
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
                </widget>
               </item>
               <item row="12" column="0">
@@ -5702,6 +6969,9 @@
                <widget class="NoWheelSpinBox" name="clock_duty_wave1">
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
                 </property>
                 <property name="suffix">
                  <string>%</string>
@@ -5729,6 +6999,9 @@
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
                </widget>
               </item>
               <item row="16" column="4">
@@ -5736,13 +7009,19 @@
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
                 <property name="suffix">
                  <string>%</string>
                 </property>
                </widget>
               </item>
               <item row="4" column="6" colspan="2">
-               <widget class="QComboBox" name="clock_polarity_wave2">
+               <widget class="NoWheelComboBox" name="clock_polarity_wave2">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
                 <item>
                  <property name="text">
                   <string>Normal</string>
@@ -5770,8 +7049,20 @@
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
                 <property name="readOnly">
                  <bool>true</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::NoButtons</enum>
+                </property>
+                <property name="maximum">
+                 <number>53</number>
                 </property>
                </widget>
               </item>
@@ -5780,8 +7071,20 @@
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
                 <property name="readOnly">
                  <bool>true</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::NoButtons</enum>
+                </property>
+                <property name="maximum">
+                 <number>53</number>
                 </property>
                </widget>
               </item>
@@ -5789,6 +7092,9 @@
                <widget class="NoWheelSpinBox" name="clock_phase_wave2">
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
                 </property>
                 <property name="suffix">
                  <string>%</string>
@@ -5799,6 +7105,9 @@
                <widget class="NoWheelSpinBox" name="clock_duty_wave13">
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
                 </property>
                 <property name="suffix">
                  <string>%</string>
@@ -5823,6 +7132,9 @@
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
                 <property name="maximum">
                  <number>1000000</number>
                 </property>
@@ -5833,6 +7145,9 @@
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
                 <property name="suffix">
                  <string>%</string>
                 </property>
@@ -5842,6 +7157,9 @@
                <widget class="NoWheelSpinBox" name="clock_duty_wave9">
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
                 </property>
                 <property name="suffix">
                  <string>%</string>
@@ -5856,6 +7174,9 @@
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
                 <property name="suffix">
                  <string>%</string>
                 </property>
@@ -5865,6 +7186,9 @@
                <widget class="NoWheelSpinBox" name="clock_period_wave4">
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
                 </property>
                 <property name="maximum">
                  <number>1000000</number>
@@ -5886,8 +7210,20 @@
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
                 <property name="readOnly">
                  <bool>true</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::NoButtons</enum>
+                </property>
+                <property name="maximum">
+                 <number>53</number>
                 </property>
                </widget>
               </item>
@@ -5895,6 +7231,9 @@
                <widget class="NoWheelSpinBox" name="clock_phase_wave6">
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
                 </property>
                 <property name="suffix">
                  <string>%</string>
@@ -5906,6 +7245,9 @@
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
                 <property name="suffix">
                  <string>%</string>
                 </property>
@@ -5915,6 +7257,9 @@
                <widget class="NoWheelSpinBox" name="clock_duty_wave12">
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
                 </property>
                 <property name="suffix">
                  <string>%</string>
@@ -5929,13 +7274,19 @@
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
                 <property name="maximum">
                  <number>1000000</number>
                 </property>
                </widget>
               </item>
               <item row="17" column="6" colspan="2">
-               <widget class="QComboBox" name="clock_polarity_wave15">
+               <widget class="NoWheelComboBox" name="clock_polarity_wave15">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
                 <item>
                  <property name="text">
                   <string>Normal</string>
@@ -5953,6 +7304,9 @@
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
                 <property name="suffix">
                  <string>%</string>
                 </property>
@@ -5965,6 +7319,9 @@
                <widget class="NoWheelSpinBox" name="clock_duty_wave11">
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
                 </property>
                 <property name="suffix">
                  <string>%</string>
@@ -5979,6 +7336,9 @@
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
                 <property name="suffix">
                  <string>%</string>
                 </property>
@@ -5988,7 +7348,10 @@
                </widget>
               </item>
               <item row="9" column="6" colspan="2">
-               <widget class="QComboBox" name="clock_polarity_wave7">
+               <widget class="NoWheelComboBox" name="clock_polarity_wave7">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
                 <item>
                  <property name="text">
                   <string>Normal</string>
@@ -6006,6 +7369,9 @@
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
                 <property name="maximum">
                  <number>1000000</number>
                 </property>
@@ -6019,10 +7385,16 @@
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
                </widget>
               </item>
               <item row="3" column="6" colspan="2">
-               <widget class="QComboBox" name="clock_polarity_wave1">
+               <widget class="NoWheelComboBox" name="clock_polarity_wave1">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
                 <item>
                  <property name="text">
                   <string>Normal</string>
@@ -6060,13 +7432,19 @@
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
                 <property name="suffix">
                  <string>%</string>
                 </property>
                </widget>
               </item>
               <item row="7" column="6" colspan="2">
-               <widget class="QComboBox" name="clock_polarity_wave5">
+               <widget class="NoWheelComboBox" name="clock_polarity_wave5">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
                 <item>
                  <property name="text">
                   <string>Normal</string>
@@ -6087,6 +7465,9 @@
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
                </widget>
               </item>
               <item row="5" column="0">
@@ -6100,7 +7481,10 @@
                </widget>
               </item>
               <item row="11" column="6" colspan="2">
-               <widget class="QComboBox" name="clock_polarity_wave9">
+               <widget class="NoWheelComboBox" name="clock_polarity_wave9">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
                 <item>
                  <property name="text">
                   <string>Normal</string>
@@ -6121,10 +7505,16 @@
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
                </widget>
               </item>
               <item row="18" column="6" colspan="2">
-               <widget class="QComboBox" name="clock_polarity_wave16">
+               <widget class="NoWheelComboBox" name="clock_polarity_wave16">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
                 <item>
                  <property name="text">
                   <string>Normal</string>
@@ -6138,7 +7528,10 @@
                </widget>
               </item>
               <item row="6" column="6" colspan="2">
-               <widget class="QComboBox" name="clock_polarity_wave4">
+               <widget class="NoWheelComboBox" name="clock_polarity_wave4">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
                 <item>
                  <property name="text">
                   <string>Normal</string>
@@ -6166,13 +7559,28 @@
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
                 <property name="readOnly">
                  <bool>true</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::NoButtons</enum>
+                </property>
+                <property name="maximum">
+                 <number>53</number>
                 </property>
                </widget>
               </item>
               <item row="13" column="6" colspan="2">
-               <widget class="QComboBox" name="clock_polarity_wave11">
+               <widget class="NoWheelComboBox" name="clock_polarity_wave11">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
                 <item>
                  <property name="text">
                   <string>Normal</string>
@@ -6189,6 +7597,9 @@
                <widget class="NoWheelSpinBox" name="clock_phase_wave9">
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
                 </property>
                 <property name="suffix">
                  <string>%</string>
@@ -6210,8 +7621,20 @@
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
                 <property name="readOnly">
                  <bool>true</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::NoButtons</enum>
+                </property>
+                <property name="maximum">
+                 <number>53</number>
                 </property>
                </widget>
               </item>
@@ -6227,8 +7650,20 @@
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
                 <property name="readOnly">
                  <bool>true</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::NoButtons</enum>
+                </property>
+                <property name="maximum">
+                 <number>53</number>
                 </property>
                </widget>
               </item>
@@ -6236,6 +7671,9 @@
                <widget class="NoWheelSpinBox" name="clock_phase_wave7">
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
                 </property>
                 <property name="suffix">
                  <string>%</string>
@@ -6246,6 +7684,9 @@
                <widget class="NoWheelSpinBox" name="clock_phase_wave8">
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
                 </property>
                 <property name="suffix">
                  <string>%</string>
@@ -6260,8 +7701,20 @@
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
                 <property name="readOnly">
                  <bool>true</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::NoButtons</enum>
+                </property>
+                <property name="maximum">
+                 <number>53</number>
                 </property>
                </widget>
               </item>
@@ -6269,6 +7722,9 @@
                <widget class="NoWheelSpinBox" name="clock_duty_wave5">
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
                 </property>
                 <property name="suffix">
                  <string>%</string>
@@ -6283,8 +7739,20 @@
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
                 <property name="readOnly">
                  <bool>true</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::NoButtons</enum>
+                </property>
+                <property name="maximum">
+                 <number>53</number>
                 </property>
                </widget>
               </item>
@@ -6293,13 +7761,19 @@
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
                 <property name="suffix">
                  <string>%</string>
                 </property>
                </widget>
               </item>
               <item row="14" column="6" colspan="2">
-               <widget class="QComboBox" name="clock_polarity_wave12">
+               <widget class="NoWheelComboBox" name="clock_polarity_wave12">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
                 <item>
                  <property name="text">
                   <string>Normal</string>
@@ -6337,6 +7811,9 @@
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
                 <property name="buttonSymbols">
                  <enum>QAbstractSpinBox::UpDownArrows</enum>
                 </property>
@@ -6356,8 +7833,20 @@
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
                 <property name="readOnly">
                  <bool>true</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::NoButtons</enum>
+                </property>
+                <property name="maximum">
+                 <number>53</number>
                 </property>
                </widget>
               </item>
@@ -6365,6 +7854,9 @@
                <widget class="NoWheelSpinBox" name="clock_duty_wave16">
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
                 </property>
                 <property name="suffix">
                  <string>%</string>
@@ -6379,6 +7871,9 @@
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
                 <property name="maximum">
                  <number>1000000</number>
                 </property>
@@ -6388,6 +7883,9 @@
                <widget class="NoWheelSpinBox" name="clock_period_wave11">
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
                 </property>
                 <property name="maximum">
                  <number>1000000</number>
@@ -6399,8 +7897,20 @@
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
                 <property name="readOnly">
                  <bool>true</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::NoButtons</enum>
+                </property>
+                <property name="maximum">
+                 <number>53</number>
                 </property>
                </widget>
               </item>
@@ -6415,7 +7925,10 @@
                </widget>
               </item>
               <item row="15" column="6" colspan="2">
-               <widget class="QComboBox" name="clock_polarity_wave13">
+               <widget class="NoWheelComboBox" name="clock_polarity_wave13">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
                 <item>
                  <property name="text">
                   <string>Normal</string>
@@ -6446,6 +7959,9 @@
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
                </widget>
               </item>
               <item row="4" column="2">
@@ -6453,8 +7969,20 @@
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
                 <property name="readOnly">
                  <bool>true</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::NoButtons</enum>
+                </property>
+                <property name="maximum">
+                 <number>53</number>
                 </property>
                </widget>
               </item>
@@ -6472,6 +8000,9 @@
                <widget class="NoWheelSpinBox" name="clock_duty_wave10">
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
                 </property>
                 <property name="suffix">
                  <string>%</string>
@@ -6496,6 +8027,9 @@
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
                 <property name="maximum">
                  <number>1000000</number>
                 </property>
@@ -6505,6 +8039,9 @@
                <widget class="NoWheelSpinBox" name="clock_duty_wave4">
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
                 </property>
                 <property name="suffix">
                  <string>%</string>
@@ -6529,6 +8066,9 @@
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
                 <property name="suffix">
                  <string>%</string>
                 </property>
@@ -6539,8 +8079,20 @@
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
                 <property name="readOnly">
                  <bool>true</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::NoButtons</enum>
+                </property>
+                <property name="maximum">
+                 <number>53</number>
                 </property>
                </widget>
               </item>
@@ -6548,6 +8100,9 @@
                <widget class="NoWheelSpinBox" name="clock_phase_wave4">
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
                 </property>
                 <property name="suffix">
                  <string>%</string>
@@ -6572,6 +8127,9 @@
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
                </widget>
               </item>
               <item row="9" column="2">
@@ -6579,8 +8137,20 @@
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
                 <property name="readOnly">
                  <bool>true</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::NoButtons</enum>
+                </property>
+                <property name="maximum">
+                 <number>53</number>
                 </property>
                </widget>
               </item>
@@ -6588,6 +8158,9 @@
                <widget class="NoWheelSpinBox" name="clock_duty_wave14">
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
                 </property>
                 <property name="suffix">
                  <string>%</string>
@@ -6601,6 +8174,9 @@
                <widget class="NoWheelSpinBox" name="clock_period_wave9">
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
                 </property>
                 <property name="maximum">
                  <number>1000000</number>
@@ -6625,6 +8201,9 @@
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
                 <property name="suffix">
                  <string>%</string>
                 </property>
@@ -6644,7 +8223,10 @@
                </widget>
               </item>
               <item row="5" column="6" colspan="2">
-               <widget class="QComboBox" name="clock_polarity_wave3">
+               <widget class="NoWheelComboBox" name="clock_polarity_wave3">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
                 <item>
                  <property name="text">
                   <string>Normal</string>
@@ -6678,6 +8260,9 @@
               </property>
               <item row="2" column="0">
                <widget class="QLabel" name="position_mac_label">
+                <property name="toolTip">
+                 <string>MAC address of Ethernet shield. Any unique address would work.</string>
+                </property>
                 <property name="text">
                  <string>MAC Addr</string>
                 </property>
@@ -6910,6 +8495,11 @@
   <customwidget>
    <class>NoWheelDoubleSpinBox</class>
    <extends>QDoubleSpinBox</extends>
+   <header>ui.custom_widgets</header>
+  </customwidget>
+  <customwidget>
+   <class>NoWheelComboBox</class>
+   <extends>QComboBox</extends>
    <header>ui.custom_widgets</header>
   </customwidget>
  </customwidgets>
