@@ -10,36 +10,25 @@
 // sel2 = 0, sel3 = 1 : 5 caps 0-12pF
 // sel2 = 1, sel3 = 0 : 3 caps, variable range 0-300pf
 // sel2 = 1, sel3 = 1 : unused (Thermistor 1-25kOhm, 4-wire)
-//
-
 
 
 #include <SPI.h>
 #include <Ethernet.h>
 #include <EEPROM.h>
+#include <ArduinoJson.h>
+#include "incbin.h"
 #include "MgsModbus.h"
 
-
-
+// using incbin: https://github.com/AlexIII/incbin-arduino
+INCTXT(ConfigFile, "position_config.json");
 
 #define EEPROM_BASE_NET 0
 #define EEPROM_BASE_CONF 40
 
 #define CKSUM_INIT 0xaa
 
-// Ethernet settings
-
-byte mac[6] = {0xa8,0x61,0x0a,0xae,0x87,0x43 };
-char macstr[18];
-IPAddress ip(192,168,137,150);
-IPAddress gateway(192,168,137,1);
-IPAddress subnet(255,255,255,0);
-IPAddress nameserver(192,168,137,1);
-
 #define DEBUG
 #define DEBUG1
-
-
 
 // mode (use micros() to obtain time vs loop count)
 
@@ -70,8 +59,8 @@ const uint8_t  NCHIPS = 2;    // number of chips on the board
 
 // for only two chips
 const uint8_t  out[NCHIPS]  = { 11, 7 };
-const uint8_t  sel2[NCHIPS] = {  2, 5 };  
-const uint8_t  sel3[NCHIPS] = {  3, 6 };  
+const uint8_t  sel2[NCHIPS] = {  2, 5 };
+const uint8_t  sel3[NCHIPS] = {  3, 6 };
 
 // Can possibly set NCHIPS = 1; for different configurations
 
@@ -95,7 +84,6 @@ const unsigned long MAXWIDTH = 200000;
 #define DEFMULT 6000
 
 const float tol = 1.3;
-
 
 // Modbus configuration
 
@@ -142,12 +130,11 @@ uint8_t ledblink = 0;
 
 
 void setup() {
-
-uint8_t i;
-  
 // put your setup code here, to run once:
   Serial.begin(9600);
   Serial.println("Serial initialized");
+
+  uint8_t i;
 
   #ifdef MICROS
     Serial.println("Using micros() to measure time");
@@ -159,53 +146,42 @@ uint8_t i;
     if (sel3[i]) pinMode(sel3[i],OUTPUT);
     if (out[i])  pinMode(out[i],INPUT);
   }
-  
 
   // set pin 13 so that we can blink the LED
-  
   pinMode(13,OUTPUT);
 
-// set up network
-#ifdef MACADDR
-// on first run generate MAC address and store in EEPROM
- 
-  if (EEPROM.read(1) == '&') {
-    for (int i = 2; i < 6; i++) {
-      mac[i] = EEPROM.read(i);
+  // Json read document for IP configuration
+    JsonDocument conf;
+    DeserializationError error = deserializeJson(conf, gConfigFileData);
+    if (error){
+        Serial.println(F("Failed to read file"));
+        Serial.println(error.c_str());
+        return;
     }
-  } else {
-    int seed = 0;
-    for (int j=0; j<50; j++)
-       for (int i=0; i<NCHIPS; i++) {
-          seed+=digitalRead(out[i]); seed +=analogRead(0);
-          delay(10); 
-       }       
-    randomSeed(seed);
-    for (int i = 2; i < 6; i++) {
-      mac[i] = random(0, 255);
-      EEPROM.write(i, mac[i]);
+
+  // Ethernet settings
+  Serial.println("Setting up static IP address.");
+    byte mac[6]; // A randomly generated mac address
+    IPAddress ip;
+    IPAddress gateway;
+    IPAddress subnet;
+    IPAddress nameserver;
+
+    const char* mac_str = conf["mac_addr"];
+    const char* ip_str = conf["ip_addr"];
+    const char* gateway_str = conf["gateway"];
+    const char* subnet_str = conf["subnet"];
+
+    Serial.print("Mac address: "); Serial.println(mac_str);
+    for (int i=0; i<6; i++) {
+      mac[i] = strtoul(mac_str + i*3, NULL, 16);
     }
-    EEPROM.write(1, '#');
-  }
-  snprintf(macstr, 18, "%02x:%02x:%02x:%02x:%02x:%02x", mac[0], mac[1], mac[2], mac[3], mac[4], mac[5]);
-  Serial.println(macstr);
-  #endif
+    ip.fromString(ip_str);
+    gateway.fromString(gateway_str);
+    subnet.fromString(subnet_str);
+    nameserver.fromString(gateway_str);
 
-  // Try DHCP
-
-  Serial.println("Attempting to get IP configuration through DHCP");
-  snprintf(macstr, 18, "%02x:%02x:%02x:%02x:%02x:%02x", mac[0], mac[1], mac[2], mac[3], mac[4], mac[5]);
-  Serial.print("MAC address: "); Serial.println(macstr);
-
-//  if (Ethernet.begin(mac,10000,10000)) {
-//     // Success - this is our new config
-//     Serial.println("DHCP Success!");     
-//  }
-//
-//  else  {
-//      Serial.println("DHCP Failure! Using default IP address");
-//      Ethernet.begin(mac, ip, nameserver, gateway, subnet);   // start ethernet interface
-//  }
+  // set up static ip
  Serial.println("Using default IP address");
  Ethernet.begin(mac, ip, nameserver, gateway, subnet);
  Serial.println("Ethernet interface started"); 
@@ -226,9 +202,6 @@ uint8_t i;
 }
 
 }
-
-
-
 
 void loop() {
   // put your main code here, to run repeatedly:
@@ -313,40 +286,15 @@ float ratio[3];   // D/C, E/C, F/C
         }
 
         float r = ratio[v];
-        //Serial.println(r);
-
-        
 
         enc_float(&Mb.MbData[mbo+MBOFF_DATA+2*v],r);
         Serial.print("Addr: "); Serial.print(mbo+MBOFF_DATA+2*v); Serial.print(" Value: "); Serial.println(r);
-       
-      
-
-//        if (r <= 65535) {
-//          Mb.MbData[mbo+MBOFF_DATA+v] = r;
-//        }
-//        else {
-//          Mb.MbData[mbo+MBOFF_DATA+v] = 65535;
-//          Mb.MbData[mbo+MBOFF_STATUS] |= STATUS_CLIPPED_HIGH;
-//        }
-
 
         Mb.MbData[mbo+MBOFF_STATUS] |= STATUS_OK;
 
-        
-
-        
         #ifdef DEBUG
           Serial.print("Ratio "); Serial.print(v); Serial.print(" = "); Serial.println(ratio[v],5);
         #endif
-
-        
-
-        
-        
-
-        
-        
       }
 
     }

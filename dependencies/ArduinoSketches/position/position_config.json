@@ -2,7 +2,7 @@
   "port": "/dev/arduinoPOS",
   "sketch": "/home/sbc/RunControl/dependencies/ArduinoSketches/position/",
   "mac_addr": "A8:61:0A:AE:87:43",
-  "ip_addr": "192.168.137.21",
+  "ip_addr": "192.168.137.150",
   "gateway": "192.168.137.1",
   "subnet": "255.255.255.0"
 }
