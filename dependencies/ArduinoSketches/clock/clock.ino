@@ -5,6 +5,7 @@
 INCTXT(ConfigFile, "clock_config.json");
 
 typedef struct square_wave {
+    bool enabled; // whether this wave is enabled
     int period; // x 100us = period (s)  
     int duty; // x 100us = duration high
     int phase; // x 100us = offset
@@ -46,9 +47,14 @@ void setup(void) {
   }
 
   // extract from json object to square_wave class
-  Serial.println("Wave\tPeriod\tPhase\tDuty\tPolarity");
+  Serial.println("Wave\tEnabled\tPeriod\tPhase\tDuty\tPolarity");
   for (JsonPair kv : conf.as<JsonObject>()) {
-    int wave_num = atoi(kv.key().c_str());
+    const char* key = kv.key().c_str();
+    int wave_num;
+    if (sscanf(key, "wave%d", &wave_num) <=0) {
+      continue; // continue if not wave#
+    }
+    wave_num -= 1;
     JsonObject v = kv.value().as<JsonObject>();
     waves[wave_num].enabled = v["enabled"].as<bool>();
     waves[wave_num].period = v["period"].as<int>();
@@ -56,6 +62,7 @@ void setup(void) {
     waves[wave_num].phase = v["phase"].as<int>() * waves[wave_num].period / 100;  // convert percentage to time
     waves[wave_num].polarity = v["polarity"].as<bool>();
     Serial.print(wave_num); Serial.print("\t");
+    Serial.print(waves[wave_num].enabled); Serial.print("\t");
     Serial.print(waves[wave_num].period); Serial.print("\t");
     Serial.print(waves[wave_num].phase); Serial.print("\t");
     Serial.print(waves[wave_num].duty); Serial.print("\t");
@@ -66,8 +73,11 @@ void setup(void) {
 
 void loop(void) {  
   //Waves:
-  for(int w=0; w<10; w++){
+  for(int w=0; w<16; w++){
     Square_Wave* wave = &waves[w];
+    if (wave->enabled < 1) {
+      continue; // skip if not enabled
+    }
     if (wave->state==0 && wave->counter > wave->phase){
       wave->state = 1;
     }
