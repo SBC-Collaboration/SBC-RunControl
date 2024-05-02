@@ -475,7 +475,7 @@ class Config(QObject):
     def start_event(self):
         # save camera json files
         for cam in ["cam1", "cam2", "cam3"]:
-            cam_config = self.run_config["cam"][cam]
+            cam_config = copy.deepcopy(self.run_config["cam"][cam])
             if not cam_config["enabled"]:
                 continue
             cam_config["data_path"] = os.path.join(cam_config["data_path"], self.main.run_id, str(self.main.event_id))
