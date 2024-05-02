@@ -2,8 +2,10 @@ import os
 import subprocess
 import glob
 import hashlib
+import time
 import logging
 from PySide6.QtCore import QTimer, QObject, QThread, Slot, Signal
+
 
 class Arduino(QObject):
     # A map of pin number to port in Arduino Mega 2560
@@ -66,6 +68,8 @@ class Arduino(QObject):
         52: "B1",
         53: "B0",
     }
+    reverse_port_map = {}
+    latch_pins = [0, 1, 5, 2, 3, 17, 16, 6, 7, 8, 9, 15, 14]
 
     sketch_uploaded = Signal(str)
 
@@ -76,6 +80,9 @@ class Arduino(QObject):
         self.config = mainwindow.config_class.config["dio"][arduino]
         self.logger = logging.getLogger("rc")
         os.putenv("PATH", "/home/sbc/packages")
+        # create reverse port map
+        for pin, port in self.arduino_port_map.items():
+            self.reverse_port_map[port] = pin
         self.timer = QTimer(self)
         self.timer.setInterval(100)
         self.timer.timeout.connect(self.periodic_task)
@@ -101,6 +108,7 @@ class Arduino(QObject):
 
     @Slot()
     def upload_sketch(self):
+        self.config = self.main.config_class.run_config["dio"][self.arduino]
         if self.check_arduino():
             return
         # TODO: copy json
@@ -129,7 +137,6 @@ class Arduino(QObject):
         command = (f"cd {sketch_path} && rm -f {build_path}/*.zip && "
                    f"arduino-cli sketch archive {sketch_path} {build_path}")
         result = subprocess.run(command, shell=True, capture_output=True)
-        # self.logger.debug(result.stdout)
 
         # check if hash of new archive is the same as the old
         if (archives := glob.glob(os.path.join(build_path, "*.zip"))) and len(archives)==1:
@@ -144,6 +151,12 @@ class Arduino(QObject):
                    f"arduino-cli compile -b {fqbn} --build-path {build_path} {sketch_path} && "
                    f"arduino-cli upload -p {port} -b {fqbn} --input-dir {build_path}")
         result = subprocess.run(command, shell=True, capture_output=True)
+        if result.returncode:
+            self.logger.error(f"Sketch upload for {self.arduino} failed.")
+            self.logger.error(result.stderr.decode("utf-8"))
+            command = f"cd {sketch_path} && rm -f {build_path}/*.zip"
+            result = subprocess.run(command, shell=True, capture_output=True)
+            return
         self.logger.info(f"Sketch successfully uploaded for {self.arduino} arduino.")
 
         self.sketch_uploaded.emit(self.arduino)
