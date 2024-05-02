@@ -81,8 +81,7 @@ class SiPMAmp(QObject):
         host = self.config["ip_addr"]
 
         # ping with 1 packet, and 1s timeout
-        command = ["ping", "-c", "1", "-W", "1", host]
-        if not subprocess.call(command):
+        if not subprocess.call(f"ping -c 1 -W 1 {host}", shell=True):
             self.logger.debug(f"SiPM {self.amp} connected.")
         else:
             self.logger.error(f"SiPM {self.amp} at {host} not connected.")
@@ -97,6 +96,7 @@ class SiPMAmp(QObject):
 
     @Slot()
     def bias_sipm(self):
+        self.config = self.main.config_class.run_config["scint"][self.amp]
         self.test_sipm_amp()
         if not self.config["enabled"]:
             return
@@ -117,8 +117,7 @@ class SiPMAmp(QObject):
         # if ping successes, still unbias. if not, quit
         # ping with only 1 packet, with 1s timeout
         if not self.config["enabled"]:
-            command = ["ping", "-c", "1", "-W", "1", self.config["ip_addr"]]
-            if subprocess.call(command):
+            if subprocess.call(f"ping -c 1 -W 1 {self.config["ip_addr"]}", shell=True):
                 self.logger.debug(f"SiPM {self.amp} is disabled and not connected")
                 return
 
