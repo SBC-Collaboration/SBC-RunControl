@@ -22,6 +22,7 @@ import re
 import sys
 import os
 
+
 class MainSignals(QObject):
     # initialize signals
     program_starting = Signal()
@@ -31,6 +32,7 @@ class MainSignals(QObject):
     event_stopping = Signal()
     send_trigger = Signal(str)
     program_stopping = Signal()
+
 
 # Loads Main window
 class MainWindow(QMainWindow):
@@ -103,15 +105,14 @@ class MainWindow(QMainWindow):
         vars = self.__dict__
         for cam in ["cam1", "cam2", "cam3"]:
             vars[f"{cam}_worker"] = Camera(self, cam)
-            vars[f"{cam}_worker"].camera_connected.connect(self.starting_run_wait)
-            vars[f"{cam}_worker"].camera_started.connect(self.starting_event_wait)
-            vars[f"{cam}_worker"].camera_closed.connect(self.stopping_event_wait)
+            vars[f"{cam}_worker"].camera_started.connect(self.starting_run_wait)
+            vars[f"{cam}_worker"].camera_closed.connect(self.stopping_run_wait)
             vars[f"{cam}_thread"] = QThread()
             vars[f"{cam}_thread"].setObjectName(f"{cam}_thread")
             vars[f"{cam}_worker"].moveToThread(vars[f"{cam}_thread"])
             vars[f"{cam}_thread"].started.connect(vars[f"{cam}_worker"].run)
-            self.signals.run_starting.connect(vars[f"{cam}_worker"].test_rpi)
-            self.signals.event_starting.connect(vars[f"{cam}_worker"].start_camera)
+            self.signals.run_starting.connect(vars[f"{cam}_worker"].start_camera)
+            self.signals.run_stopping.connect(vars[f"{cam}_worker"].stop_camera)
             vars[f"{cam}_thread"].start()
             time.sleep(0.001)
 
@@ -169,6 +170,17 @@ class MainWindow(QMainWindow):
         time.sleep(0.001)
 
         self.sql_worker = SQL(self)
+        self.sql_worker.run_started.connect(self.starting_run_wait)
+        self.sql_worker.run_stopped.connect(self.stopping_run_wait)
+        self.sql_worker.event_stopped.connect(self.stopping_event_wait)
+        self.sql_thread = QThread()
+        self.sql_thread.setObjectName("sql_thread")
+        self.sql_worker.moveToThread(self.sql_thread)
+        self.sql_thread.started.connect(self.sql_worker.run)
+        self.signals.run_starting.connect(self.sql_worker.start_run)
+        self.signals.event_stopping.connect(self.sql_worker.stop_event)
+        self.signals.run_stopping.connect(self.sql_worker.stop_run)
+        self.sql_thread.start()
 
     # TODO: handle closing during run
     def closeEvent(self, event):
@@ -256,18 +268,20 @@ class MainWindow(QMainWindow):
             )
             if (
                 self.event_timer.elapsed()
-                > self.config_class.config["general"]["max_ev_time"] * 1000
+                > self.config_class.run_config["general"]["max_ev_time"] * 1000
             ):
                 self.signals.send_trigger.emit("Timeout")
         elif self.run_state == self.run_states["starting_run"]:
             if len(self.starting_run_ready) >= 4:
                 self.start_event()
         elif self.run_state == self.run_states["starting_event"]:
+            print(f"starting event {self.starting_event_ready}")
             if len(self.starting_event_ready) >= 2:
                 self.update_state("active")
         elif self.run_state == self.run_states["stopping_event"]:
-            if len(self.stopping_event_ready) >= 2:
-                self.update_state("idle")
+            print(f"stopping event: {self.stopping_event_ready}")
+            if len(self.stopping_event_ready) >= 3:
+                self.start_event()
 
         self.display_image(
             "resources/cam1.png",
@@ -335,6 +349,9 @@ class MainWindow(QMainWindow):
         self.update_state("idle")
 
     def start_run(self):
+        """
+        Start a new run. Copies configuration into run-specific config. Creates run directory. Initializes data submodules.
+        """
         self.create_run_directory()
         self.starting_run_ready = []
 
@@ -346,9 +363,9 @@ class MainWindow(QMainWindow):
         self.ui.event_time_edit.setText(self.format_time(self.ev_livetime))
         self.ui.run_live_time_edit.setText(self.format_time(self.run_livetime))
         self.ui.trigger_edit.setText("")
-        self.run_json_path = os.path.join(self.run_dir, f"{self.run_id}.json")
+
         self.run_log_path = os.path.join(self.run_dir, f"{self.run_id}.log")
-        self.config_class.save_config(self.run_json_path)
+        self.config_class.start_run()
 
         file_handler = logging.FileHandler(self.run_log_path, mode="a")
         file_handler.setLevel(logging.INFO)
@@ -367,12 +384,23 @@ class MainWindow(QMainWindow):
         self.signals.run_stopping.emit()
 
     def start_event(self):
+        # check if stopping run now or start new event
+        if (
+                self.event_id
+                >= self.config_class.config["general"]["max_num_evs"]
+        ):
+            self.stopping_run = True
+        if self.stopping_run:
+            self.signals.run_stopping.emit()
+            return
+
         self.starting_event_ready = []
         self.update_state("starting_event")
         self.ev_livetime = 0
         self.ui.event_id_edit.setText(f"{self.event_id:2d}")
         self.ui.event_time_edit.setText(self.format_time(0))
         self.event_dir = os.path.join(self.run_dir, str(self.event_id))
+        self.config_class.start_event()
         if not os.path.exists(self.event_dir):
             os.mkdir(self.event_dir)
         self.signals.event_starting.emit()
@@ -382,22 +410,11 @@ class MainWindow(QMainWindow):
         Stop the event. Enter into compressing state. If the "Stop Run" button is pressed or the max number of events
         are reached, then it will enter into "stopping" state. Otherwise, it will start another event.
         """
-        self.signals.event_stopping.emit()
         self.stopping_event_ready = []
+        self.event_id += 1
+        self.signals.event_stopping.emit()
         self.update_state("stopping_event")
         self.run_livetime += self.event_timer.elapsed()
-
-        # check if stopping run now or start new event
-        self.event_id += 1
-        if (
-                self.event_id
-                >= self.config_class.config["general"]["max_num_evs"]
-        ):
-            self.stopping_run = True
-        if self.stopping_run:
-            self.stop_run()
-        else:
-            self.start_event()
 
     def stop_run_but_pressed(self):
         self.stopping_run = True
