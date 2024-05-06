@@ -129,14 +129,14 @@ class NIUSB(QObject):
             self.dev.write_pin(*self.reverse_config["trig"], 0)
             self.dev.write_pin(*self.reverse_config["reset"], 1)
         self.dev.write_pin(*self.reverse_config["reset"], 0)
-        self.event_started.emit("nuisb")
+        self.event_started.emit("niusb")
 
         # check cameras ready
         cam_ready = {}
         for cam in ["cam1", "cam2", "cam3"]:
             if self.main.config_class.run_config["cam"][cam]["enabled"]:
                 self.dev.write_pin(*self.reverse_config[f"comm_{cam}"], True)
-                while not self.dev.read_pin(*self.reverse_config[f"state_{cam}"]):
+                while self.dev.read_pin(*self.reverse_config[f"state_{cam}"]):
                     time.sleep(0.01)
                 self.logger.debug(f"{cam} is ready.")
                 self.event_started.emit(cam)
@@ -163,15 +163,17 @@ class NIUSB(QObject):
         else:
             self.logger.debug(f"First fault pin for the event is {self.ff_pin}")
         self.trigger_ff.emit(self.ff_pin)
-        self.event_stopped.emit("nuisb")
+        time.sleep(1)
+        self.event_stopped.emit("niusb")
 
         cam_ready = {}
         for cam in ["cam1", "cam2", "cam3"]:
             if self.main.config_class.run_config["cam"][cam]["enabled"]:
-                self.dev.write_pin(*self.reverse_config[f"comm_{cam}"], True)
-                while self.dev.read_pin(*self.reverse_config[f"state_{cam}"]):
+                self.dev.write_pin(*self.reverse_config[f"comm_{cam}"], False)
+                # camera using reverse logic
+                while not self.dev.read_pin(*self.reverse_config[f"state_{cam}"]):
                     time.sleep(0.01)
-                    print("cam not ready")
+                    # print("cam not ready")
                 self.logger.debug(f"{cam} is complete.")
                 self.event_stopped.emit(cam)
 
