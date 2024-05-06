@@ -259,6 +259,8 @@ class MainWindow(QMainWindow):
         In the active state, it will update event and run timer, and check if max event time is reached. If so, it will end the event.
 
         """
+        vars = self.ui.__dict__
+
         if self.run_state == self.run_states["active"]:
             self.ui.event_time_edit.setText(
                 self.format_time(self.event_timer.elapsed())
@@ -272,16 +274,24 @@ class MainWindow(QMainWindow):
             ):
                 self.signals.send_trigger.emit("Timeout")
         elif self.run_state == self.run_states["starting_run"]:
+            # change status lights
+            for module in self.starting_run_ready:
+                vars[f"gen_status_{module}"].active()
             if len(self.starting_run_ready) >= 4:
                 self.start_event()
         elif self.run_state == self.run_states["starting_event"]:
-            print(f"starting event {self.starting_event_ready}")
+            for module in self.starting_event_ready:
+                vars[f"gen_status_{module}"].active()
             if len(self.starting_event_ready) >= 2:
+                self.event_timer.start()
                 self.update_state("active")
         elif self.run_state == self.run_states["stopping_event"]:
             print(f"stopping event: {self.stopping_event_ready}")
             if len(self.stopping_event_ready) >= 3:
                 self.start_event()
+        elif self.run_state == self.run_states["stopping_run"]:
+            if len(self.stopping_run_ready) >= 1:
+                self.update_state("idle")
 
         self.display_image(
             "resources/cam1.png",
@@ -353,7 +363,12 @@ class MainWindow(QMainWindow):
         Start a new run. Copies configuration into run-specific config. Creates run directory. Initializes data submodules.
         """
         self.create_run_directory()
+        self.run_start_time = datetime.datetime.now().isoformat(sep=" ", timespec="milliseconds")
         self.starting_run_ready = []
+        vars = self.ui.__dict__
+        for v in vars.keys():
+            if v.startswith("gen_status"):
+                vars[v].idle()
 
         # reset event number and livetimes
         self.event_id = 0
@@ -376,12 +391,13 @@ class MainWindow(QMainWindow):
         self.signals.run_starting.emit()
 
     def stop_run(self):
-        self.update_state("stopping_run")
         # set up multithreading thread and workers
+        self.run_end_time = datetime.datetime.now().isoformat(sep=" ", timespec="milliseconds")
+        self.stopping_run_ready = []
         self.stopping_run = False
-        self.update_state("idle")
 
         self.signals.run_stopping.emit()
+        self.update_state("stopping_run")
 
     def start_event(self):
         # check if stopping run now or start new event
@@ -391,9 +407,10 @@ class MainWindow(QMainWindow):
         ):
             self.stopping_run = True
         if self.stopping_run:
-            self.signals.run_stopping.emit()
+            self.stop_run()
             return
 
+        self.event_start_time = datetime.datetime.now().isoformat(sep=" ", timespec="milliseconds")
         self.starting_event_ready = []
         self.update_state("starting_event")
         self.ev_livetime = 0
@@ -410,11 +427,13 @@ class MainWindow(QMainWindow):
         Stop the event. Enter into compressing state. If the "Stop Run" button is pressed or the max number of events
         are reached, then it will enter into "stopping" state. Otherwise, it will start another event.
         """
+        self.event_end_time = datetime.datetime.now().isoformat(sep=" ", timespec="milliseconds")
         self.stopping_event_ready = []
         self.event_id += 1
+        self.event_livetime = self.event_timer.elapsed()
+        self.run_livetime += self.event_livetime
         self.signals.event_stopping.emit()
         self.update_state("stopping_event")
-        self.run_livetime += self.event_timer.elapsed()
 
     def stop_run_but_pressed(self):
         self.stopping_run = True
@@ -460,7 +479,6 @@ class MainWindow(QMainWindow):
             self.logger.info(f"Run control starting.")
         elif self.run_state == self.run_states["active"]:
             self.logger.info(f"Event {self.event_id} active.")
-            self.event_timer.start()
             stop_run_but_available = True
         elif self.run_state == self.run_states["starting_run"]:
             self.logger.info(f"Starting Run {self.run_id}.")

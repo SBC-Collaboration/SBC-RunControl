@@ -448,7 +448,7 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
          <enum>QTabWidget::Rounded</enum>
         </property>
         <property name="currentIndex">
-         <number>2</number>
+         <number>0</number>
         </property>
         <property name="documentMode">
          <bool>false</bool>
@@ -685,32 +685,6 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
                </layout>
               </item>
               <item>
-               <layout class="QHBoxLayout" name="horizontalLayout_6">
-                <property name="spacing">
-                 <number>3</number>
-                </property>
-                <property name="leftMargin">
-                 <number>0</number>
-                </property>
-                <property name="topMargin">
-                 <number>0</number>
-                </property>
-                <property name="rightMargin">
-                 <number>0</number>
-                </property>
-                <property name="bottomMargin">
-                 <number>0</number>
-                </property>
-                <item>
-                 <widget class="QPushButton" name="pushButton">
-                  <property name="text">
-                   <string>PushButton</string>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </item>
-              <item>
                <spacer name="verticalSpacer_3">
                 <property name="orientation">
                  <enum>Qt::Vertical</enum>
@@ -723,21 +697,330 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
                 </property>
                </spacer>
               </item>
+              <item>
+               <layout class="QGridLayout" name="gridLayout_3">
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>0</number>
+                </property>
+                <property name="spacing">
+                 <number>3</number>
+                </property>
+                <item row="2" column="1">
+                 <widget class="StatusLight" name="gen_status_amp2">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color: #ffffff;
+background-color: #969696;</string>
+                  </property>
+                  <property name="text">
+                   <string>SiPM Amp 2</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="1">
+                 <widget class="StatusLight" name="gen_status_cam2">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color: #ffffff;
+background-color: #969696;</string>
+                  </property>
+                  <property name="text">
+                   <string>Cam 2</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="0">
+                 <widget class="StatusLight" name="gen_status_amp1">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color: #ffffff;
+background-color: #969696;</string>
+                  </property>
+                  <property name="text">
+                   <string>SiPM Amp 1</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="2">
+                 <widget class="StatusLight" name="gen_status_caen">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color: #ffffff;
+background-color: #969696;</string>
+                  </property>
+                  <property name="text">
+                   <string>CAEN</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="0">
+                 <widget class="StatusLight" name="gen_status_cam1">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color: #ffffff;
+background-color: #969696;</string>
+                  </property>
+                  <property name="text">
+                   <string>Cam 1</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="4">
+                 <widget class="StatusLight" name="gen_status_trigger">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color: #ffffff;
+background-color: #969696;</string>
+                  </property>
+                  <property name="text">
+                   <string>Trigger Arduino</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="3">
+                 <widget class="StatusLight" name="gen_status_clock">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color: #ffffff;
+background-color: #969696;</string>
+                  </property>
+                  <property name="text">
+                   <string>Clock Arduino</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="5">
+                 <widget class="StatusLight" name="gen_status_position">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color: #ffffff;
+background-color: #969696;</string>
+                  </property>
+                  <property name="text">
+                   <string>Position Arduino</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="0">
+                 <widget class="StatusLight" name="gen_status_config">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color: #ffffff;
+background-color: #969696;</string>
+                  </property>
+                  <property name="text">
+                   <string>Config</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="2">
+                 <widget class="StatusLight" name="gen_status_cam3">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color: #ffffff;
+background-color: #969696;</string>
+                  </property>
+                  <property name="text">
+                   <string>Cam 3</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="3">
+                 <widget class="StatusLight" name="gen_status_gage">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color: #ffffff;
+background-color: #969696;</string>
+                  </property>
+                  <property name="text">
+                   <string>Gage</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="1">
+                 <widget class="StatusLight" name="gen_status_niusb">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color: #ffffff;
+background-color: #969696;</string>
+                  </property>
+                  <property name="text">
+                   <string>NI USB</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="2">
+                 <widget class="StatusLight" name="gen_status_plc">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color: #ffffff;
+background-color: #969696;</string>
+                  </property>
+                  <property name="text">
+                   <string>PLC</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="4">
+                 <widget class="StatusLight" name="gen_status_writer">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color: #ffffff;
+background-color: #969696;</string>
+                  </property>
+                  <property name="text">
+                   <string>Writer</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="3">
+                 <widget class="StatusLight" name="gen_status_sql">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color: #ffffff;
+background-color: #969696;</string>
+                  </property>
+                  <property name="text">
+                   <string>SQL</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
              </layout>
             </widget>
            </widget>
           </item>
          </layout>
-        </widget>
-        <widget class="QWidget" name="scint_tab">
-         <attribute name="title">
-          <string>Scintillation</string>
-         </attribute>
-        </widget>
-        <widget class="QWidget" name="acoustics_tab">
-         <attribute name="title">
-          <string>Acoustics</string>
-         </attribute>
         </widget>
         <widget class="QWidget" name="camera_tab">
          <attribute name="title">
@@ -833,7 +1116,7 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
                  </widget>
                 </item>
                 <item>
-                 <widget class="QLabel" name="cam1_status_light">
+                 <widget class="StatusLight" name="cam1_status_light">
                   <property name="styleSheet">
                    <string notr="true">color: rgb(255, 255, 255);
 background-color: rgb(150, 150, 150);</string>
@@ -847,7 +1130,7 @@ background-color: rgb(150, 150, 150);</string>
                  </widget>
                 </item>
                 <item>
-                 <widget class="QLabel" name="cam2_status_light">
+                 <widget class="StatusLight" name="cam2_status_light">
                   <property name="styleSheet">
                    <string notr="true">color: rgb(255, 255, 255);
 background-color: rgb(150, 150, 150);</string>
@@ -861,7 +1144,7 @@ background-color: rgb(150, 150, 150);</string>
                  </widget>
                 </item>
                 <item>
-                 <widget class="QLabel" name="cam3_status_light">
+                 <widget class="StatusLight" name="cam3_status_light">
                   <property name="styleSheet">
                    <string notr="true">color: rgb(255, 255, 255);
 background-color: rgb(150, 150, 150);</string>
@@ -1006,6 +1289,9 @@ background-color: rgb(150, 150, 150);</string>
                     <height>0</height>
                    </size>
                   </property>
+                  <property name="singleStep">
+                   <number>1</number>
+                  </property>
                  </widget>
                 </item>
                 <item>
@@ -1062,6 +1348,16 @@ background-color: rgb(150, 150, 150);</string>
            </widget>
           </item>
          </layout>
+        </widget>
+        <widget class="QWidget" name="scint_tab">
+         <attribute name="title">
+          <string>Scintillation</string>
+         </attribute>
+        </widget>
+        <widget class="QWidget" name="acoustics_tab">
+         <attribute name="title">
+          <string>Acoustics</string>
+         </attribute>
         </widget>
        </widget>
       </item>
@@ -1132,6 +1428,13 @@ background-color: rgb(150, 150, 150);</string>
    </property>
   </action>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>StatusLight</class>
+   <extends>QLabel</extends>
+   <header>ui.custom_widgets</header>
+  </customwidget>
+ </customwidgets>
  <resources>
   <include location="../resources/resources.qrc"/>
  </resources>

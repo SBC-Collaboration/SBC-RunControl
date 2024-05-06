@@ -25,3 +25,17 @@ class NoWheelDoubleSpinBox(QtWidgets.QDoubleSpinBox):
 class NoWheelComboBox(QtWidgets.QComboBox):
     def wheelEvent(self, event):
         event.ignore()
+
+
+class StatusLight(QtWidgets.QLabel):
+    def idle(self):
+        self.setStyleSheet("color: #FFFFFF;"
+                           "background-color: #969696;")
+
+    def working(self):
+        self.setStyleSheet("color: #303030;"
+                           "background-color: #FCBA03;")
+
+    def active(self):
+        self.setStyleSheet("color: #000000;"
+                           "background-color: #96BE25;")
