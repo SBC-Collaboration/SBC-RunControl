@@ -65,7 +65,7 @@ class Camera(QObject):
         self.logger.info(f"Starting camera {self.cam_name}")
         # make ssh connection
         self.client.connect(self.config["ip_addr"], username=self.username)
-        time.sleep(2)
+        time.sleep(3)
 
         # start executing command
         command = "cd /home/pi/RPi_CameraServers && python3 imdaq.py"

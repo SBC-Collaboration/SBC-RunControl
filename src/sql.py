@@ -61,10 +61,16 @@ class SQL(QObject):
                                   database=self.database, port=self.port)
         self.cursor = self.db.cursor()
 
+    @Slot()
     def close_connection(self):
         self.db.commit()
         self.cursor.close()
         self.db.close()
+
+    def deleteLater(self):
+        # overwrite delete method to close connections
+        self.close_connection()
+        super().deleteLater()
 
     def connect_and_execute(self, query):
         self.setup_connection()
@@ -79,7 +85,7 @@ class SQL(QObject):
                  f"VALUES(NULL,"
                         f"'{self.main.run_id}',"
                         f"{self.main.event_id},"
-                        f"{self.main.run_livetime/1000},"
+                        f"'{str(datetime.timedelta(milliseconds=self.main.run_livetime))}',"
                         f"'{self.main.ui.comment_edit.toPlainText()}',"
                         f"'',"
                         f"'random',"
@@ -97,7 +103,6 @@ class SQL(QObject):
                         f"NULL,"
                         f"'{json.dumps(self.config)}'"
                         f");")
-        print(query)
         self.cursor.execute(query)
         try:
             self.cursor.execute(query)
@@ -121,8 +126,8 @@ class SQL(QObject):
                  f"VALUES(NULL,"
                         f"'{self.main.run_id}',"
                         f"{self.main.event_id-1},"
-                        f"{self.main.event_livetime/1000},"
-                        f"{self.main.run_livetime/1000},"
+                        f"'{str(datetime.timedelta(milliseconds=self.main.event_livetime))}',"
+                        f"'{str(datetime.timedelta(milliseconds=self.main.run_livetime))}',"
                         f"{self.main.ui.pressure_setpoint_box.value()},"
                         f"NULL,"
                         f"1,"

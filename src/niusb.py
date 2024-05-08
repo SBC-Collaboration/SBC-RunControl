@@ -132,14 +132,38 @@ class NIUSB(QObject):
         self.event_started.emit("niusb")
 
         # check cameras ready
-        cam_ready = {}
-        for cam in ["cam1", "cam2", "cam3"]:
-            if self.main.config_class.run_config["cam"][cam]["enabled"]:
-                self.dev.write_pin(*self.reverse_config[f"comm_{cam}"], True)
-                while self.dev.read_pin(*self.reverse_config[f"state_{cam}"]):
-                    time.sleep(0.01)
-                self.logger.debug(f"{cam} is ready.")
-                self.event_started.emit(cam)
+        cam_ready = {"cam1": "idle", "cam2": "idle", "cam3": "idle"}
+        while "idle" in cam_ready.values() or "starting" in cam_ready.values():
+            for cam in cam_ready.keys():
+                if cam_ready[cam] == "disabled" or cam_ready[cam] == "ready":
+                    continue
+                if not self.main.config_class.run_config["cam"][cam]["enabled"]:
+                    cam_ready[cam] = "disabled"
+                    self.logger.debug(f"{cam} is disabled.")
+                elif cam_ready[cam] == "idle":
+                    # starting up send trigen to false and comm to true
+                    self.dev.write_pin(*self.reverse_config[f"trigen_{cam}"], False)
+                    self.dev.write_pin(*self.reverse_config[f"comm_{cam}"], True)
+                    cam_ready[cam] = "starting"
+                elif cam_ready[cam] == "starting":
+                    if self.dev.read_pin(*self.reverse_config[f"state_{cam}"]):
+                        cam_ready[cam] = "ready"
+                        self.logger.info(f"{cam} is ready.")
+                        self.event_started.emit(cam)
+
+        # wait for certain time before sending trig enable pin
+        cam_trig = {"cam1": False, "cam2": False, "cam3": False}
+        while False in cam_trig.values():
+            for cam in cam_trig.keys():
+                wait_time = self.main.config_class.run_config["cam"][cam]["trig_wait"]
+                if cam_trig[cam]:
+                    continue
+                elif cam_ready[cam] == "disabled":
+                    cam_trig[cam] = True
+                elif self.main.event_timer.elapsed() > wait_time * 1000:
+                    self.dev.write_pin(*self.reverse_config[f"trigen_{cam}"], True)
+                    self.logger.info(f"{cam} trigger is enabled.")
+                    cam_trig[cam] = True
 
     @Slot()
     def stop_event(self):
@@ -170,6 +194,7 @@ class NIUSB(QObject):
         for cam in ["cam1", "cam2", "cam3"]:
             if self.main.config_class.run_config["cam"][cam]["enabled"]:
                 self.dev.write_pin(*self.reverse_config[f"comm_{cam}"], False)
+                self.dev.write_pin(*self.reverse_config[f"trigen_{cam}"], False)
                 # camera using reverse logic
                 while not self.dev.read_pin(*self.reverse_config[f"state_{cam}"]):
                     time.sleep(0.01)

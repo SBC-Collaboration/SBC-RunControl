@@ -103,6 +103,7 @@ class MainWindow(QMainWindow):
 
         # set up run handling thread and the worker
         vars = self.__dict__
+        ui_vars = self.ui.__dict__
         for cam in ["cam1", "cam2", "cam3"]:
             vars[f"{cam}_worker"] = Camera(self, cam)
             vars[f"{cam}_worker"].camera_started.connect(self.starting_run_wait)
@@ -112,6 +113,7 @@ class MainWindow(QMainWindow):
             vars[f"{cam}_worker"].moveToThread(vars[f"{cam}_thread"])
             vars[f"{cam}_thread"].started.connect(vars[f"{cam}_worker"].run)
             self.signals.run_starting.connect(vars[f"{cam}_worker"].start_camera)
+            self.signals.run_starting.connect(ui_vars[f"gen_status_{cam}"].working)
             self.signals.run_stopping.connect(vars[f"{cam}_worker"].stop_camera)
             vars[f"{cam}_thread"].start()
             time.sleep(0.001)
@@ -282,11 +284,10 @@ class MainWindow(QMainWindow):
         elif self.run_state == self.run_states["starting_event"]:
             for module in self.starting_event_ready:
                 vars[f"gen_status_{module}"].active()
+            self.event_timer.start()
             if len(self.starting_event_ready) >= 2:
-                self.event_timer.start()
                 self.update_state("active")
         elif self.run_state == self.run_states["stopping_event"]:
-            print(f"stopping event: {self.stopping_event_ready}")
             if len(self.stopping_event_ready) >= 3:
                 self.start_event()
         elif self.run_state == self.run_states["stopping_run"]:
@@ -318,18 +319,22 @@ class MainWindow(QMainWindow):
         """
         A slot method to append ready module names to the list. When the length of the list reaches the threshold, the run can start.
         """
+        self.logger.info(f"Starting Run: {module} is complete")
         self.starting_run_ready.append(module)
 
     @Slot(str)
     def stopping_run_wait(self, module):
+        self.logger.info(f"Stopping Run: {module} is complete")
         self.stopping_run_ready.append(module)
 
     @Slot(str)
     def starting_event_wait(self, module):
+        self.logger.info(f"Starting Event: {module} is complete")
         self.starting_event_ready.append(module)
 
     @Slot(str)
     def stopping_event_wait(self, module):
+        self.logger.info(f"Stopping Event: {module} is complete")
         self.stopping_event_ready.append(module)
 
     def create_run_directory(self):
@@ -410,6 +415,7 @@ class MainWindow(QMainWindow):
             self.stop_run()
             return
 
+        self.event_timer.start()
         self.event_start_time = datetime.datetime.now().isoformat(sep=" ", timespec="milliseconds")
         self.starting_event_ready = []
         self.update_state("starting_event")
