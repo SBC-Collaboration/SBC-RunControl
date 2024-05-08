@@ -49,7 +49,7 @@
     <item row="0" column="0">
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>4</number>
+       <number>0</number>
       </property>
       <property name="tabsClosable">
        <bool>false</bool>
@@ -2278,7 +2278,7 @@
                  <enum>QAbstractSpinBox::UpDownArrows</enum>
                 </property>
                 <property name="suffix">
-                 <string>mV</string>
+                 <string> mV</string>
                 </property>
                </widget>
               </item>
@@ -2394,7 +2394,7 @@
                  <enum>QAbstractSpinBox::UpDownArrows</enum>
                 </property>
                 <property name="suffix">
-                 <string>mV</string>
+                 <string> mV</string>
                 </property>
                </widget>
               </item>
@@ -2462,7 +2462,7 @@
                  <enum>QAbstractSpinBox::UpDownArrows</enum>
                 </property>
                 <property name="suffix">
-                 <string>mV</string>
+                 <string> mV</string>
                 </property>
                </widget>
               </item>
@@ -2582,7 +2582,7 @@
                  <enum>QAbstractSpinBox::UpDownArrows</enum>
                 </property>
                 <property name="suffix">
-                 <string>mV</string>
+                 <string> mV</string>
                 </property>
                </widget>
               </item>
@@ -2610,7 +2610,7 @@
                  <enum>QAbstractSpinBox::UpDownArrows</enum>
                 </property>
                 <property name="suffix">
-                 <string>mV</string>
+                 <string> mV</string>
                 </property>
                </widget>
               </item>
@@ -2649,7 +2649,7 @@
                  <enum>QAbstractSpinBox::UpDownArrows</enum>
                 </property>
                 <property name="suffix">
-                 <string>mV</string>
+                 <string> mV</string>
                 </property>
                </widget>
               </item>
@@ -2714,7 +2714,7 @@
                  <enum>QAbstractSpinBox::UpDownArrows</enum>
                 </property>
                 <property name="suffix">
-                 <string>mV</string>
+                 <string> mV</string>
                 </property>
                 <property name="stepType">
                  <enum>QAbstractSpinBox::DefaultStepType</enum>
@@ -2735,7 +2735,7 @@
                  <enum>QAbstractSpinBox::UpDownArrows</enum>
                 </property>
                 <property name="suffix">
-                 <string>mV</string>
+                 <string> mV</string>
                 </property>
                </widget>
               </item>
@@ -3691,7 +3691,7 @@
                <enum>Qt::StrongFocus</enum>
               </property>
               <property name="suffix">
-               <string>s</string>
+               <string> s</string>
               </property>
               <property name="maximum">
                <double>1000.000000000000000</double>
@@ -3742,7 +3742,7 @@
                <enum>Qt::StrongFocus</enum>
               </property>
               <property name="suffix">
-               <string>s</string>
+               <string> s</string>
               </property>
               <property name="maximum">
                <double>1000.000000000000000</double>
@@ -3985,7 +3985,7 @@
                <enum>Qt::StrongFocus</enum>
               </property>
               <property name="suffix">
-               <string>s</string>
+               <string> s</string>
               </property>
               <property name="maximum">
                <double>1000.000000000000000</double>
@@ -4063,7 +4063,7 @@
            <property name="geometry">
             <rect>
              <x>0</x>
-             <y>-88</y>
+             <y>0</y>
              <width>776</width>
              <height>1194</height>
             </rect>
