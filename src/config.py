@@ -17,6 +17,7 @@ class Config(QObject):
         self.path = path
         self.config = {}
         self.run_config = {}  # A copy of config for the run
+        self.cam_config_saved = False  # flag for syncing
         self.logger = logging.getLogger("rc")
         self.timer = QTimer(self)
         self.timer.setInterval(100)
@@ -482,6 +483,8 @@ class Config(QObject):
             with open(cam_config["rc_config_path"], "w") as file:
                 json.dump(cam_config, file, indent=2)
             self.logger.debug(f"Configuration file saved for {cam}")
+
+        self.cam_config_saved = True
 
     @Slot()
     def stop_run(self):

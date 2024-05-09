@@ -8,6 +8,7 @@ import paramiko, pymysql
 import random
 import pandas as pd
 import logging
+import numpy as np
 import json
 from PySide6.QtCore import QTimer, QObject, Slot, Signal, QThread
 import time
@@ -78,6 +79,20 @@ class SQL(QObject):
         self.close_connection
 
     @Slot()
+    def retrieve_run_id(self, date=""):
+        run_query = f"SELECT run_id FROM {self.run_table} WHERE run_ID LIKE '{date}%'" if date \
+            else f"SELECT run_id FROM {self.run_table}"
+        self.cursor.execute(run_query)
+        runs = set(np.array(self.cursor.fetchall())[:,0])
+
+        # now do the event table
+        event_query = f"SELECT run_id FROM {self.event_table} WHERE run_ID LIKE '{date}%'" if date \
+            else f"SELECT run_id FROM {self.event_table}"
+        self.cursor.execute(event_query)
+        more_runs = set(np.array(self.cursor.fetchall())[:,0])
+        return runs.union(more_runs)
+
+    @Slot()
     def insert_run_data(self):
         self.db.ping()  # ping mysql server to make sure it's alive
         # TODO: data validation steps ...
@@ -113,6 +128,8 @@ class SQL(QObject):
     @Slot()
     def start_run(self):
         self.config = self.main.config_class.run_config
+        runs = self.retrieve_run_id("20240508")
+        print(runs)
         self.run_started.emit("sql")
 
     @Slot()
@@ -122,10 +139,14 @@ class SQL(QObject):
 
     @Slot()
     def stop_event(self):
+        self.main.trigff_mutex.lock()
+        self.main.trigff_wait.wait(self.main.trigff_mutex)
+        self.main.trigff_mutex.unlock()
+
         query = (f"INSERT INTO {self.event_table} "
                  f"VALUES(NULL,"
                         f"'{self.main.run_id}',"
-                        f"{self.main.event_id-1},"
+                        f"{self.main.event_id},"
                         f"'{str(datetime.timedelta(milliseconds=self.main.event_livetime))}',"
                         f"'{str(datetime.timedelta(milliseconds=self.main.run_livetime))}',"
                         f"{self.main.ui.pressure_setpoint_box.value()},"

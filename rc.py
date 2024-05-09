@@ -3,7 +3,7 @@
 # os.system('for ui in ui/*.ui; do name="${ui%%.*}"; pyside6-uic $ui -o "$name.py"; done')
 
 from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog
-from PySide6.QtCore import QObject, QThread, Signal, Slot, QElapsedTimer, QTimer, Qt
+from PySide6.QtCore import QObject, QThread, Signal, Slot, QElapsedTimer, QTimer, Qt, QMutex, QWaitCondition
 from PySide6.QtGui import QPixmap
 from ui.mainwindow import Ui_MainWindow
 from src.config import Config
@@ -184,6 +184,12 @@ class MainWindow(QMainWindow):
         self.signals.run_stopping.connect(self.sql_worker.stop_run)
         self.sql_thread.start()
 
+        # establish mutex and wait conditions for syncing
+        self.config_mutex = QMutex()
+        self.config_wait = QWaitCondition()
+        self.trigff_mutex = QMutex()
+        self.trigff_wait = QWaitCondition()
+
     # TODO: handle closing during run
     def closeEvent(self, event):
         """
@@ -279,7 +285,7 @@ class MainWindow(QMainWindow):
             # change status lights
             for module in self.starting_run_ready:
                 vars[f"gen_status_{module}"].active()
-            if len(self.starting_run_ready) >= 4:
+            if len(self.starting_run_ready) >= 5:
                 self.start_event()
         elif self.run_state == self.run_states["starting_event"]:
             for module in self.starting_event_ready:
@@ -376,7 +382,7 @@ class MainWindow(QMainWindow):
                 vars[v].idle()
 
         # reset event number and livetimes
-        self.event_id = 0
+        self.event_id = -1
         self.ev_livetime = 0
         self.run_livetime = 0
         self.ui.event_id_edit.setText(f"{self.event_id:2d}")
@@ -406,6 +412,7 @@ class MainWindow(QMainWindow):
 
     def start_event(self):
         # check if stopping run now or start new event
+        self.event_id+=1
         if (
                 self.event_id
                 >= self.config_class.config["general"]["max_num_evs"]
@@ -435,7 +442,6 @@ class MainWindow(QMainWindow):
         """
         self.event_end_time = datetime.datetime.now().isoformat(sep=" ", timespec="milliseconds")
         self.stopping_event_ready = []
-        self.event_id += 1
         self.event_livetime = self.event_timer.elapsed()
         self.run_livetime += self.event_livetime
         self.signals.event_stopping.emit()

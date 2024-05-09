@@ -131,6 +131,10 @@ class NIUSB(QObject):
         self.dev.write_pin(*self.reverse_config["reset"], 0)
         self.event_started.emit("niusb")
 
+        # sync with config module
+        while not self.main.config_class.cam_config_saved:
+            time.sleep(0.001)
+
         # check cameras ready
         cam_ready = {"cam1": "idle", "cam2": "idle", "cam3": "idle"}
         while "idle" in cam_ready.values() or "starting" in cam_ready.values():
@@ -148,6 +152,7 @@ class NIUSB(QObject):
                 elif cam_ready[cam] == "starting":
                     if self.dev.read_pin(*self.reverse_config[f"state_{cam}"]):
                         cam_ready[cam] = "ready"
+                        self.dev.write_pin(*self.reverse_config[f"comm_{cam}"], False)
                         self.logger.info(f"{cam} is ready.")
                         self.event_started.emit(cam)
 
@@ -187,7 +192,7 @@ class NIUSB(QObject):
         else:
             self.logger.debug(f"First fault pin for the event is {self.ff_pin}")
         self.trigger_ff.emit(self.ff_pin)
-        time.sleep(1)
+        self.main.trigff_wait.wakeAll()
         self.event_stopped.emit("niusb")
 
         cam_ready = {}
@@ -201,6 +206,8 @@ class NIUSB(QObject):
                     # print("cam not ready")
                 self.logger.debug(f"{cam} is complete.")
                 self.event_stopped.emit(cam)
+
+        self.main.config_class.cam_config_saved = False
 
     @Slot()
     def stop_run(self):
