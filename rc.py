@@ -348,19 +348,14 @@ class MainWindow(QMainWindow):
             ):
                 self.signals.send_trigger.emit("Timeout")
         elif self.run_state == self.run_states["starting_run"]:
-            # change status lights
-            for module in self.starting_run_ready:
-                vars[f"gen_status_{module}"].active()
-            if len(self.starting_run_ready) >= 5:
+            if len(self.starting_run_ready) >= 10:
                 self.start_event()
         elif self.run_state == self.run_states["starting_event"]:
-            for module in self.starting_event_ready:
-                vars[f"gen_status_{module}"].active()
             self.event_timer.start()
-            if len(self.starting_event_ready) >= 2:
+            if len(self.starting_event_ready) >= 4:
                 self.update_state("active")
         elif self.run_state == self.run_states["stopping_event"]:
-            if len(self.stopping_event_ready) >= 3:
+            if len(self.stopping_event_ready) >= 4:
                 self.start_event()
         elif self.run_state == self.run_states["stopping_run"]:
             if len(self.stopping_run_ready) >= 1:
@@ -391,22 +386,65 @@ class MainWindow(QMainWindow):
         """
         A slot method to append ready module names to the list. When the length of the list reaches the threshold, the run can start.
         """
+        vars = self.ui.__dict__
+        if "disabled" in module:
+            name = re.sub(r'^.*?-', "", module)
+            self.logger.info(f"Starting Run: {name} is disabled")
+            vars[f"gen_status_{name}"].idle()
+            self.starting_run_ready.append(module)
+            return
+
         self.logger.info(f"Starting Run: {module} is complete")
+        # change status lights
+
+        vars[f"gen_status_{module}"].active()
         self.starting_run_ready.append(module)
 
     @Slot(str)
     def stopping_run_wait(self, module):
+        vars = self.ui.__dict__
+        if "disabled" in module:
+            name = re.sub(r'^.*?-', "", module)
+            self.logger.info(f"Stopping Run: {name} is disabled")
+            vars[f"gen_status_{name}"].idle()
+            self.stopping_run_ready.append(module)
+            return
+
         self.logger.info(f"Stopping Run: {module} is complete")
+        # change status lights
+        vars[f"gen_status_{module}"].idle()
         self.stopping_run_ready.append(module)
 
     @Slot(str)
     def starting_event_wait(self, module):
+        vars = self.ui.__dict__
+        if "disabled" in module:
+            name = re.sub(r'^.*?-', "", module)
+            self.logger.info(f"Starting Event: {name} is disabled")
+            vars[f"gen_status_{name}"].idle()
+            self.starting_event_ready.append(module)
+            return
+
         self.logger.info(f"Starting Event: {module} is complete")
+
+        # change status lights
+        vars[f"gen_status_{module}"].active()
         self.starting_event_ready.append(module)
 
     @Slot(str)
     def stopping_event_wait(self, module):
+        vars = self.ui.__dict__
+        if "disabled" in module:
+            name = re.sub(r'^.*?-', "", module)
+            self.logger.info(f"Stopping Event: {name} is disabled")
+            vars[f"gen_status_{name}"].idle()
+            self.stopping_event_ready.append(module)
+            return
+
         self.logger.info(f"Stopping Event: {module} is complete")
+
+        # change status lights
+        vars[f"gen_status_{module}"].idle()
         self.stopping_event_ready.append(module)
 
     def create_run_directory(self):
