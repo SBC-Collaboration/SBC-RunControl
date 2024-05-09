@@ -516,7 +516,7 @@ class MainWindow(QMainWindow):
 
     def start_event(self):
         # check if stopping run now or start new event
-        self.event_id+=1
+        self.event_id += 1
         if (
                 self.event_id
                 >= self.config_class.config["general"]["max_num_evs"]
@@ -537,6 +537,11 @@ class MainWindow(QMainWindow):
         self.config_class.start_event()
         if not os.path.exists(self.event_dir):
             os.mkdir(self.event_dir)
+
+        current_path = os.path.join(self.config_class.config["general"]["data_dir"], "current_event")
+        if os.path.islink(current_path):
+            os.unlink(current_path)
+        os.symlink(self.event_dir, current_path)
         self.signals.event_starting.emit()
 
     def stop_event(self):
