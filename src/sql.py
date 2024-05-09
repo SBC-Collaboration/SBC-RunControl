@@ -93,52 +93,57 @@ class SQL(QObject):
         return runs.union(more_runs)
 
     @Slot()
-    def insert_run_data(self):
-        self.db.ping()  # ping mysql server to make sure it's alive
-        # TODO: data validation steps ...
-        query = (f"INSERT INTO {self.run_table} "
-                 f"VALUES(NULL,"
-                        f"'{self.main.run_id}',"
-                        f"{self.main.event_id},"
-                        f"'{str(datetime.timedelta(milliseconds=self.main.run_livetime))}',"
-                        f"'{self.main.ui.comment_edit.toPlainText()}',"
-                        f"'',"
-                        f"'random',"
-                        f"{self.main.ui.pressure_setpoint_box.value()},"
-                        f"NULL,"
-                        f"NULL,"
-                        f"NULL,"
-                        f"'{self.main.run_start_time}',"
-                        f"'{self.main.run_end_time}',"
-                        f"'{self.main.ui.source_box.currentText()}',"
-                        f"'{self.main.ui.source_location_box.currentText()}',"
-                        f"NULL,"
-                        f"NULL,"
-                        f"NULL,"
-                        f"NULL,"
-                        f"'{json.dumps(self.config)}'"
-                        f");")
-        self.cursor.execute(query)
-        try:
-            self.cursor.execute(query)
-        except:
-            self.logger.error(f"SQL data insertion for run {self.main.run_id} failed.")
-        self.db.commit()
-
-    @Slot()
     def start_run(self):
         self.config = self.main.config_class.run_config
         runs = self.retrieve_run_id("20240508")
-        print(runs)
+
+        self.db.ping()  # ping mysql server to make sure it's alive
+        # TODO: data validation steps ...
+        query = (f"INSERT INTO {self.run_table} "
+                 f"VALUES(NULL, "
+                        f"'{self.main.run_id}', "
+                        f"0, "
+                        f"'00:00:00.000', "
+                        f"'{self.main.ui.comment_edit.toPlainText()}', "
+                        f"'', "
+                        f"'random', "
+                        f"{self.main.ui.pressure_setpoint_box.value()}, "
+                        f"NULL, "
+                        f"NULL, "
+                        f"NULL, "
+                        f"'{self.main.run_start_time}', "
+                        f"'{self.main.run_start_time}', "
+                        f"'{self.main.ui.source_box.currentText()}', "
+                        f"'{self.main.ui.source_location_box.currentText()}', "
+                        f"NULL, "
+                        f"NULL, "
+                        f"NULL, "
+                        f"NULL, "
+                        f"'{json.dumps(self.config)}'"
+                        f");")
+        self.cursor.execute(query)
+        self.db.commit()
+
         self.run_started.emit("sql")
 
     @Slot()
     def stop_run(self):
-        self.insert_run_data()
         self.run_stopped.emit("sql")
 
     @Slot()
     def stop_event(self):
+        self.db.ping()  # ping mysql server to make sure it's alive
+        # TODO: data validation steps ...
+        query = (f"UPDATE {self.run_table} "
+                 f"SET num_events = {self.main.event_id}, "
+                     f"run_livetime = '{str(datetime.timedelta(milliseconds=self.main.run_livetime))}', "
+                     f"comment = '{self.main.ui.comment_edit.toPlainText()}', "
+                     f"end_time = '{self.main.event_end_time}', "
+                     f"source1_ID = '{self.main.ui.source_box.currentText()}', "
+                     f"source1_location = '{self.main.ui.source_location_box.currentText()}' "
+                 f"WHERE run_ID = '{self.main.run_id}';")
+        self.cursor.execute(query)
+
         self.main.trigff_mutex.lock()
         self.main.trigff_wait.wait(self.main.trigff_mutex)
         self.main.trigff_mutex.unlock()
