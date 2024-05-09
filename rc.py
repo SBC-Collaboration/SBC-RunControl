@@ -16,6 +16,7 @@ from src.niusb import NIUSB
 from src.writer import Writer
 import logging
 from enum import Enum
+import subprocess
 import datetime
 import time
 import re
@@ -259,6 +260,71 @@ class MainWindow(QMainWindow):
         else:
             label.clear()
 
+
+    def update_state(self, s):
+        """
+        The update_state function will change the self.run_state variable to the current state, and also change the GUI
+        to reflect it. The "Start Run" and "Stop Run" buttons are enabled and disabled accordingly. The states are:
+        - "Preparing": The program is starting up. Initializing necessary variables.
+        - Idle: The program is idling. Settings can be changed and a new run can be started
+        - Starting: The run is starting. A configuration file is used for the entire run.
+        - Stopping: The running is stopping.
+        - Expanding: An event is starting. The pump is expanding the chamber and all components are starting up,
+        ready to take data
+        - Compressing: The event is stopping. The pump is compressing back to non-superheated state, and all components
+        are saving data to file.
+        - Active: All components are actively taking data to buffer.
+        """
+        self.run_state = self.run_states[s]
+        self.ui.run_state_label.setText(self.run_state.name)
+        run_state_colors = [
+            "lightgrey",
+            "khaki",
+            "lightgreen",
+            "lightskyblue",
+            "lightpink",
+            "lightblue",
+            "lightsalmon",
+        ]
+        self.ui.run_state_label.setStyleSheet(
+            f"background-color: {run_state_colors[self.run_state.value-1]}"
+        )
+
+        start_run_but_available = False
+        stop_run_but_available = False
+
+        self.ui.stop_run_but.setEnabled(False)
+        if self.run_state == self.run_states["idle"]:
+            self.logger.info(f"Entering into Idle state.")
+            start_run_but_available = True
+        elif self.run_state == self.run_states["preparing"]:
+            self.logger.info(f"Run control starting.")
+        elif self.run_state == self.run_states["active"]:
+            self.logger.info(f"Event {self.event_id} active.")
+            stop_run_but_available = True
+        elif self.run_state == self.run_states["starting_run"]:
+            self.logger.info(f"Starting Run {self.run_id}.")
+            stop_run_but_available = True
+        elif self.run_state == self.run_states["stopping_run"]:
+            self.logger.info(f"Stopping Run {self.run_id}.")
+        elif self.run_state == self.run_states["starting_event"]:
+            self.logger.info(f"Event {self.event_id} starting")
+            stop_run_but_available = True
+        elif self.run_state == self.run_states["stopping_event"]:
+            self.logger.info(f"Event {self.event_id} stopping")
+            stop_run_but_available = True
+        else:
+            pass
+
+        if start_run_but_available:
+            self.ui.start_run_but.setEnabled(True)
+        else:
+            self.ui.start_run_but.setEnabled(False)
+        if stop_run_but_available and not self.stopping_run:
+            self.ui.stop_run_but.setEnabled(True)
+        else:
+            self.ui.stop_run_but.setEnabled(False)
+
     # event loop
     @Slot()
     def update(self):
@@ -451,72 +517,14 @@ class MainWindow(QMainWindow):
         self.stopping_run = True
         self.ui.stop_run_but.setEnabled(False)
 
-    def update_state(self, s):
-        """
-        The update_state function will change the self.run_state variable to the current state, and also change the GUI
-        to reflect it. The "Start Run" and "Stop Run" buttons are enabled and disabled accordingly. The states are:
-        - "Preparing": The program is starting up. Initializing necessary variables.
-        - Idle: The program is idling. Settings can be changed and a new run can be started
-        - Starting: The run is starting. A configuration file is used for the entire run.
-        - Stopping: The running is stopping.
-        - Expanding: An event is starting. The pump is expanding the chamber and all components are starting up,
-        ready to take data
-        - Compressing: The event is stopping. The pump is compressing back to non-superheated state, and all components
-        are saving data to file.
-        - Active: All components are actively taking data to buffer.
-        """
-        self.run_state = self.run_states[s]
-        self.ui.run_state_label.setText(self.run_state.name)
-        run_state_colors = [
-            "lightgrey",
-            "khaki",
-            "lightgreen",
-            "lightskyblue",
-            "lightpink",
-            "lightblue",
-            "lightsalmon",
-        ]
-        self.ui.run_state_label.setStyleSheet(
-            f"background-color: {run_state_colors[self.run_state.value-1]}"
-        )
-
-        start_run_but_available = False
-        stop_run_but_available = False
-
-        self.ui.stop_run_but.setEnabled(False)
-        if self.run_state == self.run_states["idle"]:
-            self.logger.info(f"Entering into Idle state.")
-            start_run_but_available = True
-        elif self.run_state == self.run_states["preparing"]:
-            self.logger.info(f"Run control starting.")
-        elif self.run_state == self.run_states["active"]:
-            self.logger.info(f"Event {self.event_id} active.")
-            stop_run_but_available = True
-        elif self.run_state == self.run_states["starting_run"]:
-            self.logger.info(f"Starting Run {self.run_id}.")
-            stop_run_but_available = True
-        elif self.run_state == self.run_states["stopping_run"]:
-            self.logger.info(f"Stopping Run {self.run_id}.")
-        elif self.run_state == self.run_states["starting_event"]:
-            self.logger.info(f"Event {self.event_id} starting")
-            stop_run_but_available = True
-        elif self.run_state == self.run_states["stopping_event"]:
-            self.logger.info(f"Event {self.event_id} stopping")
-            stop_run_but_available = True
-        else:
-            pass
-
-        if start_run_but_available:
-            self.ui.start_run_but.setEnabled(True)
-        else:
-            self.ui.start_run_but.setEnabled(False)
-        if stop_run_but_available and not self.stopping_run:
-            self.ui.stop_run_but.setEnabled(True)
-        else:
-            self.ui.stop_run_but.setEnabled(False)
-
     def sw_trigger(self):
         self.signals.send_trigger.emit("Software")
+
+    def open_data_folder(self):
+        path = self.run_dir if "run_dir" in self.__dict__ \
+            else self.config_class.config["general"]["data_dir"]
+        subprocess.Popen(["nemo", path])
+        self.logger.info(f"Opened data folder: {path}")
 
 
 if __name__ == "__main__":
