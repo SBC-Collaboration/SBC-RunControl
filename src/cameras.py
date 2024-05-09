@@ -45,7 +45,7 @@ class Camera(QObject):
         host = self.config["ip_addr"]
 
         # ping with 1 packet, and 1s timeout
-        if not subprocess.call(f"ping -c 1 -W 1 {host}", shell=True):
+        if not subprocess.call(["ping", "-c", "1", "-W", "1", host]):
             self.logger.debug(f"Camera {self.cam_name} connected.")
         else:
             self.logger.error(f"Camera {self.cam_name} at {host} not connected.")
@@ -57,7 +57,7 @@ class Camera(QObject):
         self.config = self.main.config_class.run_config["cam"][self.cam_name]
 
         if not self.config["enabled"]:
-            self.logger.info(f"Camera {self.cam_name} disabled.")
+            self.camera_started.emit(f"disabled-{self.cam_name}")
             return
         else:
             self.test_rpi()
@@ -67,12 +67,20 @@ class Camera(QObject):
         # make ssh connection
         self.client.connect(self.config["ip_addr"], username=self.username)
 
+        while not self.main.niusb_worker.output_initialized:
+            time.sleep(0.01)
+
         # start executing command
         command = "cd /home/pi/RPi_CameraServers && python3 imdaq.py"
-        transport = self.client.get_transport()
-        channel = transport.open_session()
-        channel.exec_command(command)
-        self.camera_started.emit(self.cam_name)
+        stdin, stdout, stderr = self.client.exec_command(command, get_pty=True)
+
+        for line in stdout:
+            self.logger.debug(line.rstrip("\r\n"))
+            if "Image acquisition started" in line:
+                self.camera_started.emit(self.cam_name)
+
+        self.client.close()
+        self.logger.debug(f"Camera {self.cam_name} closed.")
 
     @Slot()
     def stop_camera(self):
