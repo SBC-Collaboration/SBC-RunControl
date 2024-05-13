@@ -44,11 +44,24 @@ class Config(QObject):
         ui.max_ev_time_box.setValue(general_config["max_ev_time"])
         ui.max_num_ev_box.setValue(general_config["max_num_evs"])
 
+        pressure_config = self.config["general"]["pressure"]
+        if pressure_config["mode"] == "random":
+            ui.p_random_but.setChecked(True)
+        elif pressure_config["mode"] == "cycle":
+            ui.p_cycle_but.setChecked(True)
+        elif pressure_config["mode"] == "interpolate":
+            ui.p_interpolate_but.setChecked(True)
+        else:
+            self.logger.error("Invalid pressure mode.")
+        for i in range(1,7):
+            profile = pressure_config[f"profile{i}"]
+            widgets[f"pressure{i}_enable"].setChecked(profile["enabled"])
+            widgets[f"pressure{i}_set"].setValue(profile["setpoint"])
+            widgets[f"pressure{i}_high"].setValue(profile["setpoint_high"])
+            widgets[f"pressure{i}_slope"].setValue(profile["slope"])
+            widgets[f"pressure{i}_period"].setValue(profile["period"])
+
         sql_config = self.config["general"]["sql"]
-        ui.sql_ssh_host_edit.setText(sql_config["ssh_host"])
-        ui.sql_ssh_port_box.setValue(sql_config["ssh_port"])
-        ui.sql_ssh_user_edit.setText(sql_config["ssh_user"])
-        ui.sql_ssh_pkey_edit.setText(sql_config["ssh_pkey"])
         ui.sql_hostname_edit.setText(sql_config["hostname"])
         ui.sql_port_box.setValue(sql_config["port"])
         ui.sql_user_edit.setText(sql_config["user"])
@@ -103,6 +116,7 @@ class Config(QObject):
             widgets[f"caen_g0_offset_{ch}"].setValue(caen_g0_config["offsets"][ch])
 
         acous_config = self.config["acous"]
+
 
         cam_config = self.config["cam"]
         for cam in ["cam1", "cam2", "cam3"]:
@@ -197,12 +211,36 @@ class Config(QObject):
     def apply_config(self, ui):
         widgets = ui.__dict__
 
+        # get mode from radio buttons
+        if ui.p_random_but.isChecked():
+            mode = "random"
+        elif ui.p_cycle_but.isChecked():
+            mode = "cycle"
+        elif ui.p_interpolate_but.isChecked():
+            mode = "interpolate"
+        else:
+            self.logger.error("No pressure mode selected.")
+            mode = ""
+        # check at least one profile is enabled
+        enabled_profiles = 0
+
+        pressure_config = {
+            "mode": mode,
+        }
+        for i in range(1,7):
+            profile = {}
+            profile["enabled"] = widgets[f"pressure{i}_enable"].isChecked()
+            if profile["enabled"]: enabled_profiles += 1
+            profile["setpoint"] = widgets[f"pressure{i}_set"].value()
+            profile["setpoint_high"] = widgets[f"pressure{i}_high"].value()
+            profile["slope"] = widgets[f"pressure{i}_slope"].value()
+            profile["period"] = widgets[f"pressure{i}_period"].value()
+            pressure_config[f"profile{i}"] = profile
+        if enabled_profiles <= 0:
+            self.logger.error("No pressure profile is enabled.")
+
         # apply general config
         sql_config = {
-            "ssh_host": ui.sql_ssh_host_edit.text(),
-            "ssh_port": ui.sql_ssh_port_box.value(),
-            "ssh_user": ui.sql_ssh_user_edit.text(),
-            "ssh_pkey": ui.sql_ssh_pkey_edit.text(),
             "hostname": ui.sql_hostname_edit.text(),
             "port": ui.sql_port_box.value(),
             "user": ui.sql_user_edit.text(),
@@ -218,6 +256,7 @@ class Config(QObject):
             "data_dir": ui.data_dir_edit.text(),
             "max_ev_time": ui.max_ev_time_box.value(),
             "max_num_evs": ui.max_num_ev_box.value(),
+            "pressure": pressure_config,
             "sql": sql_config
         }
 
@@ -269,7 +308,7 @@ class Config(QObject):
             "offsets": [widgets[f"caen_g0_offset_{ch}"].value() for ch in range(8)],
         }
 
-        acous_general_config = {
+        acous_config = {
             "sample_rate": ui.acous_sample_rate_box.currentText(),
             "pre_trig_len": ui.acous_pre_trig_box.value(),
             "post_trig_len": ui.acous_post_trig_box.value(),
@@ -277,72 +316,18 @@ class Config(QObject):
             "trig_delay": ui.acous_trig_delay_box.value(),
         }
 
-        acous_ch_config = {
-            "ch1": {
-                "enabled": ui.acous_enable_ch1.isChecked(),
-                "range": ui.acous_range_ch1.value(),
-                "offset": ui.acous_dc_offset_ch1.value(),
-                "trig": ui.acous_trig_ch1.isChecked(),
-                "polarity": ui.acous_polarity_ch1.currentText(),
-                "threshold": ui.acous_threshold_ch1.value(),
-            },
-            "ch2": {
-                "enabled": ui.acous_enable_ch2.isChecked(),
-                "range": ui.acous_range_ch2.value(),
-                "offset": ui.acous_dc_offset_ch2.value(),
-                "trig": ui.acous_trig_ch2.isChecked(),
-                "polarity": ui.acous_polarity_ch2.currentText(),
-                "threshold": ui.acous_threshold_ch2.value(),
-            },
-            "ch3": {
-                "enabled": ui.acous_enable_ch3.isChecked(),
-                "range": ui.acous_range_ch3.value(),
-                "offset": ui.acous_dc_offset_ch3.value(),
-                "trig": ui.acous_trig_ch3.isChecked(),
-                "polarity": ui.acous_polarity_ch3.currentText(),
-                "threshold": ui.acous_threshold_ch3.value(),
-            },
-            "ch4": {
-                "enabled": ui.acous_enable_ch4.isChecked(),
-                "range": ui.acous_range_ch4.value(),
-                "offset": ui.acous_dc_offset_ch4.value(),
-                "trig": ui.acous_trig_ch4.isChecked(),
-                "polarity": ui.acous_polarity_ch4.currentText(),
-                "threshold": ui.acous_threshold_ch4.value(),
-            },
-            "ch5": {
-                "enabled": ui.acous_enable_ch5.isChecked(),
-                "range": ui.acous_range_ch5.value(),
-                "offset": ui.acous_dc_offset_ch5.value(),
-                "trig": ui.acous_trig_ch5.isChecked(),
-                "polarity": ui.acous_polarity_ch5.currentText(),
-                "threshold": ui.acous_threshold_ch5.value(),
-            },
-            "ch6": {
-                "enabled": ui.acous_enable_ch6.isChecked(),
-                "range": ui.acous_range_ch6.value(),
-                "offset": ui.acous_dc_offset_ch6.value(),
-                "trig": ui.acous_trig_ch6.isChecked(),
-                "polarity": ui.acous_polarity_ch6.currentText(),
-                "threshold": ui.acous_threshold_ch6.value(),
-            },
-            "ch7": {
-                "enabled": ui.acous_enable_ch7.isChecked(),
-                "range": ui.acous_range_ch7.value(),
-                "offset": ui.acous_dc_offset_ch7.value(),
-                "trig": ui.acous_trig_ch7.isChecked(),
-                "polarity": ui.acous_polarity_ch7.currentText(),
-                "threshold": ui.acous_threshold_ch7.value(),
-            },
-            "ch8": {
-                "enabled": ui.acous_enable_ch8.isChecked(),
-                "range": ui.acous_range_ch8.value(),
-                "offset": ui.acous_dc_offset_ch8.value(),
-                "trig": ui.acous_trig_ch8.isChecked(),
-                "polarity": ui.acous_polarity_ch8.currentText(),
-                "threshold": ui.acous_threshold_ch8.value(),
-            },
-        }
+        for i in range(1,9):
+            ch_config = {}
+            ch = f"ch{i}"
+            ch_config["enabled"] = widgets[f"acous_enable_{ch}"].isChecked()
+            ch_config["range"] = widgets[f"acous_range_{ch}"].currentText()
+            ch_config["offset"] = widgets[f"acous_offset_{ch}"].value()
+            ch_config["impedance"] = widgets[f"acous_impedance_{ch}"].currentText()
+            ch_config["coupling"] = widgets[f"acous_coupling_{ch}"].currentText()
+            ch_config["trig"] = widgets[f"acous_trig_{ch}"].isChecked()
+            ch_config["slope"] = widgets[f"acous_slope_{ch}"].currentText()
+            ch_config["threshold"] = widgets[f"acous_threshold_{ch}"].value()
+            acous_config[ch] = ch_config
 
         cam_config = {}
         for cam in ["cam1", "cam2", "cam3"]:
@@ -422,7 +407,7 @@ class Config(QObject):
                 "caen": caen_config,
                 "caen_g0": caen_g0_config,
             },
-            "acous": {"general": acous_general_config, "per_channel": acous_ch_config},
+            "acous": acous_config,
             "cam": cam_config,
             "dio": {"trigger": trigger_config,
                     "clock": clock_config,
