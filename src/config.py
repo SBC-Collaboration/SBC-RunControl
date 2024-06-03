@@ -108,13 +108,14 @@ class Config(QObject):
         ui.caen_ext_trig_box.setCurrentText(caen_config["ext_trig"])
         ui.caen_sw_trig_box.setCurrentText(caen_config["sw_trig"])
 
-        caen_g0_config = self.config["scint"]["caen_g0"]
-        ui.caen_g0_enable_box.setChecked(caen_g0_config["enabled"])
-        ui.caen_g0_thres_box.setValue(caen_g0_config["threshold"])
-        for ch in range(8):
-            widgets[f"caen_g0_trig_mask_{ch}"].setChecked(caen_g0_config["trig_mask"][ch])
-            widgets[f"caen_g0_acq_mask_{ch}"].setChecked(caen_g0_config["acq_mask"][ch])
-            widgets[f"caen_g0_offset_{ch}"].setValue(caen_g0_config["offsets"][ch])
+        for group in ["g0", "g1", "g2", "g3"]:
+            group_config = self.config["scint"][f"caen_{group}"]
+            widgets[f"caen_{group}_enable_box"].setChecked(group_config["enabled"])
+            widgets[f"caen_{group}_thres_box"].setValue(group_config["threshold"])
+            for ch in range(8):
+                widgets[f"caen_{group}_trig_mask_{ch}"].setChecked(group_config["trig_mask"][ch])
+                widgets[f"caen_{group}_acq_mask_{ch}"].setChecked(group_config["acq_mask"][ch])
+                widgets[f"caen_{group}_offset_{ch}"].setValue(group_config["offsets"][ch])
 
         acous_config = self.config["acous"]
 
@@ -293,6 +294,7 @@ class Config(QObject):
             "ext_trig": ui.caen_ext_trig_box.currentText(),
             "sw_trig": ui.caen_sw_trig_box.currentText(),
         }
+
 
         caen_g0_config = {
             "enabled": ui.caen_g0_enable_box.isChecked(),
@@ -485,6 +487,15 @@ class Config(QObject):
             if not ino_config == config_temp:
                 with open(json_file, "w") as file:
                     json.dump(ino_config, file, indent=2)
+
+        # save camera json files
+        for cam in ["cam1", "cam2", "cam3"]:
+            cam_config = copy.deepcopy(self.run_config["cam"][cam])
+            if not cam_config["enabled"]:
+                continue
+            with open(cam_config["rc_config_path"], "w") as file:
+                json.dump(cam_config, file, indent=2)
+            self.logger.debug(f"Configuration file saved for {cam}")
 
         self.logger.info(f"Configuration saved to file for run {self.main.run_id}.")
         self.run_config_saved.emit()

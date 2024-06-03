@@ -3,13 +3,54 @@
     "config_path": "/home/sbc/RunControl/config.json",
     "log_path": "/home/sbc/RunControl/logs/rc.log",
     "data_dir": "/home/sbc/RunControl/run-data",
-    "max_ev_time": 1000.0,
-    "max_num_evs": 500,
+    "max_ev_time": 100.0,
+    "max_num_evs": 50,
+    "pressure": {
+      "mode": "random",
+      "profile1": {
+        "enabled": true,
+        "setpoint": 2.0,
+        "setpoint_high": 2.2,
+        "slope": 0.0,
+        "period": -1.0
+      },
+      "profile2": {
+        "enabled": true,
+        "setpoint": 3.0,
+        "setpoint_high": 0.0,
+        "slope": 0.0,
+        "period": -1.0
+      },
+      "profile3": {
+        "enabled": true,
+        "setpoint": 4.0,
+        "setpoint_high": 0.0,
+        "slope": 0.0,
+        "period": -1.0
+      },
+      "profile4": {
+        "enabled": true,
+        "setpoint": 5.0,
+        "setpoint_high": 0.0,
+        "slope": 0.0,
+        "period": -1.0
+      },
+      "profile5": {
+        "enabled": true,
+        "setpoint": 6.0,
+        "setpoint_high": 0.0,
+        "slope": 0.0,
+        "period": -1.0
+      },
+      "profile6": {
+        "enabled": true,
+        "setpoint": 1.0,
+        "setpoint_high": 0.0,
+        "slope": 0.0,
+        "period": -1.0
+      }
+    },
     "sql": {
-      "ssh_host": "sbcslowcontrol.fnal.gov",
-      "ssh_port": 22,
-      "ssh_user": "hep",
-      "ssh_pkey": "/home/sbc/.ssh/id_rsa",
       "hostname": "sbcslowcontrol.fnal.gov",
       "port": 3306,
       "user": "daq",
@@ -46,13 +87,13 @@
       "model": "DT5740D",
       "port": 0,
       "connection": "USB",
-      "evs_per_read": 100,
+      "evs_per_read": 500,
       "rec_length": 500,
       "post_trig": 50,
       "trig_in": false,
       "decimation": 1,
       "overlap": false,
-      "polarity": "Positive",
+      "polarity": "Rising",
       "io_level": "TTL",
       "ext_trig": "Disabled",
       "sw_trig": "ACQ+EXT"
@@ -90,81 +131,195 @@
         0,
         0
       ]
+    },
+    "caen_g1": {
+      "enabled": false,
+      "threshold": 0,
+      "trig_mask": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "acq_mask": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "offsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "caen_g2": {
+      "enabled": false,
+      "threshold": 0,
+      "trig_mask": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "acq_mask": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "offsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "caen_g3": {
+      "enabled": false,
+      "threshold": 0,
+      "trig_mask": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "acq_mask": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "offsets": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
     }
   },
   "acous": {
-    "general": {
-      "sample_rate": "100 MS/s",
-      "pre_trig_len": 0,
-      "post_trig_len": 0,
-      "trig_timeout": 0,
-      "trig_delay": 0
+    "sample_rate": "100 MS/s",
+    "pre_trig_len": 0,
+    "post_trig_len": 0,
+    "trig_timeout": 0,
+    "trig_delay": 0,
+    "ch1": {
+      "enabled": false,
+      "range": "\u00b15 V",
+      "offset": 0,
+      "impedance": "50 \u03a9",
+      "coupling": "AC",
+      "trig": false,
+      "slope": "Positive",
+      "threshold": 0
     },
-    "per_channel": {
-      "ch1": {
-        "enabled": false,
-        "range": 0,
-        "offset": 0,
-        "trig": false,
-        "polarity": "Rising",
-        "threshold": 0
-      },
-      "ch2": {
-        "enabled": false,
-        "range": 0,
-        "offset": 0,
-        "trig": false,
-        "polarity": "Rising",
-        "threshold": 0
-      },
-      "ch3": {
-        "enabled": false,
-        "range": 0,
-        "offset": 0,
-        "trig": false,
-        "polarity": "Rising",
-        "threshold": 0
-      },
-      "ch4": {
-        "enabled": false,
-        "range": 0,
-        "offset": 0,
-        "trig": false,
-        "polarity": "Rising",
-        "threshold": 0
-      },
-      "ch5": {
-        "enabled": false,
-        "range": 0,
-        "offset": 0,
-        "trig": false,
-        "polarity": "Rising",
-        "threshold": 0
-      },
-      "ch6": {
-        "enabled": false,
-        "range": 0,
-        "offset": 0,
-        "trig": false,
-        "polarity": "Rising",
-        "threshold": 0
-      },
-      "ch7": {
-        "enabled": false,
-        "range": 0,
-        "offset": 0,
-        "trig": false,
-        "polarity": "Rising",
-        "threshold": 0
-      },
-      "ch8": {
-        "enabled": false,
-        "range": 0,
-        "offset": 0,
-        "trig": false,
-        "polarity": "Rising",
-        "threshold": 0
-      }
+    "ch2": {
+      "enabled": false,
+      "range": "\u00b15 V",
+      "offset": 0,
+      "impedance": "50 \u03a9",
+      "coupling": "AC",
+      "trig": false,
+      "slope": "Positive",
+      "threshold": 0
+    },
+    "ch3": {
+      "enabled": false,
+      "range": "\u00b15 V",
+      "offset": 0,
+      "impedance": "50 \u03a9",
+      "coupling": "AC",
+      "trig": false,
+      "slope": "Positive",
+      "threshold": 0
+    },
+    "ch4": {
+      "enabled": false,
+      "range": "\u00b15 V",
+      "offset": 0,
+      "impedance": "50 \u03a9",
+      "coupling": "AC",
+      "trig": false,
+      "slope": "Positive",
+      "threshold": 0
+    },
+    "ch5": {
+      "enabled": false,
+      "range": "\u00b15 V",
+      "offset": 0,
+      "impedance": "50 \u03a9",
+      "coupling": "AC",
+      "trig": false,
+      "slope": "Positive",
+      "threshold": 0
+    },
+    "ch6": {
+      "enabled": false,
+      "range": "\u00b15 V",
+      "offset": 0,
+      "impedance": "50 \u03a9",
+      "coupling": "AC",
+      "trig": false,
+      "slope": "Positive",
+      "threshold": 0
+    },
+    "ch7": {
+      "enabled": false,
+      "range": "\u00b15 V",
+      "offset": 0,
+      "impedance": "50 \u03a9",
+      "coupling": "AC",
+      "trig": false,
+      "slope": "Positive",
+      "threshold": 0
+    },
+    "ch8": {
+      "enabled": false,
+      "range": "\u00b15 V",
+      "offset": 0,
+      "impedance": "50 \u03a9",
+      "coupling": "AC",
+      "trig": false,
+      "slope": "Positive",
+      "threshold": 0
     }
   },
   "cam": {
@@ -172,7 +327,7 @@
       "enabled": true,
       "rc_config_path": "/home/sbc/RunControl/run-data/config/cam1-config.json",
       "config_path": "/mnt/rc-data/config/cam1-config.json",
-      "data_path": "/mnt/rc-data/",
+      "data_path": "/mnt/rc-data/current_event/",
       "ip_addr": "192.168.137.101",
       "mode": 5,
       "trig_wait": 5.0,
@@ -186,14 +341,14 @@
       "state_comm_pin": 5,
       "trig_en_pin": 6,
       "trig_latch_pin": 13,
-      "state_pin": 23,
-      "trig_pin": 24
+      "state_pin": 24,
+      "trig_pin": 23
     },
     "cam2": {
       "enabled": false,
       "rc_config_path": "/home/sbc/RunControl/run-data/config/cam2-config.json",
       "config_path": "/mnt/rc-data/config/cam2-config.json",
-      "data_path": "/mnt/rc-data/",
+      "data_path": "/mnt/rc-data/current_event/",
       "ip_addr": "192.168.137.102",
       "mode": 5,
       "trig_wait": 5.0,
@@ -214,7 +369,7 @@
       "enabled": false,
       "rc_config_path": "/home/sbc/RunControl/run-data/config/cam3-config.json",
       "config_path": "/mnt/rc-data/config/cam3-config.json",
-      "data_path": "/mnt/rc-data/",
+      "data_path": "/mnt/rc-data/current_event/",
       "ip_addr": "192.168.137.103",
       "mode": 5,
       "trig_wait": 5.0,
@@ -241,7 +396,7 @@
       "on_time": 40,
       "heartbeat": 41,
       "trig1": {
-        "enabled": true,
+        "enabled": false,
         "name": "Cam1",
         "compression": "fast",
         "in": 22,
