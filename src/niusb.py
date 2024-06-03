@@ -167,7 +167,7 @@ class NIUSB(QObject):
                     if self.dev.read_pin(*self.reverse_config[f"state_{cam}"]):
                         cam_ready[cam] = "ready"
                         self.dev.write_pin(*self.reverse_config[f"comm_{cam}"], False)
-                        self.logger.info(f"{cam} is ready.")
+                        self.logger.info(f"Camera {cam} is ready.")
                         self.event_started.emit(cam)
 
         # wait for certain time before sending trig enable pin
@@ -187,7 +187,8 @@ class NIUSB(QObject):
     @Slot()
     def stop_event(self):
         # lower trigger pin
-        self.dev.write_pin(*self.reverse_config["trig"], 0)
+        self.dev.write_pin(*self.reverse_config["trig"], False)
+        # self.dev.write_pin(*self.reverse_config["reset"], True)
         # read FF pins
         for k in [k for k in self.reverse_config.keys() if "trigff" in k]:
             if self.dev.read_pin(*self.reverse_config[k]):
@@ -213,7 +214,6 @@ class NIUSB(QObject):
             if self.main.config_class.run_config["cam"][cam]["enabled"]:
                 self.dev.write_pin(*self.reverse_config[f"comm_{cam}"], False)
                 self.dev.write_pin(*self.reverse_config[f"trigen_{cam}"], False)
-                # camera using reverse logic
                 while self.dev.read_pin(*self.reverse_config[f"state_{cam}"]):
                     time.sleep(0.01)
                     # print("cam not ready")
