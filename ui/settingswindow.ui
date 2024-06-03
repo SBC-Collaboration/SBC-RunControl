@@ -1309,7 +1309,7 @@
            <property name="geometry">
             <rect>
              <x>0</x>
-             <y>-364</y>
+             <y>0</y>
              <width>776</width>
              <height>1225</height>
             </rect>
@@ -2819,12 +2819,18 @@
                 <property name="text">
                  <string>Trigger</string>
                 </property>
+                <property name="tristate">
+                 <bool>true</bool>
+                </property>
                </widget>
               </item>
               <item row="3" column="0">
                <widget class="QCheckBox" name="caen_g0_acq_box">
                 <property name="text">
                  <string>Acquisition</string>
+                </property>
+                <property name="tristate">
+                 <bool>true</bool>
                 </property>
                </widget>
               </item>
@@ -2858,7 +2864,7 @@
               <item row="1" column="6">
                <widget class="QLabel" name="caen_g1_ch5_label">
                 <property name="text">
-                 <string>Ch5</string>
+                 <string>Ch13</string>
                 </property>
                </widget>
               </item>
@@ -2869,17 +2875,13 @@
                 </property>
                </widget>
               </item>
-              <item row="2" column="1">
-               <widget class="QCheckBox" name="caen_g1_trig_mask_0">
-                <property name="text">
-                 <string/>
-                </property>
-               </widget>
-              </item>
               <item row="3" column="0">
                <widget class="QCheckBox" name="caen_g1_acq_box">
                 <property name="text">
                  <string>Acquisition</string>
+                </property>
+                <property name="tristate">
+                 <bool>true</bool>
                 </property>
                </widget>
               </item>
@@ -2994,21 +2996,21 @@
               <item row="1" column="8">
                <widget class="QLabel" name="caen_g1_ch7_label">
                 <property name="text">
-                 <string>Ch7</string>
+                 <string>Ch15</string>
                 </property>
                </widget>
               </item>
               <item row="1" column="5">
                <widget class="QLabel" name="caen_g1_ch4_label">
                 <property name="text">
-                 <string>Ch4</string>
+                 <string>Ch12</string>
                 </property>
                </widget>
               </item>
               <item row="1" column="7">
                <widget class="QLabel" name="caen_g1_ch6_label">
                 <property name="text">
-                 <string>Ch6</string>
+                 <string>Ch14</string>
                 </property>
                </widget>
               </item>
@@ -3042,7 +3044,7 @@
               <item row="1" column="1">
                <widget class="QLabel" name="caen_g1_ch0_label">
                 <property name="text">
-                 <string>Ch0</string>
+                 <string>Ch8</string>
                 </property>
                </widget>
               </item>
@@ -3150,14 +3152,14 @@
               <item row="1" column="2">
                <widget class="QLabel" name="caen_g1_ch1_label">
                 <property name="text">
-                 <string>Ch1</string>
+                 <string>Ch9</string>
                 </property>
                </widget>
               </item>
               <item row="1" column="4">
                <widget class="QLabel" name="caen_g1_ch3_label">
                 <property name="text">
-                 <string>Ch3</string>
+                 <string>Ch11</string>
                 </property>
                </widget>
               </item>
@@ -3171,7 +3173,7 @@
               <item row="1" column="3">
                <widget class="QLabel" name="caen_g1_ch2_label">
                 <property name="text">
-                 <string>Ch2</string>
+                 <string>Ch10</string>
                 </property>
                </widget>
               </item>
@@ -3245,9 +3247,12 @@
                </widget>
               </item>
               <item row="2" column="0">
-               <widget class="QCheckBox" name="caen_g1_trig_box_2">
+               <widget class="QCheckBox" name="caen_g1_trig_box">
                 <property name="text">
                  <string>Trigger</string>
+                </property>
+                <property name="tristate">
+                 <bool>true</bool>
                 </property>
                </widget>
               </item>
@@ -3282,6 +3287,13 @@
                 </property>
                 <property name="value">
                  <number>0</number>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="QCheckBox" name="caen_g1_trig_mask_0">
+                <property name="text">
+                 <string/>
                 </property>
                </widget>
               </item>
@@ -3351,6 +3363,9 @@
                 <property name="text">
                  <string>Acquisition</string>
                 </property>
+                <property name="tristate">
+                 <bool>true</bool>
+                </property>
                </widget>
               </item>
               <item row="0" column="7" colspan="2">
@@ -3399,12 +3414,15 @@
                 <property name="text">
                  <string>Trigger</string>
                 </property>
+                <property name="tristate">
+                 <bool>true</bool>
+                </property>
                </widget>
               </item>
               <item row="1" column="6">
                <widget class="QLabel" name="caen_g2_ch5_label">
                 <property name="text">
-                 <string>Ch5</string>
+                 <string>Ch21</string>
                 </property>
                </widget>
               </item>
@@ -3464,7 +3482,7 @@
               <item row="1" column="3">
                <widget class="QLabel" name="caen_g2_ch2_label">
                 <property name="text">
-                 <string>Ch2</string>
+                 <string>Ch18</string>
                 </property>
                </widget>
               </item>
@@ -3498,14 +3516,14 @@
               <item row="1" column="5">
                <widget class="QLabel" name="caen_g2_ch4_label">
                 <property name="text">
-                 <string>Ch4</string>
+                 <string>Ch20</string>
                 </property>
                </widget>
               </item>
               <item row="1" column="2">
                <widget class="QLabel" name="caen_g2_ch1_label">
                 <property name="text">
-                 <string>Ch1</string>
+                 <string>Ch17</string>
                 </property>
                </widget>
               </item>
@@ -3554,7 +3572,7 @@
               <item row="1" column="4">
                <widget class="QLabel" name="caen_g2_ch3_label">
                 <property name="text">
-                 <string>Ch3</string>
+                 <string>Ch19</string>
                 </property>
                </widget>
               </item>
@@ -3582,7 +3600,7 @@
               <item row="1" column="8">
                <widget class="QLabel" name="caen_g2_ch7_label">
                 <property name="text">
-                 <string>Ch7</string>
+                 <string>Ch23</string>
                 </property>
                </widget>
               </item>
@@ -3616,14 +3634,14 @@
               <item row="1" column="1">
                <widget class="QLabel" name="caen_g2_ch0_label">
                 <property name="text">
-                 <string>Ch0</string>
+                 <string>Ch16</string>
                 </property>
                </widget>
               </item>
               <item row="1" column="7">
                <widget class="QLabel" name="caen_g2_ch6_label">
                 <property name="text">
-                 <string>Ch6</string>
+                 <string>Ch22</string>
                 </property>
                </widget>
               </item>
@@ -3922,7 +3940,7 @@
               <item row="1" column="1">
                <widget class="QLabel" name="caen_g3_ch0_label">
                 <property name="text">
-                 <string>Ch0</string>
+                 <string>Ch24</string>
                 </property>
                </widget>
               </item>
@@ -4030,14 +4048,14 @@
               <item row="1" column="2">
                <widget class="QLabel" name="caen_g3_ch1_label">
                 <property name="text">
-                 <string>Ch1</string>
+                 <string>Ch25</string>
                 </property>
                </widget>
               </item>
               <item row="1" column="5">
                <widget class="QLabel" name="caen_g3_ch4_label">
                 <property name="text">
-                 <string>Ch4</string>
+                 <string>Ch28</string>
                 </property>
                </widget>
               </item>
@@ -4051,7 +4069,7 @@
               <item row="1" column="3">
                <widget class="QLabel" name="caen_g3_ch2_label">
                 <property name="text">
-                 <string>Ch2</string>
+                 <string>Ch26</string>
                 </property>
                </widget>
               </item>
@@ -4065,7 +4083,7 @@
               <item row="1" column="7">
                <widget class="QLabel" name="caen_g3_ch6_label">
                 <property name="text">
-                 <string>Ch6</string>
+                 <string>Ch30</string>
                 </property>
                </widget>
               </item>
@@ -4140,7 +4158,7 @@
               <item row="1" column="6">
                <widget class="QLabel" name="caen_g3_ch5_label">
                 <property name="text">
-                 <string>Ch5</string>
+                 <string>Ch29</string>
                 </property>
                </widget>
               </item>
@@ -4174,14 +4192,14 @@
               <item row="1" column="8">
                <widget class="QLabel" name="caen_g3_ch7_label">
                 <property name="text">
-                 <string>Ch7</string>
+                 <string>Ch31</string>
                 </property>
                </widget>
               </item>
               <item row="1" column="4">
                <widget class="QLabel" name="caen_g3_ch3_label">
                 <property name="text">
-                 <string>Ch3</string>
+                 <string>Ch27</string>
                 </property>
                </widget>
               </item>
@@ -4190,12 +4208,18 @@
                 <property name="text">
                  <string>Trigger</string>
                 </property>
+                <property name="tristate">
+                 <bool>true</bool>
+                </property>
                </widget>
               </item>
               <item row="3" column="0">
                <widget class="QCheckBox" name="caen_g3_acq_box">
                 <property name="text">
                  <string>Acquisition</string>
+                </property>
+                <property name="tristate">
+                 <bool>true</bool>
                 </property>
                </widget>
               </item>
