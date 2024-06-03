@@ -4,6 +4,7 @@ with warnings.catch_warnings():
     import paramiko as pm
 import logging
 import os
+import re
 import datetime
 from PySide6.QtCore import QTimer, QObject, Slot, Signal, QThread
 import subprocess
@@ -96,7 +97,6 @@ class SiPMAmp(QObject):
 
     @Slot()
     def bias_sipm(self):
-        self.config = self.main.config_class.run_config["scint"][self.amp]
         self.test_sipm_amp()
         if not self.config["enabled"]:
             self.sipm_biased.emit(f"disabled-{self.amp}")
@@ -114,9 +114,11 @@ class SiPMAmp(QObject):
 
     @Slot()
     def unbias_sipm(self):
-        # if not enabled, try pinging the IP address
-        # if ping successes, still unbias. if not, quit
-        # ping with only 1 packet, with 1s timeout
+        """
+        if not enabled, try pinging the IP address
+        if ping successes, still unbias. if not, quit
+        ping with only 1 packet, with 1s timeout
+        """
         if not self.config["enabled"]:
             if subprocess.call(f"ping -c 1 -W 1 {self.config["ip_addr"]}", shell=True):
                 self.logger.debug(f"SiPM {self.amp} is disabled and not connected")
@@ -133,6 +135,7 @@ class SiPMAmp(QObject):
 
     @Slot()
     def run_iv_curve(self):
+        """ tell the SiPM amplifier to do an IV curve measurement"""
         if not self.config["enabled"] or not self.config["iv_enabled"]:
             return
         start_v = self.config["iv_start"]
@@ -141,9 +144,43 @@ class SiPMAmp(QObject):
         adc_rate = 4 # 80 sps
         num_readings =  6
         now = datetime.date.today().strftime("%Y%m%d%H%M")
-        filename = os.path.join(self.config["iv_data_dir"], str(now))
+        filename = os.path.join(self.config["iv_data_dir"], f"{self.amp}-{str(now)}.csv")
         commands = [
             "cd /root/nanopi",
             f"iv_cmd.py --start_v {start_v} --stop_v {stop_v} --step {step} --adc_rate {adc_rate} --num_readings {num_readings} --file {filename}"
         ]
         self.exec_commands(self.config["ip_addr"], commands)
+
+    def check_iv_interval(self):
+        """ return the time stamp of last IV curve measurement"""
+        data_dir = self.config["iv_rc_data_dir"]
+        files = os.listdir(data_dir)
+        valid_dates = []
+        now = datetime.now()
+        pattern = re.compile(rf"^{self.amp}-\d{{12}}\.csv$")  # ampN - 12 digit time followed by .csv
+        for file in files:
+            if pattern.match(file):
+                try:
+                    datetime_str = file[5:17]  # extract datetime part from filename
+                    timestamp = datetime.strptime(datetime_str, "%Y%m%d%H%M")
+                    if timestamp > now:
+                        self.logger.error("IV curve data timestamp in the future.")
+                        raise ValueError
+                    valid_dates.append(timestamp)
+                except ValueError:
+                    # error if pattern doesn't match or time in the future
+                    continue
+
+        # check if latest time is more than interval
+        interval = self.config["iv_interval"]
+        if now - max(valid_dates) > datetime.timedelta(hours=interval):
+            return True  # return if we need a new measurement
+        else:
+            return False
+
+    @Slot()
+    def start_run(self):
+        self.config = self.main.config_class.run_config["scint"][self.amp]
+        if self.check_iv_interval():
+            self.run_iv_curve
+        self.bias_sipm()
