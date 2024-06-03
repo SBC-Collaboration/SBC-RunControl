@@ -66,6 +66,20 @@ class SettingsWindow(QMainWindow):
             dir=self.config["dio"]["position"]["sketch"])
         self.ui.position_sketch_edit.setText(position_dir)
 
+    def select_amp1_iv_dir(self):
+        amp1_iv_dir = QFileDialog.getExistingDirectory(
+            self,
+            caption="SiPM Amp1 IV Data Directory",
+            dir=self.config["scint"]["amp1"]["iv_rc_dir"])
+        self.ui.sipm_amp1_iv_rc_data_dir_edit.setText(amp1_iv_dir)
+
+    def select_amp2_iv_dir(self):
+        amp2_iv_dir = QFileDialog.getExistingDirectory(
+            self,
+            caption="SiPM Amp1 IV Data Directory",
+            dir=self.config["scint"]["amp2"]["iv_rc_dir"])
+        self.ui.sipm_amp2_iv_rc_data_dir_edit.setText(amp2_iv_dir)
+
 
 # Loads log window
 class LogWindow(QMainWindow):

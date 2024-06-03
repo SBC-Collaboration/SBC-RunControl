@@ -1347,10 +1347,202 @@
               <property name="spacing">
                <number>3</number>
               </property>
-              <item row="2" column="2" colspan="3">
-               <widget class="QLineEdit" name="sipm_amp1_iv_data_dir_edit">
+              <item row="1" column="1">
+               <widget class="QLabel" name="sipm_amp1_ip_addr_label">
+                <property name="layoutDirection">
+                 <enum>Qt::LeftToRight</enum>
+                </property>
+                <property name="text">
+                 <string>IP Addr</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp1_ip_addr_edit</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QCheckBox" name="sipm_amp1_enabled_box">
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="layoutDirection">
+                 <enum>Qt::RightToLeft</enum>
+                </property>
+                <property name="text">
+                 <string>Enabled</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="5">
+               <widget class="QLabel" name="sipm_amp1_bias_label">
+                <property name="layoutDirection">
+                 <enum>Qt::LeftToRight</enum>
+                </property>
+                <property name="text">
+                 <string>Bias Voltage</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp1_bias_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="7">
+               <widget class="QLabel" name="sipm_amp1_iv_stop_label">
+                <property name="layoutDirection">
+                 <enum>Qt::LeftToRight</enum>
+                </property>
+                <property name="text">
+                 <string>IV Stop</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp1_bias_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QCheckBox" name="sipm_amp1_iv_enabled_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="layoutDirection">
+                 <enum>Qt::RightToLeft</enum>
+                </property>
+                <property name="text">
+                 <string>IV Enabled</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="1">
+               <widget class="QLabel" name="sipm_amp1_iv_interval_label">
+                <property name="layoutDirection">
+                 <enum>Qt::LeftToRight</enum>
+                </property>
+                <property name="text">
+                 <string>IV Interval</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp1_bias_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="7">
+               <widget class="QLabel" name="sipm_amp1_qp_label">
+                <property name="layoutDirection">
+                 <enum>Qt::LeftToRight</enum>
+                </property>
+                <property name="text">
+                 <string>QP Voltage</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp1_qp_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="6" colspan="3">
+               <widget class="QLineEdit" name="sipm_amp1_iv_rc_data_dir_edit">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="QLabel" name="sipm_amp1_iv_data_dir_label">
+                <property name="layoutDirection">
+                 <enum>Qt::LeftToRight</enum>
+                </property>
+                <property name="text">
+                 <string>Data Dir</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp1_ip_addr_edit</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="6">
+               <widget class="NoWheelDoubleSpinBox" name="sipm_amp1_bias_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string> V</string>
+                </property>
+                <property name="decimals">
+                 <number>1</number>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="3">
+               <widget class="QLabel" name="sipm_amp1_iv_step_label">
+                <property name="layoutDirection">
+                 <enum>Qt::LeftToRight</enum>
+                </property>
+                <property name="text">
+                 <string>IV Step</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp1_bias_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="5">
+               <widget class="QLabel" name="sipm_amp1_iv_rc_data_dir_label">
+                <property name="layoutDirection">
+                 <enum>Qt::LeftToRight</enum>
+                </property>
+                <property name="text">
+                 <string>RC Data Dir</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp1_ip_addr_edit</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="2">
+               <widget class="NoWheelDoubleSpinBox" name="sipm_amp1_iv_interval_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string> h</string>
+                </property>
+                <property name="decimals">
+                 <number>1</number>
+                </property>
+                <property name="minimum">
+                 <double>0.000000000000000</double>
+                </property>
+                <property name="maximum">
+                 <double>10000.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
                 </property>
                </widget>
               </item>
@@ -1399,191 +1591,10 @@
                 </property>
                </widget>
               </item>
-              <item row="1" column="0">
-               <widget class="QCheckBox" name="sipm_amp1_enabled_box">
+              <item row="2" column="2" colspan="3">
+               <widget class="QLineEdit" name="sipm_amp1_iv_data_dir_edit">
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
-                </property>
-                <property name="layoutDirection">
-                 <enum>Qt::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>Enabled</string>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="1">
-               <widget class="QLabel" name="sipm_amp1_ip_addr_label">
-                <property name="layoutDirection">
-                 <enum>Qt::LeftToRight</enum>
-                </property>
-                <property name="text">
-                 <string>IP Addr</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>sipm_amp1_ip_addr_edit</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="8">
-               <widget class="NoWheelDoubleSpinBox" name="sipm_amp1_qp_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-                <property name="suffix">
-                 <string> V</string>
-                </property>
-                <property name="decimals">
-                 <number>1</number>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="7">
-               <widget class="QLabel" name="sipm_amp1_iv_stop_label">
-                <property name="layoutDirection">
-                 <enum>Qt::LeftToRight</enum>
-                </property>
-                <property name="text">
-                 <string>IV Stop</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>sipm_amp1_bias_box</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="0" colspan="9">
-               <widget class="QLabel" name="sipm_amp1_label">
-                <property name="font">
-                 <font>
-                  <bold>true</bold>
-                 </font>
-                </property>
-                <property name="text">
-                 <string>SiPM Amplifier 1</string>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="5">
-               <widget class="QLabel" name="sipm_amp1_iv_rc_data_dir_label">
-                <property name="layoutDirection">
-                 <enum>Qt::LeftToRight</enum>
-                </property>
-                <property name="text">
-                 <string>RC Data Dir</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>sipm_amp1_ip_addr_edit</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="2">
-               <widget class="NoWheelDoubleSpinBox" name="sipm_amp1_iv_interval_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-                <property name="suffix">
-                 <string> h</string>
-                </property>
-                <property name="decimals">
-                 <number>1</number>
-                </property>
-                <property name="minimum">
-                 <double>0.000000000000000</double>
-                </property>
-                <property name="maximum">
-                 <double>10000.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="1">
-               <widget class="QLabel" name="sipm_amp1_iv_interval_label">
-                <property name="layoutDirection">
-                 <enum>Qt::LeftToRight</enum>
-                </property>
-                <property name="text">
-                 <string>IV Interval</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>sipm_amp1_bias_box</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="3">
-               <widget class="QLabel" name="sipm_amp1_iv_step_label">
-                <property name="layoutDirection">
-                 <enum>Qt::LeftToRight</enum>
-                </property>
-                <property name="text">
-                 <string>IV Step</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>sipm_amp1_bias_box</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="6" colspan="3">
-               <widget class="QLineEdit" name="sipm_amp1_iv_rc_data_dir_edit">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="7">
-               <widget class="QLabel" name="sipm_amp1_qp_label">
-                <property name="layoutDirection">
-                 <enum>Qt::LeftToRight</enum>
-                </property>
-                <property name="text">
-                 <string>QP Voltage</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>sipm_amp1_qp_box</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="8">
-               <widget class="NoWheelDoubleSpinBox" name="sipm_amp1_iv_stop_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-                <property name="suffix">
-                 <string> V</string>
-                </property>
-                <property name="decimals">
-                 <number>1</number>
-                </property>
-                <property name="minimum">
-                 <double>-10.000000000000000</double>
-                </property>
-                <property name="maximum">
-                 <double>70.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
                 </property>
                </widget>
               </item>
@@ -1609,40 +1620,15 @@
                 </property>
                </widget>
               </item>
-              <item row="2" column="1">
-               <widget class="QLabel" name="sipm_amp1_iv_data_dir_label">
-                <property name="layoutDirection">
-                 <enum>Qt::LeftToRight</enum>
-                </property>
+              <item row="2" column="9">
+               <widget class="QToolButton" name="sipm_amp1_iv_rc_data_dir_but">
                 <property name="text">
-                 <string>Data Dir</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>sipm_amp1_ip_addr_edit</cstring>
+                 <string>...</string>
                 </property>
                </widget>
               </item>
-              <item row="1" column="5">
-               <widget class="QLabel" name="sipm_amp1_bias_label">
-                <property name="layoutDirection">
-                 <enum>Qt::LeftToRight</enum>
-                </property>
-                <property name="text">
-                 <string>Bias Voltage</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>sipm_amp1_bias_box</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="6">
-               <widget class="NoWheelDoubleSpinBox" name="sipm_amp1_bias_box">
+              <item row="1" column="8" colspan="2">
+               <widget class="NoWheelDoubleSpinBox" name="sipm_amp1_qp_box">
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
@@ -1657,16 +1643,37 @@
                 </property>
                </widget>
               </item>
-              <item row="2" column="0">
-               <widget class="QCheckBox" name="sipm_amp1_iv_enabled_box">
+              <item row="0" column="0" colspan="10">
+               <widget class="QLabel" name="sipm_amp1_label">
+                <property name="font">
+                 <font>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>SiPM Amplifier 1</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="8" colspan="2">
+               <widget class="NoWheelDoubleSpinBox" name="sipm_amp1_iv_stop_box">
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
-                <property name="layoutDirection">
-                 <enum>Qt::RightToLeft</enum>
+                <property name="suffix">
+                 <string> V</string>
                 </property>
-                <property name="text">
-                 <string>IV Enabled</string>
+                <property name="decimals">
+                 <number>1</number>
+                </property>
+                <property name="minimum">
+                 <double>-10.000000000000000</double>
+                </property>
+                <property name="maximum">
+                 <double>70.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
                 </property>
                </widget>
               </item>
@@ -1683,6 +1690,22 @@
               <property name="spacing">
                <number>3</number>
               </property>
+              <item row="2" column="1">
+               <widget class="QLabel" name="sipm_amp2_iv_data_dir_label">
+                <property name="layoutDirection">
+                 <enum>Qt::LeftToRight</enum>
+                </property>
+                <property name="text">
+                 <string>Data Dir</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp1_ip_addr_edit</cstring>
+                </property>
+               </widget>
+              </item>
               <item row="1" column="7">
                <widget class="QLabel" name="sipm_amp2_qp_label">
                 <property name="layoutDirection">
@@ -1699,16 +1722,22 @@
                 </property>
                </widget>
               </item>
-              <item row="1" column="6">
-               <widget class="NoWheelDoubleSpinBox" name="sipm_amp2_bias_box">
+              <item row="3" column="2">
+               <widget class="NoWheelDoubleSpinBox" name="sipm_amp2_iv_interval_box">
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
                 <property name="suffix">
-                 <string> V</string>
+                 <string> h</string>
                 </property>
                 <property name="decimals">
                  <number>1</number>
+                </property>
+                <property name="minimum">
+                 <double>0.000000000000000</double>
+                </property>
+                <property name="maximum">
+                 <double>10000.000000000000000</double>
                 </property>
                 <property name="singleStep">
                  <double>0.100000000000000</double>
@@ -1731,71 +1760,13 @@
                 </property>
                </widget>
               </item>
-              <item row="1" column="8">
-               <widget class="NoWheelDoubleSpinBox" name="sipm_amp2_qp_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-                <property name="suffix">
-                 <string> V</string>
-                </property>
-                <property name="decimals">
-                 <number>1</number>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="8">
-               <widget class="NoWheelDoubleSpinBox" name="sipm_amp2_iv_stop_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-                <property name="suffix">
-                 <string> V</string>
-                </property>
-                <property name="decimals">
-                 <number>1</number>
-                </property>
-                <property name="minimum">
-                 <double>-10.000000000000000</double>
-                </property>
-                <property name="maximum">
-                 <double>70.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="0">
-               <widget class="QCheckBox" name="sipm_amp2_enabled_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-                <property name="layoutDirection">
-                 <enum>Qt::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>Enabled</string>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="2" colspan="3">
-               <widget class="QLineEdit" name="sipm_amp2_ip_addr_edit">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="1">
-               <widget class="QLabel" name="sipm_amp2_iv_data_dir_label">
+              <item row="2" column="5">
+               <widget class="QLabel" name="sipm_amp2_iv_rc_data_dir_label">
                 <property name="layoutDirection">
                  <enum>Qt::LeftToRight</enum>
                 </property>
                 <property name="text">
-                 <string>Data Dir</string>
+                 <string>RC Data Dir</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -1805,15 +1776,32 @@
                 </property>
                </widget>
               </item>
-              <item row="0" column="0" colspan="9">
-               <widget class="QLabel" name="sipm_amp2_label">
-                <property name="font">
-                 <font>
-                  <bold>true</bold>
-                 </font>
+              <item row="3" column="4">
+               <widget class="NoWheelDoubleSpinBox" name="sipm_amp2_iv_step_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
                 </property>
-                <property name="text">
-                 <string>SiPM Amplifier 2</string>
+                <property name="suffix">
+                 <string> V</string>
+                </property>
+                <property name="decimals">
+                 <number>2</number>
+                </property>
+                <property name="minimum">
+                 <double>0.000000000000000</double>
+                </property>
+                <property name="maximum">
+                 <double>10.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.050000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="6" colspan="3">
+               <widget class="QLineEdit" name="sipm_amp2_iv_rc_data_dir_edit">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
                 </property>
                </widget>
               </item>
@@ -1830,6 +1818,29 @@
                 </property>
                 <property name="buddy">
                  <cstring>sipm_amp1_bias_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="7">
+               <widget class="QLabel" name="sipm_amp2_iv_stop_label">
+                <property name="layoutDirection">
+                 <enum>Qt::LeftToRight</enum>
+                </property>
+                <property name="text">
+                 <string>IV Stop</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp1_bias_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="2" colspan="3">
+               <widget class="QLineEdit" name="sipm_amp2_iv_data_dir_edit">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
                 </property>
                </widget>
               </item>
@@ -1862,61 +1873,6 @@
                 </property>
                </widget>
               </item>
-              <item row="2" column="2" colspan="3">
-               <widget class="QLineEdit" name="sipm_amp2_iv_data_dir_edit">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="1">
-               <widget class="QLabel" name="sipm_amp2_ip_addr_label">
-                <property name="layoutDirection">
-                 <enum>Qt::LeftToRight</enum>
-                </property>
-                <property name="text">
-                 <string>IP Addr</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>sipm_amp1_ip_addr_edit</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="1">
-               <widget class="QLabel" name="sipm_amp2_iv_interval_label">
-                <property name="layoutDirection">
-                 <enum>Qt::LeftToRight</enum>
-                </property>
-                <property name="text">
-                 <string>IV Interval</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>sipm_amp1_bias_box</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="7">
-               <widget class="QLabel" name="sipm_amp2_iv_stop_label">
-                <property name="layoutDirection">
-                 <enum>Qt::LeftToRight</enum>
-                </property>
-                <property name="text">
-                 <string>IV Stop</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>sipm_amp1_bias_box</cstring>
-                </property>
-               </widget>
-              </item>
               <item row="3" column="6">
                <widget class="NoWheelDoubleSpinBox" name="sipm_amp2_iv_start_box">
                 <property name="focusPolicy">
@@ -1939,57 +1895,20 @@
                 </property>
                </widget>
               </item>
-              <item row="3" column="2">
-               <widget class="NoWheelDoubleSpinBox" name="sipm_amp2_iv_interval_box">
+              <item row="1" column="2" colspan="3">
+               <widget class="QLineEdit" name="sipm_amp2_ip_addr_edit">
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
-                <property name="suffix">
-                 <string> h</string>
-                </property>
-                <property name="decimals">
-                 <number>1</number>
-                </property>
-                <property name="minimum">
-                 <double>0.000000000000000</double>
-                </property>
-                <property name="maximum">
-                 <double>10000.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
                </widget>
               </item>
-              <item row="3" column="4">
-               <widget class="NoWheelDoubleSpinBox" name="sipm_amp2_iv_step_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-                <property name="suffix">
-                 <string> V</string>
-                </property>
-                <property name="decimals">
-                 <number>2</number>
-                </property>
-                <property name="minimum">
-                 <double>0.000000000000000</double>
-                </property>
-                <property name="maximum">
-                 <double>10.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.050000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="5">
-               <widget class="QLabel" name="sipm_amp2_iv_rc_data_dir_label">
+              <item row="1" column="1">
+               <widget class="QLabel" name="sipm_amp2_ip_addr_label">
                 <property name="layoutDirection">
                  <enum>Qt::LeftToRight</enum>
                 </property>
                 <property name="text">
-                 <string>RC Data Dir</string>
+                 <string>IP Addr</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -1999,10 +1918,105 @@
                 </property>
                </widget>
               </item>
-              <item row="2" column="6" colspan="3">
-               <widget class="QLineEdit" name="sipm_amp2_iv_rc_data_dir_edit">
+              <item row="1" column="0">
+               <widget class="QCheckBox" name="sipm_amp2_enabled_box">
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="layoutDirection">
+                 <enum>Qt::RightToLeft</enum>
+                </property>
+                <property name="text">
+                 <string>Enabled</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="1">
+               <widget class="QLabel" name="sipm_amp2_iv_interval_label">
+                <property name="layoutDirection">
+                 <enum>Qt::LeftToRight</enum>
+                </property>
+                <property name="text">
+                 <string>IV Interval</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp1_bias_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="6">
+               <widget class="NoWheelDoubleSpinBox" name="sipm_amp2_bias_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string> V</string>
+                </property>
+                <property name="decimals">
+                 <number>1</number>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0" colspan="10">
+               <widget class="QLabel" name="sipm_amp2_label">
+                <property name="font">
+                 <font>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>SiPM Amplifier 2</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="9">
+               <widget class="QToolButton" name="sipm_amp2_iv_rc_data_dir_but">
+                <property name="text">
+                 <string>...</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="8" colspan="2">
+               <widget class="NoWheelDoubleSpinBox" name="sipm_amp2_qp_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string> V</string>
+                </property>
+                <property name="decimals">
+                 <number>1</number>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="8" colspan="2">
+               <widget class="NoWheelDoubleSpinBox" name="sipm_amp2_iv_stop_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string> V</string>
+                </property>
+                <property name="decimals">
+                 <number>1</number>
+                </property>
+                <property name="minimum">
+                 <double>-10.000000000000000</double>
+                </property>
+                <property name="maximum">
+                 <double>70.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
                 </property>
                </widget>
               </item>
@@ -11533,8 +11547,8 @@
    <slot>select_position_sketch_dir()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>364</x>
-     <y>161</y>
+     <x>779</x>
+     <y>1198</y>
     </hint>
     <hint type="destinationlabel">
      <x>199</x>
@@ -11549,8 +11563,8 @@
    <slot>select_trigger_sketch_dir()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>374</x>
-     <y>122</y>
+     <x>779</x>
+     <y>225</y>
     </hint>
     <hint type="destinationlabel">
      <x>199</x>
@@ -11565,8 +11579,8 @@
    <slot>select_log_path()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>382</x>
-     <y>97</y>
+     <x>793</x>
+     <y>115</y>
     </hint>
     <hint type="destinationlabel">
      <x>199</x>
@@ -11581,8 +11595,8 @@
    <slot>select_data_dir()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>384</x>
-     <y>125</y>
+     <x>793</x>
+     <y>140</y>
     </hint>
     <hint type="destinationlabel">
      <x>399</x>
@@ -11597,8 +11611,8 @@
    <slot>select_clock_sketch_dir()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>364</x>
-     <y>136</y>
+     <x>779</x>
+     <y>706</y>
     </hint>
     <hint type="destinationlabel">
      <x>199</x>
@@ -11613,12 +11627,44 @@
    <slot>select_config_path()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>380</x>
-     <y>69</y>
+     <x>793</x>
+     <y>90</y>
     </hint>
     <hint type="destinationlabel">
      <x>399</x>
      <y>119</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>sipm_amp1_iv_rc_data_dir_but</sender>
+   <signal>clicked()</signal>
+   <receiver>SettingsWindow</receiver>
+   <slot>select_amp1_iv_dir()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>767</x>
+     <y>128</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>275</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>sipm_amp2_iv_rc_data_dir_but</sender>
+   <signal>clicked()</signal>
+   <receiver>SettingsWindow</receiver>
+   <slot>select_amp2_iv_dir()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>767</x>
+     <y>235</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>275</y>
     </hint>
    </hints>
   </connection>
@@ -11633,5 +11679,7 @@
   <slot>select_trigger_sketch_dir()</slot>
   <slot>select_clock_sketch_dir()</slot>
   <slot>select_position_sketch_dir()</slot>
+  <slot>select_amp1_iv_dir()</slot>
+  <slot>select_amp2_iv_dir()</slot>
  </slots>
 </ui>

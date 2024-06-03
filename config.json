@@ -68,6 +68,8 @@
       "qp": 70.0,
       "iv_enabled": true,
       "iv_data_dir": "/mnt/rc-data/iv-curves/",
+      "iv_rc_dir": "/home/sbc/RunControl/run-data/iv-curves",
+      "iv_interval": 1.0,
       "iv_start": 45.0,
       "iv_stop": 50.0,
       "iv_step": 0.5
@@ -79,6 +81,8 @@
       "qp": 70.0,
       "iv_enabled": true,
       "iv_data_dir": "/mnt/rc-data/iv-curves/",
+      "iv_rc_dir": "/home/sbc/RunControl/run-data/iv-curves",
+      "iv_interval": 1.0,
       "iv_start": 45.0,
       "iv_stop": 50.0,
       "iv_step": 0.5

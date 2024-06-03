@@ -78,6 +78,8 @@ class Config(QObject):
         ui.sipm_amp1_qp_box.setValue(sipm_amp1_config["qp"])
         ui.sipm_amp1_iv_enabled_box.setChecked(sipm_amp1_config["iv_enabled"])
         ui.sipm_amp1_iv_data_dir_edit.setText(sipm_amp1_config["iv_data_dir"])
+        ui.sipm_amp1_iv_rc_data_dir_edit.setText(sipm_amp1_config["iv_rc_dir"])
+        ui.sipm_amp1_iv_interval_box.setValue(sipm_amp1_config["iv_interval"])
         ui.sipm_amp1_iv_start_box.setValue(sipm_amp1_config["iv_start"])
         ui.sipm_amp1_iv_stop_box.setValue(sipm_amp1_config["iv_stop"])
         ui.sipm_amp1_iv_step_box.setValue(sipm_amp1_config["iv_step"])
@@ -89,6 +91,8 @@ class Config(QObject):
         ui.sipm_amp2_qp_box.setValue(sipm_amp2_config["qp"])
         ui.sipm_amp2_iv_enabled_box.setChecked(sipm_amp2_config["iv_enabled"])
         ui.sipm_amp2_iv_data_dir_edit.setText(sipm_amp2_config["iv_data_dir"])
+        ui.sipm_amp2_iv_rc_data_dir_edit.setText(sipm_amp2_config["iv_rc_dir"])
+        ui.sipm_amp2_iv_interval_box.setValue(sipm_amp2_config["iv_interval"])
         ui.sipm_amp2_iv_start_box.setValue(sipm_amp2_config["iv_start"])
         ui.sipm_amp2_iv_stop_box.setValue(sipm_amp2_config["iv_stop"])
         ui.sipm_amp2_iv_step_box.setValue(sipm_amp2_config["iv_step"])
@@ -262,6 +266,8 @@ class Config(QObject):
             "qp": ui.sipm_amp1_qp_box.value(),
             "iv_enabled": ui.sipm_amp1_iv_enabled_box.isChecked(),
             "iv_data_dir": ui.sipm_amp1_iv_data_dir_edit.text(),
+            "iv_rc_dir": ui.sipm_amp1_iv_rc_data_dir_edit.text(),
+            "iv_interval": ui.sipm_amp1_iv_interval_box.value(),
             "iv_start": ui.sipm_amp1_iv_start_box.value(),
             "iv_stop": ui.sipm_amp1_iv_stop_box.value(),
             "iv_step": ui.sipm_amp1_iv_step_box.value(),
@@ -274,6 +280,8 @@ class Config(QObject):
             "qp": ui.sipm_amp2_qp_box.value(),
             "iv_enabled": ui.sipm_amp2_iv_enabled_box.isChecked(),
             "iv_data_dir": ui.sipm_amp2_iv_data_dir_edit.text(),
+            "iv_rc_dir": ui.sipm_amp2_iv_rc_data_dir_edit.text(),
+            "iv_interval": ui.sipm_amp2_iv_interval_box.value(),
             "iv_start": ui.sipm_amp2_iv_start_box.value(),
             "iv_stop": ui.sipm_amp2_iv_stop_box.value(),
             "iv_step": ui.sipm_amp2_iv_step_box.value(),
