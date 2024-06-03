@@ -1,8 +1,9 @@
 import json
 import os
 import logging
-from PySide6.QtCore import QTimer, QObject, QThread, Slot, Signal
+from PySide6.QtCore import QTimer, QObject, Slot, Signal
 import copy
+import random
 
 
 class Config(QObject):
@@ -18,6 +19,8 @@ class Config(QObject):
         self.config = {}
         self.run_config = {}  # A copy of config for the run
         self.cam_config_saved = False  # flag for syncing
+        self.pressure_profiles = []
+
         self.logger = logging.getLogger("rc")
         self.timer = QTimer(self)
         self.timer.setInterval(100)
@@ -49,8 +52,6 @@ class Config(QObject):
             ui.p_random_but.setChecked(True)
         elif pressure_config["mode"] == "cycle":
             ui.p_cycle_but.setChecked(True)
-        elif pressure_config["mode"] == "interpolate":
-            ui.p_interpolate_but.setChecked(True)
         else:
             self.logger.error("Invalid pressure mode.")
         for i in range(1,7):
@@ -216,13 +217,9 @@ class Config(QObject):
             mode = "random"
         elif ui.p_cycle_but.isChecked():
             mode = "cycle"
-        elif ui.p_interpolate_but.isChecked():
-            mode = "interpolate"
         else:
             self.logger.error("No pressure mode selected.")
             mode = ""
-        # check at least one profile is enabled
-        enabled_profiles = 0
 
         pressure_config = {
             "mode": mode,
@@ -230,14 +227,11 @@ class Config(QObject):
         for i in range(1,7):
             profile = {}
             profile["enabled"] = widgets[f"pressure{i}_enable"].isChecked()
-            if profile["enabled"]: enabled_profiles += 1
             profile["setpoint"] = widgets[f"pressure{i}_set"].value()
             profile["setpoint_high"] = widgets[f"pressure{i}_high"].value()
             profile["slope"] = widgets[f"pressure{i}_slope"].value()
             profile["period"] = widgets[f"pressure{i}_period"].value()
             pressure_config[f"profile{i}"] = profile
-        if enabled_profiles <= 0:
-            self.logger.error("No pressure profile is enabled.")
 
         # apply general config
         sql_config = {
@@ -306,6 +300,30 @@ class Config(QObject):
             "trig_mask": [widgets[f"caen_g0_trig_mask_{ch}"].isChecked() for ch in range(8)],
             "acq_mask": [widgets[f"caen_g0_acq_mask_{ch}"].isChecked() for ch in range(8)],
             "offsets": [widgets[f"caen_g0_offset_{ch}"].value() for ch in range(8)],
+        }
+
+        caen_g1_config = {
+            "enabled": ui.caen_g1_enable_box.isChecked(),
+            "threshold": ui.caen_g1_thres_box.value(),
+            "trig_mask": [widgets[f"caen_g1_trig_mask_{ch}"].isChecked() for ch in range(8)],
+            "acq_mask": [widgets[f"caen_g1_acq_mask_{ch}"].isChecked() for ch in range(8)],
+            "offsets": [widgets[f"caen_g1_offset_{ch}"].value() for ch in range(8)],
+        }
+
+        caen_g2_config = {
+            "enabled": ui.caen_g2_enable_box.isChecked(),
+            "threshold": ui.caen_g2_thres_box.value(),
+            "trig_mask": [widgets[f"caen_g2_trig_mask_{ch}"].isChecked() for ch in range(8)],
+            "acq_mask": [widgets[f"caen_g2_acq_mask_{ch}"].isChecked() for ch in range(8)],
+            "offsets": [widgets[f"caen_g2_offset_{ch}"].value() for ch in range(8)],
+        }
+
+        caen_g3_config = {
+            "enabled": ui.caen_g3_enable_box.isChecked(),
+            "threshold": ui.caen_g3_thres_box.value(),
+            "trig_mask": [widgets[f"caen_g3_trig_mask_{ch}"].isChecked() for ch in range(8)],
+            "acq_mask": [widgets[f"caen_g3_acq_mask_{ch}"].isChecked() for ch in range(8)],
+            "offsets": [widgets[f"caen_g3_offset_{ch}"].value() for ch in range(8)],
         }
 
         acous_config = {
@@ -406,6 +424,9 @@ class Config(QObject):
                 "amp2": sipm_amp2_config,
                 "caen": caen_config,
                 "caen_g0": caen_g0_config,
+                "caen_g1": caen_g1_config,
+                "caen_g2": caen_g2_config,
+                "caen_g3": caen_g3_config
             },
             "acous": acous_config,
             "cam": cam_config,
@@ -432,11 +453,22 @@ class Config(QObject):
 
     @Slot()
     def start_run(self):
+        # self.apply_config(self.main.settings_window.ui)
         self.run_config = copy.deepcopy(self.config)
         run_json_path = os.path.join(self.main.run_dir, f"{self.main.run_id}.json")
         # save run config file
         with open(run_json_path, "w") as file:
             json.dump(self.run_config, file, indent=2)
+
+        # check at least one profile is enabled
+        pressure_profiles = self.run_config["general"]["pressure"]
+        self.pressure_mode = pressure_profiles["mode"]
+
+        enabled_profiles = 0
+        self.pressure_profiles = []
+        for k, v in pressure_profiles.items():
+            if k!="mode" and v["enabled"]:
+                self.pressure_profiles.append(v)
 
         # save arduino json files
         for ino in ["trigger", "clock", "position"]:
@@ -459,15 +491,21 @@ class Config(QObject):
 
     @Slot()
     def start_event(self):
-        # save camera json files
-        for cam in ["cam1", "cam2", "cam3"]:
-            cam_config = copy.deepcopy(self.run_config["cam"][cam])
-            if not cam_config["enabled"]:
-                continue
-            cam_config["data_path"] = os.path.join(cam_config["data_path"], self.main.run_id, str(self.main.event_id))
-            with open(cam_config["rc_config_path"], "w") as file:
-                json.dump(cam_config, file, indent=2)
-            self.logger.debug(f"Configuration file saved for {cam}")
+        self.event_pressure = random.choice(self.pressure_profiles)
+        self.logger.info(f"Event pressure: {self.event_pressure["setpoint"]}, "
+                         f"{self.event_pressure['setpoint_high']}, "
+                         f"{self.event_pressure['slope']}, "
+                         f"{self.event_pressure['period']}")
+
+        # # save camera json files
+        # for cam in ["cam1", "cam2", "cam3"]:
+        #     cam_config = copy.deepcopy(self.run_config["cam"][cam])
+        #     if not cam_config["enabled"]:
+        #         continue
+        #     cam_config["data_path"] = os.path.join(cam_config["data_path"], self.main.run_id, str(self.main.event_id))
+        #     with open(cam_config["rc_config_path"], "w") as file:
+        #         json.dump(cam_config, file, indent=2)
+        #     self.logger.debug(f"Configuration file saved for {cam}")
 
         self.cam_config_saved = True
 
