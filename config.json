@@ -15,35 +15,35 @@
         "period": -1.0
       },
       "profile2": {
-        "enabled": true,
+        "enabled": false,
         "setpoint": 3.0,
         "setpoint_high": 0.0,
         "slope": 0.0,
         "period": -1.0
       },
       "profile3": {
-        "enabled": true,
+        "enabled": false,
         "setpoint": 4.0,
         "setpoint_high": 0.0,
         "slope": 0.0,
         "period": -1.0
       },
       "profile4": {
-        "enabled": true,
+        "enabled": false,
         "setpoint": 5.0,
         "setpoint_high": 0.0,
         "slope": 0.0,
         "period": -1.0
       },
       "profile5": {
-        "enabled": true,
+        "enabled": false,
         "setpoint": 6.0,
         "setpoint_high": 0.0,
         "slope": 0.0,
         "period": -1.0
       },
       "profile6": {
-        "enabled": true,
+        "enabled": false,
         "setpoint": 1.0,
         "setpoint_high": 0.0,
         "slope": 0.0,
@@ -103,8 +103,9 @@
       "sw_trig": "ACQ+EXT"
     },
     "caen_g0": {
-      "enabled": true,
-      "threshold": 30000,
+      "enabled": false,
+      "threshold": 2000,
+      "offset": 32768,
       "trig_mask": [
         true,
         true,
@@ -138,16 +139,17 @@
     },
     "caen_g1": {
       "enabled": false,
-      "threshold": 0,
+      "threshold": 2000,
+      "offset": 32768,
       "trig_mask": [
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
       ],
       "acq_mask": [
         false,
@@ -172,7 +174,8 @@
     },
     "caen_g2": {
       "enabled": false,
-      "threshold": 0,
+      "threshold": 2000,
+      "offset": 32768,
       "trig_mask": [
         false,
         false,
@@ -206,7 +209,8 @@
     },
     "caen_g3": {
       "enabled": false,
-      "threshold": 0,
+      "threshold": 2000,
+      "offset": 32768,
       "trig_mask": [
         false,
         false,

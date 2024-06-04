@@ -1,12 +1,14 @@
 import sys
 from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog
 from PySide6.QtGui import QTextCursor
-from PySide6.QtCore import QTimer
+from PySide6.QtCore import QTimer, Qt
 import logging
 from enum import Enum
 import time
 from ui.settingswindow import Ui_SettingsWindow
 from ui.logwindow import Ui_LogWindow
+import re
+import numpy as np
 from src.config import Config
 
 
@@ -21,6 +23,15 @@ class SettingsWindow(QMainWindow):
         self.config = self.config_class.config
         self.load_config()
         self.logger = logging.getLogger("rc")
+
+        self.widgets = self.ui.__dict__
+        for group in ["g0", "g1", "g2", "g3"]:
+            for ch in range(8):
+                self.widgets[f"caen_{group}_trig_mask_{ch}"].stateChanged.connect(self.caen_individual_changed)
+                self.widgets[f"caen_{group}_acq_mask_{ch}"].stateChanged.connect(self.caen_individual_changed)
+            self.widgets[f"caen_{group}_trig_box"].stateChanged.connect(self.caen_group_changed)
+            self.widgets[f"caen_{group}_acq_box"].stateChanged.connect(self.caen_group_changed)
+        self.caen_individual_changed()
 
         self.logger.debug("Settings window loaded.")
 
@@ -79,6 +90,42 @@ class SettingsWindow(QMainWindow):
             caption="SiPM Amp1 IV Data Directory",
             dir=self.config["scint"]["amp2"]["iv_rc_dir"])
         self.ui.sipm_amp2_iv_rc_data_dir_edit.setText(amp2_iv_dir)
+
+    def caen_individual_changed(self):
+        if self.sender():
+            sender = self.sender().objectName()
+            pattern = r"_g[0-3]_(trig|acq)_"
+            match = re.search(pattern, sender)
+            settings = [match.group(0)[1:-1]]  # g0-3_trig/acq
+        else:
+            settings = [f"{group}_{mode}" for group in ["g0", "g1", "g2", "g3"] for mode in ["trig", "acq"]]
+
+        for setting in settings:
+            trigger_enabled = [self.widgets[f"caen_{setting}_mask_{ch}"].isChecked() for ch in range(8)]
+            if np.sum(trigger_enabled) == 0:
+                self.widgets[f"caen_{setting}_box"].setCheckState(Qt.Unchecked)
+            elif np.sum(trigger_enabled) == 8:
+                self.widgets[f"caen_{setting}_box"].setCheckState(Qt.Checked)
+            else:
+                self.widgets[f"caen_{setting}_box"].setCheckState(Qt.PartiallyChecked)
+
+    def caen_group_changed(self, state):
+        if self.sender():
+            sender = self.sender().objectName()
+            pattern = r"_g[0-3]_(trig|acq)_"
+            match = re.search(pattern, sender)
+            setting = match.group(0)[1:-1] # g0-3_trig/acq
+        else:
+            return
+
+        if Qt.CheckState(state) == Qt.Unchecked:
+            for ch in range(8):
+                self.widgets[f"caen_{setting}_mask_{ch}"].setChecked(False)
+        elif Qt.CheckState(state) == Qt.Checked:
+            for ch in range(8):
+                self.widgets[f"caen_{setting}_mask_{ch}"].setChecked(True)
+        else:
+            return  # if partially checked, do nothing
 
 
 # Loads log window

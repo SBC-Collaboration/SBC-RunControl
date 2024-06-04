@@ -116,6 +116,7 @@ class Config(QObject):
             group_config = self.config["scint"][f"caen_{group}"]
             widgets[f"caen_{group}_enable_box"].setChecked(group_config["enabled"])
             widgets[f"caen_{group}_thres_box"].setValue(group_config["threshold"])
+            widgets[f"caen_{group}_offset_box"].setValue(group_config["offset"])
             for ch in range(8):
                 widgets[f"caen_{group}_trig_mask_{ch}"].setChecked(group_config["trig_mask"][ch])
                 widgets[f"caen_{group}_acq_mask_{ch}"].setChecked(group_config["acq_mask"][ch])
@@ -307,6 +308,7 @@ class Config(QObject):
         caen_g0_config = {
             "enabled": ui.caen_g0_enable_box.isChecked(),
             "threshold": ui.caen_g0_thres_box.value(),
+            "offset": ui.caen_g0_offset_box.value(),
             "trig_mask": [widgets[f"caen_g0_trig_mask_{ch}"].isChecked() for ch in range(8)],
             "acq_mask": [widgets[f"caen_g0_acq_mask_{ch}"].isChecked() for ch in range(8)],
             "offsets": [widgets[f"caen_g0_offset_{ch}"].value() for ch in range(8)],
@@ -315,6 +317,7 @@ class Config(QObject):
         caen_g1_config = {
             "enabled": ui.caen_g1_enable_box.isChecked(),
             "threshold": ui.caen_g1_thres_box.value(),
+            "offset": ui.caen_g1_offset_box.value(),
             "trig_mask": [widgets[f"caen_g1_trig_mask_{ch}"].isChecked() for ch in range(8)],
             "acq_mask": [widgets[f"caen_g1_acq_mask_{ch}"].isChecked() for ch in range(8)],
             "offsets": [widgets[f"caen_g1_offset_{ch}"].value() for ch in range(8)],
@@ -323,6 +326,7 @@ class Config(QObject):
         caen_g2_config = {
             "enabled": ui.caen_g2_enable_box.isChecked(),
             "threshold": ui.caen_g2_thres_box.value(),
+            "offset": ui.caen_g2_offset_box.value(),
             "trig_mask": [widgets[f"caen_g2_trig_mask_{ch}"].isChecked() for ch in range(8)],
             "acq_mask": [widgets[f"caen_g2_acq_mask_{ch}"].isChecked() for ch in range(8)],
             "offsets": [widgets[f"caen_g2_offset_{ch}"].value() for ch in range(8)],
@@ -331,6 +335,7 @@ class Config(QObject):
         caen_g3_config = {
             "enabled": ui.caen_g3_enable_box.isChecked(),
             "threshold": ui.caen_g3_thres_box.value(),
+            "offset": ui.caen_g3_offset_box.value(),
             "trig_mask": [widgets[f"caen_g3_trig_mask_{ch}"].isChecked() for ch in range(8)],
             "acq_mask": [widgets[f"caen_g3_acq_mask_{ch}"].isChecked() for ch in range(8)],
             "offsets": [widgets[f"caen_g3_offset_{ch}"].value() for ch in range(8)],
