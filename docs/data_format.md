@@ -13,10 +13,6 @@ The master configuration file is saved in `.json` format. The data structure is:
   - `max_num_evs` (`int`): Max number of events that a run can have. If the max number is reached, then the run will 
     end, instead of starting a new event.
   - `sql`: SQL configurations
-    - `ssh_host` (`str`): Host address of SSH server
-    - `ssh_port` (`int`): Port used by SSH
-    - `ssh_user` (`str`): User name for SSH
-    - `ssh_pkey` (`str`): Path to local private key used in SSH connection.
     - `hostname` (`str`): Host name of SQL server
     - `port` (`int`): Port used by SQL server
     - `user` (`str`): User name for SQL connection
@@ -24,12 +20,27 @@ The master configuration file is saved in `.json` format. The data structure is:
     - `database` (`str`): Name of database to which the data is saved
     - `run_table` (`str`): Name of the table in the database that the information for the run is saved to
     - `event_table` (`str`): Name of the table in the database that the event data is saved to.
-- `scint`
-  - `amp1`
-    - `enabled` (`bool`)
-    - `ip_addr` (`str`)
-    - `bias` (`float`, V)
+  - `pressure`: Pressure profiles for the run.
+    - `mode`: The selection mode of pressure profiles for events in a run. If `random`, then a profile is chosen randomly among enabled ones. If `cycle`, then it will cycle through all enabled ones in order.
+    - `profile1`, `profile2`, `profile3`, `profile4`, `profile5`, `profile6`: Six slots for pressure profiles to choose from.
+      - `enabled` (`bool`): Whether this profile is enabled to be used in the run.
+      - `setpoint` (`float`, bara): Pressure set point if it only uses one, and lower pressure set point if it oscillates between two values.
+      - `setpoint_high` (`float`, bara): Higher pressure set point if it oscillates between two values. If only one setpoint is needed, just set this value to number smaller than `setpoint`, preferably 0.
+      - `slope` (`float`, bar/s): The speed of expansion at the start of the event.
+      - `period` (`float`, s): The period of oscillation between the low and high pressure set points.
+- `scint`: Scintillation related settings, including SiPM amplifiers and CAEN digitizer.
+  - `amp1`, `amp2`
+    - `enabled` (`bool`): Whether this amplifier is enabled.
+    - `ip_addr` (`str`): Local IP address of this amplifier.
+    - `bias` (`float`, V): 
     - `qp` (`float`, V)
+    - `iv_enabled` (`bool`)
+    - `iv_data_dir` (`str`)
+    - `iv_rc_dir` (`str`)
+    - `iv_interval` (`float`, hours)
+    - `iv_start` (`float`, V)
+    - `iv_stop` (`float`, V)
+    - `iv_step` (`float`, V)
   - `caen`
     - `model` (`str`)
     - `port` (`int`)
