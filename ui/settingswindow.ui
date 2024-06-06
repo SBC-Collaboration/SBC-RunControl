@@ -49,7 +49,7 @@
     <item row="0" column="0">
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <property name="tabsClosable">
        <bool>false</bool>
@@ -12742,6 +12742,7 @@
    </attribute>
    <addaction name="actionClose_Window"/>
    <addaction name="actionReloadConfig"/>
+   <addaction name="actionLoadConfig"/>
    <addaction name="actionApply_config"/>
    <addaction name="actionSaveConfig"/>
   </widget>
@@ -12809,6 +12810,21 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+W</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
+  </action>
+  <action name="actionLoadConfig">
+   <property name="icon">
+    <iconset resource="../resources/resources.qrc">
+     <normaloff>:/icons/open.png</normaloff>:/icons/open.png</iconset>
+   </property>
+   <property name="text">
+    <string>Load Config</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+L</string>
    </property>
    <property name="menuRole">
     <enum>QAction::NoRole</enum>
@@ -13062,7 +13078,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>779</x>
-     <y>1198</y>
+     <y>1219</y>
     </hint>
     <hint type="destinationlabel">
      <x>199</x>
@@ -13078,7 +13094,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>779</x>
-     <y>225</y>
+     <y>246</y>
     </hint>
     <hint type="destinationlabel">
      <x>199</x>
@@ -13126,7 +13142,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>779</x>
-     <y>706</y>
+     <y>727</y>
     </hint>
     <hint type="destinationlabel">
      <x>199</x>
@@ -13158,7 +13174,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>779</x>
-     <y>-123</y>
+     <y>118</y>
     </hint>
     <hint type="destinationlabel">
      <x>399</x>
@@ -13174,7 +13190,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>779</x>
-     <y>74</y>
+     <y>315</y>
     </hint>
     <hint type="destinationlabel">
      <x>399</x>
@@ -13189,8 +13205,8 @@
    <slot>select_caen_exec_path()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>335</x>
-     <y>516</y>
+     <x>347</x>
+     <y>527</y>
     </hint>
     <hint type="destinationlabel">
      <x>399</x>
@@ -13205,8 +13221,24 @@
    <slot>select_caen_config_path()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>767</x>
-     <y>516</y>
+     <x>779</x>
+     <y>527</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>275</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionLoadConfig</sender>
+   <signal>triggered()</signal>
+   <receiver>SettingsWindow</receiver>
+   <slot>load_config_from_file()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
     </hint>
     <hint type="destinationlabel">
      <x>399</x>
@@ -13231,5 +13263,6 @@
   <slot>on_caen_group_changed()</slot>
   <slot>select_caen_config_path()</slot>
   <slot>select_caen_exec_path()</slot>
+  <slot>load_config_from_file()</slot>
  </slots>
 </ui>

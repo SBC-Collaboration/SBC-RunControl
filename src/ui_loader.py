@@ -38,6 +38,14 @@ class SettingsWindow(QMainWindow):
     def load_config(self):
         self.config_class.load_config_to_window(self.ui)
 
+    def load_config_from_file(self):
+        config_path, _ = QFileDialog.getOpenFileName(
+            self,
+            caption="Config file to load",
+            dir=self.config["general"]["config_path"]
+        )
+        self.config_class.load_config_from_file(config_path, self.ui)
+
     def apply_config(self):
         self.config_class.apply_config(self.ui)
 

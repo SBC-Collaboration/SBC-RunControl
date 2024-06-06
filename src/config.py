@@ -34,7 +34,34 @@ class Config(QObject):
     @Slot()
     def load_config(self):
         with open(self.path, "r") as file:
-            self.config = json.load(file)
+            self.new_config = json.load(file)
+
+        # update existing dict with new settings
+        self.config.update(self.new_config)
+
+    def update_dict(self, original, new):
+        """
+        recursive helper function to update config dictionary with new settings.
+        Prevents overwriting keys in the same level that is written.
+        """
+        for key, value in new.items():
+            if isinstance(value, dict):
+                self.update_dict(original[key], value)
+            else:
+                original[key] = value
+
+    @Slot()
+    def load_config_from_file(self, path, ui):
+        """
+        Updates the config dict with new json dict. The new json has to follow the same structure,
+        but doesn't need to have all the values
+        """
+        with open(path, "r") as file:
+            self.new_config = json.load(file)
+
+        # update existing dict with new settings
+        self.update_dict(self.config, self.new_config)
+        self.load_config_to_window(ui)
 
     @Slot()
     def load_config_to_window(self, ui):
