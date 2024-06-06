@@ -31,36 +31,37 @@ The master configuration file is saved in `.json` format. The data structure is:
 - `scint`: Scintillation related settings, including SiPM amplifiers and CAEN digitizer.
   - `amp1`, `amp2`
     - `enabled` (`bool`): Whether this amplifier is enabled.
-    - `ip_addr` (`str`): Local IP address of this amplifier.
-    - `bias` (`float`, V): 
-    - `qp` (`float`, V)
-    - `iv_enabled` (`bool`)
-    - `iv_data_dir` (`str`)
-    - `iv_rc_dir` (`str`)
-    - `iv_interval` (`float`, hours)
-    - `iv_start` (`float`, V)
-    - `iv_stop` (`float`, V)
-    - `iv_step` (`float`, V)
-  - `caen`
-    - `model` (`str`)
-    - `port` (`int`)
-    - `connection` (`str`)
-    - `evs_per_read` (`int`)
-    - `rec_length` (`int`)
-    - `post_trig` (`int`)
-    - `trig_in` (`bool`)
-    - `decimation` (`int`)
-    - `overlap` (`bool`)
-    - `polarity` (`str`)
-    - `io_level` (`str`)
-    - `ext_trig` (`str`)
-    - `sw_trig` (`str`)
-  - `caen_g0`, `caen_g1`, `caen_g2`, `caen_g3`
-    - `enabled` (`bool`)
-    - `thresdhold` (`int`)
-    - `trig_mask` (`bool`, 8)
-    - `acq_mask` (`bool`, 8)
-    - `offsets` (`int`, 8)
+    - `ip_addr` (`str`): Local IP address of this amplifier's nanopi.
+    - `bias` (`float`, V): Reverse bias voltage for SiPMs. This is the `HVout` variable in the documentation. Positive number means reverse bias. 
+    - `qp` (`float`, V): Charge pump voltage, defaults to 70V. This sets the upper limit of `HVout`.
+    - `iv_enabled` (`bool`): Whether to perform IV curve measurements automatically.
+    - `iv_data_dir` (`str`): Directory on the nanopi to save the IV measurement results.
+    - `iv_rc_dir` (`str`): Directory on the run control where data is saved.
+    - `iv_interval` (`float`, hours): If an IV curve measurement within this interval already exists at the satart or end of a run, no IV curve measurement will be performed.
+    - `iv_start` (`float`, V): Start (lower) voltage of measurement.
+    - `iv_stop` (`float`, V): End (higher) voltage of measurement.
+    - `iv_step` (`float`, V): Voltage step of measurement.
+  - `caen`: General config for CAEN digitizer.
+    - `model` (`str`): Model of digitizer (DT5740 for Fermilab chamber).
+    - `port` (`int`): COM port of digitizer.
+    - `connection` (`str`): Connection type: USB or PCIe.
+    - `evs_per_read` (`int`): Maximum number of events per read from digitizer to PC memory. If number of events on digitizer is fewer, than all events will be transferred.
+    - `rec_length` (`int`): Record length for each buffer, or number of samples in a waveform. The actual record length may be the closest multiple of 4.
+    - `post_trig` (`int`): Percentage of samples after the trigger. 0% means trigger is at the end of waveform.
+    - `trig_in_as_gate` (`bool`): If `true`, the TRIG-IN port on the digitizer will serve as gate for triggering in all other channels. This means that only if the TRIG-IN is true will the data channel triggering be enabled. If `false`, the TRIG-IN will serve as an additional channel of trigger, which may be useful when doing LED calibration.
+    - `decimation` (`int`): Decimation factor for acquisition. This can be n=\[0..7\], and the sampling frequency is f = 62.5 MHz/s / (2 ^ n).
+    - `overlap_rej` (`bool`): Whether overlapping triggers are rejected. Overlapping triggers are triggers that appear inside the acquisition window of another trigger.
+    - `polarity` (`str`): Trigger polarity. Rising of falling edge.
+    - `io_level` (`str`): Selects IO level for TRIG-IN, GPO, and GPI ports. Can be NIM or TTL.
+    - `ext_trig` (`str`): Mode of external trigger if `trig_in_as_gate` not enabled. Can be `disabled`, `extout only`, `acq only` or `extout+acq`. This sets if the external trigger is used to generate acquisition trigger, or trigger output, or both, or neither.
+    - `sw_trig` (`str`): Mode of software trigger, with the same set of options as previous.
+  - `caen_g0`, `caen_g1`, `caen_g2`, `caen_g3`: Per-group config for CAEN digitizer.
+    - `enabled` (`bool`): Whether this entire group is enabled.
+    - `offset` (`int`): 16-bit offset value for entire group for 2Vpp \[0..65535\].
+    - `thresdhold` (`int`): Triggering threshold for this group. 12 bit value corresponding to 2Vpp \[0..4095\].
+    - `trig_mask` (`bool`, 8): Specifies if each individual channel participates in triggering.
+    - `acq_mask` (`bool`, 8): Specifies if data from individual channel is saved.
+    - `ch-offset` (`int`, 8): 8-bit per-channel offset on top of group offset. \[0..255\] added to the 16-bit offset.
 - `acous`
   - `general`
     - `sample_rate` (`str`)
