@@ -102,29 +102,31 @@ class Config(QObject):
             widgets[f"sipm_amp2_ch{ch}_offset"].setValue(sipm_amp2_config["ch_offset"][ch-1])
 
         caen_config = self.config["scint"]["caen"]
+        ui.caen_exec_path_edit.setText(caen_config["exec_path"])
+        ui.caen_config_path_edit.setText(caen_config["config_path"])
         ui.caen_model_box.setCurrentText(caen_config["model"])
         ui.caen_port_box.setValue(caen_config["port"])
         ui.caen_conn_box.setCurrentText(caen_config["connection"])
         ui.caen_evs_box.setValue(caen_config["evs_per_read"])
         ui.caen_length_box.setValue(caen_config["rec_length"])
         ui.caen_post_trig_box.setValue(caen_config["post_trig"])
-        ui.caen_trigin_box.setChecked(caen_config["trig_in"])
+        ui.caen_trigin_box.setChecked(caen_config["trig_in_as_gate"])
         ui.caen_decimation_box.setValue(caen_config["decimation"])
-        ui.caen_overlap_box.setChecked(caen_config["overlap"])
+        ui.caen_overlap_box.setChecked(caen_config["overlap_rej"])
         ui.caen_polarity_box.setCurrentText(caen_config["polarity"])
         ui.caen_io_box.setCurrentText(caen_config["io_level"])
         ui.caen_ext_trig_box.setCurrentText(caen_config["ext_trig"])
         ui.caen_sw_trig_box.setCurrentText(caen_config["sw_trig"])
 
-        for group in ["g0", "g1", "g2", "g3"]:
-            group_config = self.config["scint"][f"caen_{group}"]
-            widgets[f"caen_{group}_enable_box"].setChecked(group_config["enabled"])
-            widgets[f"caen_{group}_thres_box"].setValue(group_config["threshold"])
-            widgets[f"caen_{group}_offset_box"].setValue(group_config["offset"])
+        for gp in ["g0", "g1", "g2", "g3"]:
+            gp_config = self.config["scint"][f"caen_{gp}"]
+            widgets[f"caen_{gp}_enable_box"].setChecked(gp_config["enabled"])
+            widgets[f"caen_{gp}_thres_box"].setValue(gp_config["threshold"])
+            widgets[f"caen_{gp}_offset_box"].setValue(gp_config["offset"])
             for ch in range(8):
-                widgets[f"caen_{group}_trig_mask_{ch}"].setChecked(group_config["trig_mask"][ch])
-                widgets[f"caen_{group}_acq_mask_{ch}"].setChecked(group_config["acq_mask"][ch])
-                widgets[f"caen_{group}_offset_{ch}"].setValue(group_config["offsets"][ch])
+                widgets[f"caen_{gp}_trig_mask_{ch}"].setChecked(gp_config["trig_mask"][ch])
+                widgets[f"caen_{gp}_acq_mask_{ch}"].setChecked(gp_config["acq_mask"][ch])
+                widgets[f"caen_{gp}_offset_{ch}"].setValue(gp_config["ch_offset"][ch])
 
         acous_config = self.config["acous"]
 
@@ -295,15 +297,17 @@ class Config(QObject):
         }
 
         caen_config = {
+            "exec_path": ui.caen_exec_path_edit.text(),
+            "config_path": ui.caen_config_path_edit.text(),
             "model": ui.caen_model_box.currentText(),
             "port": ui.caen_port_box.value(),
             "connection": ui.caen_conn_box.currentText(),
             "evs_per_read": ui.caen_evs_box.value(),
             "rec_length": ui.caen_length_box.value(),
             "post_trig": ui.caen_post_trig_box.value(),
-            "trig_in": ui.caen_trigin_box.isChecked(),
+            "trig_in_as_gate": ui.caen_trigin_box.isChecked(),
             "decimation": ui.caen_decimation_box.value(),
-            "overlap": ui.caen_overlap_box.isChecked(),
+            "overlap_rej": ui.caen_overlap_box.isChecked(),
             "polarity": ui.caen_polarity_box.currentText(),
             "io_level": ui.caen_io_box.currentText(),
             "ext_trig": ui.caen_ext_trig_box.currentText(),
@@ -317,7 +321,7 @@ class Config(QObject):
             "offset": ui.caen_g0_offset_box.value(),
             "trig_mask": [widgets[f"caen_g0_trig_mask_{ch}"].isChecked() for ch in range(8)],
             "acq_mask": [widgets[f"caen_g0_acq_mask_{ch}"].isChecked() for ch in range(8)],
-            "offsets": [widgets[f"caen_g0_offset_{ch}"].value() for ch in range(8)],
+            "ch_offset": [widgets[f"caen_g0_offset_{ch}"].value() for ch in range(8)],
         }
 
         caen_g1_config = {
@@ -326,7 +330,7 @@ class Config(QObject):
             "offset": ui.caen_g1_offset_box.value(),
             "trig_mask": [widgets[f"caen_g1_trig_mask_{ch}"].isChecked() for ch in range(8)],
             "acq_mask": [widgets[f"caen_g1_acq_mask_{ch}"].isChecked() for ch in range(8)],
-            "offsets": [widgets[f"caen_g1_offset_{ch}"].value() for ch in range(8)],
+            "ch_offset": [widgets[f"caen_g1_offset_{ch}"].value() for ch in range(8)],
         }
 
         caen_g2_config = {
@@ -335,7 +339,7 @@ class Config(QObject):
             "offset": ui.caen_g2_offset_box.value(),
             "trig_mask": [widgets[f"caen_g2_trig_mask_{ch}"].isChecked() for ch in range(8)],
             "acq_mask": [widgets[f"caen_g2_acq_mask_{ch}"].isChecked() for ch in range(8)],
-            "offsets": [widgets[f"caen_g2_offset_{ch}"].value() for ch in range(8)],
+            "ch_offset": [widgets[f"caen_g2_offset_{ch}"].value() for ch in range(8)],
         }
 
         caen_g3_config = {
@@ -344,7 +348,7 @@ class Config(QObject):
             "offset": ui.caen_g3_offset_box.value(),
             "trig_mask": [widgets[f"caen_g3_trig_mask_{ch}"].isChecked() for ch in range(8)],
             "acq_mask": [widgets[f"caen_g3_acq_mask_{ch}"].isChecked() for ch in range(8)],
-            "offsets": [widgets[f"caen_g3_offset_{ch}"].value() for ch in range(8)],
+            "ch_offset": [widgets[f"caen_g3_offset_{ch}"].value() for ch in range(8)],
         }
 
         acous_config = {

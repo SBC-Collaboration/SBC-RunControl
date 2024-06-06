@@ -73,7 +73,23 @@
       "iv_start": 45.0,
       "iv_stop": 50.0,
       "iv_step": 0.5,
-      "ch_offset": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+      "ch_offset": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
     },
     "amp2": {
       "enabled": false,
@@ -87,18 +103,36 @@
       "iv_start": 45.0,
       "iv_stop": 50.0,
       "iv_step": 0.5,
-      "ch_offset": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+      "ch_offset": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
     },
     "caen": {
+      "exec_path": "",
+      "config_path": "/home/sbc/packages/SiPMs-DAQ/daq_config.json",
       "model": "DT5740D",
       "port": 0,
       "connection": "USB",
       "evs_per_read": 500,
       "rec_length": 500,
       "post_trig": 50,
-      "trig_in": false,
+      "trig_in_as_gate": false,
       "decimation": 1,
-      "overlap": false,
+      "overlap_rej": false,
       "polarity": "Rising",
       "io_level": "TTL",
       "ext_trig": "Disabled",
@@ -128,7 +162,7 @@
         true,
         true
       ],
-      "offsets": [
+      "ch_offset": [
         0,
         0,
         0,
@@ -163,7 +197,7 @@
         false,
         false
       ],
-      "offsets": [
+      "ch_offset": [
         0,
         0,
         0,
@@ -198,7 +232,7 @@
         false,
         false
       ],
-      "offsets": [
+      "ch_offset": [
         0,
         0,
         0,
@@ -233,7 +267,7 @@
         false,
         false
       ],
-      "offsets": [
+      "ch_offset": [
         0,
         0,
         0,
