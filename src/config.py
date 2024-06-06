@@ -83,6 +83,8 @@ class Config(QObject):
         ui.sipm_amp1_iv_start_box.setValue(sipm_amp1_config["iv_start"])
         ui.sipm_amp1_iv_stop_box.setValue(sipm_amp1_config["iv_stop"])
         ui.sipm_amp1_iv_step_box.setValue(sipm_amp1_config["iv_step"])
+        for ch in range(1, 16):
+            widgets[f"sipm_amp1_ch{ch}_offset"].setValue(sipm_amp1_config["ch_offset"][ch-1])
 
         sipm_amp2_config = self.config["scint"]["amp2"]
         ui.sipm_amp2_enabled_box.setChecked(sipm_amp2_config["enabled"])
@@ -96,6 +98,8 @@ class Config(QObject):
         ui.sipm_amp2_iv_start_box.setValue(sipm_amp2_config["iv_start"])
         ui.sipm_amp2_iv_stop_box.setValue(sipm_amp2_config["iv_stop"])
         ui.sipm_amp2_iv_step_box.setValue(sipm_amp2_config["iv_step"])
+        for ch in range(1, 16):
+            widgets[f"sipm_amp2_ch{ch}_offset"].setValue(sipm_amp2_config["ch_offset"][ch-1])
 
         caen_config = self.config["scint"]["caen"]
         ui.caen_model_box.setCurrentText(caen_config["model"])
@@ -272,6 +276,7 @@ class Config(QObject):
             "iv_start": ui.sipm_amp1_iv_start_box.value(),
             "iv_stop": ui.sipm_amp1_iv_stop_box.value(),
             "iv_step": ui.sipm_amp1_iv_step_box.value(),
+            "ch_offset": [widgets[f"sipm_amp1_ch{ch}_offset"].value() for ch in range(1,16)],
         }
 
         sipm_amp2_config = {
@@ -286,6 +291,7 @@ class Config(QObject):
             "iv_start": ui.sipm_amp2_iv_start_box.value(),
             "iv_stop": ui.sipm_amp2_iv_stop_box.value(),
             "iv_step": ui.sipm_amp2_iv_step_box.value(),
+            "ch_offset": [widgets[f"sipm_amp2_ch{ch}_offset"].value() for ch in range(1, 16)],
         }
 
         caen_config = {

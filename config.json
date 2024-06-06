@@ -72,7 +72,8 @@
       "iv_interval": 1.0,
       "iv_start": 45.0,
       "iv_stop": 50.0,
-      "iv_step": 0.5
+      "iv_step": 0.5,
+      "ch_offset": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     },
     "amp2": {
       "enabled": false,
@@ -85,7 +86,8 @@
       "iv_interval": 1.0,
       "iv_start": 45.0,
       "iv_stop": 50.0,
-      "iv_step": 0.5
+      "iv_step": 0.5,
+      "ch_offset": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     },
     "caen": {
       "model": "DT5740D",
