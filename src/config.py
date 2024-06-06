@@ -462,9 +462,7 @@ class Config(QObject):
     @Slot()
     def save_config_from_ui(self, ui, path):
         self.apply_config(ui)
-        with open(path, "w") as file:
-            json.dump(self.config, file, indent=2)
-        self.logger.info("Configuration saved to file.")
+        self.save_config(path)
 
     @Slot()
     def save_config(self, path):
