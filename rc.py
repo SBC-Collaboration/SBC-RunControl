@@ -9,6 +9,7 @@ from ui.mainwindow import Ui_MainWindow
 from src.config import Config
 from src.ui_loader import SettingsWindow, LogWindow
 from src.arduinos import Arduino
+from src.caen import Caen
 from src.cameras import Camera
 from src.sipm_amp import SiPMAmp
 from src.sql import SQL
@@ -142,6 +143,15 @@ class MainWindow(QMainWindow):
             self.signals.run_starting.connect(vars[f"arduino_{ino}_worker"].upload_sketch)
             vars[f"arduino_{ino}_thread"].start()
             time.sleep(0.001)
+
+        self.caen_worker = Caen(self)
+
+        self.caen_thread = QThread()
+        self.caen_thread.setObjectName("caen_thread")
+        self.caen_worker.moveToThread(self.caen_thread)
+        self.caen_thread.started.connect(self.caen_worker.run)
+        self.caen_thread.start()
+        time.sleep(0.001)
 
         self.niusb_worker = NIUSB(self)
         self.niusb_worker.run_started.connect(self.starting_run_wait)
