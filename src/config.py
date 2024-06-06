@@ -31,24 +31,24 @@ class Config(QObject):
     def periodic_task(self):
         pass
 
-    @Slot()
-    def load_config(self):
-        with open(self.path, "r") as file:
-            self.new_config = json.load(file)
-
-        # update existing dict with new settings
-        self.config.update(self.new_config)
-
     def update_dict(self, original, new):
         """
         recursive helper function to update config dictionary with new settings.
         Prevents overwriting keys in the same level that is written.
         """
         for key, value in new.items():
-            if isinstance(value, dict):
+            if isinstance(value, dict) and key in original:
                 self.update_dict(original[key], value)
             else:
                 original[key] = value
+
+    @Slot()
+    def load_config(self):
+        with open(self.path, "r") as file:
+            self.new_config = json.load(file)
+
+        # update existing dict with new settings
+        self.update_dict(self.config, self.new_config)
 
     @Slot()
     def load_config_from_file(self, path, ui):

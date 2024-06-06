@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="icons">
+    <file>harddrive.png</file>
     <file>help.png</file>
     <file>check.png</file>
     <file>quit.png</file>

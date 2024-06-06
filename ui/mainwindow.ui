@@ -1010,8 +1010,8 @@ background-color: #969696;</string>
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>855</width>
-               <height>675</height>
+               <width>361</width>
+               <height>111</height>
               </rect>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -1383,7 +1383,7 @@ background-color: rgb(150, 150, 150);</string>
   <action name="action_open_folder">
    <property name="icon">
     <iconset resource="../resources/resources.qrc">
-     <normaloff>:/icons/open.png</normaloff>:/icons/open.png</iconset>
+     <normaloff>:/icons/harddrive.png</normaloff>:/icons/harddrive.png</iconset>
    </property>
    <property name="text">
     <string>Open Folder</string>
