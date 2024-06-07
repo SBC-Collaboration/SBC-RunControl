@@ -131,7 +131,7 @@
       "rec_length": 500,
       "post_trig": 50,
       "trig_in_as_gate": false,
-      "decimation": 1,
+      "decimation": 0,
       "overlap_rej": false,
       "polarity": "Rising",
       "io_level": "TTL",
