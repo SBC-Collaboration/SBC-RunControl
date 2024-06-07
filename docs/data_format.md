@@ -103,17 +103,37 @@ The master configuration file is saved in `.json` format. The data structure is:
     - `trig_latch_pin` (`int`): The pin at which the trigger latch signal from the trigger arduino is received.
     - `state_pin` (`int`): The output pin for state communication back to run control.
     - `trig_pin` (`int`): The output pin when the trigger condition is satisfied to trigger arduino.
-- `dio`
-  - `arduinos`
-    - `trigger`
-      - `port` (`str`)
-      - `sketch` (`str`)
-    - `clock`
-      - `port` (`str`)
-      - `sketch` (`str`)
-    - `position`
-      - `port` (`str`)
-      - `sketch` (`str`)
+- `dio`: All settings related to the digital input/output box.
+  - `trigger`: Trigger fan-in/fan-out arduino.
+    - `port` (`str`): Serial port that this arduino is connected to. A custom informational name should be assigned based on the port on the USB hub.
+    - `sketch` (`str`): Location of the sketch folder for this arduino.
+    - `reset` (`int`): Reset pin. Resets all trigger latch pins back to low.
+    - `or` (`int`): Logic OR (non-latching) pin.
+    - `on_time` (`int`): On-time pin showing whether all operations completed within designated clock cycle (100 us).
+    - `heartbeat` (`int`): Heartbeat pin, oscillates between high and low each clock cycle.
+    - `trig1`, `trig2`, `trig3`, `trig4`, `trig5`, `trig6`, `trig7`, `trig8`, `trig9`, `trig10`, `trig11`, `trig12`, `trig13`, `trig14`, `trig15`, `trig16`
+      - `enabled` (`bool`): Whether this channel is enabled. If not, trigger in to this channel will not be counted in the global latching.
+      - `name` (`str`): Name for this pin for information.
+      - `compressions` (`str`): Whether this trigger causes fast or slow compression in the PLC.
+      - `in` (`int`): Trigger in pin.
+      - `first_fault` (`int`): First fault pin.
+  - `clock`: Clock arduino for syncing LED, camera, and CAEN.
+    - `port` (`str`): Serial port for this device.
+    - `sketch` (`str`): Location of sketch folder.
+    - `wave1`, `wave2`, `wave3`, `wave4`, `wave5`, `wave6`, `wave7`, `wave8`, `wave9`, `wave10`, `wave11`, `wave12`, `wave13`, `wave14`, `wave15`, `wave16`
+      - `enabled` (`bool`): If not enabled, this channel will always be low.
+      - `name` (`str`): Name of channel for information.
+      - `period` (`int`): Period of this wave, in units of 100 us.
+      - `phase` (`int`): Phase of the wave in units of 100 us.
+      - `duty` (`int`): Duty cycle of the wave, in units of percent.
+      - `polarity` (`bool`): If positive, then the wave will first be high and be low. Vice versa for polarity.
+  - `position`: Position arduino for measuring the location of the bellow.
+    - `port` (`str`): Serial port for this device.
+    - `sketch` (`str`): Location of sketch folder.
+    - `mac_addr` (`str`): MAC address for Modbus setting. This can be any value, as long as it's unique in the subnet. Using the value printed on the Ethernet shield.
+    - `ip_addr` (`str`): Local static IP address in the subnet.
+    - `gateway` (`str`)
+    - `subnet` (`str`)
 
 ## Run data
 The run data is saved in the `RunData` tables in the slow control SQL database. There is one line per run.
