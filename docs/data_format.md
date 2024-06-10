@@ -146,7 +146,6 @@ The run data is saved in the `RunData` tables in the slow control SQL database. 
   for the run. It can have zero, one, or multiple entries, from the predetermined list. If it has zero elements, it is saved as an empty string, and not NULL.
 - `pset_mode` (`ENUM('random', 'sequential')`, `NOT NULL`): Mode of pressure setpoint in this run. If `random`, then run control will choose randomly from the list. If `sequential`, then run control will cycle through the pressure setpoints in the list in order.
 - `pset` (`FLOAT`, `NOT NULL`): Pressure set point of the run. If the run is doing pressure ramping, then the higher setpoint of the ramp
-- `pset_hi` (`FLOAT`): Null if not using a pressure ramping. Lower pressure setpoint if using ramping.
 - `start_time` (`TIMESTAMP(3)`, `NOT NULL`): UTC timestamp of when the run starts, with ms precision
 - `end_time` (`TIMESTAMP(3)`, `NOT NULL`): UTC timestamp of when the run ends, with ms precision
 - `source1_ID` (`VARCHAR(100)`): Name of source 1
@@ -155,6 +154,7 @@ The run data is saved in the `RunData` tables in the slow control SQL database. 
 - `source2_location` (`VARCHAR(100)`): Location of source 2
 - `source3_ID` (`VARCHAR(100)`): Name of source 3
 - `source3_location` (`VARCHAR(100)`): Location of source 3
+- `config` (`JSON`): Saves the master config file in addition to the data folder. Should enable some SQL query using config info.
 - More columns will be added when analysis module is running, like the last data reduction version performed and the 
   date, etc.
 
