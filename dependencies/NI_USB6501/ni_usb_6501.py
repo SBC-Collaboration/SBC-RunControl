@@ -68,6 +68,7 @@ class NiUsb6501:
         cfg = self.device.get_active_configuration()
         self.interface_number = cfg[(0, 0)].bInterfaceNumber
         self.io_mask = [0, 0, 0]  # All pins initialize to inputs
+        self.drive_mask = [0, 0, 0]
 
         if self.device.is_kernel_driver_active(self.interface_number):
             self.device.detach_kernel_driver(self.interface_number)
@@ -78,47 +79,66 @@ class NiUsb6501:
         # due to "Resource busy"
         usb.util.dispose_resources(self.device)
 
-    def set_io_mode(self, port0=None, port1=None, port2=None):
+    def set_io_mode(self, io0=None, io1=None, io2=None, drive0=None, drive1=None, drive2=None):
         """
         Set mode for every IO pin. PIN modes are given in three groups (bitmasks represented by integers)
         bit = 0: read
         bit = 1: write
         """
         # check if mask is a valid 8 bit number
-        self.check_valid_mask(port0)
-        self.check_valid_mask(port1)
-        self.check_valid_mask(port2)
+        self.check_valid_mask(io0)
+        self.check_valid_mask(io1)
+        self.check_valid_mask(io2)
         # if no arguments, use saved io mask
-        port0 = self.io_mask[0] if port0 is None else port0
-        port1 = self.io_mask[1] if port1 is None else port1
-        port2 = self.io_mask[2] if port2 is None else port2
+        io0 = self.io_mask[0] if io0 is None else io0
+        io1 = self.io_mask[1] if io1 is None else io1
+        io2 = self.io_mask[2] if io2 is None else io2
+        self.io_mask = [io0, io1, io2]
+
+        # same thing for drive modes
+        self.check_valid_mask(drive0)
+        self.check_valid_mask(drive1)
+        self.check_valid_mask(drive2)
+        # if no arguments, use saved drive mask
+        drive0 = self.drive_mask[0] if drive0 is None else drive0
+        drive1 = self.drive_mask[1] if drive1 is None else drive1
+        drive2 = self.drive_mask[2] if drive2 is None else drive2
+        self.drive_mask = [drive0, drive1, drive2]
 
         buf = bytearray(b"\x02\x10\x00\x00\x00\x05\x00\x00\x00\x00\x05\x00\x00\x00\x00\x00")
-        buf[6] = port0
-        buf[7] = port1
-        buf[8] = port2
-        self.io_mask = [port0, port1, port2]
+        buf[6] = io0
+        buf[7] = io1
+        buf[8] = io2
+        buf[11] = drive0
+        buf[12] = drive1
+        buf[13] = drive2
 
         return self.send_request(0x12, buf)
 
-    def change_port_io(self, port, mode_mask):
+    def change_port_io(self, port, mode_mask=None, drive_mask=None):
         """
         Set IO mode of one port. mode_mask is an 8 bit integer
         """
         self.check_valid_port_pin(port)
         self.check_valid_mask(mode_mask)
-        self.io_mask[port] = mode_mask
-        self.set_io_mode(*self.io_mask)
+        self.check_valid_mask(drive_mask)
+        self.io_mask[port] = self.io_mask[port] if mode_mask is None else mode_mask
+        self.drive_mask[port] = self.drive_mask[port] if drive_mask is None else drive_mask
+        self.set_io_mode(*self.io_mask, *self.drive_mask)
 
-    def change_pin_io(self, port, pin, mode):
+    def change_pin_io(self, port, pin, mode=None, drive=None):
         """
         Set the IO mode of one pin. If self.set_io_mode not called, the default for all pins is low
         Mode parameter is treated as a boolean
         """
         self.check_valid_port_pin(port, pin)
-        port_mask = self.io_mask[port]
-        port_mask = port_mask | (1 << pin) if mode else port_mask & ~(1 << pin)
-        self.change_port_io(port, port_mask)
+        port_io_mask = self.io_mask[port]
+        port_drive_mask = self.drive_mask[port]
+        if mode is not None:
+            port_io_mask = port_io_mask | (1 << pin) if mode else port_io_mask & ~(1 << pin)
+        if drive is not None:
+            port_drive_mask = port_drive_mask | (1 << pin) if drive else port_drive_mask & ~(1 << pin)
+        self.change_port_io(port, port_io_mask, port_drive_mask)
 
     def read_port(self, port):
         """
@@ -269,24 +289,12 @@ if __name__ == "__main__":
     if not dev:
         raise Exception("No device found")
 
-    dev.set_io_mode(0b11111111, 0b11111111, 0b00000000)
+    dev.set_io_mode(0b11111111, 0b11111111, 0b00000000, 0b11111111, 0b00000000, 0b00000000)
 
     dev.write_port(0, 0b11001100)
     dev.write_port(1, 0b10101010)
 
     print(bin(dev.read_port(2)))
-
-    ret = dev.set_io_mode(0, 255, 0)      # set all pins between 3-6 & 27-30 as output pins
-    # example has special focus on port 3 & 30, the values ot the others are all set to high
-    # bitmask: 247: 1111 0111
-    # 27: 1     low byte
-    # 28: 1     
-    # 29: 1     
-    # 30: 0
-    #  6: 1    
-    #  5: 1     
-    #  4: 1     
-    #  3: 1     high byte
 
     dev.release_interface()     # clean exit, allows direct reuse without to replug the ni6501
     del dev
