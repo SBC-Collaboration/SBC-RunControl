@@ -49,7 +49,7 @@
     <item row="0" column="0">
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <property name="tabsClosable">
        <bool>false</bool>
@@ -1309,7 +1309,7 @@
            <property name="geometry">
             <rect>
              <x>0</x>
-             <y>-152</y>
+             <y>0</y>
              <width>776</width>
              <height>1435</height>
             </rect>
@@ -5845,33 +5845,81 @@
               <property name="spacing">
                <number>3</number>
               </property>
-              <item row="1" column="4">
+              <item row="3" column="4">
                <widget class="QLabel" name="acous_trig_delay_label">
                 <property name="text">
                  <string>Trig Delay</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                 </property>
                 <property name="buddy">
                  <cstring>acous_trig_delay_box</cstring>
                 </property>
                </widget>
               </item>
-              <item row="1" column="2">
+              <item row="2" column="2">
+               <widget class="QLabel" name="acous_pre_trig_label">
+                <property name="text">
+                 <string>Pre Trig Length</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>acous_pre_trig_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="acous_exec_path_label">
+                <property name="text">
+                 <string>Executable Path</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>acous_sample_rate_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1" colspan="5">
+               <widget class="QLineEdit" name="acous_exec_path_edit"/>
+              </item>
+              <item row="3" column="2">
                <widget class="QLabel" name="acous_post_trig_label">
                 <property name="text">
                  <string>Post Trig Length</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                 </property>
                 <property name="buddy">
                  <cstring>acous_post_trig_box</cstring>
                 </property>
                </widget>
               </item>
-              <item row="1" column="3">
+              <item row="0" column="0">
+               <widget class="QLabel" name="acous_driver_dir_label">
+                <property name="text">
+                 <string>Driver Directory</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>acous_sample_rate_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="3">
                <widget class="NoWheelSpinBox" name="acous_post_trig_box">
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
                 <property name="prefix">
-                 <string>n</string>
+                 <string/>
                 </property>
                 <property name="maximum">
                  <number>256000000</number>
@@ -5881,31 +5929,43 @@
                 </property>
                </widget>
               </item>
-              <item row="0" column="0">
+              <item row="2" column="3">
+               <widget class="NoWheelSpinBox" name="acous_pre_trig_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0">
                <widget class="QLabel" name="acous_sample_rate_label">
                 <property name="text">
                  <string>Sample Rate</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                 </property>
                 <property name="buddy">
                  <cstring>acous_sample_rate_box</cstring>
                 </property>
                </widget>
               </item>
-              <item row="1" column="5">
-               <widget class="NoWheelSpinBox" name="acous_trig_delay_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
+              <item row="2" column="4">
+               <widget class="QLabel" name="acous_trig_timeout_label">
+                <property name="text">
+                 <string>Trig Timeout</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>acous_trig_timeout_box</cstring>
                 </property>
                </widget>
               </item>
-              <item row="0" column="5">
-               <widget class="NoWheelSpinBox" name="acous_trig_timeout_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-               </widget>
+              <item row="0" column="1" colspan="5">
+               <widget class="QLineEdit" name="acous_driver_dir_edit"/>
               </item>
-              <item row="0" column="1">
+              <item row="2" column="1">
                <widget class="NoWheelComboBox" name="acous_sample_rate_box">
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
@@ -5997,30 +6057,31 @@
                 </item>
                </widget>
               </item>
-              <item row="0" column="2">
-               <widget class="QLabel" name="acous_pre_trig_label">
+              <item row="1" column="6">
+               <widget class="QToolButton" name="acous_exec_path_but">
                 <property name="text">
-                 <string>Pre Trig Length</string>
-                </property>
-                <property name="buddy">
-                 <cstring>acous_pre_trig_box</cstring>
+                 <string>...</string>
                 </property>
                </widget>
               </item>
-              <item row="0" column="3">
-               <widget class="NoWheelSpinBox" name="acous_pre_trig_box">
+              <item row="0" column="6">
+               <widget class="QToolButton" name="acous_driver_dir_but">
+                <property name="text">
+                 <string>...</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="5" colspan="2">
+               <widget class="NoWheelSpinBox" name="acous_trig_timeout_box">
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
                </widget>
               </item>
-              <item row="0" column="4">
-               <widget class="QLabel" name="acous_trig_timeout_label">
-                <property name="text">
-                 <string>Trig Timeout</string>
-                </property>
-                <property name="buddy">
-                 <cstring>acous_trig_timeout_box</cstring>
+              <item row="3" column="5" colspan="2">
+               <widget class="NoWheelSpinBox" name="acous_trig_delay_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
                 </property>
                </widget>
               </item>

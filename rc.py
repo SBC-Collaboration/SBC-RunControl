@@ -358,11 +358,11 @@ class MainWindow(QMainWindow):
             ):
                 self.signals.send_trigger.emit("Timeout")
         elif self.run_state == self.run_states["starting_run"]:
-            if len(self.starting_run_ready) >= 10:
+            if len(self.starting_run_ready) >= 9:
                 self.start_event()
         elif self.run_state == self.run_states["starting_event"]:
             self.event_timer.start()
-            if len(self.starting_event_ready) >= 4:
+            if len(self.starting_event_ready) >= 3:
                 self.update_state("active")
         elif self.run_state == self.run_states["stopping_event"]:
             if len(self.stopping_event_ready) >= 4:

@@ -3,8 +3,8 @@
     "config_path": "/home/sbc/RunControl/config.json",
     "log_path": "/home/sbc/RunControl/logs/rc.log",
     "data_dir": "/home/sbc/RunControl/run-data",
-    "max_ev_time": 100.0,
-    "max_num_evs": 50,
+    "max_ev_time": 10.0,
+    "max_num_evs": 5,
     "pressure": {
       "mode": "random",
       "profile1": {
@@ -368,7 +368,7 @@
   },
   "cam": {
     "cam1": {
-      "enabled": true,
+      "enabled": false,
       "rc_config_path": "/home/sbc/RunControl/run-data/config/cam1-config.json",
       "config_path": "/mnt/rc-data/config/cam1-config.json",
       "data_path": "/mnt/rc-data/current_event/",
@@ -592,7 +592,7 @@
         "name": "LED1.2",
         "period": 100,
         "phase": 0,
-        "duty": 10,
+        "duty": 50,
         "polarity": true
       },
       "wave6": {

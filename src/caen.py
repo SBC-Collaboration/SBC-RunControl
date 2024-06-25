@@ -6,6 +6,7 @@ from collections import namedtuple
 import copy
 import json
 
+
 class Caen(QObject):
     caen_started = Signal(str)
     caen_stopped = Signal(str)
@@ -14,7 +15,7 @@ class Caen(QObject):
         super().__init__()
         self.main = mainwindow
         self.logger = logging.getLogger("rc")
-        self.scint_config = mainwindow.config_class.config["scint"]
+        self.scint_config = self.main.config_class.config["scint"]
 
         self.timer = QTimer(self)
         self.timer.setInterval(100)
@@ -28,11 +29,13 @@ class Caen(QObject):
     @Slot()
     def periodic_task(self):
         pass
+
     @Slot()
     def start_event(self):
         self.config = {}
 
         # translate between run control config keys and caen config keys
+        self.scint_config = self.main.config_class.run_config["scint"]
         caen_config = self.scint_config["caen"]
         trig_code = {"Disabled": 0, "ACQ Only": 1, "EXT Only": 2, "ACQ+EXT": 3}
         io_code = {"NIM": 0, "TTL": 1}

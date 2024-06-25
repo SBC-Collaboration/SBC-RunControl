@@ -155,8 +155,7 @@ The run data is saved in the `RunData` tables in the slow control SQL database. 
 - `source3_ID` (`VARCHAR(100)`): Name of source 3
 - `source3_location` (`VARCHAR(100)`): Location of source 3
 - `config` (`JSON`): Saves the master config file in addition to the data folder. Should enable some SQL query using config info.
-- More columns will be added when analysis module is running, like the last data reduction version performed and the 
-  date, etc.
+- More columns will be added when analysis module is running, like the last data reduction version performed and the date, etc.
 
 ## Event Data (SQL table)
 The event data is saved in the `EventData` tables in the slow control SQL database. There is one line per event.
