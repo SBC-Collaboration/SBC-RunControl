@@ -112,7 +112,8 @@ class NIUSB(QObject):
             try:
                 self.reverse_config[self.config[k]] = (port, pin)
                 # set io of pin to 1 if output, else 0
-                self.dev.change_pin_io(port, pin, self.pin_definition[self.config[k]] == "output")
+                # set the drive type to active drive
+                self.dev.change_pin_io(port, pin, self.pin_definition[self.config[k]] == "output", 1)
             except IndexError:
                 self.logger.error(f"Pin {k} {self.config[k]} invalid.")
                 continue
