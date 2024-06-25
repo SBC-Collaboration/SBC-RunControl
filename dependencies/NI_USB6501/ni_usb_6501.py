@@ -240,18 +240,15 @@ class NiUsb6501:
                 mask:     %s
                 """ % (repr(actual), repr(expected), repr(mask)))
 
-
     def check_valid_port_pin(self, port=None, pin=None):
         if port is not None and port not in range(3):
             raise IndexError("Port number is not valid!")
         if pin is not None and port not in range(8):
             raise IndexError("Pin number is not valid!")
 
-
     def check_valid_mask(self, mask):
         if mask is not None and mask not in range(256):
             raise ValueError("Mask is not valid!")
-
 
     def release_interface(self):
         """
@@ -290,27 +287,6 @@ if __name__ == "__main__":
     #  5: 1     
     #  4: 1     
     #  3: 1     high byte
-
-    ret = dev.write_port(1, 0)  # both zero
-    print(dev.read_port(1))
-
-    ret = dev.write_port(1, 247)  # 30 low
-    print(dev.read_port(1))
-
-    ret = dev.write_port(1, 127)  # 3 low
-    print(dev.read_port(1))
-
-    ret = dev.write_port(1, 247)  # 30 low
-    print(dev.read_port(1))
-
-    ret = dev.write_port(1, 127)  # 3 low
-    print(dev.read_port(1))
-
-    ret = dev.write_port(1, 0)  # both zero
-    print(dev.read_port(1))
-
-    ret = dev.write_port(1, 255)  # both high
-    print(dev.read_port(1))
 
     dev.release_interface()     # clean exit, allows direct reuse without to replug the ni6501
     del dev
