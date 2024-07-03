@@ -33,6 +33,32 @@ class NIUSB(QObject):
         # and more ...
     }
 
+    drive_definition = {  # input / output from run control
+        "trig": "open_collector",  # trigger
+        "latch": "open_collector",  # trigger latch
+        "reset": "open_collector",  # trigger reset
+        "state_cam1": "open_collector",  # state confirmation from pi
+        "comm_cam1": "active_drive",  # state comm to pi
+        "trigen_cam1": "active_drive",  # trigger enable signal
+        "state_cam2": "open_collector",
+        "comm_cam2": "active_drive",
+        "trigen_cam2": "active_drive",
+        "state_cam3": "open_collector",
+        "comm_cam3": "active_drive",
+        "trigen_cam3": "active_drive",
+        "trigff_rc": "open_collector",  # trigger first fault, run control
+        "trigff_p": "open_collector",  # pressure
+        "trigff_but": "open_collector",  # external button
+        "trigff_cam1": "open_collector",  # camera video trigger
+        "trigff_cam2": "open_collector",
+        "trigff_cam3": "open_collector",
+        "trigff_piezo": "open_collector",  # piezo acoustic trigger
+        "trigff_ar": "open_collector",  # Kulite trigger for Ar
+        "trigff_cf4": "open_collector",  # kulite trigger for CF
+        "": "input",
+        # and more ...
+    }
+
     ff_dict = {  # dictionary for display name of first faults
         "trigff_rc": "Run Control",  # trigger first fault, run control
         "trigff_p": "Pressure",  # pressure
@@ -92,6 +118,7 @@ class NIUSB(QObject):
     def send_trigger(self, source):
         self.ff_pin = source
         self.dev.write_pin(*self.reverse_config["trig"], 1)
+        self.logger.info("Software trigger sent.")
 
     @Slot()
     def start_run(self):
@@ -113,7 +140,9 @@ class NIUSB(QObject):
                 self.reverse_config[self.config[k]] = (port, pin)
                 # set io of pin to 1 if output, else 0
                 # set the drive type to active drive
-                self.dev.change_pin_io(port, pin, self.pin_definition[self.config[k]] == "output", 1)
+                self.dev.change_pin_io(port, pin,
+                                       self.pin_definition[self.config[k]] == "output",
+                                       self.drive_definition[self.config[k]] == "active_drive")
             except IndexError:
                 self.logger.error(f"Pin {k} {self.config[k]} invalid.")
                 continue
@@ -173,6 +202,7 @@ class NIUSB(QObject):
 
         # wait for certain time before sending trig enable pin
         cam_trig = {"cam1": False, "cam2": False, "cam3": False}
+        print(self.main.event_timer.elapsed())
         while False in cam_trig.values():
             for cam in cam_trig.keys():
                 wait_time = self.main.config_class.run_config["cam"][cam]["trig_wait"]
@@ -184,6 +214,7 @@ class NIUSB(QObject):
                     self.dev.write_pin(*self.reverse_config[f"trigen_{cam}"], True)
                     self.logger.info(f"Camera {cam} trigger is enabled.")
                     cam_trig[cam] = True
+        print(self.main.event_timer.elapsed())
 
     @Slot()
     def stop_event(self):
