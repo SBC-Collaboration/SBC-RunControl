@@ -101,10 +101,23 @@ class NIUSB(QObject):
     def periodic_task(self):
 
         # when state is active and a trigger latch is detected, send out signal
+        # python evaluates conditions lazily, so it shouldn't have too much of an effect on performance
         if (self.main.run_state == self.main.run_states["active"] and
                 self.dev and
                 self.dev.read_pin(*self.reverse_config["latch"])):
             self.trigger_detected.emit()
+
+        # camera trigger enable test
+        if self.main.run_state == self.main.run_states["active"] and False in self.cam_trig.values():
+            elapsed_time = self.main.event_timer.elapsed()
+            for cam in self.cam_trig.keys():
+                wait_time = self.main.config_class.run_config["cam"][cam]["trig_wait"]
+                if self.cam_trig[cam]:
+                    continue
+                elif elapsed_time > wait_time * 1000:
+                    self.dev.write_pin(*self.reverse_config[f"trigen_{cam}"], True)
+                    self.logger.info(f"Camera {cam} trigger is enabled.")
+                    self.cam_trig[cam] = True
 
     @Slot()
     def check_niusb(self):
@@ -201,20 +214,10 @@ class NIUSB(QObject):
                         self.event_started.emit(cam)
 
         # wait for certain time before sending trig enable pin
-        cam_trig = {"cam1": False, "cam2": False, "cam3": False}
-        print(self.main.event_timer.elapsed())
-        while False in cam_trig.values():
-            for cam in cam_trig.keys():
-                wait_time = self.main.config_class.run_config["cam"][cam]["trig_wait"]
-                if cam_trig[cam]:
-                    continue
-                elif cam_ready[cam] == "disabled":
-                    cam_trig[cam] = True
-                elif self.main.event_timer.elapsed() > wait_time * 1000:
-                    self.dev.write_pin(*self.reverse_config[f"trigen_{cam}"], True)
-                    self.logger.info(f"Camera {cam} trigger is enabled.")
-                    cam_trig[cam] = True
-        print(self.main.event_timer.elapsed())
+        self.cam_trig = {"cam1": False, "cam2": False, "cam3": False}
+        for cam in self.cam_trig.keys():
+            if cam_ready[cam] == "disabled":
+                self.cam_trig[cam] = True
 
     @Slot()
     def stop_event(self):
