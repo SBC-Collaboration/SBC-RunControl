@@ -156,7 +156,31 @@ class Config(QObject):
                 widgets[f"caen_{gp}_offset_{ch}"].setValue(gp_config["ch_offset"][ch])
 
         acous_config = self.config["acous"]
+        ui.acous_driver_dir_edit.setText(acous_config["driver_dir"])
+        ui.acous_exec_path_edit.setText(acous_config["exec_path"])
+        ui.acous_sample_rate_box.setCurrentText(acous_config["sample_rate"])
+        ui.acous_pre_trig_box.setValue(acous_config["pre_trig_len"])
+        ui.acous_post_trig_box.setValue(acous_config["post_trig_len"])
+        ui.acous_trig_timeout_box.setValue(acous_config["trig_timeout"])
+        ui.acous_trig_delay_box.setValue(acous_config["trig_delay"])
 
+        for i in range(1,9):
+            ch = f"ch{i}"
+            ch_config = acous_config[ch]
+            widgets[f"acous_enable_{ch}"].setChecked(ch_config["enabled"])
+            widgets[f"acous_range_{ch}"].setCurrentText(ch_config["range"])
+            widgets[f"acous_offset_{ch}"].setValue(ch_config["offset"])
+            widgets[f"acous_impedance_{ch}"].setCurrentText(ch_config["impedance"])
+            widgets[f"acous_coupling_{ch}"].setCurrentText(ch_config["coupling"])
+            widgets[f"acous_trig_{ch}"].setChecked(ch_config["trig"])
+            widgets[f"acous_slope_{ch}"].setCurrentText(ch_config["slope"])
+            widgets[f"acous_threshold_{ch}"].setValue(ch_config["threshold"])
+
+        acous_ext_config = acous_config["ext"]
+        widgets[f"acous_range_ext"].setCurrentText(acous_ext_config["range"])
+        widgets[f"acous_trig_ext"].setChecked(acous_ext_config["trig"])
+        widgets[f"acous_slope_ext"].setCurrentText(acous_ext_config["slope"])
+        widgets[f"acous_threshold_ext"].setValue(acous_ext_config["threshold"])
 
         cam_config = self.config["cam"]
         for cam in ["cam1", "cam2", "cam3"]:
@@ -379,6 +403,8 @@ class Config(QObject):
         }
 
         acous_config = {
+            "driver_dir": ui.acous_driver_dir_edit.text(),
+            "exec_path": ui.acous_exec_path_edit.text(),
             "sample_rate": ui.acous_sample_rate_box.currentText(),
             "pre_trig_len": ui.acous_pre_trig_box.value(),
             "post_trig_len": ui.acous_post_trig_box.value(),
@@ -398,6 +424,13 @@ class Config(QObject):
             ch_config["slope"] = widgets[f"acous_slope_{ch}"].currentText()
             ch_config["threshold"] = widgets[f"acous_threshold_{ch}"].value()
             acous_config[ch] = ch_config
+
+        acous_config["ext"] = {
+            "range": widgets["acous_range_ext"].currentText(),
+            "trig": widgets["acous_trig_ext"].isChecked(),
+            "slope": widgets[f"acous_slope_ext"].currentText(),
+            "threshold": widgets[f"acous_threshold_ext"].value(),
+        }
 
         cam_config = {}
         for cam in ["cam1", "cam2", "cam3"]:

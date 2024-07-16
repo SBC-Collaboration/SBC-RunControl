@@ -358,16 +358,20 @@ class MainWindow(QMainWindow):
             ):
                 self.signals.send_trigger.emit("Timeout")
         elif self.run_state == self.run_states["starting_run"]:
-            if len(self.starting_run_ready) >= 9:
+            # SiPM amp 1/2, Cam 1/2/3, clock/position/trigger arduino, NI USB
+            if len(self.starting_run_ready) >= 10:
                 self.start_event()
         elif self.run_state == self.run_states["starting_event"]:
+            # niusb, cam 1/2/3, *PLC
             self.event_timer.start()
             if len(self.starting_event_ready) >= 3:
                 self.update_state("active")
         elif self.run_state == self.run_states["stopping_event"]:
+            # niusb, sql, cam 1/2/3
             if len(self.stopping_event_ready) >= 4:
                 self.start_event()
         elif self.run_state == self.run_states["stopping_run"]:
+            # niusb, sql, cam 1/2/3, sipm amp 1/2
             if len(self.stopping_run_ready) >= 1:
                 self.update_state("idle")
 
