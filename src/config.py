@@ -67,6 +67,7 @@ class Config(QObject):
     def load_config_to_window(self, ui):
         widgets = ui.__dict__
 
+        # general
         general_config = self.config["general"]
         ui.config_path_edit.setText(general_config["config_path"])
         ui.log_path_edit.setText(general_config["log_path"])
@@ -74,6 +75,7 @@ class Config(QObject):
         ui.max_ev_time_box.setValue(general_config["max_ev_time"])
         ui.max_num_ev_box.setValue(general_config["max_num_evs"])
 
+        # pressure
         pressure_config = self.config["general"]["pressure"]
         if pressure_config["mode"] == "random":
             ui.p_random_but.setChecked(True)
@@ -89,6 +91,7 @@ class Config(QObject):
             widgets[f"pressure{i}_slope"].setValue(profile["slope"])
             widgets[f"pressure{i}_period"].setValue(profile["period"])
 
+        # SQL
         sql_config = self.config["general"]["sql"]
         ui.sql_hostname_edit.setText(sql_config["hostname"])
         ui.sql_port_box.setValue(sql_config["port"])
@@ -98,6 +101,7 @@ class Config(QObject):
         ui.sql_run_table_edit.setText(sql_config["run_table"])
         ui.sql_event_table_edit.setText(sql_config["event_table"])
 
+        # SiPM amplifiers
         sipm_amp1_config = self.config["scint"]["amp1"]
         ui.sipm_amp1_enabled_box.setChecked(sipm_amp1_config["enabled"])
         ui.sipm_amp1_ip_addr_edit.setText(sipm_amp1_config["ip_addr"])
@@ -128,6 +132,7 @@ class Config(QObject):
         for ch in range(1, 16):
             widgets[f"sipm_amp2_ch{ch}_offset"].setValue(sipm_amp2_config["ch_offset"][ch-1])
 
+        # CAEN
         caen_config = self.config["scint"]["caen"]
         ui.caen_exec_path_edit.setText(caen_config["exec_path"])
         ui.caen_config_path_edit.setText(caen_config["config_path"])
@@ -155,6 +160,7 @@ class Config(QObject):
                 widgets[f"caen_{gp}_acq_mask_{ch}"].setChecked(gp_config["acq_mask"][ch])
                 widgets[f"caen_{gp}_offset_{ch}"].setValue(gp_config["ch_offset"][ch])
 
+        # acoustics
         acous_config = self.config["acous"]
         ui.acous_driver_dir_edit.setText(acous_config["driver_dir"])
         ui.acous_exec_path_edit.setText(acous_config["exec_path"])
@@ -182,6 +188,7 @@ class Config(QObject):
         widgets[f"acous_slope_ext"].setCurrentText(acous_ext_config["slope"])
         widgets[f"acous_threshold_ext"].setValue(acous_ext_config["threshold"])
 
+        # cameras
         cam_config = self.config["cam"]
         for cam in ["cam1", "cam2", "cam3"]:
             config = cam_config[cam]
@@ -578,6 +585,9 @@ class Config(QObject):
                 json.dump(cam_config, file, indent=2)
             self.logger.debug(f"Configuration file saved for {cam}")
 
+        # calculate the number of modules that need to get ready in each step
+        modules = {""}
+
         self.logger.info(f"Configuration saved to file for run {self.main.run_id}.")
         self.run_config_saved.emit()
 
@@ -588,16 +598,6 @@ class Config(QObject):
                          f"{self.event_pressure['setpoint_high']}, "
                          f"{self.event_pressure['slope']}, "
                          f"{self.event_pressure['period']}")
-
-        # # save camera json files
-        # for cam in ["cam1", "cam2", "cam3"]:
-        #     cam_config = copy.deepcopy(self.run_config["cam"][cam])
-        #     if not cam_config["enabled"]:
-        #         continue
-        #     cam_config["data_path"] = os.path.join(cam_config["data_path"], self.main.run_id, str(self.main.event_id))
-        #     with open(cam_config["rc_config_path"], "w") as file:
-        #         json.dump(cam_config, file, indent=2)
-        #     self.logger.debug(f"Configuration file saved for {cam}")
 
         self.cam_config_saved = True
 

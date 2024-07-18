@@ -364,7 +364,7 @@ class MainWindow(QMainWindow):
         elif self.run_state == self.run_states["starting_event"]:
             # niusb, cam 1/2/3, *PLC
             self.event_timer.start()
-            if len(self.starting_event_ready) >= 3:
+            if len(self.starting_event_ready) >= 2:
                 self.update_state("active")
         elif self.run_state == self.run_states["stopping_event"]:
             # niusb, sql, cam 1/2/3
@@ -372,7 +372,7 @@ class MainWindow(QMainWindow):
                 self.start_event()
         elif self.run_state == self.run_states["stopping_run"]:
             # niusb, sql, cam 1/2/3, sipm amp 1/2
-            if len(self.stopping_run_ready) >= 1:
+            if len(self.stopping_run_ready) >= 4:
                 self.update_state("idle")
 
         self.display_image(
