@@ -49,7 +49,7 @@
     <item row="0" column="0">
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
       <property name="tabsClosable">
        <bool>false</bool>
@@ -93,8 +93,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>720</width>
-             <height>409</height>
+             <width>776</width>
+             <height>529</height>
             </rect>
            </property>
            <property name="maximumSize">
@@ -294,6 +294,324 @@
              </layout>
             </item>
             <item>
+             <layout class="QGridLayout" name="gridLayout_2">
+              <property name="topMargin">
+               <number>3</number>
+              </property>
+              <property name="bottomMargin">
+               <number>3</number>
+              </property>
+              <property name="spacing">
+               <number>3</number>
+              </property>
+              <item row="1" column="9">
+               <widget class="QCheckBox" name="checkBox_6">
+                <property name="text">
+                 <string>Amp 2</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="7">
+               <widget class="QCheckBox" name="checkBox_5">
+                <property name="text">
+                 <string>Amp 1</string>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="10">
+               <widget class="QCheckBox" name="checkBox_28">
+                <property name="text">
+                 <string>Ch 8</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QCheckBox" name="checkBox_7">
+                <property name="font">
+                 <font>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="layoutDirection">
+                 <enum>Qt::RightToLeft</enum>
+                </property>
+                <property name="text">
+                 <string>Cameras</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="8">
+               <widget class="QCheckBox" name="checkBox_22">
+                <property name="text">
+                 <string>Ch 2</string>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="8">
+               <widget class="QCheckBox" name="checkBox_26">
+                <property name="text">
+                 <string>Ch 6</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="10">
+               <widget class="QCheckBox" name="checkBox_11">
+                <property name="text">
+                 <string>Group 3</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0" colspan="11">
+               <widget class="QLabel" name="label">
+                <property name="font">
+                 <font>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="layoutDirection">
+                 <enum>Qt::LeftToRight</enum>
+                </property>
+                <property name="text">
+                 <string>Active Modules</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="7">
+               <widget class="QCheckBox" name="checkBox_21">
+                <property name="text">
+                 <string>Ch 1</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="4">
+               <widget class="QCheckBox" name="checkBox_15">
+                <property name="text">
+                 <string>Cam 3</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="5">
+               <widget class="QCheckBox" name="checkBox_8">
+                <property name="font">
+                 <font>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="layoutDirection">
+                 <enum>Qt::RightToLeft</enum>
+                </property>
+                <property name="text">
+                 <string>CAEN</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="5" rowspan="2">
+               <widget class="QCheckBox" name="checkBox_20">
+                <property name="font">
+                 <font>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="layoutDirection">
+                 <enum>Qt::RightToLeft</enum>
+                </property>
+                <property name="text">
+                 <string>Acoustics</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="3">
+               <widget class="QCheckBox" name="checkBox_14">
+                <property name="text">
+                 <string>Cam 2</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="2">
+               <widget class="QCheckBox" name="checkBox_13">
+                <property name="text">
+                 <string>Cam 1</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="2">
+               <widget class="QCheckBox" name="checkBox_2">
+                <property name="text">
+                 <string>Pressure</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="0">
+               <widget class="QCheckBox" name="checkBox_16">
+                <property name="font">
+                 <font>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="layoutDirection">
+                 <enum>Qt::RightToLeft</enum>
+                </property>
+                <property name="text">
+                 <string>LEDs</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="4">
+               <widget class="QCheckBox" name="checkBox_19">
+                <property name="text">
+                 <string>Ring 3</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="2">
+               <widget class="QCheckBox" name="checkBox_17">
+                <property name="text">
+                 <string>Ring 1</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="10">
+               <widget class="QCheckBox" name="checkBox_30">
+                <property name="text">
+                 <string>Amp 2 IV</string>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="7">
+               <widget class="QCheckBox" name="checkBox_25">
+                <property name="text">
+                 <string>Ch 5</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="9">
+               <widget class="QCheckBox" name="checkBox_23">
+                <property name="text">
+                 <string>Ch 3</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="label_3">
+                <property name="font">
+                 <font>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="layoutDirection">
+                 <enum>Qt::LeftToRight</enum>
+                </property>
+                <property name="text">
+                 <string>General</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="10">
+               <widget class="QCheckBox" name="checkBox_24">
+                <property name="text">
+                 <string>Ch 4</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="9">
+               <widget class="QCheckBox" name="checkBox_10">
+                <property name="text">
+                 <string>Group 2</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="5">
+               <widget class="QCheckBox" name="checkBox_4">
+                <property name="font">
+                 <font>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="layoutDirection">
+                 <enum>Qt::RightToLeft</enum>
+                </property>
+                <property name="text">
+                 <string>SiPM Amps</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="8">
+               <widget class="QCheckBox" name="checkBox_29">
+                <property name="text">
+                 <string>Amp 1 IV</string>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="9">
+               <widget class="QCheckBox" name="checkBox_27">
+                <property name="text">
+                 <string>Ch 7</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="8">
+               <widget class="QCheckBox" name="checkBox_9">
+                <property name="text">
+                 <string>Group 1</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="7">
+               <widget class="QCheckBox" name="checkBox_12">
+                <property name="text">
+                 <string>Group 0</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="3">
+               <widget class="QCheckBox" name="checkBox_3">
+                <property name="text">
+                 <string>SQL</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="3">
+               <widget class="QCheckBox" name="checkBox_18">
+                <property name="text">
+                 <string>Ring 2</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1" rowspan="3">
+               <widget class="Line" name="line_2">
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <property name="lineWidth">
+                 <number>2</number>
+                </property>
+                <property name="orientation">
+                 <enum>Qt::Vertical</enum>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="6" rowspan="4">
+               <widget class="Line" name="line_6">
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <property name="lineWidth">
+                 <number>2</number>
+                </property>
+                <property name="orientation">
+                 <enum>Qt::Vertical</enum>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
              <layout class="QGridLayout" name="pressure_grid" columnstretch="0,1,1,1,1,1,1">
               <property name="leftMargin">
                <number>0</number>
@@ -310,6 +628,38 @@
               <property name="spacing">
                <number>3</number>
               </property>
+              <item row="4" column="6">
+               <widget class="NoWheelDoubleSpinBox" name="pressure6_set">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string> bara</string>
+                </property>
+                <property name="decimals">
+                 <number>2</number>
+                </property>
+                <property name="minimum">
+                 <double>0.000000000000000</double>
+                </property>
+                <property name="maximum">
+                 <double>1000.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="6">
+               <widget class="NoWheelSpinBox" name="plc_modbus_port_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="maximum">
+                 <number>65535</number>
+                </property>
+               </widget>
+              </item>
               <item row="7" column="3">
                <widget class="NoWheelDoubleSpinBox" name="pressure3_period">
                 <property name="focusPolicy">
@@ -335,10 +685,67 @@
                 </property>
                </widget>
               </item>
-              <item row="3" column="2">
-               <widget class="QCheckBox" name="pressure2_enable">
+              <item row="4" column="4">
+               <widget class="NoWheelDoubleSpinBox" name="pressure4_set">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string> bara</string>
+                </property>
+                <property name="decimals">
+                 <number>2</number>
+                </property>
+                <property name="minimum">
+                 <double>0.000000000000000</double>
+                </property>
+                <property name="maximum">
+                 <double>1000.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="7" column="5">
+               <widget class="NoWheelDoubleSpinBox" name="pressure5_period">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string> s</string>
+                </property>
+                <property name="decimals">
+                 <number>2</number>
+                </property>
+                <property name="minimum">
+                 <double>-1.000000000000000</double>
+                </property>
+                <property name="maximum">
+                 <double>1000.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+                <property name="value">
+                 <double>-1.000000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="4">
+               <widget class="QCheckBox" name="pressure4_enable">
                 <property name="text">
-                 <string>Profile 2</string>
+                 <string>Profile 4</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="4">
+               <widget class="QLabel" name="p_mode_label">
+                <property name="text">
+                 <string>Mode</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                 </property>
                </widget>
               </item>
@@ -367,25 +774,8 @@
                 </property>
                </widget>
               </item>
-              <item row="2" column="2">
-               <widget class="QRadioButton" name="p_cycle_but">
-                <property name="text">
-                 <string>Cycle</string>
-                </property>
-                <property name="autoExclusive">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="1">
-               <widget class="QCheckBox" name="pressure1_enable">
-                <property name="text">
-                 <string>Profile 1</string>
-                </property>
-               </widget>
-              </item>
-              <item row="5" column="4">
-               <widget class="NoWheelDoubleSpinBox" name="pressure4_high">
+              <item row="5" column="6">
+               <widget class="NoWheelDoubleSpinBox" name="pressure6_high">
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
@@ -422,100 +812,6 @@
                 </property>
                </widget>
               </item>
-              <item row="4" column="4">
-               <widget class="NoWheelDoubleSpinBox" name="pressure4_set">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-                <property name="suffix">
-                 <string> bara</string>
-                </property>
-                <property name="decimals">
-                 <number>2</number>
-                </property>
-                <property name="minimum">
-                 <double>0.000000000000000</double>
-                </property>
-                <property name="maximum">
-                 <double>1000.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="2">
-               <widget class="NoWheelDoubleSpinBox" name="pressure2_set">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-                <property name="suffix">
-                 <string> bara</string>
-                </property>
-                <property name="decimals">
-                 <number>2</number>
-                </property>
-                <property name="minimum">
-                 <double>0.000000000000000</double>
-                </property>
-                <property name="maximum">
-                 <double>1000.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="5" column="3">
-               <widget class="NoWheelDoubleSpinBox" name="pressure3_high">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-                <property name="suffix">
-                 <string> bara</string>
-                </property>
-                <property name="decimals">
-                 <number>2</number>
-                </property>
-                <property name="minimum">
-                 <double>0.000000000000000</double>
-                </property>
-                <property name="maximum">
-                 <double>1000.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
-                <property name="value">
-                 <double>0.000000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="7" column="5">
-               <widget class="NoWheelDoubleSpinBox" name="pressure5_period">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-                <property name="suffix">
-                 <string> s</string>
-                </property>
-                <property name="decimals">
-                 <number>2</number>
-                </property>
-                <property name="minimum">
-                 <double>-1.000000000000000</double>
-                </property>
-                <property name="maximum">
-                 <double>1000.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
-                <property name="value">
-                 <double>-1.000000000000000</double>
-                </property>
-               </widget>
-              </item>
               <item row="7" column="1">
                <widget class="NoWheelDoubleSpinBox" name="pressure1_period">
                 <property name="focusPolicy">
@@ -541,13 +837,13 @@
                 </property>
                </widget>
               </item>
-              <item row="6" column="1">
-               <widget class="NoWheelDoubleSpinBox" name="pressure1_slope">
+              <item row="4" column="3">
+               <widget class="NoWheelDoubleSpinBox" name="pressure3_set">
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
                 <property name="suffix">
-                 <string> bar/s</string>
+                 <string> bara</string>
                 </property>
                 <property name="decimals">
                  <number>2</number>
@@ -556,90 +852,22 @@
                  <double>0.000000000000000</double>
                 </property>
                 <property name="maximum">
-                 <double>99.000000000000000</double>
+                 <double>1000.000000000000000</double>
                 </property>
                 <property name="singleStep">
                  <double>0.100000000000000</double>
                 </property>
-                <property name="value">
-                 <double>0.000000000000000</double>
-                </property>
                </widget>
               </item>
-              <item row="3" column="4">
-               <widget class="QCheckBox" name="pressure4_enable">
+              <item row="3" column="6">
+               <widget class="QCheckBox" name="pressure6_enable">
                 <property name="text">
-                 <string>Profile 4</string>
+                 <string>Profile 6</string>
                 </property>
                </widget>
               </item>
-              <item row="6" column="3">
-               <widget class="NoWheelDoubleSpinBox" name="pressure3_slope">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-                <property name="suffix">
-                 <string> bar/s</string>
-                </property>
-                <property name="decimals">
-                 <number>2</number>
-                </property>
-                <property name="minimum">
-                 <double>0.000000000000000</double>
-                </property>
-                <property name="maximum">
-                 <double>99.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
-                <property name="value">
-                 <double>0.000000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="6" column="5">
-               <widget class="NoWheelDoubleSpinBox" name="pressure5_slope">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-                <property name="suffix">
-                 <string> bar/s</string>
-                </property>
-                <property name="decimals">
-                 <number>2</number>
-                </property>
-                <property name="minimum">
-                 <double>0.000000000000000</double>
-                </property>
-                <property name="maximum">
-                 <double>99.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
-                <property name="value">
-                 <double>0.000000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="0" colspan="7">
-               <widget class="QLabel" name="sql_label_2">
-                <property name="font">
-                 <font>
-                  <bold>true</bold>
-                 </font>
-                </property>
-                <property name="text">
-                 <string>PLC / Pressure</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="7" column="6">
-               <widget class="NoWheelDoubleSpinBox" name="pressure6_period">
+              <item row="7" column="2">
+               <widget class="NoWheelDoubleSpinBox" name="pressure2_period">
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
@@ -663,141 +891,8 @@
                 </property>
                </widget>
               </item>
-              <item row="5" column="2">
-               <widget class="NoWheelDoubleSpinBox" name="pressure2_high">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-                <property name="suffix">
-                 <string> bara</string>
-                </property>
-                <property name="decimals">
-                 <number>2</number>
-                </property>
-                <property name="minimum">
-                 <double>0.000000000000000</double>
-                </property>
-                <property name="maximum">
-                 <double>1000.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
-                <property name="value">
-                 <double>0.000000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="3">
-               <widget class="QCheckBox" name="pressure3_enable">
-                <property name="text">
-                 <string>Profile 3</string>
-                </property>
-               </widget>
-              </item>
-              <item row="6" column="2">
-               <widget class="NoWheelDoubleSpinBox" name="pressure2_slope">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-                <property name="suffix">
-                 <string> bar/s</string>
-                </property>
-                <property name="decimals">
-                 <number>2</number>
-                </property>
-                <property name="minimum">
-                 <double>0.000000000000000</double>
-                </property>
-                <property name="maximum">
-                 <double>99.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
-                <property name="value">
-                 <double>0.000000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="5">
-               <widget class="QCheckBox" name="pressure5_enable">
-                <property name="text">
-                 <string>Profile 5</string>
-                </property>
-               </widget>
-              </item>
-              <item row="5" column="1">
-               <widget class="NoWheelDoubleSpinBox" name="pressure1_high">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-                <property name="suffix">
-                 <string> bara</string>
-                </property>
-                <property name="decimals">
-                 <number>2</number>
-                </property>
-                <property name="minimum">
-                 <double>0.000000000000000</double>
-                </property>
-                <property name="maximum">
-                 <double>1000.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
-                <property name="value">
-                 <double>0.000000000000000</double>
-                </property>
-               </widget>
-              </item>
               <item row="4" column="5">
                <widget class="NoWheelDoubleSpinBox" name="pressure5_set">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-                <property name="suffix">
-                 <string> bara</string>
-                </property>
-                <property name="decimals">
-                 <number>2</number>
-                </property>
-                <property name="minimum">
-                 <double>0.000000000000000</double>
-                </property>
-                <property name="maximum">
-                 <double>1000.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="3">
-               <widget class="NoWheelDoubleSpinBox" name="pressure3_set">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-                <property name="suffix">
-                 <string> bara</string>
-                </property>
-                <property name="decimals">
-                 <number>2</number>
-                </property>
-                <property name="minimum">
-                 <double>0.000000000000000</double>
-                </property>
-                <property name="maximum">
-                 <double>1000.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="6">
-               <widget class="NoWheelDoubleSpinBox" name="pressure6_set">
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
@@ -843,43 +938,13 @@
                 </property>
                </widget>
               </item>
-              <item row="2" column="1">
-               <widget class="QRadioButton" name="p_random_but">
-                <property name="text">
-                 <string>Random</string>
-                </property>
-                <property name="checked">
-                 <bool>false</bool>
-                </property>
-                <property name="autoExclusive">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="6">
-               <widget class="QCheckBox" name="pressure6_enable">
-                <property name="text">
-                 <string>Profile 6</string>
-                </property>
-               </widget>
-              </item>
-              <item row="6" column="0">
-               <widget class="QLabel" name="p_slope_label">
-                <property name="text">
-                 <string>Slope</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="5" column="6">
-               <widget class="NoWheelDoubleSpinBox" name="pressure6_high">
+              <item row="6" column="6">
+               <widget class="NoWheelDoubleSpinBox" name="pressure6_slope">
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
                 <property name="suffix">
-                 <string> bara</string>
+                 <string> bar/s</string>
                 </property>
                 <property name="decimals">
                  <number>2</number>
@@ -888,93 +953,13 @@
                  <double>0.000000000000000</double>
                 </property>
                 <property name="maximum">
-                 <double>1000.000000000000000</double>
+                 <double>99.000000000000000</double>
                 </property>
                 <property name="singleStep">
                  <double>0.100000000000000</double>
                 </property>
                 <property name="value">
                  <double>0.000000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="5" column="0">
-               <widget class="QLabel" name="p_high_label">
-                <property name="toolTip">
-                 <string>If this number is the same or lower than setpoint, or if period is negative, it will be ignored.</string>
-                </property>
-                <property name="text">
-                 <string>Setpoint High</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="1">
-               <widget class="NoWheelDoubleSpinBox" name="pressure1_set">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-                <property name="suffix">
-                 <string> bara</string>
-                </property>
-                <property name="decimals">
-                 <number>2</number>
-                </property>
-                <property name="minimum">
-                 <double>0.000000000000000</double>
-                </property>
-                <property name="maximum">
-                 <double>1000.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="0">
-               <widget class="QLabel" name="p_mode_label">
-                <property name="text">
-                 <string>Mode</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="7" column="2">
-               <widget class="NoWheelDoubleSpinBox" name="pressure2_period">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-                <property name="suffix">
-                 <string> s</string>
-                </property>
-                <property name="decimals">
-                 <number>2</number>
-                </property>
-                <property name="minimum">
-                 <double>-1.000000000000000</double>
-                </property>
-                <property name="maximum">
-                 <double>1000.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
-                <property name="value">
-                 <double>-1.000000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="0">
-               <widget class="QLabel" name="p_setpoint_label">
-                <property name="text">
-                 <string>Setpoint</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                 </property>
                </widget>
               </item>
@@ -1003,8 +988,128 @@
                 </property>
                </widget>
               </item>
-              <item row="6" column="6">
-               <widget class="NoWheelDoubleSpinBox" name="pressure6_slope">
+              <item row="4" column="0">
+               <widget class="QLabel" name="p_setpoint_label">
+                <property name="text">
+                 <string>Setpoint</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="0">
+               <widget class="QLabel" name="p_high_label">
+                <property name="toolTip">
+                 <string>If this number is the same or lower than setpoint, or if period is negative, it will be ignored.</string>
+                </property>
+                <property name="text">
+                 <string>Setpoint High</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="2">
+               <widget class="NoWheelDoubleSpinBox" name="pressure2_high">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string> bara</string>
+                </property>
+                <property name="decimals">
+                 <number>2</number>
+                </property>
+                <property name="minimum">
+                 <double>0.000000000000000</double>
+                </property>
+                <property name="maximum">
+                 <double>1000.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+                <property name="value">
+                 <double>0.000000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0" colspan="7">
+               <widget class="QLabel" name="sql_label_2">
+                <property name="font">
+                 <font>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>PLC / Pressure</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="2">
+               <widget class="QCheckBox" name="pressure2_enable">
+                <property name="text">
+                 <string>Profile 2</string>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="1">
+               <widget class="NoWheelDoubleSpinBox" name="pressure1_high">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string> bara</string>
+                </property>
+                <property name="decimals">
+                 <number>2</number>
+                </property>
+                <property name="minimum">
+                 <double>0.000000000000000</double>
+                </property>
+                <property name="maximum">
+                 <double>1000.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+                <property name="value">
+                 <double>0.000000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="7" column="6">
+               <widget class="NoWheelDoubleSpinBox" name="pressure6_period">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string> s</string>
+                </property>
+                <property name="decimals">
+                 <number>2</number>
+                </property>
+                <property name="minimum">
+                 <double>-1.000000000000000</double>
+                </property>
+                <property name="maximum">
+                 <double>1000.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+                <property name="value">
+                 <double>-1.000000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="5">
+               <widget class="NoWheelDoubleSpinBox" name="pressure5_slope">
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
@@ -1028,18 +1133,149 @@
                 </property>
                </widget>
               </item>
-              <item row="1" column="0">
-               <widget class="QLabel" name="plc_hostname_label">
+              <item row="6" column="3">
+               <widget class="NoWheelDoubleSpinBox" name="pressure3_slope">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string> bar/s</string>
+                </property>
+                <property name="decimals">
+                 <number>2</number>
+                </property>
+                <property name="minimum">
+                 <double>0.000000000000000</double>
+                </property>
+                <property name="maximum">
+                 <double>99.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+                <property name="value">
+                 <double>0.000000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="0">
+               <widget class="QLabel" name="p_slope_label">
                 <property name="text">
-                 <string>Hostname</string>
+                 <string>Slope</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                 </property>
                </widget>
               </item>
-              <item row="1" column="1" colspan="4">
-               <widget class="QLineEdit" name="plc_hostname_edit"/>
+              <item row="5" column="3">
+               <widget class="NoWheelDoubleSpinBox" name="pressure3_high">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string> bara</string>
+                </property>
+                <property name="decimals">
+                 <number>2</number>
+                </property>
+                <property name="minimum">
+                 <double>0.000000000000000</double>
+                </property>
+                <property name="maximum">
+                 <double>1000.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+                <property name="value">
+                 <double>0.000000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="6">
+               <widget class="QRadioButton" name="p_cycle_but">
+                <property name="text">
+                 <string>Cycle</string>
+                </property>
+                <property name="autoExclusive">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="2">
+               <widget class="NoWheelDoubleSpinBox" name="pressure2_set">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string> bara</string>
+                </property>
+                <property name="decimals">
+                 <number>2</number>
+                </property>
+                <property name="minimum">
+                 <double>0.000000000000000</double>
+                </property>
+                <property name="maximum">
+                 <double>1000.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="5">
+               <widget class="QRadioButton" name="p_random_but">
+                <property name="text">
+                 <string>Random</string>
+                </property>
+                <property name="checked">
+                 <bool>false</bool>
+                </property>
+                <property name="autoExclusive">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="3">
+               <widget class="QCheckBox" name="pressure3_enable">
+                <property name="text">
+                 <string>Profile 3</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="1">
+               <widget class="QCheckBox" name="pressure1_enable">
+                <property name="text">
+                 <string>Profile 1</string>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="4">
+               <widget class="NoWheelDoubleSpinBox" name="pressure4_high">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string> bara</string>
+                </property>
+                <property name="decimals">
+                 <number>2</number>
+                </property>
+                <property name="minimum">
+                 <double>0.000000000000000</double>
+                </property>
+                <property name="maximum">
+                 <double>1000.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+                <property name="value">
+                 <double>0.000000000000000</double>
+                </property>
+               </widget>
               </item>
               <item row="1" column="5">
                <widget class="QLabel" name="plc_modbus_port_label">
@@ -1051,13 +1287,105 @@
                 </property>
                </widget>
               </item>
-              <item row="1" column="6">
-               <widget class="NoWheelSpinBox" name="plc_modbus_port_box">
+              <item row="6" column="2">
+               <widget class="NoWheelDoubleSpinBox" name="pressure2_slope">
                 <property name="focusPolicy">
                  <enum>Qt::StrongFocus</enum>
                 </property>
+                <property name="suffix">
+                 <string> bar/s</string>
+                </property>
+                <property name="decimals">
+                 <number>2</number>
+                </property>
+                <property name="minimum">
+                 <double>0.000000000000000</double>
+                </property>
                 <property name="maximum">
-                 <number>65535</number>
+                 <double>99.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+                <property name="value">
+                 <double>0.000000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="1">
+               <widget class="NoWheelDoubleSpinBox" name="pressure1_slope">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string> bar/s</string>
+                </property>
+                <property name="decimals">
+                 <number>2</number>
+                </property>
+                <property name="minimum">
+                 <double>0.000000000000000</double>
+                </property>
+                <property name="maximum">
+                 <double>99.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+                <property name="value">
+                 <double>0.000000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1" colspan="4">
+               <widget class="QLineEdit" name="plc_hostname_edit"/>
+              </item>
+              <item row="4" column="1">
+               <widget class="NoWheelDoubleSpinBox" name="pressure1_set">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string> bara</string>
+                </property>
+                <property name="decimals">
+                 <number>2</number>
+                </property>
+                <property name="minimum">
+                 <double>0.000000000000000</double>
+                </property>
+                <property name="maximum">
+                 <double>1000.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="plc_hostname_label">
+                <property name="text">
+                 <string>Hostname</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="5">
+               <widget class="QCheckBox" name="pressure5_enable">
+                <property name="text">
+                 <string>Profile 5</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="QCheckBox" name="checkBox">
+                <property name="layoutDirection">
+                 <enum>Qt::LeftToRight</enum>
+                </property>
+                <property name="text">
+                 <string>Enabled</string>
                 </property>
                </widget>
               </item>
@@ -1080,28 +1408,20 @@
               <property name="spacing">
                <number>3</number>
               </property>
-              <item row="3" column="0">
-               <widget class="QLabel" name="sql_database_label">
+              <item row="0" column="0" colspan="7">
+               <widget class="QLabel" name="sql_label">
+                <property name="font">
+                 <font>
+                  <bold>true</bold>
+                 </font>
+                </property>
                 <property name="text">
-                 <string>Database</string>
+                 <string>SQL</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 <set>Qt::AlignCenter</set>
                 </property>
                </widget>
-              </item>
-              <item row="1" column="5">
-               <widget class="QLabel" name="sql_port_label">
-                <property name="text">
-                 <string>SQL Port</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="1" colspan="4">
-               <widget class="QLineEdit" name="sql_hostname_edit"/>
               </item>
               <item row="2" column="1" colspan="4">
                <widget class="QLineEdit" name="sql_token_edit">
@@ -1113,40 +1433,13 @@
                 </property>
                </widget>
               </item>
-              <item row="2" column="0">
-               <widget class="QLabel" name="sql_token_label">
-                <property name="text">
-                 <string>SQL Token</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                </property>
-               </widget>
+              <item row="1" column="1" colspan="4">
+               <widget class="QLineEdit" name="sql_hostname_edit"/>
               </item>
-              <item row="3" column="1">
-               <widget class="QLineEdit" name="sql_database_edit">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="5">
-               <widget class="QLabel" name="sql_event_tabel_label">
+              <item row="2" column="5">
+               <widget class="QLabel" name="sql_user_label">
                 <property name="text">
-                 <string>Event Table</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="0">
-               <widget class="QLabel" name="sql_hostname_label">
-                <property name="text">
-                 <string>SQL Hostname</string>
+                 <string>SQL User</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -1163,23 +1456,13 @@
                 </property>
                </widget>
               </item>
-              <item row="3" column="3" colspan="2">
-               <widget class="QLineEdit" name="sql_run_table_edit">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
+              <item row="1" column="0">
+               <widget class="QLabel" name="sql_hostname_label">
+                <property name="text">
+                 <string>SQL Hostname</string>
                 </property>
-               </widget>
-              </item>
-              <item row="2" column="6">
-               <widget class="QLineEdit" name="sql_user_edit">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                 </property>
                </widget>
               </item>
@@ -1203,28 +1486,73 @@
                 </property>
                </widget>
               </item>
-              <item row="0" column="0" colspan="7">
-               <widget class="QLabel" name="sql_label">
-                <property name="font">
-                 <font>
-                  <bold>true</bold>
-                 </font>
-                </property>
+              <item row="3" column="5">
+               <widget class="QLabel" name="sql_event_tabel_label">
                 <property name="text">
-                 <string>SQL</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="5">
-               <widget class="QLabel" name="sql_user_label">
-                <property name="text">
-                 <string>SQL User</string>
+                 <string>Event Table</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QLabel" name="sql_token_label">
+                <property name="text">
+                 <string>SQL Token</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="1">
+               <widget class="QLineEdit" name="sql_database_edit">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="6">
+               <widget class="QLineEdit" name="sql_user_edit">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="0">
+               <widget class="QLabel" name="sql_database_label">
+                <property name="text">
+                 <string>Database</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="5">
+               <widget class="QLabel" name="sql_port_label">
+                <property name="text">
+                 <string>SQL Port</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="3" colspan="2">
+               <widget class="QLineEdit" name="sql_run_table_edit">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
                 </property>
                </widget>
               </item>
@@ -1282,7 +1610,7 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>704</width>
+             <width>776</width>
              <height>1435</height>
             </rect>
            </property>
@@ -5809,24 +6137,24 @@
             <item>
              <layout class="QGridLayout" name="acous_general_grid">
               <property name="topMargin">
-               <number>6</number>
+               <number>3</number>
               </property>
               <property name="bottomMargin">
-               <number>6</number>
+               <number>3</number>
               </property>
               <property name="spacing">
                <number>3</number>
               </property>
-              <item row="3" column="4">
-               <widget class="QLabel" name="acous_trig_delay_label">
-                <property name="text">
-                 <string>Trig Delay</string>
+              <item row="0" column="2" colspan="4">
+               <widget class="QLineEdit" name="acous_driver_dir_edit"/>
+              </item>
+              <item row="2" column="3">
+               <widget class="NoWheelSpinBox" name="acous_pre_trig_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
                 </property>
-                <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>acous_trig_delay_box</cstring>
+                <property name="maximum">
+                 <number>4096</number>
                 </property>
                </widget>
               </item>
@@ -5842,103 +6170,6 @@
                  <cstring>acous_pre_trig_box</cstring>
                 </property>
                </widget>
-              </item>
-              <item row="1" column="0">
-               <widget class="QLabel" name="acous_exec_path_label">
-                <property name="text">
-                 <string>Executable Path</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>acous_sample_rate_box</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="1" colspan="5">
-               <widget class="QLineEdit" name="acous_exec_path_edit"/>
-              </item>
-              <item row="3" column="2">
-               <widget class="QLabel" name="acous_post_trig_label">
-                <property name="text">
-                 <string>Post Trig Length</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>acous_post_trig_box</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="0">
-               <widget class="QLabel" name="acous_driver_dir_label">
-                <property name="text">
-                 <string>Driver Directory</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>acous_sample_rate_box</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="3">
-               <widget class="NoWheelSpinBox" name="acous_post_trig_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-                <property name="prefix">
-                 <string/>
-                </property>
-                <property name="maximum">
-                 <number>256000000</number>
-                </property>
-                <property name="singleStep">
-                 <number>16</number>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="3">
-               <widget class="NoWheelSpinBox" name="acous_pre_trig_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
-                </property>
-                <property name="maximum">
-                 <number>4096</number>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="0">
-               <widget class="QLabel" name="acous_sample_rate_label">
-                <property name="text">
-                 <string>Sample Rate</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>acous_sample_rate_box</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="4">
-               <widget class="QLabel" name="acous_trig_timeout_label">
-                <property name="text">
-                 <string>Trig Timeout</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>acous_trig_timeout_box</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="1" colspan="5">
-               <widget class="QLineEdit" name="acous_driver_dir_edit"/>
               </item>
               <item row="2" column="1">
                <widget class="NoWheelComboBox" name="acous_sample_rate_box">
@@ -6032,17 +6263,42 @@
                 </item>
                </widget>
               </item>
-              <item row="1" column="6">
-               <widget class="QToolButton" name="acous_exec_path_but">
-                <property name="text">
-                 <string>...</string>
+              <item row="3" column="3">
+               <widget class="NoWheelSpinBox" name="acous_post_trig_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="prefix">
+                 <string/>
+                </property>
+                <property name="maximum">
+                 <number>256000000</number>
+                </property>
+                <property name="singleStep">
+                 <number>16</number>
                 </property>
                </widget>
               </item>
-              <item row="0" column="6">
-               <widget class="QToolButton" name="acous_driver_dir_but">
+              <item row="3" column="2">
+               <widget class="QLabel" name="acous_post_trig_label">
                 <property name="text">
-                 <string>...</string>
+                 <string>Post Trig Length</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>acous_post_trig_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0">
+               <widget class="QCheckBox" name="acous_enabled_box">
+                <property name="layoutDirection">
+                 <enum>Qt::RightToLeft</enum>
+                </property>
+                <property name="text">
+                 <string>Enabled</string>
                 </property>
                </widget>
               </item>
@@ -6053,6 +6309,81 @@
                 </property>
                 <property name="maximum">
                  <number>1000</number>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="acous_exec_path_label">
+                <property name="text">
+                 <string>Executable Path</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>acous_sample_rate_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QLabel" name="acous_sample_rate_label">
+                <property name="text">
+                 <string>Sample Rate</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>acous_sample_rate_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1" colspan="5">
+               <widget class="QLineEdit" name="acous_exec_path_edit"/>
+              </item>
+              <item row="0" column="1">
+               <widget class="QLabel" name="acous_driver_dir_label">
+                <property name="text">
+                 <string>Driver Directory</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>acous_sample_rate_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="4">
+               <widget class="QLabel" name="acous_trig_timeout_label">
+                <property name="text">
+                 <string>Trig Timeout</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>acous_trig_timeout_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="6">
+               <widget class="QToolButton" name="acous_exec_path_but">
+                <property name="text">
+                 <string>...</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="4">
+               <widget class="QLabel" name="acous_trig_delay_label">
+                <property name="text">
+                 <string>Trig Delay</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>acous_trig_delay_box</cstring>
                 </property>
                </widget>
               </item>
@@ -6069,6 +6400,13 @@
                 </property>
                 <property name="maximum">
                  <double>1410.000000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="6">
+               <widget class="QToolButton" name="acous_driver_dir_but">
+                <property name="text">
+                 <string>...</string>
                 </property>
                </widget>
               </item>
@@ -7271,7 +7609,7 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>355</width>
+             <width>776</width>
              <height>515</height>
             </rect>
            </property>
@@ -8446,8 +8784,8 @@
            <property name="geometry">
             <rect>
              <x>0</x>
-             <y>0</y>
-             <width>658</width>
+             <y>-625</y>
+             <width>776</width>
              <height>1214</height>
             </rect>
            </property>
