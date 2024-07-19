@@ -92,9 +92,9 @@
            <property name="geometry">
             <rect>
              <x>0</x>
-             <y>0</y>
-             <width>776</width>
-             <height>529</height>
+             <y>-27</y>
+             <width>771</width>
+             <height>511</height>
             </rect>
            </property>
            <property name="maximumSize">
@@ -1397,7 +1397,7 @@
                <number>0</number>
               </property>
               <property name="topMargin">
-               <number>6</number>
+               <number>3</number>
               </property>
               <property name="rightMargin">
                <number>0</number>
@@ -1408,64 +1408,6 @@
               <property name="spacing">
                <number>3</number>
               </property>
-              <item row="0" column="0" colspan="7">
-               <widget class="QLabel" name="sql_label">
-                <property name="font">
-                 <font>
-                  <bold>true</bold>
-                 </font>
-                </property>
-                <property name="text">
-                 <string>SQL</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="1" colspan="4">
-               <widget class="QLineEdit" name="sql_token_edit">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="1" colspan="4">
-               <widget class="QLineEdit" name="sql_hostname_edit"/>
-              </item>
-              <item row="2" column="5">
-               <widget class="QLabel" name="sql_user_label">
-                <property name="text">
-                 <string>SQL User</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="6">
-               <widget class="QLineEdit" name="sql_event_table_edit">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="0">
-               <widget class="QLabel" name="sql_hostname_label">
-                <property name="text">
-                 <string>SQL Hostname</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
               <item row="3" column="2">
                <widget class="QLabel" name="sql_run_tabel_label">
                 <property name="text">
@@ -1476,13 +1418,36 @@
                 </property>
                </widget>
               </item>
-              <item row="1" column="6">
-               <widget class="NoWheelSpinBox" name="sql_port_box">
-                <property name="focusPolicy">
-                 <enum>Qt::StrongFocus</enum>
+              <item row="1" column="1" colspan="4">
+               <widget class="QLineEdit" name="sql_hostname_edit"/>
+              </item>
+              <item row="2" column="6">
+               <widget class="QLineEdit" name="sql_user_edit">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
                 </property>
-                <property name="maximum">
-                 <number>65535</number>
+               </widget>
+              </item>
+              <item row="3" column="3" colspan="2">
+               <widget class="QLineEdit" name="sql_run_table_edit">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="5">
+               <widget class="QLabel" name="sql_port_label">
+                <property name="text">
+                 <string>SQL Port</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                 </property>
                </widget>
               </item>
@@ -1506,6 +1471,46 @@
                 </property>
                </widget>
               </item>
+              <item row="2" column="5">
+               <widget class="QLabel" name="sql_user_label">
+                <property name="text">
+                 <string>SQL User</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1" colspan="4">
+               <widget class="QLineEdit" name="sql_token_edit">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="6">
+               <widget class="QLineEdit" name="sql_event_table_edit">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="6">
+               <widget class="NoWheelSpinBox" name="sql_port_box">
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="maximum">
+                 <number>65535</number>
+                </property>
+               </widget>
+              </item>
               <item row="3" column="1">
                <widget class="QLineEdit" name="sql_database_edit">
                 <property name="sizePolicy">
@@ -1516,13 +1521,13 @@
                 </property>
                </widget>
               </item>
-              <item row="2" column="6">
-               <widget class="QLineEdit" name="sql_user_edit">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
+              <item row="1" column="0">
+               <widget class="QLabel" name="sql_hostname_label">
+                <property name="text">
+                 <string>SQL Hostname</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                 </property>
                </widget>
               </item>
@@ -1536,23 +1541,28 @@
                 </property>
                </widget>
               </item>
-              <item row="1" column="5">
-               <widget class="QLabel" name="sql_port_label">
+              <item row="0" column="0" colspan="6">
+               <widget class="QLabel" name="sql_label">
+                <property name="font">
+                 <font>
+                  <bold>true</bold>
+                 </font>
+                </property>
                 <property name="text">
-                 <string>SQL Port</string>
+                 <string>SQL</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 <set>Qt::AlignCenter</set>
                 </property>
                </widget>
               </item>
-              <item row="3" column="3" colspan="2">
-               <widget class="QLineEdit" name="sql_run_table_edit">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
+              <item row="0" column="6">
+               <widget class="QCheckBox" name="sql_enabled_box">
+                <property name="layoutDirection">
+                 <enum>Qt::LeftToRight</enum>
+                </property>
+                <property name="text">
+                 <string>Enabled</string>
                 </property>
                </widget>
               </item>
@@ -1610,8 +1620,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>776</width>
-             <height>1435</height>
+             <width>771</width>
+             <height>1398</height>
             </rect>
            </property>
            <property name="maximumSize">
@@ -6111,8 +6121,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>790</width>
-             <height>479</height>
+             <width>788</width>
+             <height>483</height>
             </rect>
            </property>
            <property name="maximumSize">
@@ -7609,8 +7619,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>776</width>
-             <height>515</height>
+             <width>771</width>
+             <height>484</height>
             </rect>
            </property>
            <property name="maximumSize">
@@ -8784,9 +8794,9 @@
            <property name="geometry">
             <rect>
              <x>0</x>
-             <y>-625</y>
-             <width>776</width>
-             <height>1214</height>
+             <y>0</y>
+             <width>771</width>
+             <height>1166</height>
             </rect>
            </property>
            <property name="maximumSize">

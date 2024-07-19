@@ -93,6 +93,7 @@ class Config(QObject):
 
         # SQL
         sql_config = self.config["general"]["sql"]
+        # ui.sql_enabled_box.setChecked(sql_config["enabled"])
         ui.sql_hostname_edit.setText(sql_config["hostname"])
         ui.sql_port_box.setValue(sql_config["port"])
         ui.sql_user_edit.setText(sql_config["user"])
@@ -305,6 +306,7 @@ class Config(QObject):
 
         # apply general config
         sql_config = {
+            "enabled": ui.sql_enabled_box.isChecked(),
             "hostname": ui.sql_hostname_edit.text(),
             "port": ui.sql_port_box.value(),
             "user": ui.sql_user_edit.text(),
@@ -586,7 +588,9 @@ class Config(QObject):
             self.logger.debug(f"Configuration file saved for {cam}")
 
         # calculate the number of modules that need to get ready in each step
-        modules = {""}
+        modules = {"pressure": False, "niusb": False, "sql": False, "clock": False, "position": False,
+                   "trigger": False, "cam1": False, "cam2": False, "cam3": False, "amp1": False, "amp2": False}
+        # modules["sql"] =
 
         self.logger.info(f"Configuration saved to file for run {self.main.run_id}.")
         self.run_config_saved.emit()

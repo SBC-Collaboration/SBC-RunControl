@@ -51,6 +51,7 @@
       }
     },
     "sql": {
+      "enabled": true,
       "hostname": "sbcslowcontrol.fnal.gov",
       "port": 3306,
       "user": "daq",
