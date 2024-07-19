@@ -12,6 +12,25 @@ import numpy as np
 from src.config import Config
 
 
+# initialize class for syncing the status of two checkboxes
+class CheckBoxPairBinder:
+    def __init__(self, checkbox1, checkbox2):
+        self.checkbox1 = checkbox1
+        self.checkbox2 = checkbox2
+
+        self.checkbox1.stateChanged.connect(self.sync_checkboxes)
+        self.checkbox2.stateChanged.connect(self.sync_checkboxes)
+
+    def sync_checkboxes(self, state):
+        sender = self.sender()
+        if sender == self.checkbox1:
+            with QSignalBlocker(self.checkbox2):
+                self.checkbox2.setCheckState(state)
+        elif sender == self.checkbox2:
+            with QSignalBlocker(self.checkbox1):
+                self.checkbox1.setCheckState(state)
+
+
 # Loads settings window
 class SettingsWindow(QMainWindow):
     def __init__(self, mainwindow):
@@ -32,6 +51,19 @@ class SettingsWindow(QMainWindow):
             self.widgets[f"caen_{group}_trig_box"].stateChanged.connect(self.caen_group_changed)
             self.widgets[f"caen_{group}_acq_box"].stateChanged.connect(self.caen_group_changed)
         self.caen_individual_changed()
+
+        # set up checkboxes pairs
+        self.checkpair_pressure = CheckBoxPairBinder(self.widgets["active_pressure"], self.widgets["p_enabled_box"])
+        self.checkpair_sql = CheckBoxPairBinder(self.widgets["active_sql"], self.widgets["sql_enabled_box"])
+        self.checkpair_cams = CheckBoxPairBinder(self.widgets["active_cams"], self.widgets["cams_enabled_box"])
+        self.checkpair_cam1 = CheckBoxPairBinder(self.widgets["active_cam1"], self.widgets["cam1_enabled_box"])
+        self.checkpair_cam2 = CheckBoxPairBinder(self.widgets["active_cam2"], self.widgets["cam2_enabled_box"])
+        self.checkpair_cam3 = CheckBoxPairBinder(self.widgets["active_cam3"], self.widgets["cam3_enabled_box"])
+        # self.checkpair_
+        # self.checkpair_
+        # self.checkpair_
+        # self.checkpair_
+        # self.checkpair_
 
         self.logger.debug("Settings window loaded.")
 
