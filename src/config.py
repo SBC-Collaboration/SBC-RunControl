@@ -588,9 +588,26 @@ class Config(QObject):
             self.logger.debug(f"Configuration file saved for {cam}")
 
         # calculate the number of modules that need to get ready in each step
-        modules = {"pressure": False, "niusb": False, "sql": False, "clock": False, "position": False,
-                   "trigger": False, "cam1": False, "cam2": False, "cam3": False, "amp1": False, "amp2": False}
-        # modules["sql"] =
+        self.active_modules = {"pressure": True,
+                               "niusb": True,
+                               "sql": self.run_config["general"]["sql"]["enabled"],
+                               "caen": True,
+                               "gage": True,
+                               "clock": True,
+                               "position": True,
+                               "trigger": True,
+                               "cam1": self.run_config["cam"]["cam1"]["enabled"],
+                               "cam2": self.run_config["cam"]["cam2"]["enabled"],
+                               "cam3": self.run_config["cam"]["cam3"]["enabled"],
+                               "amp1": self.run_config["scint"]["amp1"]["enabled"],
+                               "amp2": self.run_config["scint"]["amp2"]["enabled"]
+                               }
+        self.start_run_modules = [mod for mod in ["niusb", "sql", "caen", "gage", "clock", "position", "trigger", "cam1", "cam2", "cam3", "amp1", "amp2"]
+                                  if self.active_modules[mod]]
+        self.start_event_modules = [mod for mod in ["niusb", "cam1", "cam2", "cam3"] if self.active_modules[mod]]
+        self.stop_event_modules = [mod for mod in ["niusb", "sql", "cam1", "cam2", "cam3"] if self.active_modules[mod]]
+        self.stop_run_modules = [mod for mod in ["niusb", "sql", "cam1", "cam2", "cam3", "amp1", "amp2"] if self.active_modules[mod]]
+
 
         self.logger.info(f"Configuration saved to file for run {self.main.run_id}.")
         self.run_config_saved.emit()
