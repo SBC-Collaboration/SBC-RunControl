@@ -10,6 +10,7 @@ from src.config import Config
 from src.ui_loader import SettingsWindow, LogWindow
 from src.arduinos import Arduino
 from src.caen import Caen
+from src.acoustics import Acoustics
 from src.cameras import Camera
 from src.sipm_amp import SiPMAmp
 from src.sql import SQL
@@ -23,7 +24,7 @@ import time
 import re
 import sys
 import os
-
+#from ctypes import *
 
 class MainSignals(QObject):
     # initialize signals
@@ -102,7 +103,7 @@ class MainWindow(QMainWindow):
 
     def set_up_workers(self):
         self.signals = MainSignals()
-
+        
         # set up run handling thread and the worker
         vars = self.__dict__
         ui_vars = self.ui.__dict__
@@ -145,7 +146,6 @@ class MainWindow(QMainWindow):
             time.sleep(0.001)
 
         self.caen_worker = Caen(self)
-
         self.caen_thread = QThread()
         self.caen_thread.setObjectName("caen_thread")
         self.caen_worker.moveToThread(self.caen_thread)
@@ -153,9 +153,18 @@ class MainWindow(QMainWindow):
         self.caen_thread.start()
         time.sleep(0.001)
 
+        self.acous_worker = Acoustics(self)
+        self.acous_thread = QThread()
+        self.acous_thread.setObjectName("acous_thread")
+        self.acous_worker.moveToThread(self.acous_thread)
+        self.acous_thread.started.connect(self.acous_worker.run)
+        self.acous_thread.start()
+        time.sleep(0.001)
+
         self.niusb_worker = NIUSB(self)
         self.niusb_worker.run_started.connect(self.starting_run_wait)
         self.niusb_worker.event_started.connect(self.starting_event_wait)
+        self.niusb_worker.event_started.connect(self.acous_worker.start_event)
         self.niusb_worker.event_stopped.connect(self.stopping_event_wait)
         self.niusb_worker.run_stopped.connect(self.stopping_run_wait)
         self.niusb_worker.trigger_detected.connect(self.stop_event)
