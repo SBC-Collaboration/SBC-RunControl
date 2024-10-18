@@ -10,6 +10,7 @@ from src.config import Config
 from src.ui_loader import SettingsWindow, LogWindow
 from src.arduinos import Arduino
 from src.caen import Caen
+from src.acoustics import Acoustics
 from src.cameras import Camera
 from src.sipm_amp import SiPMAmp
 from src.sql import SQL
@@ -23,7 +24,7 @@ import time
 import re
 import sys
 import os
-
+#from ctypes import *
 
 class MainSignals(QObject):
     # initialize signals
@@ -42,15 +43,12 @@ class MainWindow(QMainWindow):
         super(MainWindow, self).__init__()
         self.run_id = ""
         self.event_id = None
-
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-
         # initialize config class
         self.config_class = Config(self, "config.json")
         self.config_class.load_config()
         self.stopping_run = False
-
         # logger initialization
         self.logger = logging.getLogger("rc")
         self.log_filename = self.config_class.config["general"]["log_path"]
@@ -60,7 +58,6 @@ class MainWindow(QMainWindow):
             filename=self.log_filename, format=self.log_format, level=logging.DEBUG
         )
         self.logger.addHandler(logging.StreamHandler())
-
         # define four run states
         self.run_states = Enum(
             "State",
@@ -74,7 +71,6 @@ class MainWindow(QMainWindow):
                 "stopping_event",
             ],
         )
-
         self.update_state("preparing")
 
         # List populated by ready modules at each state. After all modules are ready, it will proceed to the next state
@@ -84,7 +80,6 @@ class MainWindow(QMainWindow):
         self.starting_event_ready = []
         self.stopping_event_ready = []
         self.set_up_workers()
-
         # timer for event loop
         self.timer = QTimer()
         self.timer.setInterval(10)
@@ -94,21 +89,18 @@ class MainWindow(QMainWindow):
         self.event_timer = QElapsedTimer()
         self.run_livetime = 0
         self.ev_livetime = 0
-
         # initialize writer for sbc binary format
         # sbc_writer = Writer()
-
         self.start_program()
 
     def set_up_workers(self):
         self.signals = MainSignals()
-
         # set up run handling thread and the worker
         vars = self.__dict__
         ui_vars = self.ui.__dict__
         for cam in ["cam1", "cam2", "cam3"]:
             vars[f"{cam}_worker"] = Camera(self, cam)
-            vars[f"{cam}_worker"].camera_started.connect(self.starting_run_wait)
+            vars[f"{cam}_worker"].camera_started.connect(self.starting_run_wait) 
             vars[f"{cam}_worker"].camera_closed.connect(self.stopping_run_wait)
             vars[f"{cam}_thread"] = QThread()
             vars[f"{cam}_thread"].setObjectName(f"{cam}_thread")
@@ -145,7 +137,6 @@ class MainWindow(QMainWindow):
             time.sleep(0.001)
 
         self.caen_worker = Caen(self)
-
         self.caen_thread = QThread()
         self.caen_thread.setObjectName("caen_thread")
         self.caen_worker.moveToThread(self.caen_thread)
@@ -153,9 +144,18 @@ class MainWindow(QMainWindow):
         self.caen_thread.start()
         time.sleep(0.001)
 
+        self.acous_worker = Acoustics(self)
+        self.acous_thread = QThread()
+        self.acous_thread.setObjectName("acous_thread")
+        self.acous_worker.moveToThread(self.acous_thread)
+        self.acous_thread.started.connect(self.acous_worker.run)
+        self.acous_thread.start()
+        time.sleep(0.001)
+
         self.niusb_worker = NIUSB(self)
         self.niusb_worker.run_started.connect(self.starting_run_wait)
         self.niusb_worker.event_started.connect(self.starting_event_wait)
+        self.niusb_worker.acous_event_started.connect(self.acous_worker.start_event) #BM
         self.niusb_worker.event_stopped.connect(self.stopping_event_wait)
         self.niusb_worker.run_stopped.connect(self.stopping_run_wait)
         self.niusb_worker.trigger_detected.connect(self.stop_event)
@@ -484,6 +484,7 @@ class MainWindow(QMainWindow):
         self.ui.run_id_edit.setText(self.run_id)
 
     def start_program(self):
+        
         self.signals.program_starting.emit()
         self.update_state("idle")
 
