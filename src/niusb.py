@@ -4,7 +4,7 @@ from PySide6.QtCore import QTimer, QObject, QThread, Slot, Signal
 import numpy as np
 import os
 import time
-
+import src.global_variable as gv #BM
 
 class NIUSB(QObject):
     pin_definition = {  # input / output from run control
@@ -73,10 +73,12 @@ class NIUSB(QObject):
 
     run_started = Signal(str)
     event_started = Signal(str)
+    acous_event_started = Signal(str) #BM
     trigger_detected = Signal()
     event_stopped = Signal(str)
     run_stopped = Signal(str)
     trigger_ff = Signal(str)
+
 
     def __init__(self, mainwindow):
         super().__init__()
@@ -106,6 +108,8 @@ class NIUSB(QObject):
                 self.dev and
                 self.dev.read_pin(*self.reverse_config["latch"])):
             self.trigger_detected.emit()
+            gv.TRIG_LATCH=1 #BM
+            self.logger.info(f"gv.TRIG_LATCH in niusb after trigger latch is {gv.TRIG_LATCH}.")#BM
 
         # camera trigger enable test
         if self.main.run_state == self.main.run_states["active"] and False in self.cam_trig.values():
@@ -186,6 +190,8 @@ class NIUSB(QObject):
             self.dev.write_pin(*self.reverse_config["reset"], False)
         self.dev.write_pin(*self.reverse_config["reset"], 0)
         self.event_started.emit("niusb")
+        gv.TRIG_LATCH=0   #BM
+        self.acous_event_started.emit("acous") #BM
 
         # sync with config module
         while not self.main.config_class.cam_config_saved:
@@ -212,6 +218,7 @@ class NIUSB(QObject):
                         self.dev.write_pin(*self.reverse_config[f"comm_{cam}"], False)
                         self.logger.info(f"Camera {cam} is ready.")
                         self.event_started.emit(cam)
+
 
         # wait for certain time before sending trig enable pin
         self.cam_trig = {"cam1": False, "cam2": False, "cam3": False}
