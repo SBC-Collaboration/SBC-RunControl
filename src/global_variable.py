@@ -1,0 +1,1 @@
+TRIG_LATCH=0
