@@ -81,7 +81,7 @@
          <number>3</number>
         </property>
         <property name="sizeConstraint">
-         <enum>QLayout::SetDefaultConstraint</enum>
+         <enum>QLayout::SizeConstraint::SetDefaultConstraint</enum>
         </property>
         <item>
          <widget class="QPushButton" name="start_run_but">
@@ -215,7 +215,7 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
            <string>RunState</string>
           </property>
           <property name="alignment">
-           <set>Qt::AlignCenter</set>
+           <set>Qt::AlignmentFlag::AlignCenter</set>
           </property>
          </widget>
         </item>
@@ -231,7 +231,7 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
            <string>Run ID</string>
           </property>
           <property name="alignment">
-           <set>Qt::AlignCenter</set>
+           <set>Qt::AlignmentFlag::AlignCenter</set>
           </property>
           <property name="buddy">
            <cstring>run_id_edit</cstring>
@@ -247,7 +247,7 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
            </sizepolicy>
           </property>
           <property name="alignment">
-           <set>Qt::AlignCenter</set>
+           <set>Qt::AlignmentFlag::AlignCenter</set>
           </property>
           <property name="readOnly">
            <bool>true</bool>
@@ -272,7 +272,7 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
            <string>Event ID</string>
           </property>
           <property name="alignment">
-           <set>Qt::AlignCenter</set>
+           <set>Qt::AlignmentFlag::AlignCenter</set>
           </property>
           <property name="buddy">
            <cstring>event_id_edit</cstring>
@@ -288,7 +288,7 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
            </sizepolicy>
           </property>
           <property name="alignment">
-           <set>Qt::AlignCenter</set>
+           <set>Qt::AlignmentFlag::AlignCenter</set>
           </property>
           <property name="readOnly">
            <bool>true</bool>
@@ -310,7 +310,7 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
            <string>Event Time</string>
           </property>
           <property name="alignment">
-           <set>Qt::AlignCenter</set>
+           <set>Qt::AlignmentFlag::AlignCenter</set>
           </property>
           <property name="buddy">
            <cstring>event_time_edit</cstring>
@@ -326,7 +326,7 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
            </sizepolicy>
           </property>
           <property name="alignment">
-           <set>Qt::AlignCenter</set>
+           <set>Qt::AlignmentFlag::AlignCenter</set>
           </property>
           <property name="readOnly">
            <bool>true</bool>
@@ -348,7 +348,7 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
            <string>Run Live Time</string>
           </property>
           <property name="alignment">
-           <set>Qt::AlignCenter</set>
+           <set>Qt::AlignmentFlag::AlignCenter</set>
           </property>
           <property name="buddy">
            <cstring>run_live_time_edit</cstring>
@@ -364,7 +364,7 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
            </sizepolicy>
           </property>
           <property name="alignment">
-           <set>Qt::AlignCenter</set>
+           <set>Qt::AlignmentFlag::AlignCenter</set>
           </property>
           <property name="dragEnabled">
            <bool>false</bool>
@@ -389,7 +389,7 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
            <string>Last Trigger</string>
           </property>
           <property name="alignment">
-           <set>Qt::AlignCenter</set>
+           <set>Qt::AlignmentFlag::AlignCenter</set>
           </property>
           <property name="buddy">
            <cstring>run_live_time_edit</cstring>
@@ -405,7 +405,7 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
            </sizepolicy>
           </property>
           <property name="alignment">
-           <set>Qt::AlignCenter</set>
+           <set>Qt::AlignmentFlag::AlignCenter</set>
           </property>
           <property name="dragEnabled">
            <bool>false</bool>
@@ -418,7 +418,7 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
         <item>
          <spacer name="verticalSpacer_2">
           <property name="orientation">
-           <enum>Qt::Vertical</enum>
+           <enum>Qt::Orientation::Vertical</enum>
           </property>
           <property name="sizeHint" stdset="0">
            <size>
@@ -445,10 +445,10 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
          </size>
         </property>
         <property name="tabShape">
-         <enum>QTabWidget::Rounded</enum>
+         <enum>QTabWidget::TabShape::Rounded</enum>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>2</number>
         </property>
         <property name="documentMode">
          <bool>false</bool>
@@ -482,10 +482,10 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
           <item>
            <widget class="QScrollArea" name="scrollArea_2">
             <property name="frameShape">
-             <enum>QFrame::NoFrame</enum>
+             <enum>QFrame::Shape::NoFrame</enum>
             </property>
             <property name="frameShadow">
-             <enum>QFrame::Plain</enum>
+             <enum>QFrame::Shadow::Plain</enum>
             </property>
             <property name="widgetResizable">
              <bool>true</bool>
@@ -495,8 +495,8 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>855</width>
-               <height>675</height>
+               <width>838</width>
+               <height>672</height>
               </rect>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_8">
@@ -518,7 +518,7 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
               <item>
                <layout class="QGridLayout" name="comment_grid" rowstretch="0,0,0">
                 <property name="sizeConstraint">
-                 <enum>QLayout::SetDefaultConstraint</enum>
+                 <enum>QLayout::SizeConstraint::SetDefaultConstraint</enum>
                 </property>
                 <property name="spacing">
                  <number>3</number>
@@ -544,13 +544,13 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
                    </font>
                   </property>
                   <property name="frameShape">
-                   <enum>QFrame::NoFrame</enum>
+                   <enum>QFrame::Shape::NoFrame</enum>
                   </property>
                   <property name="sizeAdjustPolicy">
-                   <enum>QAbstractScrollArea::AdjustToContents</enum>
+                   <enum>QAbstractScrollArea::SizeAdjustPolicy::AdjustToContents</enum>
                   </property>
                   <property name="textInteractionFlags">
-                   <set>Qt::LinksAccessibleByKeyboard|Qt::LinksAccessibleByMouse|Qt::TextBrowserInteraction|Qt::TextEditable|Qt::TextEditorInteraction|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
+                   <set>Qt::TextInteractionFlag::LinksAccessibleByKeyboard|Qt::TextInteractionFlag::LinksAccessibleByMouse|Qt::TextInteractionFlag::TextBrowserInteraction|Qt::TextInteractionFlag::TextEditable|Qt::TextInteractionFlag::TextEditorInteraction|Qt::TextInteractionFlag::TextSelectableByKeyboard|Qt::TextInteractionFlag::TextSelectableByMouse</set>
                   </property>
                   <property name="placeholderText">
                    <string>Enter run comments here.</string>
@@ -570,7 +570,7 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
                    <string>Source</string>
                   </property>
                   <property name="alignment">
-                   <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                   <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                   </property>
                   <property name="buddy">
                    <cstring>source_box</cstring>
@@ -594,7 +594,7 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
                    <string>Location</string>
                   </property>
                   <property name="alignment">
-                   <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                   <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                   </property>
                   <property name="buddy">
                    <cstring>source_location_box</cstring>
@@ -636,7 +636,7 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
               <item>
                <spacer name="verticalSpacer_3">
                 <property name="orientation">
-                 <enum>Qt::Vertical</enum>
+                 <enum>Qt::Orientation::Vertical</enum>
                 </property>
                 <property name="sizeHint" stdset="0">
                  <size>
@@ -679,7 +679,7 @@ background-color: #969696;</string>
                    <string>SiPM Amp 2</string>
                   </property>
                   <property name="alignment">
-                   <set>Qt::AlignCenter</set>
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
                   </property>
                  </widget>
                 </item>
@@ -699,7 +699,7 @@ background-color: #969696;</string>
                    <string>Cam 2</string>
                   </property>
                   <property name="alignment">
-                   <set>Qt::AlignCenter</set>
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
                   </property>
                  </widget>
                 </item>
@@ -719,7 +719,7 @@ background-color: #969696;</string>
                    <string>SiPM Amp 1</string>
                   </property>
                   <property name="alignment">
-                   <set>Qt::AlignCenter</set>
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
                   </property>
                  </widget>
                 </item>
@@ -739,7 +739,7 @@ background-color: #969696;</string>
                    <string>CAEN</string>
                   </property>
                   <property name="alignment">
-                   <set>Qt::AlignCenter</set>
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
                   </property>
                  </widget>
                 </item>
@@ -759,7 +759,7 @@ background-color: #969696;</string>
                    <string>Cam 1</string>
                   </property>
                   <property name="alignment">
-                   <set>Qt::AlignCenter</set>
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
                   </property>
                  </widget>
                 </item>
@@ -779,7 +779,7 @@ background-color: #969696;</string>
                    <string>Trigger Arduino</string>
                   </property>
                   <property name="alignment">
-                   <set>Qt::AlignCenter</set>
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
                   </property>
                  </widget>
                 </item>
@@ -799,7 +799,7 @@ background-color: #969696;</string>
                    <string>Clock Arduino</string>
                   </property>
                   <property name="alignment">
-                   <set>Qt::AlignCenter</set>
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
                   </property>
                  </widget>
                 </item>
@@ -819,7 +819,7 @@ background-color: #969696;</string>
                    <string>Position Arduino</string>
                   </property>
                   <property name="alignment">
-                   <set>Qt::AlignCenter</set>
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
                   </property>
                  </widget>
                 </item>
@@ -839,7 +839,7 @@ background-color: #969696;</string>
                    <string>Config</string>
                   </property>
                   <property name="alignment">
-                   <set>Qt::AlignCenter</set>
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
                   </property>
                  </widget>
                 </item>
@@ -859,7 +859,7 @@ background-color: #969696;</string>
                    <string>Cam 3</string>
                   </property>
                   <property name="alignment">
-                   <set>Qt::AlignCenter</set>
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
                   </property>
                  </widget>
                 </item>
@@ -879,7 +879,7 @@ background-color: #969696;</string>
                    <string>Gage</string>
                   </property>
                   <property name="alignment">
-                   <set>Qt::AlignCenter</set>
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
                   </property>
                  </widget>
                 </item>
@@ -899,7 +899,7 @@ background-color: #969696;</string>
                    <string>NI USB</string>
                   </property>
                   <property name="alignment">
-                   <set>Qt::AlignCenter</set>
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
                   </property>
                  </widget>
                 </item>
@@ -919,7 +919,7 @@ background-color: #969696;</string>
                    <string>PLC</string>
                   </property>
                   <property name="alignment">
-                   <set>Qt::AlignCenter</set>
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
                   </property>
                  </widget>
                 </item>
@@ -939,7 +939,7 @@ background-color: #969696;</string>
                    <string>Writer</string>
                   </property>
                   <property name="alignment">
-                   <set>Qt::AlignCenter</set>
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
                   </property>
                  </widget>
                 </item>
@@ -959,7 +959,7 @@ background-color: #969696;</string>
                    <string>SQL</string>
                   </property>
                   <property name="alignment">
-                   <set>Qt::AlignCenter</set>
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
                   </property>
                  </widget>
                 </item>
@@ -994,10 +994,10 @@ background-color: #969696;</string>
           <item>
            <widget class="QScrollArea" name="scrollArea">
             <property name="frameShape">
-             <enum>QFrame::NoFrame</enum>
+             <enum>QFrame::Shape::NoFrame</enum>
             </property>
             <property name="frameShadow">
-             <enum>QFrame::Plain</enum>
+             <enum>QFrame::Shadow::Plain</enum>
             </property>
             <property name="lineWidth">
              <number>0</number>
@@ -1010,8 +1010,8 @@ background-color: #969696;</string>
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>361</width>
-               <height>111</height>
+               <width>838</width>
+               <height>672</height>
               </rect>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -1054,13 +1054,13 @@ background-color: #969696;</string>
                    </sizepolicy>
                   </property>
                   <property name="layoutDirection">
-                   <enum>Qt::LeftToRight</enum>
+                   <enum>Qt::LayoutDirection::LeftToRight</enum>
                   </property>
                   <property name="text">
                    <string>Camera Status:</string>
                   </property>
                   <property name="alignment">
-                   <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                   <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                   </property>
                  </widget>
                 </item>
@@ -1074,7 +1074,7 @@ background-color: rgb(150, 150, 150);</string>
                    <string>Cam 1</string>
                   </property>
                   <property name="alignment">
-                   <set>Qt::AlignCenter</set>
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
                   </property>
                  </widget>
                 </item>
@@ -1088,7 +1088,7 @@ background-color: rgb(150, 150, 150);</string>
                    <string>Cam 2</string>
                   </property>
                   <property name="alignment">
-                   <set>Qt::AlignCenter</set>
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
                   </property>
                  </widget>
                 </item>
@@ -1102,7 +1102,7 @@ background-color: rgb(150, 150, 150);</string>
                    <string>Cam 3</string>
                   </property>
                   <property name="alignment">
-                   <set>Qt::AlignCenter</set>
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
                   </property>
                  </widget>
                 </item>
@@ -1203,7 +1203,7 @@ background-color: rgb(150, 150, 150);</string>
                 <item>
                  <spacer name="horizontalSpacer">
                   <property name="orientation">
-                   <enum>Qt::Horizontal</enum>
+                   <enum>Qt::Orientation::Horizontal</enum>
                   </property>
                   <property name="sizeHint" stdset="0">
                    <size>
@@ -1218,7 +1218,7 @@ background-color: rgb(150, 150, 150);</string>
               <item>
                <layout class="QHBoxLayout" name="horizontalLayout_3">
                 <property name="sizeConstraint">
-                 <enum>QLayout::SetDefaultConstraint</enum>
+                 <enum>QLayout::SizeConstraint::SetDefaultConstraint</enum>
                 </property>
                 <item>
                  <widget class="QLabel" name="image_num_label">
@@ -1282,7 +1282,7 @@ background-color: rgb(150, 150, 150);</string>
               <item>
                <spacer name="verticalSpacer">
                 <property name="orientation">
-                 <enum>Qt::Vertical</enum>
+                 <enum>Qt::Orientation::Vertical</enum>
                 </property>
                 <property name="sizeHint" stdset="0">
                  <size>
@@ -1302,6 +1302,80 @@ background-color: rgb(150, 150, 150);</string>
          <attribute name="title">
           <string>Scintillation</string>
          </attribute>
+         <layout class="QVBoxLayout" name="verticalLayout_10">
+          <property name="spacing">
+           <number>3</number>
+          </property>
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <item>
+           <widget class="QScrollArea" name="scrollArea_3">
+            <property name="widgetResizable">
+             <bool>true</bool>
+            </property>
+            <widget class="QWidget" name="scrollAreaWidgetContents_3">
+             <property name="geometry">
+              <rect>
+               <x>0</x>
+               <y>0</y>
+               <width>836</width>
+               <height>670</height>
+              </rect>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_11">
+              <property name="spacing">
+               <number>3</number>
+              </property>
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+              <item>
+               <layout class="QGridLayout" name="sctin_grid_1">
+                <property name="spacing">
+                 <number>3</number>
+                </property>
+                <item row="0" column="0">
+                 <widget class="PlotWidget" name="caen_plot_1" native="true"/>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <spacer name="verticalSpacer_4">
+                <property name="orientation">
+                 <enum>Qt::Orientation::Vertical</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>20</width>
+                  <height>40</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+             </layout>
+            </widget>
+           </widget>
+          </item>
+         </layout>
         </widget>
         <widget class="QWidget" name="acoustics_tab">
          <attribute name="title">
@@ -1344,7 +1418,7 @@ background-color: rgb(150, 150, 150);</string>
     <string>Ctrl+Shift+S</string>
    </property>
    <property name="menuRole">
-    <enum>QAction::PreferencesRole</enum>
+    <enum>QAction::MenuRole::PreferencesRole</enum>
    </property>
   </action>
   <action name="action_log">
@@ -1377,7 +1451,7 @@ background-color: rgb(150, 150, 150);</string>
     <string>Ctrl+W</string>
    </property>
    <property name="menuRole">
-    <enum>QAction::NoRole</enum>
+    <enum>QAction::MenuRole::NoRole</enum>
    </property>
   </action>
   <action name="action_open_folder">
@@ -1392,7 +1466,7 @@ background-color: rgb(150, 150, 150);</string>
     <string>Ctrl+O</string>
    </property>
    <property name="menuRole">
-    <enum>QAction::NoRole</enum>
+    <enum>QAction::MenuRole::NoRole</enum>
    </property>
   </action>
  </widget>
@@ -1401,6 +1475,12 @@ background-color: rgb(150, 150, 150);</string>
    <class>StatusLight</class>
    <extends>QLabel</extends>
    <header>ui.custom_widgets</header>
+  </customwidget>
+  <customwidget>
+   <class>PlotWidget</class>
+   <extends>QWidget</extends>
+   <header>pyqtgraph</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <resources>
