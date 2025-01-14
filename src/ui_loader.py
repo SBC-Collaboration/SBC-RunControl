@@ -1,7 +1,7 @@
 import sys
 from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog
 from PySide6.QtGui import QTextCursor
-from PySide6.QtCore import QTimer, Qt
+from PySide6.QtCore import QTimer, Qt, QObject, QSignalBlocker
 import logging
 from enum import Enum
 import time
@@ -13,8 +13,9 @@ from src.config import Config
 
 
 # initialize class for syncing the status of two checkboxes
-class CheckBoxPairBinder:
+class CheckBoxPairBinder(QObject):
     def __init__(self, checkbox1, checkbox2):
+        super(CheckBoxPairBinder, self).__init__()
         self.checkbox1 = checkbox1
         self.checkbox2 = checkbox2
 
@@ -25,10 +26,10 @@ class CheckBoxPairBinder:
         sender = self.sender()
         if sender == self.checkbox1:
             with QSignalBlocker(self.checkbox2):
-                self.checkbox2.setCheckState(state)
+                self.checkbox2.setCheckState(Qt.CheckState(state))
         elif sender == self.checkbox2:
             with QSignalBlocker(self.checkbox1):
-                self.checkbox1.setCheckState(state)
+                self.checkbox1.setCheckState(Qt.CheckState(state))
 
 
 # Loads settings window
