@@ -7,7 +7,8 @@
     "period": 100,
     "phase": 0,
     "duty": 10,
-    "polarity": true
+    "polarity": true,
+    "gated": false
   },
   "wave2": {
     "enabled": true,
@@ -15,7 +16,8 @@
     "period": 100,
     "phase": 0,
     "duty": 10,
-    "polarity": true
+    "polarity": true,
+    "gated": false
   },
   "wave3": {
     "enabled": true,
@@ -23,7 +25,8 @@
     "period": 100,
     "phase": 0,
     "duty": 10,
-    "polarity": true
+    "polarity": true,
+    "gated": false
   },
   "wave4": {
     "enabled": true,
@@ -31,7 +34,8 @@
     "period": 100,
     "phase": 0,
     "duty": 10,
-    "polarity": true
+    "polarity": true,
+    "gated": true
   },
   "wave5": {
     "enabled": true,
@@ -39,7 +43,8 @@
     "period": 100,
     "phase": 0,
     "duty": 10,
-    "polarity": true
+    "polarity": true,
+    "gated": true
   },
   "wave6": {
     "enabled": true,
@@ -47,7 +52,8 @@
     "period": 100,
     "phase": 0,
     "duty": 10,
-    "polarity": true
+    "polarity": true,
+    "gated": true
   },
   "wave7": {
     "enabled": true,
@@ -55,7 +61,8 @@
     "period": 100,
     "phase": 0,
     "duty": 10,
-    "polarity": true
+    "polarity": true,
+    "gated": true
   },
   "wave8": {
     "enabled": true,
@@ -63,7 +70,8 @@
     "period": 100,
     "phase": 0,
     "duty": 10,
-    "polarity": true
+    "polarity": true,
+    "gated": true
   },
   "wave9": {
     "enabled": true,
@@ -71,7 +79,8 @@
     "period": 100,
     "phase": 0,
     "duty": 10,
-    "polarity": true
+    "polarity": true,
+    "gated": true
   },
   "wave10": {
     "enabled": true,
@@ -79,7 +88,8 @@
     "period": 100,
     "phase": 0,
     "duty": 10,
-    "polarity": true
+    "polarity": true,
+    "gated": true
   },
   "wave11": {
     "enabled": true,
@@ -87,7 +97,8 @@
     "period": 100,
     "phase": 0,
     "duty": 10,
-    "polarity": true
+    "polarity": true,
+    "gated": true
   },
   "wave12": {
     "enabled": true,
@@ -95,7 +106,8 @@
     "period": 100,
     "phase": 0,
     "duty": 10,
-    "polarity": true
+    "polarity": true,
+    "gated": true
   },
   "wave13": {
     "enabled": true,
@@ -103,7 +115,8 @@
     "period": 100,
     "phase": 0,
     "duty": 10,
-    "polarity": true
+    "polarity": true,
+    "gated": false
   },
   "wave14": {
     "enabled": false,
@@ -111,7 +124,8 @@
     "period": 0,
     "phase": 0,
     "duty": 0,
-    "polarity": true
+    "polarity": true,
+    "gated": false
   },
   "wave15": {
     "enabled": false,
@@ -119,7 +133,8 @@
     "period": 0,
     "phase": 0,
     "duty": 0,
-    "polarity": true
+    "polarity": true,
+    "gated": false
   },
   "wave16": {
     "enabled": false,
@@ -127,6 +142,7 @@
     "period": 0,
     "phase": 0,
     "duty": 0,
-    "polarity": true
+    "polarity": true,
+    "gated": false
   }
 }
