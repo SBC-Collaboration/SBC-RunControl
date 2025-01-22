@@ -1,3 +1,9 @@
+#include <ArduinoJson.h>
+#include "incbin.h"
+
+// using incbin: https://github.com/AlexIII/incbin-arduino
+INCTXT(ConfigFile, "trigger_config.json");
+
 bool delayRunning = false; // true if still waiting for delay to finish
 
 unsigned long DELAY_TIME = 100; // 10 us
@@ -6,11 +12,42 @@ unsigned long prevTime = 0;
 
 int fISum;
 int latchState = LOW;
-
-
+uint8_t trigFast, trigSlow; // save trig here
+uint8_t fastMask=0, slowMask=0; // trig in mask for two ports
 
 void setup(void) {
-  //Serial.begin(9600);
+  Serial.begin(9600);
+
+  // deserialize the json file text to a json object
+  JsonDocument conf;
+  DeserializationError error = deserializeJson(conf, gConfigFileData);
+    if (error){
+    Serial.println("Cannot load configuration file. Quitting.");
+    return;
+  }
+
+  Serial.println("Trig\tEnabled\tName\tIn Pin\tFF Pin");
+  for (JsonPair kv : conf.as<JsonObject>()) {
+    const char* key = kv.key().c_str();
+    int trig_num;
+    if (sscanf(key, "trig%d", &trig_num) <=0) {
+      continue; // continue if not wave#
+    }
+    trig_num -= 1; // change to 0 based
+    JsonObject v = kv.value().as<JsonObject>();
+    if (trig_num<8 && trig_num>=0) {
+      fastMask += v["enabled"].as<bool>() << trig_num;
+    } else if (trig_num>=8 && trig_num<16){
+      slowMask += v["enabled"].as<bool>() << (trig_num-8);
+    } else {
+      Serial.println("Trigger position out of range! Quitting.");
+    }
+    Serial.print(trig_num); Serial.print("\t");
+    v["enabled"] ? Serial.print("yes\t") : Serial.print("no\t");
+    Serial.print(v["name"].as<const char*>()); Serial.print("\t");
+    Serial.print(v["in"].as<int>()); Serial.print("\t");
+    Serial.print(v["first_fault"].as<int>()); Serial.print("\n");
+  }
 
   DDRA = B00000000; // Fan IN PINs 22-29
   DDRC = B00000000; // Fan IN PINs 37-30
@@ -49,16 +86,20 @@ void loop(void) {
   int fISum = LOW;
 
   //OR Gate for the Fan IN
-  if(PINA + PINC > 0) {
+  trigFast = PINA & fastMask;
+  trigSlow = PINC & slowMask;
+  if(trigSlow + trigFast) {
     if(latchState == LOW) {
-      PORTB = PINA;
-      PORTL = PINC;
+      PORTB = trigFast;
+      PORTL = trigSlow;
     }
     latchState = HIGH;
     fISum = HIGH;
     PORTE = B11111111;
     PORTH = B11111111;
     PORTJ = B11111111;
+    Serial.print("FF B:\t"); Serial.print(trigSlow);
+    Serial.print("\tFF L:\t"); Serial.println(trigFast);
   }
 
 
@@ -70,6 +111,7 @@ void loop(void) {
     PORTJ = B00000000;
     PORTB = B00000000;
     PORTL = B00000000;
+    Serial.println("Trigger reset.");
   }
 
 
