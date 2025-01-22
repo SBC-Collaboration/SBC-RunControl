@@ -62,7 +62,7 @@ void setup(void) {
     waves[wave_num].phase = v["phase"].as<int>() * waves[wave_num].period / 100;  // convert percentage to time
     waves[wave_num].polarity = v["polarity"].as<bool>();
     Serial.print(wave_num); Serial.print("\t");
-    Serial.print(waves[wave_num].enabled); Serial.print("\t");
+    waves[wave_num].enabled ? Serial.print("yes\t") : Serial.print("no\t");
     Serial.print(waves[wave_num].period); Serial.print("\t");
     Serial.print(waves[wave_num].phase); Serial.print("\t");
     Serial.print(waves[wave_num].duty); Serial.print("\t");
