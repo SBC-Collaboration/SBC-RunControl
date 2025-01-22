@@ -1,0 +1,3 @@
+The level sensor uses an Arduino Mega with this Ethernet shield:
+
+https://www.mouser.com/catalog/specsheets/a000056_datasheet.pdf
