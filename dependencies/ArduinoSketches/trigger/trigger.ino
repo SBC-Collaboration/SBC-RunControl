@@ -9,6 +9,10 @@ bool delayRunning = false; // true if still waiting for delay to finish
 unsigned long DELAY_TIME = 100; // 10 us
 unsigned long delayStart = 0; // the time the delay started
 unsigned long prevTime = 0;
+unsigned long led_gate = 0;
+// counter increments each loop after trigger latch
+unsigned long led_counter = 0; 
+int led_gate_state = HIGH;
 
 int fISum;
 int latchState = LOW;
@@ -62,6 +66,18 @@ void setup(void) {
   pinMode(38, INPUT); // PIN IN for Trig Reset
   for(int a=39;a<42;) pinMode(a++, OUTPUT); // PIN OUT for Trig OR, ON-Time, Heartbeat
 
+  // if led_gate==0, PD0 is always high
+  // if led_gate>=, PD0 will be high for led_gate loops after trigger, then low
+  led_gate = conf["led_gate"];
+
+  if(led_gate==0) {
+    PORTD |= B00000001; // PD0 set to high
+    led_gate_state = HIGH;
+  } else {
+    PORTD &= B11111110; // PD0 set to low
+    led_gate_state = LOW;
+  }
+
   delayStart = micros(); // Start Delay
   delayRunning = true; // not finished yet
 
@@ -85,6 +101,17 @@ void loop(void) {
 
   int fISum = LOW;
 
+  // set PD0 to low if led_gate is not 0, and counter>led_gate
+  if(led_gate > 0) {
+    if(led_gate_state) {
+      if(led_counter >= led_gate) {
+        PORTD &= B11111110; // PD0 set to low
+        led_gate_state = LOW;
+      }
+      led_counter++; // increment counter
+    }
+  }
+
   //OR Gate for the Fan IN
   trigFast = PINA & fastMask;
   trigSlow = PINC & slowMask;
@@ -100,6 +127,13 @@ void loop(void) {
     PORTJ = B11111111;
     Serial.print("FF B:\t"); Serial.print(trigSlow);
     Serial.print("\tFF L:\t"); Serial.println(trigFast);
+
+    // set led_gate counter to 0 and PD0 to high
+    if(led_gate>0){
+      led_counter = 0;
+      PORTD |= B00000001; // PD0 set to high
+      led_gate_state = HIGH;
+    }
   }
 
 
@@ -112,6 +146,11 @@ void loop(void) {
     PORTB = B00000000;
     PORTL = B00000000;
     Serial.println("Trigger reset.");
+    
+    if(led_gate>0){
+      PORTD &= B11111110; // PD0 set to low
+      led_gate_state = LOW;
+    }
   }
 
 
