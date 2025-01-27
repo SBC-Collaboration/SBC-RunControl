@@ -1,20 +1,21 @@
 name: runcontrol
 channels:
-  - defaults
   - conda-forge
 dependencies:
   - matplotlib>=3.10.0
   - numpy>=2.1.0
   - pandas>=2.2.0
   - paramiko>=3.5.0
-  - pip>=24.2
-  - pybind>=2.12
+  - pip>=25.0
+  - pybind11>=2.12
   - python>=3.13
+  - PySide6>=6.8.0
+  - pyqtgraph>=0.13.7
+  - pymysql>=1.1.0
+  - mysql-connector-python>=9.0.0
+  - sshtunnel>=0.4.0
+  - pyusb>=1.2.0
+  - wheel>=0.45.0
+  - setuptools>=75.0.0
   - pip:
-    - PySide6>=6.8.0
-    - pyqtgraph>=0.13.7
-    - pymysql>=1.1.0
-    - mysql-connector-python>=9.1.0
-    - sshtunnel>=0.4.0
-    - pyusb>=1.2.0
     - git+https://github.com/SBC-Collaboration/SBCBinaryFormat.git@master#subdirectory=python
