@@ -448,7 +448,7 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
          <enum>QTabWidget::TabShape::Rounded</enum>
         </property>
         <property name="currentIndex">
-         <number>2</number>
+         <number>0</number>
         </property>
         <property name="documentMode">
          <bool>false</bool>
@@ -1010,8 +1010,8 @@ background-color: #969696;</string>
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>838</width>
-               <height>672</height>
+               <width>382</width>
+               <height>119</height>
               </rect>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_2">
