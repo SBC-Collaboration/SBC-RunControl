@@ -60,11 +60,32 @@ class SettingsWindow(QMainWindow):
         self.checkpair_cam1 = CheckBoxPairBinder(self.widgets["active_cam1"], self.widgets["cam1_enabled_box"])
         self.checkpair_cam2 = CheckBoxPairBinder(self.widgets["active_cam2"], self.widgets["cam2_enabled_box"])
         self.checkpair_cam3 = CheckBoxPairBinder(self.widgets["active_cam3"], self.widgets["cam3_enabled_box"])
-        # self.checkpair_
-        # self.checkpair_
-        # self.checkpair_
-        # self.checkpair_
-        # self.checkpair_
+        self.checkpair_amp1 = CheckBoxPairBinder(self.widgets["active_amp1"], self.widgets["sipm_amp1_enabled_box"])
+        self.checkpair_amp2 = CheckBoxPairBinder(self.widgets["active_amp2"], self.widgets["sipm_amp2_enabled_box"])
+        self.checkpair_amp3 = CheckBoxPairBinder(self.widgets["active_amp3"], self.widgets["sipm_amp3_enabled_box"])
+        self.checkpair_iv1 = CheckBoxPairBinder(self.widgets["active_amp1_iv"], self.widgets["sipm_amp1_iv_enabled_box"])
+        self.checkpair_iv2 = CheckBoxPairBinder(self.widgets["active_amp2_iv"], self.widgets["sipm_amp2_iv_enabled_box"])
+        self.checkpair_iv3 = CheckBoxPairBinder(self.widgets["active_amp3_iv"], self.widgets["sipm_amp3_iv_enabled_box"])
+        self.checkpair_caen0 = CheckBoxPairBinder(self.widgets["active_caen_g0"], self.widgets["caen_g0_enable_box"])
+        self.checkpair_caen1 = CheckBoxPairBinder(self.widgets["active_caen_g1"], self.widgets["caen_g1_enable_box"])
+        self.checkpair_caen2 = CheckBoxPairBinder(self.widgets["active_caen_g2"], self.widgets["caen_g2_enable_box"])
+        self.checkpair_caen3 = CheckBoxPairBinder(self.widgets["active_caen_g3"], self.widgets["caen_g3_enable_box"])
+        self.checkpair_caen0_trg = CheckBoxPairBinder(self.widgets["active_caen_g0_trg"], self.widgets["caen_g0_trig_box"])
+        self.checkpair_caen1_trg = CheckBoxPairBinder(self.widgets["active_caen_g1_trg"], self.widgets["caen_g1_trig_box"])
+        self.checkpair_caen2_trg = CheckBoxPairBinder(self.widgets["active_caen_g2_trg"], self.widgets["caen_g2_trig_box"])
+        self.checkpair_caen3_trg = CheckBoxPairBinder(self.widgets["active_caen_g3_trg"], self.widgets["caen_g3_trig_box"])
+        self.checkpair_caen0_acq = CheckBoxPairBinder(self.widgets["active_caen_g0_trg"], self.widgets["caen_g0_acq_box"])
+        self.checkpair_caen1_acq = CheckBoxPairBinder(self.widgets["active_caen_g1_trg"], self.widgets["caen_g1_acq_box"])
+        self.checkpair_caen2_acq = CheckBoxPairBinder(self.widgets["active_caen_g2_trg"], self.widgets["caen_g2_acq_box"])
+        self.checkpair_caen3_acq = CheckBoxPairBinder(self.widgets["active_caen_g3_trg"], self.widgets["caen_g3_acq_box"])
+        self.checkpair_acous1 = CheckBoxPairBinder(self.widgets["active_acous_ch1"], self.widgets["acous_enable_ch1"])
+        self.checkpair_acous2 = CheckBoxPairBinder(self.widgets["active_acous_ch2"], self.widgets["acous_enable_ch2"])
+        self.checkpair_acous3 = CheckBoxPairBinder(self.widgets["active_acous_ch3"], self.widgets["acous_enable_ch3"])
+        self.checkpair_acous4 = CheckBoxPairBinder(self.widgets["active_acous_ch4"], self.widgets["acous_enable_ch4"])
+        self.checkpair_acous5 = CheckBoxPairBinder(self.widgets["active_acous_ch5"], self.widgets["acous_enable_ch5"])
+        self.checkpair_acous6 = CheckBoxPairBinder(self.widgets["active_acous_ch6"], self.widgets["acous_enable_ch6"])
+        self.checkpair_acous7 = CheckBoxPairBinder(self.widgets["active_acous_ch7"], self.widgets["acous_enable_ch7"])
+        self.checkpair_acous8 = CheckBoxPairBinder(self.widgets["active_acous_ch8"], self.widgets["acous_enable_ch8"])
 
         self.logger.debug("Settings window loaded.")
 
