@@ -116,7 +116,6 @@ class Arduino(QObject):
         port = self.config["port"]
         sketch_path = self.config["sketch"]
         build_path = os.path.join(sketch_path, "build")
-
         if not os.path.exists(build_path):
             os.mkdir(build_path)
             checksum = 0
@@ -158,5 +157,4 @@ class Arduino(QObject):
             result = subprocess.run(command, shell=True, capture_output=True)
             return
         self.logger.info(f"Sketch successfully uploaded for {self.arduino} arduino.")
-
         self.sketch_uploaded.emit(self.arduino)
