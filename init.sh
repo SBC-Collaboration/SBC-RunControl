@@ -13,6 +13,10 @@ else
 fi
 conda activate runcontrol;
 
+# install caen_red from source
+echo "Installing caen_red"
+pip install ~/packages/RedDigitizerplusplus/
+
 # generate all ui and resources files
 echo "Generating Qt UI and resources files."
 for f in ./ui/*.ui; do
