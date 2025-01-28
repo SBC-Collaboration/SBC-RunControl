@@ -9807,9 +9807,9 @@
            <property name="geometry">
             <rect>
              <x>0</x>
-             <y>-618</y>
+             <y>-161</y>
              <width>776</width>
-             <height>1339</height>
+             <height>1334</height>
             </rect>
            </property>
            <property name="maximumSize">
@@ -10214,6 +10214,9 @@
                 <property name="focusPolicy">
                  <enum>Qt::FocusPolicy::StrongFocus</enum>
                 </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
+                </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignCenter</set>
                 </property>
@@ -10512,6 +10515,9 @@
                <widget class="NoWheelSpinBox" name="trig_reset_pin_box">
                 <property name="focusPolicy">
                  <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -11124,6 +11130,9 @@
                <widget class="NoWheelSpinBox" name="trig_on_time_pin_box">
                 <property name="focusPolicy">
                  <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -11804,6 +11813,9 @@
                 <property name="focusPolicy">
                  <enum>Qt::FocusPolicy::StrongFocus</enum>
                 </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
+                </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignCenter</set>
                 </property>
@@ -12210,6 +12222,9 @@
                <widget class="NoWheelSpinBox" name="trig_led_gate_pin_box">
                 <property name="focusPolicy">
                  <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignCenter</set>
