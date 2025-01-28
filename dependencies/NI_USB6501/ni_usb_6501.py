@@ -281,7 +281,6 @@ class NiUsb6501:
         self.device.reset()
         self.device = None
 
-
 #USAGE EXAMPLE
 if __name__ == "__main__":
     dev = get_adapter()
@@ -293,6 +292,8 @@ if __name__ == "__main__":
 
     dev.write_port(0, 0b11001100)
     dev.write_port(1, 0b10101010)
+    dev.change_pin_io(0, 1, 1, 0)
+    dev.write_pin(0, 1, 1)
 
     print(bin(dev.read_port(2)))
 
