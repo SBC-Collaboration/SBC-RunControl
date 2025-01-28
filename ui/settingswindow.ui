@@ -94,7 +94,7 @@
              <x>0</x>
              <y>0</y>
              <width>809</width>
-             <height>586</height>
+             <height>612</height>
             </rect>
            </property>
            <property name="maximumSize">
@@ -304,29 +304,28 @@
               <property name="spacing">
                <number>3</number>
               </property>
-              <item row="1" column="9">
-               <widget class="QCheckBox" name="active_amp2">
-                <property name="text">
-                 <string>Amp 2</string>
+              <item row="1" column="6" rowspan="5">
+               <widget class="Line" name="line_6">
+                <property name="frameShadow">
+                 <enum>QFrame::Shadow::Raised</enum>
+                </property>
+                <property name="lineWidth">
+                 <number>2</number>
+                </property>
+                <property name="orientation">
+                 <enum>Qt::Orientation::Vertical</enum>
                 </property>
                </widget>
               </item>
-              <item row="1" column="7">
-               <widget class="QCheckBox" name="active_amp1">
+              <item row="3" column="10">
+               <widget class="QCheckBox" name="active_caen_g3">
                 <property name="text">
-                 <string>Amp 1</string>
+                 <string>Group 3</string>
                 </property>
                </widget>
               </item>
-              <item row="4" column="10">
-               <widget class="QCheckBox" name="active_acous_ch8">
-                <property name="text">
-                 <string>Ch 8</string>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="0">
-               <widget class="QCheckBox" name="active_cams">
+              <item row="4" column="0">
+               <widget class="QCheckBox" name="active_led">
                 <property name="font">
                  <font>
                   <bold>true</bold>
@@ -336,28 +335,14 @@
                  <enum>Qt::LayoutDirection::RightToLeft</enum>
                 </property>
                 <property name="text">
-                 <string>Cameras</string>
+                 <string>LEDs</string>
                 </property>
                </widget>
               </item>
-              <item row="3" column="8">
-               <widget class="QCheckBox" name="active_acous_ch2">
+              <item row="3" column="4">
+               <widget class="QCheckBox" name="active_cam3">
                 <property name="text">
-                 <string>Ch 2</string>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="8">
-               <widget class="QCheckBox" name="active_acous_ch6">
-                <property name="text">
-                 <string>Ch 6</string>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="10">
-               <widget class="QCheckBox" name="active_caen_g3">
-                <property name="text">
-                 <string>Group 3</string>
+                 <string>Cam 3</string>
                 </property>
                </widget>
               </item>
@@ -379,21 +364,114 @@
                 </property>
                </widget>
               </item>
+              <item row="1" column="7">
+               <widget class="QCheckBox" name="active_amp1">
+                <property name="text">
+                 <string>Amp 1</string>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="4">
+               <widget class="QCheckBox" name="active_led3">
+                <property name="text">
+                 <string>Ring 3</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="5">
+               <widget class="QCheckBox" name="active_amps">
+                <property name="font">
+                 <font>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="layoutDirection">
+                 <enum>Qt::LayoutDirection::RightToLeft</enum>
+                </property>
+                <property name="text">
+                 <string>SiPM Amps</string>
+                </property>
+               </widget>
+              </item>
               <item row="3" column="7">
-               <widget class="QCheckBox" name="active_acous_ch1">
+               <widget class="QCheckBox" name="active_caen_g0">
                 <property name="text">
-                 <string>Ch 1</string>
+                 <string>Group 0</string>
                 </property>
                </widget>
               </item>
-              <item row="2" column="4">
-               <widget class="QCheckBox" name="active_cam3">
+              <item row="3" column="0">
+               <widget class="QCheckBox" name="active_cams">
+                <property name="font">
+                 <font>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="layoutDirection">
+                 <enum>Qt::LayoutDirection::RightToLeft</enum>
+                </property>
                 <property name="text">
-                 <string>Cam 3</string>
+                 <string>Cameras</string>
                 </property>
                </widget>
               </item>
-              <item row="2" column="5">
+              <item row="4" column="8">
+               <widget class="QCheckBox" name="active_acous_ch2">
+                <property name="text">
+                 <string>Ch 2</string>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="10">
+               <widget class="QCheckBox" name="active_acous_ch8">
+                <property name="text">
+                 <string>Ch 8</string>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="3">
+               <widget class="QCheckBox" name="active_led2">
+                <property name="text">
+                 <string>Ring 2</string>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="8">
+               <widget class="QCheckBox" name="active_acous_ch6">
+                <property name="text">
+                 <string>Ch 6</string>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="9">
+               <widget class="QCheckBox" name="active_acous_ch3">
+                <property name="text">
+                 <string>Ch 3</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="3">
+               <widget class="QCheckBox" name="active_sql">
+                <property name="text">
+                 <string>SQL</string>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="2">
+               <widget class="QCheckBox" name="active_led1">
+                <property name="text">
+                 <string>Ring 1</string>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="10">
+               <widget class="QCheckBox" name="active_acous_ch4">
+                <property name="text">
+                 <string>Ch 4</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="5">
                <widget class="QCheckBox" name="active_caen">
                 <property name="font">
                  <font>
@@ -408,7 +486,34 @@
                 </property>
                </widget>
               </item>
-              <item row="3" column="5" rowspan="2">
+              <item row="1" column="1" rowspan="4">
+               <widget class="Line" name="line_2">
+                <property name="frameShadow">
+                 <enum>QFrame::Shadow::Raised</enum>
+                </property>
+                <property name="lineWidth">
+                 <number>2</number>
+                </property>
+                <property name="orientation">
+                 <enum>Qt::Orientation::Vertical</enum>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="3">
+               <widget class="QCheckBox" name="active_cam2">
+                <property name="text">
+                 <string>Cam 2</string>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="7">
+               <widget class="QCheckBox" name="active_acous_ch5">
+                <property name="text">
+                 <string>Ch 5</string>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="5" rowspan="2">
                <widget class="QCheckBox" name="active_acous">
                 <property name="font">
                  <font>
@@ -423,14 +528,21 @@
                 </property>
                </widget>
               </item>
-              <item row="2" column="3">
-               <widget class="QCheckBox" name="active_cam2">
+              <item row="5" column="9">
+               <widget class="QCheckBox" name="active_acous_ch7">
                 <property name="text">
-                 <string>Cam 2</string>
+                 <string>Ch 7</string>
                 </property>
                </widget>
               </item>
-              <item row="2" column="2">
+              <item row="4" column="7">
+               <widget class="QCheckBox" name="active_acous_ch1">
+                <property name="text">
+                 <string>Ch 1</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="2">
                <widget class="QCheckBox" name="active_cam1">
                 <property name="text">
                  <string>Cam 1</string>
@@ -444,53 +556,17 @@
                 </property>
                </widget>
               </item>
-              <item row="3" column="0">
-               <widget class="QCheckBox" name="active_led">
-                <property name="font">
-                 <font>
-                  <bold>true</bold>
-                 </font>
-                </property>
-                <property name="layoutDirection">
-                 <enum>Qt::LayoutDirection::RightToLeft</enum>
-                </property>
+              <item row="3" column="8">
+               <widget class="QCheckBox" name="active_caen_g1">
                 <property name="text">
-                 <string>LEDs</string>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="4">
-               <widget class="QCheckBox" name="active_led3">
-                <property name="text">
-                 <string>Ring 3</string>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="2">
-               <widget class="QCheckBox" name="active_led1">
-                <property name="text">
-                 <string>Ring 1</string>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="10">
-               <widget class="QCheckBox" name="active_amp2_iv">
-                <property name="text">
-                 <string>Amp 2 IV</string>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="7">
-               <widget class="QCheckBox" name="active_acous_ch5">
-                <property name="text">
-                 <string>Ch 5</string>
+                 <string>Group 1</string>
                 </property>
                </widget>
               </item>
               <item row="3" column="9">
-               <widget class="QCheckBox" name="active_acous_ch3">
+               <widget class="QCheckBox" name="active_caen_g2">
                 <property name="text">
-                 <string>Ch 3</string>
+                 <string>Group 2</string>
                 </property>
                </widget>
               </item>
@@ -512,100 +588,38 @@
                 </property>
                </widget>
               </item>
-              <item row="3" column="10">
-               <widget class="QCheckBox" name="active_acous_ch4">
-                <property name="text">
-                 <string>Ch 4</string>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="9">
-               <widget class="QCheckBox" name="active_caen_g2">
-                <property name="text">
-                 <string>Group 2</string>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="5">
-               <widget class="QCheckBox" name="active_amps">
-                <property name="font">
-                 <font>
-                  <bold>true</bold>
-                 </font>
-                </property>
-                <property name="layoutDirection">
-                 <enum>Qt::LayoutDirection::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>SiPM Amps</string>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="8">
+              <item row="2" column="7">
                <widget class="QCheckBox" name="active_amp1_iv">
                 <property name="text">
                  <string>Amp 1 IV</string>
                 </property>
                </widget>
               </item>
-              <item row="4" column="9">
-               <widget class="QCheckBox" name="active_acous_ch7">
+              <item row="1" column="8">
+               <widget class="QCheckBox" name="active_amp2">
                 <property name="text">
-                 <string>Ch 7</string>
+                 <string>Amp 2</string>
                 </property>
                </widget>
               </item>
               <item row="2" column="8">
-               <widget class="QCheckBox" name="active_caen_g1">
+               <widget class="QCheckBox" name="active_amp2_iv">
                 <property name="text">
-                 <string>Group 1</string>
+                 <string>Amp 2 IV</string>
                 </property>
                </widget>
               </item>
-              <item row="2" column="7">
-               <widget class="QCheckBox" name="active_caen_g0">
+              <item row="1" column="9">
+               <widget class="QCheckBox" name="active_amp3">
                 <property name="text">
-                 <string>Group 0</string>
+                 <string>Amp 3</string>
                 </property>
                </widget>
               </item>
-              <item row="1" column="3">
-               <widget class="QCheckBox" name="active_sql">
+              <item row="2" column="9">
+               <widget class="QCheckBox" name="active_amp3_iv">
                 <property name="text">
-                 <string>SQL</string>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="3">
-               <widget class="QCheckBox" name="active_led2">
-                <property name="text">
-                 <string>Ring 2</string>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="1" rowspan="3">
-               <widget class="Line" name="line_2">
-                <property name="frameShadow">
-                 <enum>QFrame::Shadow::Raised</enum>
-                </property>
-                <property name="lineWidth">
-                 <number>2</number>
-                </property>
-                <property name="orientation">
-                 <enum>Qt::Orientation::Vertical</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="6" rowspan="4">
-               <widget class="Line" name="line_6">
-                <property name="frameShadow">
-                 <enum>QFrame::Shadow::Raised</enum>
-                </property>
-                <property name="lineWidth">
-                 <number>2</number>
-                </property>
-                <property name="orientation">
-                 <enum>Qt::Orientation::Vertical</enum>
+                 <string>Amp 3 IV</string>
                 </property>
                </widget>
               </item>
@@ -9807,7 +9821,7 @@
            <property name="geometry">
             <rect>
              <x>0</x>
-             <y>-161</y>
+             <y>0</y>
              <width>776</width>
              <height>1334</height>
             </rect>
@@ -12243,7 +12257,7 @@
               <item row="13" column="8" colspan="2">
                <widget class="QLabel" name="trig_led_gate_cycles_label">
                 <property name="text">
-                 <string>LED Gate Pin</string>
+                 <string>LED Gate Cycles</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignCenter</set>
