@@ -14160,7 +14160,7 @@
                </widget>
               </item>
               <item row="3" column="3">
-               <widget class="QCheckBox" name="gated_wave1">
+               <widget class="QCheckBox" name="clock_gate_wave1">
                 <property name="layoutDirection">
                  <enum>Qt::LayoutDirection::RightToLeft</enum>
                 </property>
@@ -14180,7 +14180,7 @@
                </widget>
               </item>
               <item row="4" column="3">
-               <widget class="QCheckBox" name="gated_wave2">
+               <widget class="QCheckBox" name="clock_gate_wave2">
                 <property name="layoutDirection">
                  <enum>Qt::LayoutDirection::RightToLeft</enum>
                 </property>
@@ -14190,7 +14190,7 @@
                </widget>
               </item>
               <item row="5" column="3">
-               <widget class="QCheckBox" name="gated_wave3">
+               <widget class="QCheckBox" name="clock_gate_wave3">
                 <property name="layoutDirection">
                  <enum>Qt::LayoutDirection::RightToLeft</enum>
                 </property>
@@ -14200,7 +14200,7 @@
                </widget>
               </item>
               <item row="6" column="3">
-               <widget class="QCheckBox" name="gated_wave4">
+               <widget class="QCheckBox" name="clock_gate_wave4">
                 <property name="layoutDirection">
                  <enum>Qt::LayoutDirection::RightToLeft</enum>
                 </property>
@@ -14210,7 +14210,7 @@
                </widget>
               </item>
               <item row="7" column="3">
-               <widget class="QCheckBox" name="gated_wave5">
+               <widget class="QCheckBox" name="clock_gate_wave5">
                 <property name="layoutDirection">
                  <enum>Qt::LayoutDirection::RightToLeft</enum>
                 </property>
@@ -14220,7 +14220,7 @@
                </widget>
               </item>
               <item row="8" column="3">
-               <widget class="QCheckBox" name="gated_wave6">
+               <widget class="QCheckBox" name="clock_gate_wave6">
                 <property name="layoutDirection">
                  <enum>Qt::LayoutDirection::RightToLeft</enum>
                 </property>
@@ -14230,7 +14230,7 @@
                </widget>
               </item>
               <item row="9" column="3">
-               <widget class="QCheckBox" name="gated_wave7">
+               <widget class="QCheckBox" name="clock_gate_wave7">
                 <property name="layoutDirection">
                  <enum>Qt::LayoutDirection::RightToLeft</enum>
                 </property>
@@ -14240,7 +14240,7 @@
                </widget>
               </item>
               <item row="10" column="3">
-               <widget class="QCheckBox" name="gated_wave8">
+               <widget class="QCheckBox" name="clock_gate_wave8">
                 <property name="layoutDirection">
                  <enum>Qt::LayoutDirection::RightToLeft</enum>
                 </property>
@@ -14250,7 +14250,7 @@
                </widget>
               </item>
               <item row="11" column="3">
-               <widget class="QCheckBox" name="gated_wave9">
+               <widget class="QCheckBox" name="clock_gate_wave9">
                 <property name="layoutDirection">
                  <enum>Qt::LayoutDirection::RightToLeft</enum>
                 </property>
@@ -14260,7 +14260,7 @@
                </widget>
               </item>
               <item row="12" column="3">
-               <widget class="QCheckBox" name="gated_wave10">
+               <widget class="QCheckBox" name="clock_gate_wave10">
                 <property name="layoutDirection">
                  <enum>Qt::LayoutDirection::RightToLeft</enum>
                 </property>
@@ -14270,7 +14270,7 @@
                </widget>
               </item>
               <item row="13" column="3">
-               <widget class="QCheckBox" name="gated_wave11">
+               <widget class="QCheckBox" name="clock_gate_wave11">
                 <property name="layoutDirection">
                  <enum>Qt::LayoutDirection::RightToLeft</enum>
                 </property>
@@ -14280,7 +14280,7 @@
                </widget>
               </item>
               <item row="14" column="3">
-               <widget class="QCheckBox" name="gated_wave12">
+               <widget class="QCheckBox" name="clock_gate_wave12">
                 <property name="layoutDirection">
                  <enum>Qt::LayoutDirection::RightToLeft</enum>
                 </property>
@@ -14290,7 +14290,7 @@
                </widget>
               </item>
               <item row="15" column="3">
-               <widget class="QCheckBox" name="gated_wave13">
+               <widget class="QCheckBox" name="clock_gate_wave13">
                 <property name="layoutDirection">
                  <enum>Qt::LayoutDirection::RightToLeft</enum>
                 </property>
@@ -14300,7 +14300,7 @@
                </widget>
               </item>
               <item row="16" column="3">
-               <widget class="QCheckBox" name="gated_wave14">
+               <widget class="QCheckBox" name="clock_gate_wave14">
                 <property name="layoutDirection">
                  <enum>Qt::LayoutDirection::RightToLeft</enum>
                 </property>
@@ -14310,7 +14310,7 @@
                </widget>
               </item>
               <item row="17" column="3">
-               <widget class="QCheckBox" name="gated_wave15">
+               <widget class="QCheckBox" name="clock_gate_wave15">
                 <property name="layoutDirection">
                  <enum>Qt::LayoutDirection::RightToLeft</enum>
                 </property>
@@ -14320,7 +14320,7 @@
                </widget>
               </item>
               <item row="18" column="3">
-               <widget class="QCheckBox" name="gated_wave16">
+               <widget class="QCheckBox" name="clock_gate_wave16">
                 <property name="layoutDirection">
                  <enum>Qt::LayoutDirection::RightToLeft</enum>
                 </property>
