@@ -221,6 +221,8 @@ class Config(QObject):
         ui.trig_or_pin_box.setValue(trigger_config["or"])
         ui.trig_on_time_pin_box.setValue(trigger_config["on_time"])
         ui.trig_heartbeat_pin_box.setValue(trigger_config["heartbeat"])
+        ui.trig_led_gate_pin_box.setValue(trigger_config["led_gate_pin"])
+        ui.trig_led_gate_cycles_box.setValue(trigger_config["led_gate"])
 
         trig_in_ports = ["A", "C"]
         trig_ff_ports = ["B", "L"]
@@ -254,6 +256,7 @@ class Config(QObject):
             widgets[f"{w}_enabled"].setChecked(config["enabled"])
             widgets[f"clock_name_{w}"].setText(config["name"])
             widgets[f"clock_pin_{w}"].setValue(clock_pin)
+            widgets[f"clock_gate_{w}"].setChecked(config["gated"])
             widgets[f"clock_period_{w}"].setValue(config["period"])
             widgets[f"clock_phase_{w}"].setValue(config["phase"])
             widgets[f"clock_duty_{w}"].setValue(config["duty"])
@@ -474,6 +477,7 @@ class Config(QObject):
             clock_config[w] = {
                 "enabled": widgets[f"{w}_enabled"].isChecked(),
                 "name": widgets[f"clock_name_{w}"].text(),
+                "gated": widgets[f"clock_gate_{w}"].isChecked(),
                 "period": widgets[f"clock_period_{w}"].value(),
                 "phase": widgets[f"clock_phase_{w}"].value(),
                 "duty": widgets[f"clock_duty_{w}"].value(),
@@ -487,6 +491,8 @@ class Config(QObject):
             "or": ui.trig_or_pin_box.value(),
             "on_time": ui.trig_on_time_pin_box.value(),
             "heartbeat": ui.trig_heartbeat_pin_box.value(),
+            "led_gate_pin": ui.trig_led_gate_pin_box.value(),
+            "led_gate": ui.trig_led_gate_cycles_box.value(),
         }
         for i in range(1, 17):
             trigger_config[f"trig{i}"] = {

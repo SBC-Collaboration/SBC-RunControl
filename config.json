@@ -448,6 +448,8 @@
       "or": 39,
       "on_time": 40,
       "heartbeat": 41,
+      "led_gate_pin": 21,
+      "led_gate": 0,
       "trig1": {
         "enabled": true,
         "name": "Cam1",
@@ -567,6 +569,7 @@
       "wave1": {
         "enabled": true,
         "name": "Cam1",
+        "gated": false,
         "period": 100,
         "phase": 0,
         "duty": 10,
@@ -575,6 +578,7 @@
       "wave2": {
         "enabled": true,
         "name": "Cam2",
+        "gated": false,
         "period": 100,
         "phase": 0,
         "duty": 10,
@@ -583,6 +587,7 @@
       "wave3": {
         "enabled": true,
         "name": "Cam3",
+        "gated": false,
         "period": 100,
         "phase": 0,
         "duty": 10,
@@ -591,6 +596,7 @@
       "wave4": {
         "enabled": true,
         "name": "LED1.1",
+        "gated": true,
         "period": 100,
         "phase": 0,
         "duty": 10,
@@ -599,6 +605,7 @@
       "wave5": {
         "enabled": true,
         "name": "LED1.2",
+        "gated": true,
         "period": 100,
         "phase": 0,
         "duty": 10,
@@ -607,6 +614,7 @@
       "wave6": {
         "enabled": true,
         "name": "LED1.3",
+        "gated": true,
         "period": 100,
         "phase": 0,
         "duty": 10,
@@ -615,6 +623,7 @@
       "wave7": {
         "enabled": true,
         "name": "LED2.1",
+        "gated": true,
         "period": 100,
         "phase": 0,
         "duty": 10,
@@ -623,6 +632,7 @@
       "wave8": {
         "enabled": true,
         "name": "LED2.2",
+        "gated": true,
         "period": 100,
         "phase": 0,
         "duty": 10,
@@ -631,6 +641,7 @@
       "wave9": {
         "enabled": true,
         "name": "LED2.3",
+        "gated": true,
         "period": 100,
         "phase": 0,
         "duty": 10,
@@ -639,6 +650,7 @@
       "wave10": {
         "enabled": true,
         "name": "LED3.1",
+        "gated": true,
         "period": 100,
         "phase": 0,
         "duty": 10,
@@ -647,6 +659,7 @@
       "wave11": {
         "enabled": true,
         "name": "LED3.2",
+        "gated": true,
         "period": 100,
         "phase": 0,
         "duty": 10,
@@ -655,6 +668,7 @@
       "wave12": {
         "enabled": true,
         "name": "LED3.3",
+        "gated": true,
         "period": 100,
         "phase": 0,
         "duty": 10,
@@ -663,6 +677,7 @@
       "wave13": {
         "enabled": true,
         "name": "CAEN",
+        "gated": false,
         "period": 100,
         "phase": 0,
         "duty": 10,
@@ -671,6 +686,7 @@
       "wave14": {
         "enabled": false,
         "name": "",
+        "gated": false,
         "period": 0,
         "phase": 0,
         "duty": 0,
@@ -679,6 +695,7 @@
       "wave15": {
         "enabled": false,
         "name": "",
+        "gated": false,
         "period": 0,
         "phase": 0,
         "duty": 0,
@@ -687,6 +704,7 @@
       "wave16": {
         "enabled": false,
         "name": "",
+        "gated": false,
         "period": 0,
         "phase": 0,
         "duty": 0,
