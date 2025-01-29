@@ -64,9 +64,10 @@ class SQL(QObject):
 
     @Slot()
     def close_connection(self):
-        self.db.commit()
-        self.cursor.close()
-        self.db.close()
+        if self.db.ping():
+            self.db.commit()
+            self.cursor.close()
+            self.db.close()
 
     def deleteLater(self):
         # overwrite delete method to close connections

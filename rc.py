@@ -24,7 +24,6 @@ import time
 import re
 import sys
 import os
-#from ctypes import *
 
 class MainSignals(QObject):
     # initialize signals
@@ -215,6 +214,8 @@ class MainWindow(QMainWindow):
         """
         Custom function overriding the close event behavior. It will close both log and settings window, and also leave message in the logger.
         """
+        self.logger.info("Quitting run control.\n")
+
         # close other opened windows before closing
         try:
             self.log_window.close()
@@ -231,10 +232,17 @@ class MainWindow(QMainWindow):
             if name.endswith("_worker"):
                 var.deleteLater()
             elif name.endswith("_thread"):
+                self.logger.info(f"Stopping {name}.")
                 var.quit()
                 var.wait()
 
-        self.logger.info("Quitting run control.\n")
+        # Cleanup resources
+        QApplication.processEvents()
+        event.accept()
+        QApplication.quit()
+
+        self.logger.info("Run control successfully stopped.\n")
+        
 
     def open_settings_window(self):
         self.settings_window = SettingsWindow(self)
@@ -493,6 +501,7 @@ class MainWindow(QMainWindow):
         self.ui.run_id_edit.setText(self.run_id)
 
     def start_program(self):
+        
         self.signals.program_starting.emit()
         self.update_state("idle")
 
@@ -564,7 +573,7 @@ class MainWindow(QMainWindow):
         current_path = os.path.join(self.config_class.config["general"]["data_dir"], "current_event")
         if os.path.islink(current_path):
             os.unlink(current_path)
-        os.symlink(self.event_dir, current_path)
+        os.symlink(self.event_dir, current_path,target_is_directory=True)
         self.signals.event_starting.emit()
 
     def stop_event(self):
