@@ -4,7 +4,7 @@ import datetime
 import time as tm
 import random
 import logging
-from sbcbinaryformat import Writer
+from sbcbinaryformat import Writer as SBCWriter
 
 class Writer(QObject):
 
@@ -54,7 +54,7 @@ class Writer(QObject):
                 self.trigger_source
             ],  # trigger source (dict)
         }
-        with Writer(
+        with SBCWriter(
                 os.path.join(
                     self.main.event_dir, f"{self.main.run_id}_{self.main.event_id}.sbc"
                 ),
