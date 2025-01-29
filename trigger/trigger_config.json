@@ -1,11 +1,12 @@
 {
   "port": "/dev/arduinoTRIG",
   "sketch": "/home/sbc/RunControl/dependencies/ArduinoSketches/trigger",
-  "led_gate": 0,
   "reset": 38,
   "or": 39,
   "on_time": 40,
   "heartbeat": 41,
+  "led_gate_pin": 21,
+  "led_gate": 0,
   "trig1": {
     "enabled": true,
     "name": "Cam1",
