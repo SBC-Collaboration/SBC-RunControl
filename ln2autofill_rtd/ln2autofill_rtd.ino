@@ -5,10 +5,12 @@ const int analogPin_0 = A0; // Analog input pin connected to the scale
 const int analogPin_1 = A1; // Analog input pin connected to the scale
 const int solenoidPin = 8; // Digital pin connected to the relay/MOSFET controlling the solenoid
 const float ThresholdVoltage = 1.3; // Threshold voltage in Volts to open/close solenoid
+const unsigned long timeoutDuration = 300000; // 5 minutes in milliseconds
 
 float voltage_0 = 0.0;
 float voltage_1 = 0.0;
 bool solenoidOpen = false; // State variable to track solenoid status
+unsigned long solenoidOpenTime = 0; // Timestamp for when the solenoid was opened
 
 void setup() {
   Serial.begin(9600); // Start serial communication
@@ -27,26 +29,28 @@ void loop() {
   
   // Output the voltage to the serial monitor with 2 decimal places
   Serial.print("Voltage: ");
-  Serial.print(voltage_0, 2); // Print voltage with 2 decimal places
+  Serial.print(voltage_0, 2);
   Serial.print("V  ");
   Serial.print(voltage_1, 2);
   Serial.println("V");
 
-  // Control the solenoid based on lower and upper thresholds
+  // Control the solenoid based on thresholds and timeout
+  unsigned long currentTime = millis();
+
   if (!solenoidOpen && (voltage_0 > ThresholdVoltage) && (voltage_1 > ThresholdVoltage)) {
     digitalWrite(solenoidPin, HIGH); // Open the solenoid
     solenoidOpen = true;
+    solenoidOpenTime = currentTime; // Record the time when opened
     Serial.println("Solenoid OPEN");
-  } else if (solenoidOpen && (voltage_0 < ThresholdVoltage) && (voltage_1 < ThresholdVoltage)) {
+  } 
+  
+  // Close solenoid if input voltage is too low OR timeout occurs
+  if (solenoidOpen && ((voltage_0 < ThresholdVoltage && voltage_1 < ThresholdVoltage) || 
+      (currentTime - solenoidOpenTime >= timeoutDuration))) {
     digitalWrite(solenoidPin, LOW); // Close the solenoid
     solenoidOpen = false;
-    Serial.println("Solenoid CLOSED");
+    Serial.println("Solenoid CLOSED (Threshold or Timeout)");
   }
-  
-  delay(1000); // Delay for readability
-}
 
-// Custom map function for floating-point values
-float mapFloat(float x, float in_min, float in_max, float out_min, float out_max) {
-  return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+  delay(1000); // Delay for readability
 }
