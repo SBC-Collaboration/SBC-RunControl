@@ -1,3 +1,5 @@
+// Author: Pedro Rodriguez
+
 const int analogPin = A0; // Analog input pin connected to the scale
 const int solenoidPin = 8; // Digital pin connected to the relay/MOSFET controlling the solenoid
 const float lowerThresholdWeight = 108.0; // Lower threshold weight in units to open the solenoid
