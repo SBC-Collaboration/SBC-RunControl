@@ -372,6 +372,9 @@
                 <property name="text">
                  <string>Acoustics</string>
                 </property>
+                <property name="tristate">
+                 <bool>true</bool>
+                </property>
                </widget>
               </item>
               <item row="1" column="0">
@@ -451,6 +454,9 @@
                 <property name="text">
                  <string>Cameras</string>
                 </property>
+                <property name="tristate">
+                 <bool>true</bool>
+                </property>
                </widget>
               </item>
               <item row="2" column="2">
@@ -487,6 +493,9 @@
                 <property name="text">
                  <string>LEDs</string>
                 </property>
+                <property name="tristate">
+                 <bool>true</bool>
+                </property>
                </widget>
               </item>
               <item row="3" column="2">
@@ -522,6 +531,9 @@
                 </property>
                 <property name="text">
                  <string>SiPM Amps</string>
+                </property>
+                <property name="tristate">
+                 <bool>true</bool>
                 </property>
                </widget>
               </item>
@@ -579,6 +591,9 @@
                 </property>
                 <property name="text">
                  <string>CAEN</string>
+                </property>
+                <property name="tristate">
+                 <bool>true</bool>
                 </property>
                </widget>
               </item>
@@ -1689,7 +1704,7 @@
            <property name="geometry">
             <rect>
              <x>0</x>
-             <y>-518</y>
+             <y>0</y>
              <width>783</width>
              <height>1761</height>
             </rect>
