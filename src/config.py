@@ -138,7 +138,7 @@ class Config(QObject):
         ui.caen_exec_path_edit.setText(caen_config["exec_path"])
         ui.caen_config_path_edit.setText(caen_config["config_path"])
         ui.caen_model_box.setCurrentText(caen_config["model"])
-        ui.caen_port_box.setValue(caen_config["port"])
+        ui.caen_link_box.setValue(caen_config["link"])
         ui.caen_conn_box.setCurrentText(caen_config["connection"])
         ui.caen_evs_box.setValue(caen_config["evs_per_read"])
         ui.caen_length_box.setValue(caen_config["rec_length"])
@@ -363,7 +363,7 @@ class Config(QObject):
             "exec_path": ui.caen_exec_path_edit.text(),
             "config_path": ui.caen_config_path_edit.text(),
             "model": ui.caen_model_box.currentText(),
-            "port": ui.caen_port_box.value(),
+            "link": ui.caen_link_box.value(),
             "connection": ui.caen_conn_box.currentText(),
             "evs_per_read": ui.caen_evs_box.value(),
             "rec_length": ui.caen_length_box.value(),

@@ -4823,7 +4823,7 @@
                </widget>
               </item>
               <item row="2" column="2">
-               <widget class="QLabel" name="caen_port_label">
+               <widget class="QLabel" name="caen_link_label">
                 <property name="text">
                  <string>Port</string>
                 </property>
@@ -4831,7 +4831,7 @@
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
-                 <cstring>caen_port_box</cstring>
+                 <cstring>caen_link_box</cstring>
                 </property>
                </widget>
               </item>
@@ -5125,7 +5125,7 @@
                </widget>
               </item>
               <item row="2" column="3" colspan="2">
-               <widget class="NoWheelSpinBox" name="caen_port_box">
+               <widget class="NoWheelSpinBox" name="caen_link_box">
                 <property name="minimumSize">
                  <size>
                   <width>50</width>
@@ -14628,7 +14628,7 @@
   <tabstop>acoustics_scroll_area</tabstop>
   <tabstop>cam_scroll_area</tabstop>
   <tabstop>caen_model_box</tabstop>
-  <tabstop>caen_port_box</tabstop>
+  <tabstop>caen_link_box</tabstop>
   <tabstop>caen_length_box</tabstop>
   <tabstop>caen_post_trig_box</tabstop>
   <tabstop>caen_polarity_box</tabstop>
