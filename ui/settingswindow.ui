@@ -49,7 +49,7 @@
     <item row="0" column="0">
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
       <property name="tabsClosable">
        <bool>false</bool>
@@ -4851,7 +4851,7 @@
                </widget>
               </item>
               <item row="3" column="2">
-               <widget class="QLabel" name="caen_coincidence_window_label">
+               <widget class="QLabel" name="caen_majority_window_label">
                 <property name="text">
                  <string>Maj Window</string>
                 </property>
@@ -4903,14 +4903,14 @@
                </widget>
               </item>
               <item row="2" column="5">
-               <widget class="QCheckBox" name="trig_in_as_gate">
+               <widget class="QCheckBox" name="caen_trigin_gate_box">
                 <property name="text">
                  <string>TRIG-IN as Gate</string>
                 </property>
                </widget>
               </item>
               <item row="3" column="0">
-               <widget class="QLabel" name="caen_coincidence_label">
+               <widget class="QLabel" name="caen_majority_label">
                 <property name="text">
                  <string>Maj Level</string>
                 </property>
@@ -4969,7 +4969,7 @@
                </widget>
               </item>
               <item row="3" column="1">
-               <widget class="NoWheelSpinBox" name="caen_coincidence_box">
+               <widget class="NoWheelSpinBox" name="caen_majority_box">
                 <property name="maximum">
                  <number>10000</number>
                 </property>
@@ -5000,7 +5000,7 @@
                </widget>
               </item>
               <item row="3" column="3">
-               <widget class="NoWheelSpinBox" name="caen_coincidence_window_box">
+               <widget class="NoWheelSpinBox" name="caen_majority_window_box">
                 <property name="maximum">
                  <number>10000</number>
                 </property>

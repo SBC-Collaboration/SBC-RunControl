@@ -135,21 +135,22 @@ class Config(QObject):
 
         # CAEN
         caen_config = self.config["scint"]["caen"]
-        ui.caen_exec_path_edit.setText(caen_config["exec_path"])
-        ui.caen_config_path_edit.setText(caen_config["config_path"])
         ui.caen_model_box.setCurrentText(caen_config["model"])
         ui.caen_link_box.setValue(caen_config["link"])
         ui.caen_conn_box.setCurrentText(caen_config["connection"])
         ui.caen_evs_box.setValue(caen_config["evs_per_read"])
         ui.caen_length_box.setValue(caen_config["rec_length"])
         ui.caen_post_trig_box.setValue(caen_config["post_trig"])
-        ui.caen_trigin_box.setChecked(caen_config["trig_in_as_gate"])
+        ui.caen_trigin_gate_box.setChecked(caen_config["trig_in_as_gate"])
         ui.caen_decimation_box.setValue(caen_config["decimation"])
-        ui.caen_overlap_box.setChecked(caen_config["overlap_rej"])
+        ui.caen_overlap_box.setChecked(caen_config["overlap_en"])
         ui.caen_polarity_box.setCurrentText(caen_config["polarity"])
+        ui.caen_majority_box.setValue(caen_config["majority_level"])
+        ui.caen_majority_window_box.setValue(caen_config["majority_window"])
         ui.caen_io_box.setCurrentText(caen_config["io_level"])
         ui.caen_ext_trig_box.setCurrentText(caen_config["ext_trig"])
         ui.caen_sw_trig_box.setCurrentText(caen_config["sw_trig"])
+        ui.caen_ch_trig_box.setCurrentText(caen_config["ch_trig"])
 
         for gp in ["g0", "g1", "g2", "g3"]:
             gp_config = self.config["scint"][f"caen_{gp}"]
@@ -360,21 +361,22 @@ class Config(QObject):
         }
 
         caen_config = {
-            "exec_path": ui.caen_exec_path_edit.text(),
-            "config_path": ui.caen_config_path_edit.text(),
             "model": ui.caen_model_box.currentText(),
             "link": ui.caen_link_box.value(),
             "connection": ui.caen_conn_box.currentText(),
             "evs_per_read": ui.caen_evs_box.value(),
             "rec_length": ui.caen_length_box.value(),
             "post_trig": ui.caen_post_trig_box.value(),
-            "trig_in_as_gate": ui.caen_trigin_box.isChecked(),
+            "trig_in_as_gate": ui.caen_trigin_gate_box.isChecked(),
             "decimation": ui.caen_decimation_box.value(),
-            "overlap_rej": ui.caen_overlap_box.isChecked(),
+            "overlap_en": ui.caen_overlap_box.isChecked(),
             "polarity": ui.caen_polarity_box.currentText(),
+            "majority_level": ui.caen_majority_box.value(),
+            "majority_window": ui.caen_majority_window_box.value(),
             "io_level": ui.caen_io_box.currentText(),
             "ext_trig": ui.caen_ext_trig_box.currentText(),
             "sw_trig": ui.caen_sw_trig_box.currentText(),
+            "ch_trig": ui.caen_ch_trig_box.currentText(),
         }
 
 
