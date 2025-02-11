@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>552</height>
+    <width>850</width>
+    <height>550</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -49,7 +49,7 @@
     <item row="0" column="0">
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <property name="tabsClosable">
        <bool>false</bool>
@@ -93,7 +93,7 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>809</width>
+             <width>826</width>
              <height>612</height>
             </rect>
            </property>
@@ -1672,9 +1672,9 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="scint_tab">
+      <widget class="QWidget" name="sipms_tab">
        <attribute name="title">
-        <string>Scint</string>
+        <string>SiPMs</string>
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_5">
         <property name="leftMargin">
@@ -1704,9 +1704,9 @@
            <property name="geometry">
             <rect>
              <x>0</x>
-             <y>-542</y>
-             <width>794</width>
-             <height>1733</height>
+             <y>0</y>
+             <width>826</width>
+             <height>1035</height>
             </rect>
            </property>
            <property name="maximumSize">
@@ -3761,13 +3761,42 @@
               <property name="spacing">
                <number>3</number>
               </property>
-              <item row="1" column="1">
-               <widget class="QLabel" name="sipm_amp3_ip_addr_label">
+              <item row="2" column="9">
+               <widget class="QToolButton" name="sipm_amp3_iv_rc_data_dir_but">
+                <property name="text">
+                 <string>...</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="2">
+               <widget class="NoWheelDoubleSpinBox" name="sipm_amp3_iv_interval_box">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string> h</string>
+                </property>
+                <property name="decimals">
+                 <number>1</number>
+                </property>
+                <property name="minimum">
+                 <double>0.000000000000000</double>
+                </property>
+                <property name="maximum">
+                 <double>10000.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="5">
+               <widget class="QLabel" name="sipm_amp3_iv_rc_data_dir_label">
                 <property name="layoutDirection">
                  <enum>Qt::LayoutDirection::LeftToRight</enum>
                 </property>
                 <property name="text">
-                 <string>IP Addr</string>
+                 <string>RC Data Dir</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
@@ -3777,24 +3806,8 @@
                 </property>
                </widget>
               </item>
-              <item row="3" column="7">
-               <widget class="QLabel" name="sipm_amp3_iv_stop_label">
-                <property name="layoutDirection">
-                 <enum>Qt::LayoutDirection::LeftToRight</enum>
-                </property>
-                <property name="text">
-                 <string>IV Stop</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>sipm_amp1_bias_box</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="4">
-               <widget class="NoWheelDoubleSpinBox" name="sipm_amp3_iv_step_box">
+              <item row="1" column="6">
+               <widget class="NoWheelDoubleSpinBox" name="sipm_amp3_bias_box">
                 <property name="focusPolicy">
                  <enum>Qt::FocusPolicy::StrongFocus</enum>
                 </property>
@@ -3802,36 +3815,10 @@
                  <string> V</string>
                 </property>
                 <property name="decimals">
-                 <number>2</number>
-                </property>
-                <property name="minimum">
-                 <double>0.000000000000000</double>
-                </property>
-                <property name="maximum">
-                 <double>10.000000000000000</double>
+                 <number>1</number>
                 </property>
                 <property name="singleStep">
-                 <double>0.050000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="0">
-               <widget class="QCheckBox" name="sipm_amp3_enabled_box">
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="layoutDirection">
-                 <enum>Qt::LayoutDirection::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>Enabled</string>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="9">
-               <widget class="QToolButton" name="sipm_amp3_iv_rc_data_dir_but">
-                <property name="text">
-                 <string>...</string>
+                 <double>0.100000000000000</double>
                 </property>
                </widget>
               </item>
@@ -3860,13 +3847,13 @@
                 </property>
                </widget>
               </item>
-              <item row="3" column="5">
-               <widget class="QLabel" name="sipm_amp3_iv_start_label">
+              <item row="3" column="7">
+               <widget class="QLabel" name="sipm_amp3_iv_stop_label">
                 <property name="layoutDirection">
                  <enum>Qt::LayoutDirection::LeftToRight</enum>
                 </property>
                 <property name="text">
-                 <string>IV Start</string>
+                 <string>IV Stop</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
@@ -3876,53 +3863,24 @@
                 </property>
                </widget>
               </item>
-              <item row="1" column="2" colspan="3">
-               <widget class="QLineEdit" name="sipm_amp3_ip_addr_edit">
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+              <item row="3" column="1">
+               <widget class="QLabel" name="sipm_amp3_iv_interval_label">
+                <property name="layoutDirection">
+                 <enum>Qt::LayoutDirection::LeftToRight</enum>
+                </property>
+                <property name="text">
+                 <string>IV Interval</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp1_bias_box</cstring>
                 </property>
                </widget>
               </item>
-              <item row="3" column="2">
-               <widget class="NoWheelDoubleSpinBox" name="sipm_amp3_iv_interval_box">
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="suffix">
-                 <string> h</string>
-                </property>
-                <property name="decimals">
-                 <number>1</number>
-                </property>
-                <property name="minimum">
-                 <double>0.000000000000000</double>
-                </property>
-                <property name="maximum">
-                 <double>10000.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="6">
-               <widget class="NoWheelDoubleSpinBox" name="sipm_amp3_bias_box">
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="suffix">
-                 <string> V</string>
-                </property>
-                <property name="decimals">
-                 <number>1</number>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="8" colspan="2">
-               <widget class="NoWheelDoubleSpinBox" name="sipm_amp3_iv_stop_box">
+              <item row="3" column="6">
+               <widget class="NoWheelDoubleSpinBox" name="sipm_amp3_iv_start_box">
                 <property name="focusPolicy">
                  <enum>Qt::FocusPolicy::StrongFocus</enum>
                 </property>
@@ -3940,6 +3898,22 @@
                 </property>
                 <property name="singleStep">
                  <double>0.100000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="5">
+               <widget class="QLabel" name="sipm_amp3_iv_start_label">
+                <property name="layoutDirection">
+                 <enum>Qt::LayoutDirection::LeftToRight</enum>
+                </property>
+                <property name="text">
+                 <string>IV Start</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp1_bias_box</cstring>
                 </property>
                </widget>
               </item>
@@ -3966,6 +3940,19 @@
                 </property>
                </widget>
               </item>
+              <item row="2" column="0">
+               <widget class="QCheckBox" name="sipm_amp3_iv_enabled_box">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="layoutDirection">
+                 <enum>Qt::LayoutDirection::RightToLeft</enum>
+                </property>
+                <property name="text">
+                 <string>IV Enabled</string>
+                </property>
+               </widget>
+              </item>
               <item row="1" column="7">
                <widget class="QLabel" name="sipm_amp3_qp_label">
                 <property name="layoutDirection">
@@ -3982,8 +3969,8 @@
                 </property>
                </widget>
               </item>
-              <item row="3" column="6">
-               <widget class="NoWheelDoubleSpinBox" name="sipm_amp3_iv_start_box">
+              <item row="3" column="4">
+               <widget class="NoWheelDoubleSpinBox" name="sipm_amp3_iv_step_box">
                 <property name="focusPolicy">
                  <enum>Qt::FocusPolicy::StrongFocus</enum>
                 </property>
@@ -3991,32 +3978,16 @@
                  <string> V</string>
                 </property>
                 <property name="decimals">
-                 <number>1</number>
+                 <number>2</number>
                 </property>
                 <property name="minimum">
-                 <double>-10.000000000000000</double>
+                 <double>0.000000000000000</double>
                 </property>
                 <property name="maximum">
-                 <double>70.000000000000000</double>
+                 <double>10.000000000000000</double>
                 </property>
                 <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="1">
-               <widget class="QLabel" name="sipm_amp3_iv_interval_label">
-                <property name="layoutDirection">
-                 <enum>Qt::LayoutDirection::LeftToRight</enum>
-                </property>
-                <property name="text">
-                 <string>IV Interval</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>sipm_amp1_bias_box</cstring>
+                 <double>0.050000000000000</double>
                 </property>
                </widget>
               </item>
@@ -4036,38 +4007,6 @@
                 </property>
                </widget>
               </item>
-              <item row="0" column="0" colspan="10">
-               <widget class="QLabel" name="sipm_amp3_label">
-                <property name="font">
-                 <font>
-                  <bold>true</bold>
-                 </font>
-                </property>
-                <property name="text">
-                 <string>SiPM Amplifier 3</string>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="0">
-               <widget class="QCheckBox" name="sipm_amp3_iv_enabled_box">
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="layoutDirection">
-                 <enum>Qt::LayoutDirection::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>IV Enabled</string>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="6" colspan="3">
-               <widget class="QLineEdit" name="sipm_amp3_iv_rc_data_dir_edit">
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
               <item row="2" column="1">
                <widget class="QLabel" name="sipm_amp3_iv_data_dir_label">
                 <property name="layoutDirection">
@@ -4084,19 +4023,80 @@
                 </property>
                </widget>
               </item>
-              <item row="2" column="5">
-               <widget class="QLabel" name="sipm_amp3_iv_rc_data_dir_label">
+              <item row="1" column="1">
+               <widget class="QLabel" name="sipm_amp3_ip_addr_label">
                 <property name="layoutDirection">
                  <enum>Qt::LayoutDirection::LeftToRight</enum>
                 </property>
                 <property name="text">
-                 <string>RC Data Dir</string>
+                 <string>IP Addr</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
                  <cstring>sipm_amp1_ip_addr_edit</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0" colspan="10">
+               <widget class="QLabel" name="sipm_amp3_label">
+                <property name="font">
+                 <font>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>SiPM Amplifier 3</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="2" colspan="3">
+               <widget class="QLineEdit" name="sipm_amp3_ip_addr_edit">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QCheckBox" name="sipm_amp3_enabled_box">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="layoutDirection">
+                 <enum>Qt::LayoutDirection::RightToLeft</enum>
+                </property>
+                <property name="text">
+                 <string>Enabled</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="6" colspan="3">
+               <widget class="QLineEdit" name="sipm_amp3_iv_rc_data_dir_edit">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="8" colspan="2">
+               <widget class="NoWheelDoubleSpinBox" name="sipm_amp3_iv_stop_box">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string> V</string>
+                </property>
+                <property name="decimals">
+                 <number>1</number>
+                </property>
+                <property name="minimum">
+                 <double>-10.000000000000000</double>
+                </property>
+                <property name="maximum">
+                 <double>70.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
                 </property>
                </widget>
               </item>
@@ -4119,82 +4119,18 @@
               <property name="spacing">
                <number>3</number>
               </property>
-              <item row="2" column="7">
-               <widget class="QLabel" name="sipm_amp3_ch15_label">
+              <item row="3" column="0">
+               <widget class="QLabel" name="sipm_amp3_offset_label_2">
                 <property name="text">
-                 <string>Ch15</string>
+                 <string>Offset</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                </widget>
               </item>
-              <item row="2" column="6">
-               <widget class="QLabel" name="sipm_amp3_ch14_label">
-                <property name="text">
-                 <string>Ch14</string>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="4">
-               <widget class="NoWheelDoubleSpinBox" name="sipm_amp3_ch4_offset">
-                <property name="font">
-                 <font>
-                  <kerning>true</kerning>
-                 </font>
-                </property>
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="wrapping">
-                 <bool>false</bool>
-                </property>
-                <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
-                </property>
-                <property name="showGroupSeparator" stdset="0">
-                 <bool>false</bool>
-                </property>
-                <property name="suffix">
-                 <string> V</string>
-                </property>
-                <property name="maximum">
-                 <double>5.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="2">
-               <widget class="NoWheelDoubleSpinBox" name="sipm_amp3_ch10_offset">
-                <property name="font">
-                 <font>
-                  <kerning>true</kerning>
-                 </font>
-                </property>
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="wrapping">
-                 <bool>false</bool>
-                </property>
-                <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
-                </property>
-                <property name="showGroupSeparator" stdset="0">
-                 <bool>false</bool>
-                </property>
-                <property name="suffix">
-                 <string> V</string>
-                </property>
-                <property name="maximum">
-                 <double>5.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="7">
-               <widget class="NoWheelDoubleSpinBox" name="sipm_amp3_ch7_offset">
+              <item row="1" column="6">
+               <widget class="NoWheelDoubleSpinBox" name="sipm_amp3_ch6_offset">
                 <property name="font">
                  <font>
                   <kerning>true</kerning>
@@ -4253,382 +4189,15 @@
                 </property>
                </widget>
               </item>
-              <item row="3" column="4">
-               <widget class="NoWheelDoubleSpinBox" name="sipm_amp3_ch12_offset">
-                <property name="font">
-                 <font>
-                  <kerning>true</kerning>
-                 </font>
-                </property>
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="wrapping">
-                 <bool>false</bool>
-                </property>
-                <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
-                </property>
-                <property name="showGroupSeparator" stdset="0">
-                 <bool>false</bool>
-                </property>
-                <property name="suffix">
-                 <string> V</string>
-                </property>
-                <property name="maximum">
-                 <double>5.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="7">
-               <widget class="NoWheelDoubleSpinBox" name="sipm_amp3_ch15_offset">
-                <property name="font">
-                 <font>
-                  <kerning>true</kerning>
-                 </font>
-                </property>
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="wrapping">
-                 <bool>false</bool>
-                </property>
-                <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
-                </property>
-                <property name="showGroupSeparator" stdset="0">
-                 <bool>false</bool>
-                </property>
-                <property name="suffix">
-                 <string> V</string>
-                </property>
-                <property name="maximum">
-                 <double>5.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="8">
-               <widget class="QLabel" name="sipm_amp3_ch8_label">
+              <item row="0" column="7">
+               <widget class="QLabel" name="sipm_amp3_ch7_label">
                 <property name="text">
-                 <string>Ch8</string>
+                 <string>Ch7</string>
                 </property>
                </widget>
               </item>
-              <item row="3" column="6">
-               <widget class="NoWheelDoubleSpinBox" name="sipm_amp3_ch14_offset">
-                <property name="font">
-                 <font>
-                  <kerning>true</kerning>
-                 </font>
-                </property>
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="wrapping">
-                 <bool>false</bool>
-                </property>
-                <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
-                </property>
-                <property name="showGroupSeparator" stdset="0">
-                 <bool>false</bool>
-                </property>
-                <property name="suffix">
-                 <string> V</string>
-                </property>
-                <property name="maximum">
-                 <double>5.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="1">
-               <widget class="NoWheelDoubleSpinBox" name="sipm_amp3_ch1_offset">
-                <property name="font">
-                 <font>
-                  <kerning>true</kerning>
-                 </font>
-                </property>
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="wrapping">
-                 <bool>false</bool>
-                </property>
-                <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
-                </property>
-                <property name="showGroupSeparator" stdset="0">
-                 <bool>false</bool>
-                </property>
-                <property name="suffix">
-                 <string> V</string>
-                </property>
-                <property name="maximum">
-                 <double>5.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="2">
-               <widget class="QLabel" name="sipm_amp3_ch2_label">
-                <property name="text">
-                 <string>Ch2</string>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="5">
-               <widget class="QLabel" name="sipm_amp3_ch13_label">
-                <property name="text">
-                 <string>Ch13</string>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="5">
-               <widget class="QLabel" name="sipm_amp3_ch5_label">
-                <property name="text">
-                 <string>Ch5</string>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="1">
-               <widget class="QLabel" name="sipm_amp3_ch1_label">
-                <property name="text">
-                 <string>Ch1</string>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="4">
-               <widget class="QLabel" name="sipm_amp3_ch12_label">
-                <property name="text">
-                 <string>Ch12</string>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="3">
-               <widget class="QLabel" name="sipm_amp3_ch3_label">
-                <property name="text">
-                 <string>Ch3</string>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="5">
-               <widget class="NoWheelDoubleSpinBox" name="sipm_amp3_ch13_offset">
-                <property name="font">
-                 <font>
-                  <kerning>true</kerning>
-                 </font>
-                </property>
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="wrapping">
-                 <bool>false</bool>
-                </property>
-                <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
-                </property>
-                <property name="showGroupSeparator" stdset="0">
-                 <bool>false</bool>
-                </property>
-                <property name="suffix">
-                 <string> V</string>
-                </property>
-                <property name="maximum">
-                 <double>5.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="0">
-               <widget class="QLabel" name="sipm_amp3_channel_label_2">
-                <property name="text">
-                 <string>Channel</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="2">
-               <widget class="QLabel" name="sipm_amp3_ch10_label">
-                <property name="text">
-                 <string>Ch10</string>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="6">
-               <widget class="NoWheelDoubleSpinBox" name="sipm_amp3_ch6_offset">
-                <property name="font">
-                 <font>
-                  <kerning>true</kerning>
-                 </font>
-                </property>
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="wrapping">
-                 <bool>false</bool>
-                </property>
-                <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
-                </property>
-                <property name="showGroupSeparator" stdset="0">
-                 <bool>false</bool>
-                </property>
-                <property name="suffix">
-                 <string> V</string>
-                </property>
-                <property name="maximum">
-                 <double>5.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="0">
-               <widget class="QLabel" name="sipm_amp3_offset_label">
-                <property name="text">
-                 <string>Offset</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="3">
-               <widget class="QLabel" name="sipm_amp3_ch11_label">
-                <property name="text">
-                 <string>Ch11</string>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="8">
-               <widget class="NoWheelDoubleSpinBox" name="sipm_amp3_ch8_offset">
-                <property name="font">
-                 <font>
-                  <kerning>true</kerning>
-                 </font>
-                </property>
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="wrapping">
-                 <bool>false</bool>
-                </property>
-                <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
-                </property>
-                <property name="showGroupSeparator" stdset="0">
-                 <bool>false</bool>
-                </property>
-                <property name="suffix">
-                 <string> V</string>
-                </property>
-                <property name="maximum">
-                 <double>5.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="4">
-               <widget class="QLabel" name="sipm_amp3_ch4_label">
-                <property name="text">
-                 <string>Ch4</string>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="3">
-               <widget class="NoWheelDoubleSpinBox" name="sipm_amp3_ch11_offset">
-                <property name="font">
-                 <font>
-                  <kerning>true</kerning>
-                 </font>
-                </property>
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="wrapping">
-                 <bool>false</bool>
-                </property>
-                <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
-                </property>
-                <property name="showGroupSeparator" stdset="0">
-                 <bool>false</bool>
-                </property>
-                <property name="suffix">
-                 <string> V</string>
-                </property>
-                <property name="maximum">
-                 <double>5.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="8">
-               <widget class="QLabel" name="sipm_amp3_ch16_label">
-                <property name="text">
-                 <string>Ch16</string>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="2">
-               <widget class="NoWheelDoubleSpinBox" name="sipm_amp3_ch2_offset">
-                <property name="font">
-                 <font>
-                  <kerning>true</kerning>
-                 </font>
-                </property>
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="wrapping">
-                 <bool>false</bool>
-                </property>
-                <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
-                </property>
-                <property name="showGroupSeparator" stdset="0">
-                 <bool>false</bool>
-                </property>
-                <property name="suffix">
-                 <string> V</string>
-                </property>
-                <property name="maximum">
-                 <double>5.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="1">
-               <widget class="QLabel" name="sipm_amp3_ch9_label">
-                <property name="text">
-                 <string>Ch9</string>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="5">
-               <widget class="NoWheelDoubleSpinBox" name="sipm_amp3_ch5_offset">
+              <item row="1" column="4">
+               <widget class="NoWheelDoubleSpinBox" name="sipm_amp3_ch4_offset">
                 <property name="font">
                  <font>
                   <kerning>true</kerning>
@@ -4687,10 +4256,64 @@
                 </property>
                </widget>
               </item>
-              <item row="0" column="7">
-               <widget class="QLabel" name="sipm_amp3_ch7_label">
+              <item row="0" column="3">
+               <widget class="QLabel" name="sipm_amp3_ch3_label">
                 <property name="text">
-                 <string>Ch7</string>
+                 <string>Ch3</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="sipm_amp3_offset_label">
+                <property name="text">
+                 <string>Offset</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="2">
+               <widget class="QLabel" name="sipm_amp3_ch2_label">
+                <property name="text">
+                 <string>Ch2</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="8">
+               <widget class="QLabel" name="sipm_amp3_ch16_label">
+                <property name="text">
+                 <string>Ch16</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="8">
+               <widget class="NoWheelDoubleSpinBox" name="sipm_amp3_ch8_offset">
+                <property name="font">
+                 <font>
+                  <kerning>true</kerning>
+                 </font>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="wrapping">
+                 <bool>false</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
+                </property>
+                <property name="showGroupSeparator" stdset="0">
+                 <bool>false</bool>
+                </property>
+                <property name="suffix">
+                 <string> V</string>
+                </property>
+                <property name="maximum">
+                 <double>5.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
                 </property>
                </widget>
               </item>
@@ -4724,13 +4347,100 @@
                 </property>
                </widget>
               </item>
-              <item row="0" column="0">
-               <widget class="QLabel" name="sipm_amp3_channel_label">
-                <property name="text">
-                 <string>Channel</string>
+              <item row="1" column="2">
+               <widget class="NoWheelDoubleSpinBox" name="sipm_amp3_ch2_offset">
+                <property name="font">
+                 <font>
+                  <kerning>true</kerning>
+                 </font>
                 </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="wrapping">
+                 <bool>false</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
+                </property>
+                <property name="showGroupSeparator" stdset="0">
+                 <bool>false</bool>
+                </property>
+                <property name="suffix">
+                 <string> V</string>
+                </property>
+                <property name="maximum">
+                 <double>5.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="2">
+               <widget class="NoWheelDoubleSpinBox" name="sipm_amp3_ch10_offset">
+                <property name="font">
+                 <font>
+                  <kerning>true</kerning>
+                 </font>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="wrapping">
+                 <bool>false</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
+                </property>
+                <property name="showGroupSeparator" stdset="0">
+                 <bool>false</bool>
+                </property>
+                <property name="suffix">
+                 <string> V</string>
+                </property>
+                <property name="maximum">
+                 <double>5.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="5">
+               <widget class="QLabel" name="sipm_amp3_ch13_label">
+                <property name="text">
+                 <string>Ch13</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="4">
+               <widget class="NoWheelDoubleSpinBox" name="sipm_amp3_ch12_offset">
+                <property name="font">
+                 <font>
+                  <kerning>true</kerning>
+                 </font>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="wrapping">
+                 <bool>false</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
+                </property>
+                <property name="showGroupSeparator" stdset="0">
+                 <bool>false</bool>
+                </property>
+                <property name="suffix">
+                 <string> V</string>
+                </property>
+                <property name="maximum">
+                 <double>5.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
                 </property>
                </widget>
               </item>
@@ -4741,76 +4451,510 @@
                 </property>
                </widget>
               </item>
-              <item row="3" column="0">
-               <widget class="QLabel" name="sipm_amp3_offset_label_2">
+              <item row="3" column="6">
+               <widget class="NoWheelDoubleSpinBox" name="sipm_amp3_ch14_offset">
+                <property name="font">
+                 <font>
+                  <kerning>true</kerning>
+                 </font>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="wrapping">
+                 <bool>false</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
+                </property>
+                <property name="showGroupSeparator" stdset="0">
+                 <bool>false</bool>
+                </property>
+                <property name="suffix">
+                 <string> V</string>
+                </property>
+                <property name="maximum">
+                 <double>5.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="4">
+               <widget class="QLabel" name="sipm_amp3_ch4_label">
                 <property name="text">
-                 <string>Offset</string>
+                 <string>Ch4</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="QLabel" name="sipm_amp3_ch9_label">
+                <property name="text">
+                 <string>Ch9</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="8">
+               <widget class="QLabel" name="sipm_amp3_ch8_label">
+                <property name="text">
+                 <string>Ch8</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1">
+               <widget class="NoWheelDoubleSpinBox" name="sipm_amp3_ch1_offset">
+                <property name="font">
+                 <font>
+                  <kerning>true</kerning>
+                 </font>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="wrapping">
+                 <bool>false</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
+                </property>
+                <property name="showGroupSeparator" stdset="0">
+                 <bool>false</bool>
+                </property>
+                <property name="suffix">
+                 <string> V</string>
+                </property>
+                <property name="maximum">
+                 <double>5.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="7">
+               <widget class="NoWheelDoubleSpinBox" name="sipm_amp3_ch7_offset">
+                <property name="font">
+                 <font>
+                  <kerning>true</kerning>
+                 </font>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="wrapping">
+                 <bool>false</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
+                </property>
+                <property name="showGroupSeparator" stdset="0">
+                 <bool>false</bool>
+                </property>
+                <property name="suffix">
+                 <string> V</string>
+                </property>
+                <property name="maximum">
+                 <double>5.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="3">
+               <widget class="QLabel" name="sipm_amp3_ch11_label">
+                <property name="text">
+                 <string>Ch11</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="7">
+               <widget class="QLabel" name="sipm_amp3_ch15_label">
+                <property name="text">
+                 <string>Ch15</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="2">
+               <widget class="QLabel" name="sipm_amp3_ch10_label">
+                <property name="text">
+                 <string>Ch10</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="5">
+               <widget class="NoWheelDoubleSpinBox" name="sipm_amp3_ch13_offset">
+                <property name="font">
+                 <font>
+                  <kerning>true</kerning>
+                 </font>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="wrapping">
+                 <bool>false</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
+                </property>
+                <property name="showGroupSeparator" stdset="0">
+                 <bool>false</bool>
+                </property>
+                <property name="suffix">
+                 <string> V</string>
+                </property>
+                <property name="maximum">
+                 <double>5.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QLabel" name="sipm_amp3_channel_label_2">
+                <property name="text">
+                 <string>Channel</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QLabel" name="sipm_amp3_ch1_label">
+                <property name="text">
+                 <string>Ch1</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="3">
+               <widget class="NoWheelDoubleSpinBox" name="sipm_amp3_ch11_offset">
+                <property name="font">
+                 <font>
+                  <kerning>true</kerning>
+                 </font>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="wrapping">
+                 <bool>false</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
+                </property>
+                <property name="showGroupSeparator" stdset="0">
+                 <bool>false</bool>
+                </property>
+                <property name="suffix">
+                 <string> V</string>
+                </property>
+                <property name="maximum">
+                 <double>5.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="5">
+               <widget class="NoWheelDoubleSpinBox" name="sipm_amp3_ch5_offset">
+                <property name="font">
+                 <font>
+                  <kerning>true</kerning>
+                 </font>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="wrapping">
+                 <bool>false</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
+                </property>
+                <property name="showGroupSeparator" stdset="0">
+                 <bool>false</bool>
+                </property>
+                <property name="suffix">
+                 <string> V</string>
+                </property>
+                <property name="maximum">
+                 <double>5.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="4">
+               <widget class="QLabel" name="sipm_amp3_ch12_label">
+                <property name="text">
+                 <string>Ch12</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="7">
+               <widget class="NoWheelDoubleSpinBox" name="sipm_amp3_ch15_offset">
+                <property name="font">
+                 <font>
+                  <kerning>true</kerning>
+                 </font>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="wrapping">
+                 <bool>false</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
+                </property>
+                <property name="showGroupSeparator" stdset="0">
+                 <bool>false</bool>
+                </property>
+                <property name="suffix">
+                 <string> V</string>
+                </property>
+                <property name="maximum">
+                 <double>5.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="5">
+               <widget class="QLabel" name="sipm_amp3_ch5_label">
+                <property name="text">
+                 <string>Ch5</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0">
+               <widget class="QLabel" name="sipm_amp3_channel_label">
+                <property name="text">
+                 <string>Channel</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="6">
+               <widget class="QLabel" name="sipm_amp3_ch14_label">
+                <property name="text">
+                 <string>Ch14</string>
                 </property>
                </widget>
               </item>
              </layout>
             </item>
             <item>
-             <widget class="Line" name="line_4">
+             <spacer name="verticalSpacer_4">
               <property name="orientation">
-               <enum>Qt::Orientation::Horizontal</enum>
+               <enum>Qt::Orientation::Vertical</enum>
               </property>
-             </widget>
+              <property name="sizeType">
+               <enum>QSizePolicy::Policy::Fixed</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>368</height>
+               </size>
+              </property>
+             </spacer>
             </item>
+           </layout>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="caen_tab">
+       <attribute name="title">
+        <string>CAEN</string>
+       </attribute>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <item>
+         <widget class="QScrollArea" name="scrollArea">
+          <property name="widgetResizable">
+           <bool>true</bool>
+          </property>
+          <widget class="QWidget" name="scrollAreaWidgetContents_4">
+           <property name="geometry">
+            <rect>
+             <x>0</x>
+             <y>0</y>
+             <width>815</width>
+             <height>726</height>
+            </rect>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_11">
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>0</number>
+            </property>
             <item>
-             <layout class="QGridLayout" name="caen_general_grid" columnstretch="0,0,0,0,0,0,0,0,0,0">
+             <layout class="QGridLayout" name="caen_general_grid" columnstretch="0,0,0,0,0,0,0,0">
               <property name="topMargin">
-               <number>6</number>
+               <number>0</number>
               </property>
               <property name="bottomMargin">
-               <number>6</number>
+               <number>0</number>
               </property>
               <property name="spacing">
                <number>3</number>
               </property>
-              <item row="3" column="5">
-               <widget class="QLabel" name="caen_ext_trig_label">
+              <item row="1" column="2">
+               <widget class="QLabel" name="caen_model_label">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
                 <property name="text">
-                 <string>Ext Trig Mode</string>
+                 <string>Model</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
-                 <cstring>caen_ext_trig_box</cstring>
+                 <cstring>caen_model_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="7">
+               <widget class="QCheckBox" name="caen_enabled_box">
+                <property name="text">
+                 <string>Enabled</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="2">
+               <widget class="QLabel" name="caen_coincidence_window_label">
+                <property name="text">
+                 <string>Maj Window</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>caen_length_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="0">
+               <widget class="QLabel" name="caen_polarity_label">
+                <property name="text">
+                 <string>Polarity</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>caen_polarity_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="caen_link_label">
+                <property name="text">
+                 <string>Link</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>caen_link_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QLabel" name="caen_length_label">
+                <property name="text">
+                 <string>Rec Length</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>caen_length_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="5">
+               <widget class="QCheckBox" name="trig_in_as_gate">
+                <property name="text">
+                 <string>TRIG-IN as Gate</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="0">
+               <widget class="QLabel" name="caen_coincidence_label">
+                <property name="text">
+                 <string>Maj Level</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>caen_length_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="4">
+               <widget class="QLabel" name="caen_conn_label">
+                <property name="text">
+                 <string>Connection Type</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>caen_conn_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0" colspan="4">
+               <widget class="QLabel" name="caen_general_label">
+                <property name="font">
+                 <font>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>CAEN Digitizer General</string>
                 </property>
                </widget>
               </item>
               <item row="1" column="7">
-               <widget class="QLabel" name="caen_evs_label">
-                <property name="text">
-                 <string>Evs Per Read</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>caen_evs_box</cstring>
+               <widget class="NoWheelSpinBox" name="caen_evs_box">
+                <property name="maximum">
+                 <number>10000</number>
                 </property>
                </widget>
               </item>
-              <item row="3" column="7">
-               <widget class="QLabel" name="caen_sw_trig_label">
-                <property name="text">
-                 <string>SW Trig Mode</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>caen_sw_trig_box</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="6">
+              <item row="1" column="5">
                <widget class="NoWheelComboBox" name="caen_conn_box">
                 <item>
                  <property name="text">
@@ -4825,6 +4969,116 @@
                </widget>
               </item>
               <item row="3" column="1">
+               <widget class="NoWheelSpinBox" name="caen_coincidence_box">
+                <property name="maximum">
+                 <number>10000</number>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="3">
+               <widget class="NoWheelSpinBox" name="caen_post_trig_box">
+                <property name="suffix">
+                 <string>%</string>
+                </property>
+                <property name="maximum">
+                 <number>100</number>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="3">
+               <widget class="NoWheelComboBox" name="caen_io_box">
+                <item>
+                 <property name="text">
+                  <string>TTL</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>NIM</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="3" column="3">
+               <widget class="NoWheelSpinBox" name="caen_coincidence_window_box">
+                <property name="maximum">
+                 <number>10000</number>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="6">
+               <widget class="QLabel" name="caen_evs_label">
+                <property name="text">
+                 <string>Evs Per Read</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>caen_evs_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="2">
+               <widget class="QLabel" name="caen_io_label">
+                <property name="text">
+                 <string>IO Level</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>caen_io_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="NoWheelSpinBox" name="caen_length_box">
+                <property name="maximum">
+                 <number>10000</number>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="4">
+               <widget class="QCheckBox" name="caen_overlap_box">
+                <property name="text">
+                 <string>Overlap En</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="2">
+               <widget class="QLabel" name="caen_post_trig_label">
+                <property name="text">
+                 <string>Post Trig</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>caen_post_trig_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="3">
+               <widget class="NoWheelComboBox" name="caen_model_box">
+                <item>
+                 <property name="text">
+                  <string>DT5740D</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>DT5730B</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>V1740D</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="4" column="1">
                <widget class="NoWheelComboBox" name="caen_polarity_box">
                 <item>
                  <property name="text">
@@ -4838,7 +5092,30 @@
                 </item>
                </widget>
               </item>
-              <item row="2" column="8" colspan="2">
+              <item row="1" column="1">
+               <widget class="NoWheelSpinBox" name="caen_link_box">
+                <property name="minimumSize">
+                 <size>
+                  <width>50</width>
+                  <height>0</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="4">
+               <widget class="QLabel" name="caen_decimation_label">
+                <property name="text">
+                 <string>Decimation</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>caen_decimation_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="5">
                <widget class="NoWheelSpinBox" name="caen_decimation_box">
                 <property name="prefix">
                  <string/>
@@ -4855,43 +5132,19 @@
                </widget>
               </item>
               <item row="2" column="6">
-               <widget class="QCheckBox" name="caen_overlap_box">
+               <widget class="QLabel" name="caen_ext_trig_label">
                 <property name="text">
-                 <string>Overlap Reject</string>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="3" colspan="2">
-               <widget class="NoWheelSpinBox" name="caen_post_trig_box">
-                <property name="suffix">
-                 <string>%</string>
-                </property>
-                <property name="maximum">
-                 <number>100</number>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="0">
-               <widget class="QLabel" name="caen_length_label">
-                <property name="text">
-                 <string>Record Length</string>
+                 <string>Ext Trig Mode</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
-                 <cstring>caen_length_box</cstring>
+                 <cstring>caen_ext_trig_box</cstring>
                 </property>
                </widget>
               </item>
-              <item row="0" column="8" colspan="2">
-               <widget class="QCheckBox" name="caen_enabled_box">
-                <property name="text">
-                 <string>Enabled</string>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="6">
+              <item row="2" column="7">
                <widget class="NoWheelComboBox" name="caen_ext_trig_box">
                 <item>
                  <property name="text">
@@ -4915,46 +5168,20 @@
                 </item>
                </widget>
               </item>
-              <item row="1" column="8" colspan="2">
-               <widget class="NoWheelSpinBox" name="caen_evs_box">
-                <property name="maximum">
-                 <number>10000</number>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="2">
-               <widget class="QLabel" name="caen_post_trig_label">
+              <item row="3" column="6">
+               <widget class="QLabel" name="caen_sw_trig_label">
                 <property name="text">
-                 <string>Post Trig</string>
+                 <string>SW Trig Mode</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
-                 <cstring>caen_post_trig_box</cstring>
+                 <cstring>caen_sw_trig_box</cstring>
                 </property>
                </widget>
               </item>
-              <item row="0" column="0" colspan="5">
-               <widget class="QLabel" name="caen_general_label">
-                <property name="font">
-                 <font>
-                  <bold>true</bold>
-                 </font>
-                </property>
-                <property name="text">
-                 <string>CAEN Digitizer General</string>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="5">
-               <widget class="QCheckBox" name="caen_trigin_box">
-                <property name="text">
-                 <string>TRIG-IN as Gate</string>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="8" colspan="2">
+              <item row="3" column="7">
                <widget class="NoWheelComboBox" name="caen_sw_trig_box">
                 <item>
                  <property name="text">
@@ -4978,10 +5205,47 @@
                 </item>
                </widget>
               </item>
-              <item row="2" column="7">
-               <widget class="QLabel" name="caen_decimation_label">
+              <item row="4" column="6">
+               <widget class="QLabel" name="caen_ch_trig_label">
                 <property name="text">
-                 <string>Decimation</string>
+                 <string>SW Trig Mode</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>caen_sw_trig_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="7">
+               <widget class="NoWheelComboBox" name="caen_ch_trig_box">
+                <item>
+                 <property name="text">
+                  <string>Disabled</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>ACQ Only</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>EXT Only</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>ACQ+EXT</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="4" column="4">
+               <widget class="QLabel" name="caen_decimation_label_2">
+                <property name="text">
+                 <string>Mem Full Mode</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
@@ -4991,125 +5255,18 @@
                 </property>
                </widget>
               </item>
-              <item row="2" column="1">
-               <widget class="NoWheelSpinBox" name="caen_length_box">
-                <property name="maximum">
-                 <number>10000</number>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="0">
-               <widget class="QLabel" name="caen_polarity_label">
-                <property name="text">
-                 <string>Polarity</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>caen_polarity_box</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="5">
-               <widget class="QLabel" name="caen_conn_label">
-                <property name="text">
-                 <string>Connection Type</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>caen_conn_box</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="2">
-               <widget class="QLabel" name="caen_io_label">
-                <property name="text">
-                 <string>IO Level</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>caen_io_box</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="3" colspan="2">
-               <widget class="NoWheelComboBox" name="caen_io_box">
+              <item row="4" column="5">
+               <widget class="NoWheelComboBox" name="caen_mem_full_box">
                 <item>
                  <property name="text">
-                  <string>TTL</string>
+                  <string>Normal</string>
                  </property>
                 </item>
                 <item>
                  <property name="text">
-                  <string>NIM</string>
+                  <string>One Buf Free</string>
                  </property>
                 </item>
-               </widget>
-              </item>
-              <item row="1" column="4">
-               <widget class="NoWheelComboBox" name="caen_model_box">
-                <item>
-                 <property name="text">
-                  <string>DT5740D</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>DT5730B</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>V1740D</string>
-                 </property>
-                </item>
-               </widget>
-              </item>
-              <item row="1" column="2">
-               <widget class="QLabel" name="caen_model_label">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="text">
-                 <string>Model</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>caen_model_box</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="1">
-               <widget class="NoWheelSpinBox" name="caen_link_box">
-                <property name="minimumSize">
-                 <size>
-                  <width>50</width>
-                  <height>0</height>
-                 </size>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="0">
-               <widget class="QLabel" name="caen_link_label">
-                <property name="text">
-                 <string>Port</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>caen_link_box</cstring>
-                </property>
                </widget>
               </item>
              </layout>
@@ -5125,8 +5282,212 @@
               <property name="spacing">
                <number>3</number>
               </property>
-              <item row="4" column="2">
-               <widget class="NoWheelSpinBox" name="caen_g0_offset_1">
+              <item row="3" column="6">
+               <widget class="QCheckBox" name="caen_g0_acq_mask_5">
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="7">
+               <widget class="QCheckBox" name="caen_g0_acq_mask_6">
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QCheckBox" name="caen_g0_enable_box">
+                <property name="font">
+                 <font>
+                  <bold>false</bold>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>Enabled</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="6">
+               <widget class="NoWheelSpinBox" name="caen_g0_offset_box">
+                <property name="maximum">
+                 <number>65535</number>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="3">
+               <widget class="QLabel" name="caen_g0_ch2_label">
+                <property name="text">
+                 <string>Ch2</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QCheckBox" name="caen_g0_trig_box">
+                <property name="layoutDirection">
+                 <enum>Qt::LayoutDirection::LeftToRight</enum>
+                </property>
+                <property name="text">
+                 <string>Trigger</string>
+                </property>
+                <property name="tristate">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="7">
+               <widget class="QCheckBox" name="caen_g0_trig_mask_6">
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="4">
+               <widget class="QCheckBox" name="caen_g0_acq_mask_3">
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="4">
+               <widget class="QCheckBox" name="caen_g0_trig_mask_3">
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="2">
+               <widget class="QCheckBox" name="caen_g0_trig_mask_1">
+                <property name="enabled">
+                 <bool>true</bool>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="5">
+               <widget class="QLabel" name="caen_g0_offset_label">
+                <property name="text">
+                 <string>Offset</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>caen_g0_thres_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="2">
+               <widget class="QCheckBox" name="caen_g0_acq_mask_1">
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="0">
+               <widget class="QLabel" name="caen_g0_offsets_label">
+                <property name="text">
+                 <string>Offsets</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="6">
+               <widget class="NoWheelSpinBox" name="caen_g0_offset_5">
+                <property name="font">
+                 <font>
+                  <kerning>true</kerning>
+                 </font>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="wrapping">
+                 <bool>false</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
+                </property>
+                <property name="showGroupSeparator" stdset="0">
+                 <bool>false</bool>
+                </property>
+                <property name="maximum">
+                 <number>255</number>
+                </property>
+                <property name="value">
+                 <number>0</number>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0">
+               <widget class="QLabel" name="caen_g0_label">
+                <property name="enabled">
+                 <bool>true</bool>
+                </property>
+                <property name="font">
+                 <font>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>Group 0</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="8">
+               <widget class="QCheckBox" name="caen_g0_trig_mask_7">
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="8">
+               <widget class="QCheckBox" name="caen_g0_acq_mask_7">
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="1">
+               <widget class="NoWheelSpinBox" name="caen_g0_offset_0">
+                <property name="font">
+                 <font>
+                  <kerning>true</kerning>
+                 </font>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="wrapping">
+                 <bool>false</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
+                </property>
+                <property name="showGroupSeparator" stdset="0">
+                 <bool>false</bool>
+                </property>
+                <property name="maximum">
+                 <number>255</number>
+                </property>
+                <property name="value">
+                 <number>0</number>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="3">
+               <widget class="QCheckBox" name="caen_g0_acq_mask_2">
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="8">
+               <widget class="NoWheelSpinBox" name="caen_g0_offset_7">
                 <property name="font">
                  <font>
                   <kerning>true</kerning>
@@ -5159,64 +5520,10 @@
                 </property>
                </widget>
               </item>
-              <item row="4" column="7">
-               <widget class="NoWheelSpinBox" name="caen_g0_offset_6">
-                <property name="font">
-                 <font>
-                  <kerning>true</kerning>
-                 </font>
-                </property>
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="wrapping">
-                 <bool>false</bool>
-                </property>
-                <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
-                </property>
-                <property name="showGroupSeparator" stdset="0">
-                 <bool>false</bool>
-                </property>
+              <item row="0" column="8">
+               <widget class="NoWheelSpinBox" name="caen_g0_thres_box">
                 <property name="maximum">
-                 <number>255</number>
-                </property>
-                <property name="value">
-                 <number>0</number>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="5">
-               <widget class="NoWheelSpinBox" name="caen_g0_offset_4">
-                <property name="font">
-                 <font>
-                  <kerning>true</kerning>
-                 </font>
-                </property>
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="wrapping">
-                 <bool>false</bool>
-                </property>
-                <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
-                </property>
-                <property name="showGroupSeparator" stdset="0">
-                 <bool>false</bool>
-                </property>
-                <property name="maximum">
-                 <number>255</number>
-                </property>
-                <property name="value">
-                 <number>0</number>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="4">
-               <widget class="QCheckBox" name="caen_g0_acq_mask_3">
-                <property name="text">
-                 <string/>
+                 <number>4095</number>
                 </property>
                </widget>
               </item>
@@ -5227,102 +5534,16 @@
                 </property>
                </widget>
               </item>
-              <item row="0" column="8">
-               <widget class="NoWheelSpinBox" name="caen_g0_thres_box">
-                <property name="maximum">
-                 <number>4095</number>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="1">
-               <widget class="QCheckBox" name="caen_g0_acq_mask_0">
+              <item row="0" column="7">
+               <widget class="QLabel" name="caen_g0_thres_label">
                 <property name="text">
-                 <string/>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="4">
-               <widget class="NoWheelSpinBox" name="caen_g0_offset_3">
-                <property name="font">
-                 <font>
-                  <kerning>true</kerning>
-                 </font>
-                </property>
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="wrapping">
-                 <bool>false</bool>
-                </property>
-                <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
-                </property>
-                <property name="showGroupSeparator" stdset="0">
-                 <bool>false</bool>
-                </property>
-                <property name="maximum">
-                 <number>255</number>
-                </property>
-                <property name="value">
-                 <number>0</number>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="0">
-               <widget class="QLabel" name="caen_g0_offsets_label">
-                <property name="text">
-                 <string>Offsets</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="5">
-               <widget class="QLabel" name="caen_g0_offset_label">
-                <property name="text">
-                 <string>Offset</string>
+                 <string>Threshold</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
                  <cstring>caen_g0_thres_box</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="6">
-               <widget class="QCheckBox" name="caen_g0_acq_mask_5">
-                <property name="text">
-                 <string/>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="5">
-               <widget class="QCheckBox" name="caen_g0_trig_mask_4">
-                <property name="text">
-                 <string/>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="6">
-               <widget class="NoWheelSpinBox" name="caen_g0_offset_box">
-                <property name="maximum">
-                 <number>65535</number>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="5">
-               <widget class="QLabel" name="caen_g0_ch4_label">
-                <property name="text">
-                 <string>Ch4</string>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="8">
-               <widget class="QCheckBox" name="caen_g0_trig_mask_7">
-                <property name="text">
-                 <string/>
                 </property>
                </widget>
               </item>
@@ -5356,22 +5577,15 @@
                 </property>
                </widget>
               </item>
-              <item row="3" column="3">
-               <widget class="QCheckBox" name="caen_g0_acq_mask_2">
+              <item row="1" column="5">
+               <widget class="QLabel" name="caen_g0_ch4_label">
                 <property name="text">
-                 <string/>
+                 <string>Ch4</string>
                 </property>
                </widget>
               </item>
-              <item row="2" column="4">
-               <widget class="QCheckBox" name="caen_g0_trig_mask_3">
-                <property name="text">
-                 <string/>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="3">
-               <widget class="NoWheelSpinBox" name="caen_g0_offset_2">
+              <item row="4" column="5">
+               <widget class="NoWheelSpinBox" name="caen_g0_offset_4">
                 <property name="font">
                  <font>
                   <kerning>true</kerning>
@@ -5397,8 +5611,8 @@
                 </property>
                </widget>
               </item>
-              <item row="4" column="1">
-               <widget class="NoWheelSpinBox" name="caen_g0_offset_0">
+              <item row="4" column="4">
+               <widget class="NoWheelSpinBox" name="caen_g0_offset_3">
                 <property name="font">
                  <font>
                   <kerning>true</kerning>
@@ -5421,6 +5635,13 @@
                 </property>
                 <property name="value">
                  <number>0</number>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="5">
+               <widget class="QCheckBox" name="caen_g0_trig_mask_4">
+                <property name="text">
+                 <string/>
                 </property>
                </widget>
               </item>
@@ -5431,8 +5652,83 @@
                 </property>
                </widget>
               </item>
-              <item row="4" column="8">
-               <widget class="NoWheelSpinBox" name="caen_g0_offset_7">
+              <item row="4" column="7">
+               <widget class="NoWheelSpinBox" name="caen_g0_offset_6">
+                <property name="font">
+                 <font>
+                  <kerning>true</kerning>
+                 </font>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="wrapping">
+                 <bool>false</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
+                </property>
+                <property name="showGroupSeparator" stdset="0">
+                 <bool>false</bool>
+                </property>
+                <property name="maximum">
+                 <number>255</number>
+                </property>
+                <property name="value">
+                 <number>0</number>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="QCheckBox" name="caen_g0_trig_mask_0">
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="1">
+               <widget class="QCheckBox" name="caen_g0_acq_mask_0">
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="7">
+               <widget class="QLabel" name="caen_g0_ch6_label">
+                <property name="text">
+                 <string>Ch6</string>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="2">
+               <widget class="NoWheelSpinBox" name="caen_g0_offset_1">
+                <property name="font">
+                 <font>
+                  <kerning>true</kerning>
+                 </font>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="wrapping">
+                 <bool>false</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
+                </property>
+                <property name="showGroupSeparator" stdset="0">
+                 <bool>false</bool>
+                </property>
+                <property name="maximum">
+                 <number>255</number>
+                </property>
+                <property name="value">
+                 <number>0</number>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="3">
+               <widget class="NoWheelSpinBox" name="caen_g0_offset_2">
                 <property name="font">
                  <font>
                   <kerning>true</kerning>
@@ -5465,25 +5761,49 @@
                 </property>
                </widget>
               </item>
-              <item row="1" column="3">
-               <widget class="QLabel" name="caen_g0_ch2_label">
+              <item row="1" column="6">
+               <widget class="QLabel" name="caen_g0_ch5_label">
                 <property name="text">
-                 <string>Ch2</string>
+                 <string>Ch5</string>
                 </property>
                </widget>
               </item>
-              <item row="2" column="2">
-               <widget class="QCheckBox" name="caen_g0_trig_mask_1">
-                <property name="enabled">
-                 <bool>true</bool>
-                </property>
+              <item row="2" column="6">
+               <widget class="QCheckBox" name="caen_g0_trig_mask_5">
                 <property name="text">
                  <string/>
                 </property>
                </widget>
               </item>
-              <item row="4" column="6">
-               <widget class="NoWheelSpinBox" name="caen_g0_offset_5">
+             </layout>
+            </item>
+            <item>
+             <layout class="QGridLayout" name="gridLayout_9">
+              <property name="topMargin">
+               <number>6</number>
+              </property>
+              <property name="bottomMargin">
+               <number>6</number>
+              </property>
+              <property name="spacing">
+               <number>3</number>
+              </property>
+              <item row="3" column="5">
+               <widget class="QCheckBox" name="caen_g1_acq_mask_4">
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="8">
+               <widget class="QLabel" name="caen_g1_ch7_label">
+                <property name="text">
+                 <string>Ch15</string>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="7">
+               <widget class="NoWheelSpinBox" name="caen_g1_offset_6">
                 <property name="font">
                  <font>
                   <kerning>true</kerning>
@@ -5509,173 +5829,36 @@
                 </property>
                </widget>
               </item>
-              <item row="0" column="1">
-               <widget class="QCheckBox" name="caen_g0_enable_box">
-                <property name="font">
-                 <font>
-                  <bold>false</bold>
-                 </font>
-                </property>
+              <item row="1" column="1">
+               <widget class="QLabel" name="caen_g1_ch0_label">
                 <property name="text">
-                 <string>Enabled</string>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="6">
-               <widget class="QCheckBox" name="caen_g0_trig_mask_5">
-                <property name="text">
-                 <string/>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="2">
-               <widget class="QCheckBox" name="caen_g0_acq_mask_1">
-                <property name="text">
-                 <string/>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="0">
-               <widget class="QCheckBox" name="caen_g0_trig_box">
-                <property name="layoutDirection">
-                 <enum>Qt::LayoutDirection::LeftToRight</enum>
-                </property>
-                <property name="text">
-                 <string>Trigger</string>
-                </property>
-                <property name="tristate">
-                 <bool>true</bool>
+                 <string>Ch8</string>
                 </property>
                </widget>
               </item>
               <item row="0" column="0">
-               <widget class="QLabel" name="caen_g0_label">
-                <property name="enabled">
-                 <bool>true</bool>
-                </property>
+               <widget class="QLabel" name="caen_g1_label">
                 <property name="font">
                  <font>
                   <bold>true</bold>
                  </font>
                 </property>
                 <property name="text">
-                 <string>Group 0</string>
+                 <string>Group 1</string>
                 </property>
                </widget>
               </item>
-              <item row="1" column="6">
-               <widget class="QLabel" name="caen_g0_ch5_label">
+              <item row="1" column="5">
+               <widget class="QLabel" name="caen_g1_ch4_label">
                 <property name="text">
-                 <string>Ch5</string>
+                 <string>Ch12</string>
                 </property>
                </widget>
               </item>
-              <item row="2" column="7">
-               <widget class="QCheckBox" name="caen_g0_trig_mask_6">
+              <item row="0" column="5">
+               <widget class="QLabel" name="caen_g1_offset_label">
                 <property name="text">
-                 <string/>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="1">
-               <widget class="QCheckBox" name="caen_g0_trig_mask_0">
-                <property name="text">
-                 <string/>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="7">
-               <widget class="QLabel" name="caen_g0_thres_label">
-                <property name="text">
-                 <string>Threshold</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>caen_g0_thres_box</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="7">
-               <widget class="QLabel" name="caen_g0_ch6_label">
-                <property name="text">
-                 <string>Ch6</string>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="8">
-               <widget class="QCheckBox" name="caen_g0_acq_mask_7">
-                <property name="text">
-                 <string/>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="7">
-               <widget class="QCheckBox" name="caen_g0_acq_mask_6">
-                <property name="text">
-                 <string/>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </item>
-            <item>
-             <layout class="QGridLayout" name="gridLayout_9">
-              <property name="topMargin">
-               <number>6</number>
-              </property>
-              <property name="bottomMargin">
-               <number>6</number>
-              </property>
-              <property name="spacing">
-               <number>3</number>
-              </property>
-              <item row="2" column="2">
-               <widget class="QCheckBox" name="caen_g1_trig_mask_1">
-                <property name="text">
-                 <string/>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="3">
-               <widget class="QCheckBox" name="caen_g1_acq_mask_2">
-                <property name="text">
-                 <string/>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="6">
-               <widget class="QLabel" name="caen_g1_ch5_label">
-                <property name="text">
-                 <string>Ch13</string>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="4">
-               <widget class="QCheckBox" name="caen_g1_trig_mask_3">
-                <property name="text">
-                 <string/>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="0">
-               <widget class="QCheckBox" name="caen_g1_acq_box">
-                <property name="layoutDirection">
-                 <enum>Qt::LayoutDirection::LeftToRight</enum>
-                </property>
-                <property name="text">
-                 <string>Acquisition</string>
-                </property>
-                <property name="tristate">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="0">
-               <widget class="QLabel" name="caen_g1_offsets_label">
-                <property name="text">
-                 <string>Offsets</string>
+                 <string>Offset</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
@@ -5709,37 +5892,10 @@
                 </property>
                </widget>
               </item>
-              <item row="3" column="8">
-               <widget class="QCheckBox" name="caen_g1_acq_mask_7">
+              <item row="2" column="6">
+               <widget class="QCheckBox" name="caen_g1_trig_mask_5">
                 <property name="text">
                  <string/>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="7">
-               <widget class="NoWheelSpinBox" name="caen_g1_offset_6">
-                <property name="font">
-                 <font>
-                  <kerning>true</kerning>
-                 </font>
-                </property>
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="wrapping">
-                 <bool>false</bool>
-                </property>
-                <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
-                </property>
-                <property name="showGroupSeparator" stdset="0">
-                 <bool>false</bool>
-                </property>
-                <property name="maximum">
-                 <number>255</number>
-                </property>
-                <property name="value">
-                 <number>0</number>
                 </property>
                </widget>
               </item>
@@ -5767,61 +5923,6 @@
                 </property>
                 <property name="value">
                  <number>0</number>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="8">
-               <widget class="QLabel" name="caen_g1_ch7_label">
-                <property name="text">
-                 <string>Ch15</string>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="5">
-               <widget class="QLabel" name="caen_g1_ch4_label">
-                <property name="text">
-                 <string>Ch12</string>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="7">
-               <widget class="QLabel" name="caen_g1_ch6_label">
-                <property name="text">
-                 <string>Ch14</string>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="8">
-               <widget class="NoWheelSpinBox" name="caen_g1_offset_7">
-                <property name="font">
-                 <font>
-                  <kerning>true</kerning>
-                 </font>
-                </property>
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="wrapping">
-                 <bool>false</bool>
-                </property>
-                <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
-                </property>
-                <property name="showGroupSeparator" stdset="0">
-                 <bool>false</bool>
-                </property>
-                <property name="maximum">
-                 <number>255</number>
-                </property>
-                <property name="value">
-                 <number>0</number>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="1">
-               <widget class="QLabel" name="caen_g1_ch0_label">
-                <property name="text">
-                 <string>Ch8</string>
                 </property>
                </widget>
               </item>
@@ -5859,103 +5960,15 @@
                 </property>
                </widget>
               </item>
-              <item row="0" column="0">
-               <widget class="QLabel" name="caen_g1_label">
-                <property name="font">
-                 <font>
-                  <bold>true</bold>
-                 </font>
-                </property>
-                <property name="text">
-                 <string>Group 1</string>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="5">
-               <widget class="QCheckBox" name="caen_g1_trig_mask_4">
+              <item row="2" column="2">
+               <widget class="QCheckBox" name="caen_g1_trig_mask_1">
                 <property name="text">
                  <string/>
                 </property>
                </widget>
               </item>
-              <item row="4" column="4">
-               <widget class="NoWheelSpinBox" name="caen_g1_offset_3">
-                <property name="font">
-                 <font>
-                  <kerning>true</kerning>
-                 </font>
-                </property>
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="wrapping">
-                 <bool>false</bool>
-                </property>
-                <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
-                </property>
-                <property name="showGroupSeparator" stdset="0">
-                 <bool>false</bool>
-                </property>
-                <property name="maximum">
-                 <number>255</number>
-                </property>
-                <property name="value">
-                 <number>0</number>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="1">
-               <widget class="QCheckBox" name="caen_g1_acq_mask_0">
-                <property name="text">
-                 <string/>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="2">
-               <widget class="QLabel" name="caen_g1_ch1_label">
-                <property name="text">
-                 <string>Ch9</string>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="4">
-               <widget class="QLabel" name="caen_g1_ch3_label">
-                <property name="text">
-                 <string>Ch11</string>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="7">
-               <widget class="QCheckBox" name="caen_g1_trig_mask_6">
-                <property name="text">
-                 <string/>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="3">
-               <widget class="QLabel" name="caen_g1_ch2_label">
-                <property name="text">
-                 <string>Ch10</string>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="4">
-               <widget class="QCheckBox" name="caen_g1_acq_mask_3">
-                <property name="text">
-                 <string/>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="2">
-               <widget class="QCheckBox" name="caen_g1_acq_mask_1">
-                <property name="text">
-                 <string/>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="6">
-               <widget class="QCheckBox" name="caen_g1_acq_mask_5">
+              <item row="2" column="8">
+               <widget class="QCheckBox" name="caen_g1_trig_mask_7">
                 <property name="text">
                  <string/>
                 </property>
@@ -5988,22 +6001,118 @@
                 </property>
                </widget>
               </item>
-              <item row="2" column="8">
-               <widget class="QCheckBox" name="caen_g1_trig_mask_7">
+              <item row="2" column="7">
+               <widget class="QCheckBox" name="caen_g1_trig_mask_6">
                 <property name="text">
                  <string/>
                 </property>
                </widget>
               </item>
-              <item row="3" column="5">
-               <widget class="QCheckBox" name="caen_g1_acq_mask_4">
+              <item row="0" column="6">
+               <widget class="NoWheelSpinBox" name="caen_g1_offset_box">
+                <property name="maximum">
+                 <number>65535</number>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="QCheckBox" name="caen_g1_trig_mask_0">
                 <property name="text">
                  <string/>
                 </property>
                </widget>
               </item>
-              <item row="2" column="6">
-               <widget class="QCheckBox" name="caen_g1_trig_mask_5">
+              <item row="3" column="6">
+               <widget class="QCheckBox" name="caen_g1_acq_mask_5">
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="1">
+               <widget class="QCheckBox" name="caen_g1_acq_mask_0">
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="4">
+               <widget class="NoWheelSpinBox" name="caen_g1_offset_3">
+                <property name="font">
+                 <font>
+                  <kerning>true</kerning>
+                 </font>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="wrapping">
+                 <bool>false</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
+                </property>
+                <property name="showGroupSeparator" stdset="0">
+                 <bool>false</bool>
+                </property>
+                <property name="maximum">
+                 <number>255</number>
+                </property>
+                <property name="value">
+                 <number>0</number>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="8">
+               <widget class="NoWheelSpinBox" name="caen_g1_offset_7">
+                <property name="font">
+                 <font>
+                  <kerning>true</kerning>
+                 </font>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="wrapping">
+                 <bool>false</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
+                </property>
+                <property name="showGroupSeparator" stdset="0">
+                 <bool>false</bool>
+                </property>
+                <property name="maximum">
+                 <number>255</number>
+                </property>
+                <property name="value">
+                 <number>0</number>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="8">
+               <widget class="NoWheelSpinBox" name="caen_g1_thres_box">
+                <property name="maximum">
+                 <number>4095</number>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="3">
+               <widget class="QLabel" name="caen_g1_ch2_label">
+                <property name="text">
+                 <string>Ch10</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="4">
+               <widget class="QLabel" name="caen_g1_ch3_label">
+                <property name="text">
+                 <string>Ch11</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="2">
+               <widget class="QCheckBox" name="caen_g1_acq_mask_1">
                 <property name="text">
                  <string/>
                 </property>
@@ -6022,8 +6131,73 @@
                 </property>
                </widget>
               </item>
+              <item row="3" column="0">
+               <widget class="QCheckBox" name="caen_g1_acq_box">
+                <property name="layoutDirection">
+                 <enum>Qt::LayoutDirection::LeftToRight</enum>
+                </property>
+                <property name="text">
+                 <string>Acquisition</string>
+                </property>
+                <property name="tristate">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="4">
+               <widget class="QCheckBox" name="caen_g1_acq_mask_3">
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="8">
+               <widget class="QCheckBox" name="caen_g1_acq_mask_7">
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QCheckBox" name="caen_g1_enable_box">
+                <property name="text">
+                 <string>Enabled</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="7">
+               <widget class="QLabel" name="caen_g1_ch6_label">
+                <property name="text">
+                 <string>Ch14</string>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="0">
+               <widget class="QLabel" name="caen_g1_offsets_label">
+                <property name="text">
+                 <string>Offsets</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="5">
+               <widget class="QCheckBox" name="caen_g1_trig_mask_4">
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
               <item row="3" column="7">
                <widget class="QCheckBox" name="caen_g1_acq_mask_6">
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="4">
+               <widget class="QCheckBox" name="caen_g1_trig_mask_3">
                 <property name="text">
                  <string/>
                 </property>
@@ -6056,27 +6230,6 @@
                 </property>
                </widget>
               </item>
-              <item row="2" column="1">
-               <widget class="QCheckBox" name="caen_g1_trig_mask_0">
-                <property name="text">
-                 <string/>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="1">
-               <widget class="QCheckBox" name="caen_g1_enable_box">
-                <property name="text">
-                 <string>Enabled</string>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="8">
-               <widget class="NoWheelSpinBox" name="caen_g1_thres_box">
-                <property name="maximum">
-                 <number>4095</number>
-                </property>
-               </widget>
-              </item>
               <item row="0" column="7">
                <widget class="QLabel" name="caen_g1_thres_label">
                 <property name="text">
@@ -6090,23 +6243,24 @@
                 </property>
                </widget>
               </item>
-              <item row="0" column="6">
-               <widget class="NoWheelSpinBox" name="caen_g1_offset_box">
-                <property name="maximum">
-                 <number>65535</number>
+              <item row="1" column="2">
+               <widget class="QLabel" name="caen_g1_ch1_label">
+                <property name="text">
+                 <string>Ch9</string>
                 </property>
                </widget>
               </item>
-              <item row="0" column="5">
-               <widget class="QLabel" name="caen_g1_offset_label">
+              <item row="1" column="6">
+               <widget class="QLabel" name="caen_g1_ch5_label">
                 <property name="text">
-                 <string>Offset</string>
+                 <string>Ch13</string>
                 </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>caen_g0_thres_box</cstring>
+               </widget>
+              </item>
+              <item row="3" column="3">
+               <widget class="QCheckBox" name="caen_g1_acq_mask_2">
+                <property name="text">
+                 <string/>
                 </property>
                </widget>
               </item>
@@ -6597,9 +6751,6 @@
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
-                <property name="buddy">
-                 <cstring>caen_g0_thres_box</cstring>
-                </property>
                </widget>
               </item>
              </layout>
@@ -6615,206 +6766,43 @@
               <property name="spacing">
                <number>3</number>
               </property>
-              <item row="4" column="5">
-               <widget class="NoWheelSpinBox" name="caen_g3_offset_4">
-                <property name="font">
-                 <font>
-                  <kerning>true</kerning>
-                 </font>
-                </property>
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="wrapping">
-                 <bool>false</bool>
-                </property>
-                <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
-                </property>
-                <property name="showGroupSeparator" stdset="0">
-                 <bool>false</bool>
-                </property>
-                <property name="maximum">
-                 <number>255</number>
-                </property>
-                <property name="value">
-                 <number>0</number>
+              <item row="1" column="7">
+               <widget class="QLabel" name="caen_g3_ch6_label">
+                <property name="text">
+                 <string>Ch30</string>
                 </property>
                </widget>
               </item>
-              <item row="4" column="6">
-               <widget class="NoWheelSpinBox" name="caen_g3_offset_5">
-                <property name="font">
-                 <font>
-                  <kerning>true</kerning>
-                 </font>
-                </property>
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="wrapping">
-                 <bool>false</bool>
-                </property>
-                <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
-                </property>
-                <property name="showGroupSeparator" stdset="0">
-                 <bool>false</bool>
-                </property>
-                <property name="maximum">
-                 <number>255</number>
-                </property>
-                <property name="value">
-                 <number>0</number>
+              <item row="1" column="3">
+               <widget class="QLabel" name="caen_g3_ch2_label">
+                <property name="text">
+                 <string>Ch26</string>
                 </property>
                </widget>
               </item>
-              <item row="2" column="4">
-               <widget class="QCheckBox" name="caen_g3_trig_mask_3">
+              <item row="3" column="2">
+               <widget class="QCheckBox" name="caen_g3_acq_mask_1">
                 <property name="text">
                  <string/>
                 </property>
                </widget>
               </item>
-              <item row="2" column="6">
-               <widget class="QCheckBox" name="caen_g3_trig_mask_5">
+              <item row="2" column="2">
+               <widget class="QCheckBox" name="caen_g3_trig_mask_1">
                 <property name="text">
                  <string/>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="8">
+               <widget class="QLabel" name="caen_g3_ch7_label">
+                <property name="text">
+                 <string>Ch31</string>
                 </property>
                </widget>
               </item>
               <item row="4" column="4">
                <widget class="NoWheelSpinBox" name="caen_g3_offset_3">
-                <property name="font">
-                 <font>
-                  <kerning>true</kerning>
-                 </font>
-                </property>
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="wrapping">
-                 <bool>false</bool>
-                </property>
-                <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
-                </property>
-                <property name="showGroupSeparator" stdset="0">
-                 <bool>false</bool>
-                </property>
-                <property name="maximum">
-                 <number>255</number>
-                </property>
-                <property name="value">
-                 <number>0</number>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="1">
-               <widget class="NoWheelSpinBox" name="caen_g3_offset_0">
-                <property name="font">
-                 <font>
-                  <kerning>true</kerning>
-                 </font>
-                </property>
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="wrapping">
-                 <bool>false</bool>
-                </property>
-                <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
-                </property>
-                <property name="showGroupSeparator" stdset="0">
-                 <bool>false</bool>
-                </property>
-                <property name="maximum">
-                 <number>255</number>
-                </property>
-                <property name="value">
-                 <number>0</number>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="8">
-               <widget class="QCheckBox" name="caen_g3_acq_mask_7">
-                <property name="text">
-                 <string/>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="8">
-               <widget class="QCheckBox" name="caen_g3_trig_mask_7">
-                <property name="text">
-                 <string/>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="7">
-               <widget class="QCheckBox" name="caen_g3_trig_mask_6">
-                <property name="text">
-                 <string/>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="1">
-               <widget class="QCheckBox" name="caen_g3_trig_mask_0">
-                <property name="text">
-                 <string/>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="3">
-               <widget class="QCheckBox" name="caen_g3_trig_mask_2">
-                <property name="text">
-                 <string/>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="1">
-               <widget class="QLabel" name="caen_g3_ch0_label">
-                <property name="text">
-                 <string>Ch24</string>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="3">
-               <widget class="QCheckBox" name="caen_g3_acq_mask_2">
-                <property name="text">
-                 <string/>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="3">
-               <widget class="NoWheelSpinBox" name="caen_g3_offset_2">
-                <property name="font">
-                 <font>
-                  <kerning>true</kerning>
-                 </font>
-                </property>
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="wrapping">
-                 <bool>false</bool>
-                </property>
-                <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
-                </property>
-                <property name="showGroupSeparator" stdset="0">
-                 <bool>false</bool>
-                </property>
-                <property name="maximum">
-                 <number>255</number>
-                </property>
-                <property name="value">
-                 <number>0</number>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="8">
-               <widget class="NoWheelSpinBox" name="caen_g3_offset_7">
                 <property name="font">
                  <font>
                   <kerning>true</kerning>
@@ -6847,60 +6835,6 @@
                 </property>
                </widget>
               </item>
-              <item row="0" column="0">
-               <widget class="QLabel" name="caen_g3_label">
-                <property name="font">
-                 <font>
-                  <bold>true</bold>
-                 </font>
-                </property>
-                <property name="text">
-                 <string>Group 3</string>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="2">
-               <widget class="QCheckBox" name="caen_g3_trig_mask_1">
-                <property name="text">
-                 <string/>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="2">
-               <widget class="QCheckBox" name="caen_g3_acq_mask_1">
-                <property name="text">
-                 <string/>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="2">
-               <widget class="QLabel" name="caen_g3_ch1_label">
-                <property name="text">
-                 <string>Ch25</string>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="5">
-               <widget class="QLabel" name="caen_g3_ch4_label">
-                <property name="text">
-                 <string>Ch28</string>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="7">
-               <widget class="QCheckBox" name="caen_g3_acq_mask_6">
-                <property name="text">
-                 <string/>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="3">
-               <widget class="QLabel" name="caen_g3_ch2_label">
-                <property name="text">
-                 <string>Ch26</string>
-                </property>
-               </widget>
-              </item>
               <item row="4" column="0">
                <widget class="QLabel" name="caen_g3_offsets_label">
                 <property name="text">
@@ -6911,42 +6845,15 @@
                 </property>
                </widget>
               </item>
-              <item row="1" column="7">
-               <widget class="QLabel" name="caen_g3_ch6_label">
+              <item row="2" column="3">
+               <widget class="QCheckBox" name="caen_g3_trig_mask_2">
                 <property name="text">
-                 <string>Ch30</string>
+                 <string/>
                 </property>
                </widget>
               </item>
-              <item row="4" column="2">
-               <widget class="NoWheelSpinBox" name="caen_g3_offset_1">
-                <property name="font">
-                 <font>
-                  <kerning>true</kerning>
-                 </font>
-                </property>
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="wrapping">
-                 <bool>false</bool>
-                </property>
-                <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
-                </property>
-                <property name="showGroupSeparator" stdset="0">
-                 <bool>false</bool>
-                </property>
-                <property name="maximum">
-                 <number>255</number>
-                </property>
-                <property name="value">
-                 <number>0</number>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="7">
-               <widget class="NoWheelSpinBox" name="caen_g3_offset_6">
+              <item row="4" column="3">
+               <widget class="NoWheelSpinBox" name="caen_g3_offset_2">
                 <property name="font">
                  <font>
                   <kerning>true</kerning>
@@ -6979,10 +6886,157 @@
                 </property>
                </widget>
               </item>
+              <item row="0" column="6">
+               <widget class="NoWheelSpinBox" name="caen_g3_offset_box">
+                <property name="maximum">
+                 <number>65535</number>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="1">
+               <widget class="NoWheelSpinBox" name="caen_g3_offset_0">
+                <property name="font">
+                 <font>
+                  <kerning>true</kerning>
+                 </font>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="wrapping">
+                 <bool>false</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
+                </property>
+                <property name="showGroupSeparator" stdset="0">
+                 <bool>false</bool>
+                </property>
+                <property name="maximum">
+                 <number>255</number>
+                </property>
+                <property name="value">
+                 <number>0</number>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="7">
+               <widget class="QCheckBox" name="caen_g3_acq_mask_6">
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="5">
+               <widget class="QLabel" name="caen_g3_offset_label">
+                <property name="text">
+                 <string>Offset</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QCheckBox" name="caen_g3_enable_box">
+                <property name="text">
+                 <string>Enabled</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1">
+               <widget class="QLabel" name="caen_g3_ch0_label">
+                <property name="text">
+                 <string>Ch24</string>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="6">
+               <widget class="NoWheelSpinBox" name="caen_g3_offset_5">
+                <property name="font">
+                 <font>
+                  <kerning>true</kerning>
+                 </font>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="wrapping">
+                 <bool>false</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
+                </property>
+                <property name="showGroupSeparator" stdset="0">
+                 <bool>false</bool>
+                </property>
+                <property name="maximum">
+                 <number>255</number>
+                </property>
+                <property name="value">
+                 <number>0</number>
+                </property>
+               </widget>
+              </item>
               <item row="2" column="5">
                <widget class="QCheckBox" name="caen_g3_trig_mask_4">
                 <property name="text">
                  <string/>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="4">
+               <widget class="QLabel" name="caen_g3_ch3_label">
+                <property name="text">
+                 <string>Ch27</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="8">
+               <widget class="QCheckBox" name="caen_g3_acq_mask_7">
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="2">
+               <widget class="QLabel" name="caen_g3_ch1_label">
+                <property name="text">
+                 <string>Ch25</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="3">
+               <widget class="QCheckBox" name="caen_g3_acq_mask_2">
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="8">
+               <widget class="NoWheelSpinBox" name="caen_g3_offset_7">
+                <property name="font">
+                 <font>
+                  <kerning>true</kerning>
+                 </font>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="wrapping">
+                 <bool>false</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
+                </property>
+                <property name="showGroupSeparator" stdset="0">
+                 <bool>false</bool>
+                </property>
+                <property name="maximum">
+                 <number>255</number>
+                </property>
+                <property name="value">
+                 <number>0</number>
                 </property>
                </widget>
               </item>
@@ -7000,24 +7054,10 @@
                 </property>
                </widget>
               </item>
-              <item row="3" column="4">
-               <widget class="QCheckBox" name="caen_g3_acq_mask_3">
+              <item row="2" column="7">
+               <widget class="QCheckBox" name="caen_g3_trig_mask_6">
                 <property name="text">
                  <string/>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="8">
-               <widget class="QLabel" name="caen_g3_ch7_label">
-                <property name="text">
-                 <string>Ch31</string>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="4">
-               <widget class="QLabel" name="caen_g3_ch3_label">
-                <property name="text">
-                 <string>Ch27</string>
                 </property>
                </widget>
               </item>
@@ -7034,6 +7074,54 @@
                 </property>
                </widget>
               </item>
+              <item row="2" column="4">
+               <widget class="QCheckBox" name="caen_g3_trig_mask_3">
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="5">
+               <widget class="NoWheelSpinBox" name="caen_g3_offset_4">
+                <property name="font">
+                 <font>
+                  <kerning>true</kerning>
+                 </font>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="wrapping">
+                 <bool>false</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
+                </property>
+                <property name="showGroupSeparator" stdset="0">
+                 <bool>false</bool>
+                </property>
+                <property name="maximum">
+                 <number>255</number>
+                </property>
+                <property name="value">
+                 <number>0</number>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="8">
+               <widget class="QCheckBox" name="caen_g3_trig_mask_7">
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="6">
+               <widget class="QCheckBox" name="caen_g3_trig_mask_5">
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
               <item row="3" column="0">
                <widget class="QCheckBox" name="caen_g3_acq_box">
                 <property name="layoutDirection">
@@ -7047,10 +7135,30 @@
                 </property>
                </widget>
               </item>
-              <item row="0" column="1">
-               <widget class="QCheckBox" name="caen_g3_enable_box">
-                <property name="text">
-                 <string>Enabled</string>
+              <item row="4" column="7">
+               <widget class="NoWheelSpinBox" name="caen_g3_offset_6">
+                <property name="font">
+                 <font>
+                  <kerning>true</kerning>
+                 </font>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="wrapping">
+                 <bool>false</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
+                </property>
+                <property name="showGroupSeparator" stdset="0">
+                 <bool>false</bool>
+                </property>
+                <property name="maximum">
+                 <number>255</number>
+                </property>
+                <property name="value">
+                 <number>0</number>
                 </property>
                </widget>
               </item>
@@ -7074,40 +7182,77 @@
                 </property>
                </widget>
               </item>
-              <item row="0" column="6">
-               <widget class="NoWheelSpinBox" name="caen_g3_offset_box">
-                <property name="maximum">
-                 <number>65535</number>
+              <item row="1" column="5">
+               <widget class="QLabel" name="caen_g3_ch4_label">
+                <property name="text">
+                 <string>Ch28</string>
                 </property>
                </widget>
               </item>
-              <item row="0" column="5">
-               <widget class="QLabel" name="caen_g3_offset_label">
+              <item row="0" column="0">
+               <widget class="QLabel" name="caen_g3_label">
+                <property name="font">
+                 <font>
+                  <bold>true</bold>
+                 </font>
+                </property>
                 <property name="text">
-                 <string>Offset</string>
+                 <string>Group 3</string>
                 </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="QCheckBox" name="caen_g3_trig_mask_0">
+                <property name="text">
+                 <string/>
                 </property>
-                <property name="buddy">
-                 <cstring>caen_g0_thres_box</cstring>
+               </widget>
+              </item>
+              <item row="3" column="4">
+               <widget class="QCheckBox" name="caen_g3_acq_mask_3">
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="2">
+               <widget class="NoWheelSpinBox" name="caen_g3_offset_1">
+                <property name="font">
+                 <font>
+                  <kerning>true</kerning>
+                 </font>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="wrapping">
+                 <bool>false</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
+                </property>
+                <property name="showGroupSeparator" stdset="0">
+                 <bool>false</bool>
+                </property>
+                <property name="maximum">
+                 <number>255</number>
+                </property>
+                <property name="value">
+                 <number>0</number>
                 </property>
                </widget>
               </item>
              </layout>
             </item>
             <item>
-             <spacer name="verticalSpacer_4">
+             <spacer name="verticalSpacer_2">
               <property name="orientation">
                <enum>Qt::Orientation::Vertical</enum>
-              </property>
-              <property name="sizeType">
-               <enum>QSizePolicy::Policy::Fixed</enum>
               </property>
               <property name="sizeHint" stdset="0">
                <size>
                 <width>20</width>
-                <height>368</height>
+                <height>40</height>
                </size>
               </property>
              </spacer>
@@ -7151,8 +7296,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>790</width>
-             <height>476</height>
+             <width>840</width>
+             <height>474</height>
             </rect>
            </property>
            <property name="maximumSize">
@@ -8649,7 +8794,7 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>776</width>
+             <width>826</width>
              <height>572</height>
             </rect>
            </property>
@@ -9835,7 +9980,7 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>776</width>
+             <width>826</width>
              <height>1334</height>
             </rect>
            </property>
@@ -14569,26 +14714,6 @@
  <tabstops>
   <tabstop>acoustics_scroll_area</tabstop>
   <tabstop>cam_scroll_area</tabstop>
-  <tabstop>caen_length_box</tabstop>
-  <tabstop>caen_post_trig_box</tabstop>
-  <tabstop>caen_polarity_box</tabstop>
-  <tabstop>caen_io_box</tabstop>
-  <tabstop>caen_g0_trig_mask_0</tabstop>
-  <tabstop>caen_g0_trig_mask_1</tabstop>
-  <tabstop>caen_g0_trig_mask_2</tabstop>
-  <tabstop>caen_g0_trig_mask_3</tabstop>
-  <tabstop>caen_g0_trig_mask_4</tabstop>
-  <tabstop>caen_g0_trig_mask_5</tabstop>
-  <tabstop>caen_g0_trig_mask_6</tabstop>
-  <tabstop>caen_g0_trig_mask_7</tabstop>
-  <tabstop>caen_g0_acq_mask_0</tabstop>
-  <tabstop>caen_g0_acq_mask_1</tabstop>
-  <tabstop>caen_g0_acq_mask_2</tabstop>
-  <tabstop>caen_g0_acq_mask_3</tabstop>
-  <tabstop>caen_g0_acq_mask_4</tabstop>
-  <tabstop>caen_g0_acq_mask_5</tabstop>
-  <tabstop>caen_g0_acq_mask_6</tabstop>
-  <tabstop>caen_g0_acq_mask_7</tabstop>
   <tabstop>acous_enable_ch1</tabstop>
   <tabstop>acous_offset_ch1</tabstop>
   <tabstop>acous_trig_ch1</tabstop>
