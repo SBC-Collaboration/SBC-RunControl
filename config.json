@@ -51,7 +51,7 @@
       }
     },
     "sql": {
-      "enabled": true,
+      "enabled": false,
       "hostname": "sbcslowcontrol.fnal.gov",
       "port": 3306,
       "user": "daq",
@@ -123,26 +123,31 @@
       ]
     },
     "caen": {
-      "exec_path": "",
-      "config_path": "/home/sbc/packages/SiPMs-DAQ/daq_config.json",
+      "data_path": "/home/sbc/RunControl/run-data/current_event/",
       "model": "DT5740D",
-      "port": 0,
+      "link": 0,
       "connection": "USB",
       "evs_per_read": 500,
       "rec_length": 500,
       "post_trig": 50,
       "trig_in_as_gate": false,
       "decimation": 0,
-      "overlap_rej": false,
+      "overlap_en": false,
       "polarity": "Rising",
+      "majority_level": 1,
+      "majority_window": 10,
+      "clock_source": "Internal",
+      "acq_mode": "SW CTRL",
       "io_level": "TTL",
       "ext_trig": "Disabled",
-      "sw_trig": "ACQ+EXT"
+      "sw_trig": "Disabled",
+      "ch_trig": "Disabled"
     },
     "caen_g0": {
       "enabled": false,
       "threshold": 2000,
       "offset": 32768,
+      "range": "2 Vpp",
       "trig_mask": [
         true,
         true,
@@ -178,6 +183,7 @@
       "enabled": false,
       "threshold": 2000,
       "offset": 32768,
+      "range": "2 Vpp",
       "trig_mask": [
         true,
         true,
@@ -213,6 +219,7 @@
       "enabled": false,
       "threshold": 2000,
       "offset": 32768,
+      "range": "2 Vpp",
       "trig_mask": [
         false,
         false,
@@ -248,6 +255,7 @@
       "enabled": false,
       "threshold": 2000,
       "offset": 32768,
+      "range": "2 Vpp",
       "trig_mask": [
         false,
         false,

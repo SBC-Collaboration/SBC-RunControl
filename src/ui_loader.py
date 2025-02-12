@@ -153,21 +153,13 @@ class SettingsWindow(QMainWindow):
             dir=self.config["scint"]["amp2"]["iv_rc_dir"])
         self.ui.sipm_amp2_iv_rc_data_dir_edit.setText(amp2_iv_dir)
 
-    def select_caen_exec_path(self):
-        caen_exec_path, _ = QFileDialog.getOpenFileName(
+    def select_caen_data_path(self):
+        caen_data_path = QFileDialog.getExistingDirectory(
             self,
-            caption="CAEN Software Executable Location",
-            dir=self.config["scint"]["caen"]["exec_path"]
+            caption="CAEN Data Directory",
+            dir=self.config["scint"]["caen"]["data_path"]
         )
-        self.ui.caen_exec_path_edit.setText(caen_exec_path)
-
-    def select_caen_config_path(self):
-        caen_config_path, _ = QFileDialog.getOpenFileName(
-            self,
-            caption="CAEN Configuration File Location",
-            dir=self.config["scint"]["caen"]["config_path"]
-        )
-        self.ui.caen_config_path_edit.setText(caen_config_path)
+        self.ui.caen_data_path_box.setText(caen_data_path)
 
     def caen_individual_changed(self):
         if self.sender():
@@ -204,6 +196,8 @@ class SettingsWindow(QMainWindow):
                 self.widgets[f"caen_{setting}_mask_{ch}"].setChecked(True)
         else:
             return  # if partially checked, do nothing
+        
+    
 
 
 # Loads log window

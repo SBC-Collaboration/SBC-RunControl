@@ -135,6 +135,7 @@ class Config(QObject):
 
         # CAEN
         caen_config = self.config["scint"]["caen"]
+        ui.caen_data_path_box.setText(caen_config["data_path"])
         ui.caen_model_box.setCurrentText(caen_config["model"])
         ui.caen_link_box.setValue(caen_config["link"])
         ui.caen_conn_box.setCurrentText(caen_config["connection"])
@@ -147,6 +148,8 @@ class Config(QObject):
         ui.caen_polarity_box.setCurrentText(caen_config["polarity"])
         ui.caen_majority_box.setValue(caen_config["majority_level"])
         ui.caen_majority_window_box.setValue(caen_config["majority_window"])
+        ui.caen_clock_box.setCurrentText(caen_config["clock_source"])
+        ui.caen_acq_box.setCurrentText(caen_config["acq_mode"])
         ui.caen_io_box.setCurrentText(caen_config["io_level"])
         ui.caen_ext_trig_box.setCurrentText(caen_config["ext_trig"])
         ui.caen_sw_trig_box.setCurrentText(caen_config["sw_trig"])
@@ -157,6 +160,7 @@ class Config(QObject):
             widgets[f"caen_{gp}_enable_box"].setChecked(gp_config["enabled"])
             widgets[f"caen_{gp}_thres_box"].setValue(gp_config["threshold"])
             widgets[f"caen_{gp}_offset_box"].setValue(gp_config["offset"])
+            widgets[f"caen_{gp}_range_box"].setCurrentText(gp_config["range"])
             for ch in range(8):
                 widgets[f"caen_{gp}_trig_mask_{ch}"].setChecked(gp_config["trig_mask"][ch])
                 widgets[f"caen_{gp}_acq_mask_{ch}"].setChecked(gp_config["acq_mask"][ch])
@@ -361,6 +365,7 @@ class Config(QObject):
         }
 
         caen_config = {
+            "data_path": ui.caen_data_path_box.text(),
             "model": ui.caen_model_box.currentText(),
             "link": ui.caen_link_box.value(),
             "connection": ui.caen_conn_box.currentText(),
@@ -373,6 +378,8 @@ class Config(QObject):
             "polarity": ui.caen_polarity_box.currentText(),
             "majority_level": ui.caen_majority_box.value(),
             "majority_window": ui.caen_majority_window_box.value(),
+            "clock_source": ui.caen_clock_box.currentText(),
+            "acq_mode": ui.caen_acq_box.currentText(),
             "io_level": ui.caen_io_box.currentText(),
             "ext_trig": ui.caen_ext_trig_box.currentText(),
             "sw_trig": ui.caen_sw_trig_box.currentText(),
@@ -384,6 +391,7 @@ class Config(QObject):
             "enabled": ui.caen_g0_enable_box.isChecked(),
             "threshold": ui.caen_g0_thres_box.value(),
             "offset": ui.caen_g0_offset_box.value(),
+            "range": ui.caen_g0_range_box.currentText(),
             "trig_mask": [widgets[f"caen_g0_trig_mask_{ch}"].isChecked() for ch in range(8)],
             "acq_mask": [widgets[f"caen_g0_acq_mask_{ch}"].isChecked() for ch in range(8)],
             "ch_offset": [widgets[f"caen_g0_offset_{ch}"].value() for ch in range(8)],
@@ -393,6 +401,7 @@ class Config(QObject):
             "enabled": ui.caen_g1_enable_box.isChecked(),
             "threshold": ui.caen_g1_thres_box.value(),
             "offset": ui.caen_g1_offset_box.value(),
+            "range": ui.caen_g1_range_box.currentText(),
             "trig_mask": [widgets[f"caen_g1_trig_mask_{ch}"].isChecked() for ch in range(8)],
             "acq_mask": [widgets[f"caen_g1_acq_mask_{ch}"].isChecked() for ch in range(8)],
             "ch_offset": [widgets[f"caen_g1_offset_{ch}"].value() for ch in range(8)],
@@ -402,6 +411,7 @@ class Config(QObject):
             "enabled": ui.caen_g2_enable_box.isChecked(),
             "threshold": ui.caen_g2_thres_box.value(),
             "offset": ui.caen_g2_offset_box.value(),
+            "range": ui.caen_g2_range_box.currentText(),
             "trig_mask": [widgets[f"caen_g2_trig_mask_{ch}"].isChecked() for ch in range(8)],
             "acq_mask": [widgets[f"caen_g2_acq_mask_{ch}"].isChecked() for ch in range(8)],
             "ch_offset": [widgets[f"caen_g2_offset_{ch}"].value() for ch in range(8)],
@@ -411,6 +421,7 @@ class Config(QObject):
             "enabled": ui.caen_g3_enable_box.isChecked(),
             "threshold": ui.caen_g3_thres_box.value(),
             "offset": ui.caen_g3_offset_box.value(),
+            "range": ui.caen_g3_range_box.currentText(),
             "trig_mask": [widgets[f"caen_g3_trig_mask_{ch}"].isChecked() for ch in range(8)],
             "acq_mask": [widgets[f"caen_g3_acq_mask_{ch}"].isChecked() for ch in range(8)],
             "ch_offset": [widgets[f"caen_g3_offset_{ch}"].value() for ch in range(8)],
