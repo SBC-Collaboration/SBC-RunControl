@@ -46,7 +46,7 @@
     <property name="spacing">
      <number>3</number>
     </property>
-    <item row="0" column="0">
+    <item row="1" column="0">
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
        <number>0</number>
@@ -4795,9 +4795,9 @@
            <property name="geometry">
             <rect>
              <x>0</x>
-             <y>-276</y>
+             <y>0</y>
              <width>822</width>
-             <height>754</height>
+             <height>782</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_11">
@@ -4824,7 +4824,383 @@
               <property name="spacing">
                <number>3</number>
               </property>
-              <item row="4" column="7">
+              <item row="0" column="7">
+               <widget class="QCheckBox" name="caen_enabled_box">
+                <property name="text">
+                 <string>Enabled</string>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="3">
+               <widget class="NoWheelSpinBox" name="caen_majority_window_box">
+                <property name="maximum">
+                 <number>15</number>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="1">
+               <widget class="NoWheelComboBox" name="caen_clock_box">
+                <item>
+                 <property name="text">
+                  <string>Internal</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>CLK-IN</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="6" column="3">
+               <widget class="NoWheelComboBox" name="caen_acq_box">
+                <item>
+                 <property name="text">
+                  <string>SW CTRL</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>TRG-IN CTRL</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>GPI CTRL</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="5" column="4">
+               <widget class="QLabel" name="caen_decimation_label_2">
+                <property name="text">
+                 <string>Mem Full Mode</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>caen_decimation_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="5">
+               <widget class="NoWheelComboBox" name="caen_conn_box">
+                <item>
+                 <property name="text">
+                  <string>USB</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>PCI</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="5" column="5">
+               <widget class="NoWheelComboBox" name="caen_mem_full_box">
+                <item>
+                 <property name="text">
+                  <string>Normal</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>One Buf Free</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="0" column="0" colspan="4">
+               <widget class="QLabel" name="caen_general_label">
+                <property name="font">
+                 <font>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>CAEN Digitizer General</string>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="6">
+               <widget class="QLabel" name="caen_sw_trig_label">
+                <property name="text">
+                 <string>SW Trig Mode</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>caen_sw_trig_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="0">
+               <widget class="QLabel" name="caen_length_label">
+                <property name="text">
+                 <string>Rec Length</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>caen_length_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="NoWheelSpinBox" name="caen_link_box">
+                <property name="minimumSize">
+                 <size>
+                  <width>50</width>
+                  <height>0</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="2">
+               <widget class="QLabel" name="caen_acq_label">
+                <property name="text">
+                 <string>Acq Mode</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>caen_io_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="4">
+               <widget class="QCheckBox" name="caen_overlap_box">
+                <property name="text">
+                 <string>Overlap En</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="4">
+               <widget class="QLabel" name="caen_conn_label">
+                <property name="text">
+                 <string>Connection Type</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>caen_conn_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="2">
+               <widget class="QLabel" name="caen_post_trig_label">
+                <property name="text">
+                 <string>Post Trig</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>caen_post_trig_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="1">
+               <widget class="NoWheelComboBox" name="caen_polarity_box">
+                <item>
+                 <property name="text">
+                  <string>Rising</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Falling</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="2" column="6">
+               <widget class="QLabel" name="caen_evs_label">
+                <property name="text">
+                 <string>Evs Per Read</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>caen_evs_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="0">
+               <widget class="QLabel" name="caen_clock_label">
+                <property name="text">
+                 <string>Clock Source</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>caen_polarity_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="3">
+               <widget class="NoWheelComboBox" name="caen_io_box">
+                <item>
+                 <property name="text">
+                  <string>TTL</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>NIM</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="4" column="0">
+               <widget class="QLabel" name="caen_majority_label">
+                <property name="text">
+                 <string>Maj Level</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>caen_length_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="1">
+               <widget class="NoWheelSpinBox" name="caen_majority_box">
+                <property name="maximum">
+                 <number>3</number>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="1">
+               <widget class="NoWheelSpinBox" name="caen_length_box">
+                <property name="maximum">
+                 <number>10000</number>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="6">
+               <widget class="QLabel" name="caen_ext_trig_label">
+                <property name="text">
+                 <string>Ext Trig Mode</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>caen_ext_trig_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QLabel" name="caen_link_label">
+                <property name="text">
+                 <string>Link</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>caen_link_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="2">
+               <widget class="QLabel" name="caen_majority_window_label">
+                <property name="text">
+                 <string>Maj Window</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>caen_length_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="5">
+               <widget class="QCheckBox" name="caen_trigin_gate_box">
+                <property name="text">
+                 <string>TRIG-IN as Gate</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="7">
+               <widget class="NoWheelComboBox" name="caen_ext_trig_box">
+                <item>
+                 <property name="text">
+                  <string>Disabled</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>ACQ Only</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>EXT Only</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>ACQ+EXT</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="5" column="2">
+               <widget class="QLabel" name="caen_io_label">
+                <property name="text">
+                 <string>IO Level</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>caen_io_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="6">
+               <widget class="QLabel" name="caen_ch_trig_label">
+                <property name="text">
+                 <string>SW Trig Mode</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>caen_sw_trig_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="3">
+               <widget class="NoWheelSpinBox" name="caen_post_trig_box">
+                <property name="suffix">
+                 <string>%</string>
+                </property>
+                <property name="maximum">
+                 <number>100</number>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="7">
+               <widget class="NoWheelSpinBox" name="caen_evs_box">
+                <property name="maximum">
+                 <number>10000</number>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="7">
                <widget class="NoWheelComboBox" name="caen_ch_trig_box">
                 <item>
                  <property name="text">
@@ -4848,75 +5224,7 @@
                 </item>
                </widget>
               </item>
-              <item row="3" column="2">
-               <widget class="QLabel" name="caen_majority_window_label">
-                <property name="text">
-                 <string>Maj Window</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>caen_length_box</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="1">
-               <widget class="NoWheelComboBox" name="caen_polarity_box">
-                <item>
-                 <property name="text">
-                  <string>Rising</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Falling</string>
-                 </property>
-                </item>
-               </widget>
-              </item>
-              <item row="4" column="0">
-               <widget class="QLabel" name="caen_polarity_label">
-                <property name="text">
-                 <string>Polarity</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>caen_polarity_box</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="4">
-               <widget class="QCheckBox" name="caen_overlap_box">
-                <property name="text">
-                 <string>Overlap En</string>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="7">
-               <widget class="QCheckBox" name="caen_enabled_box">
-                <property name="text">
-                 <string>Enabled</string>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="3">
-               <widget class="NoWheelComboBox" name="caen_io_box">
-                <item>
-                 <property name="text">
-                  <string>TTL</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>NIM</string>
-                 </property>
-                </item>
-               </widget>
-              </item>
-              <item row="3" column="5">
+              <item row="4" column="5">
                <widget class="NoWheelSpinBox" name="caen_decimation_box">
                 <property name="prefix">
                  <string/>
@@ -4932,39 +5240,20 @@
                 </property>
                </widget>
               </item>
-              <item row="1" column="2">
-               <widget class="QLabel" name="caen_model_label">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
+              <item row="5" column="0">
+               <widget class="QLabel" name="caen_polarity_label">
                 <property name="text">
-                 <string>Model</string>
+                 <string>Polarity</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
-                 <cstring>caen_model_box</cstring>
+                 <cstring>caen_polarity_box</cstring>
                 </property>
                </widget>
               </item>
-              <item row="3" column="0">
-               <widget class="QLabel" name="caen_majority_label">
-                <property name="text">
-                 <string>Maj Level</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>caen_length_box</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="7">
+              <item row="4" column="7">
                <widget class="NoWheelComboBox" name="caen_sw_trig_box">
                 <item>
                  <property name="text">
@@ -4989,59 +5278,6 @@
                </widget>
               </item>
               <item row="2" column="3">
-               <widget class="NoWheelSpinBox" name="caen_post_trig_box">
-                <property name="suffix">
-                 <string>%</string>
-                </property>
-                <property name="maximum">
-                 <number>100</number>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="1">
-               <widget class="NoWheelSpinBox" name="caen_link_box">
-                <property name="minimumSize">
-                 <size>
-                  <width>50</width>
-                  <height>0</height>
-                 </size>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="0">
-               <widget class="QLabel" name="caen_length_label">
-                <property name="text">
-                 <string>Rec Length</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>caen_length_box</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="7">
-               <widget class="NoWheelSpinBox" name="caen_evs_box">
-                <property name="maximum">
-                 <number>10000</number>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="2">
-               <widget class="QLabel" name="caen_io_label">
-                <property name="text">
-                 <string>IO Level</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>caen_io_box</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="3">
                <widget class="NoWheelComboBox" name="caen_model_box">
                 <item>
                  <property name="text">
@@ -5060,21 +5296,7 @@
                 </item>
                </widget>
               </item>
-              <item row="1" column="5">
-               <widget class="NoWheelComboBox" name="caen_conn_box">
-                <item>
-                 <property name="text">
-                  <string>USB</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>PCI</string>
-                 </property>
-                </item>
-               </widget>
-              </item>
-              <item row="3" column="4">
+              <item row="4" column="4">
                <widget class="QLabel" name="caen_decimation_label">
                 <property name="text">
                  <string>Decimation</string>
@@ -5087,172 +5309,29 @@
                 </property>
                </widget>
               </item>
-              <item row="3" column="1">
-               <widget class="NoWheelSpinBox" name="caen_majority_box">
-                <property name="maximum">
-                 <number>3</number>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="4">
-               <widget class="QLabel" name="caen_conn_label">
-                <property name="text">
-                 <string>Connection Type</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>caen_conn_box</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="7">
-               <widget class="NoWheelComboBox" name="caen_ext_trig_box">
-                <item>
-                 <property name="text">
-                  <string>Disabled</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>ACQ Only</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>EXT Only</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>ACQ+EXT</string>
-                 </property>
-                </item>
-               </widget>
-              </item>
-              <item row="3" column="3">
-               <widget class="NoWheelSpinBox" name="caen_majority_window_box">
-                <property name="maximum">
-                 <number>15</number>
-                </property>
-               </widget>
-              </item>
               <item row="2" column="2">
-               <widget class="QLabel" name="caen_post_trig_label">
+               <widget class="QLabel" name="caen_model_label">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
                 <property name="text">
-                 <string>Post Trig</string>
+                 <string>Model</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
-                 <cstring>caen_post_trig_box</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="5">
-               <widget class="NoWheelComboBox" name="caen_mem_full_box">
-                <item>
-                 <property name="text">
-                  <string>Normal</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>One Buf Free</string>
-                 </property>
-                </item>
-               </widget>
-              </item>
-              <item row="2" column="6">
-               <widget class="QLabel" name="caen_ext_trig_label">
-                <property name="text">
-                 <string>Ext Trig Mode</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>caen_ext_trig_box</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="6">
-               <widget class="QLabel" name="caen_evs_label">
-                <property name="text">
-                 <string>Evs Per Read</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>caen_evs_box</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="4">
-               <widget class="QLabel" name="caen_decimation_label_2">
-                <property name="text">
-                 <string>Mem Full Mode</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>caen_decimation_box</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="6">
-               <widget class="QLabel" name="caen_sw_trig_label">
-                <property name="text">
-                 <string>SW Trig Mode</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>caen_sw_trig_box</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="5">
-               <widget class="QCheckBox" name="caen_trigin_gate_box">
-                <property name="text">
-                 <string>TRIG-IN as Gate</string>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="0" colspan="4">
-               <widget class="QLabel" name="caen_general_label">
-                <property name="font">
-                 <font>
-                  <bold>true</bold>
-                 </font>
-                </property>
-                <property name="text">
-                 <string>CAEN Digitizer General</string>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="6">
-               <widget class="QLabel" name="caen_ch_trig_label">
-                <property name="text">
-                 <string>SW Trig Mode</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>caen_sw_trig_box</cstring>
+                 <cstring>caen_model_box</cstring>
                 </property>
                </widget>
               </item>
               <item row="1" column="0">
-               <widget class="QLabel" name="caen_link_label">
+               <widget class="QLabel" name="caen_data_path_label">
                 <property name="text">
-                 <string>Link</string>
+                 <string>Data Path</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
@@ -5262,70 +5341,14 @@
                 </property>
                </widget>
               </item>
-              <item row="2" column="1">
-               <widget class="NoWheelSpinBox" name="caen_length_box">
-                <property name="maximum">
-                 <number>10000</number>
-                </property>
-               </widget>
+              <item row="1" column="1" colspan="6">
+               <widget class="QLineEdit" name="caen_data_path_box"/>
               </item>
-              <item row="5" column="0">
-               <widget class="QLabel" name="caen_clock_label">
+              <item row="1" column="7">
+               <widget class="QToolButton" name="caen_data_path_but">
                 <property name="text">
-                 <string>Clock Source</string>
+                 <string>...</string>
                 </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>caen_polarity_box</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="5" column="1">
-               <widget class="NoWheelComboBox" name="caen_clock_box">
-                <item>
-                 <property name="text">
-                  <string>Internal</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>CLK-IN</string>
-                 </property>
-                </item>
-               </widget>
-              </item>
-              <item row="5" column="2">
-               <widget class="QLabel" name="caen_acq_label">
-                <property name="text">
-                 <string>Acq Mode</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>caen_io_box</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="5" column="3">
-               <widget class="NoWheelComboBox" name="caen_acq_box">
-                <item>
-                 <property name="text">
-                  <string>SW CTRL</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>TRG-IN CTRL</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>GPI CTRL</string>
-                 </property>
-                </item>
                </widget>
               </item>
              </layout>
@@ -5851,12 +5874,12 @@
                <widget class="NoWheelComboBox" name="caen_g0_range_box">
                 <item>
                  <property name="text">
-                  <string>2Vpp</string>
+                  <string>2 Vpp</string>
                  </property>
                 </item>
                 <item>
                  <property name="text">
-                  <string>0.5Vpp</string>
+                  <string>0.5 Vpp</string>
                  </property>
                 </item>
                </widget>
@@ -6367,12 +6390,12 @@
                <widget class="NoWheelComboBox" name="caen_g1_range_box">
                 <item>
                  <property name="text">
-                  <string>2Vpp</string>
+                  <string>2 Vpp</string>
                  </property>
                 </item>
                 <item>
                  <property name="text">
-                  <string>0.5Vpp</string>
+                  <string>0.5 Vpp</string>
                  </property>
                 </item>
                </widget>
@@ -6883,12 +6906,12 @@
                <widget class="NoWheelComboBox" name="caen_g2_range_box">
                 <item>
                  <property name="text">
-                  <string>2Vpp</string>
+                  <string>2 Vpp</string>
                  </property>
                 </item>
                 <item>
                  <property name="text">
-                  <string>0.5Vpp</string>
+                  <string>0.5 Vpp</string>
                  </property>
                 </item>
                </widget>
@@ -7396,15 +7419,15 @@
                </widget>
               </item>
               <item row="0" column="4">
-               <widget class="NoWheelComboBox" name="caen_g0_range_box_4">
+               <widget class="NoWheelComboBox" name="caen_g3_range_box">
                 <item>
                  <property name="text">
-                  <string>2Vpp</string>
+                  <string>2 Vpp</string>
                  </property>
                 </item>
                 <item>
                  <property name="text">
-                  <string>0.5Vpp</string>
+                  <string>0.5 Vpp</string>
                  </property>
                 </item>
                </widget>
@@ -7752,13 +7775,6 @@
                 </property>
                 <property name="maximum">
                  <double>1410.000000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="6">
-               <widget class="QToolButton" name="acous_driver_dir_but">
-                <property name="text">
-                 <string>...</string>
                 </property>
                </widget>
               </item>
@@ -15079,8 +15095,8 @@
    <slot>select_position_sketch_dir()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>779</x>
-     <y>1219</y>
+     <x>829</x>
+     <y>1315</y>
     </hint>
     <hint type="destinationlabel">
      <x>199</x>
@@ -15095,8 +15111,8 @@
    <slot>select_trigger_sketch_dir()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>779</x>
-     <y>246</y>
+     <x>829</x>
+     <y>255</y>
     </hint>
     <hint type="destinationlabel">
      <x>199</x>
@@ -15111,8 +15127,8 @@
    <slot>select_log_path()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>793</x>
-     <y>115</y>
+     <x>829</x>
+     <y>123</y>
     </hint>
     <hint type="destinationlabel">
      <x>199</x>
@@ -15127,8 +15143,8 @@
    <slot>select_data_dir()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>793</x>
-     <y>140</y>
+     <x>829</x>
+     <y>151</y>
     </hint>
     <hint type="destinationlabel">
      <x>399</x>
@@ -15143,8 +15159,8 @@
    <slot>select_clock_sketch_dir()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>779</x>
-     <y>727</y>
+     <x>829</x>
+     <y>788</y>
     </hint>
     <hint type="destinationlabel">
      <x>199</x>
@@ -15159,8 +15175,8 @@
    <slot>select_config_path()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>793</x>
-     <y>90</y>
+     <x>829</x>
+     <y>95</y>
     </hint>
     <hint type="destinationlabel">
      <x>399</x>
@@ -15175,8 +15191,8 @@
    <slot>select_amp1_iv_dir()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>779</x>
-     <y>118</y>
+     <x>829</x>
+     <y>149</y>
     </hint>
     <hint type="destinationlabel">
      <x>399</x>
@@ -15191,8 +15207,8 @@
    <slot>select_amp2_iv_dir()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>779</x>
-     <y>315</y>
+     <x>829</x>
+     <y>367</y>
     </hint>
     <hint type="destinationlabel">
      <x>399</x>
@@ -15216,6 +15232,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>caen_data_path_but</sender>
+   <signal>clicked()</signal>
+   <receiver>SettingsWindow</receiver>
+   <slot>select_caen_data_path()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>743</x>
+     <y>110</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>424</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>select_config_path()</slot>
@@ -15231,8 +15263,7 @@
   <slot>select_amp2_iv_dir()</slot>
   <slot>on_caen_individual_changed()</slot>
   <slot>on_caen_group_changed()</slot>
-  <slot>select_caen_config_path()</slot>
-  <slot>select_caen_exec_path()</slot>
   <slot>load_config_from_file()</slot>
+  <slot>select_caen_data_path()</slot>
  </slots>
 </ui>
