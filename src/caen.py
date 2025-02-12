@@ -1,5 +1,6 @@
 import json
 import os
+import numpy as np
 import logging
 from PySide6.QtCore import QTimer, QObject, Slot, Signal, QThread
 from collections import namedtuple
@@ -33,7 +34,12 @@ class Caen(QObject):
 
     @Slot()
     def periodic_task(self):
-        pass
+        # check if CAEN has enough events in buffer
+        if self.caen.RetrieveDataUntilNEvents(self.evs_per_read):
+            self.logger.info("Retrieving {self.evs_per_read} CAEN events.")
+            self.caen.DecodeEvents()
+            self.buffer.append(self.caen.GetDataDict())
+
 
     def set_config(self):
         self.config = self.main.config_class.run_config["scint"]["caen"]
@@ -51,6 +57,7 @@ class Caen(QObject):
         self.global_config.TrgInAsGate = self.config["trig_in_as_gate"]
         self.global_config.TriggerOverlappingEn = self.config["overlap_en"]
         self.global_config.MemoryFullMode = self.config["memory_full"]
+        self.global_config.TriggerCountingMode = self.config["counting_mode"]
         self.global_config.DecimationFactor = self.config["decimation"]
         self.global_config.MajorityLevel = self.config["majority_level"]
         self.global_config.MajorityWindow = self.config["majority_window"]
@@ -73,11 +80,10 @@ class Caen(QObject):
         
         self.caen.Setup(self.global_config, self.group_configs)
 
-        self.buffer = []
-
     @Slot()
     def start_run(self):
         self.config = self.main.config_class.run_config["scint"]["caen"]
+        self.evs_per_read = self.config["evs_per_read"] # save value for reading data
 
         self.caen = red_caen.CAEN(
             red_caen.iostream_wrapper(), 
@@ -103,8 +109,13 @@ class Caen(QObject):
         
         self.buffer = [] # create a list for data dictionaries
         # create writer
+        en_chs = np.sum([self.group_configs[i].Enabled for i in range(4)]) # number of enabled channels
+        rec_len = self.config["rec_length"]
         self.writer = Writer(
-            
+            os.path.join(self.config["data_path"], "scintillation.sbc"), # file path
+            ["EventCounter","EventSize","BoardId","TriggerSource","ChannelMask","TriggerTimeTag","Waveforms"] # column names
+            ['u4','u4','u4','u4','u4','u4','u2'], # data types
+            [[1],[1],[1],[1],[1],[1],[en_chs, rec_len]] # data shapes
         )
 
         self.caen.EnableAcquisition()
