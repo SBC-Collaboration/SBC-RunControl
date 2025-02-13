@@ -133,15 +133,17 @@
       "trig_in_as_gate": false,
       "decimation": 0,
       "overlap_en": false,
+      "memory_full": "Normal",
+      "counting_mode": "All",
       "polarity": "Rising",
-      "majority_level": 1,
+      "majority_level": 0,
       "majority_window": 10,
       "clock_source": "Internal",
       "acq_mode": "SW CTRL",
       "io_level": "TTL",
-      "ext_trig": "Disabled",
-      "sw_trig": "Disabled",
-      "ch_trig": "Disabled"
+      "ext_trig": "ACQ_ONLY",
+      "sw_trig": "ACQ_ONLY",
+      "ch_trig": "ACQ_ONLY"
     },
     "caen_g0": {
       "enabled": false,

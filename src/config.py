@@ -145,6 +145,8 @@ class Config(QObject):
         ui.caen_trigin_gate_box.setChecked(caen_config["trig_in_as_gate"])
         ui.caen_decimation_box.setValue(caen_config["decimation"])
         ui.caen_overlap_box.setChecked(caen_config["overlap_en"])
+        ui.caen_mem_full_box.setCurrentText(caen_config["memory_full"])
+        ui.caen_counting_box.setCurrentText(caen_config["counting_mode"])
         ui.caen_polarity_box.setCurrentText(caen_config["polarity"])
         ui.caen_majority_box.setValue(caen_config["majority_level"])
         ui.caen_majority_window_box.setValue(caen_config["majority_window"])
@@ -375,6 +377,8 @@ class Config(QObject):
             "trig_in_as_gate": ui.caen_trigin_gate_box.isChecked(),
             "decimation": ui.caen_decimation_box.value(),
             "overlap_en": ui.caen_overlap_box.isChecked(),
+            "memory_full": ui.caen_mem_full_box.currentText(),
+            "counting_mode": ui.caen_counting_box.currentText(),
             "polarity": ui.caen_polarity_box.currentText(),
             "majority_level": ui.caen_majority_box.value(),
             "majority_window": ui.caen_majority_window_box.value(),

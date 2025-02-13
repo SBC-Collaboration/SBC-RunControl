@@ -35,10 +35,11 @@ class Caen(QObject):
     @Slot()
     def periodic_task(self):
         # check if CAEN has enough events in buffer
-        if self.caen.RetrieveDataUntilNEvents(self.evs_per_read):
-            self.logger.info("Retrieving {self.evs_per_read} CAEN events.")
-            self.caen.DecodeEvents()
-            self.buffer.append(self.caen.GetDataDict())
+        if (self.main.run_state == self.main.run_states["active"] and self.caen):
+            if self.caen.RetrieveDataUntilNEvents(self.evs_per_read):
+                self.logger.info("Retrieving {self.evs_per_read} CAEN events.")
+                self.caen.DecodeEvents()
+                self.buffer.append(self.caen.GetDataDict())
 
 
     def set_config(self):
@@ -56,8 +57,8 @@ class Caen(QObject):
         self.global_config.IOLevel = getattr(red_caen.CAEN_DGTZ_IOLevel, self.config["io_level"])
         self.global_config.TrgInAsGate = self.config["trig_in_as_gate"]
         self.global_config.TriggerOverlappingEn = self.config["overlap_en"]
-        self.global_config.MemoryFullMode = self.config["memory_full"]
-        self.global_config.TriggerCountingMode = self.config["counting_mode"]
+        self.global_config.MemoryFullMode = False if self.config["memory_full"]=="Normal" else True
+        self.global_config.TriggerCountingMode = False if self.config["counting_mode"]=="Accepted Only" else True
         self.global_config.DecimationFactor = self.config["decimation"]
         self.global_config.MajorityLevel = self.config["majority_level"]
         self.global_config.MajorityWindow = self.config["majority_window"]
@@ -113,7 +114,7 @@ class Caen(QObject):
         rec_len = self.config["rec_length"]
         self.writer = Writer(
             os.path.join(self.config["data_path"], "scintillation.sbc"), # file path
-            ["EventCounter","EventSize","BoardId","TriggerSource","ChannelMask","TriggerTimeTag","Waveforms"] # column names
+            ["EventCounter","EventSize","BoardId","TriggerSource","ChannelMask","TriggerTimeTag","Waveforms"], # column names
             ['u4','u4','u4','u4','u4','u4','u2'], # data types
             [[1],[1],[1],[1],[1],[1],[en_chs, rec_len]] # data shapes
         )
