@@ -29,6 +29,7 @@ class SQL(QObject):
         super().__init__()
         self.main = mainwindow
         self.logger = logging.getLogger("rc")
+        self.db = None
 
         self.config = mainwindow.config_class.config["general"]["sql"]
         # save the password in ENV at sbcslowcontrol machine
@@ -40,8 +41,6 @@ class SQL(QObject):
         self.run_table = self.config["run_table"]
         self.event_table = self.config["event_table"]
         self.port = self.config["port"]
-
-        self.setup_connection()
 
         self.timer = QTimer(self)
         self.timer.setInterval(100)
@@ -56,15 +55,19 @@ class SQL(QObject):
     def periodic_task(self):
         pass
 
-
     def setup_connection(self):
-        self.db = pymysql.connect(host=self.hostname, user=self.user, passwd=self.token,
-                                  database=self.database, port=self.port)
+        self.db = pymysql.connect(
+            host=self.hostname, 
+            user=self.user, 
+            passwd=self.token,
+            database=self.database, 
+            port=self.port,
+            connect_timeout=10)
         self.cursor = self.db.cursor()
 
     @Slot()
     def close_connection(self):
-        if self.db.ping():
+        if self.db and self.db.ping():
             self.db.commit()
             self.cursor.close()
             self.db.close()
@@ -72,6 +75,7 @@ class SQL(QObject):
     def deleteLater(self):
         # overwrite delete method to close connections
         self.close_connection()
+        self.main.trigff_wait.wakeAll() # wake in case it's hanging
         super().deleteLater()
 
     def connect_and_execute(self, query):
@@ -96,7 +100,13 @@ class SQL(QObject):
     @Slot()
     def start_run(self):
         self.config = self.main.config_class.run_config
+        self.enabled = self.config["enabled"]
+        if not self.enabled:
+            self.run_started.emit("disabled-sql")
+            return
+        
         runs = self.retrieve_run_id("20240508")
+        self.setup_connection()
 
         self.db.ping()  # ping mysql server to make sure it's alive
         # TODO: data validation steps ...
@@ -130,6 +140,9 @@ class SQL(QObject):
 
     @Slot()
     def stop_event(self):
+        if not self.enabled:
+            self.event_stopped.emit("disabled-sql")
+            return
         self.db.ping()  # ping mysql server to make sure it's alive
         # TODO: data validation steps ...
         query = (f"UPDATE {self.run_table} "
