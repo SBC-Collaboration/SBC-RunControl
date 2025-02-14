@@ -10,8 +10,8 @@ import red_caen
 from sbcbinaryformat import Writer
 
 class Caen(QObject):
-    caen_started = Signal(str)
-    caen_stopped = Signal(str)
+    run_started = Signal(str)
+    run_stopped = Signal(str)
     event_started = Signal(str)
     event_stopped = Signal(str)
 
@@ -21,6 +21,8 @@ class Caen(QObject):
         self.logger = logging.getLogger("rc")
         self.scint_config = self.main.config_class.config["scint"]
         self.caen = None
+        self.global_config = red_caen.CAENGlobalConfig()
+        self.group_configs = [red_caen.CAENGroupConfig() for _ in range(8)]
 
         self.timer = QTimer(self)
         self.timer.setInterval(100)
@@ -46,7 +48,6 @@ class Caen(QObject):
         self.config = self.main.config_class.run_config["scint"]["caen"]
 
         # set global config from dict to class attributes
-        self.global_config = red_caen.CAENGlobalConfig()
         self.global_config.MaxEventsPerRead = self.config["evs_per_read"]
         self.global_config.RecordLength = self.config["rec_length"]
         self.global_config.PostTriggerPorcentage = self.config["post_trig"]
@@ -55,7 +56,7 @@ class Caen(QObject):
         self.global_config.CHTriggerMode = getattr(red_caen.CAEN_DGTZ_TriggerMode, self.config["ch_trig"])
         self.global_config.TriggerPolarity = getattr(red_caen.CAEN_DGTZ_TriggerPolarity, self.config["polarity"])
         self.global_config.IOLevel = getattr(red_caen.CAEN_DGTZ_IOLevel, self.config["io_level"])
-        self.global_config.TrgInAsGate = self.config["trig_in_as_gate"]
+        self.global_config.TrigInAsGate = self.config["trig_in_as_gate"]
         self.global_config.TriggerOverlappingEn = self.config["overlap_en"]
         self.global_config.MemoryFullMode = False if self.config["memory_full"]=="Normal" else True
         self.global_config.TriggerCountingMode = False if self.config["counting_mode"]=="Accepted Only" else True
@@ -63,14 +64,13 @@ class Caen(QObject):
         self.global_config.MajorityLevel = self.config["majority_level"]
         self.global_config.MajorityWindow = self.config["majority_window"]
 
-        self.group_configs = [red_caen.CAENGroupConfig() for _ in range(8)]
         for i in range(4):
             group_config = self.main.config_class.run_config["scint"][f"caen_g{i}"]
-            acq_mask = red_caen.ChannelMask()
-            trg_mask = red_caen.ChannelMask()
+            acq_mask = red_caen.ChannelsMask()
+            trg_mask = red_caen.ChannelsMask()
             for ch in range(8):
                 acq_mask[ch] = group_config["acq_mask"][ch]
-                trg_mask[ch] = group_config["trg_mask"][ch]
+                trg_mask[ch] = group_config["trig_mask"][ch]
             self.group_configs[i].AcquisitionMask = acq_mask
             self.group_configs[i].TriggerMask = trg_mask
             self.group_configs[i].Enabled = group_config["enabled"]
@@ -80,6 +80,7 @@ class Caen(QObject):
             self.group_configs[i].TriggerThreshold = group_config["threshold"]
         
         self.caen.Setup(self.global_config, self.group_configs)
+        self.logger.info("CAEN configuration set.")
 
     @Slot()
     def start_run(self):
@@ -108,31 +109,39 @@ class Caen(QObject):
         if not self.caen or not self.caen.IsConnected():
             self.logger.error("CAEN not connected.")
         
+        self.caen.ClearData()
         self.buffer = [] # create a list for data dictionaries
         # create writer
         en_chs = np.sum([self.group_configs[i].Enabled for i in range(4)]) # number of enabled channels
         rec_len = self.config["rec_length"]
         self.writer = Writer(
             os.path.join(self.config["data_path"], "scintillation.sbc"), # file path
-            ["EventCounter","EventSize","BoardId","TriggerSource","ChannelMask","TriggerTimeTag","Waveforms"], # column names
+            ["EventCounter","EventSize","BoardId","Pattern","ChannelMask","TriggerTimeTag","Waveforms"], # column names
             ['u4','u4','u4','u4','u4','u4','u2'], # data types
             [[1],[1],[1],[1],[1],[1],[en_chs, rec_len]] # data shapes
         )
 
         self.caen.EnableAcquisition()
+        self.logger.info("CAEN acquisition enabled.")
 
         self.event_started.emit("caen")
 
     @Slot()
     def stop_event(self):
         self.caen.DisableAcquisition()
-        # retrieve more data
+        self.logger.info("CAEN acquisition disabled.")
+
+        self.caen.RetrieveData()
+        self.caen.DecodeEvents()
+        if self.caen.GetNumberOfEvents() > 0:
+            self.buffer.append(self.caen.GetDataDict())
         self.caen.ClearData()
 
         # write data to file
         for b in self.buffer:
             self.writer.write(b)
         
+        self.logger.info("CAEN data written to file.")
         self.event_stopped.emit("caen")
 
     @Slot()

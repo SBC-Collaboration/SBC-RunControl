@@ -90,19 +90,17 @@ class MainWindow(QMainWindow):
         self.timer.setInterval(10)
         self.timer.timeout.connect(self.update)
         self.timer.start()
+
         # event timer
         self.event_timer = QElapsedTimer()
         self.run_livetime = 0
         self.ev_livetime = 0
-
         # initialize writer for sbc binary format
         # sbc_writer = Writer()
-
         self.start_program()
 
     def set_up_workers(self):
         self.signals = MainSignals()
-        
         # set up run handling thread and the worker
         vars = self.__dict__
         ui_vars = self.ui.__dict__
@@ -149,6 +147,9 @@ class MainWindow(QMainWindow):
         self.caen_thread.setObjectName("caen_thread")
         self.caen_worker.moveToThread(self.caen_thread)
         self.caen_thread.started.connect(self.caen_worker.run)
+        self.signals.run_starting.connect(self.caen_worker.start_run)
+        self.signals.event_starting.connect(self.caen_worker.start_event)
+        self.signals.event_stopping.connect(self.caen_worker.stop_event)
         self.caen_thread.start()
         time.sleep(0.001)
 
@@ -234,7 +235,9 @@ class MainWindow(QMainWindow):
             elif name.endswith("_thread"):
                 self.logger.info(f"Stopping {name}.")
                 var.quit()
-                var.wait()
+                if not var.wait(1000):  # 1 sec timeout
+                    self.logger.error(f"Thread {name} failed to stop")
+        self.logger.info("All threads stopped.")
 
         # Cleanup resources
         QApplication.processEvents()

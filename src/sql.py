@@ -99,7 +99,7 @@ class SQL(QObject):
 
     @Slot()
     def start_run(self):
-        self.config = self.main.config_class.run_config
+        self.config = self.main.config_class.run_config["general"]["sql"]
         self.enabled = self.config["enabled"]
         if not self.enabled:
             self.run_started.emit("disabled-sql")

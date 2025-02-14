@@ -5137,22 +5137,22 @@
                <widget class="NoWheelComboBox" name="caen_ext_trig_box">
                 <item>
                  <property name="text">
-                  <string>Disabled</string>
+                  <string>DISABLED</string>
                  </property>
                 </item>
                 <item>
                  <property name="text">
-                  <string>ACQ Only</string>
+                  <string>ACQ_ONLY</string>
                  </property>
                 </item>
                 <item>
                  <property name="text">
-                  <string>EXT Only</string>
+                  <string>EXTOUT_ONLY</string>
                  </property>
                 </item>
                 <item>
                  <property name="text">
-                  <string>ACQ+EXT</string>
+                  <string>ACQ_AND_EXTOUT</string>
                  </property>
                 </item>
                </widget>
@@ -5204,22 +5204,22 @@
                <widget class="NoWheelComboBox" name="caen_ch_trig_box">
                 <item>
                  <property name="text">
-                  <string>Disabled</string>
+                  <string>DISABLED</string>
                  </property>
                 </item>
                 <item>
                  <property name="text">
-                  <string>ACQ Only</string>
+                  <string>ACQ_ONLY</string>
                  </property>
                 </item>
                 <item>
                  <property name="text">
-                  <string>EXT Only</string>
+                  <string>EXTOUT_ONLY</string>
                  </property>
                 </item>
                 <item>
                  <property name="text">
-                  <string>ACQ+EXT</string>
+                  <string>ACQ_AND_EXTOUT</string>
                  </property>
                 </item>
                </widget>
@@ -5257,22 +5257,22 @@
                <widget class="NoWheelComboBox" name="caen_sw_trig_box">
                 <item>
                  <property name="text">
-                  <string>Disabled</string>
+                  <string>DISABLED</string>
                  </property>
                 </item>
                 <item>
                  <property name="text">
-                  <string>ACQ Only</string>
+                  <string>ACQ_ONLY</string>
                  </property>
                 </item>
                 <item>
                  <property name="text">
-                  <string>EXT Only</string>
+                  <string>EXTOUT_ONLY</string>
                  </property>
                 </item>
                 <item>
                  <property name="text">
-                  <string>ACQ+EXT</string>
+                  <string>ACQ_AND_EXTOUT</string>
                  </property>
                 </item>
                </widget>
