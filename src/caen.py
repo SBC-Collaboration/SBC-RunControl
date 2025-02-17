@@ -80,6 +80,10 @@ class Caen(QObject):
             self.group_configs[i].TriggerThreshold = group_config["threshold"]
         
         self.caen.Setup(self.global_config, self.group_configs)
+
+        # get configurations back from CAEN
+        self.real_global_config = self.caen.GetGlobalConfiguration()
+        self.real_group_configs = self.caen.GetGroupConfigurations()
         self.logger.info("CAEN configuration set.")
 
     @Slot()
@@ -111,9 +115,11 @@ class Caen(QObject):
         
         self.caen.ClearData()
         self.buffer = [] # create a list for data dictionaries
+
         # create writer
-        en_chs = np.sum([self.group_configs[i].Enabled for i in range(4)]) # number of enabled channels
-        rec_len = self.config["rec_length"]
+        en_chs = np.sum([self.real_group_configs[i].AcquisitionMask for i in range(4) 
+                         if self.real_group_configs[i].Enabled ]) # number of enabled channels
+        rec_len = self.real_global_config.RecordLength
         self.writer = Writer(
             os.path.join(self.config["data_path"], "scintillation.sbc"), # file path
             ["EventCounter","EventSize","BoardId","Pattern","ChannelMask","TriggerTimeTag","Waveforms"], # column names
