@@ -78,6 +78,12 @@ class NiUsb6501:
         # This is needed to release interface, otherwise attach_kernel_driver fails 
         # due to "Resource busy"
         usb.util.dispose_resources(self.device)
+    
+    def reset(self):
+        """
+        Reset the USB device in case something goes wrong
+        """
+        self.device.reset()
 
     def set_io_mode(self, io0=None, io1=None, io2=None, drive0=None, drive1=None, drive2=None):
         """
