@@ -46,7 +46,7 @@ The master configuration file is saved in `.json` format. The data structure is:
     - `port` (`int`): COM port of digitizer.
     - `connection` (`str`): Connection type: USB or PCIe.
     - `evs_per_read` (`int`): Maximum number of events per read from digitizer to PC memory. If number of events on digitizer is fewer, than all events will be transferred.
-    - `rec_length` (`int`): Record length for each buffer, or number of samples in a waveform. The actual record length may be the closest multiple of 4.
+    - `rec_length` (`int`): Record length for each buffer, or number of samples in a waveform. The actual record length may be the closest multiple of 3.
     - `post_trig` (`int`): Percentage of samples after the trigger. 0% means trigger is at the end of waveform.
     - `trig_in_as_gate` (`bool`): If `true`, the TRIG-IN port on the digitizer will serve as gate for triggering in all other channels. This means that only if the TRIG-IN is true will the data channel triggering be enabled. If `false`, the TRIG-IN will serve as an additional channel of trigger, which may be useful when doing LED calibration.
     - `decimation` (`int`): Decimation factor for acquisition. This can be n=\[0..7\], and the sampling frequency is f = 62.5 MHz/s / (2 ^ n).

@@ -5,6 +5,7 @@
 from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog
 from PySide6.QtCore import QObject, QThread, Signal, Slot, QElapsedTimer, QTimer, Qt, QMutex, QWaitCondition
 from PySide6.QtGui import QPixmap
+import pyqtgraph as pg
 from ui.mainwindow import Ui_MainWindow
 from src.config import Config
 from src.ui_loader import SettingsWindow, LogWindow
@@ -85,6 +86,8 @@ class MainWindow(QMainWindow):
         self.stopping_event_ready = []
         self.set_up_workers()
 
+        self.setup_caen_plot()
+
         # timer for event loop
         self.timer = QTimer()
         self.timer.setInterval(10)
@@ -143,6 +146,10 @@ class MainWindow(QMainWindow):
             time.sleep(0.001)
 
         self.caen_worker = Caen(self)
+        self.caen_worker.run_started.connect(self.starting_run_wait)
+        self.caen_worker.event_started.connect(self.starting_event_wait)
+        self.caen_worker.event_stopped.connect(self.stopping_event_wait)
+        self.caen_worker.data_retrieved.connect(self.update_caen_plot)
         self.caen_thread = QThread()
         self.caen_thread.setObjectName("caen_thread")
         self.caen_worker.moveToThread(self.caen_thread)
@@ -603,6 +610,52 @@ class MainWindow(QMainWindow):
             else self.config_class.config["general"]["data_dir"]
         subprocess.Popen(["nemo", path])
         self.logger.info(f"Opened data folder: {path}")
+    
+    # set up parameters for the CAEN plot widgets
+    def setup_caen_plot(self):
+        # plot and text items for each plot
+        self.caen_plots = [self.ui.caen_plot_1]
+        self.caen_texts = [pg.TextItem(text="Event: 0", color='k', anchor=(0,0)) for _ in self.caen_plots]
+        self.caen_curves = []
+        # one pen for each channel in a group
+        self.caen_pens = [pg.mkPen(color=c, width=2) for c in ["green", "red", "blue", "orange","violet","brown","pink","gray"]] 
+
+        for i in range(len(self.caen_plots)):
+            p = self.caen_plots[i]
+            t = self.caen_texts[i]
+
+            # setup some basic plot properties
+            p.setBackground("w")
+            p.showGrid(x=True, y=True)
+            p.setTitle("CAEN Waveforms G0", color='k')
+            p.setLabel('left', "Amplitude (ADC)", color='k')
+            p.setLabel('bottom', "Time (ns)", color='k')
+            p.addLegend()
+
+            # setup text counter
+            t.setParentItem(p.getViewBox())
+            t.setPos(0, 1)
+
+            # create curves for each channel
+            curves = []
+            for j in range(8):
+                curves.append(p.plot([], [], pen=self.caen_pens[j], name=f"Ch{i*8+j}"))
+            self.caen_curves.append(curves)
+
+
+    # update the CAEN plot widgets every time data is retrieved
+    @Slot(dict)
+    def update_caen_plot(self, data):
+
+        for i in range(len(self.caen_plots)):
+            p = self.caen_plots[i]
+            t = self.caen_texts[i]
+            curves = self.caen_curves[i]
+
+            # update text and curves
+            t.setText(f"Event: {data['EventCounter'][-1]}")
+            for j in range(8):
+                curves[j].setData(data['Waveforms'][-1][j])
 
 
 if __name__ == "__main__":

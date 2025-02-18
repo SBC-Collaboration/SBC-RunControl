@@ -14,6 +14,7 @@ class Caen(QObject):
     run_stopped = Signal(str)
     event_started = Signal(str)
     event_stopped = Signal(str)
+    data_retrieved = Signal(dict)
 
     def __init__(self, mainwindow):
         super().__init__()
@@ -39,9 +40,10 @@ class Caen(QObject):
         # check if CAEN has enough events in buffer
         if (self.main.run_state == self.main.run_states["active"] and self.caen):
             if self.caen.RetrieveDataUntilNEvents(self.evs_per_read):
-                self.logger.info("Retrieving {self.evs_per_read} CAEN events.")
+                self.logger.info(f"Retrieving {self.evs_per_read} CAEN events.")
                 self.caen.DecodeEvents()
                 self.buffer.append(self.caen.GetDataDict())
+                self.data_retrieved.emit(self.buffer[-1])
 
 
     def set_config(self):
