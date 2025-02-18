@@ -52,7 +52,7 @@ void setup(void) {
   }
 
   // extract from json object to square_wave class
-  Serial.println("Wave\tEnabled\tPeriod\tPhase\tDuty\tPolarity");
+  Serial.println("Wave\tEnabled\tGated\tPeriod\tPhase\tDuty\tPolarity");
   for (JsonPair kv : conf.as<JsonObject>()) {
     const char* key = kv.key().c_str();
     int wave_num;
@@ -75,6 +75,7 @@ void setup(void) {
 
     Serial.print(wave_num); Serial.print("\t");
     waves[wave_num].enabled ? Serial.print("yes\t") : Serial.print("no\t");
+    waves[wave_num].gated ? Serial.print("yes\t") : Serial.print("no\t");
     Serial.print(waves[wave_num].period); Serial.print("\t");
     Serial.print(waves[wave_num].phase); Serial.print("\t");
     Serial.print(waves[wave_num].duty); Serial.print("\t");

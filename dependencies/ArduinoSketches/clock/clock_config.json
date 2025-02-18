@@ -3,7 +3,6 @@
   "sketch": "/home/sbc/RunControl/dependencies/ArduinoSketches/clock/",
   "wave1": {
     "enabled": true,
-    "name": "Cam1",
     "gated": false,
     "period": 100,
     "phase": 0,
@@ -12,7 +11,6 @@
   },
   "wave2": {
     "enabled": true,
-    "name": "Cam2",
     "gated": false,
     "period": 100,
     "phase": 0,
@@ -21,7 +19,6 @@
   },
   "wave3": {
     "enabled": true,
-    "name": "Cam3",
     "gated": false,
     "period": 100,
     "phase": 0,
@@ -30,7 +27,6 @@
   },
   "wave4": {
     "enabled": true,
-    "name": "LED1.1",
     "gated": true,
     "period": 100,
     "phase": 0,
@@ -39,7 +35,6 @@
   },
   "wave5": {
     "enabled": true,
-    "name": "LED1.2",
     "gated": true,
     "period": 100,
     "phase": 0,
@@ -48,7 +43,6 @@
   },
   "wave6": {
     "enabled": true,
-    "name": "LED1.3",
     "gated": true,
     "period": 100,
     "phase": 0,
@@ -57,7 +51,6 @@
   },
   "wave7": {
     "enabled": true,
-    "name": "LED2.1",
     "gated": true,
     "period": 100,
     "phase": 0,
@@ -66,7 +59,6 @@
   },
   "wave8": {
     "enabled": true,
-    "name": "LED2.2",
     "gated": true,
     "period": 100,
     "phase": 0,
@@ -75,7 +67,6 @@
   },
   "wave9": {
     "enabled": true,
-    "name": "LED2.3",
     "gated": true,
     "period": 100,
     "phase": 0,
@@ -84,7 +75,6 @@
   },
   "wave10": {
     "enabled": true,
-    "name": "LED3.1",
     "gated": true,
     "period": 100,
     "phase": 0,
@@ -93,7 +83,6 @@
   },
   "wave11": {
     "enabled": true,
-    "name": "LED3.2",
     "gated": true,
     "period": 100,
     "phase": 0,
@@ -102,7 +91,6 @@
   },
   "wave12": {
     "enabled": true,
-    "name": "LED3.3",
     "gated": true,
     "period": 100,
     "phase": 0,
@@ -111,7 +99,6 @@
   },
   "wave13": {
     "enabled": true,
-    "name": "CAEN",
     "gated": false,
     "period": 100,
     "phase": 0,
@@ -120,7 +107,6 @@
   },
   "wave14": {
     "enabled": false,
-    "name": "",
     "gated": false,
     "period": 0,
     "phase": 0,
@@ -129,7 +115,6 @@
   },
   "wave15": {
     "enabled": false,
-    "name": "",
     "gated": false,
     "period": 0,
     "phase": 0,
@@ -138,7 +123,6 @@
   },
   "wave16": {
     "enabled": false,
-    "name": "",
     "gated": false,
     "period": 0,
     "phase": 0,
