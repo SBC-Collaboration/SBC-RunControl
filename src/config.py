@@ -587,7 +587,11 @@ class Config(QObject):
 
         # save arduino json files
         for ino in ["trigger", "clock", "position"]:
-            ino_config = self.run_config["dio"][ino]
+            ino_config = copy.deepcopy(self.run_config["dio"][ino])
+            # remove name field in clock config to save space
+            if ino=="clock":
+                for w in range(1, 17):
+                    ino_config[f"wave{w}"].pop("name")
             json_file = os.path.join(ino_config["sketch"], f"{ino}_config.json")
 
             # comparing json file with config, and save if they are different
