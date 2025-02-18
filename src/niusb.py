@@ -138,6 +138,7 @@ class NIUSB(QObject):
         # check serial connection and initialize object
         self.check_niusb()
         self.dev = get_adapter()
+        self.dev.reset()
         if not self.dev:
             self.logger.error("NI USB device not found!")
 
