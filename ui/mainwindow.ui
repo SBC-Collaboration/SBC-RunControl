@@ -448,7 +448,7 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
          <enum>QTabWidget::TabShape::Rounded</enum>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>2</number>
         </property>
         <property name="documentMode">
          <bool>false</bool>
@@ -1010,8 +1010,8 @@ background-color: #969696;</string>
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>382</width>
-               <height>119</height>
+               <width>838</width>
+               <height>672</height>
               </rect>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -1354,7 +1354,44 @@ background-color: rgb(150, 150, 150);</string>
                  <number>3</number>
                 </property>
                 <item row="0" column="0">
-                 <widget class="PlotWidget" name="caen_plot_1" native="true"/>
+                 <widget class="PlotWidget" name="caen_plot_0" native="true">
+                  <property name="minimumSize">
+                   <size>
+                    <width>50</width>
+                    <height>50</height>
+                   </size>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="0">
+                 <widget class="PlotWidget" name="caen_plot_1" native="true">
+                  <property name="minimumSize">
+                   <size>
+                    <width>50</width>
+                    <height>50</height>
+                   </size>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="0">
+                 <widget class="PlotWidget" name="caen_plot_2" native="true">
+                  <property name="minimumSize">
+                   <size>
+                    <width>50</width>
+                    <height>50</height>
+                   </size>
+                  </property>
+                 </widget>
+                </item>
+                <item row="3" column="0">
+                 <widget class="PlotWidget" name="caen_plot_3" native="true">
+                  <property name="minimumSize">
+                   <size>
+                    <width>50</width>
+                    <height>50</height>
+                   </size>
+                  </property>
+                 </widget>
                 </item>
                </layout>
               </item>
