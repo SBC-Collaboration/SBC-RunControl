@@ -25,6 +25,7 @@ pyside6-rcc ./resources/resources.qrc -o ./resources_rc.py
 export PATH=$PATH:$PWD/dependencies
 
 # install arduino packages
+# user need to be in dialout group on linux
 echo "Setting up Arduino cli and libraries..."
 curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | BINDIR=./dependencies sh
 arduino-cli config init

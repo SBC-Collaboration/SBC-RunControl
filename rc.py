@@ -97,7 +97,7 @@ class MainWindow(QMainWindow):
         # event timer
         self.event_timer = QElapsedTimer()
         self.run_livetime = 0
-        self.ev_livetime = 0
+        self.event_livetime = 0
         # initialize writer for sbc binary format
         # sbc_writer = Writer()
         self.start_program()
@@ -171,7 +171,7 @@ class MainWindow(QMainWindow):
         self.niusb_worker = NIUSB(self)
         self.niusb_worker.run_started.connect(self.starting_run_wait)
         self.niusb_worker.event_started.connect(self.starting_event_wait)
-        self.niusb_worker.event_started.connect(self.acous_worker.start_event)
+        self.niusb_worker.acous_event_started.connect(self.acous_worker.start_event) #BM
         self.niusb_worker.event_stopped.connect(self.stopping_event_wait)
         self.niusb_worker.run_stopped.connect(self.stopping_run_wait)
         self.niusb_worker.trigger_detected.connect(self.stop_event)
@@ -194,7 +194,7 @@ class MainWindow(QMainWindow):
         self.writer_thread.setObjectName("writer_thread")
         self.writer_worker.moveToThread(self.writer_thread)
         self.writer_thread.started.connect(self.writer_worker.run)
-        self.signals.event_stopping.connect(self.writer_worker.write_event_data)
+        self.niusb_worker.trigger_ff.connect(self.writer_worker.write_event_data)
         self.writer_thread.start()
         time.sleep(0.001)
 
@@ -529,10 +529,10 @@ class MainWindow(QMainWindow):
 
         # reset event number and livetimes
         self.event_id = -1
-        self.ev_livetime = 0
+        self.event_livetime = 0
         self.run_livetime = 0
         self.ui.event_id_edit.setText(f"{self.event_id:2d}")
-        self.ui.event_time_edit.setText(self.format_time(self.ev_livetime))
+        self.ui.event_time_edit.setText(self.format_time(self.event_livetime))
         self.ui.run_live_time_edit.setText(self.format_time(self.run_livetime))
         self.ui.trigger_edit.setText("")
 
@@ -572,7 +572,7 @@ class MainWindow(QMainWindow):
         self.event_start_time = datetime.datetime.now().isoformat(sep=" ", timespec="milliseconds")
         self.starting_event_ready = []
         self.update_state("starting_event")
-        self.ev_livetime = 0
+        self.event_livetime = 0
         self.ui.event_id_edit.setText(f"{self.event_id:2d}")
         self.ui.event_time_edit.setText(self.format_time(0))
         self.event_dir = os.path.join(self.run_dir, str(self.event_id))
