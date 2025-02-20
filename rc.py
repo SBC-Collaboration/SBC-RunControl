@@ -614,9 +614,10 @@ class MainWindow(QMainWindow):
     # set up parameters for the CAEN plot widgets
     def setup_caen_plot(self):
         # plot and text items for each plot
-        self.caen_plots = [self.ui.caen_plot_1]
+        self.caen_plots = [self.ui.caen_plot_0, self.ui.caen_plot_1, self.ui.caen_plot_2, self.ui.caen_plot_3]
         self.caen_texts = [pg.TextItem(text="Event: 0", color='k', anchor=(0,0)) for _ in self.caen_plots]
         self.caen_curves = []
+        # self.caen_legends = []
         # one pen for each channel in a group
         self.caen_pens = [pg.mkPen(color=c, width=2) for c in ["green", "red", "blue", "orange","violet","brown","pink","gray"]] 
 
@@ -627,7 +628,7 @@ class MainWindow(QMainWindow):
             # setup some basic plot properties
             p.setBackground("w")
             p.showGrid(x=True, y=True)
-            p.setTitle("CAEN Waveforms G0", color='k')
+            p.setTitle(f"CAEN Waveforms G{i}", color='k')
             p.setLabel('left', "Amplitude (ADC)", color='k')
             p.setLabel('bottom', "Time (ns)", color='k')
             p.addLegend()
@@ -639,7 +640,8 @@ class MainWindow(QMainWindow):
             # create curves for each channel
             curves = []
             for j in range(8):
-                curves.append(p.plot([], [], pen=self.caen_pens[j], name=f"Ch{i*8+j}"))
+                c = p.plot([], [], pen=self.caen_pens[j], name=f"Ch{i*8+j}")
+                curves.append(c)
             self.caen_curves.append(curves)
 
 
@@ -655,7 +657,7 @@ class MainWindow(QMainWindow):
             # update text and curves
             t.setText(f"Event: {data['EventCounter'][-1]}")
             for j in range(8):
-                curves[j].setData(data['Waveforms'][-1][j])
+                curves[j].setData(data['Waveforms'][-1][8*i+j])
 
 
 if __name__ == "__main__":
