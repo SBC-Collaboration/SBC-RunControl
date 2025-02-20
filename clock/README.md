@@ -26,4 +26,3 @@ The clock code now has 16 pins, which are port C and L. The pin number vs wave n
 
 Both the clock part and the trigger FIFO part use port manipulation in Arduino instead of digitalWrite(), since it is much faster and more reliable. I found this youtube video that explains how this works to be a pulse generator: https://www.youtube.com/watch?v=y11JhCXaxZg. See this link for the pin mapping for Arduino Mega 2560: https://docs.arduino.cc/hacking/hardware/PinMapping2560. In the chart, PH0 means port H pin 0, which is the digital pin 17. Pins in the same port are supposed to have better timing consistencies compared to pins in different ports, but that is also acceptable for our intended use.
 
-PROBLEM: It can only be in time (100us) if handling 10 waves or fewer. At 16 waves simultaneously, the duration is ~200us.
