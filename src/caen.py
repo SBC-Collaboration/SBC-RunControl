@@ -124,9 +124,9 @@ class Caen(QObject):
         rec_len = self.real_global_config.RecordLength
         self.writer = Writer(
             os.path.join(self.config["data_path"], "scintillation.sbc"), # file path
-            ["EventCounter","EventSize","BoardId","Pattern","ChannelMask","TriggerTimeTag","Waveforms"], # column names
-            ['u4','u4','u4','u4','u4','u4','u2'], # data types
-            [[1],[1],[1],[1],[1],[1],[en_chs, rec_len]] # data shapes
+            ["EventCounter","EventSize","BoardId","Pattern","ChannelMask","TriggerTimeTag","TriggerMask","AcquisitionMask","Waveforms"], # column names
+            ['u4','u4','u4','u4','u1','u4','u4','u4','u2'], # data types
+            [[1],[1],[1],[1],[1],[1],[1],[1],[en_chs, rec_len]] # data shapes
         )
 
         self.caen.EnableAcquisition()
