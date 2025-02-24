@@ -386,20 +386,24 @@ class MainWindow(QMainWindow):
                 self.signals.send_trigger.emit("Timeout")
         elif self.run_state == self.run_states["starting_run"]:
             # SiPM amp 1/2, Cam 1/2/3, clock/position/trigger arduino, NI USB
-            if len(self.starting_run_ready) >= 10:
+            if len(self.starting_run_ready) >= 11:
+                self.logger.debug(f"Run {self.run_id} started. Modules started: {self.starting_run_ready}")
                 self.start_event()
         elif self.run_state == self.run_states["starting_event"]:
-            # niusb, cam 1/2/3, *PLC
+            # caen, niusb, cam 1/2/3, *PLC
             self.event_timer.start()
-            if len(self.starting_event_ready) >= 2:
+            if len(self.starting_event_ready) >= 5:
+                self.logger.debug(f"Event {self.event_id} started. Modules started: {self.starting_event_ready}")
                 self.update_state("active")
         elif self.run_state == self.run_states["stopping_event"]:
-            # niusb, sql, cam 1/2/3
-            if len(self.stopping_event_ready) >= 4:
+            # caen, niusb, sql, cam 1/2/3
+            if len(self.stopping_event_ready) >= 6:
+                self.logger.debug(f"Event {self.event_id} stopped. Modules stopped: {self.stopping_event_ready}")
                 self.start_event()
         elif self.run_state == self.run_states["stopping_run"]:
             # niusb, sql, cam 1/2/3, sipm amp 1/2
             if len(self.stopping_run_ready) >= 4:
+                self.logger.debug(f"Run {self.run_id} stopped. Modules stopped: {self.stopping_run_ready}")
                 self.update_state("idle")
 
         self.display_image(

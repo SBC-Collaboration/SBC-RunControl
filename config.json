@@ -123,21 +123,22 @@
       ]
     },
     "caen": {
+      "enabled": false,
       "data_path": "/home/sbc/RunControl/run-data/current_event/",
       "model": "DT5740D",
       "link": 0,
       "connection": "USB",
       "evs_per_read": 500,
-      "rec_length": 500,
+      "rec_length": 200,
       "post_trig": 50,
       "trig_in_as_gate": false,
       "decimation": 0,
       "overlap_en": false,
-      "memory_full": "Normal",
+      "memory_full": "One Buf Free",
       "counting_mode": "All",
-      "polarity": "Rising",
+      "polarity": "Falling",
       "majority_level": 0,
-      "majority_window": 10,
+      "majority_window": 5,
       "clock_source": "Internal",
       "acq_mode": "SW CTRL",
       "io_level": "TTL",
@@ -146,7 +147,7 @@
       "ch_trig": "ACQ_ONLY"
     },
     "caen_g0": {
-      "enabled": false,
+      "enabled": true,
       "threshold": 2000,
       "offset": 32768,
       "range": "2 Vpp",
@@ -182,7 +183,7 @@
       ]
     },
     "caen_g1": {
-      "enabled": false,
+      "enabled": true,
       "threshold": 2000,
       "offset": 32768,
       "range": "2 Vpp",
@@ -197,14 +198,14 @@
         true
       ],
       "acq_mask": [
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
       ],
       "ch_offset": [
         0,
@@ -218,7 +219,7 @@
       ]
     },
     "caen_g2": {
-      "enabled": false,
+      "enabled": true,
       "threshold": 2000,
       "offset": 32768,
       "range": "2 Vpp",
@@ -233,14 +234,14 @@
         false
       ],
       "acq_mask": [
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
       ],
       "ch_offset": [
         0,
@@ -254,7 +255,7 @@
       ]
     },
     "caen_g3": {
-      "enabled": false,
+      "enabled": true,
       "threshold": 2000,
       "offset": 32768,
       "range": "2 Vpp",
@@ -269,14 +270,14 @@
         false
       ],
       "acq_mask": [
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
       ],
       "ch_offset": [
         0,
@@ -398,14 +399,14 @@
       "buffer_len": 100,
       "post_trig": 50,
       "adc_threshold": 50,
-      "pix_threshold": 10000,
+      "pix_threshold": 1000,
       "image_format": "bmp",
       "date_format": "%Y-%m-%d_%H:%M:%S",
       "state_comm_pin": 5,
-      "trig_en_pin": 6,
+      "trig_en_pin": 26,
       "trig_latch_pin": 13,
-      "state_pin": 24,
-      "trig_pin": 23
+      "state_pin": 23,
+      "trig_pin": 24
     },
     "cam2": {
       "enabled": false,
@@ -418,33 +419,33 @@
       "exposure": 300,
       "buffer_len": 100,
       "post_trig": 50,
-      "adc_threshold": 10,
-      "pix_threshold": 300,
+      "adc_threshold": 50,
+      "pix_threshold": 1000,
       "image_format": "bmp",
       "date_format": "%Y-%m-%d_%H:%M:%S",
       "state_comm_pin": 5,
-      "trig_en_pin": 6,
+      "trig_en_pin": 26,
       "trig_latch_pin": 13,
       "state_pin": 23,
       "trig_pin": 24
     },
     "cam3": {
-      "enabled": true,
+      "enabled": false,
       "rc_config_path": "/home/sbc/RunControl/run-data/config/cam3-config.json",
       "config_path": "/mnt/rc-data/config/cam3-config.json",
       "data_path": "/mnt/rc-data/current_event/",
-      "ip_addr": "192.168.137.103",
+      "ip_addr": "192.168.137.102",
       "mode": 11,
       "trig_wait": 5.0,
       "exposure": 300,
       "buffer_len": 100,
       "post_trig": 50,
       "adc_threshold": 50,
-      "pix_threshold": 10000,
+      "pix_threshold": 1000,
       "image_format": "bmp",
       "date_format": "%Y-%m-%d_%H:%M:%S",
       "state_comm_pin": 5,
-      "trig_en_pin": 6,
+      "trig_en_pin": 26,
       "trig_latch_pin": 13,
       "state_pin": 23,
       "trig_pin": 24

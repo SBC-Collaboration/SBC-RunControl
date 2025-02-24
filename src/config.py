@@ -135,6 +135,7 @@ class Config(QObject):
 
         # CAEN
         caen_config = self.config["scint"]["caen"]
+        ui.caen_enabled_box.setChecked(caen_config["enabled"])
         ui.caen_data_path_box.setText(caen_config["data_path"])
         ui.caen_model_box.setCurrentText(caen_config["model"])
         ui.caen_link_box.setValue(caen_config["link"])
@@ -367,6 +368,7 @@ class Config(QObject):
         }
 
         caen_config = {
+            "enabled": ui.caen_enabled_box.isChecked(),
             "data_path": ui.caen_data_path_box.text(),
             "model": ui.caen_model_box.currentText(),
             "link": ui.caen_link_box.value(),
