@@ -49,7 +49,7 @@ void setup(void) {
     return;
   }
 
-  DELAY_TIME = wave["loop"];
+  DELAY_TIME = conf["loop"];
   // extract from json object to square_wave class
   Serial.println("Wave\tEnabled\tGated\tPeriod\tPhase\tDuty\tPolarity");
   for (JsonPair kv : conf.as<JsonObject>()) {
