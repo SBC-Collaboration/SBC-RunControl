@@ -1,6 +1,7 @@
 {
   "port": "/dev/arduinoCLK",
   "sketch": "/home/sbc/RunControl/dependencies/ArduinoSketches/clock/",
+  "loop": 100,
   "wave1": {
     "enabled": true,
     "gated": false,

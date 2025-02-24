@@ -29,6 +29,7 @@ void setup(void) {
     Serial.println("Cannot load configuration file. Quitting.");
     return;
   }
+  DELAY_TIME = conf["loop"];
 
   Serial.println("Trig\tEnabled\tName\tIn Pin\tFF Pin");
   for (JsonPair kv : conf.as<JsonObject>()) {

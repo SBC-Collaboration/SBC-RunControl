@@ -1,6 +1,7 @@
 {
   "port": "/dev/arduinoTRIG",
   "sketch": "/home/sbc/RunControl/dependencies/ArduinoSketches/trigger",
+  "loop": 100,
   "reset": 38,
   "or": 39,
   "on_time": 40,

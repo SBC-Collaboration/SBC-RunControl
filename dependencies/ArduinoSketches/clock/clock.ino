@@ -49,6 +49,7 @@ void setup(void) {
     return;
   }
 
+  DELAY_TIME = wave["loop"];
   // extract from json object to square_wave class
   Serial.println("Wave\tEnabled\tGated\tPeriod\tPhase\tDuty\tPolarity");
   for (JsonPair kv : conf.as<JsonObject>()) {
@@ -131,6 +132,7 @@ void loop(void) {
 //DELAY is here now
   bool ontime = false;
   long time = micros()-delayStart;
+
   if(time <= DELAY_TIME) {
     PORTG |= B00000010;
     delayStart += DELAY_TIME; // change delay start to next loop's value
