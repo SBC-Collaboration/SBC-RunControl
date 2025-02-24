@@ -93,6 +93,10 @@ class Caen(QObject):
         self.config = self.main.config_class.run_config["scint"]["caen"]
         self.evs_per_read = self.config["evs_per_read"] # save value for reading data
 
+        if not self.config["enabled"]:
+            self.run_started.emit(f"disabled-caen")
+            return
+
         self.caen = red_caen.CAEN(
             red_caen.iostream_wrapper(), 
             getattr(red_caen.CAENDigitizerModel, self.config["model"]),
@@ -107,10 +111,15 @@ class Caen(QObject):
             raise ConnectionError("CAEN connection failed.\n")
 
         self.set_config()
+        self.caen.ClearData()
         self.run_started.emit("caen")
 
     @Slot()
     def start_event(self):
+        if not self.config["enabled"]:
+            self.event_started.emit(f"disabled-caen")
+            return
+
         # Check connection status
         if not self.caen or not self.caen.IsConnected():
             self.logger.error("CAEN not connected.")
@@ -124,9 +133,9 @@ class Caen(QObject):
         rec_len = self.real_global_config.RecordLength
         self.writer = Writer(
             os.path.join(self.config["data_path"], "scintillation.sbc"), # file path
-            ["EventCounter","EventSize","BoardId","Pattern","ChannelMask","TriggerTimeTag","TriggerMask","AcquisitionMask","Waveforms"], # column names
-            ['u4','u4','u4','u4','u1','u4','u4','u4','u2'], # data types
-            [[1],[1],[1],[1],[1],[1],[1],[1],[en_chs, rec_len]] # data shapes
+            ["EventCounter","TriggerSource","GroupMask","TriggerMask","AcquisitionMask","TriggerTimeTag","Waveforms"], # column names
+            ['u4','u1','u1','u4','u4','u4','u2'], # data types
+            [[1],[1],[1],[1],[1],[1],[en_chs, rec_len]] # data shapes
         )
 
         self.caen.EnableAcquisition()
@@ -136,6 +145,10 @@ class Caen(QObject):
 
     @Slot()
     def stop_event(self):
+        if not self.config["enabled"]:
+            self.event_stopped.emit(f"disabled-caen")
+            return
+
         self.caen.DisableAcquisition()
         self.logger.info("CAEN acquisition disabled.")
 
