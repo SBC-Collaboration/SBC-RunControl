@@ -225,6 +225,7 @@ class Config(QObject):
         trigger_config = dio_config["trigger"]
         ui.trigger_port_edit.setText(trigger_config["port"])
         ui.trigger_sketch_edit.setText(trigger_config["sketch"])
+        ui.trig_loop_box.setValue(trigger_config["loop"])
         ui.trig_reset_pin_box.setValue(trigger_config["reset"])
         ui.trig_or_pin_box.setValue(trigger_config["or"])
         ui.trig_on_time_pin_box.setValue(trigger_config["on_time"])
@@ -256,6 +257,7 @@ class Config(QObject):
         clock_config = dio_config["clock"]
         ui.clock_port_edit.setText(clock_config["port"])
         ui.clock_sketch_edit.setText(clock_config["sketch"])
+        ui.clock_loop_box.setValue(clock_config["loop"])
         for i in range(1, 17):
             w = f"wave{i}"
             clock_port_name = clock_ports[(i - 1) // 8] + str((i - 1) % 8)
@@ -490,6 +492,7 @@ class Config(QObject):
         clock_config = {
             "port": ui.clock_port_edit.text(),
             "sketch": ui.clock_sketch_edit.text(),
+            "loop": ui.clock_loop_box.value(),
         }
         for i in range(1, 17):
             w = f"wave{i}"
@@ -506,6 +509,7 @@ class Config(QObject):
         trigger_config = {
             "port": ui.trigger_port_edit.text(),
             "sketch": ui.trigger_sketch_edit.text(),
+            "loop": ui.trig_loop_box.value(),
             "reset": ui.trig_reset_pin_box.value(),
             "or": ui.trig_or_pin_box.value(),
             "on_time": ui.trig_on_time_pin_box.value(),
