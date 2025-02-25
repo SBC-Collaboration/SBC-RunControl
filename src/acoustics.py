@@ -5,6 +5,11 @@ from PySide6.QtCore import QTimer, QObject, Slot, Signal, QThread
 from collections import namedtuple
 import copy
 import json
+from ctypes import *
+import src.global_variable  as gv #BM
+import subprocess
+import signal
+import time
 
 
 class Acoustics(QObject):
@@ -30,6 +35,23 @@ class Acoustics(QObject):
     def periodic_task(self):
         pass
 
+    @Slot(str)                                                                      
+    def start_event(self,module):
+
+        self.config = self.main.config_class.run_config[module]
+        
+        self.logger.info(f"Acoustic data acquisition starting.")                    
+        process = subprocess.Popen(['python', '/home/sbc/packages/gati-linux-driver/Sdk/SBC-Piezo-Base-Code/sbc_reader_dll_wrapper.py'])             
+        while True:
+            if(gv.TRIG_LATCH==1):
+                process.send_signal(signal.SIGINT)
+                break                                                         
+            if process.poll() != None:                                            
+                process = subprocess.Popen(['python', '/home/sbc/packages/gati-linux-driver/Sdk/SBC-Piezo-Base-Code/sbc_reader_dll_wrapper.py']) 
+            time.sleep(0.001) #time.sleep(0.0005)  # Sleep for 0.5 milliseconds
+                                        
+        self.logger.info(f"Acoustic data acquisition ended.")
+
     @Slot()
-    def start_event(self):
-        self.acous_config = self.main.config_class.run_config["acous"]
+    def stop_event(self):
+        self.client.close()
