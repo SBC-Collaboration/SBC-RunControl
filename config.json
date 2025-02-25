@@ -292,6 +292,7 @@
     }
   },
   "acous": {
+    "enabled": true,
     "driver_dir": "/home/sbc/packages/gati-linux-driver",
     "exec_path": "/home/sbc/packages/gati-linux-driver/Sdk/SBC-Piezo-Base-Code/GageSBC",
     "sample_rate": "100 MS/s",

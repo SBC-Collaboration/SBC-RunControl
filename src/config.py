@@ -171,6 +171,7 @@ class Config(QObject):
 
         # acoustics
         acous_config = self.config["acous"]
+        ui.acous_enabled_box.setChecked(acous_config["enabled"])
         ui.acous_driver_dir_edit.setText(acous_config["driver_dir"])
         ui.acous_exec_path_edit.setText(acous_config["exec_path"])
         ui.acous_sample_rate_box.setCurrentText(acous_config["sample_rate"])
@@ -436,6 +437,7 @@ class Config(QObject):
         }
 
         acous_config = {
+            "enabled": ui.acous_enabled_box.isChecked(),
             "driver_dir": ui.acous_driver_dir_edit.text(),
             "exec_path": ui.acous_exec_path_edit.text(),
             "sample_rate": ui.acous_sample_rate_box.currentText(),
