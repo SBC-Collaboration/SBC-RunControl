@@ -832,6 +832,9 @@
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
+                <property name="buddy">
+                 <cstring>p_random_but</cstring>
+                </property>
                </widget>
               </item>
               <item row="7" column="4">
@@ -894,6 +897,9 @@
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>pressure1_period</cstring>
                 </property>
                </widget>
               </item>
@@ -1081,6 +1087,9 @@
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
+                <property name="buddy">
+                 <cstring>pressure1_set</cstring>
+                </property>
                </widget>
               </item>
               <item row="5" column="0">
@@ -1093,6 +1102,9 @@
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>pressure1_high</cstring>
                 </property>
                </widget>
               </item>
@@ -1251,6 +1263,9 @@
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
+                <property name="buddy">
+                 <cstring>pressure1_slope</cstring>
+                </property>
                </widget>
               </item>
               <item row="5" column="3">
@@ -1370,6 +1385,9 @@
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
+                <property name="buddy">
+                 <cstring>plc_modbus_port_box</cstring>
+                </property>
                </widget>
               </item>
               <item row="6" column="2">
@@ -1455,6 +1473,9 @@
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
+                <property name="buddy">
+                 <cstring>plc_hostname_edit</cstring>
+                </property>
                </widget>
               </item>
               <item row="3" column="5">
@@ -1501,6 +1522,9 @@
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
+                <property name="buddy">
+                 <cstring>sql_run_table_edit</cstring>
+                </property>
                </widget>
               </item>
               <item row="1" column="1" colspan="4">
@@ -1534,6 +1558,9 @@
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
+                <property name="buddy">
+                 <cstring>sql_port_box</cstring>
+                </property>
                </widget>
               </item>
               <item row="3" column="5">
@@ -1543,6 +1570,9 @@
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>sql_event_table_edit</cstring>
                 </property>
                </widget>
               </item>
@@ -1554,6 +1584,9 @@
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
+                <property name="buddy">
+                 <cstring>sql_token_edit</cstring>
+                </property>
                </widget>
               </item>
               <item row="2" column="5">
@@ -1563,6 +1596,9 @@
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>sql_user_edit</cstring>
                 </property>
                </widget>
               </item>
@@ -1614,6 +1650,9 @@
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
+                <property name="buddy">
+                 <cstring>sql_hostname_edit</cstring>
+                </property>
                </widget>
               </item>
               <item row="3" column="0">
@@ -1623,6 +1662,9 @@
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>sql_database_edit</cstring>
                 </property>
                </widget>
               </item>
@@ -1638,6 +1680,9 @@
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>sql_enabled_box</cstring>
                 </property>
                </widget>
               </item>
@@ -2152,6 +2197,9 @@
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
+                <property name="buddy">
+                 <cstring>sipm_amp1_ch1_offset</cstring>
+                </property>
                </widget>
               </item>
               <item row="3" column="0">
@@ -2161,6 +2209,9 @@
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp1_ch9_offset</cstring>
                 </property>
                </widget>
               </item>
@@ -3204,6 +3255,9 @@
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
+                <property name="buddy">
+                 <cstring>sipm_amp2_ch1_offset</cstring>
+                </property>
                </widget>
               </item>
               <item row="2" column="1">
@@ -3287,6 +3341,9 @@
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp2_ch9_offset</cstring>
                 </property>
                </widget>
               </item>
@@ -4127,6 +4184,9 @@
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
+                <property name="buddy">
+                 <cstring>sipm_amp3_ch9_offset</cstring>
+                </property>
                </widget>
               </item>
               <item row="1" column="6">
@@ -4270,6 +4330,9 @@
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp3_ch1_offset</cstring>
                 </property>
                </widget>
               </item>
@@ -4880,7 +4943,7 @@
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
-                 <cstring>caen_decimation_box</cstring>
+                 <cstring>caen_mem_full_box</cstring>
                 </property>
                </widget>
               </item>
@@ -4921,6 +4984,9 @@
                 </property>
                 <property name="text">
                  <string>CAEN Digitizer General</string>
+                </property>
+                <property name="buddy">
+                 <cstring>caen_enabled_box</cstring>
                 </property>
                </widget>
               </item>
@@ -4969,7 +5035,7 @@
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
-                 <cstring>caen_io_box</cstring>
+                 <cstring>caen_acq_box</cstring>
                 </property>
                </widget>
               </item>
@@ -5042,7 +5108,7 @@
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
-                 <cstring>caen_polarity_box</cstring>
+                 <cstring>caen_clock_box</cstring>
                 </property>
                </widget>
               </item>
@@ -5069,7 +5135,7 @@
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
-                 <cstring>caen_length_box</cstring>
+                 <cstring>caen_majority_box</cstring>
                 </property>
                </widget>
               </item>
@@ -5122,7 +5188,7 @@
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
-                 <cstring>caen_length_box</cstring>
+                 <cstring>caen_majority_window_box</cstring>
                 </property>
                </widget>
               </item>
@@ -5179,7 +5245,7 @@
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
-                 <cstring>caen_sw_trig_box</cstring>
+                 <cstring>caen_ch_trig_box</cstring>
                 </property>
                </widget>
               </item>
@@ -5337,7 +5403,7 @@
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
-                 <cstring>caen_link_box</cstring>
+                 <cstring>caen_data_path_box</cstring>
                 </property>
                </widget>
               </item>
@@ -5360,7 +5426,7 @@
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
-                 <cstring>caen_decimation_box</cstring>
+                 <cstring>caen_counting_box</cstring>
                 </property>
                </widget>
               </item>
@@ -5653,6 +5719,9 @@
                 <property name="text">
                  <string>Group 0</string>
                 </property>
+                <property name="buddy">
+                 <cstring>caen_g0_enable_box</cstring>
+                </property>
                </widget>
               </item>
               <item row="1" column="5">
@@ -5816,7 +5885,7 @@
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
-                 <cstring>caen_g0_thres_box</cstring>
+                 <cstring>caen_g0_offset_box</cstring>
                 </property>
                </widget>
               </item>
@@ -5849,7 +5918,7 @@
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
-                 <cstring>caen_g0_thres_box</cstring>
+                 <cstring>caen_g0_range_box</cstring>
                 </property>
                </widget>
               </item>
@@ -6196,7 +6265,7 @@
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
-                 <cstring>caen_g0_thres_box</cstring>
+                 <cstring>caen_g1_range_box</cstring>
                 </property>
                </widget>
               </item>
@@ -6385,6 +6454,9 @@
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
+                <property name="buddy">
+                 <cstring>caen_g1_offset_box</cstring>
+                </property>
                </widget>
               </item>
               <item row="0" column="0">
@@ -6396,6 +6468,9 @@
                 </property>
                 <property name="text">
                  <string>Group 1</string>
+                </property>
+                <property name="buddy">
+                 <cstring>caen_g1_enable_box</cstring>
                 </property>
                </widget>
               </item>
@@ -6656,7 +6731,7 @@
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
-                 <cstring>caen_g0_thres_box</cstring>
+                 <cstring>caen_g2_range_box</cstring>
                 </property>
                </widget>
               </item>
@@ -6950,6 +7025,9 @@
                 <property name="text">
                  <string>Group 2</string>
                 </property>
+                <property name="buddy">
+                 <cstring>caen_g2_enable_box</cstring>
+                </property>
                </widget>
               </item>
               <item row="3" column="5">
@@ -7064,6 +7142,9 @@
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>caen_g2_offset_box</cstring>
                 </property>
                </widget>
               </item>
@@ -7197,6 +7278,9 @@
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>caen_g3_offset_box</cstring>
                 </property>
                </widget>
               </item>
@@ -7483,6 +7567,9 @@
                 <property name="text">
                  <string>Group 3</string>
                 </property>
+                <property name="buddy">
+                 <cstring>caen_g3_enable_box</cstring>
+                </property>
                </widget>
               </item>
               <item row="2" column="2">
@@ -7621,7 +7708,7 @@
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
-                 <cstring>caen_g0_thres_box</cstring>
+                 <cstring>caen_g3_range_box</cstring>
                 </property>
                </widget>
               </item>
@@ -7823,32 +7910,6 @@
               <property name="spacing">
                <number>3</number>
               </property>
-              <item row="0" column="2" colspan="4">
-               <widget class="QLineEdit" name="acous_driver_dir_edit"/>
-              </item>
-              <item row="2" column="3">
-               <widget class="NoWheelSpinBox" name="acous_pre_trig_box">
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="maximum">
-                 <number>4096</number>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="2">
-               <widget class="QLabel" name="acous_pre_trig_label">
-                <property name="text">
-                 <string>Pre Trig Length</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>acous_pre_trig_box</cstring>
-                </property>
-               </widget>
-              </item>
               <item row="2" column="1">
                <widget class="NoWheelComboBox" name="acous_sample_rate_box">
                 <property name="focusPolicy">
@@ -7941,65 +8002,23 @@
                 </item>
                </widget>
               </item>
-              <item row="3" column="3">
-               <widget class="NoWheelSpinBox" name="acous_post_trig_box">
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="prefix">
-                 <string/>
-                </property>
-                <property name="maximum">
-                 <number>256000000</number>
-                </property>
-                <property name="singleStep">
-                 <number>16</number>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="2">
-               <widget class="QLabel" name="acous_post_trig_label">
+              <item row="3" column="4">
+               <widget class="QLabel" name="acous_trig_delay_label">
                 <property name="text">
-                 <string>Post Trig Length</string>
+                 <string>Trig Delay</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
-                 <cstring>acous_post_trig_box</cstring>
+                 <cstring>acous_trig_delay_box</cstring>
                 </property>
                </widget>
               </item>
-              <item row="0" column="0">
-               <widget class="QCheckBox" name="acous_enabled_box">
-                <property name="layoutDirection">
-                 <enum>Qt::LayoutDirection::RightToLeft</enum>
-                </property>
+              <item row="1" column="6">
+               <widget class="QToolButton" name="acous_driver_path_but">
                 <property name="text">
-                 <string>Enabled</string>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="5" colspan="2">
-               <widget class="NoWheelSpinBox" name="acous_trig_delay_box">
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="maximum">
-                 <number>1000</number>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="0">
-               <widget class="QLabel" name="acous_exec_path_label">
-                <property name="text">
-                 <string>Executable Path</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>acous_sample_rate_box</cstring>
+                 <string>...</string>
                 </property>
                </widget>
               </item>
@@ -8016,13 +8035,239 @@
                 </property>
                </widget>
               </item>
-              <item row="1" column="1" colspan="5">
-               <widget class="QLineEdit" name="acous_exec_path_edit"/>
-              </item>
-              <item row="0" column="1">
-               <widget class="QLabel" name="acous_driver_dir_label">
+              <item row="4" column="4">
+               <widget class="QLabel" name="acous_trig_holdoff_label">
                 <property name="text">
-                 <string>Driver Directory</string>
+                 <string>Trig Holdoff</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>acous_trig_delay_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="5" colspan="2">
+               <widget class="NoWheelSpinBox" name="acous_trig_holdoff_box">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="maximum">
+                 <number>1000</number>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="2">
+               <widget class="QLabel" name="acous_post_trig_label">
+                <property name="text">
+                 <string>Post Trig Length</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>acous_post_trig_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="3" colspan="3">
+               <widget class="QLineEdit" name="acous_driver_path_edit"/>
+              </item>
+              <item row="3" column="5" colspan="2">
+               <widget class="NoWheelSpinBox" name="acous_trig_delay_box">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="maximum">
+                 <number>1000</number>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="0">
+               <widget class="QLabel" name="acous_timestamp_clock_label">
+                <property name="text">
+                 <string>Timestamp Clock</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>acous_sample_rate_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="3">
+               <widget class="NoWheelSpinBox" name="acous_seg_count_box">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="prefix">
+                 <string/>
+                </property>
+                <property name="maximum">
+                 <number>1000000</number>
+                </property>
+                <property name="singleStep">
+                 <number>1</number>
+                </property>
+                <property name="value">
+                 <number>1</number>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="5" colspan="2">
+               <widget class="NoWheelDoubleSpinBox" name="acous_trig_timeout_box">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string> s</string>
+                </property>
+                <property name="decimals">
+                 <number>7</number>
+                </property>
+                <property name="maximum">
+                 <double>1410.000000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="2">
+               <widget class="QLabel" name="acous_pre_trig_label">
+                <property name="text">
+                 <string>Pre Trig Length</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>acous_pre_trig_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1">
+               <widget class="NoWheelComboBox" name="acous_mode_box">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <item>
+                 <property name="text">
+                  <string>Single</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Dual</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Quad</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Octal</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="4" column="2">
+               <widget class="QLabel" name="acous_seg_count_label">
+                <property name="text">
+                 <string>Segment Count</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>acous_sample_rate_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="3">
+               <widget class="NoWheelSpinBox" name="acous_pre_trig_box">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="maximum">
+                 <number>4096</number>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="acous_mode_label">
+                <property name="text">
+                 <string>Mode</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>acous_sample_rate_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="0">
+               <widget class="QLabel" name="acous_timestamp_mode_label">
+                <property name="text">
+                 <string>Timestamp Mode</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>acous_sample_rate_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="6">
+               <widget class="QToolButton" name="acous_data_dir_but">
+                <property name="text">
+                 <string>...</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="1">
+               <widget class="NoWheelComboBox" name="acous_timestamp_mode_box">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <item>
+                 <property name="text">
+                  <string>Free</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Reset</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="3" column="3">
+               <widget class="NoWheelSpinBox" name="acous_post_trig_box">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="prefix">
+                 <string/>
+                </property>
+                <property name="maximum">
+                 <number>256000000</number>
+                </property>
+                <property name="singleStep">
+                 <number>16</number>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="2" colspan="4">
+               <widget class="QLineEdit" name="acous_data_dir_edit"/>
+              </item>
+              <item row="1" column="2">
+               <widget class="QLabel" name="acous_driver_path_label">
+                <property name="text">
+                 <string>Driver Path</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
@@ -8045,39 +8290,43 @@
                 </property>
                </widget>
               </item>
-              <item row="1" column="6">
-               <widget class="QToolButton" name="acous_exec_path_but">
+              <item row="4" column="1">
+               <widget class="NoWheelComboBox" name="acous_timestamp_mode_box_2">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <item>
+                 <property name="text">
+                  <string>Fixed</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Sample</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="0" column="0">
+               <widget class="QCheckBox" name="acous_enabled_box">
+                <property name="layoutDirection">
+                 <enum>Qt::LayoutDirection::RightToLeft</enum>
+                </property>
                 <property name="text">
-                 <string>...</string>
+                 <string>Enabled</string>
                 </property>
                </widget>
               </item>
-              <item row="3" column="4">
-               <widget class="QLabel" name="acous_trig_delay_label">
+              <item row="0" column="1">
+               <widget class="QLabel" name="acous_data_dir_label">
                 <property name="text">
-                 <string>Trig Delay</string>
+                 <string>Data Dir</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
-                 <cstring>acous_trig_delay_box</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="5" colspan="2">
-               <widget class="NoWheelDoubleSpinBox" name="acous_trig_timeout_box">
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="suffix">
-                 <string> s</string>
-                </property>
-                <property name="decimals">
-                 <number>3</number>
-                </property>
-                <property name="maximum">
-                 <double>1410.000000000000000</double>
+                 <cstring>acous_sample_rate_box</cstring>
                 </property>
                </widget>
               </item>
@@ -8351,12 +8600,12 @@
                 </property>
                 <item>
                  <property name="text">
-                  <string>Positive</string>
+                  <string>Rising</string>
                  </property>
                 </item>
                 <item>
                  <property name="text">
-                  <string>Negative</string>
+                  <string>Falling</string>
                  </property>
                 </item>
                </widget>
@@ -8399,6 +8648,9 @@
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>acous_range_ext</cstring>
                 </property>
                </widget>
               </item>
@@ -8583,7 +8835,7 @@
               <item row="0" column="6">
                <widget class="QLabel" name="acous_polarity_label">
                 <property name="text">
-                 <string>Slope</string>
+                 <string>Condition</string>
                 </property>
                </widget>
               </item>
@@ -8981,12 +9233,12 @@
                 </property>
                 <item>
                  <property name="text">
-                  <string>Positive</string>
+                  <string>Rising</string>
                  </property>
                 </item>
                 <item>
                  <property name="text">
-                  <string>Negative</string>
+                  <string>Falling</string>
                  </property>
                 </item>
                </widget>
@@ -9013,12 +9265,12 @@
                 </property>
                 <item>
                  <property name="text">
-                  <string>Positive</string>
+                  <string>Rising</string>
                  </property>
                 </item>
                 <item>
                  <property name="text">
-                  <string>Negative</string>
+                  <string>Falling</string>
                  </property>
                 </item>
                </widget>
@@ -9045,12 +9297,12 @@
                 </property>
                 <item>
                  <property name="text">
-                  <string>Positive</string>
+                  <string>Rising</string>
                  </property>
                 </item>
                 <item>
                  <property name="text">
-                  <string>Negative</string>
+                  <string>Falling</string>
                  </property>
                 </item>
                </widget>
@@ -9077,12 +9329,12 @@
                 </property>
                 <item>
                  <property name="text">
-                  <string>Positive</string>
+                  <string>Rising</string>
                  </property>
                 </item>
                 <item>
                  <property name="text">
-                  <string>Negative</string>
+                  <string>Falling</string>
                  </property>
                 </item>
                </widget>
@@ -9109,12 +9361,12 @@
                 </property>
                 <item>
                  <property name="text">
-                  <string>Positive</string>
+                  <string>Rising</string>
                  </property>
                 </item>
                 <item>
                  <property name="text">
-                  <string>Negative</string>
+                  <string>Falling</string>
                  </property>
                 </item>
                </widget>
@@ -9141,12 +9393,12 @@
                 </property>
                 <item>
                  <property name="text">
-                  <string>Positive</string>
+                  <string>Rising</string>
                  </property>
                 </item>
                 <item>
                  <property name="text">
-                  <string>Negative</string>
+                  <string>Falling</string>
                  </property>
                 </item>
                </widget>
@@ -9173,12 +9425,12 @@
                 </property>
                 <item>
                  <property name="text">
-                  <string>Positive</string>
+                  <string>RIsing</string>
                  </property>
                 </item>
                 <item>
                  <property name="text">
-                  <string>Negative</string>
+                  <string>Falling</string>
                  </property>
                 </item>
                </widget>
@@ -9205,12 +9457,12 @@
                 </property>
                 <item>
                  <property name="text">
-                  <string>Positive</string>
+                  <string>Rising</string>
                  </property>
                 </item>
                 <item>
                  <property name="text">
-                  <string>Negative</string>
+                  <string>Falling</string>
                  </property>
                 </item>
                </widget>
@@ -12042,6 +12294,9 @@
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
+                <property name="buddy">
+                 <cstring>trigger_sketch_edit</cstring>
+                </property>
                </widget>
               </item>
               <item row="17" column="2">
@@ -12720,6 +12975,9 @@
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>trigger_port_edit</cstring>
                 </property>
                </widget>
               </item>
@@ -13829,6 +14087,9 @@
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
+                <property name="buddy">
+                 <cstring>clock_port_edit</cstring>
+                </property>
                </widget>
               </item>
               <item row="17" column="7" colspan="2">
@@ -14135,6 +14396,9 @@
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>clock_sketch_edit</cstring>
                 </property>
                </widget>
               </item>
@@ -14982,6 +15246,9 @@
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
+                <property name="buddy">
+                 <cstring>clock_loop_box</cstring>
+                </property>
                </widget>
               </item>
              </layout>
@@ -15014,6 +15281,9 @@
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
+                <property name="buddy">
+                 <cstring>position_mac_edit</cstring>
+                </property>
                </widget>
               </item>
               <item row="1" column="2">
@@ -15023,6 +15293,9 @@
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>position_sketch_edit</cstring>
                 </property>
                </widget>
               </item>
@@ -15037,6 +15310,9 @@
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
+                <property name="buddy">
+                 <cstring>position_gateway_edit</cstring>
+                </property>
                </widget>
               </item>
               <item row="2" column="2">
@@ -15046,6 +15322,9 @@
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>position_ip_edit</cstring>
                 </property>
                </widget>
               </item>
@@ -15081,6 +15360,9 @@
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
+                <property name="buddy">
+                 <cstring>position_port_edit</cstring>
+                </property>
                </widget>
               </item>
               <item row="1" column="4">
@@ -15100,6 +15382,9 @@
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>position_subnet_edit</cstring>
                 </property>
                </widget>
               </item>
