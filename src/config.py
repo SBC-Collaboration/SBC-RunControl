@@ -171,15 +171,31 @@ class Config(QObject):
 
         # acoustics
         acous_config = self.config["acous"]
+        # Acquisition settings
         ui.acous_enabled_box.setChecked(acous_config["enabled"])
-        ui.acous_driver_dir_edit.setText(acous_config["driver_dir"])
-        ui.acous_exec_path_edit.setText(acous_config["exec_path"])
+        ui.acous_data_dir_edit.setText(acous_config["data_dir"])
+        ui.acous_driver_path_edit.setText(acous_config["driver_path"])
+        ui.acous_mode_box.setCurrentText(acous_config["mode"])
         ui.acous_sample_rate_box.setCurrentText(acous_config["sample_rate"])
+        ui.acous_timestamp_mode_box.setCurrentText(acous_config["timestamp_mode"])
+        ui.acous_timestamp_clock_box.setCurrentText(acous_config["timestamp_clock"])
         ui.acous_pre_trig_box.setValue(acous_config["pre_trig_len"])
         ui.acous_post_trig_box.setValue(acous_config["post_trig_len"])
+        ui.acous_acq_seg_count_box.setValue(acous_config["acq_seg_count"])
         ui.acous_trig_timeout_box.setValue(acous_config["trig_timeout"])
         ui.acous_trig_delay_box.setValue(acous_config["trig_delay"])
+        ui.acous_trig_holdoff_box.setValue(acous_config["trig_holdoff"])
 
+        # Application settings
+        ui.acous_start_pos_box.setValue(acous_config["start_pos"])
+        ui.acous_transfer_len_box.setValue(acous_config["transfer_len"])
+        ui.acous_seg_start_box.setValue(acous_config["seg_start"])
+        ui.acous_seg_count_box.setValue(acous_config["seg_count"])
+        ui.acous_page_size_box.setValue(acous_config["page_size"])
+        ui.acous_file_format_box.setCurrentText(acous_config["file_format"])
+        ui.acous_file_name_edit.setText(acous_config["file_name"])
+
+        # Channel settings
         for i in range(1,9):
             ch = f"ch{i}"
             ch_config = acous_config[ch]
@@ -189,13 +205,14 @@ class Config(QObject):
             widgets[f"acous_impedance_{ch}"].setCurrentText(ch_config["impedance"])
             widgets[f"acous_coupling_{ch}"].setCurrentText(ch_config["coupling"])
             widgets[f"acous_trig_{ch}"].setChecked(ch_config["trig"])
-            widgets[f"acous_slope_{ch}"].setCurrentText(ch_config["slope"])
+            widgets[f"acous_polarity_{ch}"].setCurrentText(ch_config["polarity"])
             widgets[f"acous_threshold_{ch}"].setValue(ch_config["threshold"])
 
+        # external trigger settings
         acous_ext_config = acous_config["ext"]
         widgets[f"acous_range_ext"].setCurrentText(acous_ext_config["range"])
         widgets[f"acous_trig_ext"].setChecked(acous_ext_config["trig"])
-        widgets[f"acous_slope_ext"].setCurrentText(acous_ext_config["slope"])
+        widgets[f"acous_polarity_ext"].setCurrentText(acous_ext_config["polarity"])
         widgets[f"acous_threshold_ext"].setValue(acous_ext_config["threshold"])
 
         # cameras
@@ -438,13 +455,25 @@ class Config(QObject):
 
         acous_config = {
             "enabled": ui.acous_enabled_box.isChecked(),
-            "driver_dir": ui.acous_driver_dir_edit.text(),
-            "exec_path": ui.acous_exec_path_edit.text(),
+            "data_dir": ui.acous_data_dir_edit.text(),
+            "driver_path": ui.acous_driver_path_edit.text(),
+            "mode": ui.acous_mode_box.currentText(),
             "sample_rate": ui.acous_sample_rate_box.currentText(),
+            "timestamp_mode": ui.acous_timestamp_mode_box.currentText(),
+            "timestamp_clock": ui.acous_timestamp_clock_box.currentText(),
             "pre_trig_len": ui.acous_pre_trig_box.value(),
             "post_trig_len": ui.acous_post_trig_box.value(),
+            "acq_seg_count": ui.acous_acq_seg_count_box.value(),
             "trig_timeout": ui.acous_trig_timeout_box.value(),
             "trig_delay": ui.acous_trig_delay_box.value(),
+            "trig_holdoff": ui.acous_trig_holdoff_box.value(),
+            "start_pos": ui.acous_start_pos_box.value(),
+            "transfer_len": ui.acous_transfer_len_box.value(),
+            "seg_start": ui.acous_seg_start_box.value(),
+            "seg_count": ui.acous_seg_count_box.value(),
+            "page_size": ui.acous_page_size_box.value(),
+            "file_format": ui.acous_file_format_box.currentText(),
+            "file_name": ui.acous_file_name_edit.text(),
         }
 
         for i in range(1,9):
@@ -456,14 +485,14 @@ class Config(QObject):
             ch_config["impedance"] = widgets[f"acous_impedance_{ch}"].currentText()
             ch_config["coupling"] = widgets[f"acous_coupling_{ch}"].currentText()
             ch_config["trig"] = widgets[f"acous_trig_{ch}"].isChecked()
-            ch_config["slope"] = widgets[f"acous_slope_{ch}"].currentText()
+            ch_config["polarity"] = widgets[f"acous_polarity_{ch}"].currentText()
             ch_config["threshold"] = widgets[f"acous_threshold_{ch}"].value()
             acous_config[ch] = ch_config
 
         acous_config["ext"] = {
             "range": widgets["acous_range_ext"].currentText(),
             "trig": widgets["acous_trig_ext"].isChecked(),
-            "slope": widgets[f"acous_slope_ext"].currentText(),
+            "polarity": widgets[f"acous_polarity_ext"].currentText(),
             "threshold": widgets[f"acous_threshold_ext"].value(),
         }
 

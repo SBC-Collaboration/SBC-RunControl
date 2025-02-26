@@ -293,13 +293,25 @@
   },
   "acous": {
     "enabled": true,
-    "driver_dir": "/home/sbc/packages/gati-linux-driver",
-    "exec_path": "/home/sbc/packages/gati-linux-driver/Sdk/SBC-Piezo-Base-Code/GageSBC",
+    "data_dir": "/home/sbc/RunControl/run-data/current_event/",
+    "driver_path": "/home/sbc/packages/gati-linux-driver/Sdk/SBC-Piezo-Base-Code/SBCAbort.so",
+    "mode": "Octal",
     "sample_rate": "100 MS/s",
+    "timestamp_mode": "Free",
+    "timestamp_clock": "Fixed",
     "pre_trig_len": 4000,
     "post_trig_len": 4000,
+    "acq_seg_count": 1,
     "trig_timeout": 0.0,
     "trig_delay": 0,
+    "trig_holdoff": 0,
+    "start_pos": 0,
+    "transfer_len": 4096,
+    "seg_start": 1,
+    "seg_count": 5,
+    "page_size": 1,
+    "file_format": "TYPE_DEC",
+    "file_name": "acoustics.sbc",
     "ch1": {
       "enabled": false,
       "range": "\u00b15 V",
@@ -307,7 +319,7 @@
       "impedance": "50 \u03a9",
       "coupling": "DC",
       "trig": false,
-      "slope": "Positive",
+      "polarity": "Rising",
       "threshold": 0
     },
     "ch2": {
@@ -317,7 +329,7 @@
       "impedance": "50 \u03a9",
       "coupling": "DC",
       "trig": false,
-      "slope": "Positive",
+      "polarity": "Rising",
       "threshold": 0
     },
     "ch3": {
@@ -327,7 +339,7 @@
       "impedance": "50 \u03a9",
       "coupling": "DC",
       "trig": false,
-      "slope": "Positive",
+      "polarity": "Rising",
       "threshold": 0
     },
     "ch4": {
@@ -337,7 +349,7 @@
       "impedance": "50 \u03a9",
       "coupling": "DC",
       "trig": false,
-      "slope": "Positive",
+      "polarity": "Rising",
       "threshold": 0
     },
     "ch5": {
@@ -347,7 +359,7 @@
       "impedance": "50 \u03a9",
       "coupling": "DC",
       "trig": false,
-      "slope": "Positive",
+      "polarity": "Rising",
       "threshold": 0
     },
     "ch6": {
@@ -357,7 +369,7 @@
       "impedance": "50 \u03a9",
       "coupling": "DC",
       "trig": false,
-      "slope": "Positive",
+      "polarity": "Rising",
       "threshold": 0
     },
     "ch7": {
@@ -367,7 +379,7 @@
       "impedance": "50 \u03a9",
       "coupling": "DC",
       "trig": false,
-      "slope": "Positive",
+      "polarity": "Rising",
       "threshold": 0
     },
     "ch8": {
@@ -377,13 +389,13 @@
       "impedance": "50 \u03a9",
       "coupling": "DC",
       "trig": false,
-      "slope": "Positive",
+      "polarity": "RIsing",
       "threshold": 0
     },
     "ext": {
       "range": "\u00b15 V",
       "trig": false,
-      "slope": "Positive",
+      "polarity": "Rising",
       "threshold": 0
     }
   },
