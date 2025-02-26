@@ -8031,7 +8031,7 @@
            <property name="geometry">
             <rect>
              <x>0</x>
-             <y>0</y>
+             <y>-25</y>
              <width>876</width>
              <height>549</height>
             </rect>
@@ -8254,7 +8254,7 @@
                </widget>
               </item>
               <item row="4" column="3">
-               <widget class="NoWheelSpinBox" name="acous_seg_count_box">
+               <widget class="NoWheelSpinBox" name="acous_acq_seg_count_box">
                 <property name="focusPolicy">
                  <enum>Qt::FocusPolicy::StrongFocus</enum>
                 </property>
@@ -8329,7 +8329,7 @@
                </widget>
               </item>
               <item row="4" column="2">
-               <widget class="QLabel" name="acous_seg_count_label">
+               <widget class="QLabel" name="acous_acq_seg_count_label">
                 <property name="text">
                  <string>Segment Count</string>
                 </property>
@@ -8337,7 +8337,7 @@
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
-                 <cstring>acous_seg_count_box</cstring>
+                 <cstring>acous_acq_seg_count_box</cstring>
                 </property>
                </widget>
               </item>
@@ -9771,7 +9771,7 @@
                </widget>
               </item>
               <item row="1" column="2">
-               <widget class="QLabel" name="acous_transfer_seg_label">
+               <widget class="QLabel" name="acous_seg_count_label">
                 <property name="text">
                  <string>Segment Count</string>
                 </property>
@@ -9834,7 +9834,7 @@
                </widget>
               </item>
               <item row="1" column="3">
-               <widget class="NoWheelSpinBox" name="acous_transfer_seg_box">
+               <widget class="NoWheelSpinBox" name="acous_seg_count_box">
                 <property name="focusPolicy">
                  <enum>Qt::FocusPolicy::StrongFocus</enum>
                 </property>
@@ -9866,7 +9866,7 @@
                </widget>
               </item>
               <item row="2" column="1" colspan="5">
-               <widget class="QLineEdit" name="acous_data_dir_edit_2"/>
+               <widget class="QLineEdit" name="acous_file_name_edit"/>
               </item>
              </layout>
             </item>
