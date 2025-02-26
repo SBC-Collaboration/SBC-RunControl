@@ -4,7 +4,7 @@
     "log_path": "/home/sbc/RunControl/logs/rc.log",
     "data_dir": "/home/sbc/RunControl/run-data",
     "max_ev_time": 30.0,
-    "max_num_evs": 4,
+    "max_num_evs": 1,
     "pressure": {
       "mode": "random",
       "profile1": {
@@ -314,7 +314,7 @@
     "file_name": "acoustics.sbc",
     "ch1": {
       "enabled": true,
-      "range": "\u00b15 V",
+      "range": "\u00b11 V",
       "offset": 0,
       "impedance": "50 \u03a9",
       "coupling": "DC",
@@ -324,7 +324,7 @@
     },
     "ch2": {
       "enabled": true,
-      "range": "\u00b15 V",
+      "range": "\u00b11 V",
       "offset": 0,
       "impedance": "50 \u03a9",
       "coupling": "DC",
@@ -334,7 +334,7 @@
     },
     "ch3": {
       "enabled": true,
-      "range": "\u00b15 V",
+      "range": "\u00b11 V",
       "offset": 0,
       "impedance": "50 \u03a9",
       "coupling": "DC",
@@ -344,7 +344,7 @@
     },
     "ch4": {
       "enabled": true,
-      "range": "\u00b15 V",
+      "range": "\u00b11 V",
       "offset": 0,
       "impedance": "50 \u03a9",
       "coupling": "DC",
@@ -354,7 +354,7 @@
     },
     "ch5": {
       "enabled": true,
-      "range": "\u00b15 V",
+      "range": "\u00b11 V",
       "offset": 0,
       "impedance": "50 \u03a9",
       "coupling": "DC",
@@ -364,7 +364,7 @@
     },
     "ch6": {
       "enabled": true,
-      "range": "\u00b15 V",
+      "range": "\u00b11 V",
       "offset": 0,
       "impedance": "50 \u03a9",
       "coupling": "DC",
@@ -374,7 +374,7 @@
     },
     "ch7": {
       "enabled": true,
-      "range": "\u00b15 V",
+      "range": "\u00b11 V",
       "offset": 0,
       "impedance": "50 \u03a9",
       "coupling": "DC",
@@ -384,16 +384,16 @@
     },
     "ch8": {
       "enabled": true,
-      "range": "\u00b15 V",
+      "range": "\u00b11 V",
       "offset": 0,
       "impedance": "50 \u03a9",
       "coupling": "DC",
       "trig": false,
-      "polarity": "RIsing",
+      "polarity": "Rising",
       "threshold": 0
     },
     "ext": {
-      "range": "\u00b15 V",
+      "range": "\u00b11 V",
       "trig": false,
       "polarity": "Rising",
       "threshold": 0
@@ -401,7 +401,7 @@
   },
   "cam": {
     "cam1": {
-      "enabled": true,
+      "enabled": false,
       "rc_config_path": "/home/sbc/RunControl/run-data/config/cam1-config.json",
       "config_path": "/mnt/rc-data/config/cam1-config.json",
       "data_path": "/mnt/rc-data/current_event/",
@@ -483,7 +483,7 @@
         "first_fault": 53
       },
       "trig2": {
-        "enabled": false,
+        "enabled": true,
         "name": "Cam2",
         "compression": "fast",
         "in": 23,

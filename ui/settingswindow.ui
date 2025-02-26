@@ -8683,7 +8683,7 @@
                  <enum>Qt::LayoutDirection::RightToLeft</enum>
                 </property>
                 <property name="text">
-                 <string>Ch3</string>
+                 <string>Ch 3</string>
                 </property>
                </widget>
               </item>
@@ -9581,7 +9581,7 @@
                 </property>
                 <item>
                  <property name="text">
-                  <string>RIsing</string>
+                  <string>Rising</string>
                  </property>
                 </item>
                 <item>
@@ -9693,7 +9693,7 @@
                  <string/>
                 </property>
                 <property name="maximum">
-                 <number>10000000</number>
+                 <number>1000000000</number>
                 </property>
                 <property name="singleStep">
                  <number>1</number>

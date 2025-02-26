@@ -39,48 +39,41 @@ class Acoustics(QObject):
     def save_config(self):
         n_trig = 1
         config = {}
-        sample_rate = 0
-        if self.config["sample_rate"] == "100 MS/s":
-            sample_rate = 100000000
-        elif self.config["sample_rate"] == "50 MS/s":
-            sample_rate = 50000000
-        elif self.config["sample_rate"] == "25 MS/s":
-            sample_rate = 25000000
-        elif self.config["sample_rate"] == "12.5 MS/s":
-            sample_rate = 12500000
-        elif self.config["sample_rate"] == "10 MS/s":
-            sample_rate = 10000000
-        elif self.config["sample_rate"] == "5 MS/s":
-            sample_rate = 5000000
-        elif self.config["sample_rate"] == "2 MS/s":
-            sample_rate = 2000000
-        elif self.config["sample_rate"] == "1 MS/s":
-            sample_rate = 1000000
-        elif self.config["sample_rate"] == "500 kS/s":
-            sample_rate = 500000
-        elif self.config["sample_rate"] == "200 kS/s":
-            sample_rate = 200000
-        elif self.config["sample_rate"] == "100 kS/s":
-            sample_rate = 100000
-        elif self.config["sample_rate"] == "50 kS/s":
-            sample_rate = 50000
-        elif self.config["sample_rate"] == "20 kS/s":
-            sample_rate = 20000
-        elif self.config["sample_rate"] == "10 kS/s":
-            sample_rate = 10000
-        elif self.config["sample_rate"] == "5 kS/s":
-            sample_rate = 5000
-        elif self.config["sample_rate"] == "2 kS/s":
-            sample_rate = 2000
-        elif self.config["sample_rate"] == "1 kS/s":
-            sample_rate = 1000
-        else:
-            sample_rate = 1000000
-            self.logger.warning("Acoustics: Invalid sample rate.")
+
+        # convert sample_rate to a number
+        sample_rate_conversion = {
+            "100 MS/s": 100000000,
+            "50 MS/s": 50000000,
+            "25 MS/s": 25000000,
+            "12.5 MS/s": 12500000,
+            "10 MS/s": 10000000,
+            "5 MS/s": 5000000,
+            "2 MS/s": 2000000,
+            "1 MS/s": 1000000,
+            "500 kS/s": 500000,
+            "200 kS/s": 200000,
+            "100 kS/s": 100000,
+            "50 kS/s": 50000,
+            "20 kS/s": 20000,
+            "10 kS/s": 10000,
+            "5 kS/s": 5000,
+            "2 kS/s": 2000,
+            "1 kS/s": 1000,
+        }
+
+        # convert range to a number
+        range_conversion = {
+            "±5 V": 10000,
+            "±2 V": 4000,
+            "±1 V": 2000,
+            "±500 mV": 1000,
+            "±200 mV": 400,
+            "±100 mV": 200,
+        }
 
         config["Acquisition"] = {
             "Mode": self.config["mode"],
-            "SampleRate": sample_rate,
+            "SampleRate": sample_rate_conversion[self.config["sample_rate"]],
             "Depth": self.config["post_trig_len"],
             "SegmentSize": self.config["pre_trig_len"] + self.config["post_trig_len"],
             "SegmentCount": self.config["acq_seg_count"],
@@ -103,12 +96,14 @@ class Acoustics(QObject):
         for ch in range(1, 9):
             if self.config[f"ch{ch}"]["enabled"]:
                 config[f"Channel{ch}"] = {
-                    "Range": self.config[f"ch{ch}"]["range"],
+                    "Range": range_conversion[self.config[f"ch{ch}"]["range"]],
                     "Coupling": self.config[f"ch{ch}"]["coupling"],
                     "Impedance": 50 if self.config[f"ch{ch}"]["impedance"]=="50 Ω" else 1000000,
                 }
+        
+        for ch in range(1, 9):
             if self.config[f"ch{ch}"]["trig"]:
-                config[f"Trigger{ch}"] = {
+                config[f"Trigger{n_trig}"] = {
                     "Condition": self.config[f"ch{ch}"]["polarity"],
                     "Level": self.config[f"ch{ch}"]["threshold"],
                     "Source": n_trig,
@@ -116,10 +111,16 @@ class Acoustics(QObject):
                 n_trig += 1
         
         if self.config["ext"]["trig"]:
-            config[f"Trigger9"] = {
+            config[f"Trigger{n_trig}"] = {
                 "Condition": self.config["ext"]["polarity"],
                 "Level": self.config["ext"]["threshold"],
-                "Source": n_trig,
+                "Source": -1,
+            }
+            n_trig += 1
+        
+        if n_trig == 1: # if no other trigger is enabled
+            config[f"Trigger{n_trig}"] = {
+                "Source": 0, # use disabled trigger
             }
 
         parser = ConfigParser()
