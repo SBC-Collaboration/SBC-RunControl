@@ -199,7 +199,6 @@ class Config(QObject):
         for i in range(1,9):
             ch = f"ch{i}"
             ch_config = acous_config[ch]
-            widgets[f"acous_enable_{ch}"].setChecked(ch_config["enabled"])
             widgets[f"acous_range_{ch}"].setCurrentText(ch_config["range"])
             widgets[f"acous_offset_{ch}"].setValue(ch_config["offset"])
             widgets[f"acous_impedance_{ch}"].setCurrentText(ch_config["impedance"])
@@ -479,7 +478,6 @@ class Config(QObject):
         for i in range(1,9):
             ch_config = {}
             ch = f"ch{i}"
-            ch_config["enabled"] = widgets[f"acous_enable_{ch}"].isChecked()
             ch_config["range"] = widgets[f"acous_range_{ch}"].currentText()
             ch_config["offset"] = widgets[f"acous_offset_{ch}"].value()
             ch_config["impedance"] = widgets[f"acous_impedance_{ch}"].currentText()

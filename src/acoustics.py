@@ -94,12 +94,12 @@ class Acoustics(QObject):
         }
 
         for ch in range(1, 9):
-            if self.config[f"ch{ch}"]["enabled"]:
-                config[f"Channel{ch}"] = {
-                    "Range": range_conversion[self.config[f"ch{ch}"]["range"]],
-                    "Coupling": self.config[f"ch{ch}"]["coupling"],
-                    "Impedance": 50 if self.config[f"ch{ch}"]["impedance"]=="50 Ω" else 1000000,
-                }
+            # All 8 channels must be enabled
+            config[f"Channel{ch}"] = {
+                "Range": range_conversion[self.config[f"ch{ch}"]["range"]],
+                "Coupling": self.config[f"ch{ch}"]["coupling"],
+                "Impedance": 50 if self.config[f"ch{ch}"]["impedance"]=="50 Ω" else 1000000,
+            }
         
         for ch in range(1, 9):
             if self.config[f"ch{ch}"]["trig"]:

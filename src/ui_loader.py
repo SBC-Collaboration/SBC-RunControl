@@ -78,14 +78,6 @@ class SettingsWindow(QMainWindow):
         self.checkpair_caen1_acq = CheckBoxPairBinder(self.widgets["active_caen_g1_trg"], self.widgets["caen_g1_acq_box"])
         self.checkpair_caen2_acq = CheckBoxPairBinder(self.widgets["active_caen_g2_trg"], self.widgets["caen_g2_acq_box"])
         self.checkpair_caen3_acq = CheckBoxPairBinder(self.widgets["active_caen_g3_trg"], self.widgets["caen_g3_acq_box"])
-        self.checkpair_acous1 = CheckBoxPairBinder(self.widgets["active_acous_ch1"], self.widgets["acous_enable_ch1"])
-        self.checkpair_acous2 = CheckBoxPairBinder(self.widgets["active_acous_ch2"], self.widgets["acous_enable_ch2"])
-        self.checkpair_acous3 = CheckBoxPairBinder(self.widgets["active_acous_ch3"], self.widgets["acous_enable_ch3"])
-        self.checkpair_acous4 = CheckBoxPairBinder(self.widgets["active_acous_ch4"], self.widgets["acous_enable_ch4"])
-        self.checkpair_acous5 = CheckBoxPairBinder(self.widgets["active_acous_ch5"], self.widgets["acous_enable_ch5"])
-        self.checkpair_acous6 = CheckBoxPairBinder(self.widgets["active_acous_ch6"], self.widgets["acous_enable_ch6"])
-        self.checkpair_acous7 = CheckBoxPairBinder(self.widgets["active_acous_ch7"], self.widgets["acous_enable_ch7"])
-        self.checkpair_acous8 = CheckBoxPairBinder(self.widgets["active_acous_ch8"], self.widgets["acous_enable_ch8"])
 
         self.logger.debug("Settings window loaded.")
 
@@ -196,8 +188,6 @@ class SettingsWindow(QMainWindow):
                 self.widgets[f"caen_{setting}_mask_{ch}"].setChecked(True)
         else:
             return  # if partially checked, do nothing
-        
-    
 
 
 # Loads log window
