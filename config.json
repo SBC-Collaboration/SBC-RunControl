@@ -296,24 +296,24 @@
     "data_dir": "/home/sbc/RunControl/run-data/current_event/",
     "driver_path": "/home/sbc/packages/gati-linux-driver/Sdk/SBC-Piezo-Base-Code/SBCAbort.so",
     "mode": "Octal",
-    "sample_rate": "100 MS/s",
+    "sample_rate": "1 MS/s",
     "timestamp_mode": "Free",
     "timestamp_clock": "Fixed",
-    "pre_trig_len": 4000,
-    "post_trig_len": 4000,
+    "pre_trig_len": 0,
+    "post_trig_len": 25000000,
     "acq_seg_count": 1,
     "trig_timeout": 0.0,
     "trig_delay": 0,
     "trig_holdoff": 0,
     "start_pos": 0,
-    "transfer_len": 4096,
+    "transfer_len": 25000000,
     "seg_start": 1,
-    "seg_count": 5,
+    "seg_count": 1,
     "page_size": 1,
     "file_format": "TYPE_DEC",
     "file_name": "acoustics.sbc",
     "ch1": {
-      "enabled": false,
+      "enabled": true,
       "range": "\u00b15 V",
       "offset": 0,
       "impedance": "50 \u03a9",
@@ -323,7 +323,7 @@
       "threshold": 0
     },
     "ch2": {
-      "enabled": false,
+      "enabled": true,
       "range": "\u00b15 V",
       "offset": 0,
       "impedance": "50 \u03a9",
@@ -333,7 +333,7 @@
       "threshold": 0
     },
     "ch3": {
-      "enabled": false,
+      "enabled": true,
       "range": "\u00b15 V",
       "offset": 0,
       "impedance": "50 \u03a9",
@@ -343,7 +343,7 @@
       "threshold": 0
     },
     "ch4": {
-      "enabled": false,
+      "enabled": true,
       "range": "\u00b15 V",
       "offset": 0,
       "impedance": "50 \u03a9",
@@ -353,7 +353,7 @@
       "threshold": 0
     },
     "ch5": {
-      "enabled": false,
+      "enabled": true,
       "range": "\u00b15 V",
       "offset": 0,
       "impedance": "50 \u03a9",
@@ -363,7 +363,7 @@
       "threshold": 0
     },
     "ch6": {
-      "enabled": false,
+      "enabled": true,
       "range": "\u00b15 V",
       "offset": 0,
       "impedance": "50 \u03a9",
@@ -373,7 +373,7 @@
       "threshold": 0
     },
     "ch7": {
-      "enabled": false,
+      "enabled": true,
       "range": "\u00b15 V",
       "offset": 0,
       "impedance": "50 \u03a9",
@@ -383,7 +383,7 @@
       "threshold": 0
     },
     "ch8": {
-      "enabled": false,
+      "enabled": true,
       "range": "\u00b15 V",
       "offset": 0,
       "impedance": "50 \u03a9",

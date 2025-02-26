@@ -37,74 +37,93 @@ class Acoustics(QObject):
         pass
 
     def save_config(self):
-        config_data = {
-            "Acquisition": {
-                "Mode": "Octal",
-                "SampleRate": "1000000",  # 1 MHz
-                "Depth": "25000000",      # e.g. for eight channels
-                "SegmentSize": "25000000",
-                "SegmentCount": "1",
-                "TriggerHoldOff": "0",
-                "TriggerTimeout": "0",    # 10 ms would be '100000' etc.
-                "TimeStampMode": "Free",
-                "TimeStampClock": "Fixed"
-            },
-            "Channel1": {
-                "Range": "2000",
-                "Coupling": "DC",
-                "Impedance": "50"
-            },
-            "Channel2": {
-                "Range": "2000",
-                "Coupling": "DC",
-                "Impedance": "50"
-            },
-            "Channel3": {
-                "Range": "2000",
-                "Coupling": "DC",
-                "Impedance": "50"
-            },
-            "Channel4": {
-                "Range": "2000",
-                "Coupling": "DC",
-                "Impedance": "50"
-            },
-            "Channel5": {
-                "Range": "2000",
-                "Coupling": "DC",
-                "Impedance": "50"
-            },
-            "Channel6": {
-                "Range": "2000",
-                "Coupling": "DC",
-                "Impedance": "50"
-            },
-            "Channel7": {
-                "Range": "2000",
-                "Coupling": "DC",
-                "Impedance": "50"
-            },
-            "Channel8": {
-                "Range": "2000",
-                "Coupling": "DC",
-                "Impedance": "50"
-            },
-            "Trigger1": {
-                "Condition": "Rising",
-                "Level": "10",
-                "Source": "2"
-            },
-            "Application": {
-                "StartPosition": "0",
-                "TransferLength": "25000000",
-                "SegmentStart": "1",
-                "SegmentCount": "1",
-                "SaveFileName": "/home/sbc/packages/gati-linux-driver/Sdk/SBC-Piezo-Base-Code/test/Acquire-",
-                "SaveFileFormat": "TYPE_DEC"
-            }
+        n_trig = 1
+        config = {}
+        sample_rate = 0
+        if self.config["sample_rate"] == "100 MS/s":
+            sample_rate = 100000000
+        elif self.config["sample_rate"] == "50 MS/s":
+            sample_rate = 50000000
+        elif self.config["sample_rate"] == "25 MS/s":
+            sample_rate = 25000000
+        elif self.config["sample_rate"] == "12.5 MS/s":
+            sample_rate = 12500000
+        elif self.config["sample_rate"] == "10 MS/s":
+            sample_rate = 10000000
+        elif self.config["sample_rate"] == "5 MS/s":
+            sample_rate = 5000000
+        elif self.config["sample_rate"] == "2 MS/s":
+            sample_rate = 2000000
+        elif self.config["sample_rate"] == "1 MS/s":
+            sample_rate = 1000000
+        elif self.config["sample_rate"] == "500 kS/s":
+            sample_rate = 500000
+        elif self.config["sample_rate"] == "200 kS/s":
+            sample_rate = 200000
+        elif self.config["sample_rate"] == "100 kS/s":
+            sample_rate = 100000
+        elif self.config["sample_rate"] == "50 kS/s":
+            sample_rate = 50000
+        elif self.config["sample_rate"] == "20 kS/s":
+            sample_rate = 20000
+        elif self.config["sample_rate"] == "10 kS/s":
+            sample_rate = 10000
+        elif self.config["sample_rate"] == "5 kS/s":
+            sample_rate = 5000
+        elif self.config["sample_rate"] == "2 kS/s":
+            sample_rate = 2000
+        elif self.config["sample_rate"] == "1 kS/s":
+            sample_rate = 1000
+        else:
+            sample_rate = 1000000
+            self.logger.warning("Acoustics: Invalid sample rate.")
+
+        config["Acquisition"] = {
+            "Mode": self.config["mode"],
+            "SampleRate": sample_rate,
+            "Depth": self.config["post_trig_len"],
+            "SegmentSize": self.config["pre_trig_len"] + self.config["post_trig_len"],
+            "SegmentCount": self.config["acq_seg_count"],
+            "TriggerDelay": self.config["trig_delay"],
+            "TriggerTimeout": self.config["trig_timeout"],
+            "TriggerHoldOff": self.config["trig_holdoff"],
+            "TimeStampMode": self.config["timestamp_mode"],
+            "TimeStampClock": self.config["timestamp_clock"],
         }
+
+        config["Application"] = {
+            "StartPosition": self.config["start_pos"],
+            "TransferLength": self.config["transfer_len"],
+            "SegmentStart": self.config["seg_start"],
+            "SegmentCount": self.config["seg_count"],
+            "SaveFileFormat": self.config["file_format"],
+            "SaveFileName": os.path.join(self.config["data_dir"], self.config["file_name"]),
+        }
+
+        for ch in range(1, 9):
+            if self.config[f"ch{ch}"]["enabled"]:
+                config[f"Channel{ch}"] = {
+                    "Range": self.config[f"ch{ch}"]["range"],
+                    "Coupling": self.config[f"ch{ch}"]["coupling"],
+                    "Impedance": 50 if self.config[f"ch{ch}"]["impedance"]=="50 Ω" else 1000000,
+                }
+            if self.config[f"ch{ch}"]["trig"]:
+                config[f"Trigger{ch}"] = {
+                    "Condition": self.config[f"ch{ch}"]["polarity"],
+                    "Level": self.config[f"ch{ch}"]["threshold"],
+                    "Source": n_trig,
+                }
+                n_trig += 1
+        
+        if self.config["ext"]["trig"]:
+            config[f"Trigger9"] = {
+                "Condition": self.config["ext"]["polarity"],
+                "Level": self.config["ext"]["threshold"],
+                "Source": n_trig,
+            }
+
         parser = ConfigParser()
-        parser.read_dict(config_data)
+        parser.read_dict(config)
         with open("SBCAcquisition.ini", "w") as f:
             parser.write(f)
 
