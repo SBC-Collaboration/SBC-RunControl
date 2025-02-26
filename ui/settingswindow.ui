@@ -8032,8 +8032,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>890</width>
-             <height>574</height>
+             <width>876</width>
+             <height>549</height>
             </rect>
            </property>
            <property name="maximumSize">
@@ -8230,16 +8230,6 @@
               <item row="1" column="3" colspan="3">
                <widget class="QLineEdit" name="acous_driver_path_edit"/>
               </item>
-              <item row="3" column="5" colspan="2">
-               <widget class="NoWheelSpinBox" name="acous_trig_delay_box">
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="maximum">
-                 <number>1000</number>
-                </property>
-               </widget>
-              </item>
               <item row="4" column="0">
                <widget class="QLabel" name="acous_timestamp_clock_label">
                 <property name="text">
@@ -8249,7 +8239,17 @@
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
-                 <cstring>acous_timestamp_mode_box_2</cstring>
+                 <cstring>acous_timestamp_clock_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="5" colspan="2">
+               <widget class="NoWheelSpinBox" name="acous_trig_delay_box">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="maximum">
+                 <number>1000</number>
                 </property>
                </widget>
               </item>
@@ -8447,7 +8447,7 @@
                </widget>
               </item>
               <item row="4" column="1">
-               <widget class="NoWheelComboBox" name="acous_timestamp_mode_box_2">
+               <widget class="NoWheelComboBox" name="acous_timestamp_clock_box">
                 <property name="focusPolicy">
                  <enum>Qt::FocusPolicy::StrongFocus</enum>
                 </property>
@@ -8735,7 +8735,7 @@
                </widget>
               </item>
               <item row="1" column="6">
-               <widget class="NoWheelComboBox" name="acous_slope_ch1">
+               <widget class="NoWheelComboBox" name="acous_polarity_ch1">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                   <horstretch>0</horstretch>
@@ -9368,7 +9368,7 @@
                </widget>
               </item>
               <item row="2" column="6">
-               <widget class="NoWheelComboBox" name="acous_slope_ch2">
+               <widget class="NoWheelComboBox" name="acous_polarity_ch2">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                   <horstretch>0</horstretch>
@@ -9400,7 +9400,7 @@
                </widget>
               </item>
               <item row="3" column="6">
-               <widget class="NoWheelComboBox" name="acous_slope_ch3">
+               <widget class="NoWheelComboBox" name="acous_polarity_ch3">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                   <horstretch>0</horstretch>
@@ -9432,7 +9432,7 @@
                </widget>
               </item>
               <item row="4" column="6">
-               <widget class="NoWheelComboBox" name="acous_slope_ch4">
+               <widget class="NoWheelComboBox" name="acous_polarity_ch4">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                   <horstretch>0</horstretch>
@@ -9464,7 +9464,7 @@
                </widget>
               </item>
               <item row="5" column="6">
-               <widget class="NoWheelComboBox" name="acous_slope_ch5">
+               <widget class="NoWheelComboBox" name="acous_polarity_ch5">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                   <horstretch>0</horstretch>
@@ -9496,7 +9496,7 @@
                </widget>
               </item>
               <item row="6" column="6">
-               <widget class="NoWheelComboBox" name="acous_slope_ch6">
+               <widget class="NoWheelComboBox" name="acous_polarity_ch6">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                   <horstretch>0</horstretch>
@@ -9528,7 +9528,7 @@
                </widget>
               </item>
               <item row="7" column="6">
-               <widget class="NoWheelComboBox" name="acous_slope_ch7">
+               <widget class="NoWheelComboBox" name="acous_polarity_ch7">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                   <horstretch>0</horstretch>
@@ -9560,7 +9560,7 @@
                </widget>
               </item>
               <item row="8" column="6">
-               <widget class="NoWheelComboBox" name="acous_slope_ch8">
+               <widget class="NoWheelComboBox" name="acous_polarity_ch8">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                   <horstretch>0</horstretch>
@@ -9592,7 +9592,7 @@
                </widget>
               </item>
               <item row="9" column="6">
-               <widget class="NoWheelComboBox" name="acous_slope_ext">
+               <widget class="NoWheelComboBox" name="acous_polarity_ext">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                   <horstretch>0</horstretch>
@@ -9622,6 +9622,251 @@
                  </property>
                 </item>
                </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QGridLayout" name="acous_application_grid">
+              <property name="topMargin">
+               <number>3</number>
+              </property>
+              <property name="bottomMargin">
+               <number>3</number>
+              </property>
+              <property name="spacing">
+               <number>3</number>
+              </property>
+              <item row="0" column="5">
+               <widget class="NoWheelSpinBox" name="acous_page_size_box">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="prefix">
+                 <string/>
+                </property>
+                <property name="minimum">
+                 <number>1</number>
+                </property>
+                <property name="maximum">
+                 <number>1000000</number>
+                </property>
+                <property name="singleStep">
+                 <number>1</number>
+                </property>
+                <property name="value">
+                 <number>1</number>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="2">
+               <widget class="QLabel" name="acous_seg_start_label">
+                <property name="text">
+                 <string>Segment Start</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>acous_timestamp_clock_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0">
+               <widget class="QLabel" name="acous_start_pos_label">
+                <property name="text">
+                 <string>Start Position</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>acous_timestamp_clock_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1">
+               <widget class="NoWheelSpinBox" name="acous_transfer_len_box">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="prefix">
+                 <string/>
+                </property>
+                <property name="maximum">
+                 <number>10000000</number>
+                </property>
+                <property name="singleStep">
+                 <number>1</number>
+                </property>
+                <property name="value">
+                 <number>4096</number>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="acous_transfer_len_label">
+                <property name="text">
+                 <string>Transfer Length</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>acous_timestamp_clock_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="3">
+               <widget class="NoWheelSpinBox" name="acous_seg_start_box">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="prefix">
+                 <string/>
+                </property>
+                <property name="minimum">
+                 <number>1</number>
+                </property>
+                <property name="maximum">
+                 <number>1000000</number>
+                </property>
+                <property name="singleStep">
+                 <number>1</number>
+                </property>
+                <property name="value">
+                 <number>1</number>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="4">
+               <widget class="QLabel" name="acous_page_size_label">
+                <property name="text">
+                 <string>Page Size</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>acous_timestamp_clock_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="NoWheelSpinBox" name="acous_start_pos_box">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="prefix">
+                 <string/>
+                </property>
+                <property name="maximum">
+                 <number>1000000</number>
+                </property>
+                <property name="singleStep">
+                 <number>1</number>
+                </property>
+                <property name="value">
+                 <number>0</number>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="2">
+               <widget class="QLabel" name="acous_transfer_seg_label">
+                <property name="text">
+                 <string>Segment Count</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>acous_timestamp_clock_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="5">
+               <widget class="NoWheelComboBox" name="acous_file_format_box">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>16</width>
+                  <height>16</height>
+                 </size>
+                </property>
+                <property name="frame">
+                 <bool>true</bool>
+                </property>
+                <item>
+                 <property name="text">
+                  <string>TYPE_DEC</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>TYPE_HEX</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>TYPE_FLOAT</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="1" column="4">
+               <widget class="QLabel" name="acous_file_format_label">
+                <property name="text">
+                 <string>Save File Format</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>acous_timestamp_clock_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="3">
+               <widget class="NoWheelSpinBox" name="acous_transfer_seg_box">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="prefix">
+                 <string/>
+                </property>
+                <property name="maximum">
+                 <number>1000000</number>
+                </property>
+                <property name="singleStep">
+                 <number>1</number>
+                </property>
+                <property name="value">
+                 <number>5</number>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QLabel" name="acous_file_name_label">
+                <property name="text">
+                 <string>Save File Name</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>acous_timestamp_clock_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1" colspan="5">
+               <widget class="QLineEdit" name="acous_data_dir_edit_2"/>
               </item>
              </layout>
             </item>
@@ -9688,8 +9933,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>890</width>
-             <height>574</height>
+             <width>876</width>
+             <height>562</height>
             </rect>
            </property>
            <property name="maximumSize">
@@ -15720,7 +15965,7 @@
   <tabstop>acous_enable_ch1</tabstop>
   <tabstop>acous_offset_ch1</tabstop>
   <tabstop>acous_trig_ch1</tabstop>
-  <tabstop>acous_slope_ch1</tabstop>
+  <tabstop>acous_polarity_ch1</tabstop>
   <tabstop>acous_threshold_ch1</tabstop>
   <tabstop>acous_enable_ch2</tabstop>
   <tabstop>acous_offset_ch2</tabstop>
