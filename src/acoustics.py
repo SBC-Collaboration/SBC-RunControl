@@ -1,21 +1,14 @@
-import json
 import os
 import logging
 from PySide6.QtCore import QTimer, QObject, Slot, Signal, QThread
-from collections import namedtuple
-import copy
-import json
-from ctypes import *
-import src.global_variable  as gv #BM
-import subprocess
 import signal
-import time
 from configparser import ConfigParser
-
+from multiprocessing import Process
+import ctypes
 
 class Acoustics(QObject):
-    acous_started = Signal(str)
-    acous_stopped = Signal(str)
+    event_started = Signal(str)
+    event_stopped = Signal(str)
 
     def __init__(self, mainwindow):
         super().__init__()
@@ -27,6 +20,8 @@ class Acoustics(QObject):
         self.timer.setInterval(100)
         self.timer.timeout.connect(self.periodic_task)
 
+        self.gage_process = None
+
     @Slot()
     def run(self):
         self.timer.start()
@@ -34,7 +29,11 @@ class Acoustics(QObject):
 
     @Slot()
     def periodic_task(self):
-        pass
+        if (self.main.run_state == self.main.run_states["active"] and self.gage_process):
+            if not self.gage_process.is_alive():
+                self.logger.info(f"GaGe process not alive. Starting new thread.")
+                self.gage_process = Process(target=self.start_gage)
+                self.gage_process.start()
 
     def save_config(self):
         n_trig = 1
@@ -101,6 +100,7 @@ class Acoustics(QObject):
                 "Impedance": 50 if self.config[f"ch{ch}"]["impedance"]=="50 Ω" else 1000000,
             }
         
+        # trigger fields must be after channel fields
         for ch in range(1, 9):
             if self.config[f"ch{ch}"]["trig"]:
                 config[f"Trigger{n_trig}"] = {
@@ -118,6 +118,7 @@ class Acoustics(QObject):
             }
             n_trig += 1
         
+        # Must have one or more trigger fields
         if n_trig == 1: # if no other trigger is enabled
             config[f"Trigger{n_trig}"] = {
                 "Source": 0, # use disabled trigger
@@ -127,28 +128,33 @@ class Acoustics(QObject):
         parser.read_dict(config)
         with open("SBCAcquisition.ini", "w") as f:
             parser.write(f)
+    
+    def start_gage(self):
+        lib = ctypes.cdll.LoadLibrary(self.config["driver_path"])
+        lib.main()
 
-    @Slot(str)                                                                      
-    def start_event(self,module):
-
-        self.config = self.main.config_class.run_config[module]
+    @Slot()                                                                      
+    def start_event(self):
+        self.config = self.main.config_class.run_config["acous"]
         if not self.config["enabled"]:
-            self.event_stopped.emit(f"disabled-acous")
+            self.event_started.emit(f"disabled-gage")
             return
         self.save_config()
         
-        self.logger.info(f"Acoustic data acquisition starting.")                    
-        process = subprocess.Popen(['python', '/home/sbc/packages/gati-linux-driver/Sdk/SBC-Piezo-Base-Code/sbc_reader_dll_wrapper.py'])             
-        while True:
-            if(gv.TRIG_LATCH==1):
-                process.send_signal(signal.SIGINT)
-                break                                                         
-            if process.poll() != None:                                            
-                process = subprocess.Popen(['python', '/home/sbc/packages/gati-linux-driver/Sdk/SBC-Piezo-Base-Code/sbc_reader_dll_wrapper.py']) 
-            time.sleep(0.001) #time.sleep(0.0005)  # Sleep for 0.5 milliseconds
-                                        
-        self.logger.info(f"Acoustic data acquisition ended.")
+        self.logger.info(f"Acoustic data acquisition starting.")
+        self.gage_process = Process(target=self.start_gage)
+        self.gage_process.start()
+        self.event_started.emit("gage")
 
     @Slot()
     def stop_event(self):
-        self.client.close()
+        if not self.config["enabled"]:
+            self.event_stopped.emit(f"disabled-gage")
+            return
+
+        if self.gage_process and self.gage_process.is_alive():
+            os.kill(self.gage_process.pid, signal.SIGINT)
+            self.gage_process.join()
+            self.gage_process = None
+        
+        self.event_stopped.emit("gage")

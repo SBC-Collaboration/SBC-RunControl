@@ -161,17 +161,20 @@ class MainWindow(QMainWindow):
         time.sleep(0.001)
 
         self.acous_worker = Acoustics(self)
+        self.acous_worker.event_started.connect(self.starting_event_wait)
+        self.acous_worker.event_stopped.connect(self.stopping_event_wait)
         self.acous_thread = QThread()
         self.acous_thread.setObjectName("acous_thread")
         self.acous_worker.moveToThread(self.acous_thread)
         self.acous_thread.started.connect(self.acous_worker.run)
+        self.signals.event_starting.connect(self.acous_worker.start_event)
+        self.signals.event_stopping.connect(self.acous_worker.stop_event)
         self.acous_thread.start()
         time.sleep(0.001)
 
         self.niusb_worker = NIUSB(self)
         self.niusb_worker.run_started.connect(self.starting_run_wait)
         self.niusb_worker.event_started.connect(self.starting_event_wait)
-        self.niusb_worker.acous_event_started.connect(self.acous_worker.start_event) #BM
         self.niusb_worker.event_stopped.connect(self.stopping_event_wait)
         self.niusb_worker.run_stopped.connect(self.stopping_run_wait)
         self.niusb_worker.trigger_detected.connect(self.stop_event)

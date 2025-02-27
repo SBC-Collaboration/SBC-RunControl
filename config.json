@@ -313,7 +313,6 @@
     "file_format": "TYPE_DEC",
     "file_name": "acoustics.sbc",
     "ch1": {
-      "enabled": true,
       "range": "\u00b11 V",
       "offset": 0,
       "impedance": "50 \u03a9",
@@ -323,7 +322,6 @@
       "threshold": 0
     },
     "ch2": {
-      "enabled": true,
       "range": "\u00b11 V",
       "offset": 0,
       "impedance": "50 \u03a9",
@@ -333,7 +331,6 @@
       "threshold": 0
     },
     "ch3": {
-      "enabled": true,
       "range": "\u00b11 V",
       "offset": 0,
       "impedance": "50 \u03a9",
@@ -343,7 +340,6 @@
       "threshold": 0
     },
     "ch4": {
-      "enabled": true,
       "range": "\u00b11 V",
       "offset": 0,
       "impedance": "50 \u03a9",
@@ -353,7 +349,6 @@
       "threshold": 0
     },
     "ch5": {
-      "enabled": true,
       "range": "\u00b11 V",
       "offset": 0,
       "impedance": "50 \u03a9",
@@ -363,7 +358,6 @@
       "threshold": 0
     },
     "ch6": {
-      "enabled": true,
       "range": "\u00b11 V",
       "offset": 0,
       "impedance": "50 \u03a9",
@@ -373,7 +367,6 @@
       "threshold": 0
     },
     "ch7": {
-      "enabled": true,
       "range": "\u00b11 V",
       "offset": 0,
       "impedance": "50 \u03a9",
@@ -383,7 +376,6 @@
       "threshold": 0
     },
     "ch8": {
-      "enabled": true,
       "range": "\u00b11 V",
       "offset": 0,
       "impedance": "50 \u03a9",
