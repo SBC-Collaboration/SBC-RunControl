@@ -304,63 +304,8 @@
               <property name="spacing">
                <number>3</number>
               </property>
-              <item row="4" column="7">
-               <widget class="QCheckBox" name="active_acous_ch1">
-                <property name="text">
-                 <string>Ch 1</string>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="6" rowspan="5">
-               <widget class="Line" name="line_6">
-                <property name="frameShadow">
-                 <enum>QFrame::Shadow::Raised</enum>
-                </property>
-                <property name="lineWidth">
-                 <number>2</number>
-                </property>
-                <property name="orientation">
-                 <enum>Qt::Orientation::Vertical</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="5" column="9">
-               <widget class="QCheckBox" name="active_acous_ch7">
-                <property name="text">
-                 <string>Ch 7</string>
-                </property>
-               </widget>
-              </item>
-              <item row="5" column="10">
-               <widget class="QCheckBox" name="active_acous_ch8">
-                <property name="text">
-                 <string>Ch 8</string>
-                </property>
-               </widget>
-              </item>
-              <item row="5" column="8">
-               <widget class="QCheckBox" name="active_acous_ch6">
-                <property name="text">
-                 <string>Ch 6</string>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="8">
-               <widget class="QCheckBox" name="active_acous_ch2">
-                <property name="text">
-                 <string>Ch 2</string>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="9">
-               <widget class="QCheckBox" name="active_acous_ch3">
-                <property name="text">
-                 <string>Ch 3</string>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="5" rowspan="2">
-               <widget class="QCheckBox" name="active_acous">
+              <item row="1" column="5">
+               <widget class="QCheckBox" name="active_caen">
                 <property name="font">
                  <font>
                   <bold>true</bold>
@@ -370,10 +315,38 @@
                  <enum>Qt::LayoutDirection::RightToLeft</enum>
                 </property>
                 <property name="text">
-                 <string>Acoustics</string>
+                 <string>CAEN</string>
                 </property>
                 <property name="tristate">
                  <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="4">
+               <widget class="QCheckBox" name="active_amp3">
+                <property name="text">
+                 <string>Amp 3</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="7">
+               <widget class="QCheckBox" name="active_caen_g0_trg">
+                <property name="text">
+                 <string>G0 Trg</string>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="2">
+               <widget class="QCheckBox" name="active_amp1_iv">
+                <property name="text">
+                 <string>Amp 1 IV</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="9">
+               <widget class="QCheckBox" name="active_caen_g2">
+                <property name="text">
+                 <string>Group 2</string>
                 </property>
                </widget>
               </item>
@@ -395,67 +368,24 @@
                 </property>
                </widget>
               </item>
-              <item row="5" column="7">
-               <widget class="QCheckBox" name="active_acous_ch5">
+              <item row="3" column="10">
+               <widget class="QCheckBox" name="active_caen_g3_acq">
                 <property name="text">
-                 <string>Ch 5</string>
+                 <string>G3 Acq</string>
                 </property>
                </widget>
               </item>
-              <item row="0" column="0" colspan="11">
-               <widget class="QLabel" name="active_label">
-                <property name="font">
-                 <font>
-                  <bold>true</bold>
-                 </font>
-                </property>
-                <property name="layoutDirection">
-                 <enum>Qt::LayoutDirection::LeftToRight</enum>
-                </property>
+              <item row="2" column="9">
+               <widget class="QCheckBox" name="active_caen_g2_trg">
                 <property name="text">
-                 <string>Active Modules</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                 <string>G2 Trg</string>
                 </property>
                </widget>
               </item>
-              <item row="4" column="10">
-               <widget class="QCheckBox" name="active_acous_ch4">
+              <item row="3" column="4">
+               <widget class="QCheckBox" name="active_led3">
                 <property name="text">
-                 <string>Ch 4</string>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="2">
-               <widget class="QCheckBox" name="active_pressure">
-                <property name="text">
-                 <string>Pressure</string>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="3">
-               <widget class="QCheckBox" name="active_sql">
-                <property name="text">
-                 <string>SQL</string>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="0">
-               <widget class="QCheckBox" name="active_cams">
-                <property name="font">
-                 <font>
-                  <bold>true</bold>
-                 </font>
-                </property>
-                <property name="layoutDirection">
-                 <enum>Qt::LayoutDirection::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>Cameras</string>
-                </property>
-                <property name="tristate">
-                 <bool>true</bool>
+                 <string>LED 3</string>
                 </property>
                </widget>
               </item>
@@ -466,56 +396,31 @@
                 </property>
                </widget>
               </item>
-              <item row="2" column="3">
-               <widget class="QCheckBox" name="active_cam2">
+              <item row="5" column="4">
+               <widget class="QCheckBox" name="active_amp3_iv">
                 <property name="text">
-                 <string>Cam 2</string>
+                 <string>Amp 3 IV</string>
                 </property>
                </widget>
               </item>
-              <item row="2" column="4">
-               <widget class="QCheckBox" name="active_cam3">
+              <item row="2" column="10">
+               <widget class="QCheckBox" name="active_caen_g3_trg">
                 <property name="text">
-                 <string>Cam 3</string>
+                 <string>G3 Trg</string>
                 </property>
                </widget>
               </item>
-              <item row="3" column="0">
-               <widget class="QCheckBox" name="active_led">
-                <property name="font">
-                 <font>
-                  <bold>true</bold>
-                 </font>
-                </property>
-                <property name="layoutDirection">
-                 <enum>Qt::LayoutDirection::RightToLeft</enum>
-                </property>
+              <item row="3" column="9">
+               <widget class="QCheckBox" name="active_caen_g2_acq">
                 <property name="text">
-                 <string>LEDs</string>
-                </property>
-                <property name="tristate">
-                 <bool>true</bool>
+                 <string>G2 Acq</string>
                 </property>
                </widget>
               </item>
-              <item row="3" column="2">
-               <widget class="QCheckBox" name="active_led1">
+              <item row="4" column="3">
+               <widget class="QCheckBox" name="active_amp2">
                 <property name="text">
-                 <string>LED 1</string>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="3">
-               <widget class="QCheckBox" name="active_led2">
-                <property name="text">
-                 <string>LED 2</string>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="4">
-               <widget class="QCheckBox" name="active_led3">
-                <property name="text">
-                 <string>LED 3</string>
+                 <string>Amp 2</string>
                 </property>
                </widget>
               </item>
@@ -537,73 +442,6 @@
                 </property>
                </widget>
               </item>
-              <item row="4" column="2">
-               <widget class="QCheckBox" name="active_amp1">
-                <property name="text">
-                 <string>Amp 1</string>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="3">
-               <widget class="QCheckBox" name="active_amp2">
-                <property name="text">
-                 <string>Amp 2</string>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="4">
-               <widget class="QCheckBox" name="active_amp3">
-                <property name="text">
-                 <string>Amp 3</string>
-                </property>
-               </widget>
-              </item>
-              <item row="5" column="2">
-               <widget class="QCheckBox" name="active_amp1_iv">
-                <property name="text">
-                 <string>Amp 1 IV</string>
-                </property>
-               </widget>
-              </item>
-              <item row="5" column="3">
-               <widget class="QCheckBox" name="active_amp2_iv">
-                <property name="text">
-                 <string>Amp 2 IV</string>
-                </property>
-               </widget>
-              </item>
-              <item row="5" column="4">
-               <widget class="QCheckBox" name="active_amp3_iv">
-                <property name="text">
-                 <string>Amp 3 IV</string>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="5">
-               <widget class="QCheckBox" name="active_caen">
-                <property name="font">
-                 <font>
-                  <bold>true</bold>
-                 </font>
-                </property>
-                <property name="layoutDirection">
-                 <enum>Qt::LayoutDirection::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>CAEN</string>
-                </property>
-                <property name="tristate">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="7">
-               <widget class="QCheckBox" name="active_caen_g0">
-                <property name="text">
-                 <string>Group 0</string>
-                </property>
-               </widget>
-              </item>
               <item row="1" column="8">
                <widget class="QCheckBox" name="active_caen_g1">
                 <property name="text">
@@ -611,17 +449,10 @@
                 </property>
                </widget>
               </item>
-              <item row="1" column="9">
-               <widget class="QCheckBox" name="active_caen_g2">
+              <item row="1" column="2">
+               <widget class="QCheckBox" name="active_pressure">
                 <property name="text">
-                 <string>Group 2</string>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="10">
-               <widget class="QCheckBox" name="active_caen_g3">
-                <property name="text">
-                 <string>Group 3</string>
+                 <string>Pressure</string>
                 </property>
                </widget>
               </item>
@@ -638,24 +469,80 @@
                 </property>
                </widget>
               </item>
-              <item row="3" column="7">
-               <widget class="QCheckBox" name="active_caen_g0_acq">
-                <property name="text">
-                 <string>G0 Acq</string>
+              <item row="1" column="6" rowspan="5">
+               <widget class="Line" name="line_6">
+                <property name="frameShadow">
+                 <enum>QFrame::Shadow::Raised</enum>
+                </property>
+                <property name="lineWidth">
+                 <number>2</number>
+                </property>
+                <property name="orientation">
+                 <enum>Qt::Orientation::Vertical</enum>
                 </property>
                </widget>
               </item>
-              <item row="2" column="7">
-               <widget class="QCheckBox" name="active_caen_g0_trg">
+              <item row="3" column="2">
+               <widget class="QCheckBox" name="active_led1">
                 <property name="text">
-                 <string>G0 Trg</string>
+                 <string>LED 1</string>
                 </property>
                </widget>
               </item>
-              <item row="2" column="8">
-               <widget class="QCheckBox" name="active_caen_g1_trg">
+              <item row="1" column="3">
+               <widget class="QCheckBox" name="active_sql">
                 <property name="text">
-                 <string>G1 Trg</string>
+                 <string>SQL</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="10">
+               <widget class="QCheckBox" name="active_caen_g3">
+                <property name="text">
+                 <string>Group 3</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="3">
+               <widget class="QCheckBox" name="active_led2">
+                <property name="text">
+                 <string>LED 2</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0" colspan="11">
+               <widget class="QLabel" name="active_label">
+                <property name="font">
+                 <font>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="layoutDirection">
+                 <enum>Qt::LayoutDirection::LeftToRight</enum>
+                </property>
+                <property name="text">
+                 <string>Active Modules</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="0">
+               <widget class="QCheckBox" name="active_led">
+                <property name="font">
+                 <font>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="layoutDirection">
+                 <enum>Qt::LayoutDirection::RightToLeft</enum>
+                </property>
+                <property name="text">
+                 <string>LEDs</string>
+                </property>
+                <property name="tristate">
+                 <bool>true</bool>
                 </property>
                </widget>
               </item>
@@ -666,31 +553,88 @@
                 </property>
                </widget>
               </item>
-              <item row="2" column="9">
-               <widget class="QCheckBox" name="active_caen_g2_trg">
+              <item row="2" column="4">
+               <widget class="QCheckBox" name="active_cam3">
                 <property name="text">
-                 <string>G2 Trg</string>
+                 <string>Cam 3</string>
                 </property>
                </widget>
               </item>
-              <item row="3" column="9">
-               <widget class="QCheckBox" name="active_caen_g2_acq">
+              <item row="2" column="3">
+               <widget class="QCheckBox" name="active_cam2">
                 <property name="text">
-                 <string>G2 Acq</string>
+                 <string>Cam 2</string>
                 </property>
                </widget>
               </item>
-              <item row="2" column="10">
-               <widget class="QCheckBox" name="active_caen_g3_trg">
+              <item row="3" column="7">
+               <widget class="QCheckBox" name="active_caen_g0_acq">
                 <property name="text">
-                 <string>G3 Trg</string>
+                 <string>G0 Acq</string>
                 </property>
                </widget>
               </item>
-              <item row="3" column="10">
-               <widget class="QCheckBox" name="active_caen_g3_acq">
+              <item row="2" column="8">
+               <widget class="QCheckBox" name="active_caen_g1_trg">
                 <property name="text">
-                 <string>G3 Acq</string>
+                 <string>G1 Trg</string>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="3">
+               <widget class="QCheckBox" name="active_amp2_iv">
+                <property name="text">
+                 <string>Amp 2 IV</string>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="2">
+               <widget class="QCheckBox" name="active_amp1">
+                <property name="text">
+                 <string>Amp 1</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="7">
+               <widget class="QCheckBox" name="active_caen_g0">
+                <property name="text">
+                 <string>Group 0</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QCheckBox" name="active_cams">
+                <property name="font">
+                 <font>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="layoutDirection">
+                 <enum>Qt::LayoutDirection::RightToLeft</enum>
+                </property>
+                <property name="text">
+                 <string>Cameras</string>
+                </property>
+                <property name="tristate">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="5">
+               <widget class="QCheckBox" name="active_acous">
+                <property name="font">
+                 <font>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="layoutDirection">
+                 <enum>Qt::LayoutDirection::RightToLeft</enum>
+                </property>
+                <property name="text">
+                 <string>Acoustics</string>
+                </property>
+                <property name="tristate">
+                 <bool>true</bool>
                 </property>
                </widget>
               </item>
@@ -8227,6 +8171,9 @@
                 <property name="focusPolicy">
                  <enum>Qt::FocusPolicy::StrongFocus</enum>
                 </property>
+                <property name="showGroupSeparator" stdset="0">
+                 <bool>true</bool>
+                </property>
                 <property name="maximum">
                  <number>1000</number>
                 </property>
@@ -8266,6 +8213,9 @@
                 <property name="focusPolicy">
                  <enum>Qt::FocusPolicy::StrongFocus</enum>
                 </property>
+                <property name="showGroupSeparator" stdset="0">
+                 <bool>true</bool>
+                </property>
                 <property name="maximum">
                  <number>1000</number>
                 </property>
@@ -8275,6 +8225,9 @@
                <widget class="NoWheelSpinBox" name="acous_acq_seg_count_box">
                 <property name="focusPolicy">
                  <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="showGroupSeparator" stdset="0">
+                 <bool>true</bool>
                 </property>
                 <property name="prefix">
                  <string/>
@@ -8294,6 +8247,9 @@
                <widget class="NoWheelDoubleSpinBox" name="acous_trig_timeout_box">
                 <property name="focusPolicy">
                  <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="showGroupSeparator" stdset="0">
+                 <bool>false</bool>
                 </property>
                 <property name="suffix">
                  <string> s</string>
@@ -8364,6 +8320,9 @@
                 <property name="focusPolicy">
                  <enum>Qt::FocusPolicy::StrongFocus</enum>
                 </property>
+                <property name="showGroupSeparator" stdset="0">
+                 <bool>true</bool>
+                </property>
                 <property name="maximum">
                  <number>4096</number>
                 </property>
@@ -8423,6 +8382,9 @@
                <widget class="NoWheelSpinBox" name="acous_post_trig_box">
                 <property name="focusPolicy">
                  <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="showGroupSeparator" stdset="0">
+                 <bool>true</bool>
                 </property>
                 <property name="prefix">
                  <string/>
@@ -9677,6 +9639,9 @@
                 <property name="focusPolicy">
                  <enum>Qt::FocusPolicy::StrongFocus</enum>
                 </property>
+                <property name="showGroupSeparator" stdset="0">
+                 <bool>true</bool>
+                </property>
                 <property name="prefix">
                  <string/>
                 </property>
@@ -9725,6 +9690,9 @@
                 <property name="focusPolicy">
                  <enum>Qt::FocusPolicy::StrongFocus</enum>
                 </property>
+                <property name="showGroupSeparator" stdset="0">
+                 <bool>true</bool>
+                </property>
                 <property name="prefix">
                  <string/>
                 </property>
@@ -9756,6 +9724,9 @@
                <widget class="NoWheelSpinBox" name="acous_seg_start_box">
                 <property name="focusPolicy">
                  <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="showGroupSeparator" stdset="0">
+                 <bool>true</bool>
                 </property>
                 <property name="prefix">
                  <string/>
@@ -9791,6 +9762,9 @@
                <widget class="NoWheelSpinBox" name="acous_start_pos_box">
                 <property name="focusPolicy">
                  <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="showGroupSeparator" stdset="0">
+                 <bool>true</bool>
                 </property>
                 <property name="prefix">
                  <string/>
@@ -9873,6 +9847,9 @@
                <widget class="NoWheelSpinBox" name="acous_seg_count_box">
                 <property name="focusPolicy">
                  <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="showGroupSeparator" stdset="0">
+                 <bool>true</bool>
                 </property>
                 <property name="prefix">
                  <string/>
