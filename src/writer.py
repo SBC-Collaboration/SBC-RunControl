@@ -1,8 +1,5 @@
 import os.path
 from PySide6.QtCore import QTimer, QObject, QThread, Slot, Signal
-import datetime
-import time as tm
-import random
 import logging
 from sbcbinaryformat import Writer as SBCWriter
 

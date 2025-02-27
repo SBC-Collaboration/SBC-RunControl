@@ -1,11 +1,7 @@
-import json
 import os
 import numpy as np
 import logging
 from PySide6.QtCore import QTimer, QObject, Slot, Signal, QThread
-from collections import namedtuple
-import copy
-import json
 import red_caen
 from sbcbinaryformat import Writer
 

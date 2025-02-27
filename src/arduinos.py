@@ -2,7 +2,6 @@ import os
 import subprocess
 import glob
 import hashlib
-import time
 import logging
 from PySide6.QtCore import QTimer, QObject, QThread, Slot, Signal
 

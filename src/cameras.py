@@ -4,7 +4,6 @@ with warnings.catch_warnings():
     import paramiko as pm
 import logging
 import os
-import json
 import time
 from PySide6.QtCore import QTimer, QObject, QThread, Slot, Signal
 import subprocess

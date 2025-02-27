@@ -1,10 +1,8 @@
 from dependencies.NI_USB6501.ni_usb_6501 import *
 import logging
 from PySide6.QtCore import QTimer, QObject, QThread, Slot, Signal
-import numpy as np
 import os
 import time
-
 
 class NIUSB(QObject):
     pin_definition = {  # input / output from run control
@@ -170,7 +168,6 @@ class NIUSB(QObject):
         self.dev.write_pin(*self.reverse_config["reset"], True)
 
         self.output_initialized = True
-
         self.run_started.emit("niusb")
 
     @Slot()
