@@ -31,7 +31,7 @@ class Acoustics(QObject):
     def periodic_task(self):
         if (self.main.run_state == self.main.run_states["active"] and self.gage_process):
             if not self.gage_process.is_alive():
-                self.logger.info(f"GaGe process not alive. Starting new thread.")
+                self.logger.debug(f"GaGe process not alive. Starting new thread.")
                 self.gage_process = Process(target=self.start_gage)
                 self.gage_process.start()
 
@@ -98,6 +98,7 @@ class Acoustics(QObject):
                 "Range": range_conversion[self.config[f"ch{ch}"]["range"]],
                 "Coupling": self.config[f"ch{ch}"]["coupling"],
                 "Impedance": 50 if self.config[f"ch{ch}"]["impedance"]=="50 Ω" else 1000000,
+                "DCOffset": self.config[f"ch{ch}"]["offset"],
             }
         
         # trigger fields must be after channel fields
@@ -141,7 +142,7 @@ class Acoustics(QObject):
             return
         self.save_config()
         
-        self.logger.info(f"Acoustic data acquisition starting.")
+        self.logger.debug(f"Acoustic data acquisition starting.")
         self.gage_process = Process(target=self.start_gage)
         self.gage_process.start()
         self.event_started.emit("gage")
