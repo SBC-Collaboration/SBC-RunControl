@@ -300,19 +300,20 @@
     "timestamp_mode": "Free",
     "timestamp_clock": "Fixed",
     "pre_trig_len": 0,
-    "post_trig_len": 25000000,
+    "post_trig_len": 250000000,
     "acq_seg_count": 1,
     "trig_timeout": 0.0,
     "trig_delay": 0,
     "trig_holdoff": 0,
     "start_pos": 0,
-    "transfer_len": 25000000,
+    "transfer_len": 250000000,
     "seg_start": 1,
     "seg_count": 1,
     "page_size": 1,
     "file_format": "TYPE_DEC",
     "file_name": "acoustics.sbc",
     "ch1": {
+      "name": "Piezo1",
       "range": "\u00b11 V",
       "offset": 0,
       "impedance": "50 \u03a9",
@@ -322,6 +323,7 @@
       "threshold": 0
     },
     "ch2": {
+      "name": "Piezo2",
       "range": "\u00b11 V",
       "offset": 0,
       "impedance": "50 \u03a9",
@@ -331,7 +333,8 @@
       "threshold": 0
     },
     "ch3": {
-      "range": "\u00b11 V",
+      "name": "Piezo3",
+      "range": "\u00b15 V",
       "offset": 0,
       "impedance": "50 \u03a9",
       "coupling": "DC",
@@ -340,7 +343,8 @@
       "threshold": 0
     },
     "ch4": {
-      "range": "\u00b11 V",
+      "name": "Piezo4",
+      "range": "\u00b15 V",
       "offset": 0,
       "impedance": "50 \u03a9",
       "coupling": "DC",
@@ -349,7 +353,8 @@
       "threshold": 0
     },
     "ch5": {
-      "range": "\u00b11 V",
+      "name": "Piezo5",
+      "range": "\u00b15 V",
       "offset": 0,
       "impedance": "50 \u03a9",
       "coupling": "DC",
@@ -358,7 +363,8 @@
       "threshold": 0
     },
     "ch6": {
-      "range": "\u00b11 V",
+      "name": "Piezo6",
+      "range": "\u00b15 V",
       "offset": 0,
       "impedance": "50 \u03a9",
       "coupling": "DC",
@@ -367,7 +373,8 @@
       "threshold": 0
     },
     "ch7": {
-      "range": "\u00b11 V",
+      "name": "Piezo7",
+      "range": "\u00b15 V",
       "offset": 0,
       "impedance": "50 \u03a9",
       "coupling": "DC",
@@ -376,7 +383,8 @@
       "threshold": 0
     },
     "ch8": {
-      "range": "\u00b11 V",
+      "name": "Trig Latch",
+      "range": "\u00b15 V",
       "offset": 0,
       "impedance": "50 \u03a9",
       "coupling": "DC",
@@ -419,7 +427,7 @@
       "config_path": "/mnt/rc-data/config/cam2-config.json",
       "data_path": "/mnt/rc-data/current_event/",
       "ip_addr": "192.168.137.102",
-      "mode": 5,
+      "mode": 11,
       "trig_wait": 5.0,
       "exposure": 300,
       "buffer_len": 100,
