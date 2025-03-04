@@ -5093,21 +5093,6 @@
                 </item>
                </widget>
               </item>
-              <item row="0" column="0" colspan="4">
-               <widget class="QLabel" name="caen_general_label">
-                <property name="font">
-                 <font>
-                  <bold>true</bold>
-                 </font>
-                </property>
-                <property name="text">
-                 <string>CAEN Digitizer General</string>
-                </property>
-                <property name="buddy">
-                 <cstring>caen_enabled_box</cstring>
-                </property>
-               </widget>
-              </item>
               <item row="4" column="6">
                <widget class="QLabel" name="caen_sw_trig_label">
                 <property name="text">
@@ -5560,6 +5545,21 @@
                   <string>All</string>
                  </property>
                 </item>
+               </widget>
+              </item>
+              <item row="0" column="0" colspan="4">
+               <widget class="QLabel" name="caen_general_label">
+                <property name="font">
+                 <font>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>CAEN Digitizer General</string>
+                </property>
+                <property name="buddy">
+                 <cstring>caen_enabled_box</cstring>
+                </property>
                </widget>
               </item>
              </layout>
@@ -8496,7 +8496,13 @@
               <item row="6" column="2">
                <widget class="NoWheelSpinBox" name="acous_offset_ch6">
                 <property name="suffix">
-                 <string>%</string>
+                 <string> mV</string>
+                </property>
+                <property name="minimum">
+                 <number>-5000</number>
+                </property>
+                <property name="maximum">
+                 <number>5000</number>
                 </property>
                </widget>
               </item>
@@ -8703,7 +8709,13 @@
               <item row="4" column="2">
                <widget class="NoWheelSpinBox" name="acous_offset_ch4">
                 <property name="suffix">
-                 <string>%</string>
+                 <string> mV</string>
+                </property>
+                <property name="minimum">
+                 <number>-5000</number>
+                </property>
+                <property name="maximum">
+                 <number>5000</number>
                 </property>
                </widget>
               </item>
@@ -8806,7 +8818,13 @@
               <item row="1" column="2">
                <widget class="NoWheelSpinBox" name="acous_offset_ch1">
                 <property name="suffix">
-                 <string>%</string>
+                 <string> mV</string>
+                </property>
+                <property name="minimum">
+                 <number>-5000</number>
+                </property>
+                <property name="maximum">
+                 <number>5000</number>
                 </property>
                </widget>
               </item>
@@ -8888,7 +8906,13 @@
               <item row="2" column="2">
                <widget class="NoWheelSpinBox" name="acous_offset_ch2">
                 <property name="suffix">
-                 <string>%</string>
+                 <string> mV</string>
+                </property>
+                <property name="minimum">
+                 <number>-5000</number>
+                </property>
+                <property name="maximum">
+                 <number>5000</number>
                 </property>
                </widget>
               </item>
@@ -8943,7 +8967,13 @@
               <item row="3" column="2">
                <widget class="NoWheelSpinBox" name="acous_offset_ch3">
                 <property name="suffix">
-                 <string>%</string>
+                 <string> mV</string>
+                </property>
+                <property name="minimum">
+                 <number>-5000</number>
+                </property>
+                <property name="maximum">
+                 <number>5000</number>
                 </property>
                </widget>
               </item>
@@ -8978,21 +9008,39 @@
               <item row="8" column="2">
                <widget class="NoWheelSpinBox" name="acous_offset_ch8">
                 <property name="suffix">
-                 <string>%</string>
+                 <string> mV</string>
+                </property>
+                <property name="minimum">
+                 <number>-5000</number>
+                </property>
+                <property name="maximum">
+                 <number>5000</number>
                 </property>
                </widget>
               </item>
               <item row="7" column="2">
                <widget class="NoWheelSpinBox" name="acous_offset_ch7">
                 <property name="suffix">
-                 <string>%</string>
+                 <string> mV</string>
+                </property>
+                <property name="minimum">
+                 <number>-5000</number>
+                </property>
+                <property name="maximum">
+                 <number>5000</number>
                 </property>
                </widget>
               </item>
               <item row="5" column="2">
                <widget class="NoWheelSpinBox" name="acous_offset_ch5">
                 <property name="suffix">
-                 <string>%</string>
+                 <string> mV</string>
+                </property>
+                <property name="minimum">
+                 <number>-5000</number>
+                </property>
+                <property name="maximum">
+                 <number>5000</number>
                 </property>
                </widget>
               </item>
@@ -10171,11 +10219,20 @@
                 <verstretch>0</verstretch>
                </sizepolicy>
               </property>
+              <property name="font">
+               <font>
+                <bold>true</bold>
+                <kerning>true</kerning>
+               </font>
+              </property>
               <property name="focusPolicy">
                <enum>Qt::FocusPolicy::StrongFocus</enum>
               </property>
               <property name="text">
                <string>Cam 3</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignmentFlag::AlignCenter</set>
               </property>
               <property name="buddy">
                <cstring>cam3_enabled_box</cstring>
@@ -10212,11 +10269,21 @@
                 <verstretch>0</verstretch>
                </sizepolicy>
               </property>
+              <property name="font">
+               <font>
+                <pointsize>11</pointsize>
+                <bold>true</bold>
+                <kerning>true</kerning>
+               </font>
+              </property>
               <property name="focusPolicy">
                <enum>Qt::FocusPolicy::StrongFocus</enum>
               </property>
               <property name="text">
                <string>Cam 1</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignmentFlag::AlignCenter</set>
               </property>
               <property name="buddy">
                <cstring>cam1_enabled_box</cstring>
@@ -10439,11 +10506,20 @@
                 <verstretch>0</verstretch>
                </sizepolicy>
               </property>
+              <property name="font">
+               <font>
+                <bold>true</bold>
+                <kerning>true</kerning>
+               </font>
+              </property>
               <property name="focusPolicy">
                <enum>Qt::FocusPolicy::StrongFocus</enum>
               </property>
               <property name="text">
                <string>Cam 2</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignmentFlag::AlignCenter</set>
               </property>
               <property name="buddy">
                <cstring>cam2_enabled_box</cstring>
@@ -11140,7 +11216,7 @@
            <property name="geometry">
             <rect>
              <x>0</x>
-             <y>0</y>
+             <y>-626</y>
              <width>876</width>
              <height>1364</height>
             </rect>
@@ -13963,7 +14039,7 @@
               <item row="3" column="4">
                <widget class="QLabel" name="clock_period_label">
                 <property name="text">
-                 <string>Period (100us)</string>
+                 <string>Period (loops)</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignCenter</set>
