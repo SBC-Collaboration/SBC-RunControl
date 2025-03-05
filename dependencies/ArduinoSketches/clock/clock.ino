@@ -4,14 +4,16 @@
 // using incbin: https://github.com/AlexIII/incbin-arduino
 INCTXT(ConfigFile, "clock_config.json");
 
+// The integer data types need to be 16 bit to run fast enough
+// If loop time is 100us, then that means maximum period is 65535*100us = 6.5535s
 typedef struct square_wave {
     bool enabled; // whether this wave is enabled
-    int period; // x 100us = period (s)  
-    int phase; // x 100us = offset for turning on
-    int duty; // x 100us = time of being high
+    uint16_t period; // x 100us = period (s)  
+    uint16_t  phase; // x 100us = offset for turning on
+    uint16_t  duty; // x 100us = time of being high
     bool polarity; // start high or low
     bool gated; // whether this channel is controlled by LED gate from trigger INO
-    int counter=0; //this is what Dr. Dahl called 'clock'
+    uint16_t counter=0; //this is what Dr. Dahl called 'clock'
    } Square_Wave;
 Square_Wave waves[16];
 
@@ -60,9 +62,9 @@ void setup(void) {
     wave_num -= 1;
     JsonObject v = kv.value().as<JsonObject>();
     waves[wave_num].enabled = v["enabled"].as<bool>();
-    waves[wave_num].period = v["period"].as<int>();
-    waves[wave_num].phase = v["phase"].as<int>() * waves[wave_num].period / 100;  // convert percentage to time
-    waves[wave_num].duty = v["duty"].as<int>() * waves[wave_num].period / 100;  // convert percentage to time
+    waves[wave_num].period = v["period"].as<uint16_t>();
+    waves[wave_num].phase = v["phase"].as<uint32_t>() * waves[wave_num].period / 100;  // convert percentage to time
+    waves[wave_num].duty = v["duty"].as<uint32_t>() * waves[wave_num].period / 100;  // convert percentage to time
     waves[wave_num].polarity = v["polarity"].as<bool>();
     waves[wave_num].gated = v["gated"].as<bool>();
     // convert wave gate to mask
@@ -78,7 +80,7 @@ void setup(void) {
     Serial.print(waves[wave_num].period); Serial.print("\t");
     Serial.print(waves[wave_num].phase); Serial.print("\t");
     Serial.print(waves[wave_num].duty); Serial.print("\t");
-    Serial.print(waves[wave_num].polarity); Serial.print("\n");
+    waves[wave_num].polarity ? Serial.print("true\t") : Serial.print("false\t");; Serial.print("\n");
   }
   delayStart = micros();
 }
