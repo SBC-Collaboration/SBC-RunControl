@@ -12,18 +12,17 @@ typedef struct square_wave {
     bool polarity; // start high or low
     bool gated; // whether this channel is controlled by LED gate from trigger INO
     int counter=0; //this is what Dr. Dahl called 'clock'
-    int state=0; // internal variable for whether it is currently high or low
    } Square_Wave;
 Square_Wave waves[16];
 
 bool delayRunning = false; // true if still waiting for delay to finish
-int DELAY_TIME = 100; // 100 us
+int DELAY_TIME; // time to wait between loops
 unsigned long delayStart = 0; // the time the delay started
 
 unsigned long powers[16];
-unsigned long waveMask = 0; // which pins should be high
+uint16_t waveMask = 0; // which pins should be high
 bool led_gate;
-unsigned long gate_mask = 0;
+uint16_t gate_mask = 0;
 
 void setup(void) {
   Serial.begin(9600);
@@ -84,72 +83,67 @@ void setup(void) {
   delayStart = micros();
 }
 
-void loop(void) {  
-  // get LED gate status from trigger arduino
+void loop(void) {
+  // Read LED gate status from trigger arduino
   led_gate = (PINA & (1 << PINA0)) != 0;
-  // wave states: 0: before HIGH, 1: HIGH, 2: After HIGH
-  Square_Wave* wave;
-  //Waves:
-  for(int w=0; w<16; w++){
-    wave = &waves[w];
+
+  waveMask = 0;
+  
+  for (int w = 0; w < 16; w++) {
+    Square_Wave* wave = &waves[w];
+    if (!wave->enabled)
+      continue;
+    
+    // Increment the counter and wrap it manually
     wave->counter++;
-    if (wave->enabled < 1) {
-      continue; // skip if not enabled
-    }
-    if (wave->state==0 && wave->counter > wave->phase){
-      wave->state = 1;
-      // when changing from low to high, change wavemask
-      // high if polarity is true, and low if not
-      if (wave->polarity) {
-        waveMask |= powers[w];
-      } else {
-        waveMask &= ~powers[w];
-      }
-    }
-    else if (wave->state==1 && wave->counter > (wave->phase + wave->duty)){
-      wave->state = 2;
-      // when changing from high to low, change wavemask
-      // low if polarity is true, and low if not
-      if (wave->polarity) {
-        waveMask &= ~powers[w];
-      } else {
-        waveMask |= powers[w];
-      }
-    }
-    else if (wave->state==2 && wave->counter >= wave->period){
-       wave->state = 0;
-       wave->counter = 0;
+    if (wave->counter >= wave->period)
+      wave->counter = 0;
+    
+    bool isHigh = false;
+    
+    // Check if the HIGH period wraps around the period end
+    if (wave->phase + wave->duty <= wave->period) {
+      // No wrap: simply check if the counter is within [phase, phase+duty)
+      if (wave->counter >= wave->phase && wave->counter < wave->phase + wave->duty)
+        isHigh = true;
     } else {
-      continue; // skip if not changed
+      // Wrapped case: calculate how much the duty goes past the period
+      int wrap = wave->phase + wave->duty - wave->period;
+      // HIGH if counter is after phase or before the wrap value
+      if (wave->counter >= wave->phase || wave->counter < wrap)
+        isHigh = true;
     }
+    
+    // Invert if polarity is false
+    if (!wave->polarity)
+      isHigh = !isHigh;
+    
+    // Build new mask based on the channel's state
+    if (isHigh)
+      waveMask |= powers[w];
   }
-
-  if(!led_gate){
-    // turn gated pins off if LED gate pin is low
+  
+  // When LED gate is LOW, turn off gated channels.
+  if (!led_gate)
     waveMask &= ~gate_mask;
-  }
-
-//DELAY is here now
-  bool ontime = false;
-  long time = micros()-delayStart;
-
-  if(time <= DELAY_TIME) {
-    PORTG |= B00000010;
+  
+  // Timing delay: wait until DELAY_TIME has elapsed
+  unsigned long now = micros();
+  if (now - delayStart < DELAY_TIME) {
+    PORTG |= B00000010; // Set ontime pin
     delayStart += DELAY_TIME; // change delay start to next loop's value
     while (micros() < delayStart) { } // wait for delay time to pass 
-  }
-  else {
-    PORTG &= B11111101;
-    Serial.print("Warning: Clock not on time! "); Serial.println(time);
+  } else {
+    // Print if it's not on time. Reset timer to start again
+    Serial.print("Warning: Clock not on time! ");
+    Serial.println(now - delayStart);
     delayStart = micros();
   }
-
-  PORTC = waveMask & B11111111; // last 8 bits
-  PORTL = (waveMask >> 8) & B11111111; // next 8 bits
-
-  // toggle PG0 for heartbeat
-  // but this line along seems to take 20+us
-  // PORTG ^= B00000001;
-  // and this line works fine...
+  
+  // Update outputs 
+  PORTC = waveMask & 0xFF; // lower 8 bits
+  PORTL = (waveMask >> 8) & 0xFF; // upper 8 bits
+  
+  // Toggle heartbeat on PORTG bit0 (optimized toggle)
   PORTG = (PORTG / 2) * 2 + !(PORTG % 2);
 }
