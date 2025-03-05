@@ -60,9 +60,11 @@ void setup(void) {
   DDRE = B11111111; // Fan OUT PINs 0-1, 5, 2-3 (in that order)
   DDRH = B11111111; // Fan OUT PINs 17-16, 6-9 (in that order)
   DDRJ = B11111111; // Fan OUT PINs 15-14 (in that order)
-  // Obligatory Spacer
+  // First faults
   DDRB = B11111111; // Grudge PINs 53-50, 10-13
   DDRL = B11111111; // Grudge PINs 49-42
+  // LED inhibit
+  DDRD |= B00000001; // Configure PD0 as an output.
   // Obligatory Spacer
   pinMode(38, INPUT); // PIN IN for Trig Reset
   for(int a=39;a<42;) pinMode(a++, OUTPUT); // PIN OUT for Trig OR, ON-Time, Heartbeat
@@ -70,6 +72,7 @@ void setup(void) {
   // if led_gate==0, PD0 is always high
   // if led_gate>=, PD0 will be high for led_gate loops after trigger, then low
   led_gate = conf["led_gate"];
+  Serial.print("LED Gate: "); Serial.println(led_gate);
 
   if(led_gate==0) {
     PORTD |= B00000001; // PD0 set to high
@@ -154,9 +157,7 @@ void loop(void) {
     }
   }
 
-
   //Trig OR (Unlatched)
-  //digitalWrite(39, fISum);
   if(fISum == HIGH){
     PORTG |= B00000100;
   }
