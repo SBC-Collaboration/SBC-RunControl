@@ -157,6 +157,7 @@ class MainWindow(QMainWindow):
         self.signals.run_starting.connect(self.caen_worker.start_run)
         self.signals.event_starting.connect(self.caen_worker.start_event)
         self.signals.event_stopping.connect(self.caen_worker.stop_event)
+        self.signals.run_stopping.connect(self.caen_worker.stop_run)
         self.caen_thread.start()
         time.sleep(0.001)
 
@@ -369,9 +370,9 @@ class MainWindow(QMainWindow):
     @Slot()
     def update(self):
         """
-        Event loop function. Every 100ms this function will run.
+        Event loop function. This function will run every 100ms.
         In the active state, it will update event and run timer, and check if max event time is reached. If so, it will end the event.
-
+        In the starting_run, stopping_run, starting_event, and stopping_event states, it will check if all modules are ready to proceed to the next state.
         """
         vars = self.ui.__dict__
 
@@ -432,7 +433,8 @@ class MainWindow(QMainWindow):
     @Slot(str)
     def starting_run_wait(self, module):
         """
-        A slot method to append ready module names to the list. When the length of the list reaches the threshold, the run can start.
+        A slot method to append ready module names to the list. It will add the module to a list and change the status light.
+        The update function will check the length of the list. When all modules are ready, it will proceed to the start_event state.
         """
         vars = self.ui.__dict__
         if "disabled" in module:
@@ -450,6 +452,10 @@ class MainWindow(QMainWindow):
 
     @Slot(str)
     def stopping_run_wait(self, module):
+        """
+        A slot method to append ready module names to the list. It will add the module to a list and change the status light.
+        The update function will check the length of the list. When all modules are ready, it will proceed to the idle state.
+        """
         vars = self.ui.__dict__
         if "disabled" in module:
             name = re.sub(r'^.*?-', "", module)
@@ -465,6 +471,10 @@ class MainWindow(QMainWindow):
 
     @Slot(str)
     def starting_event_wait(self, module):
+        """
+        A slot method to append ready module names to the list. It will add the module to a list and change the status light.
+        The update function will check the length of the list. When all modules are ready, it will proceed to the active state.
+        """
         vars = self.ui.__dict__
         if "disabled" in module:
             name = re.sub(r'^.*?-', "", module)
@@ -481,6 +491,10 @@ class MainWindow(QMainWindow):
 
     @Slot(str)
     def stopping_event_wait(self, module):
+        """
+        A slot method to append ready module names to the list. It will add the module to a list and change the status light.
+        The update function will check the length of the list. When all modules are ready, it will proceed to next event or stopping run.
+        """
         vars = self.ui.__dict__
         if "disabled" in module:
             name = re.sub(r'^.*?-', "", module)
@@ -564,7 +578,12 @@ class MainWindow(QMainWindow):
         self.update_state("stopping_run")
 
     def start_event(self):
-        # check if stopping run now or start new event
+        """
+        Main RC function to start an event. First it checks if the max number of events has been reached. If so, it will stop the run.
+        Then, it will start the event timer, set the numbers on main window, and create the event directory.
+        Finally, it will send out the event_starting signal to all modules.
+        """
+        # if the max number of events is reached, stop the run
         self.event_id += 1
         if (
                 self.event_id
@@ -620,6 +639,9 @@ class MainWindow(QMainWindow):
     
     # set up parameters for the CAEN plot widgets
     def setup_caen_plot(self):
+        """
+        Set up the CAEN plot widgets. It will create the plot and text items for each plot, and set up basic properties.
+        """
         # plot and text items for each plot
         self.caen_plots = [self.ui.caen_plot_0, self.ui.caen_plot_1, self.ui.caen_plot_2, self.ui.caen_plot_3]
         self.caen_texts = [pg.TextItem(text="Event: 0", color='k', anchor=(0,0)) for _ in self.caen_plots]
@@ -655,7 +677,15 @@ class MainWindow(QMainWindow):
     # update the CAEN plot widgets every time data is retrieved
     @Slot(dict)
     def update_caen_plot(self, data):
+        def get_ch_index(mask, ch):
+            """
+            Get the index of the channel in list using mask
+            Count number of 1s in all bits lower than the desired bit
+            """
+            lower_mask = (1 << ch) - 1
+            return bin(mask & lower_mask).count("1")
 
+        scint_configs = self.config_class.config["scint"]
         for i in range(len(self.caen_plots)):
             p = self.caen_plots[i]
             t = self.caen_texts[i]
@@ -664,7 +694,13 @@ class MainWindow(QMainWindow):
             # update text and curves
             t.setText(f"Event: {data['EventCounter'][-1]}")
             for j in range(8):
-                curves[j].setData(data['Waveforms'][-1][8*i+j])
+                if not scint_configs[f"caen_g{i}"]["enabled"] or \
+                  not scint_configs[f"caen_g{i}"]["acq_mask"][j] or \
+                  not scint_configs[f"caen_g{i}"]["plot_mask"][j]:
+                    curves[j].setData([], [])
+                else:
+                    ind = get_ch_index(data["AcquisitionMask"], 8*i+j)
+                    curves[j].setData(data['Waveforms'][-1][ind])
 
 
 if __name__ == "__main__":
