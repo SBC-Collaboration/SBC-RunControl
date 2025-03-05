@@ -664,7 +664,7 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
                  <number>3</number>
                 </property>
                 <item row="2" column="1">
-                 <widget class="StatusLight" name="gen_status_amp2">
+                 <widget class="StatusLight" name="status_amp2">
                   <property name="minimumSize">
                    <size>
                     <width>0</width>
@@ -684,7 +684,7 @@ background-color: #969696;</string>
                  </widget>
                 </item>
                 <item row="1" column="1">
-                 <widget class="StatusLight" name="gen_status_cam2">
+                 <widget class="StatusLight" name="status_cam2">
                   <property name="minimumSize">
                    <size>
                     <width>0</width>
@@ -704,7 +704,7 @@ background-color: #969696;</string>
                  </widget>
                 </item>
                 <item row="2" column="0">
-                 <widget class="StatusLight" name="gen_status_amp1">
+                 <widget class="StatusLight" name="status_amp1">
                   <property name="minimumSize">
                    <size>
                     <width>0</width>
@@ -723,28 +723,8 @@ background-color: #969696;</string>
                   </property>
                  </widget>
                 </item>
-                <item row="2" column="2">
-                 <widget class="StatusLight" name="gen_status_caen">
-                  <property name="minimumSize">
-                   <size>
-                    <width>0</width>
-                    <height>20</height>
-                   </size>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">color: #ffffff;
-background-color: #969696;</string>
-                  </property>
-                  <property name="text">
-                   <string>CAEN</string>
-                  </property>
-                  <property name="alignment">
-                   <set>Qt::AlignmentFlag::AlignCenter</set>
-                  </property>
-                 </widget>
-                </item>
                 <item row="1" column="0">
-                 <widget class="StatusLight" name="gen_status_cam1">
+                 <widget class="StatusLight" name="status_cam1">
                   <property name="minimumSize">
                    <size>
                     <width>0</width>
@@ -764,7 +744,7 @@ background-color: #969696;</string>
                  </widget>
                 </item>
                 <item row="1" column="4">
-                 <widget class="StatusLight" name="gen_status_trigger">
+                 <widget class="StatusLight" name="status_trigger">
                   <property name="minimumSize">
                    <size>
                     <width>0</width>
@@ -784,7 +764,7 @@ background-color: #969696;</string>
                  </widget>
                 </item>
                 <item row="1" column="3">
-                 <widget class="StatusLight" name="gen_status_clock">
+                 <widget class="StatusLight" name="status_clock">
                   <property name="minimumSize">
                    <size>
                     <width>0</width>
@@ -804,7 +784,7 @@ background-color: #969696;</string>
                  </widget>
                 </item>
                 <item row="1" column="5">
-                 <widget class="StatusLight" name="gen_status_position">
+                 <widget class="StatusLight" name="status_position">
                   <property name="minimumSize">
                    <size>
                     <width>0</width>
@@ -824,7 +804,7 @@ background-color: #969696;</string>
                  </widget>
                 </item>
                 <item row="0" column="0">
-                 <widget class="StatusLight" name="gen_status_config">
+                 <widget class="StatusLight" name="status_config">
                   <property name="minimumSize">
                    <size>
                     <width>0</width>
@@ -844,7 +824,7 @@ background-color: #969696;</string>
                  </widget>
                 </item>
                 <item row="1" column="2">
-                 <widget class="StatusLight" name="gen_status_cam3">
+                 <widget class="StatusLight" name="status_cam3">
                   <property name="minimumSize">
                    <size>
                     <width>0</width>
@@ -863,28 +843,8 @@ background-color: #969696;</string>
                   </property>
                  </widget>
                 </item>
-                <item row="2" column="3">
-                 <widget class="StatusLight" name="gen_status_gage">
-                  <property name="minimumSize">
-                   <size>
-                    <width>0</width>
-                    <height>20</height>
-                   </size>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">color: #ffffff;
-background-color: #969696;</string>
-                  </property>
-                  <property name="text">
-                   <string>Gage</string>
-                  </property>
-                  <property name="alignment">
-                   <set>Qt::AlignmentFlag::AlignCenter</set>
-                  </property>
-                 </widget>
-                </item>
                 <item row="0" column="1">
-                 <widget class="StatusLight" name="gen_status_niusb">
+                 <widget class="StatusLight" name="status_niusb">
                   <property name="minimumSize">
                    <size>
                     <width>0</width>
@@ -904,7 +864,7 @@ background-color: #969696;</string>
                  </widget>
                 </item>
                 <item row="0" column="2">
-                 <widget class="StatusLight" name="gen_status_plc">
+                 <widget class="StatusLight" name="status_plc">
                   <property name="minimumSize">
                    <size>
                     <width>0</width>
@@ -924,7 +884,7 @@ background-color: #969696;</string>
                  </widget>
                 </item>
                 <item row="0" column="4">
-                 <widget class="StatusLight" name="gen_status_writer">
+                 <widget class="StatusLight" name="status_writer">
                   <property name="minimumSize">
                    <size>
                     <width>0</width>
@@ -944,7 +904,7 @@ background-color: #969696;</string>
                  </widget>
                 </item>
                 <item row="0" column="3">
-                 <widget class="StatusLight" name="gen_status_sql">
+                 <widget class="StatusLight" name="status_sql">
                   <property name="minimumSize">
                    <size>
                     <width>0</width>
@@ -957,6 +917,66 @@ background-color: #969696;</string>
                   </property>
                   <property name="text">
                    <string>SQL</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="4">
+                 <widget class="StatusLight" name="status_gage">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color: #ffffff;
+background-color: #969696;</string>
+                  </property>
+                  <property name="text">
+                   <string>Gage</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="3">
+                 <widget class="StatusLight" name="status_caen">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color: #ffffff;
+background-color: #969696;</string>
+                  </property>
+                  <property name="text">
+                   <string>CAEN</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="2">
+                 <widget class="StatusLight" name="status_amp3">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color: #ffffff;
+background-color: #969696;</string>
+                  </property>
+                  <property name="text">
+                   <string>SiPM Amp 3</string>
                   </property>
                   <property name="alignment">
                    <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -1364,7 +1384,7 @@ background-color: rgb(150, 150, 150);</string>
                   <property name="minimumSize">
                    <size>
                     <width>50</width>
-                    <height>120</height>
+                    <height>150</height>
                    </size>
                   </property>
                  </widget>
@@ -1380,7 +1400,7 @@ background-color: rgb(150, 150, 150);</string>
                   <property name="minimumSize">
                    <size>
                     <width>50</width>
-                    <height>120</height>
+                    <height>150</height>
                    </size>
                   </property>
                  </widget>
@@ -1396,7 +1416,7 @@ background-color: rgb(150, 150, 150);</string>
                   <property name="minimumSize">
                    <size>
                     <width>50</width>
-                    <height>120</height>
+                    <height>150</height>
                    </size>
                   </property>
                  </widget>
@@ -1412,7 +1432,7 @@ background-color: rgb(150, 150, 150);</string>
                   <property name="minimumSize">
                    <size>
                     <width>50</width>
-                    <height>120</height>
+                    <height>150</height>
                    </size>
                   </property>
                  </widget>
