@@ -27,6 +27,9 @@ source_suffix = {
 
 root_doc = 'index'
 
+# Set each section is a chapter in pdf file
+latex_toplevel_sectioning = 'chapter'
+
 intersphinx_mapping = {
     'python': ('https://docs.python.org/3/', None),
     'sphinx': ('https://www.sphinx-doc.org/en/master/', None),

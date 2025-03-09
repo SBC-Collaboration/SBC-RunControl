@@ -5,61 +5,54 @@ This documentation describes the general way the run control program works, and 
 This documentation provides a short explanation of the different folders and files in this repository. Below is the 
 structure of this repository:
 ```
+.
 ├── README.md
-├── conda_rc.yml
 ├── config.json
+├── dependencies
+│   ├── ArduinoSketches
+│   │   ├── README.md
+│   │   ├── clock/
+│   │   ├── ln2autofill_rtd/
+│   │   ├── ln2autofill_scale/
+│   │   ├── position/
+│   │   ├── trigger/
+│   │   └── uti-docs/
+│   ├── NI_USB6501/
+│   └── conda_rc.yml
 ├── docs
+│   ├── api.rst
+│   ├── conf.py
 │   ├── data_format.md
-│   └── project_structure.md
-│   └── rc.log
+│   ├── dependencies.md
+│   ├── images/
+│   ├── index.md
+│   ├── program_behavior.md
+│   ├── project_structure.md
+│   ├── requirements.txt
+│   └── usage.rst
+├── init.sh
 ├── rc.py
-├── resources
-├── resources_rc.py
+├── resources/
 ├── src
+│   ├── acoustics.py
 │   ├── arduinos.py
+│   ├── caen.py
 │   ├── cameras.py
 │   ├── config.py
+│   ├── niusb.py
 │   ├── sipm_amp.py
+│   ├── sql.py
 │   ├── ui_loader.py
-│   └── workers.py
-├── ui
-│   ├── logwindow.py
-│       ├── logwindow.ui
-│       ├── mainwindow.py
-│       ├── mainwindow.ui
-│       ├── settingswindow.py
-│       └── settingswindow.ui
-└── dependencies
-    ├── ArduinoSketches
-    │   ├── README.md
-    │   ├── clock
-    │   │   ├── README.md
-    │   │   ├── clock.ino
-    │   │   └── clock_config.json
-    │   ├── position
-    │   │   ├── MgsModbus.cpp
-    │   │   ├── MgsModbus.h
-    │   │   └── position.ino
-    │   ├── trigger
-    │   │   ├── README.md
-    │   │   └── TRIG.ino
-    │   └── uti-docs
-    │       └── level_meter_read.py
-    └── SBCBinaryFormat
-        ├── README.md
-        ├── cpp
-        └── python
-        ├── README.md
-        ├── examples
-        │   ├── test.sbc.bin
-        │   └── writer_example.py
-        ├── sbcbinaryformat
-        │   ├── __init__.py
-        │   └── files.py
-        └── setup.py
+│   └── writer.py
+└── ui
+    ├── custom_widgets.py
+    ├── logwindow.ui
+    ├── mainwindow.ui
+    ├── quitdialog.ui
+    └── settingswindow.ui
 ```
 
-## Module and state structure
+## Run States
 The run control program uses multithreading to avoid freezing the GUI when things are happening in the background. Specifically, it has one main thread and a thread for each module. For the secondary threads, there is one worker per thread. The threads communicate with each other via `Signal` and `Slot`.  
 At the Start of a run, the main thread will send out a `run_starting` signal. This signal is connected to the `start_run` method of each module worker. (TODO: then the main thread waits for all modules to return a signal that they are ready to go active.) A similar process happens at every state transition.
 There are seven states, which are `preparing`, `idle`. `starting_run`, `stopping_run`, `starting_event`, `stopping_event`, `active`. 
@@ -96,3 +89,6 @@ This is the state when the event is stopping. A `Signal` is sent to all modules 
 ### `active`
 All modules in this state will be actively taking data in buffer, and waiting for a trigger. When a trigger is received by run control, it will enter into `stopping_event` state.
 GUI: Start event timer. Update event livetime and run livetime. Check for max event time to send out trigger.
+
+## Modules
+The run control program is organized in modules.

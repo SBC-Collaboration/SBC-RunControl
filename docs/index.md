@@ -7,5 +7,6 @@ Welcome to the documentation page of SBC Run Control, the data acquisition (DAQ)
 ```{toctree}
 :maxdepth: 2
 project_description
+dependencies
 data_format
 ```
