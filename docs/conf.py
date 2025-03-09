@@ -30,6 +30,11 @@ root_doc = 'index'
 # Set each section is a chapter in pdf file
 latex_toplevel_sectioning = 'chapter'
 
+# Remove blank pages in pdf file
+latex_elements = {
+  'extraclassoptions': 'openany,oneside'
+}
+
 intersphinx_mapping = {
     'python': ('https://docs.python.org/3/', None),
     'sphinx': ('https://www.sphinx-doc.org/en/master/', None),
