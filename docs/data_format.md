@@ -54,6 +54,8 @@ The data structure is:
     - **trig_in_as_gate** (`bool`): If `true`, the TRIG-IN port on the digitizer will serve as gate for triggering in all other channels. This means that only if the TRIG-IN is true will the data channel triggering be enabled. If `false`, the TRIG-IN will serve as an additional channel of trigger, which may be useful when doing LED calibration.
     - **decimation** (`int`): Decimation factor for acquisition. This can be n=\[0..7\], and the sampling frequency is f = 62.5 MHz/s / (2 ^ n).
     - **overlap_en** (`bool`): Whether overlapping triggers are enabled. Overlapping triggers are triggers that appear inside the acquisition window of another trigger.
+    - **memory_full** (`str`): Memory full mode. If "Normal", then the CAEN will reject triggers when the memory is full. If "One Buffer Free", it will reject triggers when only one buffer is free. This case, when the first buffer is being read, a new trigger can be accepted and written to the free buffer, make dead time a little shorter.
+    - **counting_mode** (`str`): If "Accepted Only", only accepted triggers will increment **EventCounter**. If "All", all triggers, including rejected triggers, will increment **EventCounter**, so we can know if any triggers are rejected.
     - **polarity** (`str`): Trigger polarity. Rising of falling edge.
     - **majority_level** (`int`): How many groups need to generate concurrent triggers for a global trigger to be generated. A `majority_level` of 0 means any channel from 1 group or more will be accepted. 
     - **majority_window** (`int`, 8 ns): The concurrent triggers need to be with in this many clock cycles of each other to count. The internal clock frequency is 125 MHz, so each cycle is 8 ns.
@@ -193,8 +195,8 @@ The event data is saved in the `EventData` tables in the slow control SQL databa
 - **stop_time** (`TIMESTAMP(3)`): Timestamp of the event stop.
 - **trigger_source** (`VARCHAR(100)`, `NOT NULL`): Name of trigger's first fault.
 
-## Event info
-This data is saved in the SBC binary format using `SBCBinaryFormat` library. The data structure is:
+## Event Info
+This data is saved in the SBC binary format using `SBCBinaryFormat` library, named `event_info.sbc` in the event data folder. It can be read into a python dictionary of numpy arrays. Each array will only have 1 row. The data structure is:
 - **ev_number** (`uint32`, 3): A list of date, run number, and event number of current event. For example, for Run 
   20240101_0 Event 0, this list would be `[20240101, 0, 0]`.
 - **ev_livetime** (`uint64`): Event livetime in milliseconds. This is the time from when all modules are ready to 
@@ -202,3 +204,22 @@ This data is saved in the SBC binary format using `SBCBinaryFormat` library. The
 - **run_livetime** (`uint64`): Run livetime in milliseconds. This is the sum of the current and all previous events.
 - **pset** (`float`): Pressure setpoint for this event. In case of pressure ramping or random sampling, the pressure setpoint could be different for each event. 
 - **trigger_source** (`str`): Trigger first fault source. This trigger is the one that causes the global trigger latch.
+
+## Scintillation Data
+This data is saved in the SBC binary format using `SBCBinaryFormat` library, named `scintillation.sbc` in the event data folder. It can be read into a python dictionary of numpy arrays. All arrays will have the same number of rows `n_trigs`, each correspond to a CAEN trigger. Also assume the number of channels enabled for acquisition is `n_chs`, and the record length (number of samples per channel per trigger) is `rec_len`. The data structure is:
+- **EventCounter** (`uint32`, `n_trigs`): The index for this CAEN event (CAEN trigger). If **counting_mode** is "All", then this counter will increment for both accepted and rejected triggers.
+- **TriggerSource** (`uint8`, `n_trigs`): A mask of where the trigger is from. Bits 0-3 means the trigger is from Group 0-3. Bit 4 means external trigger (TRIG-IN port), and bit 5 means software trigger.
+- **GroupMask** (`uint8`, `n_trigs`): A mask telling which groups are enabled. Bits 0-3 means group 0-3. This is the "ChannelMask" in `CAEN_DGTZ_EventInfo_t`.
+- **TriggerMask** (`uint32`, `n_trigs`): A mask of which channels are enabled for generating triggers. If a group is disabled, then all channels in that group are disabled. Bits 0-31 means channel 0-31. This is calculated from `CAENGroupConfig`.
+- **AcquisitionMask** (`uint32`, `n_trigs`): A mask of which channels are enabled for acquiring data. If a group is disabled, then all channels in that group are disabled. Bits 0-31 means channel 0-31. This is calculated from `CAENGroupConfig`.
+- **TriggerTimeTag** (`uint32`, `n_trigs`): Time stamp for the CAEN event. It is a 31-bit number, from the reference clock 125 MHz (8 ns). It is only read once every 2 clock cycles, so the least significant bit (LSB) is always 0, meaning the resolution is 16 ns.
+- **Waveforms** (`uint16`, [`n_trigs`, `n_chs`, `rec_len`]). Raw 12-bit ADC waveforms data in a 3d-array. 
+
+## Acoustics Data
+This data is saved in the SBC binary format using `SBCBinaryFormat` library, named `acoustics.sbc` in the event data folder. It can be read into a python dictionary of numpy arrays. All arrays will have the same number of rows `n_segs`, each correspond to a GaGe triggers / segments. This number will typically only be 1, since we send a software trigger at the start of event, or when the acquisiton restarts, and at the end of event retrieve the waveforms around the bubble trigger. Also assume the number of channels enabled for acquisition is `n_chs`, which is always 8, since all channels need to be enabled. The number of samples per channel per trigger`len`, which is 100 ms * sample_rate. The data structure is:
+- **Segment ID** (`uint32`, `n_segs`): Index of this segment.
+- **Timestamp** (`uint32`, `n_segs`): Time stamp of this segment.
+- **Trigger Number** (`uint64`, `n_segs`): At which sample did the bubble trigger occur. This can be used to tell if there has been enough pre-trigger samples.
+- **Range** (`uint32`, [`n_segs`, `n_chs`], mV): Voltage range for each channel. For example, range of 2000 mV means it's 2 Vpp.
+- **DC Offset** (`uint32`, [`n_segs`, `n_chs`], mV): Voltage offset for each channel. For a 2 Vpp range, the minimum is -1000 mV, and maximum is +1000 mV.
+- **Waveforms** (`uint16`, [`n_segs`, `n_chs`, `len`]): The raw 14-bit ADC waveforms data in 3d-array. The two least significant bits are padded with 0, meaning this can be treated as a 16-bit number when converting to voltage, or divide by 4 and treat it as a 14-bit number.
