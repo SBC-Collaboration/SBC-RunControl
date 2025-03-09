@@ -2,16 +2,16 @@
 This documentation contains information for the data structures of different saved files by the Run Control software and different modules.
 
 ## Configuration file (Local JSON file)
-The master configuration file is saved in `.json` format. The data structure is:
+The master configuration file is saved in `.json` format. It contains configuration for run control itself and also all modules, including SiPM amps, CAEN, GaGe, cameras, arduinos, NI USB, and SQL. When run control starts, it will read the file from the main run control folder, and populate the fields in the settings window. After editing in the setting window, applying will update the config dictionary, and saving will update the dictionary and update the local file. Loading from a file will overwrite only the fields available in the file. 
+At the start of a run, a copy of the config dictionay to the run_config dictionary, which will be used as the reference config for all modules during the entire run. If some changes are made in the settings window during a run, it will only change the config dictionary, and not the run_config dictionary. A json copy of the run config is saved to the run data folder. 
+The data structure is:
 - `general`: General configuration for the run control software. This includes paths that the software uses in 
   normal operation. This information generally doesn't change across runs and different days.
-  - `config_path` (`str`): Path to the master config file.
+  - `config_path` (`str`): Path to the master config json file.
   - `log_path` (`str`): Path to the log file.
   - `data_dir` (`str`): Main directory where all of the data is saved.
-  - `max_ev_time` (`int`, s): Max time an event can last. After the maximum is reached, A software trigger is sent 
-    from run control.
-  - `max_num_evs` (`int`): Max number of events that a run can have. If the max number is reached, then the run will 
-    end, instead of starting a new event.
+  - `max_ev_time` (`int`, s): Max time an event can last. After the maximum is reached, a software trigger is sent from run control.
+  - `max_num_evs` (`int`): Max number of events that a run can have. If the max number is reached, then the run will end, instead of starting a new event.
   - `sql`: SQL configurations
     - `hostname` (`str`): Host name of SQL server
     - `port` (`int`): Port used by SQL server
