@@ -1,5 +1,16 @@
 # Dependencies
 
+## Installation
+1. Install [Miniconda3](https://docs.conda.io/projects/miniconda/en/latest/miniconda-install.html) or [Anaconda3](https://docs.anaconda.com/free/anaconda/install/index.html).
+2. Open the main repository directory in a shell terminal. Run `source ./init.sh` to initialize the environment for 
+   run control. The script will do the following things:
+   - Update conda.
+   - If there is no conda environment called `runcontrol`, then create a new environment using 
+     `dependencies/conra_rc.yml`. If it already exists, then update the packages to satisfy the file.
+   - Activate `runcontrol` environment and generate all ui and resources files.
+   - Download `arduino-cli` program, initialize, and download necessary libraries including `incbin` and `ArduinoJson`.
+3. Now it's good to go! Start the program by running `python3 rc.py`.
+
 ## Software Dependencies
 - [**PySide6**](https://pypi.org/project/PySide6/): Python library for Qt6 GUI framework.
 - [**Arduino-Cli**](https://arduino.github.io/arduino-cli/0.35/): Command line utility for compiling and uploading Arduino sketches to the boards.

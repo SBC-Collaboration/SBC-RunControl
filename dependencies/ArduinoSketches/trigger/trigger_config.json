@@ -7,23 +7,23 @@
   "on_time": 40,
   "heartbeat": 41,
   "led_gate_pin": 21,
-  "led_gate": 0,
+  "led_gate": 10000,
   "trig1": {
-    "enabled": true,
+    "enabled": false,
     "name": "Cam1",
     "compression": "fast",
     "in": 22,
     "first_fault": 53
   },
   "trig2": {
-    "enabled": false,
+    "enabled": true,
     "name": "Cam2",
     "compression": "fast",
     "in": 23,
     "first_fault": 52
   },
   "trig3": {
-    "enabled": true,
+    "enabled": false,
     "name": "Cam3",
     "compression": "fast",
     "in": 24,
@@ -31,7 +31,7 @@
   },
   "trig4": {
     "enabled": false,
-    "name": "",
+    "name": "Trig In 4",
     "compression": "fast",
     "in": 25,
     "first_fault": 50
@@ -59,7 +59,7 @@
   },
   "trig8": {
     "enabled": false,
-    "name": "",
+    "name": "Trig In 8",
     "compression": "fast",
     "in": 29,
     "first_fault": 13
@@ -87,35 +87,35 @@
   },
   "trig12": {
     "enabled": false,
-    "name": "",
+    "name": "Trig in 12",
     "compression": "slow",
     "in": 34,
     "first_fault": 46
   },
   "trig13": {
     "enabled": false,
-    "name": "",
+    "name": "Trig In 13",
     "compression": "slow",
     "in": 33,
     "first_fault": 45
   },
   "trig14": {
-    "enabled": true,
-    "name": "",
+    "enabled": false,
+    "name": "Trig In 14",
     "compression": "slow",
     "in": 32,
     "first_fault": 44
   },
   "trig15": {
     "enabled": false,
-    "name": "",
+    "name": "Trig In 15",
     "compression": "slow",
     "in": 31,
     "first_fault": 43
   },
   "trig16": {
     "enabled": false,
-    "name": "",
+    "name": "Trig In 16",
     "compression": "slow",
     "in": 30,
     "first_fault": 42
