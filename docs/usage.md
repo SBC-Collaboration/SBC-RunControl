@@ -1,4 +1,4 @@
-# Dependencies
+# Usage
 
 ## Installation
 1. Install [Miniconda3](https://docs.conda.io/projects/miniconda/en/latest/miniconda-install.html) or [Anaconda3](https://docs.anaconda.com/free/anaconda/install/index.html).
