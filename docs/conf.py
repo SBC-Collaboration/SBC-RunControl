@@ -1,4 +1,5 @@
 # Configuration file for the Sphinx documentation builder.
+import os, sys
 
 # -- Project information
 
@@ -34,6 +35,11 @@ latex_toplevel_sectioning = 'chapter'
 latex_elements = {
   'extraclassoptions': 'openany,oneside'
 }
+
+# set up mock imports
+autodoc_mock_imports = ['red_caen', "ui", "resources_rc"]
+
+sys.path.insert(0, os.path.abspath(".."))
 
 intersphinx_mapping = {
     'python': ('https://docs.python.org/3/', None),

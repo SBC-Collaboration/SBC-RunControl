@@ -1,15 +1,17 @@
 # Usage
 
 ## Installation
-1. Install [Miniconda3](https://docs.conda.io/projects/miniconda/en/latest/miniconda-install.html) or [Anaconda3](https://docs.anaconda.com/free/anaconda/install/index.html).
+1. Install [miniforge](https://github.com/conda-forge/miniforge) or [conda-forge](https://conda-forge.org/download/). This is preferred over miniconda and anaconda because of licensing problems of anaconda at Fermilab. If you already have those installed, it should still work, since the `conda_rc.yml` file has specified the channel. If there's problem, follow [these instructions](https://conda-forge.org/docs/user/transitioning_from_defaults/) to transition to conda-forge.
 2. Open the main repository directory in a shell terminal. Run `source ./init.sh` to initialize the environment for 
    run control. The script will do the following things:
    - Update conda.
    - If there is no conda environment called `runcontrol`, then create a new environment using 
      `dependencies/conra_rc.yml`. If it already exists, then update the packages to satisfy the file.
-   - Activate `runcontrol` environment and generate all ui and resources files.
+   - Activate `runcontrol` conda environment.
+   - Using PySide6 tools to generate python files from ui and resources files.
+   - Add dependencies folder to system path.
    - Download `arduino-cli` program, initialize, and download necessary libraries including `incbin` and `ArduinoJson`.
-3. Now it's good to go! Start the program by running `python3 rc.py`.
+3. Now it's good to go! Start the program by running `python rc.py`.
 
 ## Software Dependencies
 - [**PySide6**](https://pypi.org/project/PySide6/): Python library for Qt6 GUI framework.
