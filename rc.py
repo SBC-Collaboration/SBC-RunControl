@@ -29,6 +29,15 @@ import os
 
 # Loads Main window
 class MainWindow(QMainWindow):
+    # Declare all relevant signals
+    program_starting = Signal()
+    run_starting = Signal()
+    run_stopping = Signal()
+    event_starting = Signal()
+    event_stopping = Signal()
+    send_trigger = Signal(str)
+    program_stopping = Signal()
+
     def __init__(self):
         super(MainWindow, self).__init__()
         self.run_id = ""
@@ -67,15 +76,6 @@ class MainWindow(QMainWindow):
         )
 
         self.update_state("preparing")
-
-        # Declare all relevant signals
-        self.program_starting = Signal()
-        self.run_starting = Signal()
-        self.run_stopping = Signal()
-        self.event_starting = Signal()
-        self.event_stopping = Signal()
-        self.send_trigger = Signal(str)
-        self.program_stopping = Signal()
 
         # List populated by ready modules at each state. After all modules are ready, it will proceed to the next state
         self.starting_program_ready = []
