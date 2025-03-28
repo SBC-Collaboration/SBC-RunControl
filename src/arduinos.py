@@ -68,7 +68,6 @@ class Arduino(QObject):
         53: "B0",
     }
     reverse_port_map = {}
-    latch_pins = [0, 1, 5, 2, 3, 17, 16, 6, 7, 8, 9, 15, 14]
 
     sketch_uploaded = Signal(str)
 

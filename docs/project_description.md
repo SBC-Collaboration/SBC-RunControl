@@ -56,23 +56,28 @@ structure of this repository:
 The run control program uses multithreading to avoid freezing the GUI when things are happening in the background. Specifically, it has one main thread and a thread for each module. For the secondary threads, there is one worker per thread. The threads communicate with each other via `Signal` and `Slot`.  
 At the Start of a run, the main thread will send out a `run_starting` signal. This signal is connected to the `start_run` method of each module worker. (TODO: then the main thread waits for all modules to return a signal that they are ready to go active.) A similar process happens at every state transition.
 There are seven states, which are `preparing`, `idle`. `starting_run`, `stopping_run`, `starting_event`, `stopping_event`, `active`. 
-### `preparing`
+
+### Preparing
 When the run control program starts, it will first enter the `preparing` state. In this state it will instantiate all the secondary threads and workers, and load the GUI with initial information.
 - Arduinos: Flash sketch to board?
 - SiPM amp: run IV curve if no data for today?
-### `idle`
+
+### Idle
 After the `preparing` state ends, it will enter the `idle` state. The "Start Run" button will be available to start a new run, and any changes to the configuration can be applied immediately.
-### `starting_run`
+
+### Starting Run
 After the "Start Run" button is pressed, the program will enter this state. When all modules are ready, it will enter into `starting_event` state.
 - GUI: set run ID, event ID, event livetime, run livetime
 - Writer: create run folder. Save current config file. Create log file and add to logger. Initialize run_data variable.
 - SiPM amp: bias SiPMs
 - Config: save current config to run folder.
-### `stopping_run`
+
+### Stopping Run
 This is the state then the run is stopping.
 - SiPM amp: unbias SiPM
 - Write run data into SQL RunData table.
-### `starting_event`
+
+### Starting Event
 When the `starting_run` state ends, or then `stopping_event` state ends, and neither "Stop Run" button is pressed, or maximum number of events is reached, the program will start a new event. It will send out a `Signal` to all modules. When all modules are ready, it will enter `active` state.
 - GUI: set event ID and event livetime display.
 - Writer: Create folder for the event.
@@ -80,13 +85,15 @@ When the `starting_run` state ends, or then `stopping_event` state ends, and nei
 - NIUSB: set input/output pins. Sends out `trig_reset` signal. Set outputs to camera.
 - CAEN: save config file. Start data acquisition.
 - Acoustics: save config file. Start data acquisition.
-### `stopping_event`
+
+### Stopping Event
 This is the state when the event is stopping. A `Signal` is sent to all modules to save data for the event. After the state is finished, it will enter into either `starting_event` to start a new event, or `stopping_run` to end the run. That decision will depend on if the "Stop Run" button is pressed, or maximum number of events is reached.
 - Writer: save event binary data.
 - Cameras: Take remaining images. Save images, info table and log into event folder.
 - CAEN: stop data acquisition, save data to event folder.
 - Acoustics: save data to event folder.
-### `active`
+
+### Active
 All modules in this state will be actively taking data in buffer, and waiting for a trigger. When a trigger is received by run control, it will enter into `stopping_event` state.
 GUI: Start event timer. Update event livetime and run livetime. Check for max event time to send out trigger.
 
@@ -101,8 +108,10 @@ The main job of the config module is to translate between the fields in the sett
 When a run starts, it saves a copy of the config dictionary for the run, so any subsequent changes in the settings window when the run is active won't affect the current run. It then saves the run config into a `config.json` in the run data folder, and then updates the config files for cameras and arduinos.
 
 ### NI USB
+Using the third party custom driver, this modules handles all digitital input/output requests from run control to the NI USB6501 device. It defines a name and direction for each of the pins, and handles reading from and writing to the pins. Specifically, it handles communication to and from the trigger arduino and the camera RPis. 
 
 ### Arduinos
+At the start of each run, the Arduinos module checks that the build on the Arduino is up to date. It generates a zip file containing the `.ino` C++ file as well as wll supporting files, including the `.json` configuration file. Then it compares the zip file to the existing zip file in the build folder. If that zip file doesn't exist, or if they are different, the module will compile the code and upload to the corresponding Arduino, while overwriting the zip file with the newer version. If the two zip files are the same, then nothing will happen to prevent unnecessary writes to the EEPROM.
 
 ### Writer
 
