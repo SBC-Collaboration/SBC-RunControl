@@ -133,6 +133,21 @@ class Config(QObject):
         for ch in range(1, 16):
             widgets[f"sipm_amp2_ch{ch}_offset"].setValue(sipm_amp2_config["ch_offset"][ch-1])
 
+        sipm_amp3_config = self.config["scint"]["amp3"]
+        ui.sipm_amp3_enabled_box.setChecked(sipm_amp3_config["enabled"])
+        ui.sipm_amp3_ip_addr_edit.setText(sipm_amp3_config["ip_addr"])
+        ui.sipm_amp3_bias_box.setValue(sipm_amp3_config["bias"])
+        ui.sipm_amp3_qp_box.setValue(sipm_amp3_config["qp"])
+        ui.sipm_amp3_iv_enabled_box.setChecked(sipm_amp3_config["iv_enabled"])
+        ui.sipm_amp3_iv_data_dir_edit.setText(sipm_amp3_config["iv_data_dir"])
+        ui.sipm_amp3_iv_rc_data_dir_edit.setText(sipm_amp3_config["iv_rc_dir"])
+        ui.sipm_amp3_iv_interval_box.setValue(sipm_amp3_config["iv_interval"])
+        ui.sipm_amp3_iv_start_box.setValue(sipm_amp3_config["iv_start"])
+        ui.sipm_amp3_iv_stop_box.setValue(sipm_amp3_config["iv_stop"])
+        ui.sipm_amp3_iv_step_box.setValue(sipm_amp3_config["iv_step"])
+        for ch in range(1, 16):
+            widgets[f"sipm_amp3_ch{ch}_offset"].setValue(sipm_amp3_config["ch_offset"][ch-1])
+
         # CAEN
         caen_config = self.config["scint"]["caen"]
         ui.caen_enabled_box.setChecked(caen_config["enabled"])
@@ -167,6 +182,7 @@ class Config(QObject):
             for ch in range(8):
                 widgets[f"caen_{gp}_trig_mask_{ch}"].setChecked(gp_config["trig_mask"][ch])
                 widgets[f"caen_{gp}_acq_mask_{ch}"].setChecked(gp_config["acq_mask"][ch])
+                widgets[f"caen_{gp}_plot_mask_{ch}"].setChecked(gp_config["plot_mask"][ch])
                 widgets[f"caen_{gp}_offset_{ch}"].setValue(gp_config["ch_offset"][ch])
 
         # acoustics
@@ -199,6 +215,7 @@ class Config(QObject):
         for i in range(1,9):
             ch = f"ch{i}"
             ch_config = acous_config[ch]
+            widgets[f"acous_name_{ch}"].setText(ch_config["name"])
             widgets[f"acous_range_{ch}"].setCurrentText(ch_config["range"])
             widgets[f"acous_offset_{ch}"].setValue(ch_config["offset"])
             widgets[f"acous_impedance_{ch}"].setCurrentText(ch_config["impedance"])
@@ -386,6 +403,21 @@ class Config(QObject):
             "ch_offset": [widgets[f"sipm_amp2_ch{ch}_offset"].value() for ch in range(1, 16)],
         }
 
+        sipm_amp3_config = {
+            "enabled": ui.sipm_amp3_enabled_box.isChecked(),
+            "ip_addr": ui.sipm_amp3_ip_addr_edit.text(),
+            "bias": ui.sipm_amp3_bias_box.value(),
+            "qp": ui.sipm_amp3_qp_box.value(),
+            "iv_enabled": ui.sipm_amp3_iv_enabled_box.isChecked(),
+            "iv_data_dir": ui.sipm_amp3_iv_data_dir_edit.text(),
+            "iv_rc_dir": ui.sipm_amp3_iv_rc_data_dir_edit.text(),
+            "iv_interval": ui.sipm_amp3_iv_interval_box.value(),
+            "iv_start": ui.sipm_amp3_iv_start_box.value(),
+            "iv_stop": ui.sipm_amp3_iv_stop_box.value(),
+            "iv_step": ui.sipm_amp3_iv_step_box.value(),
+            "ch_offset": [widgets[f"sipm_amp3_ch{ch}_offset"].value() for ch in range(1, 16)],
+        }
+
         caen_config = {
             "enabled": ui.caen_enabled_box.isChecked(),
             "data_path": ui.caen_data_path_box.text(),
@@ -419,6 +451,7 @@ class Config(QObject):
             "range": ui.caen_g0_range_box.currentText(),
             "trig_mask": [widgets[f"caen_g0_trig_mask_{ch}"].isChecked() for ch in range(8)],
             "acq_mask": [widgets[f"caen_g0_acq_mask_{ch}"].isChecked() for ch in range(8)],
+            "plot_mask": [widgets[f"caen_g0_plot_mask_{ch}"].isChecked() for ch in range(8)],
             "ch_offset": [widgets[f"caen_g0_offset_{ch}"].value() for ch in range(8)],
         }
 
@@ -429,6 +462,7 @@ class Config(QObject):
             "range": ui.caen_g1_range_box.currentText(),
             "trig_mask": [widgets[f"caen_g1_trig_mask_{ch}"].isChecked() for ch in range(8)],
             "acq_mask": [widgets[f"caen_g1_acq_mask_{ch}"].isChecked() for ch in range(8)],
+            "plot_mask": [widgets[f"caen_g1_plot_mask_{ch}"].isChecked() for ch in range(8)],
             "ch_offset": [widgets[f"caen_g1_offset_{ch}"].value() for ch in range(8)],
         }
 
@@ -439,6 +473,7 @@ class Config(QObject):
             "range": ui.caen_g2_range_box.currentText(),
             "trig_mask": [widgets[f"caen_g2_trig_mask_{ch}"].isChecked() for ch in range(8)],
             "acq_mask": [widgets[f"caen_g2_acq_mask_{ch}"].isChecked() for ch in range(8)],
+            "plot_mask": [widgets[f"caen_g2_plot_mask_{ch}"].isChecked() for ch in range(8)],
             "ch_offset": [widgets[f"caen_g2_offset_{ch}"].value() for ch in range(8)],
         }
 
@@ -449,6 +484,7 @@ class Config(QObject):
             "range": ui.caen_g3_range_box.currentText(),
             "trig_mask": [widgets[f"caen_g3_trig_mask_{ch}"].isChecked() for ch in range(8)],
             "acq_mask": [widgets[f"caen_g3_acq_mask_{ch}"].isChecked() for ch in range(8)],
+            "plot_mask": [widgets[f"caen_g3_plot_mask_{ch}"].isChecked() for ch in range(8)],
             "ch_offset": [widgets[f"caen_g3_offset_{ch}"].value() for ch in range(8)],
         }
 
@@ -478,6 +514,7 @@ class Config(QObject):
         for i in range(1,9):
             ch_config = {}
             ch = f"ch{i}"
+            ch_config["name"] = widgets[f"acous_name_{ch}"].text()
             ch_config["range"] = widgets[f"acous_range_{ch}"].currentText()
             ch_config["offset"] = widgets[f"acous_offset_{ch}"].value()
             ch_config["impedance"] = widgets[f"acous_impedance_{ch}"].currentText()
@@ -574,6 +611,7 @@ class Config(QObject):
             "scint": {
                 "amp1": sipm_amp1_config,
                 "amp2": sipm_amp2_config,
+                "amp3": sipm_amp3_config,
                 "caen": caen_config,
                 "caen_g0": caen_g0_config,
                 "caen_g1": caen_g1_config,
@@ -605,7 +643,7 @@ class Config(QObject):
     def start_run(self):
         # self.apply_config(self.main.settings_window.ui)
         self.run_config = copy.deepcopy(self.config)
-        run_json_path = os.path.join(self.main.run_dir, f"{self.main.run_id}.json")
+        run_json_path = os.path.join(self.main.run_dir, f"rc.json")
         # save run config file
         with open(run_json_path, "w") as file:
             json.dump(self.run_config, file, indent=2)

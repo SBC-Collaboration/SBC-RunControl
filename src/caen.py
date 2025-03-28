@@ -18,8 +18,6 @@ class Caen(QObject):
         self.logger = logging.getLogger("rc")
         self.scint_config = self.main.config_class.config["scint"]
         self.caen = None
-        self.global_config = red_caen.CAENGlobalConfig()
-        self.group_configs = [red_caen.CAENGroupConfig() for _ in range(8)]
 
         self.timer = QTimer(self)
         self.timer.setInterval(100)
@@ -86,6 +84,8 @@ class Caen(QObject):
 
     @Slot()
     def start_run(self):
+        self.global_config = red_caen.CAENGlobalConfig()
+        self.group_configs = [red_caen.CAENGroupConfig() for _ in range(8)]
         self.config = self.main.config_class.run_config["scint"]["caen"]
         self.evs_per_read = self.config["evs_per_read"] # save value for reading data
 
@@ -152,6 +152,7 @@ class Caen(QObject):
         self.caen.DecodeEvents()
         if self.caen.GetNumberOfEvents() > 0:
             self.buffer.append(self.caen.GetDataDict())
+            self.data_retrieved.emit(self.buffer[-1])
         self.caen.ClearData()
 
         # write data to file
@@ -163,7 +164,12 @@ class Caen(QObject):
 
     @Slot()
     def stop_run(self):
+        if not self.config["enabled"]:
+            self.run_stopped.emit(f"disabled-caen")
+            return
+        
         del self.caen
         del self.buffer
         del self.global_config
         del self.group_configs
+        self.run_stopped.emit("caen")

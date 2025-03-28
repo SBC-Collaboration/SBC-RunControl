@@ -91,4 +91,4 @@ All modules in this state will be actively taking data in buffer, and waiting fo
 GUI: Start event timer. Update event livetime and run livetime. Check for max event time to send out trigger.
 
 ## Modules
-The run control program is organized in modules.
+The run control program is organized in modules. The main module is responsible for the graphical interface. All other modules are launched in their own threads. Each module is defined by a python script in the `src/` folder, and one or more instances of a module may be created. For example, there are three camera threads, each controlling a camera RPi. 
