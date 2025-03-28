@@ -9,11 +9,6 @@ API
    :undoc-members:
    :exclude-members: staticMetaObject
 
-.. autoclass:: rc.MainSignals
-   :members: 
-   :undoc-members:
-   :exclude-members: staticMetaObject
-
 .. autoclass:: src.acoustics.Acoustics
    :members: 
    :undoc-members:

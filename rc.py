@@ -26,16 +26,6 @@ import re
 import sys
 import os
 
-class MainSignals(QObject):
-    # initialize signals
-    program_starting = Signal()
-    run_starting = Signal()
-    run_stopping = Signal()
-    event_starting = Signal()
-    event_stopping = Signal()
-    send_trigger = Signal(str)
-    program_stopping = Signal()
-
 
 # Loads Main window
 class MainWindow(QMainWindow):
@@ -78,6 +68,15 @@ class MainWindow(QMainWindow):
 
         self.update_state("preparing")
 
+        # Declare all relevant signals
+        self.program_starting = Signal()
+        self.run_starting = Signal()
+        self.run_stopping = Signal()
+        self.event_starting = Signal()
+        self.event_stopping = Signal()
+        self.send_trigger = Signal(str)
+        self.program_stopping = Signal()
+
         # List populated by ready modules at each state. After all modules are ready, it will proceed to the next state
         self.starting_program_ready = []
         self.starting_run_ready = []
@@ -103,7 +102,6 @@ class MainWindow(QMainWindow):
         self.start_program()
 
     def set_up_workers(self):
-        self.signals = MainSignals()
         # set up run handling thread and the worker
         vars = self.__dict__
         ui_vars = self.ui.__dict__
@@ -115,8 +113,8 @@ class MainWindow(QMainWindow):
             vars[f"{cam}_thread"].setObjectName(f"{cam}_thread")
             vars[f"{cam}_worker"].moveToThread(vars[f"{cam}_thread"])
             vars[f"{cam}_thread"].started.connect(vars[f"{cam}_worker"].run)
-            self.signals.run_starting.connect(vars[f"{cam}_worker"].start_camera)
-            self.signals.run_stopping.connect(vars[f"{cam}_worker"].stop_camera)
+            self.run_starting.connect(vars[f"{cam}_worker"].start_camera)
+            self.run_stopping.connect(vars[f"{cam}_worker"].stop_camera)
             vars[f"{cam}_thread"].start()
             time.sleep(0.001)
 
@@ -128,8 +126,8 @@ class MainWindow(QMainWindow):
             vars[f"{amp}_thread"].setObjectName(f"{amp}_thread")
             vars[f"{amp}_worker"].moveToThread(vars[f"{amp}_thread"])
             vars[f"{amp}_thread"].started.connect(vars[f"{amp}_worker"].run)
-            self.signals.run_starting.connect(vars[f"{amp}_worker"].bias_sipm)
-            self.signals.run_stopping.connect(vars[f"{amp}_worker"].unbias_sipm)
+            self.run_starting.connect(vars[f"{amp}_worker"].bias_sipm)
+            self.run_stopping.connect(vars[f"{amp}_worker"].unbias_sipm)
             vars[f"{amp}_thread"].start()
             time.sleep(0.001)
 
@@ -140,7 +138,7 @@ class MainWindow(QMainWindow):
             vars[f"arduino_{ino}_thread"].setObjectName(f"arduino_{ino}_thread")
             vars[f"arduino_{ino}_worker"].moveToThread(vars[f"arduino_{ino}_thread"])
             vars[f"arduino_{ino}_thread"].started.connect(vars[f"arduino_{ino}_worker"].run)
-            self.signals.run_starting.connect(vars[f"arduino_{ino}_worker"].upload_sketch)
+            self.run_starting.connect(vars[f"arduino_{ino}_worker"].upload_sketch)
             vars[f"arduino_{ino}_thread"].start()
             time.sleep(0.001)
 
@@ -154,10 +152,10 @@ class MainWindow(QMainWindow):
         self.caen_thread.setObjectName("caen_thread")
         self.caen_worker.moveToThread(self.caen_thread)
         self.caen_thread.started.connect(self.caen_worker.run)
-        self.signals.run_starting.connect(self.caen_worker.start_run)
-        self.signals.event_starting.connect(self.caen_worker.start_event)
-        self.signals.event_stopping.connect(self.caen_worker.stop_event)
-        self.signals.run_stopping.connect(self.caen_worker.stop_run)
+        self.run_starting.connect(self.caen_worker.start_run)
+        self.event_starting.connect(self.caen_worker.start_event)
+        self.event_stopping.connect(self.caen_worker.stop_event)
+        self.run_stopping.connect(self.caen_worker.stop_run)
         self.caen_thread.start()
         time.sleep(0.001)
 
@@ -168,8 +166,8 @@ class MainWindow(QMainWindow):
         self.acous_thread.setObjectName("acous_thread")
         self.acous_worker.moveToThread(self.acous_thread)
         self.acous_thread.started.connect(self.acous_worker.run)
-        self.signals.event_starting.connect(self.acous_worker.start_event)
-        self.signals.event_stopping.connect(self.acous_worker.stop_event)
+        self.event_starting.connect(self.acous_worker.start_event)
+        self.event_stopping.connect(self.acous_worker.stop_event)
         self.acous_thread.start()
         time.sleep(0.001)
 
@@ -184,11 +182,11 @@ class MainWindow(QMainWindow):
         self.niusb_thread.setObjectName("niusb_thread")
         self.niusb_worker.moveToThread(self.niusb_thread)
         self.niusb_thread.started.connect(self.niusb_worker.run)
-        self.signals.run_starting.connect(self.niusb_worker.start_run)
-        self.signals.event_starting.connect(self.niusb_worker.start_event)
-        self.signals.event_stopping.connect(self.niusb_worker.stop_event)
-        self.signals.run_stopping.connect(self.niusb_worker.stop_run)
-        self.signals.send_trigger.connect(self.niusb_worker.send_trigger)
+        self.run_starting.connect(self.niusb_worker.start_run)
+        self.event_starting.connect(self.niusb_worker.start_event)
+        self.event_stopping.connect(self.niusb_worker.stop_event)
+        self.run_stopping.connect(self.niusb_worker.stop_run)
+        self.send_trigger.connect(self.niusb_worker.send_trigger)
         self.niusb_thread.start()
         time.sleep(0.001)
 
@@ -210,9 +208,9 @@ class MainWindow(QMainWindow):
         self.sql_thread.setObjectName("sql_thread")
         self.sql_worker.moveToThread(self.sql_thread)
         self.sql_thread.started.connect(self.sql_worker.run)
-        self.signals.run_starting.connect(self.sql_worker.start_run)
-        self.signals.event_stopping.connect(self.sql_worker.stop_event)
-        self.signals.run_stopping.connect(self.sql_worker.stop_run)
+        self.run_starting.connect(self.sql_worker.start_run)
+        self.event_stopping.connect(self.sql_worker.stop_event)
+        self.run_stopping.connect(self.sql_worker.stop_run)
         self.sql_thread.start()
 
         # establish mutex and wait conditions for syncing
@@ -398,7 +396,7 @@ class MainWindow(QMainWindow):
                 self.event_timer.elapsed()
                 > self.config_class.run_config["general"]["max_ev_time"] * 1000
             ):
-                self.signals.send_trigger.emit("Timeout")
+                self.send_trigger.emit("Timeout")
         elif self.run_state == self.run_states["starting_run"]:
             # SiPM amp 1/2/3, Cam 1/2/3, clock/position/trigger arduino, NI USB, CAEN
             if len(self.starting_run_ready) >= 12:
@@ -544,7 +542,7 @@ class MainWindow(QMainWindow):
 
     def start_program(self):
         
-        self.signals.program_starting.emit()
+        self.program_starting.emit()
         self.update_state("idle")
 
     def start_run(self):
@@ -577,7 +575,7 @@ class MainWindow(QMainWindow):
         self.logger.addHandler(file_handler)
         self.update_state("starting_run")
 
-        self.signals.run_starting.emit()
+        self.run_starting.emit()
 
     def stop_run(self):
         # set up multithreading thread and workers
@@ -585,7 +583,7 @@ class MainWindow(QMainWindow):
         self.stopping_run_ready = []
         self.stopping_run = False
 
-        self.signals.run_stopping.emit()
+        self.run_stopping.emit()
         self.update_state("stopping_run")
 
     def start_event(self):
@@ -621,7 +619,7 @@ class MainWindow(QMainWindow):
         if os.path.islink(current_path):
             os.unlink(current_path)
         os.symlink(self.event_dir, current_path,target_is_directory=True)
-        self.signals.event_starting.emit()
+        self.event_starting.emit()
 
     def stop_event(self):
         """
@@ -632,7 +630,7 @@ class MainWindow(QMainWindow):
         self.stopping_event_ready = []
         self.event_livetime = self.event_timer.elapsed()
         self.run_livetime += self.event_livetime
-        self.signals.event_stopping.emit()
+        self.event_stopping.emit()
         self.update_state("stopping_event")
 
     def stop_run_but_pressed(self):
@@ -640,7 +638,7 @@ class MainWindow(QMainWindow):
         self.ui.stop_run_but.setEnabled(False)
 
     def sw_trigger(self):
-        self.signals.send_trigger.emit("Software")
+        self.send_trigger.emit("Software")
 
     def open_data_folder(self):
         path = self.run_dir if "run_dir" in self.__dict__ \
