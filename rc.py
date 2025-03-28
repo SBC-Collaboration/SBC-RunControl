@@ -116,12 +116,11 @@ class MainWindow(QMainWindow):
             vars[f"{cam}_worker"].moveToThread(vars[f"{cam}_thread"])
             vars[f"{cam}_thread"].started.connect(vars[f"{cam}_worker"].run)
             self.signals.run_starting.connect(vars[f"{cam}_worker"].start_camera)
-            self.signals.run_starting.connect(ui_vars[f"gen_status_{cam}"].working)
             self.signals.run_stopping.connect(vars[f"{cam}_worker"].stop_camera)
             vars[f"{cam}_thread"].start()
             time.sleep(0.001)
 
-        for amp in ["amp1", "amp2"]:
+        for amp in ["amp1", "amp2", "amp3"]:
             vars[f"{amp}_worker"] = SiPMAmp(self, amp)
             vars[f"{amp}_worker"].sipm_biased.connect(self.starting_run_wait)
             vars[f"{amp}_worker"].sipm_unbiased.connect(self.stopping_run_wait)
@@ -147,6 +146,7 @@ class MainWindow(QMainWindow):
 
         self.caen_worker = Caen(self)
         self.caen_worker.run_started.connect(self.starting_run_wait)
+        self.caen_worker.run_stopped.connect(self.stopping_run_wait)
         self.caen_worker.event_started.connect(self.starting_event_wait)
         self.caen_worker.event_stopped.connect(self.stopping_event_wait)
         self.caen_worker.data_retrieved.connect(self.update_caen_plot)
@@ -259,14 +259,20 @@ class MainWindow(QMainWindow):
         
 
     def open_settings_window(self):
+        """Create and show the settings window.
+        """
         self.settings_window = SettingsWindow(self)
         self.settings_window.show()
 
     def open_log_window(self):
+        """Create and show the logs window.
+        """
         self.log_window = LogWindow(self)
         self.log_window.show()
 
     def select_file(self):
+        """Open a file dialog to select a file. The selected file path will be set in the file_path line edit.
+        """
         filename, _ = QFileDialog.getOpenFileName(self)
         self.ui.file_path.setText(filename)
 
@@ -276,6 +282,11 @@ class MainWindow(QMainWindow):
         If time is under a minute, it will return "12s 345"
         If time ie between a minute and an hour, it will return "12m 34s 567"
         If time is more than an hour, it will return "12h 34m 56s 789"
+
+        :param t: Time in milliseconds
+        :type t: int
+        :return: formatted time string
+        :rtype: str
         """
         seconds, milliseconds = divmod(t, 1000)
         minutes, seconds = divmod(seconds, 60)
@@ -389,24 +400,24 @@ class MainWindow(QMainWindow):
             ):
                 self.signals.send_trigger.emit("Timeout")
         elif self.run_state == self.run_states["starting_run"]:
-            # SiPM amp 1/2, Cam 1/2/3, clock/position/trigger arduino, NI USB
-            if len(self.starting_run_ready) >= 11:
+            # SiPM amp 1/2/3, Cam 1/2/3, clock/position/trigger arduino, NI USB, CAEN
+            if len(self.starting_run_ready) >= 12:
                 self.logger.debug(f"Run {self.run_id} started. Modules started: {self.starting_run_ready}")
                 self.start_event()
         elif self.run_state == self.run_states["starting_event"]:
-            # caen, niusb, cam 1/2/3, *PLC
+            # cam 1/2/3, *PLC, NIUSB, CAEN, GaGe
             self.event_timer.start()
-            if len(self.starting_event_ready) >= 5:
+            if len(self.starting_event_ready) >= 6:
                 self.logger.debug(f"Event {self.event_id} started. Modules started: {self.starting_event_ready}")
                 self.update_state("active")
         elif self.run_state == self.run_states["stopping_event"]:
-            # caen, niusb, sql, cam 1/2/3
-            if len(self.stopping_event_ready) >= 6:
+            # SQL, cam 1/2/3, NIUSB, CAEN, GaGe
+            if len(self.stopping_event_ready) >= 7:
                 self.logger.debug(f"Event {self.event_id} stopped. Modules stopped: {self.stopping_event_ready}")
                 self.start_event()
         elif self.run_state == self.run_states["stopping_run"]:
-            # niusb, sql, cam 1/2/3, sipm amp 1/2
-            if len(self.stopping_run_ready) >= 4:
+            # SQL, cam 1/2/3, sipm amp 1/2/3, NIUSB, CAEN
+            if len(self.stopping_run_ready) >= 9:
                 self.logger.debug(f"Run {self.run_id} stopped. Modules stopped: {self.stopping_run_ready}")
                 self.update_state("idle")
 
@@ -440,14 +451,14 @@ class MainWindow(QMainWindow):
         if "disabled" in module:
             name = re.sub(r'^.*?-', "", module)
             self.logger.info(f"Starting Run: {name} is disabled")
-            vars[f"gen_status_{name}"].idle()
+            vars[f"status_{name}"].idle()
             self.starting_run_ready.append(module)
             return
 
         self.logger.info(f"Starting Run: {module} is complete")
         # change status lights
 
-        vars[f"gen_status_{module}"].active()
+        vars[f"status_{module}"].active()
         self.starting_run_ready.append(module)
 
     @Slot(str)
@@ -460,13 +471,13 @@ class MainWindow(QMainWindow):
         if "disabled" in module:
             name = re.sub(r'^.*?-', "", module)
             self.logger.info(f"Stopping Run: {name} is disabled")
-            vars[f"gen_status_{name}"].idle()
+            vars[f"status_{name}"].idle()
             self.stopping_run_ready.append(module)
             return
 
         self.logger.info(f"Stopping Run: {module} is complete")
         # change status lights
-        vars[f"gen_status_{module}"].idle()
+        vars[f"status_{module}"].idle()
         self.stopping_run_ready.append(module)
 
     @Slot(str)
@@ -479,14 +490,14 @@ class MainWindow(QMainWindow):
         if "disabled" in module:
             name = re.sub(r'^.*?-', "", module)
             self.logger.info(f"Starting Event: {name} is disabled")
-            vars[f"gen_status_{name}"].idle()
+            vars[f"status_{name}"].idle()
             self.starting_event_ready.append(module)
             return
 
         self.logger.info(f"Starting Event: {module} is complete")
 
         # change status lights
-        vars[f"gen_status_{module}"].active()
+        vars[f"status_{module}"].active()
         self.starting_event_ready.append(module)
 
     @Slot(str)
@@ -499,14 +510,14 @@ class MainWindow(QMainWindow):
         if "disabled" in module:
             name = re.sub(r'^.*?-', "", module)
             self.logger.info(f"Stopping Event: {name} is disabled")
-            vars[f"gen_status_{name}"].idle()
+            vars[f"status_{name}"].idle()
             self.stopping_event_ready.append(module)
             return
 
         self.logger.info(f"Stopping Event: {module} is complete")
 
         # change status lights
-        vars[f"gen_status_{module}"].idle()
+        vars[f"status_{module}"].idle()
         self.stopping_event_ready.append(module)
 
     def create_run_directory(self):
@@ -545,7 +556,7 @@ class MainWindow(QMainWindow):
         self.starting_run_ready = []
         vars = self.ui.__dict__
         for v in vars.keys():
-            if v.startswith("gen_status"):
+            if v.startswith("status"):
                 vars[v].idle()
 
         # reset event number and livetimes
@@ -557,7 +568,7 @@ class MainWindow(QMainWindow):
         self.ui.run_live_time_edit.setText(self.format_time(self.run_livetime))
         self.ui.trigger_edit.setText("")
 
-        self.run_log_path = os.path.join(self.run_dir, f"{self.run_id}.log")
+        self.run_log_path = os.path.join(self.run_dir, f"rc.log")
         self.config_class.start_run()
 
         file_handler = logging.FileHandler(self.run_log_path, mode="a")
@@ -636,7 +647,7 @@ class MainWindow(QMainWindow):
             else self.config_class.config["general"]["data_dir"]
         subprocess.Popen(["nemo", path])
         self.logger.info(f"Opened data folder: {path}")
-    
+
     # set up parameters for the CAEN plot widgets
     def setup_caen_plot(self):
         """
@@ -672,7 +683,6 @@ class MainWindow(QMainWindow):
                 c = p.plot([], [], pen=self.caen_pens[j], name=f"Ch{i*8+j}")
                 curves.append(c)
             self.caen_curves.append(curves)
-
 
     # update the CAEN plot widgets every time data is retrieved
     @Slot(dict)
