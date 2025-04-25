@@ -1698,7 +1698,7 @@
              <x>0</x>
              <y>0</y>
              <width>876</width>
-             <height>1035</height>
+             <height>1203</height>
             </rect>
            </property>
            <property name="maximumSize">
@@ -2101,272 +2101,6 @@
               <property name="spacing">
                <number>3</number>
               </property>
-              <item row="0" column="6">
-               <widget class="QLabel" name="sipm_amp1_ch6_label">
-                <property name="text">
-                 <string>Ch 6</string>
-                </property>
-                <property name="buddy">
-                 <cstring>sipm_amp1_ch6_offset</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="0">
-               <widget class="QLabel" name="sipm_amp1_channel_label">
-                <property name="text">
-                 <string>Channel</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="4">
-               <widget class="QLabel" name="sipm_amp1_ch4_label">
-                <property name="text">
-                 <string>Ch 4</string>
-                </property>
-                <property name="buddy">
-                 <cstring>sipm_amp1_ch4_offset</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="5">
-               <widget class="QLabel" name="sipm_amp1_ch5_label">
-                <property name="text">
-                 <string>Ch 5</string>
-                </property>
-                <property name="buddy">
-                 <cstring>sipm_amp1_ch5_offset</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="3">
-               <widget class="QLabel" name="sipm_amp1_ch3_label">
-                <property name="text">
-                 <string>Ch 3</string>
-                </property>
-                <property name="buddy">
-                 <cstring>sipm_amp1_ch3_offset</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="0">
-               <widget class="QLabel" name="sipm_amp1_offset_label">
-                <property name="text">
-                 <string>Offset</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>sipm_amp1_ch1_offset</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="0">
-               <widget class="QLabel" name="sipm_amp1_offset_label_2">
-                <property name="text">
-                 <string>Offset</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>sipm_amp1_ch9_offset</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="2">
-               <widget class="QLabel" name="sipm_amp1_ch2_label">
-                <property name="text">
-                 <string>Ch 2</string>
-                </property>
-                <property name="buddy">
-                 <cstring>sipm_amp1_ch2_offset</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="7">
-               <widget class="QLabel" name="sipm_amp1_ch7_label">
-                <property name="text">
-                 <string>Ch 7</string>
-                </property>
-                <property name="buddy">
-                 <cstring>sipm_amp1_ch7_offset</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="1">
-               <widget class="QLabel" name="sipm_amp1_ch1_label">
-                <property name="text">
-                 <string>Ch 1</string>
-                </property>
-                <property name="buddy">
-                 <cstring>sipm_amp1_ch1_offset</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="1">
-               <widget class="QLabel" name="sipm_amp1_ch9_label">
-                <property name="text">
-                 <string>Ch 9</string>
-                </property>
-                <property name="buddy">
-                 <cstring>sipm_amp1_ch9_offset</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="0">
-               <widget class="QLabel" name="sipm_amp1_channel_label_2">
-                <property name="text">
-                 <string>Channel</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="8">
-               <widget class="QLabel" name="sipm_amp1_ch8_label">
-                <property name="text">
-                 <string>Ch 8</string>
-                </property>
-                <property name="buddy">
-                 <cstring>sipm_amp1_ch8_offset</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="2">
-               <widget class="QLabel" name="sipm_amp1_ch10_label">
-                <property name="text">
-                 <string>Ch 10</string>
-                </property>
-                <property name="buddy">
-                 <cstring>sipm_amp1_ch10_offset</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="3">
-               <widget class="QLabel" name="sipm_amp1_ch11_label">
-                <property name="text">
-                 <string>Ch 11</string>
-                </property>
-                <property name="buddy">
-                 <cstring>sipm_amp1_ch11_offset</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="4">
-               <widget class="QLabel" name="sipm_amp1_ch12_label">
-                <property name="text">
-                 <string>Ch 12</string>
-                </property>
-                <property name="buddy">
-                 <cstring>sipm_amp1_ch12_offset</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="5">
-               <widget class="QLabel" name="sipm_amp1_ch13_label">
-                <property name="text">
-                 <string>Ch 13</string>
-                </property>
-                <property name="buddy">
-                 <cstring>sipm_amp1_ch13_offset</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="6">
-               <widget class="QLabel" name="sipm_amp1_ch14_label">
-                <property name="text">
-                 <string>Ch 14</string>
-                </property>
-                <property name="buddy">
-                 <cstring>sipm_amp1_ch14_offset</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="7">
-               <widget class="QLabel" name="sipm_amp1_ch15_label">
-                <property name="text">
-                 <string>Ch 15</string>
-                </property>
-                <property name="buddy">
-                 <cstring>sipm_amp1_ch15_offset</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="8">
-               <widget class="QLabel" name="sipm_amp1_ch16_label">
-                <property name="text">
-                 <string>Ch 16</string>
-                </property>
-                <property name="buddy">
-                 <cstring>sipm_amp1_ch16_offset</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="5">
-               <widget class="NoWheelDoubleSpinBox" name="sipm_amp1_ch5_offset">
-                <property name="font">
-                 <font>
-                  <kerning>true</kerning>
-                 </font>
-                </property>
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="wrapping">
-                 <bool>false</bool>
-                </property>
-                <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
-                </property>
-                <property name="showGroupSeparator" stdset="0">
-                 <bool>false</bool>
-                </property>
-                <property name="suffix">
-                 <string> V</string>
-                </property>
-                <property name="maximum">
-                 <double>5.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="4">
-               <widget class="NoWheelDoubleSpinBox" name="sipm_amp1_ch4_offset">
-                <property name="font">
-                 <font>
-                  <kerning>true</kerning>
-                 </font>
-                </property>
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="wrapping">
-                 <bool>false</bool>
-                </property>
-                <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
-                </property>
-                <property name="showGroupSeparator" stdset="0">
-                 <bool>false</bool>
-                </property>
-                <property name="suffix">
-                 <string> V</string>
-                </property>
-                <property name="maximum">
-                 <double>5.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
-               </widget>
-              </item>
               <item row="1" column="3">
                <widget class="NoWheelDoubleSpinBox" name="sipm_amp1_ch3_offset">
                 <property name="font">
@@ -2397,218 +2131,18 @@
                 </property>
                </widget>
               </item>
-              <item row="1" column="2">
-               <widget class="NoWheelDoubleSpinBox" name="sipm_amp1_ch2_offset">
-                <property name="font">
-                 <font>
-                  <kerning>true</kerning>
-                 </font>
+              <item row="0" column="0">
+               <widget class="QLabel" name="sipm_amp1_channel_label">
+                <property name="text">
+                 <string>Channel</string>
                 </property>
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="wrapping">
-                 <bool>false</bool>
-                </property>
-                <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
-                </property>
-                <property name="showGroupSeparator" stdset="0">
-                 <bool>false</bool>
-                </property>
-                <property name="suffix">
-                 <string> V</string>
-                </property>
-                <property name="maximum">
-                 <double>5.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                </widget>
               </item>
-              <item row="1" column="1">
-               <widget class="NoWheelDoubleSpinBox" name="sipm_amp1_ch1_offset">
-                <property name="font">
-                 <font>
-                  <kerning>true</kerning>
-                 </font>
-                </property>
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="wrapping">
-                 <bool>false</bool>
-                </property>
-                <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
-                </property>
-                <property name="showGroupSeparator" stdset="0">
-                 <bool>false</bool>
-                </property>
-                <property name="suffix">
-                 <string> V</string>
-                </property>
-                <property name="maximum">
-                 <double>5.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="1">
-               <widget class="NoWheelDoubleSpinBox" name="sipm_amp1_ch9_offset">
-                <property name="font">
-                 <font>
-                  <kerning>true</kerning>
-                 </font>
-                </property>
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="wrapping">
-                 <bool>false</bool>
-                </property>
-                <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
-                </property>
-                <property name="showGroupSeparator" stdset="0">
-                 <bool>false</bool>
-                </property>
-                <property name="suffix">
-                 <string> V</string>
-                </property>
-                <property name="maximum">
-                 <double>5.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="2">
-               <widget class="NoWheelDoubleSpinBox" name="sipm_amp1_ch10_offset">
-                <property name="font">
-                 <font>
-                  <kerning>true</kerning>
-                 </font>
-                </property>
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="wrapping">
-                 <bool>false</bool>
-                </property>
-                <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
-                </property>
-                <property name="showGroupSeparator" stdset="0">
-                 <bool>false</bool>
-                </property>
-                <property name="suffix">
-                 <string> V</string>
-                </property>
-                <property name="maximum">
-                 <double>5.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="3">
-               <widget class="NoWheelDoubleSpinBox" name="sipm_amp1_ch11_offset">
-                <property name="font">
-                 <font>
-                  <kerning>true</kerning>
-                 </font>
-                </property>
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="wrapping">
-                 <bool>false</bool>
-                </property>
-                <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
-                </property>
-                <property name="showGroupSeparator" stdset="0">
-                 <bool>false</bool>
-                </property>
-                <property name="suffix">
-                 <string> V</string>
-                </property>
-                <property name="maximum">
-                 <double>5.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="4">
-               <widget class="NoWheelDoubleSpinBox" name="sipm_amp1_ch12_offset">
-                <property name="font">
-                 <font>
-                  <kerning>true</kerning>
-                 </font>
-                </property>
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="wrapping">
-                 <bool>false</bool>
-                </property>
-                <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
-                </property>
-                <property name="showGroupSeparator" stdset="0">
-                 <bool>false</bool>
-                </property>
-                <property name="suffix">
-                 <string> V</string>
-                </property>
-                <property name="maximum">
-                 <double>5.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="5">
-               <widget class="NoWheelDoubleSpinBox" name="sipm_amp1_ch13_offset">
-                <property name="font">
-                 <font>
-                  <kerning>true</kerning>
-                 </font>
-                </property>
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="wrapping">
-                 <bool>false</bool>
-                </property>
-                <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
-                </property>
-                <property name="showGroupSeparator" stdset="0">
-                 <bool>false</bool>
-                </property>
-                <property name="suffix">
-                 <string> V</string>
-                </property>
-                <property name="maximum">
-                 <double>5.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="6">
-               <widget class="NoWheelDoubleSpinBox" name="sipm_amp1_ch14_offset">
+              <item row="1" column="5">
+               <widget class="NoWheelDoubleSpinBox" name="sipm_amp1_ch5_offset">
                 <property name="font">
                  <font>
                   <kerning>true</kerning>
@@ -2667,8 +2201,48 @@
                 </property>
                </widget>
               </item>
-              <item row="1" column="7">
-               <widget class="NoWheelDoubleSpinBox" name="sipm_amp1_ch7_offset">
+              <item row="2" column="2">
+               <widget class="QLineEdit" name="sipm_amp1_ch2_name">
+                <property name="maximumSize">
+                 <size>
+                  <width>95</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="3">
+               <widget class="QLineEdit" name="sipm_amp1_ch3_name">
+                <property name="maximumSize">
+                 <size>
+                  <width>95</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="4">
+               <widget class="QLineEdit" name="sipm_amp1_ch4_name">
+                <property name="maximumSize">
+                 <size>
+                  <width>95</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="3">
+               <widget class="QLabel" name="sipm_amp1_ch3_label">
+                <property name="text">
+                 <string>Ch 3</string>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp1_ch3_offset</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="3">
+               <widget class="NoWheelDoubleSpinBox" name="sipm_amp1_ch11_offset">
                 <property name="font">
                  <font>
                   <kerning>true</kerning>
@@ -2694,6 +2268,76 @@
                 </property>
                 <property name="singleStep">
                  <double>0.100000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="2">
+               <widget class="NoWheelDoubleSpinBox" name="sipm_amp1_ch10_offset">
+                <property name="font">
+                 <font>
+                  <kerning>true</kerning>
+                 </font>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="wrapping">
+                 <bool>false</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
+                </property>
+                <property name="showGroupSeparator" stdset="0">
+                 <bool>false</bool>
+                </property>
+                <property name="suffix">
+                 <string> V</string>
+                </property>
+                <property name="maximum">
+                 <double>5.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="5">
+               <widget class="NoWheelDoubleSpinBox" name="sipm_amp1_ch13_offset">
+                <property name="font">
+                 <font>
+                  <kerning>true</kerning>
+                 </font>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="wrapping">
+                 <bool>false</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
+                </property>
+                <property name="showGroupSeparator" stdset="0">
+                 <bool>false</bool>
+                </property>
+                <property name="suffix">
+                 <string> V</string>
+                </property>
+                <property name="maximum">
+                 <double>5.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="6">
+               <widget class="QLabel" name="sipm_amp1_ch14_label">
+                <property name="text">
+                 <string>Ch 14</string>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp1_ch14_offset</cstring>
                 </property>
                </widget>
               </item>
@@ -2727,7 +2371,150 @@
                 </property>
                </widget>
               </item>
-              <item row="3" column="8">
+              <item row="1" column="7">
+               <widget class="NoWheelDoubleSpinBox" name="sipm_amp1_ch7_offset">
+                <property name="font">
+                 <font>
+                  <kerning>true</kerning>
+                 </font>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="wrapping">
+                 <bool>false</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
+                </property>
+                <property name="showGroupSeparator" stdset="0">
+                 <bool>false</bool>
+                </property>
+                <property name="suffix">
+                 <string> V</string>
+                </property>
+                <property name="maximum">
+                 <double>5.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="2">
+               <widget class="QLabel" name="sipm_amp1_ch10_label">
+                <property name="text">
+                 <string>Ch 10</string>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp1_ch10_offset</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="5">
+               <widget class="QLabel" name="sipm_amp1_ch5_label">
+                <property name="text">
+                 <string>Ch 5</string>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp1_ch5_offset</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="8">
+               <widget class="QLineEdit" name="sipm_amp1_ch8_name">
+                <property name="maximumSize">
+                 <size>
+                  <width>95</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="1">
+               <widget class="QLineEdit" name="sipm_amp1_ch9_name">
+                <property name="maximumSize">
+                 <size>
+                  <width>95</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="4">
+               <widget class="QLabel" name="sipm_amp1_ch12_label">
+                <property name="text">
+                 <string>Ch 12</string>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp1_ch12_offset</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="3">
+               <widget class="QLabel" name="sipm_amp1_ch11_label">
+                <property name="text">
+                 <string>Ch 11</string>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp1_ch11_offset</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="sipm_amp1_offset_label">
+                <property name="text">
+                 <string>Offset</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp1_ch1_offset</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="5">
+               <widget class="QLabel" name="sipm_amp1_ch13_label">
+                <property name="text">
+                 <string>Ch 13</string>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp1_ch13_offset</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="1">
+               <widget class="NoWheelDoubleSpinBox" name="sipm_amp1_ch9_offset">
+                <property name="font">
+                 <font>
+                  <kerning>true</kerning>
+                 </font>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="wrapping">
+                 <bool>false</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
+                </property>
+                <property name="showGroupSeparator" stdset="0">
+                 <bool>false</bool>
+                </property>
+                <property name="suffix">
+                 <string> V</string>
+                </property>
+                <property name="maximum">
+                 <double>5.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="8">
                <widget class="NoWheelDoubleSpinBox" name="sipm_amp1_ch16_offset">
                 <property name="font">
                  <font>
@@ -2757,7 +2544,306 @@
                 </property>
                </widget>
               </item>
+              <item row="3" column="1">
+               <widget class="QLabel" name="sipm_amp1_ch9_label">
+                <property name="text">
+                 <string>Ch 9</string>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp1_ch9_offset</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="0">
+               <widget class="QLabel" name="sipm_amp1_offset_label_2">
+                <property name="text">
+                 <string>Offset</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp1_ch9_offset</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="8">
+               <widget class="QLabel" name="sipm_amp1_ch8_label">
+                <property name="text">
+                 <string>Ch 8</string>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp1_ch8_offset</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="4">
+               <widget class="NoWheelDoubleSpinBox" name="sipm_amp1_ch12_offset">
+                <property name="font">
+                 <font>
+                  <kerning>true</kerning>
+                 </font>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="wrapping">
+                 <bool>false</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
+                </property>
+                <property name="showGroupSeparator" stdset="0">
+                 <bool>false</bool>
+                </property>
+                <property name="suffix">
+                 <string> V</string>
+                </property>
+                <property name="maximum">
+                 <double>5.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="0">
+               <widget class="QLabel" name="sipm_amp1_name_label_2">
+                <property name="text">
+                 <string>Name</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp1_ch1_offset</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="2">
+               <widget class="NoWheelDoubleSpinBox" name="sipm_amp1_ch2_offset">
+                <property name="font">
+                 <font>
+                  <kerning>true</kerning>
+                 </font>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="wrapping">
+                 <bool>false</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
+                </property>
+                <property name="showGroupSeparator" stdset="0">
+                 <bool>false</bool>
+                </property>
+                <property name="suffix">
+                 <string> V</string>
+                </property>
+                <property name="maximum">
+                 <double>5.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="5">
+               <widget class="QLineEdit" name="sipm_amp1_ch5_name">
+                <property name="maximumSize">
+                 <size>
+                  <width>95</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="2">
+               <widget class="QLabel" name="sipm_amp1_ch2_label">
+                <property name="text">
+                 <string>Ch 2</string>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp1_ch2_offset</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1">
+               <widget class="NoWheelDoubleSpinBox" name="sipm_amp1_ch1_offset">
+                <property name="font">
+                 <font>
+                  <kerning>true</kerning>
+                 </font>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="wrapping">
+                 <bool>false</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
+                </property>
+                <property name="showGroupSeparator" stdset="0">
+                 <bool>false</bool>
+                </property>
+                <property name="suffix">
+                 <string> V</string>
+                </property>
+                <property name="maximum">
+                 <double>5.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+               </widget>
+              </item>
               <item row="3" column="7">
+               <widget class="QLabel" name="sipm_amp1_ch15_label">
+                <property name="text">
+                 <string>Ch 15</string>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp1_ch15_offset</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="6">
+               <widget class="QLabel" name="sipm_amp1_ch6_label">
+                <property name="text">
+                 <string>Ch 6</string>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp1_ch6_offset</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="6">
+               <widget class="NoWheelDoubleSpinBox" name="sipm_amp1_ch14_offset">
+                <property name="font">
+                 <font>
+                  <kerning>true</kerning>
+                 </font>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="wrapping">
+                 <bool>false</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
+                </property>
+                <property name="showGroupSeparator" stdset="0">
+                 <bool>false</bool>
+                </property>
+                <property name="suffix">
+                 <string> V</string>
+                </property>
+                <property name="maximum">
+                 <double>5.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="0">
+               <widget class="QLabel" name="sipm_amp1_channel_label_2">
+                <property name="text">
+                 <string>Channel</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QLabel" name="sipm_amp1_name_label">
+                <property name="text">
+                 <string>Name</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp1_ch1_offset</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="4">
+               <widget class="NoWheelDoubleSpinBox" name="sipm_amp1_ch4_offset">
+                <property name="font">
+                 <font>
+                  <kerning>true</kerning>
+                 </font>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="wrapping">
+                 <bool>false</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
+                </property>
+                <property name="showGroupSeparator" stdset="0">
+                 <bool>false</bool>
+                </property>
+                <property name="suffix">
+                 <string> V</string>
+                </property>
+                <property name="maximum">
+                 <double>5.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="7">
+               <widget class="QLineEdit" name="sipm_amp1_ch7_name">
+                <property name="maximumSize">
+                 <size>
+                  <width>95</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="QLineEdit" name="sipm_amp1_ch1_name">
+                <property name="maximumSize">
+                 <size>
+                  <width>95</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="7">
+               <widget class="QLabel" name="sipm_amp1_ch7_label">
+                <property name="text">
+                 <string>Ch 7</string>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp1_ch7_offset</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="8">
+               <widget class="QLabel" name="sipm_amp1_ch16_label">
+                <property name="text">
+                 <string>Ch 16</string>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp1_ch16_offset</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="7">
                <widget class="NoWheelDoubleSpinBox" name="sipm_amp1_ch15_offset">
                 <property name="font">
                  <font>
@@ -2784,6 +2870,106 @@
                 </property>
                 <property name="singleStep">
                  <double>0.100000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QLabel" name="sipm_amp1_ch1_label">
+                <property name="text">
+                 <string>Ch 1</string>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp1_ch1_offset</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="4">
+               <widget class="QLabel" name="sipm_amp1_ch4_label">
+                <property name="text">
+                 <string>Ch 4</string>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp1_ch4_offset</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="6">
+               <widget class="QLineEdit" name="sipm_amp1_ch6_name">
+                <property name="maximumSize">
+                 <size>
+                  <width>95</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="2">
+               <widget class="QLineEdit" name="sipm_amp1_ch10_name">
+                <property name="maximumSize">
+                 <size>
+                  <width>95</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="3">
+               <widget class="QLineEdit" name="sipm_amp1_ch11_name">
+                <property name="maximumSize">
+                 <size>
+                  <width>95</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="4">
+               <widget class="QLineEdit" name="sipm_amp1_ch12_name">
+                <property name="maximumSize">
+                 <size>
+                  <width>95</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="5">
+               <widget class="QLineEdit" name="sipm_amp1_ch13_name">
+                <property name="maximumSize">
+                 <size>
+                  <width>95</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="6">
+               <widget class="QLineEdit" name="sipm_amp1_ch14_name">
+                <property name="maximumSize">
+                 <size>
+                  <width>95</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="7">
+               <widget class="QLineEdit" name="sipm_amp1_ch15_name">
+                <property name="maximumSize">
+                 <size>
+                  <width>95</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="8">
+               <widget class="QLineEdit" name="sipm_amp1_ch16_name">
+                <property name="maximumSize">
+                 <size>
+                  <width>95</width>
+                  <height>16777215</height>
+                 </size>
                 </property>
                </widget>
               </item>
@@ -3161,7 +3347,77 @@
               <property name="spacing">
                <number>3</number>
               </property>
-              <item row="3" column="5">
+              <item row="4" column="3">
+               <widget class="NoWheelDoubleSpinBox" name="sipm_amp2_ch11_offset">
+                <property name="font">
+                 <font>
+                  <kerning>true</kerning>
+                 </font>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="wrapping">
+                 <bool>false</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
+                </property>
+                <property name="showGroupSeparator" stdset="0">
+                 <bool>false</bool>
+                </property>
+                <property name="suffix">
+                 <string> V</string>
+                </property>
+                <property name="maximum">
+                 <double>5.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="1">
+               <widget class="QLineEdit" name="sipm_amp2_ch9_name">
+                <property name="maximumSize">
+                 <size>
+                  <width>95</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="8">
+               <widget class="QLabel" name="sipm_amp2_ch16_label">
+                <property name="text">
+                 <string>Ch 16</string>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp2_ch16_offset</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="8">
+               <widget class="QLineEdit" name="sipm_amp2_ch16_name">
+                <property name="maximumSize">
+                 <size>
+                  <width>95</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="3">
+               <widget class="QLineEdit" name="sipm_amp2_ch3_name">
+                <property name="maximumSize">
+                 <size>
+                  <width>95</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="5">
                <widget class="NoWheelDoubleSpinBox" name="sipm_amp2_ch13_offset">
                 <property name="font">
                  <font>
@@ -3191,38 +3447,28 @@
                 </property>
                </widget>
               </item>
-              <item row="0" column="0">
-               <widget class="QLabel" name="sipm_amp2_channel_label">
-                <property name="text">
-                 <string>Channel</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="7">
-               <widget class="QLabel" name="sipm_amp2_ch15_label">
-                <property name="text">
-                 <string>Ch 15</string>
-                </property>
-                <property name="buddy">
-                 <cstring>sipm_amp2_ch15_offset</cstring>
+              <item row="2" column="5">
+               <widget class="QLineEdit" name="sipm_amp2_ch5_name">
+                <property name="maximumSize">
+                 <size>
+                  <width>95</width>
+                  <height>16777215</height>
+                 </size>
                 </property>
                </widget>
               </item>
-              <item row="2" column="0">
-               <widget class="QLabel" name="sipm_amp2_channel_label_2">
-                <property name="text">
-                 <string>Channel</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+              <item row="2" column="6">
+               <widget class="QLineEdit" name="sipm_amp2_ch6_name">
+                <property name="maximumSize">
+                 <size>
+                  <width>95</width>
+                  <height>16777215</height>
+                 </size>
                 </property>
                </widget>
               </item>
-              <item row="1" column="4">
-               <widget class="NoWheelDoubleSpinBox" name="sipm_amp2_ch4_offset">
+              <item row="4" column="7">
+               <widget class="NoWheelDoubleSpinBox" name="sipm_amp2_ch15_offset">
                 <property name="font">
                  <font>
                   <kerning>true</kerning>
@@ -3251,41 +3497,8 @@
                 </property>
                </widget>
               </item>
-              <item row="1" column="0">
-               <widget class="QLabel" name="sipm_amp2_offset_label">
-                <property name="text">
-                 <string>Offset</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>sipm_amp2_ch1_offset</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="1">
-               <widget class="QLabel" name="sipm_amp2_ch9_label">
-                <property name="text">
-                 <string>Ch 9</string>
-                </property>
-                <property name="buddy">
-                 <cstring>sipm_amp2_ch9_offset</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="8">
-               <widget class="QLabel" name="sipm_amp2_ch8_label">
-                <property name="text">
-                 <string>Ch 8</string>
-                </property>
-                <property name="buddy">
-                 <cstring>sipm_amp2_ch8_offset</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="6">
-               <widget class="NoWheelDoubleSpinBox" name="sipm_amp2_ch14_offset">
+              <item row="1" column="5">
+               <widget class="NoWheelDoubleSpinBox" name="sipm_amp2_ch5_offset">
                 <property name="font">
                  <font>
                   <kerning>true</kerning>
@@ -3314,37 +3527,7 @@
                 </property>
                </widget>
               </item>
-              <item row="1" column="3">
-               <widget class="NoWheelDoubleSpinBox" name="sipm_amp2_ch3_offset">
-                <property name="font">
-                 <font>
-                  <kerning>true</kerning>
-                 </font>
-                </property>
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="wrapping">
-                 <bool>false</bool>
-                </property>
-                <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
-                </property>
-                <property name="showGroupSeparator" stdset="0">
-                 <bool>false</bool>
-                </property>
-                <property name="suffix">
-                 <string> V</string>
-                </property>
-                <property name="maximum">
-                 <double>5.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="0">
+              <item row="4" column="0">
                <widget class="QLabel" name="sipm_amp2_offset_label_2">
                 <property name="text">
                  <string>Offset</string>
@@ -3357,8 +3540,48 @@
                 </property>
                </widget>
               </item>
-              <item row="1" column="2">
-               <widget class="NoWheelDoubleSpinBox" name="sipm_amp2_ch2_offset">
+              <item row="5" column="5">
+               <widget class="QLineEdit" name="sipm_amp2_ch13_name">
+                <property name="maximumSize">
+                 <size>
+                  <width>95</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0">
+               <widget class="QLabel" name="sipm_amp2_channel_label">
+                <property name="text">
+                 <string>Channel</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="4">
+               <widget class="QLabel" name="sipm_amp2_ch12_label">
+                <property name="text">
+                 <string>Ch 12</string>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp2_ch12_offset</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="3">
+               <widget class="QLabel" name="sipm_amp2_ch11_label">
+                <property name="text">
+                 <string>Ch 11</string>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp2_ch11_offset</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="7">
+               <widget class="NoWheelDoubleSpinBox" name="sipm_amp2_ch7_offset">
                 <property name="font">
                  <font>
                   <kerning>true</kerning>
@@ -3387,33 +3610,23 @@
                 </property>
                </widget>
               </item>
-              <item row="0" column="2">
-               <widget class="QLabel" name="sipm_amp2_ch2_label">
-                <property name="text">
-                 <string>Ch 2</string>
-                </property>
-                <property name="buddy">
-                 <cstring>sipm_amp2_ch2_offset</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="2">
-               <widget class="QLabel" name="sipm_amp2_ch10_label">
-                <property name="text">
-                 <string>Ch 10</string>
-                </property>
-                <property name="buddy">
-                 <cstring>sipm_amp2_ch10_offset</cstring>
+              <item row="5" column="6">
+               <widget class="QLineEdit" name="sipm_amp2_ch14_name">
+                <property name="maximumSize">
+                 <size>
+                  <width>95</width>
+                  <height>16777215</height>
+                 </size>
                 </property>
                </widget>
               </item>
-              <item row="2" column="3">
-               <widget class="QLabel" name="sipm_amp2_ch11_label">
-                <property name="text">
-                 <string>Ch 11</string>
-                </property>
-                <property name="buddy">
-                 <cstring>sipm_amp2_ch11_offset</cstring>
+              <item row="5" column="7">
+               <widget class="QLineEdit" name="sipm_amp2_ch15_name">
+                <property name="maximumSize">
+                 <size>
+                  <width>95</width>
+                  <height>16777215</height>
+                 </size>
                 </property>
                </widget>
               </item>
@@ -3447,8 +3660,48 @@
                 </property>
                </widget>
               </item>
-              <item row="3" column="2">
-               <widget class="NoWheelDoubleSpinBox" name="sipm_amp2_ch10_offset">
+              <item row="2" column="4">
+               <widget class="QLineEdit" name="sipm_amp2_ch4_name">
+                <property name="maximumSize">
+                 <size>
+                  <width>95</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="3">
+               <widget class="QLineEdit" name="sipm_amp2_ch11_name">
+                <property name="maximumSize">
+                 <size>
+                  <width>95</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="8">
+               <widget class="QLabel" name="sipm_amp2_ch8_label">
+                <property name="text">
+                 <string>Ch 8</string>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp2_ch8_offset</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="2">
+               <widget class="QLabel" name="sipm_amp2_ch2_label">
+                <property name="text">
+                 <string>Ch 2</string>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp2_ch2_offset</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="4">
+               <widget class="NoWheelDoubleSpinBox" name="sipm_amp2_ch12_offset">
                 <property name="font">
                  <font>
                   <kerning>true</kerning>
@@ -3477,8 +3730,38 @@
                 </property>
                </widget>
               </item>
-              <item row="1" column="6">
-               <widget class="NoWheelDoubleSpinBox" name="sipm_amp2_ch6_offset">
+              <item row="2" column="2">
+               <widget class="QLineEdit" name="sipm_amp2_ch2_name">
+                <property name="maximumSize">
+                 <size>
+                  <width>95</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="2">
+               <widget class="QLineEdit" name="sipm_amp2_ch10_name">
+                <property name="maximumSize">
+                 <size>
+                  <width>95</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="0">
+               <widget class="QLabel" name="sipm_amp2_channel_label_2">
+                <property name="text">
+                 <string>Channel</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="8">
+               <widget class="NoWheelDoubleSpinBox" name="sipm_amp2_ch16_offset">
                 <property name="font">
                  <font>
                   <kerning>true</kerning>
@@ -3517,7 +3800,20 @@
                 </property>
                </widget>
               </item>
-              <item row="2" column="5">
+              <item row="2" column="0">
+               <widget class="QLabel" name="sipm_amp2_name_label">
+                <property name="text">
+                 <string>Name</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp1_ch1_offset</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="5">
                <widget class="QLabel" name="sipm_amp2_ch13_label">
                 <property name="text">
                  <string>Ch 13</string>
@@ -3527,8 +3823,31 @@
                 </property>
                </widget>
               </item>
-              <item row="3" column="4">
-               <widget class="NoWheelDoubleSpinBox" name="sipm_amp2_ch12_offset">
+              <item row="1" column="0">
+               <widget class="QLabel" name="sipm_amp2_offset_label">
+                <property name="text">
+                 <string>Offset</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp2_ch1_offset</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="6">
+               <widget class="QLabel" name="sipm_amp2_ch14_label">
+                <property name="text">
+                 <string>Ch 14</string>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp2_ch14_offset</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="3">
+               <widget class="NoWheelDoubleSpinBox" name="sipm_amp2_ch3_offset">
                 <property name="font">
                  <font>
                   <kerning>true</kerning>
@@ -3557,8 +3876,88 @@
                 </property>
                </widget>
               </item>
-              <item row="1" column="8">
-               <widget class="NoWheelDoubleSpinBox" name="sipm_amp2_ch8_offset">
+              <item row="3" column="7">
+               <widget class="QLabel" name="sipm_amp2_ch15_label">
+                <property name="text">
+                 <string>Ch 15</string>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp2_ch15_offset</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="6">
+               <widget class="NoWheelDoubleSpinBox" name="sipm_amp2_ch6_offset">
+                <property name="font">
+                 <font>
+                  <kerning>true</kerning>
+                 </font>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="wrapping">
+                 <bool>false</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
+                </property>
+                <property name="showGroupSeparator" stdset="0">
+                 <bool>false</bool>
+                </property>
+                <property name="suffix">
+                 <string> V</string>
+                </property>
+                <property name="maximum">
+                 <double>5.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="7">
+               <widget class="QLineEdit" name="sipm_amp2_ch7_name">
+                <property name="maximumSize">
+                 <size>
+                  <width>95</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="2">
+               <widget class="NoWheelDoubleSpinBox" name="sipm_amp2_ch10_offset">
+                <property name="font">
+                 <font>
+                  <kerning>true</kerning>
+                 </font>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="wrapping">
+                 <bool>false</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
+                </property>
+                <property name="showGroupSeparator" stdset="0">
+                 <bool>false</bool>
+                </property>
+                <property name="suffix">
+                 <string> V</string>
+                </property>
+                <property name="maximum">
+                 <double>5.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="6">
+               <widget class="NoWheelDoubleSpinBox" name="sipm_amp2_ch14_offset">
                 <property name="font">
                  <font>
                   <kerning>true</kerning>
@@ -3597,37 +3996,47 @@
                 </property>
                </widget>
               </item>
-              <item row="1" column="7">
-               <widget class="NoWheelDoubleSpinBox" name="sipm_amp2_ch7_offset">
-                <property name="font">
-                 <font>
-                  <kerning>true</kerning>
-                 </font>
+              <item row="0" column="3">
+               <widget class="QLabel" name="sipm_amp2_ch3_label">
+                <property name="text">
+                 <string>Ch 3</string>
                 </property>
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="wrapping">
-                 <bool>false</bool>
-                </property>
-                <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
-                </property>
-                <property name="showGroupSeparator" stdset="0">
-                 <bool>false</bool>
-                </property>
-                <property name="suffix">
-                 <string> V</string>
-                </property>
-                <property name="maximum">
-                 <double>5.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
+                <property name="buddy">
+                 <cstring>sipm_amp2_ch3_offset</cstring>
                 </property>
                </widget>
               </item>
-              <item row="3" column="1">
+              <item row="2" column="8">
+               <widget class="QLineEdit" name="sipm_amp2_ch8_name">
+                <property name="maximumSize">
+                 <size>
+                  <width>95</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="4">
+               <widget class="QLabel" name="sipm_amp2_ch4_label">
+                <property name="text">
+                 <string>Ch 4</string>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp2_ch4_offset</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="QLineEdit" name="sipm_amp2_ch1_name">
+                <property name="maximumSize">
+                 <size>
+                  <width>95</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="1">
                <widget class="NoWheelDoubleSpinBox" name="sipm_amp2_ch9_offset">
                 <property name="font">
                  <font>
@@ -3657,18 +4066,38 @@
                 </property>
                </widget>
               </item>
-              <item row="2" column="6">
-               <widget class="QLabel" name="sipm_amp2_ch14_label">
-                <property name="text">
-                 <string>Ch 14</string>
-                </property>
-                <property name="buddy">
-                 <cstring>sipm_amp2_ch14_offset</cstring>
+              <item row="5" column="4">
+               <widget class="QLineEdit" name="sipm_amp2_ch12_name">
+                <property name="maximumSize">
+                 <size>
+                  <width>95</width>
+                  <height>16777215</height>
+                 </size>
                 </property>
                </widget>
               </item>
-              <item row="3" column="3">
-               <widget class="NoWheelDoubleSpinBox" name="sipm_amp2_ch11_offset">
+              <item row="0" column="6">
+               <widget class="QLabel" name="sipm_amp2_ch6_label">
+                <property name="text">
+                 <string>Ch 6</string>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp2_ch6_offset</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="1">
+               <widget class="QLabel" name="sipm_amp2_ch9_label">
+                <property name="text">
+                 <string>Ch 9</string>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp2_ch9_offset</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="4">
+               <widget class="NoWheelDoubleSpinBox" name="sipm_amp2_ch4_offset">
                 <property name="font">
                  <font>
                   <kerning>true</kerning>
@@ -3697,28 +4126,61 @@
                 </property>
                </widget>
               </item>
-              <item row="2" column="4">
-               <widget class="QLabel" name="sipm_amp2_ch12_label">
+              <item row="3" column="2">
+               <widget class="QLabel" name="sipm_amp2_ch10_label">
                 <property name="text">
-                 <string>Ch 12</string>
+                 <string>Ch 10</string>
                 </property>
                 <property name="buddy">
-                 <cstring>sipm_amp2_ch12_offset</cstring>
+                 <cstring>sipm_amp2_ch10_offset</cstring>
                 </property>
                </widget>
               </item>
-              <item row="0" column="6">
-               <widget class="QLabel" name="sipm_amp2_ch6_label">
-                <property name="text">
-                 <string>Ch 6</string>
+              <item row="1" column="8">
+               <widget class="NoWheelDoubleSpinBox" name="sipm_amp2_ch8_offset">
+                <property name="font">
+                 <font>
+                  <kerning>true</kerning>
+                 </font>
                 </property>
-                <property name="buddy">
-                 <cstring>sipm_amp2_ch6_offset</cstring>
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="wrapping">
+                 <bool>false</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
+                </property>
+                <property name="showGroupSeparator" stdset="0">
+                 <bool>false</bool>
+                </property>
+                <property name="suffix">
+                 <string> V</string>
+                </property>
+                <property name="maximum">
+                 <double>5.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
                 </property>
                </widget>
               </item>
-              <item row="3" column="8">
-               <widget class="NoWheelDoubleSpinBox" name="sipm_amp2_ch16_offset">
+              <item row="5" column="0">
+               <widget class="QLabel" name="sipm_amp2_name_label_2">
+                <property name="text">
+                 <string>Name</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp1_ch1_offset</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="2">
+               <widget class="NoWheelDoubleSpinBox" name="sipm_amp2_ch2_offset">
                 <property name="font">
                  <font>
                   <kerning>true</kerning>
@@ -3754,96 +4216,6 @@
                 </property>
                 <property name="buddy">
                  <cstring>sipm_amp2_ch5_offset</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="8">
-               <widget class="QLabel" name="sipm_amp2_ch16_label">
-                <property name="text">
-                 <string>Ch 16</string>
-                </property>
-                <property name="buddy">
-                 <cstring>sipm_amp2_ch16_offset</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="7">
-               <widget class="NoWheelDoubleSpinBox" name="sipm_amp2_ch15_offset">
-                <property name="font">
-                 <font>
-                  <kerning>true</kerning>
-                 </font>
-                </property>
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="wrapping">
-                 <bool>false</bool>
-                </property>
-                <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
-                </property>
-                <property name="showGroupSeparator" stdset="0">
-                 <bool>false</bool>
-                </property>
-                <property name="suffix">
-                 <string> V</string>
-                </property>
-                <property name="maximum">
-                 <double>5.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="3">
-               <widget class="QLabel" name="sipm_amp2_ch3_label">
-                <property name="text">
-                 <string>Ch 3</string>
-                </property>
-                <property name="buddy">
-                 <cstring>sipm_amp2_ch3_offset</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="4">
-               <widget class="QLabel" name="sipm_amp2_ch4_label">
-                <property name="text">
-                 <string>Ch 4</string>
-                </property>
-                <property name="buddy">
-                 <cstring>sipm_amp2_ch4_offset</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="5">
-               <widget class="NoWheelDoubleSpinBox" name="sipm_amp2_ch5_offset">
-                <property name="font">
-                 <font>
-                  <kerning>true</kerning>
-                 </font>
-                </property>
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="wrapping">
-                 <bool>false</bool>
-                </property>
-                <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
-                </property>
-                <property name="showGroupSeparator" stdset="0">
-                 <bool>false</bool>
-                </property>
-                <property name="suffix">
-                 <string> V</string>
-                </property>
-                <property name="maximum">
-                 <double>5.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
                 </property>
                </widget>
               </item>
@@ -4228,21 +4600,8 @@
               <property name="spacing">
                <number>3</number>
               </property>
-              <item row="3" column="0">
-               <widget class="QLabel" name="sipm_amp3_offset_label_2">
-                <property name="text">
-                 <string>Offset</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>sipm_amp3_ch9_offset</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="6">
-               <widget class="NoWheelDoubleSpinBox" name="sipm_amp3_ch6_offset">
+              <item row="4" column="7">
+               <widget class="NoWheelDoubleSpinBox" name="sipm_amp3_ch15_offset">
                 <property name="font">
                  <font>
                   <kerning>true</kerning>
@@ -4268,46 +4627,6 @@
                 </property>
                 <property name="singleStep">
                  <double>0.100000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="1">
-               <widget class="NoWheelDoubleSpinBox" name="sipm_amp3_ch9_offset">
-                <property name="font">
-                 <font>
-                  <kerning>true</kerning>
-                 </font>
-                </property>
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="wrapping">
-                 <bool>false</bool>
-                </property>
-                <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
-                </property>
-                <property name="showGroupSeparator" stdset="0">
-                 <bool>false</bool>
-                </property>
-                <property name="suffix">
-                 <string> V</string>
-                </property>
-                <property name="maximum">
-                 <double>5.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="7">
-               <widget class="QLabel" name="sipm_amp3_ch7_label">
-                <property name="text">
-                 <string>Ch 7</string>
-                </property>
-                <property name="buddy">
-                 <cstring>sipm_amp3_ch7_offset</cstring>
                 </property>
                </widget>
               </item>
@@ -4341,79 +4660,6 @@
                 </property>
                </widget>
               </item>
-              <item row="1" column="3">
-               <widget class="NoWheelDoubleSpinBox" name="sipm_amp3_ch3_offset">
-                <property name="font">
-                 <font>
-                  <kerning>true</kerning>
-                 </font>
-                </property>
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="wrapping">
-                 <bool>false</bool>
-                </property>
-                <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
-                </property>
-                <property name="showGroupSeparator" stdset="0">
-                 <bool>false</bool>
-                </property>
-                <property name="suffix">
-                 <string> V</string>
-                </property>
-                <property name="maximum">
-                 <double>5.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="3">
-               <widget class="QLabel" name="sipm_amp3_ch3_label">
-                <property name="text">
-                 <string>Ch 3</string>
-                </property>
-                <property name="buddy">
-                 <cstring>sipm_amp3_ch3_offset</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="0">
-               <widget class="QLabel" name="sipm_amp3_offset_label">
-                <property name="text">
-                 <string>Offset</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>sipm_amp3_ch1_offset</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="2">
-               <widget class="QLabel" name="sipm_amp3_ch2_label">
-                <property name="text">
-                 <string>Ch 2</string>
-                </property>
-                <property name="buddy">
-                 <cstring>sipm_amp3_ch2_offset</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="8">
-               <widget class="QLabel" name="sipm_amp3_ch16_label">
-                <property name="text">
-                 <string>Ch 16</string>
-                </property>
-                <property name="buddy">
-                 <cstring>sipm_amp3_ch16_offset</cstring>
-                </property>
-               </widget>
-              </item>
               <item row="1" column="8">
                <widget class="NoWheelDoubleSpinBox" name="sipm_amp3_ch8_offset">
                 <property name="font">
@@ -4444,7 +4690,213 @@
                 </property>
                </widget>
               </item>
-              <item row="3" column="8">
+              <item row="3" column="4">
+               <widget class="QLabel" name="sipm_amp3_ch12_label">
+                <property name="text">
+                 <string>Ch 12</string>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp3_ch12_offset</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="2">
+               <widget class="QLineEdit" name="sipm_amp3_ch10_name">
+                <property name="maximumSize">
+                 <size>
+                  <width>95</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="8">
+               <widget class="QLineEdit" name="sipm_amp3_ch16_name">
+                <property name="maximumSize">
+                 <size>
+                  <width>95</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="3">
+               <widget class="NoWheelDoubleSpinBox" name="sipm_amp3_ch3_offset">
+                <property name="font">
+                 <font>
+                  <kerning>true</kerning>
+                 </font>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="wrapping">
+                 <bool>false</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
+                </property>
+                <property name="showGroupSeparator" stdset="0">
+                 <bool>false</bool>
+                </property>
+                <property name="suffix">
+                 <string> V</string>
+                </property>
+                <property name="maximum">
+                 <double>5.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QLabel" name="sipm_amp1_name_label_5">
+                <property name="text">
+                 <string>Name</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp1_ch1_offset</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="3">
+               <widget class="NoWheelDoubleSpinBox" name="sipm_amp3_ch11_offset">
+                <property name="font">
+                 <font>
+                  <kerning>true</kerning>
+                 </font>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="wrapping">
+                 <bool>false</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
+                </property>
+                <property name="showGroupSeparator" stdset="0">
+                 <bool>false</bool>
+                </property>
+                <property name="suffix">
+                 <string> V</string>
+                </property>
+                <property name="maximum">
+                 <double>5.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="5">
+               <widget class="QLineEdit" name="sipm_amp3_ch13_name">
+                <property name="maximumSize">
+                 <size>
+                  <width>95</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="6">
+               <widget class="NoWheelDoubleSpinBox" name="sipm_amp3_ch14_offset">
+                <property name="font">
+                 <font>
+                  <kerning>true</kerning>
+                 </font>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="wrapping">
+                 <bool>false</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
+                </property>
+                <property name="showGroupSeparator" stdset="0">
+                 <bool>false</bool>
+                </property>
+                <property name="suffix">
+                 <string> V</string>
+                </property>
+                <property name="maximum">
+                 <double>5.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="3">
+               <widget class="QLabel" name="sipm_amp3_ch11_label">
+                <property name="text">
+                 <string>Ch 11</string>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp3_ch11_offset</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="sipm_amp3_offset_label">
+                <property name="text">
+                 <string>Offset</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp3_ch1_offset</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="4">
+               <widget class="NoWheelDoubleSpinBox" name="sipm_amp3_ch12_offset">
+                <property name="font">
+                 <font>
+                  <kerning>true</kerning>
+                 </font>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="wrapping">
+                 <bool>false</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
+                </property>
+                <property name="showGroupSeparator" stdset="0">
+                 <bool>false</bool>
+                </property>
+                <property name="suffix">
+                 <string> V</string>
+                </property>
+                <property name="maximum">
+                 <double>5.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="7">
+               <widget class="QLineEdit" name="sipm_amp3_ch7_name">
+                <property name="maximumSize">
+                 <size>
+                  <width>95</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="8">
                <widget class="NoWheelDoubleSpinBox" name="sipm_amp3_ch16_offset">
                 <property name="font">
                  <font>
@@ -4471,6 +4923,26 @@
                 </property>
                 <property name="singleStep">
                  <double>0.100000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="2">
+               <widget class="QLineEdit" name="sipm_amp3_ch2_name">
+                <property name="maximumSize">
+                 <size>
+                  <width>95</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="4">
+               <widget class="QLineEdit" name="sipm_amp3_ch12_name">
+                <property name="maximumSize">
+                 <size>
+                  <width>95</width>
+                  <height>16777215</height>
+                 </size>
                 </property>
                </widget>
               </item>
@@ -4504,148 +4976,21 @@
                 </property>
                </widget>
               </item>
-              <item row="3" column="2">
-               <widget class="NoWheelDoubleSpinBox" name="sipm_amp3_ch10_offset">
-                <property name="font">
-                 <font>
-                  <kerning>true</kerning>
-                 </font>
-                </property>
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="wrapping">
-                 <bool>false</bool>
-                </property>
-                <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
-                </property>
-                <property name="showGroupSeparator" stdset="0">
-                 <bool>false</bool>
-                </property>
-                <property name="suffix">
-                 <string> V</string>
-                </property>
-                <property name="maximum">
-                 <double>5.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="5">
-               <widget class="QLabel" name="sipm_amp3_ch13_label">
+              <item row="4" column="0">
+               <widget class="QLabel" name="sipm_amp3_offset_label_2">
                 <property name="text">
-                 <string>Ch 13</string>
+                 <string>Offset</string>
                 </property>
-                <property name="buddy">
-                 <cstring>sipm_amp3_ch13_offset</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="4">
-               <widget class="NoWheelDoubleSpinBox" name="sipm_amp3_ch12_offset">
-                <property name="font">
-                 <font>
-                  <kerning>true</kerning>
-                 </font>
-                </property>
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="wrapping">
-                 <bool>false</bool>
-                </property>
-                <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
-                </property>
-                <property name="showGroupSeparator" stdset="0">
-                 <bool>false</bool>
-                </property>
-                <property name="suffix">
-                 <string> V</string>
-                </property>
-                <property name="maximum">
-                 <double>5.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="6">
-               <widget class="QLabel" name="sipm_amp3_ch6_label">
-                <property name="text">
-                 <string>Ch 6</string>
-                </property>
-                <property name="buddy">
-                 <cstring>sipm_amp3_ch6_offset</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="6">
-               <widget class="NoWheelDoubleSpinBox" name="sipm_amp3_ch14_offset">
-                <property name="font">
-                 <font>
-                  <kerning>true</kerning>
-                 </font>
-                </property>
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="wrapping">
-                 <bool>false</bool>
-                </property>
-                <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
-                </property>
-                <property name="showGroupSeparator" stdset="0">
-                 <bool>false</bool>
-                </property>
-                <property name="suffix">
-                 <string> V</string>
-                </property>
-                <property name="maximum">
-                 <double>5.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="4">
-               <widget class="QLabel" name="sipm_amp3_ch4_label">
-                <property name="text">
-                 <string>Ch 4</string>
-                </property>
-                <property name="buddy">
-                 <cstring>sipm_amp3_ch4_offset</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="1">
-               <widget class="QLabel" name="sipm_amp3_ch9_label">
-                <property name="text">
-                 <string>Ch 9</string>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
                  <cstring>sipm_amp3_ch9_offset</cstring>
                 </property>
                </widget>
               </item>
-              <item row="0" column="8">
-               <widget class="QLabel" name="sipm_amp3_ch8_label">
-                <property name="text">
-                 <string>Ch 8</string>
-                </property>
-                <property name="buddy">
-                 <cstring>sipm_amp3_ch8_offset</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="1">
-               <widget class="NoWheelDoubleSpinBox" name="sipm_amp3_ch1_offset">
+              <item row="4" column="1">
+               <widget class="NoWheelDoubleSpinBox" name="sipm_amp3_ch9_offset">
                 <property name="font">
                  <font>
                   <kerning>true</kerning>
@@ -4704,27 +5049,47 @@
                 </property>
                </widget>
               </item>
-              <item row="2" column="3">
-               <widget class="QLabel" name="sipm_amp3_ch11_label">
-                <property name="text">
-                 <string>Ch 11</string>
+              <item row="1" column="6">
+               <widget class="NoWheelDoubleSpinBox" name="sipm_amp3_ch6_offset">
+                <property name="font">
+                 <font>
+                  <kerning>true</kerning>
+                 </font>
                 </property>
-                <property name="buddy">
-                 <cstring>sipm_amp3_ch11_offset</cstring>
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="wrapping">
+                 <bool>false</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
+                </property>
+                <property name="showGroupSeparator" stdset="0">
+                 <bool>false</bool>
+                </property>
+                <property name="suffix">
+                 <string> V</string>
+                </property>
+                <property name="maximum">
+                 <double>5.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
                 </property>
                </widget>
               </item>
-              <item row="2" column="7">
-               <widget class="QLabel" name="sipm_amp3_ch15_label">
-                <property name="text">
-                 <string>Ch 15</string>
-                </property>
-                <property name="buddy">
-                 <cstring>sipm_amp3_ch15_offset</cstring>
+              <item row="5" column="3">
+               <widget class="QLineEdit" name="sipm_amp3_ch11_name">
+                <property name="maximumSize">
+                 <size>
+                  <width>95</width>
+                  <height>16777215</height>
+                 </size>
                 </property>
                </widget>
               </item>
-              <item row="2" column="2">
+              <item row="3" column="2">
                <widget class="QLabel" name="sipm_amp3_ch10_label">
                 <property name="text">
                  <string>Ch 10</string>
@@ -4734,83 +5099,23 @@
                 </property>
                </widget>
               </item>
-              <item row="3" column="5">
-               <widget class="NoWheelDoubleSpinBox" name="sipm_amp3_ch13_offset">
-                <property name="font">
-                 <font>
-                  <kerning>true</kerning>
-                 </font>
-                </property>
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="wrapping">
-                 <bool>false</bool>
-                </property>
-                <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
-                </property>
-                <property name="showGroupSeparator" stdset="0">
-                 <bool>false</bool>
-                </property>
-                <property name="suffix">
-                 <string> V</string>
-                </property>
-                <property name="maximum">
-                 <double>5.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="0">
-               <widget class="QLabel" name="sipm_amp3_channel_label_2">
+              <item row="3" column="1">
+               <widget class="QLabel" name="sipm_amp3_ch9_label">
                 <property name="text">
-                 <string>Channel</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="1">
-               <widget class="QLabel" name="sipm_amp3_ch1_label">
-                <property name="text">
-                 <string>Ch 1</string>
+                 <string>Ch 9</string>
                 </property>
                 <property name="buddy">
-                 <cstring>sipm_amp3_ch1_offset</cstring>
+                 <cstring>sipm_amp3_ch9_offset</cstring>
                 </property>
                </widget>
               </item>
-              <item row="3" column="3">
-               <widget class="NoWheelDoubleSpinBox" name="sipm_amp3_ch11_offset">
-                <property name="font">
-                 <font>
-                  <kerning>true</kerning>
-                 </font>
+              <item row="0" column="2">
+               <widget class="QLabel" name="sipm_amp3_ch2_label">
+                <property name="text">
+                 <string>Ch 2</string>
                 </property>
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="wrapping">
-                 <bool>false</bool>
-                </property>
-                <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
-                </property>
-                <property name="showGroupSeparator" stdset="0">
-                 <bool>false</bool>
-                </property>
-                <property name="suffix">
-                 <string> V</string>
-                </property>
-                <property name="maximum">
-                 <double>5.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
+                <property name="buddy">
+                 <cstring>sipm_amp3_ch2_offset</cstring>
                 </property>
                </widget>
               </item>
@@ -4844,18 +5149,68 @@
                 </property>
                </widget>
               </item>
-              <item row="2" column="4">
-               <widget class="QLabel" name="sipm_amp3_ch12_label">
-                <property name="text">
-                 <string>Ch 12</string>
-                </property>
-                <property name="buddy">
-                 <cstring>sipm_amp3_ch12_offset</cstring>
+              <item row="2" column="8">
+               <widget class="QLineEdit" name="sipm_amp3_ch8_name">
+                <property name="maximumSize">
+                 <size>
+                  <width>95</width>
+                  <height>16777215</height>
+                 </size>
                 </property>
                </widget>
               </item>
-              <item row="3" column="7">
-               <widget class="NoWheelDoubleSpinBox" name="sipm_amp3_ch15_offset">
+              <item row="0" column="3">
+               <widget class="QLabel" name="sipm_amp3_ch3_label">
+                <property name="text">
+                 <string>Ch 3</string>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp3_ch3_offset</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="QLineEdit" name="sipm_amp3_ch1_name">
+                <property name="maximumSize">
+                 <size>
+                  <width>95</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="8">
+               <widget class="QLabel" name="sipm_amp3_ch16_label">
+                <property name="text">
+                 <string>Ch 16</string>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp3_ch16_offset</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="6">
+               <widget class="QLabel" name="sipm_amp3_ch6_label">
+                <property name="text">
+                 <string>Ch 6</string>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp3_ch6_offset</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="7">
+               <widget class="QLabel" name="sipm_amp3_ch7_label">
+                <property name="text">
+                 <string>Ch 7</string>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp3_ch7_offset</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="5">
+               <widget class="NoWheelDoubleSpinBox" name="sipm_amp3_ch13_offset">
                 <property name="font">
                  <font>
                   <kerning>true</kerning>
@@ -4884,13 +5239,206 @@
                 </property>
                </widget>
               </item>
-              <item row="0" column="5">
-               <widget class="QLabel" name="sipm_amp3_ch5_label">
+              <item row="3" column="0">
+               <widget class="QLabel" name="sipm_amp3_channel_label_2">
                 <property name="text">
-                 <string>Ch 5</string>
+                 <string>Channel</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="3">
+               <widget class="QLineEdit" name="sipm_amp3_ch3_name">
+                <property name="maximumSize">
+                 <size>
+                  <width>95</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="7">
+               <widget class="QLabel" name="sipm_amp3_ch15_label">
+                <property name="text">
+                 <string>Ch 15</string>
                 </property>
                 <property name="buddy">
-                 <cstring>sipm_amp3_ch5_offset</cstring>
+                 <cstring>sipm_amp3_ch15_offset</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="1">
+               <widget class="QLineEdit" name="sipm_amp3_ch9_name">
+                <property name="maximumSize">
+                 <size>
+                  <width>95</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="5">
+               <widget class="QLabel" name="sipm_amp3_ch13_label">
+                <property name="text">
+                 <string>Ch 13</string>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp3_ch13_offset</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="4">
+               <widget class="QLabel" name="sipm_amp3_ch4_label">
+                <property name="text">
+                 <string>Ch 4</string>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp3_ch4_offset</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="4">
+               <widget class="QLineEdit" name="sipm_amp3_ch4_name">
+                <property name="maximumSize">
+                 <size>
+                  <width>95</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="6">
+               <widget class="QLabel" name="sipm_amp3_ch14_label">
+                <property name="text">
+                 <string>Ch 14</string>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp3_ch14_offset</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="7">
+               <widget class="QLineEdit" name="sipm_amp3_ch15_name">
+                <property name="maximumSize">
+                 <size>
+                  <width>95</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="5">
+               <widget class="QLineEdit" name="sipm_amp3_ch5_name">
+                <property name="maximumSize">
+                 <size>
+                  <width>95</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="0">
+               <widget class="QLabel" name="sipm_amp1_name_label_6">
+                <property name="text">
+                 <string>Name</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp1_ch1_offset</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1">
+               <widget class="NoWheelDoubleSpinBox" name="sipm_amp3_ch1_offset">
+                <property name="font">
+                 <font>
+                  <kerning>true</kerning>
+                 </font>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="wrapping">
+                 <bool>false</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
+                </property>
+                <property name="showGroupSeparator" stdset="0">
+                 <bool>false</bool>
+                </property>
+                <property name="suffix">
+                 <string> V</string>
+                </property>
+                <property name="maximum">
+                 <double>5.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="2">
+               <widget class="NoWheelDoubleSpinBox" name="sipm_amp3_ch10_offset">
+                <property name="font">
+                 <font>
+                  <kerning>true</kerning>
+                 </font>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="wrapping">
+                 <bool>false</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
+                </property>
+                <property name="showGroupSeparator" stdset="0">
+                 <bool>false</bool>
+                </property>
+                <property name="suffix">
+                 <string> V</string>
+                </property>
+                <property name="maximum">
+                 <double>5.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="8">
+               <widget class="QLabel" name="sipm_amp3_ch8_label">
+                <property name="text">
+                 <string>Ch 8</string>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp3_ch8_offset</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QLabel" name="sipm_amp3_ch1_label">
+                <property name="text">
+                 <string>Ch 1</string>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp3_ch1_offset</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="6">
+               <widget class="QLineEdit" name="sipm_amp3_ch6_name">
+                <property name="maximumSize">
+                 <size>
+                  <width>95</width>
+                  <height>16777215</height>
+                 </size>
                 </property>
                </widget>
               </item>
@@ -4904,13 +5452,23 @@
                 </property>
                </widget>
               </item>
-              <item row="2" column="6">
-               <widget class="QLabel" name="sipm_amp3_ch14_label">
+              <item row="5" column="6">
+               <widget class="QLineEdit" name="sipm_amp3_ch14_name">
+                <property name="maximumSize">
+                 <size>
+                  <width>95</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="5">
+               <widget class="QLabel" name="sipm_amp3_ch5_label">
                 <property name="text">
-                 <string>Ch 14</string>
+                 <string>Ch 5</string>
                 </property>
                 <property name="buddy">
-                 <cstring>sipm_amp3_ch14_offset</cstring>
+                 <cstring>sipm_amp3_ch5_offset</cstring>
                 </property>
                </widget>
               </item>
@@ -4971,7 +5529,7 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>876</width>
+             <width>870</width>
              <height>886</height>
             </rect>
            </property>
@@ -7994,7 +8552,7 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>876</width>
+             <width>676</width>
              <height>549</height>
             </rect>
            </property>
@@ -10087,7 +10645,7 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>876</width>
+             <width>398</width>
              <height>562</height>
             </rect>
            </property>
@@ -11310,7 +11868,7 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>876</width>
+             <width>658</width>
              <height>1364</height>
             </rect>
            </property>
