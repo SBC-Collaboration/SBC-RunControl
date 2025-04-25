@@ -103,7 +103,7 @@ class SettingsWindow(QMainWindow):
                                            "3-09", "3-10", "3-11", "3-12", "3-13", "3-14", "3-15", "3-16"])
         for gp in ["g0", "g1", "g2", "g3"]:
             for ch in range(8):
-                self.widgets[f"caen_{gp}_name_ch{ch}"].setModel(self.amp_names)
+                self.widgets[f"caen_{gp}_name_{ch}"].setModel(self.amp_names)
 
         self.logger.debug("Settings window loaded.")
 
