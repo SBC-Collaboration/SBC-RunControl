@@ -1,7 +1,7 @@
 import sys
 from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog
 from PySide6.QtGui import QTextCursor
-from PySide6.QtCore import QTimer, Qt, QObject, QSignalBlocker
+from PySide6.QtCore import QTimer, Qt, QObject, QSignalBlocker, QStringListModel
 import logging
 from enum import Enum
 import time
@@ -78,6 +78,32 @@ class SettingsWindow(QMainWindow):
         self.checkpair_caen1_acq = CheckBoxPairBinder(self.widgets["active_caen_g1_trg"], self.widgets["caen_g1_acq_box"])
         self.checkpair_caen2_acq = CheckBoxPairBinder(self.widgets["active_caen_g2_trg"], self.widgets["caen_g2_acq_box"])
         self.checkpair_caen3_acq = CheckBoxPairBinder(self.widgets["active_caen_g3_trg"], self.widgets["caen_g3_acq_box"])
+
+        # set up shared combo boxes
+        self.sipm_names = QStringListModel(["NC",
+                                            "SiPM11", "SiPM12", "SiPM14", "SiPM15",
+                                            "SiPM22", "SiPM23", "SiPM25", "SiPM26",
+                                            "SiPM31", "SiPM32", "SiPM34", "SiPM35",
+                                            "SiPM42", "SiPM43", "SiPM45", "SiPM46",
+                                            "SiPM51", "SiPM52", "SiPM54", "SiPM55",
+                                            "SiPM62", "SiPM63", "SiPM65", "SiPM66",
+                                            "SiPM71", "SiPM72", "SiPM74", "SiPM75",
+                                            "SiPM82", "SiPM83", "SiPM85", "SiPM86"])
+        
+        for amp in ["amp1", "amp2", "amp3"]:
+            for ch in range(1, 17):
+                self.widgets[f"sipm_{amp}_name_ch{ch}"].setModel(self.sipm_names)
+
+        self.amp_names = QStringListModel(["NC",
+                                           "1-01", "1-02", "1-03", "1-04", "1-05", "1-06", "1-07", "1-08",
+                                           "1-09", "1-10", "1-11", "1-12", "1-13", "1-14", "1-15", "1-16",
+                                           "2-01", "2-02", "2-03", "2-04", "2-05", "2-06", "2-07", "2-08",
+                                           "2-09", "2-10", "2-11", "2-12", "2-13", "2-14", "2-15", "2-16",
+                                           "3-01", "3-02", "3-03", "3-04", "3-05", "3-06", "3-07", "3-08",
+                                           "3-09", "3-10", "3-11", "3-12", "3-13", "3-14", "3-15", "3-16"])
+        for gp in ["g0", "g1", "g2", "g3"]:
+            for ch in range(8):
+                self.widgets[f"caen_{gp}_name_ch{ch}"].setModel(self.amp_names)
 
         self.logger.debug("Settings window loaded.")
 

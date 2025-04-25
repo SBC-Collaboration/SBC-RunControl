@@ -2348,7 +2348,7 @@
                </widget>
               </item>
               <item row="2" column="1">
-               <widget class="SharedComboBox" name="sipm_amp1_name_1"/>
+               <widget class="SharedComboBox" name="sipm_amp1_name_ch1"/>
               </item>
               <item row="4" column="3">
                <widget class="NoWheelDoubleSpinBox" name="sipm_amp1_ch11_offset">
@@ -2817,49 +2817,49 @@
                </widget>
               </item>
               <item row="2" column="2">
-               <widget class="SharedComboBox" name="sipm_amp1_name_2"/>
+               <widget class="SharedComboBox" name="sipm_amp1_name_ch2"/>
               </item>
               <item row="2" column="3">
-               <widget class="SharedComboBox" name="sipm_amp1_name_3"/>
+               <widget class="SharedComboBox" name="sipm_amp1_name_ch3"/>
               </item>
               <item row="2" column="4">
-               <widget class="SharedComboBox" name="sipm_amp1_name_4"/>
+               <widget class="SharedComboBox" name="sipm_amp1_name_ch4"/>
               </item>
               <item row="2" column="5">
-               <widget class="SharedComboBox" name="sipm_amp1_name_5"/>
+               <widget class="SharedComboBox" name="sipm_amp1_name_ch5"/>
               </item>
               <item row="2" column="6">
-               <widget class="SharedComboBox" name="sipm_amp1_name_6"/>
+               <widget class="SharedComboBox" name="sipm_amp1_name_ch6"/>
               </item>
               <item row="2" column="7">
-               <widget class="SharedComboBox" name="sipm_amp1_name_7"/>
+               <widget class="SharedComboBox" name="sipm_amp1_name_ch7"/>
               </item>
               <item row="2" column="8">
-               <widget class="SharedComboBox" name="sipm_amp1_name_8"/>
+               <widget class="SharedComboBox" name="sipm_amp1_name_ch8"/>
               </item>
               <item row="5" column="1">
-               <widget class="SharedComboBox" name="sipm_amp1_name_9"/>
+               <widget class="SharedComboBox" name="sipm_amp1_name_ch9"/>
               </item>
               <item row="5" column="2">
-               <widget class="SharedComboBox" name="sipm_amp1_name_10"/>
+               <widget class="SharedComboBox" name="sipm_amp1_name_ch10"/>
               </item>
               <item row="5" column="3">
-               <widget class="SharedComboBox" name="sipm_amp1_name_11"/>
+               <widget class="SharedComboBox" name="sipm_amp1_name_ch11"/>
               </item>
               <item row="5" column="4">
-               <widget class="SharedComboBox" name="sipm_amp1_name_12"/>
+               <widget class="SharedComboBox" name="sipm_amp1_name_ch12"/>
               </item>
               <item row="5" column="5">
-               <widget class="SharedComboBox" name="sipm_amp1_name_13"/>
+               <widget class="SharedComboBox" name="sipm_amp1_name_ch13"/>
               </item>
               <item row="5" column="6">
-               <widget class="SharedComboBox" name="sipm_amp1_name_14"/>
+               <widget class="SharedComboBox" name="sipm_amp1_name_ch14"/>
               </item>
               <item row="5" column="7">
-               <widget class="SharedComboBox" name="sipm_amp1_name_15"/>
+               <widget class="SharedComboBox" name="sipm_amp1_name_ch15"/>
               </item>
               <item row="5" column="8">
-               <widget class="SharedComboBox" name="sipm_amp1_name_16"/>
+               <widget class="SharedComboBox" name="sipm_amp1_name_ch16"/>
               </item>
              </layout>
             </item>
@@ -3948,52 +3948,52 @@
                </widget>
               </item>
               <item row="2" column="1">
-               <widget class="SharedComboBox" name="sipm_amp2_name_1"/>
+               <widget class="SharedComboBox" name="sipm_amp2_name_ch1"/>
               </item>
               <item row="2" column="2">
-               <widget class="SharedComboBox" name="sipm_amp2_name_2"/>
+               <widget class="SharedComboBox" name="sipm_amp2_name_ch2"/>
               </item>
               <item row="2" column="3">
-               <widget class="SharedComboBox" name="sipm_amp2_name_3"/>
+               <widget class="SharedComboBox" name="sipm_amp2_name_ch3"/>
               </item>
               <item row="2" column="4">
-               <widget class="SharedComboBox" name="sipm_amp2_name_4"/>
+               <widget class="SharedComboBox" name="sipm_amp2_name_ch4"/>
               </item>
               <item row="2" column="5">
-               <widget class="SharedComboBox" name="sipm_amp2_name_5"/>
+               <widget class="SharedComboBox" name="sipm_amp2_name_ch5"/>
               </item>
               <item row="2" column="6">
-               <widget class="SharedComboBox" name="sipm_amp2_name_6"/>
+               <widget class="SharedComboBox" name="sipm_amp2_name_ch6"/>
               </item>
               <item row="2" column="7">
-               <widget class="SharedComboBox" name="sipm_amp2_name_7"/>
+               <widget class="SharedComboBox" name="sipm_amp2_name_ch7"/>
               </item>
               <item row="2" column="8">
-               <widget class="SharedComboBox" name="sipm_amp2_name_8"/>
+               <widget class="SharedComboBox" name="sipm_amp2_name_ch8"/>
               </item>
               <item row="5" column="1">
-               <widget class="SharedComboBox" name="sipm_amp2_name_9"/>
+               <widget class="SharedComboBox" name="sipm_amp2_name_ch9"/>
               </item>
               <item row="5" column="2">
-               <widget class="SharedComboBox" name="sipm_amp2_name_10"/>
+               <widget class="SharedComboBox" name="sipm_amp2_name_ch10"/>
               </item>
               <item row="5" column="3">
-               <widget class="SharedComboBox" name="sipm_amp2_name_11"/>
+               <widget class="SharedComboBox" name="sipm_amp2_name_ch11"/>
               </item>
               <item row="5" column="4">
-               <widget class="SharedComboBox" name="sipm_amp2_name_12"/>
+               <widget class="SharedComboBox" name="sipm_amp2_name_ch12"/>
               </item>
               <item row="5" column="5">
-               <widget class="SharedComboBox" name="sipm_amp2_name_13"/>
+               <widget class="SharedComboBox" name="sipm_amp2_name_ch13"/>
               </item>
               <item row="5" column="6">
-               <widget class="SharedComboBox" name="sipm_amp2_name_14"/>
+               <widget class="SharedComboBox" name="sipm_amp2_name_ch14"/>
               </item>
               <item row="5" column="7">
-               <widget class="SharedComboBox" name="sipm_amp2_name_15"/>
+               <widget class="SharedComboBox" name="sipm_amp2_name_ch15"/>
               </item>
               <item row="5" column="8">
-               <widget class="SharedComboBox" name="sipm_amp2_name_16"/>
+               <widget class="SharedComboBox" name="sipm_amp2_name_ch16"/>
               </item>
              </layout>
             </item>
@@ -5089,52 +5089,52 @@
                </widget>
               </item>
               <item row="2" column="1">
-               <widget class="SharedComboBox" name="sipm_amp3_name_1"/>
+               <widget class="SharedComboBox" name="sipm_amp3_name_ch1"/>
               </item>
               <item row="2" column="2">
-               <widget class="SharedComboBox" name="sipm_amp3_name_2"/>
+               <widget class="SharedComboBox" name="sipm_amp3_name_ch2"/>
               </item>
               <item row="2" column="3">
-               <widget class="SharedComboBox" name="sipm_amp3_name_3"/>
+               <widget class="SharedComboBox" name="sipm_amp3_name_ch3"/>
               </item>
               <item row="2" column="4">
-               <widget class="SharedComboBox" name="sipm_amp3_name_4"/>
+               <widget class="SharedComboBox" name="sipm_amp3_name_ch4"/>
               </item>
               <item row="2" column="5">
-               <widget class="SharedComboBox" name="sipm_amp3_name_5"/>
+               <widget class="SharedComboBox" name="sipm_amp3_name_ch5"/>
               </item>
               <item row="2" column="6">
-               <widget class="SharedComboBox" name="sipm_amp3_name_6"/>
+               <widget class="SharedComboBox" name="sipm_amp3_name_ch6"/>
               </item>
               <item row="2" column="7">
-               <widget class="SharedComboBox" name="sipm_amp3_name_7"/>
+               <widget class="SharedComboBox" name="sipm_amp3_name_ch7"/>
               </item>
               <item row="2" column="8">
-               <widget class="SharedComboBox" name="sipm_amp3_name_8"/>
+               <widget class="SharedComboBox" name="sipm_amp3_name_ch8"/>
               </item>
               <item row="5" column="1">
-               <widget class="SharedComboBox" name="sipm_amp3_name_9"/>
+               <widget class="SharedComboBox" name="sipm_amp3_name_ch9"/>
               </item>
               <item row="5" column="2">
-               <widget class="SharedComboBox" name="sipm_amp3_name_10"/>
+               <widget class="SharedComboBox" name="sipm_amp3_name_ch10"/>
               </item>
               <item row="5" column="3">
-               <widget class="SharedComboBox" name="sipm_amp3_name_11"/>
+               <widget class="SharedComboBox" name="sipm_amp3_name_ch11"/>
               </item>
               <item row="5" column="4">
-               <widget class="SharedComboBox" name="sipm_amp3_name_12"/>
+               <widget class="SharedComboBox" name="sipm_amp3_name_ch12"/>
               </item>
               <item row="5" column="5">
-               <widget class="SharedComboBox" name="sipm_amp3_name_13"/>
+               <widget class="SharedComboBox" name="sipm_amp3_name_ch13"/>
               </item>
               <item row="5" column="6">
-               <widget class="SharedComboBox" name="sipm_amp3_name_14"/>
+               <widget class="SharedComboBox" name="sipm_amp3_name_ch14"/>
               </item>
               <item row="5" column="7">
-               <widget class="SharedComboBox" name="sipm_amp3_name_15"/>
+               <widget class="SharedComboBox" name="sipm_amp3_name_ch15"/>
               </item>
               <item row="5" column="8">
-               <widget class="SharedComboBox" name="sipm_amp3_name_16"/>
+               <widget class="SharedComboBox" name="sipm_amp3_name_ch16"/>
               </item>
              </layout>
             </item>
@@ -6390,7 +6390,7 @@
                </widget>
               </item>
               <item row="2" column="1">
-               <widget class="QComboBox" name="caen_g0_name_0">
+               <widget class="QComboBox" name="caen_g0_name_ch0">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
@@ -6642,7 +6642,7 @@
                </widget>
               </item>
               <item row="2" column="2">
-               <widget class="QComboBox" name="caen_g0_name_1">
+               <widget class="QComboBox" name="caen_g0_name_ch1">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
@@ -6894,7 +6894,7 @@
                </widget>
               </item>
               <item row="2" column="3">
-               <widget class="QComboBox" name="caen_g0_name_2">
+               <widget class="QComboBox" name="caen_g0_name_ch2">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
@@ -7146,7 +7146,7 @@
                </widget>
               </item>
               <item row="2" column="4">
-               <widget class="QComboBox" name="caen_g0_name_3">
+               <widget class="QComboBox" name="caen_g0_name_ch3">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
@@ -7398,7 +7398,7 @@
                </widget>
               </item>
               <item row="2" column="5">
-               <widget class="QComboBox" name="caen_g0_name_4">
+               <widget class="QComboBox" name="caen_g0_name_ch4">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
@@ -7650,7 +7650,7 @@
                </widget>
               </item>
               <item row="2" column="6">
-               <widget class="QComboBox" name="caen_g0_name_5">
+               <widget class="QComboBox" name="caen_g0_name_ch5">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
@@ -7902,7 +7902,7 @@
                </widget>
               </item>
               <item row="2" column="7">
-               <widget class="QComboBox" name="caen_g0_name_6">
+               <widget class="QComboBox" name="caen_g0_name_ch6">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
@@ -8154,7 +8154,7 @@
                </widget>
               </item>
               <item row="2" column="8">
-               <widget class="QComboBox" name="caen_g0_name_7">
+               <widget class="QComboBox" name="caen_g0_name_ch7">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
@@ -9017,7 +9017,7 @@
                </widget>
               </item>
               <item row="2" column="1">
-               <widget class="QComboBox" name="caen_g1_name_0">
+               <widget class="QComboBox" name="caen_g1_name_ch0">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
@@ -9269,7 +9269,7 @@
                </widget>
               </item>
               <item row="2" column="2">
-               <widget class="QComboBox" name="caen_g1_name_1">
+               <widget class="QComboBox" name="caen_g1_name_ch1">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
@@ -9521,7 +9521,7 @@
                </widget>
               </item>
               <item row="2" column="3">
-               <widget class="QComboBox" name="caen_g1_name_2">
+               <widget class="QComboBox" name="caen_g1_name_ch2">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
@@ -9773,7 +9773,7 @@
                </widget>
               </item>
               <item row="2" column="4">
-               <widget class="QComboBox" name="caen_g1_name_3">
+               <widget class="QComboBox" name="caen_g1_name_ch3">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
@@ -10025,7 +10025,7 @@
                </widget>
               </item>
               <item row="2" column="5">
-               <widget class="QComboBox" name="caen_g1_name_4">
+               <widget class="QComboBox" name="caen_g1_name_ch4">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
@@ -10277,7 +10277,7 @@
                </widget>
               </item>
               <item row="2" column="6">
-               <widget class="QComboBox" name="caen_g1_name_5">
+               <widget class="QComboBox" name="caen_g1_name_ch5">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
@@ -10529,7 +10529,7 @@
                </widget>
               </item>
               <item row="2" column="7">
-               <widget class="QComboBox" name="caen_g1_name_6">
+               <widget class="QComboBox" name="caen_g1_name_ch6">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
@@ -10781,7 +10781,7 @@
                </widget>
               </item>
               <item row="2" column="8">
-               <widget class="QComboBox" name="caen_g1_name_7">
+               <widget class="QComboBox" name="caen_g1_name_ch7">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
@@ -11634,7 +11634,7 @@
                </widget>
               </item>
               <item row="2" column="1">
-               <widget class="QComboBox" name="caen_g2_name_0">
+               <widget class="QComboBox" name="caen_g2_name_ch0">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
@@ -11886,7 +11886,7 @@
                </widget>
               </item>
               <item row="2" column="2">
-               <widget class="QComboBox" name="caen_g2_name_1">
+               <widget class="QComboBox" name="caen_g2_name_ch1">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
@@ -12138,7 +12138,7 @@
                </widget>
               </item>
               <item row="2" column="3">
-               <widget class="QComboBox" name="caen_g2_name_2">
+               <widget class="QComboBox" name="caen_g2_name_ch2">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
@@ -12390,7 +12390,7 @@
                </widget>
               </item>
               <item row="2" column="4">
-               <widget class="QComboBox" name="caen_g2_name_3">
+               <widget class="QComboBox" name="caen_g2_name_ch3">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
@@ -12642,7 +12642,7 @@
                </widget>
               </item>
               <item row="2" column="5">
-               <widget class="QComboBox" name="caen_g2_name_4">
+               <widget class="QComboBox" name="caen_g2_name_ch4">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
@@ -12894,7 +12894,7 @@
                </widget>
               </item>
               <item row="2" column="6">
-               <widget class="QComboBox" name="caen_g2_name_5">
+               <widget class="QComboBox" name="caen_g2_name_ch5">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
@@ -13146,7 +13146,7 @@
                </widget>
               </item>
               <item row="2" column="7">
-               <widget class="QComboBox" name="caen_g2_name_6">
+               <widget class="QComboBox" name="caen_g2_name_ch6">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
@@ -13398,7 +13398,7 @@
                </widget>
               </item>
               <item row="2" column="8">
-               <widget class="QComboBox" name="caen_g2_name_7">
+               <widget class="QComboBox" name="caen_g2_name_ch7">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
@@ -14251,7 +14251,7 @@
                </widget>
               </item>
               <item row="2" column="1">
-               <widget class="QComboBox" name="caen_g3_name_0">
+               <widget class="QComboBox" name="caen_g3_name_ch0">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
@@ -14503,7 +14503,7 @@
                </widget>
               </item>
               <item row="2" column="2">
-               <widget class="QComboBox" name="caen_g3_name_1">
+               <widget class="QComboBox" name="caen_g3_name_ch1">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
@@ -14755,7 +14755,7 @@
                </widget>
               </item>
               <item row="2" column="3">
-               <widget class="QComboBox" name="caen_g3_name_2">
+               <widget class="QComboBox" name="caen_g3_name_ch2">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
@@ -15007,7 +15007,7 @@
                </widget>
               </item>
               <item row="2" column="4">
-               <widget class="QComboBox" name="caen_g3_name_3">
+               <widget class="QComboBox" name="caen_g3_name_ch3">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
@@ -15259,7 +15259,7 @@
                </widget>
               </item>
               <item row="2" column="5">
-               <widget class="QComboBox" name="caen_g3_name_4">
+               <widget class="QComboBox" name="caen_g3_name_ch4">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
@@ -15511,7 +15511,7 @@
                </widget>
               </item>
               <item row="2" column="6">
-               <widget class="QComboBox" name="caen_g3_name_5">
+               <widget class="QComboBox" name="caen_g3_name_ch5">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
@@ -15763,7 +15763,7 @@
                </widget>
               </item>
               <item row="2" column="7">
-               <widget class="QComboBox" name="caen_g3_name_6">
+               <widget class="QComboBox" name="caen_g3_name_ch6">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
@@ -16015,7 +16015,7 @@
                </widget>
               </item>
               <item row="2" column="8">
-               <widget class="QComboBox" name="caen_g3_name_7">
+               <widget class="QComboBox" name="caen_g3_name_ch7">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
