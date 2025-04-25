@@ -39,3 +39,17 @@ class StatusLight(QtWidgets.QLabel):
     def active(self):
         self.setStyleSheet("color: #000000;"
                            "background-color: #96BE25;")
+
+class SharedComboBox(QtWidgets.QComboBox):
+    """
+    A QComboBox that shares its option list with every other instance
+    that receives the same QStringListModel object.
+    """
+    def __init__(self, model: QStringListModel, parent=None):
+        super().__init__(parent)
+        self.setModel(model)
+
+        self.setEditable(True)
+        self.setInsertPolicy(QtWidgets.QComboBox.NoInsert)     # we insert manually
+        self.lineEdit().editingFinished.connect(self._maybe_add_text)
+
