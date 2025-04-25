@@ -117,6 +117,7 @@ class Config(QObject):
         ui.sipm_amp1_iv_step_box.setValue(sipm_amp1_config["iv_step"])
         for ch in range(1, 16):
             widgets[f"sipm_amp1_ch{ch}_offset"].setValue(sipm_amp1_config["ch_offset"][ch-1])
+            widgets[f"sipm_amp1_name_ch{ch}"].setCurrentText(sipm_amp1_config["name"][ch-1])
 
         sipm_amp2_config = self.config["scint"]["amp2"]
         ui.sipm_amp2_enabled_box.setChecked(sipm_amp2_config["enabled"])
@@ -132,6 +133,7 @@ class Config(QObject):
         ui.sipm_amp2_iv_step_box.setValue(sipm_amp2_config["iv_step"])
         for ch in range(1, 16):
             widgets[f"sipm_amp2_ch{ch}_offset"].setValue(sipm_amp2_config["ch_offset"][ch-1])
+            widgets[f"sipm_amp2_name_ch{ch}"].setCurrentText(sipm_amp2_config["name"][ch-1])
 
         sipm_amp3_config = self.config["scint"]["amp3"]
         ui.sipm_amp3_enabled_box.setChecked(sipm_amp3_config["enabled"])
@@ -147,6 +149,7 @@ class Config(QObject):
         ui.sipm_amp3_iv_step_box.setValue(sipm_amp3_config["iv_step"])
         for ch in range(1, 16):
             widgets[f"sipm_amp3_ch{ch}_offset"].setValue(sipm_amp3_config["ch_offset"][ch-1])
+            widgets[f"sipm_amp3_name_ch{ch}"].setCurrentText(sipm_amp3_config["name"][ch-1])
 
         # CAEN
         caen_config = self.config["scint"]["caen"]
@@ -180,6 +183,7 @@ class Config(QObject):
             widgets[f"caen_{gp}_offset_box"].setValue(gp_config["offset"])
             widgets[f"caen_{gp}_range_box"].setCurrentText(gp_config["range"])
             for ch in range(8):
+                widgets[f"caen_{gp}_name_{ch}"].setCurrentText(gp_config["name"][ch])
                 widgets[f"caen_{gp}_trig_mask_{ch}"].setChecked(gp_config["trig_mask"][ch])
                 widgets[f"caen_{gp}_acq_mask_{ch}"].setChecked(gp_config["acq_mask"][ch])
                 widgets[f"caen_{gp}_plot_mask_{ch}"].setChecked(gp_config["plot_mask"][ch])
@@ -386,6 +390,7 @@ class Config(QObject):
             "iv_stop": ui.sipm_amp1_iv_stop_box.value(),
             "iv_step": ui.sipm_amp1_iv_step_box.value(),
             "ch_offset": [widgets[f"sipm_amp1_ch{ch}_offset"].value() for ch in range(1,16)],
+            "name": [widgets[f"sipm_amp1_name_ch{ch}"].currentText() for ch in range(1,16)],
         }
 
         sipm_amp2_config = {
@@ -401,6 +406,7 @@ class Config(QObject):
             "iv_stop": ui.sipm_amp2_iv_stop_box.value(),
             "iv_step": ui.sipm_amp2_iv_step_box.value(),
             "ch_offset": [widgets[f"sipm_amp2_ch{ch}_offset"].value() for ch in range(1, 16)],
+            "name": [widgets[f"sipm_amp2_name_ch{ch}"].currentText() for ch in range(1,16)],
         }
 
         sipm_amp3_config = {
@@ -416,6 +422,7 @@ class Config(QObject):
             "iv_stop": ui.sipm_amp3_iv_stop_box.value(),
             "iv_step": ui.sipm_amp3_iv_step_box.value(),
             "ch_offset": [widgets[f"sipm_amp3_ch{ch}_offset"].value() for ch in range(1, 16)],
+            "name": [widgets[f"sipm_amp3_name_ch{ch}"].currentText() for ch in range(1,16)],
         }
 
         caen_config = {
@@ -449,6 +456,7 @@ class Config(QObject):
             "threshold": ui.caen_g0_thres_box.value(),
             "offset": ui.caen_g0_offset_box.value(),
             "range": ui.caen_g0_range_box.currentText(),
+            "name": [widgets[f"caen_g0_name_{ch}"].currentText() for ch in range(8)],
             "trig_mask": [widgets[f"caen_g0_trig_mask_{ch}"].isChecked() for ch in range(8)],
             "acq_mask": [widgets[f"caen_g0_acq_mask_{ch}"].isChecked() for ch in range(8)],
             "plot_mask": [widgets[f"caen_g0_plot_mask_{ch}"].isChecked() for ch in range(8)],
@@ -460,6 +468,7 @@ class Config(QObject):
             "threshold": ui.caen_g1_thres_box.value(),
             "offset": ui.caen_g1_offset_box.value(),
             "range": ui.caen_g1_range_box.currentText(),
+            "name": [widgets[f"caen_g1_name_{ch}"].currentText() for ch in range(8)],
             "trig_mask": [widgets[f"caen_g1_trig_mask_{ch}"].isChecked() for ch in range(8)],
             "acq_mask": [widgets[f"caen_g1_acq_mask_{ch}"].isChecked() for ch in range(8)],
             "plot_mask": [widgets[f"caen_g1_plot_mask_{ch}"].isChecked() for ch in range(8)],
@@ -471,6 +480,7 @@ class Config(QObject):
             "threshold": ui.caen_g2_thres_box.value(),
             "offset": ui.caen_g2_offset_box.value(),
             "range": ui.caen_g2_range_box.currentText(),
+            "name": [widgets[f"caen_g2_name_{ch}"].currentText() for ch in range(8)],
             "trig_mask": [widgets[f"caen_g2_trig_mask_{ch}"].isChecked() for ch in range(8)],
             "acq_mask": [widgets[f"caen_g2_acq_mask_{ch}"].isChecked() for ch in range(8)],
             "plot_mask": [widgets[f"caen_g2_plot_mask_{ch}"].isChecked() for ch in range(8)],
@@ -482,6 +492,7 @@ class Config(QObject):
             "threshold": ui.caen_g3_thres_box.value(),
             "offset": ui.caen_g3_offset_box.value(),
             "range": ui.caen_g3_range_box.currentText(),
+            "name": [widgets[f"caen_g3_name_{ch}"].currentText() for ch in range(8)],
             "trig_mask": [widgets[f"caen_g3_trig_mask_{ch}"].isChecked() for ch in range(8)],
             "acq_mask": [widgets[f"caen_g3_acq_mask_{ch}"].isChecked() for ch in range(8)],
             "plot_mask": [widgets[f"caen_g3_plot_mask_{ch}"].isChecked() for ch in range(8)],

@@ -90,6 +90,23 @@
         0.0,
         0.0,
         0.0
+      ],
+      "name": [
+        "NC",
+        "NC",
+        "NC",
+        "NC",
+        "NC",
+        "NC",
+        "NC",
+        "NC",
+        "NC",
+        "NC",
+        "NC",
+        "NC",
+        "NC",
+        "NC",
+        "NC"
       ]
     },
     "amp2": {
@@ -120,6 +137,70 @@
         0.0,
         0.0,
         0.0
+      ],
+      "name": [
+        "NC",
+        "NC",
+        "NC",
+        "NC",
+        "NC",
+        "NC",
+        "NC",
+        "NC",
+        "NC",
+        "NC",
+        "NC",
+        "NC",
+        "NC",
+        "NC",
+        "NC"
+      ]
+    },
+    "amp3": {
+      "enabled": false,
+      "ip_addr": "192.168.137.21",
+      "bias": 48.0,
+      "qp": 70.0,
+      "iv_enabled": true,
+      "iv_data_dir": "/mnt/rc-data/iv-curves/",
+      "iv_rc_dir": "/home/sbc/RunControl/run-data/iv-curves",
+      "iv_interval": 1.0,
+      "iv_start": 45.0,
+      "iv_stop": 50.0,
+      "iv_step": 0.5,
+      "ch_offset": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "name": [
+        "NC",
+        "NC",
+        "NC",
+        "NC",
+        "NC",
+        "NC",
+        "NC",
+        "NC",
+        "NC",
+        "NC",
+        "NC",
+        "NC",
+        "NC",
+        "NC",
+        "NC"
       ]
     },
     "caen": {
@@ -151,6 +232,16 @@
       "threshold": 2000,
       "offset": 32768,
       "range": "2 Vpp",
+      "name": [
+        "NC",
+        "NC",
+        "NC",
+        "NC",
+        "NC",
+        "NC",
+        "NC",
+        "NC"
+      ],
       "trig_mask": [
         true,
         true,
@@ -170,6 +261,16 @@
         true,
         true,
         true
+      ],
+      "plot_mask": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
       ],
       "ch_offset": [
         0,
@@ -187,6 +288,16 @@
       "threshold": 2000,
       "offset": 32768,
       "range": "2 Vpp",
+      "name": [
+        "NC",
+        "NC",
+        "NC",
+        "NC",
+        "NC",
+        "NC",
+        "NC",
+        "NC"
+      ],
       "trig_mask": [
         true,
         true,
@@ -206,6 +317,16 @@
         true,
         true,
         true
+      ],
+      "plot_mask": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
       ],
       "ch_offset": [
         0,
@@ -223,6 +344,16 @@
       "threshold": 2000,
       "offset": 32768,
       "range": "2 Vpp",
+      "name": [
+        "NC",
+        "NC",
+        "NC",
+        "NC",
+        "NC",
+        "NC",
+        "NC",
+        "NC"
+      ],
       "trig_mask": [
         false,
         false,
@@ -242,6 +373,16 @@
         true,
         true,
         true
+      ],
+      "plot_mask": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
       ],
       "ch_offset": [
         0,
@@ -259,6 +400,16 @@
       "threshold": 2000,
       "offset": 32768,
       "range": "2 Vpp",
+      "name": [
+        "NC",
+        "NC",
+        "NC",
+        "NC",
+        "NC",
+        "NC",
+        "NC",
+        "NC"
+      ],
       "trig_mask": [
         false,
         false,
@@ -278,6 +429,16 @@
         true,
         true,
         true
+      ],
+      "plot_mask": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
       ],
       "ch_offset": [
         0,

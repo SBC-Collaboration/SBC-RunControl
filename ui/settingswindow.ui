@@ -1696,7 +1696,7 @@
            <property name="geometry">
             <rect>
              <x>0</x>
-             <y>0</y>
+             <y>-611</y>
              <width>876</width>
              <height>1203</height>
             </rect>
@@ -2348,7 +2348,7 @@
                </widget>
               </item>
               <item row="2" column="1">
-               <widget class="QComboBox" name="sipm_amp1_name_ch1">
+               <widget class="NoWheelComboBox" name="sipm_amp1_name_ch1">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
@@ -2821,105 +2821,105 @@
                </widget>
               </item>
               <item row="2" column="2">
-               <widget class="QComboBox" name="sipm_amp1_name_ch2">
+               <widget class="NoWheelComboBox" name="sipm_amp1_name_ch2">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
                </widget>
               </item>
               <item row="2" column="3">
-               <widget class="QComboBox" name="sipm_amp1_name_ch3">
+               <widget class="NoWheelComboBox" name="sipm_amp1_name_ch3">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
                </widget>
               </item>
               <item row="2" column="4">
-               <widget class="QComboBox" name="sipm_amp1_name_ch4">
+               <widget class="NoWheelComboBox" name="sipm_amp1_name_ch4">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
                </widget>
               </item>
               <item row="2" column="5">
-               <widget class="QComboBox" name="sipm_amp1_name_ch5">
+               <widget class="NoWheelComboBox" name="sipm_amp1_name_ch5">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
                </widget>
               </item>
               <item row="2" column="6">
-               <widget class="QComboBox" name="sipm_amp1_name_ch6">
+               <widget class="NoWheelComboBox" name="sipm_amp1_name_ch6">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
                </widget>
               </item>
               <item row="2" column="7">
-               <widget class="QComboBox" name="sipm_amp1_name_ch7">
+               <widget class="NoWheelComboBox" name="sipm_amp1_name_ch7">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
                </widget>
               </item>
               <item row="2" column="8">
-               <widget class="QComboBox" name="sipm_amp1_name_ch8">
+               <widget class="NoWheelComboBox" name="sipm_amp1_name_ch8">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
                </widget>
               </item>
               <item row="5" column="1">
-               <widget class="QComboBox" name="sipm_amp1_name_ch9">
+               <widget class="NoWheelComboBox" name="sipm_amp1_name_ch9">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
                </widget>
               </item>
               <item row="5" column="2">
-               <widget class="QComboBox" name="sipm_amp1_name_ch10">
+               <widget class="NoWheelComboBox" name="sipm_amp1_name_ch10">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
                </widget>
               </item>
               <item row="5" column="3">
-               <widget class="QComboBox" name="sipm_amp1_name_ch11">
+               <widget class="NoWheelComboBox" name="sipm_amp1_name_ch11">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
                </widget>
               </item>
               <item row="5" column="4">
-               <widget class="QComboBox" name="sipm_amp1_name_ch12">
+               <widget class="NoWheelComboBox" name="sipm_amp1_name_ch12">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
                </widget>
               </item>
               <item row="5" column="5">
-               <widget class="QComboBox" name="sipm_amp1_name_ch13">
+               <widget class="NoWheelComboBox" name="sipm_amp1_name_ch13">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
                </widget>
               </item>
               <item row="5" column="6">
-               <widget class="QComboBox" name="sipm_amp1_name_ch14">
+               <widget class="NoWheelComboBox" name="sipm_amp1_name_ch14">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
                </widget>
               </item>
               <item row="5" column="7">
-               <widget class="QComboBox" name="sipm_amp1_name_ch15">
+               <widget class="NoWheelComboBox" name="sipm_amp1_name_ch15">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
                </widget>
               </item>
               <item row="5" column="8">
-               <widget class="QComboBox" name="sipm_amp1_name_ch16">
+               <widget class="NoWheelComboBox" name="sipm_amp1_name_ch16">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
@@ -4012,112 +4012,112 @@
                </widget>
               </item>
               <item row="2" column="1">
-               <widget class="QComboBox" name="sipm_amp2_name_ch1">
+               <widget class="NoWheelComboBox" name="sipm_amp2_name_ch1">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
                </widget>
               </item>
               <item row="2" column="2">
-               <widget class="QComboBox" name="sipm_amp2_name_ch2">
+               <widget class="NoWheelComboBox" name="sipm_amp2_name_ch2">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
                </widget>
               </item>
               <item row="2" column="3">
-               <widget class="QComboBox" name="sipm_amp2_name_ch3">
+               <widget class="NoWheelComboBox" name="sipm_amp2_name_ch3">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
                </widget>
               </item>
               <item row="2" column="4">
-               <widget class="QComboBox" name="sipm_amp2_name_ch4">
+               <widget class="NoWheelComboBox" name="sipm_amp2_name_ch4">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
                </widget>
               </item>
               <item row="2" column="5">
-               <widget class="QComboBox" name="sipm_amp2_name_ch5">
+               <widget class="NoWheelComboBox" name="sipm_amp2_name_ch5">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
                </widget>
               </item>
               <item row="2" column="6">
-               <widget class="QComboBox" name="sipm_amp2_name_ch6">
+               <widget class="NoWheelComboBox" name="sipm_amp2_name_ch6">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
                </widget>
               </item>
               <item row="2" column="7">
-               <widget class="QComboBox" name="sipm_amp2_name_ch7">
+               <widget class="NoWheelComboBox" name="sipm_amp2_name_ch7">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
                </widget>
               </item>
               <item row="2" column="8">
-               <widget class="QComboBox" name="sipm_amp2_name_ch8">
+               <widget class="NoWheelComboBox" name="sipm_amp2_name_ch8">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
                </widget>
               </item>
               <item row="5" column="1">
-               <widget class="QComboBox" name="sipm_amp2_name_ch9">
+               <widget class="NoWheelComboBox" name="sipm_amp2_name_ch9">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
                </widget>
               </item>
               <item row="5" column="2">
-               <widget class="QComboBox" name="sipm_amp2_name_ch10">
+               <widget class="NoWheelComboBox" name="sipm_amp2_name_ch10">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
                </widget>
               </item>
               <item row="5" column="3">
-               <widget class="QComboBox" name="sipm_amp2_name_ch11">
+               <widget class="NoWheelComboBox" name="sipm_amp2_name_ch11">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
                </widget>
               </item>
               <item row="5" column="4">
-               <widget class="QComboBox" name="sipm_amp2_name_ch12">
+               <widget class="NoWheelComboBox" name="sipm_amp2_name_ch12">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
                </widget>
               </item>
               <item row="5" column="5">
-               <widget class="QComboBox" name="sipm_amp2_name_ch13">
+               <widget class="NoWheelComboBox" name="sipm_amp2_name_ch13">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
                </widget>
               </item>
               <item row="5" column="6">
-               <widget class="QComboBox" name="sipm_amp2_name_ch14">
+               <widget class="NoWheelComboBox" name="sipm_amp2_name_ch14">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
                </widget>
               </item>
               <item row="5" column="7">
-               <widget class="QComboBox" name="sipm_amp2_name_ch15">
+               <widget class="NoWheelComboBox" name="sipm_amp2_name_ch15">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
                </widget>
               </item>
               <item row="5" column="8">
-               <widget class="QComboBox" name="sipm_amp2_name_ch16">
+               <widget class="NoWheelComboBox" name="sipm_amp2_name_ch16">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
@@ -5217,112 +5217,112 @@
                </widget>
               </item>
               <item row="2" column="1">
-               <widget class="QComboBox" name="sipm_amp3_name_ch1">
+               <widget class="NoWheelComboBox" name="sipm_amp3_name_ch1">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
                </widget>
               </item>
               <item row="2" column="2">
-               <widget class="QComboBox" name="sipm_amp3_name_ch2">
+               <widget class="NoWheelComboBox" name="sipm_amp3_name_ch2">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
                </widget>
               </item>
               <item row="2" column="3">
-               <widget class="QComboBox" name="sipm_amp3_name_ch3">
+               <widget class="NoWheelComboBox" name="sipm_amp3_name_ch3">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
                </widget>
               </item>
               <item row="2" column="4">
-               <widget class="QComboBox" name="sipm_amp3_name_ch4">
+               <widget class="NoWheelComboBox" name="sipm_amp3_name_ch4">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
                </widget>
               </item>
               <item row="2" column="5">
-               <widget class="QComboBox" name="sipm_amp3_name_ch5">
+               <widget class="NoWheelComboBox" name="sipm_amp3_name_ch5">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
                </widget>
               </item>
               <item row="2" column="6">
-               <widget class="QComboBox" name="sipm_amp3_name_ch6">
+               <widget class="NoWheelComboBox" name="sipm_amp3_name_ch6">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
                </widget>
               </item>
               <item row="2" column="7">
-               <widget class="QComboBox" name="sipm_amp3_name_ch7">
+               <widget class="NoWheelComboBox" name="sipm_amp3_name_ch7">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
                </widget>
               </item>
               <item row="2" column="8">
-               <widget class="QComboBox" name="sipm_amp3_name_ch8">
+               <widget class="NoWheelComboBox" name="sipm_amp3_name_ch8">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
                </widget>
               </item>
               <item row="5" column="1">
-               <widget class="QComboBox" name="sipm_amp3_name_ch9">
+               <widget class="NoWheelComboBox" name="sipm_amp3_name_ch9">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
                </widget>
               </item>
               <item row="5" column="2">
-               <widget class="QComboBox" name="sipm_amp3_name_ch10">
+               <widget class="NoWheelComboBox" name="sipm_amp3_name_ch10">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
                </widget>
               </item>
               <item row="5" column="3">
-               <widget class="QComboBox" name="sipm_amp3_name_ch11">
+               <widget class="NoWheelComboBox" name="sipm_amp3_name_ch11">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
                </widget>
               </item>
               <item row="5" column="4">
-               <widget class="QComboBox" name="sipm_amp3_name_ch12">
+               <widget class="NoWheelComboBox" name="sipm_amp3_name_ch12">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
                </widget>
               </item>
               <item row="5" column="5">
-               <widget class="QComboBox" name="sipm_amp3_name_ch13">
+               <widget class="NoWheelComboBox" name="sipm_amp3_name_ch13">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
                </widget>
               </item>
               <item row="5" column="6">
-               <widget class="QComboBox" name="sipm_amp3_name_ch14">
+               <widget class="NoWheelComboBox" name="sipm_amp3_name_ch14">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
                </widget>
               </item>
               <item row="5" column="7">
-               <widget class="QComboBox" name="sipm_amp3_name_ch15">
+               <widget class="NoWheelComboBox" name="sipm_amp3_name_ch15">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
                </widget>
               </item>
               <item row="5" column="8">
-               <widget class="QComboBox" name="sipm_amp3_name_ch16">
+               <widget class="NoWheelComboBox" name="sipm_amp3_name_ch16">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
@@ -5384,7 +5384,7 @@
            <property name="geometry">
             <rect>
              <x>0</x>
-             <y>0</y>
+             <y>-474</y>
              <width>876</width>
              <height>998</height>
             </rect>
@@ -6582,7 +6582,7 @@
                </widget>
               </item>
               <item row="2" column="1">
-               <widget class="QComboBox" name="caen_g0_name_0">
+               <widget class="NoWheelComboBox" name="caen_g0_name_0">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
@@ -6599,49 +6599,49 @@
                </widget>
               </item>
               <item row="2" column="2">
-               <widget class="QComboBox" name="caen_g0_name_1">
+               <widget class="NoWheelComboBox" name="caen_g0_name_1">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
                </widget>
               </item>
               <item row="2" column="3">
-               <widget class="QComboBox" name="caen_g0_name_2">
+               <widget class="NoWheelComboBox" name="caen_g0_name_2">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
                </widget>
               </item>
               <item row="2" column="4">
-               <widget class="QComboBox" name="caen_g0_name_3">
+               <widget class="NoWheelComboBox" name="caen_g0_name_3">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
                </widget>
               </item>
               <item row="2" column="5">
-               <widget class="QComboBox" name="caen_g0_name_4">
+               <widget class="NoWheelComboBox" name="caen_g0_name_4">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
                </widget>
               </item>
               <item row="2" column="6">
-               <widget class="QComboBox" name="caen_g0_name_5">
+               <widget class="NoWheelComboBox" name="caen_g0_name_5">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
                </widget>
               </item>
               <item row="2" column="7">
-               <widget class="QComboBox" name="caen_g0_name_6">
+               <widget class="NoWheelComboBox" name="caen_g0_name_6">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
                </widget>
               </item>
               <item row="2" column="8">
-               <widget class="QComboBox" name="caen_g0_name_7">
+               <widget class="NoWheelComboBox" name="caen_g0_name_7">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
@@ -7249,56 +7249,56 @@
                </widget>
               </item>
               <item row="2" column="1">
-               <widget class="QComboBox" name="caen_g1_name_0">
+               <widget class="NoWheelComboBox" name="caen_g1_name_0">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
                </widget>
               </item>
               <item row="2" column="2">
-               <widget class="QComboBox" name="caen_g1_name_1">
+               <widget class="NoWheelComboBox" name="caen_g1_name_1">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
                </widget>
               </item>
               <item row="2" column="3">
-               <widget class="QComboBox" name="caen_g1_name_2">
+               <widget class="NoWheelComboBox" name="caen_g1_name_2">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
                </widget>
               </item>
               <item row="2" column="4">
-               <widget class="QComboBox" name="caen_g1_name_3">
+               <widget class="NoWheelComboBox" name="caen_g1_name_3">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
                </widget>
               </item>
               <item row="2" column="5">
-               <widget class="QComboBox" name="caen_g1_name_4">
+               <widget class="NoWheelComboBox" name="caen_g1_name_4">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
                </widget>
               </item>
               <item row="2" column="6">
-               <widget class="QComboBox" name="caen_g1_name_5">
+               <widget class="NoWheelComboBox" name="caen_g1_name_5">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
                </widget>
               </item>
               <item row="2" column="7">
-               <widget class="QComboBox" name="caen_g1_name_6">
+               <widget class="NoWheelComboBox" name="caen_g1_name_6">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
                </widget>
               </item>
               <item row="2" column="8">
-               <widget class="QComboBox" name="caen_g1_name_7">
+               <widget class="NoWheelComboBox" name="caen_g1_name_7">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
@@ -7906,56 +7906,56 @@
                </widget>
               </item>
               <item row="2" column="1">
-               <widget class="QComboBox" name="caen_g2_name_0">
+               <widget class="NoWheelComboBox" name="caen_g2_name_0">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
                </widget>
               </item>
               <item row="2" column="2">
-               <widget class="QComboBox" name="caen_g2_name_1">
+               <widget class="NoWheelComboBox" name="caen_g2_name_1">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
                </widget>
               </item>
               <item row="2" column="3">
-               <widget class="QComboBox" name="caen_g2_name_2">
+               <widget class="NoWheelComboBox" name="caen_g2_name_2">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
                </widget>
               </item>
               <item row="2" column="4">
-               <widget class="QComboBox" name="caen_g2_name_3">
+               <widget class="NoWheelComboBox" name="caen_g2_name_3">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
                </widget>
               </item>
               <item row="2" column="5">
-               <widget class="QComboBox" name="caen_g2_name_4">
+               <widget class="NoWheelComboBox" name="caen_g2_name_4">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
                </widget>
               </item>
               <item row="2" column="6">
-               <widget class="QComboBox" name="caen_g2_name_5">
+               <widget class="NoWheelComboBox" name="caen_g2_name_5">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
                </widget>
               </item>
               <item row="2" column="7">
-               <widget class="QComboBox" name="caen_g2_name_6">
+               <widget class="NoWheelComboBox" name="caen_g2_name_6">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
                </widget>
               </item>
               <item row="2" column="8">
-               <widget class="QComboBox" name="caen_g2_name_7">
+               <widget class="NoWheelComboBox" name="caen_g2_name_7">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
@@ -7996,14 +7996,14 @@
                </widget>
               </item>
               <item row="2" column="1">
-               <widget class="QComboBox" name="caen_g3_name_0">
+               <widget class="NoWheelComboBox" name="caen_g3_name_0">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
                </widget>
               </item>
               <item row="2" column="3">
-               <widget class="QComboBox" name="caen_g3_name_2">
+               <widget class="NoWheelComboBox" name="caen_g3_name_2">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
@@ -8088,7 +8088,7 @@
                </widget>
               </item>
               <item row="2" column="6">
-               <widget class="QComboBox" name="caen_g3_name_5">
+               <widget class="NoWheelComboBox" name="caen_g3_name_5">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
@@ -8191,7 +8191,7 @@
                </widget>
               </item>
               <item row="2" column="5">
-               <widget class="QComboBox" name="caen_g3_name_4">
+               <widget class="NoWheelComboBox" name="caen_g3_name_4">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
@@ -8335,7 +8335,7 @@
                </widget>
               </item>
               <item row="2" column="2">
-               <widget class="QComboBox" name="caen_g3_name_1">
+               <widget class="NoWheelComboBox" name="caen_g3_name_1">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
@@ -8465,7 +8465,7 @@
                </widget>
               </item>
               <item row="2" column="4">
-               <widget class="QComboBox" name="caen_g3_name_3">
+               <widget class="NoWheelComboBox" name="caen_g3_name_3">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
@@ -8543,7 +8543,7 @@
                </widget>
               </item>
               <item row="2" column="7">
-               <widget class="QComboBox" name="caen_g3_name_6">
+               <widget class="NoWheelComboBox" name="caen_g3_name_6">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
@@ -8612,7 +8612,7 @@
                </widget>
               </item>
               <item row="2" column="8">
-               <widget class="QComboBox" name="caen_g3_name_7">
+               <widget class="NoWheelComboBox" name="caen_g3_name_7">
                 <property name="editable">
                  <bool>true</bool>
                 </property>
