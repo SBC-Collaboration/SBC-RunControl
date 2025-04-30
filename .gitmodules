@@ -1,0 +1,3 @@
+[submodule "dependencies/gati-linux-driver"]
+	path = dependencies/gati-linux-driver
+	url = https://github.com/SBC-Collaboration/gati-linux-driver.git
