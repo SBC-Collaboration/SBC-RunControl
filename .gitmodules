@@ -1,6 +1,7 @@
 [submodule "dependencies/gati-linux-driver"]
 	path = dependencies/gati-linux-driver
 	url = https://github.com/SBC-Collaboration/gati-linux-driver.git
+        branch = runcontrol
 [submodule "dependencies/CAENDrivers"]
 	path = dependencies/CAENDrivers
 	url = https://github.com/SBC-Collaboration/CAENDrivers.git
