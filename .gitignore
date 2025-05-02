@@ -2,9 +2,12 @@
 *.log
 __pycache__
 run-data
-dependencies/arduino-cli
+dependencies/**/arduino-cli
+dependencies/ArduinoSketches/**/*.json
 build/
 playground/
 ui/*window.py
 ui/*dialog.py
 resources_rc.py
+DAQ_test/
+SBCAcquisition.ini
