@@ -1,30 +1,53 @@
 #!/usr/bin/sh
 echo "Starting initialization script for run control."
 
+# =================================================
+# Populate dependencies folder
+# =================================================
+# copies config from .gitmodules to .git/config
+git submodule sync --recursive
+# clones submodules if not already cloned
+git submodule update --init --recursive
+# updates submodules to latest commit
+git submodule update --remote --recursive
+
+# =================================================
 # Set up conda environment
+# =================================================
 echo "Setting up conda environment..."
+# update conda to latest version
 conda update -y -n base conda
 if conda info --envs | grep -q runcontrol; then
+  # if runcontrol environment already exists, update it
   echo "Conda environment \"runcontrol\" already exists. Updating...";
   conda env update --file ./dependencies/conda_rc.yml --prune;
 else
+  # if runcontrol environment doesn't exist, create it
   echo "Conda environment \"runcontrol\" doesn't exist. Creating environment...";
   conda env create -y -n runcontrol --file ./dependencies/conda_rc.yml;
 fi
 conda activate runcontrol;
 
-# generate all ui and resources files
+# =================================================
+# Generate all ui and resources files
+# =================================================
 echo "Generating Qt UI and resources files."
+# generate all .py files from .ui files
 for f in ./ui/*.ui; do
   name="${f%%.ui}";
   pyside6-uic $f -o "$name.py";
 done
+# generate all .py files from .qrc files
 pyside6-rcc ./resources/resources.qrc -o ./resources_rc.py
 
-# add dependencies folder to PATH
+# =================================================
+# Add dependencies folder to PATH
+# =================================================
 export PATH=$PATH:$PWD/dependencies
 
-# install arduino packages
+# =================================================
+# Install arduino packages
+# =================================================
 # user need to be in dialout group on linux
 echo "Setting up Arduino cli and libraries..."
 curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | BINDIR=./dependencies sh
@@ -81,7 +104,9 @@ if [ "$SUDOER_SET" = "false" ]; then
     fi
 fi
 
-# Execute root script
+# =================================================
+# Execute root init script
+# =================================================
 echo "Executing root script"
 sudo "$ROOT_SCRIPT_DEST"
 
