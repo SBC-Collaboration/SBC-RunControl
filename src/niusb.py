@@ -1,4 +1,4 @@
-from dependencies.NI_USB6501.ni_usb_6501 import *
+from ni_usb_6501 import *
 import logging
 from PySide6.QtCore import QTimer, QObject, QThread, Slot, Signal
 import os
