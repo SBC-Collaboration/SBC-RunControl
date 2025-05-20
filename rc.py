@@ -465,7 +465,7 @@ class MainWindow(QMainWindow):
         """
         vars = self.ui.__dict__
         if "disabled" in module:
-            name = re.sub(r'^.*?-', "", module)
+            name = re.search(r'^(.*?)-', module).group(1)
             self.logger.debug(f"Starting Run: {name} is disabled")
             vars[f"status_{name}"].idle()
             self.starting_run_ready.append(module)
@@ -485,7 +485,7 @@ class MainWindow(QMainWindow):
         """
         vars = self.ui.__dict__
         if "disabled" in module:
-            name = re.sub(r'^.*?-', "", module)
+            name = re.search(r'^(.*?)-', module).group(1)
             self.logger.debug(f"Stopping Run: {name} is disabled")
             vars[f"status_{name}"].idle()
             self.stopping_run_ready.append(module)
@@ -504,7 +504,7 @@ class MainWindow(QMainWindow):
         """
         vars = self.ui.__dict__
         if "disabled" in module:
-            name = re.sub(r'^.*?-', "", module)
+            name = re.search(r'^(.*?)-', module).group(1)
             self.logger.debug(f"Starting Event: {name} is disabled")
             vars[f"status_{name}"].idle()
             self.starting_event_ready.append(module)
@@ -524,7 +524,7 @@ class MainWindow(QMainWindow):
         """
         vars = self.ui.__dict__
         if "disabled" in module:
-            name = re.sub(r'^.*?-', "", module)
+            name = re.search(r'^(.*?)-', module).group(1)
             self.logger.debug(f"Stopping Event: {name} is disabled")
             vars[f"status_{name}"].idle()
             self.stopping_event_ready.append(module)

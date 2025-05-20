@@ -197,7 +197,7 @@ class NIUSB(QObject):
                     continue
                 if not self.main.config_class.run_config["cam"][cam]["enabled"]:
                     cam_ready[cam] = "disabled"
-                    self.event_started.emit(f"disabled-{cam}")
+                    self.event_started.emit(f"{cam}-disabled")
                     self.logger.debug(f"{cam} is disabled.")
                 elif cam_ready[cam] == "idle":
                     # starting up send trigen to false and comm to true
@@ -253,7 +253,7 @@ class NIUSB(QObject):
                 self.logger.debug(f"{cam} is complete.")
                 self.event_stopped.emit(cam)
             else:
-                self.event_stopped.emit(f"disabled-{cam}")
+                self.event_stopped.emit(f"{cam}-disabled")
 
         self.main.config_class.cam_config_saved = False
 

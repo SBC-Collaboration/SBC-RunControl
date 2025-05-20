@@ -102,7 +102,7 @@ class SQL(QObject):
         self.config = self.main.config_class.run_config["general"]["sql"]
         self.enabled = self.config["enabled"]
         if not self.enabled:
-            self.run_started.emit("disabled-sql")
+            self.run_started.emit("sql-disabled")
             return
         
         runs = self.retrieve_run_id("20240508")
@@ -141,7 +141,7 @@ class SQL(QObject):
     @Slot()
     def stop_event(self):
         if not self.enabled:
-            self.event_stopped.emit("disabled-sql")
+            self.event_stopped.emit("sql-disabled")
             return
         self.db.ping()  # ping mysql server to make sure it's alive
         # TODO: data validation steps ...

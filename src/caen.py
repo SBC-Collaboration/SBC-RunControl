@@ -90,7 +90,7 @@ class Caen(QObject):
         self.evs_per_read = self.config["evs_per_read"] # save value for reading data
 
         if not self.config["enabled"]:
-            self.run_started.emit(f"disabled-caen")
+            self.run_started.emit(f"caen-disabled")
             return
 
         self.caen = red_caen.CAEN(
@@ -113,7 +113,7 @@ class Caen(QObject):
     @Slot()
     def start_event(self):
         if not self.config["enabled"]:
-            self.event_started.emit(f"disabled-caen")
+            self.event_started.emit(f"caen-disabled")
             return
 
         # Check connection status
@@ -142,7 +142,7 @@ class Caen(QObject):
     @Slot()
     def stop_event(self):
         if not self.config["enabled"]:
-            self.event_stopped.emit(f"disabled-caen")
+            self.event_stopped.emit(f"caen-disabled")
             return
 
         self.caen.DisableAcquisition()
@@ -165,7 +165,7 @@ class Caen(QObject):
     @Slot()
     def stop_run(self):
         if not self.config["enabled"]:
-            self.run_stopped.emit(f"disabled-caen")
+            self.run_stopped.emit(f"caen-disabled")
             return
         
         del self.caen

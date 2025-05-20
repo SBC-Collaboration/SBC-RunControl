@@ -56,7 +56,7 @@ class Camera(QObject):
         self.config = self.main.config_class.run_config["cam"][self.cam_name]
 
         if not self.config["enabled"]:
-            self.camera_started.emit(f"disabled-{self.cam_name}")
+            self.camera_started.emit(f"{self.cam_name}-disabled")
             return
         else:
             self.test_rpi()
@@ -83,5 +83,9 @@ class Camera(QObject):
 
     @Slot()
     def stop_camera(self):
-        self.client.close()
-        self.camera_closed.emit(self.cam_name)
+        if not self.config["enabled"]:
+            self.camera_closed.emit(f"{self.cam_name}-disabled")
+            return
+        else:
+            self.client.close()
+            self.camera_closed.emit(self.cam_name)

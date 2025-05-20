@@ -138,7 +138,7 @@ class Acoustics(QObject):
     def start_event(self):
         self.config = self.main.config_class.run_config["acous"]
         if not self.config["enabled"]:
-            self.event_started.emit(f"disabled-gage")
+            self.event_started.emit(f"gage-disabled")
             return
         self.save_config()
         
@@ -150,7 +150,7 @@ class Acoustics(QObject):
     @Slot()
     def stop_event(self):
         if not self.config["enabled"]:
-            self.event_stopped.emit(f"disabled-gage")
+            self.event_stopped.emit(f"gage-disabled")
             return
 
         if self.gage_process and self.gage_process.is_alive():

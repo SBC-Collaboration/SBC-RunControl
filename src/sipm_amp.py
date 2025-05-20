@@ -99,7 +99,7 @@ class SiPMAmp(QObject):
     def bias_sipm(self):
         self.test_sipm_amp()
         if not self.config["enabled"]:
-            self.sipm_biased.emit(f"disabled-{self.amp}")
+            self.sipm_biased.emit(f"{self.amp}-disabled")
             return
         commands = [
             "dactest -v hv 1 0",  # set HV rail to 0V
@@ -120,11 +120,11 @@ class SiPMAmp(QObject):
         ping with only 1 packet, with 1s timeout
         """
         if not self.config["enabled"]:
-            self.sipm_unbiased.emit(f"disabled-{self.amp}")
+            self.sipm_unbiased.emit(f"{self.amp}-disabled")
             return
             if subprocess.call(f"ping -c 1 -W 1 {self.config["ip_addr"]}", shell=True):
                 self.logger.debug(f"SiPM {self.amp} is disabled and not connected")
-                self.sipm_unbiased.emit(f"disabled-{self.amp}")
+                self.sipm_unbiased.emit(f"{self.amp}-disabled")
                 return
 
         commands = [
@@ -184,7 +184,7 @@ class SiPMAmp(QObject):
     def start_run(self):
         self.config = self.main.config_class.run_config["scint"][self.amp]
         if not self.config["enabled"]:
-            self.sipm_biased.emit(f"disabled-{self.amp}")
+            self.sipm_biased.emit(f"{self.amp}-disabled")
             return
         if self.check_iv_interval():
             self.run_iv_curve
