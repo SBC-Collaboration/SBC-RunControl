@@ -4,8 +4,13 @@
     "data_dir": "/mnt/nas/rc-data",
     "log_dir": "/mnt/nas/rc-data/logs/",
     "max_ev_time": 30.0,
-    "max_num_evs": 1,
+    "max_num_evs": 1
+  },
+  "plc": {
+    "hostname": "192.168.137.11",
+    "port": 502,
     "pressure": {
+      "enabled": false,
       "mode": "random",
       "profile1": {
         "enabled": true,
@@ -49,17 +54,17 @@
         "slope": 0.0,
         "period": -1.0
       }
-    },
-    "sql": {
-      "enabled": false,
-      "hostname": "sbcslowcontrol.fnal.gov",
-      "port": 3306,
-      "user": "daq",
-      "token": "SQL_DAQ_TOKEN",
-      "database": "SBCslowcontrol",
-      "run_table": "RunData",
-      "event_table": "EventData"
     }
+  },
+  "sql": {
+    "enabled": true,
+    "hostname": "sbcslowcontrol.fnal.gov",
+    "port": 3306,
+    "user": "daq",
+    "token": "SQL_DAQ_TOKEN",
+    "database": "SBCslowcontrol",
+    "run_table": "RunData",
+    "event_table": "EventData"
   },
   "scint": {
     "amp1": {
@@ -202,8 +207,10 @@
         "NC",
         "NC"
       ]
-    },
-    "caen": {
+    }
+  },
+  "caen": {
+    "global": {
       "enabled": false,
       "data_path": "/mnt/nas/rc-data/current_event/",
       "model": "DT5740D",
@@ -227,7 +234,7 @@
       "sw_trig": "ACQ_ONLY",
       "ch_trig": "ACQ_ONLY"
     },
-    "caen_g0": {
+    "group0": {
       "enabled": true,
       "threshold": 2000,
       "offset": 32768,
@@ -283,7 +290,7 @@
         0
       ]
     },
-    "caen_g1": {
+    "group1": {
       "enabled": true,
       "threshold": 2000,
       "offset": 32768,
@@ -339,7 +346,7 @@
         0
       ]
     },
-    "caen_g2": {
+    "group2": {
       "enabled": true,
       "threshold": 2000,
       "offset": 32768,
@@ -395,7 +402,7 @@
         0
       ]
     },
-    "caen_g3": {
+    "group3": {
       "enabled": true,
       "threshold": 2000,
       "offset": 32768,

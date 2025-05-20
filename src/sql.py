@@ -31,7 +31,7 @@ class SQL(QObject):
         self.logger = logging.getLogger("rc")
         self.db = None
 
-        self.config = mainwindow.config_class.config["general"]["sql"]
+        self.config = mainwindow.config_class.config["sql"]
         # save the password in ENV at sbcslowcontrol machine
         # self.home = os.path.expanduser('~')
         self.hostname = self.config["hostname"]
@@ -99,13 +99,12 @@ class SQL(QObject):
 
     @Slot()
     def start_run(self):
-        self.config = self.main.config_class.run_config["general"]["sql"]
+        self.config = self.main.config_class.run_config["sql"]
         self.enabled = self.config["enabled"]
         if not self.enabled:
             self.run_started.emit("sql-disabled")
             return
         
-        runs = self.retrieve_run_id("20240508")
         self.setup_connection()
 
         self.db.ping()  # ping mysql server to make sure it's alive

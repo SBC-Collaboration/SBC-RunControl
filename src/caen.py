@@ -16,7 +16,7 @@ class Caen(QObject):
         super().__init__()
         self.main = mainwindow
         self.logger = logging.getLogger("rc")
-        self.scint_config = self.main.config_class.config["scint"]
+        self.scint_config = self.main.config_class.config["caen"]
         self.caen = None
 
         self.timer = QTimer(self)
@@ -41,7 +41,7 @@ class Caen(QObject):
 
 
     def set_config(self):
-        self.config = self.main.config_class.run_config["scint"]["caen"]
+        self.config = self.main.config_class.run_config["caen"]["global"]
 
         # set global config from dict to class attributes
         self.global_config.MaxEventsPerRead = self.config["evs_per_read"]
@@ -61,7 +61,7 @@ class Caen(QObject):
         self.global_config.MajorityWindow = self.config["majority_window"]
 
         for i in range(4):
-            group_config = self.main.config_class.run_config["scint"][f"caen_g{i}"]
+            group_config = self.main.config_class.run_config["caen"][f"group{i}"]
             acq_mask = red_caen.ChannelsMask()
             trg_mask = red_caen.ChannelsMask()
             for ch in range(8):
@@ -86,7 +86,7 @@ class Caen(QObject):
     def start_run(self):
         self.global_config = red_caen.CAENGlobalConfig()
         self.group_configs = [red_caen.CAENGroupConfig() for _ in range(8)]
-        self.config = self.main.config_class.run_config["scint"]["caen"]
+        self.config = self.main.config_class.run_config["caen"]["global"]
         self.evs_per_read = self.config["evs_per_read"] # save value for reading data
 
         if not self.config["enabled"]:

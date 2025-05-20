@@ -75,8 +75,14 @@ class Config(QObject):
         ui.max_ev_time_box.setValue(general_config["max_ev_time"])
         ui.max_num_ev_box.setValue(general_config["max_num_evs"])
 
+        # PLC
+        plc_config = self.config["plc"]
+        ui.plc_hostname_edit.setText(plc_config["hostname"])
+        ui.plc_modbus_port_box.setValue(plc_config["port"])
+
         # pressure
-        pressure_config = self.config["general"]["pressure"]
+        pressure_config = self.config["plc"]["pressure"]
+        ui.p_enabled_box.setChecked(pressure_config["enabled"])
         if pressure_config["mode"] == "random":
             ui.p_random_but.setChecked(True)
         elif pressure_config["mode"] == "cycle":
@@ -92,8 +98,8 @@ class Config(QObject):
             widgets[f"pressure{i}_period"].setValue(profile["period"])
 
         # SQL
-        sql_config = self.config["general"]["sql"]
-        # ui.sql_enabled_box.setChecked(sql_config["enabled"])
+        sql_config = self.config["sql"]
+        ui.sql_enabled_box.setChecked(sql_config["enabled"])
         ui.sql_hostname_edit.setText(sql_config["hostname"])
         ui.sql_port_box.setValue(sql_config["port"])
         ui.sql_user_edit.setText(sql_config["user"])
@@ -152,7 +158,7 @@ class Config(QObject):
             widgets[f"sipm_amp3_name_ch{ch}"].setCurrentText(sipm_amp3_config["name"][ch-1])
 
         # CAEN
-        caen_config = self.config["scint"]["caen"]
+        caen_config = self.config["caen"]["global"]
         ui.caen_enabled_box.setChecked(caen_config["enabled"])
         ui.caen_data_path_box.setText(caen_config["data_path"])
         ui.caen_model_box.setCurrentText(caen_config["model"])
@@ -176,8 +182,9 @@ class Config(QObject):
         ui.caen_sw_trig_box.setCurrentText(caen_config["sw_trig"])
         ui.caen_ch_trig_box.setCurrentText(caen_config["ch_trig"])
 
-        for gp in ["g0", "g1", "g2", "g3"]:
-            gp_config = self.config["scint"][f"caen_{gp}"]
+        for g in range(4):
+            gp = f"g{g}"
+            gp_config = self.config["caen"][f"group{g}"]
             widgets[f"caen_{gp}_enable_box"].setChecked(gp_config["enabled"])
             widgets[f"caen_{gp}_thres_box"].setValue(gp_config["threshold"])
             widgets[f"caen_{gp}_offset_box"].setValue(gp_config["offset"])
@@ -334,6 +341,21 @@ class Config(QObject):
     def apply_config(self, ui):
         widgets = ui.__dict__
 
+        general_config = {
+            "config_path": ui.config_path_edit.text(),
+            "data_dir": ui.data_dir_edit.text(),
+            "log_dir": ui.log_dir_edit.text(),
+            "max_ev_time": ui.max_ev_time_box.value(),
+            "max_num_evs": ui.max_num_ev_box.value(),
+        }
+
+        # apply plc config
+        plc_config = {
+            # TODO: add PLC enabled box
+            "hostname": ui.plc_hostname_edit.text(),
+            "port": ui.plc_modbus_port_box.value(),
+        }
+
         # get mode from radio buttons
         if ui.p_random_but.isChecked():
             mode = "random"
@@ -344,6 +366,7 @@ class Config(QObject):
             mode = ""
 
         pressure_config = {
+            "enabled": ui.p_enabled_box.isChecked(),
             "mode": mode,
         }
         for i in range(1,7):
@@ -354,6 +377,7 @@ class Config(QObject):
             profile["slope"] = widgets[f"pressure{i}_slope"].value()
             profile["period"] = widgets[f"pressure{i}_period"].value()
             pressure_config[f"profile{i}"] = profile
+        plc_config["pressure"] = pressure_config
 
         # apply general config
         sql_config = {
@@ -365,16 +389,6 @@ class Config(QObject):
             "database": ui.sql_database_edit.text(),
             "run_table": ui.sql_run_table_edit.text(),
             "event_table": ui.sql_event_table_edit.text(),
-        }
-
-        general_config = {
-            "config_path": ui.config_path_edit.text(),
-            "data_dir": ui.data_dir_edit.text(),
-            "log_dir": ui.log_dir_edit.text(),
-            "max_ev_time": ui.max_ev_time_box.value(),
-            "max_num_evs": ui.max_num_ev_box.value(),
-            "pressure": pressure_config,
-            "sql": sql_config
         }
 
         sipm_amp1_config = {
@@ -619,15 +633,19 @@ class Config(QObject):
 
         self.config = {
             "general": general_config,
+            "plc": plc_config,
+            "sql": sql_config,
             "scint": {
                 "amp1": sipm_amp1_config,
                 "amp2": sipm_amp2_config,
                 "amp3": sipm_amp3_config,
-                "caen": caen_config,
-                "caen_g0": caen_g0_config,
-                "caen_g1": caen_g1_config,
-                "caen_g2": caen_g2_config,
-                "caen_g3": caen_g3_config
+            },
+            "caen": {
+                "global": caen_config,
+                "group0": caen_g0_config,
+                "group1": caen_g1_config,
+                "group2": caen_g2_config,
+                "group3": caen_g3_config
             },
             "acous": acous_config,
             "cam": cam_config,
@@ -660,13 +678,13 @@ class Config(QObject):
             json.dump(self.run_config, file, indent=2)
 
         # check at least one profile is enabled
-        pressure_profiles = self.run_config["general"]["pressure"]
+        pressure_profiles = self.run_config["plc"]["pressure"]
         self.pressure_mode = pressure_profiles["mode"]
 
         enabled_profiles = 0
         self.pressure_profiles = []
         for k, v in pressure_profiles.items():
-            if k!="mode" and v["enabled"]:
+            if ("profile" in k) and v["enabled"]:
                 self.pressure_profiles.append(v)
 
         # save arduino json files
