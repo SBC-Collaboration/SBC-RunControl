@@ -75,7 +75,9 @@ class SQL(QObject):
     def deleteLater(self):
         # overwrite delete method to close connections
         self.close_connection()
+        self.main.trigff_mutex.lock()
         self.main.trigff_wait.wakeAll() # wake in case it's hanging
+        self.main.trigff_mutex.unlock() 
         super().deleteLater()
 
     def connect_and_execute(self, query):

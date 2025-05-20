@@ -239,7 +239,9 @@ class NIUSB(QObject):
         else:
             self.logger.debug(f"First fault pin for the event is {self.ff_pin}")
         self.trigger_ff.emit(self.ff_pin)
+        self.main.trigff_mutex.lock()
         self.main.trigff_wait.wakeAll()
+        self.main.trigff_mutex.unlock()
         self.event_stopped.emit("niusb")
 
         cam_ready = {}
