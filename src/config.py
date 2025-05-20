@@ -70,7 +70,7 @@ class Config(QObject):
         # general
         general_config = self.config["general"]
         ui.config_path_edit.setText(general_config["config_path"])
-        ui.log_path_edit.setText(general_config["log_path"])
+        ui.log_dir_edit.setText(general_config["log_dir"])
         ui.data_dir_edit.setText(general_config["data_dir"])
         ui.max_ev_time_box.setValue(general_config["max_ev_time"])
         ui.max_num_ev_box.setValue(general_config["max_num_evs"])
@@ -369,8 +369,8 @@ class Config(QObject):
 
         general_config = {
             "config_path": ui.config_path_edit.text(),
-            "log_path": ui.log_path_edit.text(),
             "data_dir": ui.data_dir_edit.text(),
+            "log_dir": ui.log_dir_edit.text(),
             "max_ev_time": ui.max_ev_time_box.value(),
             "max_num_evs": ui.max_num_ev_box.value(),
             "pressure": pressure_config,

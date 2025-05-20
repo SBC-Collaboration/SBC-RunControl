@@ -128,9 +128,9 @@ class SettingsWindow(QMainWindow):
         config_path, _ = QFileDialog.getOpenFileName(self, self.config["general"]["config_path"])
         self.ui.config_path_edit.setText(config_path)
 
-    def select_log_path(self):
-        log_path = QFileDialog.getExistingDirectory(self, self.config["general"]["log_path"])
-        self.ui.log_path_edit.setText(log_path)
+    def select_log_dir(self):
+        log_dir = QFileDialog.getExistingDirectory(self, self.config["general"]["log_dir"])
+        self.ui.log_dir_edit.setText(log_dir)
 
     def select_data_dir(self):
         data_dir = QFileDialog.getExistingDirectory(self, self.config["general"]["data_dir"])

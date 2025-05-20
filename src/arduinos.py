@@ -113,7 +113,10 @@ class Arduino(QObject):
         # TODO: copy json
         fqbn = "arduino:avr:mega"
         port = self.config["port"]
-        sketch_path = self.config["sketch"]
+        sketch_path = os.path.join(
+            os.path.dirname(os.path.abspath(__file__)),
+                "..", self.config["sketch"])
+        print(f"Sketch path: {sketch_path}")
         build_path = os.path.join(sketch_path, "build")
         if not os.path.exists(build_path):
             os.mkdir(build_path)

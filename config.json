@@ -1,8 +1,8 @@
 {
   "general": {
-    "config_path": "/home/sbc/RunControl/config.json",
-    "log_path": "/home/sbc/RunControl/logs/rc.log",
-    "data_dir": "/home/sbc/RunControl/run-data",
+    "config_path": "./config.json",
+    "data_dir": "/mnt/nas/rc-data",
+    "log_dir": "/mnt/nas/rc-data/logs/",
     "max_ev_time": 30.0,
     "max_num_evs": 1,
     "pressure": {
@@ -69,7 +69,7 @@
       "qp": 70.0,
       "iv_enabled": true,
       "iv_data_dir": "/mnt/rc-data/iv-curves/",
-      "iv_rc_dir": "/home/sbc/RunControl/run-data/iv-curves",
+      "iv_rc_dir": "./run-data/iv-curves",
       "iv_interval": 1.0,
       "iv_start": 45.0,
       "iv_stop": 50.0,
@@ -116,7 +116,7 @@
       "qp": 70.0,
       "iv_enabled": true,
       "iv_data_dir": "/mnt/rc-data/iv-curves/",
-      "iv_rc_dir": "/home/sbc/RunControl/run-data/iv-curves",
+      "iv_rc_dir": "./run-data/iv-curves",
       "iv_interval": 1.0,
       "iv_start": 45.0,
       "iv_stop": 50.0,
@@ -163,7 +163,7 @@
       "qp": 70.0,
       "iv_enabled": true,
       "iv_data_dir": "/mnt/rc-data/iv-curves/",
-      "iv_rc_dir": "/home/sbc/RunControl/run-data/iv-curves",
+      "iv_rc_dir": "./run-data/iv-curves",
       "iv_interval": 1.0,
       "iv_start": 45.0,
       "iv_stop": 50.0,
@@ -205,7 +205,7 @@
     },
     "caen": {
       "enabled": false,
-      "data_path": "/home/sbc/RunControl/run-data/current_event/",
+      "data_path": "./run-data/current_event/",
       "model": "DT5740D",
       "link": 0,
       "connection": "USB",
@@ -453,9 +453,9 @@
     }
   },
   "acous": {
-    "enabled": true,
-    "data_dir": "/home/sbc/RunControl/run-data/current_event/",
-    "driver_path": "/home/sbc/packages/gati-linux-driver/Sdk/SBC-Piezo-Base-Code/SBCAbort.so",
+    "enabled": false,
+    "data_dir": "./run-data/current_event/",
+    "driver_path": "./dependencies/gati-linux-driver/Sdk/SBC-Piezo-Base-Code/SBCAbort.so",
     "mode": "Octal",
     "sample_rate": "1 MS/s",
     "timestamp_mode": "Free",
@@ -563,7 +563,7 @@
   "cam": {
     "cam1": {
       "enabled": false,
-      "rc_config_path": "/home/sbc/RunControl/run-data/config/cam1-config.json",
+      "rc_config_path": "./run-data/config/cam1-config.json",
       "config_path": "/mnt/rc-data/config/cam1-config.json",
       "data_path": "/mnt/rc-data/current_event/",
       "ip_addr": "192.168.137.101",
@@ -584,7 +584,7 @@
     },
     "cam2": {
       "enabled": false,
-      "rc_config_path": "/home/sbc/RunControl/run-data/config/cam2-config.json",
+      "rc_config_path": "./run-data/config/cam2-config.json",
       "config_path": "/mnt/rc-data/config/cam2-config.json",
       "data_path": "/mnt/rc-data/current_event/",
       "ip_addr": "192.168.137.102",
@@ -605,7 +605,7 @@
     },
     "cam3": {
       "enabled": false,
-      "rc_config_path": "/home/sbc/RunControl/run-data/config/cam3-config.json",
+      "rc_config_path": "./run-data/config/cam3-config.json",
       "config_path": "/mnt/rc-data/config/cam3-config.json",
       "data_path": "/mnt/rc-data/current_event/",
       "ip_addr": "192.168.137.102",
@@ -628,7 +628,7 @@
   "dio": {
     "trigger": {
       "port": "/dev/arduinoTRIG",
-      "sketch": "/home/sbc/RunControl/dependencies/ArduinoSketches/trigger",
+      "sketch": "./dependencies/ArduinoSketches/trigger",
       "loop": 100,
       "reset": 38,
       "or": 39,
@@ -751,7 +751,7 @@
     },
     "clock": {
       "port": "/dev/arduinoCLK",
-      "sketch": "/home/sbc/RunControl/dependencies/ArduinoSketches/clock/",
+      "sketch": "./dependencies/ArduinoSketches/clock/",
       "loop": 100,
       "wave1": {
         "enabled": true,
@@ -900,7 +900,7 @@
     },
     "position": {
       "port": "/dev/arduinoPOS",
-      "sketch": "/home/sbc/RunControl/dependencies/ArduinoSketches/position/",
+      "sketch": "./dependencies/ArduinoSketches/position/",
       "mac_addr": "A8:61:0A:AE:87:43",
       "ip_addr": "192.168.137.150",
       "gateway": "192.168.137.1",
