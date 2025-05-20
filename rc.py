@@ -18,6 +18,7 @@ from src.sql import SQL
 from src.niusb import NIUSB
 from src.writer import Writer
 import logging
+from logging.handlers import TimedRotatingFileHandler
 from enum import Enum
 import subprocess
 import datetime
@@ -53,13 +54,30 @@ class MainWindow(QMainWindow):
 
         # logger initialization
         self.logger = logging.getLogger("rc")
-        self.log_filename = self.config_class.config["general"]["log_path"]
+        self.logger.setLevel(logging.DEBUG)
+        # console handler
+        self.console_format = "%(asctime)s > %(message)s"
+        self.console_formatter = logging.Formatter(self.console_format, datefmt="%H:%M:%S")
+        self.console_handler = logging.StreamHandler()
+        self.console_handler.setFormatter(self.console_formatter)
+        self.logger.addHandler(self.console_handler)
+        # file handler
+        self.log_dir = self.config_class.config["general"]["log_dir"]
+        if not os.path.exists(self.log_dir):
+            os.mkdir(self.log_dir)
+        current_date = datetime.datetime.now().strftime("%Y%m%d")
+        self.log_filename = os.path.join(self.log_dir, f"rc-{current_date}.log")
         self.log_format = "%(asctime)s %(levelname)s > %(message)s"
         self.log_formatter = logging.Formatter(self.log_format)
-        logging.basicConfig(
-            filename=self.log_filename, format=self.log_format, level=logging.DEBUG
+        self.file_handler = TimedRotatingFileHandler(
+            filename=self.log_filename,
+            when='midnight',        # Rotate at midnight
+            interval=1,             # Daily rotation
+            encoding='utf-8',
+            delay=False
         )
-        self.logger.addHandler(logging.StreamHandler())
+        self.file_handler.setFormatter(self.log_formatter)
+        self.logger.addHandler(self.file_handler)
 
         # define four run states
         self.run_states = Enum(
@@ -224,7 +242,7 @@ class MainWindow(QMainWindow):
         """
         Custom function overriding the close event behavior. It will close both log and settings window, and also leave message in the logger.
         """
-        self.logger.info("Quitting run control.\n")
+        self.logger.info("Quitting run control.")
 
         # close other opened windows before closing
         try:
@@ -242,7 +260,7 @@ class MainWindow(QMainWindow):
             if name.endswith("_worker"):
                 var.deleteLater()
             elif name.endswith("_thread"):
-                self.logger.info(f"Stopping {name}.")
+                self.logger.debug(f"Stopping {name}.")
                 var.quit()
                 if not var.wait(1000):  # 1 sec timeout
                     self.logger.error(f"Thread {name} failed to stop")
@@ -400,23 +418,23 @@ class MainWindow(QMainWindow):
         elif self.run_state == self.run_states["starting_run"]:
             # SiPM amp 1/2/3, Cam 1/2/3, clock/position/trigger arduino, NI USB, CAEN
             if len(self.starting_run_ready) >= 12:
-                self.logger.debug(f"Run {self.run_id} started. Modules started: {self.starting_run_ready}")
+                self.logger.info(f"Run {self.run_id} started. Modules started: {self.starting_run_ready}")
                 self.start_event()
         elif self.run_state == self.run_states["starting_event"]:
             # cam 1/2/3, *PLC, NIUSB, CAEN, GaGe
             self.event_timer.start()
             if len(self.starting_event_ready) >= 6:
-                self.logger.debug(f"Event {self.event_id} started. Modules started: {self.starting_event_ready}")
+                self.logger.info(f"Event {self.event_id} started. Modules started: {self.starting_event_ready}")
                 self.update_state("active")
         elif self.run_state == self.run_states["stopping_event"]:
             # SQL, cam 1/2/3, NIUSB, CAEN, GaGe
             if len(self.stopping_event_ready) >= 7:
-                self.logger.debug(f"Event {self.event_id} stopped. Modules stopped: {self.stopping_event_ready}")
+                self.logger.info(f"Event {self.event_id} stopped. Modules stopped: {self.stopping_event_ready}")
                 self.start_event()
         elif self.run_state == self.run_states["stopping_run"]:
             # SQL, cam 1/2/3, sipm amp 1/2/3, NIUSB, CAEN
             if len(self.stopping_run_ready) >= 9:
-                self.logger.debug(f"Run {self.run_id} stopped. Modules stopped: {self.stopping_run_ready}")
+                self.logger.info(f"Run {self.run_id} stopped. Modules stopped: {self.stopping_run_ready}")
                 self.update_state("idle")
 
         self.display_image(
@@ -448,12 +466,12 @@ class MainWindow(QMainWindow):
         vars = self.ui.__dict__
         if "disabled" in module:
             name = re.sub(r'^.*?-', "", module)
-            self.logger.info(f"Starting Run: {name} is disabled")
+            self.logger.debug(f"Starting Run: {name} is disabled")
             vars[f"status_{name}"].idle()
             self.starting_run_ready.append(module)
             return
 
-        self.logger.info(f"Starting Run: {module} is complete")
+        self.logger.debug(f"Starting Run: {module} is complete")
         # change status lights
 
         vars[f"status_{module}"].active()
@@ -468,12 +486,12 @@ class MainWindow(QMainWindow):
         vars = self.ui.__dict__
         if "disabled" in module:
             name = re.sub(r'^.*?-', "", module)
-            self.logger.info(f"Stopping Run: {name} is disabled")
+            self.logger.debug(f"Stopping Run: {name} is disabled")
             vars[f"status_{name}"].idle()
             self.stopping_run_ready.append(module)
             return
 
-        self.logger.info(f"Stopping Run: {module} is complete")
+        self.logger.debug(f"Stopping Run: {module} is complete")
         # change status lights
         vars[f"status_{module}"].idle()
         self.stopping_run_ready.append(module)
@@ -487,12 +505,12 @@ class MainWindow(QMainWindow):
         vars = self.ui.__dict__
         if "disabled" in module:
             name = re.sub(r'^.*?-', "", module)
-            self.logger.info(f"Starting Event: {name} is disabled")
+            self.logger.debug(f"Starting Event: {name} is disabled")
             vars[f"status_{name}"].idle()
             self.starting_event_ready.append(module)
             return
 
-        self.logger.info(f"Starting Event: {module} is complete")
+        self.logger.debug(f"Starting Event: {module} is complete")
 
         # change status lights
         vars[f"status_{module}"].active()
@@ -507,12 +525,12 @@ class MainWindow(QMainWindow):
         vars = self.ui.__dict__
         if "disabled" in module:
             name = re.sub(r'^.*?-', "", module)
-            self.logger.info(f"Stopping Event: {name} is disabled")
+            self.logger.debug(f"Stopping Event: {name} is disabled")
             vars[f"status_{name}"].idle()
             self.stopping_event_ready.append(module)
             return
 
-        self.logger.info(f"Stopping Event: {module} is complete")
+        self.logger.debug(f"Stopping Event: {module} is complete")
 
         # change status lights
         vars[f"status_{module}"].idle()
@@ -566,10 +584,10 @@ class MainWindow(QMainWindow):
         self.ui.run_live_time_edit.setText(self.format_time(self.run_livetime))
         self.ui.trigger_edit.setText("")
 
-        self.run_log_path = os.path.join(self.run_dir, f"rc.log")
+        self.run_log_dir = os.path.join(self.run_dir, f"rc.log")
         self.config_class.start_run()
 
-        file_handler = logging.FileHandler(self.run_log_path, mode="a")
+        file_handler = logging.FileHandler(self.run_log_dir, mode="a")
         file_handler.setLevel(logging.INFO)
         file_handler.setFormatter(self.log_formatter)
         self.logger.addHandler(file_handler)
@@ -644,7 +662,7 @@ class MainWindow(QMainWindow):
         path = self.run_dir if "run_dir" in self.__dict__ \
             else self.config_class.config["general"]["data_dir"]
         subprocess.Popen(["nemo", path])
-        self.logger.info(f"Opened data folder: {path}")
+        self.logger.debug(f"Opened data folder: {path}")
 
     # set up parameters for the CAEN plot widgets
     def setup_caen_plot(self):
