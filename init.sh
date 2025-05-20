@@ -64,18 +64,34 @@ ROOT_SCRIPT_DEST="/usr/local/bin/rc-init"
 ROOT_SCRIPT_SOURCE="./dependencies/root-init.sh"
 SUDOERS_FILE="/etc/sudoers.d/runcontrol"
 CURRENT_USER=$(whoami)
+SCRIPT_UPDATED=false
 SUDOER_SET=false
 
 # Check if root script already installed
 if [ -f "$ROOT_SCRIPT_DEST" ]; then
     echo "Root components already installed."
+    SOURCE_HASH=$(sha256sum "$ROOT_SCRIPT_SOURCE")
+    DESTINATION_HASH=$(sha256sum "$ROOT_SCRIPT_DEST")
+    # Check if the script is up to date
+    if [ "$SOURCE_HASH" = "$DESTINATION_HASH" ]; then
+        echo "Root script is up to date."
+        SCRIPT_UPDATED=true
+    else
+        echo "Root script is not up to date. Updating..."
+        SCRIPT_UPDATED=false
+    fi
 else
+    echo "Root script not installed yet."
+    SCRIPT_UPDATED=false
+fi
+
+if [ "$SCRIPT_UPDATED" = "false" ]; then
     echo "Installing root script."
     sudo install -o root -g root -m 755 "$ROOT_SCRIPT_SOURCE" "$ROOT_SCRIPT_DEST" || {
         echo "Failed to install root script"
         exit 1
     }
-    echo "Root script installed."
+    echo "Root script successfully installed."
 fi
 
 # Check if sudoer file has been set
@@ -103,6 +119,19 @@ if [ "$SUDOER_SET" = "false" ]; then
         exit 1
     fi
 fi
+
+# =================================================
+# Handle group permissions for current user
+# =================================================
+if ! groups "$CURRENT_USER" | grep -q '\busbusers\b'; then
+    sudo usermod -aG usbusers "$CURRENT_USER"
+    echo "Added $CURRENT_USER to usbusers group."
+fi
+if ! groups "$CURRENT_USER" | grep -q '\bdialout\b'; then
+    sudo usermod -aG dialout "$CURRENT_USER"
+    echo "Added $CURRENT_USER to dialout group."
+fi
+echo "Group permissions set for $CURRENT_USER. Please log out and log back in for the changes to take effect."
 
 # =================================================
 # Execute root init script
