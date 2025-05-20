@@ -11,3 +11,4 @@ ui/*dialog.py
 resources_rc.py
 DAQ_test/
 SBCAcquisition.ini
+*.egg-info
