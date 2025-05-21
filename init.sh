@@ -1,4 +1,4 @@
-#!/usr/bin/sh
+#!/bin/bash
 echo "Starting initialization script for run control."
 
 # =================================================
@@ -14,19 +14,21 @@ git submodule update --remote --recursive
 # =================================================
 # Set up conda environment
 # =================================================
+ENV_NAME="runcontrol"
+ENV_FILE="./dependencies/conda_rc.yml"
 echo "Setting up conda environment..."
 # update conda to latest version
 conda update -y -n base conda
-if conda info --envs | grep -q runcontrol; then
+if conda info --envs | grep -q "$ENV_NAME"; then
   # if runcontrol environment already exists, update it
-  echo "Conda environment \"runcontrol\" already exists. Updating...";
-  conda env update --file ./dependencies/conda_rc.yml --prune;
+  echo "Conda environment \"$ENV_NAME\" already exists. Updating...";
+  conda env update --file "$ENV_FILE" --prune;
 else
   # if runcontrol environment doesn't exist, create it
-  echo "Conda environment \"runcontrol\" doesn't exist. Creating environment...";
-  conda env create -y -n runcontrol --file ./dependencies/conda_rc.yml;
+  echo "Conda environment \"$ENV_NAME\" doesn't exist. Creating environment...";
+  conda env create -y -n "$ENV_NAME" --file "$ENV_FILE";
 fi
-conda activate runcontrol;
+conda activate "$ENV_NAME";
 
 # =================================================
 # Generate all ui and resources files
@@ -56,6 +58,47 @@ arduino-cli update
 arduino-cli upgrade
 arduino-cli core install arduino:avr
 arduino-cli lib install incbin ArduinoJson Ethernet
+
+# =================================================
+# Save and prepare SQL token
+# =================================================
+FILE="$HOME/.config/runcontrol/sql_token"
+LINE="export SQL_DAQ_TOKEN=\$(<\"$FILE\" tr -d '\\n')"
+BASHRC="$HOME/.bashrc"
+NEW_TOKEN=false
+
+# Check if file already exists
+if [ -e "$FILE" ]; then
+    echo "File '$FILE' already exists. Skipping password save."
+else
+    # Prompt for password without echo
+    read -s -p "Enter SQL password: " PASSWORD
+    echo
+    echo "$PASSWORD" > "$FILE"
+    echo "Password saved to '$FILE'."
+    NEW_TOKEN=true
+fi
+
+FILE_PERM=$(stat -c "%a" "$FILE")
+if [ "$FILE_PERM" != "600" ]; then
+    chmod 600 "$FILE"
+    echo "File permissions for '$FILE' have been corrected to 600."
+fi
+
+# Check if line exists in .bashrc
+if ! grep -Fxq "$LINE" "$BASHRC"; then
+    echo "$LINE" >> "$BASHRC"
+    echo "Added SQL_DAQ_TOKEN export line to $BASHRC"
+else
+    echo "SQL_DAQ_TOKEN export line already present in $BASHRC"
+fi
+
+eval "$LINE"
+if [ "$NEW_TOKEN" == "true" ]; then
+    echo "SQL_DAQ_TOKEN set from user input."
+else
+    echo "SQL_DAQ_TOKEN set from file."
+fi
 
 # =================================================
 # Install root init script
@@ -123,15 +166,22 @@ fi
 # =================================================
 # Handle group permissions for current user
 # =================================================
+PERMISSION_CHANGED=false
 if ! groups "$CURRENT_USER" | grep -q '\busbusers\b'; then
     sudo usermod -aG usbusers "$CURRENT_USER"
     echo "Added $CURRENT_USER to usbusers group."
+    PERMISSION_CHANGED=true
 fi
 if ! groups "$CURRENT_USER" | grep -q '\bdialout\b'; then
     sudo usermod -aG dialout "$CURRENT_USER"
     echo "Added $CURRENT_USER to dialout group."
+    PERMISSION_CHANGED=true
 fi
-echo "Group permissions set for $CURRENT_USER. Please log out and log back in for the changes to take effect."
+if [ "$PERMISSION_CHANGED" = "true" ]; then
+    echo "User $CURRENT_USER has been added to the required groups. Please log out and log back in for the changes to take effect."
+else
+    echo "User $CURRENT_USER is already in the required groups."
+fi
 
 # =================================================
 # Execute root init script
