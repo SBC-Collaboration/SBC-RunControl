@@ -18,8 +18,7 @@ class Config(QObject):
         self.path = path
         self.config = {}
         self.run_config = {}  # A copy of config for the run
-        self.cam_config_saved = False  # flag for syncing
-        self.pressure_profiles = []
+        self.run_pressure_profiles = []
 
         self.logger = logging.getLogger("rc")
         self.timer = QTimer(self)
@@ -679,13 +678,14 @@ class Config(QObject):
 
         # check at least one profile is enabled
         pressure_profiles = self.run_config["plc"]["pressure"]
-        self.pressure_mode = pressure_profiles["mode"]
+        self.run_pressure_mode = pressure_profiles["mode"]
 
         enabled_profiles = 0
-        self.pressure_profiles = []
-        for k, v in pressure_profiles.items():
-            if ("profile" in k) and v["enabled"]:
-                self.pressure_profiles.append(v)
+        self.run_pressure_profiles = []
+        if pressure_profiles["enabled"]:
+            for k, v in pressure_profiles.items():
+                if ("profile" in k) and v["enabled"]:
+                    self.run_pressure_profiles.append(v)
 
         # save arduino json files
         for ino in ["trigger", "clock", "position"]:
@@ -726,13 +726,26 @@ class Config(QObject):
 
     @Slot()
     def start_event(self):
-        self.event_pressure = random.choice(self.pressure_profiles)
-        self.logger.info(f"Event pressure: {self.event_pressure["setpoint"]}, "
-                         f"{self.event_pressure['setpoint_high']}, "
-                         f"{self.event_pressure['slope']}, "
-                         f"{self.event_pressure['period']}")
-
-        self.cam_config_saved = True
+        if not self.run_pressure_profiles:
+            self.logger.debug("No pressure profiles enabled.")
+            self.event_pressure = {
+                "setpoint": None, 
+                "setpoint_high": None, 
+                "slope": None, 
+                "period": None
+                }
+        elif self.run_pressure_mode == "random":
+            self.event_pressure = random.choice(self.run_pressure_profiles)
+        elif self.run_pressure_mode == "cycle":
+            self.event_pressure = self.run_pressure_profiles[0]
+            self.run_pressure_profiles.append(self.run_pressure_profiles.pop(0))
+        else:
+            self.logger.error("No pressure mode selected.")
+            return
+        self.logger.info(f"Event pressure: Pset: {self.event_pressure["setpoint"]}, "
+                         f"Pset_high: {self.event_pressure['setpoint_high']}, "
+                         f"Slope: {self.event_pressure['slope']}, "
+                         f"Period: {self.event_pressure['period']}")
 
     @Slot()
     def stop_run(self):
