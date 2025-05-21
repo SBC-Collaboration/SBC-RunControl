@@ -54,6 +54,30 @@
         "slope": 0.0,
         "period": -1.0
       }
+    },
+    "registers": {
+      "PCYCLE_PSET": 16794,
+      "PCYCLE_EXPTIME": 16796,
+      "PCYCLE_MAXEXPTIME": 16798,
+      "PCYCLE_MAXEQTIME": 16800,
+      "PCYCLE_MAXEQPDIFF": 16802,
+      "PCYCLE_MAXACCTIME": 16804,
+      "PCYCLE_MAXACCDPDT": 16806,
+      "PCYCLE_MAXBLEEDTIME": 16808,
+      "PCYCLE_MAXBLEEDDPDT": 16810,
+      "PCYCLE_SLOWCOMP_SET": 16812,
+      "WRITE_SLOWDAQ": 15296,
+      "PRESSURE_CYCLE": 15298,
+      "TS_ADDREM_FF": 14788,
+      "TS_EMPTY_FF": 14789,
+      "TS_EMPTYALL_FF": 14790,
+      "SLOWDAQ_FF": 14791,
+      "PCYCLE_ABORT_FF": 14792,
+      "PCYCLE_FASTCOMP_FF": 14793,
+      "PCYCLE_SLOWCOMP_FF": 14794,
+      "PCYCLE_CYLEQ_FF": 14795,
+      "PCYCLE_CYLBLEED_FF": 14796,
+      "PCYCLE_ACCHARGE_FF": 14797
     }
   },
   "sql": {

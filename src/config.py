@@ -95,6 +95,30 @@ class Config(QObject):
             widgets[f"pressure{i}_high"].setValue(profile["setpoint_high"])
             widgets[f"pressure{i}_slope"].setValue(profile["slope"])
             widgets[f"pressure{i}_period"].setValue(profile["period"])
+        
+        plc_registers = self.config["plc"]["registers"]
+        ui.PCYCLE_PSET_box.setValue(plc_registers["PCYCLE_PSET"])
+        ui.PCYCLE_EXPTIME_box.setValue(plc_registers["PCYCLE_EXPTIME"])
+        ui.PCYCLE_MAXEXPTIME_box.setValue(plc_registers["PCYCLE_MAXEXPTIME"])
+        ui.PCYCLE_MAXEQTIME_box.setValue(plc_registers["PCYCLE_MAXEQTIME"])
+        ui.PCYCLE_MAXEQPDIFF_box.setValue(plc_registers["PCYCLE_MAXEQPDIFF"])
+        ui.PCYCLE_MAXACCTIME_box.setValue(plc_registers["PCYCLE_MAXACCTIME"])
+        ui.PCYCLE_MAXACCDPDT_box.setValue(plc_registers["PCYCLE_MAXACCDPDT"])
+        ui.PCYCLE_MAXBLEEDTIME_box.setValue(plc_registers["PCYCLE_MAXBLEEDTIME"])
+        ui.PCYCLE_MAXBLEEDDPDT_box.setValue(plc_registers["PCYCLE_MAXBLEEDDPDT"])
+        ui.PCYCLE_SLOWCOMP_SET_box.setValue(plc_registers["PCYCLE_SLOWCOMP_SET"])
+        ui.WRITE_SLOWDAQ_box.setValue(plc_registers["WRITE_SLOWDAQ"])
+        ui.PRESSURE_CYCLE_box.setValue(plc_registers["PRESSURE_CYCLE"])
+        ui.TS_ADDREM_FF_box.setValue(plc_registers["TS_ADDREM_FF"])
+        ui.TS_EMPTY_FF_box.setValue(plc_registers["TS_EMPTY_FF"])
+        ui.TS_EMPTYALL_FF_box.setValue(plc_registers["TS_EMPTYALL_FF"])
+        ui.SLOWDAQ_FF_box.setValue(plc_registers["SLOWDAQ_FF"])
+        ui.PCYCLE_ABORT_FF_box.setValue(plc_registers["PCYCLE_ABORT_FF"])
+        ui.PCYCLE_FASTCOMP_FF_box.setValue(plc_registers["PCYCLE_FASTCOMP_FF"])
+        ui.PCYCLE_SLOWCOMP_FF_box.setValue(plc_registers["PCYCLE_SLOWCOMP_FF"])
+        ui.PCYCLE_CYLEQ_FF_box.setValue(plc_registers["PCYCLE_CYLEQ_FF"])
+        ui.PCYCLE_CYLBLEED_FF_box.setValue(plc_registers["PCYCLE_CYLBLEED_FF"])
+        ui.PCYCLE_ACCHARGE_FF_box.setValue(plc_registers["PCYCLE_ACCHARGE_FF"])
 
         # SQL
         sql_config = self.config["sql"]
@@ -368,6 +392,7 @@ class Config(QObject):
             "enabled": ui.p_enabled_box.isChecked(),
             "mode": mode,
         }
+
         for i in range(1,7):
             profile = {}
             profile["enabled"] = widgets[f"pressure{i}_enable"].isChecked()
@@ -377,6 +402,32 @@ class Config(QObject):
             profile["period"] = widgets[f"pressure{i}_period"].value()
             pressure_config[f"profile{i}"] = profile
         plc_config["pressure"] = pressure_config
+
+        plc_registers = {
+            "PCYCLE_PSET": ui.PCYCLE_PSET_box.value(),
+            "PCYCLE_EXPTIME": ui.PCYCLE_EXPTIME_box.value(),
+            "PCYCLE_MAXEXPTIME": ui.PCYCLE_MAXEXPTIME_box.value(),
+            "PCYCLE_MAXEQTIME": ui.PCYCLE_MAXEQTIME_box.value(),
+            "PCYCLE_MAXEQPDIFF": ui.PCYCLE_MAXEQPDIFF_box.value(),
+            "PCYCLE_MAXACCTIME": ui.PCYCLE_MAXACCTIME_box.value(),
+            "PCYCLE_MAXACCDPDT": ui.PCYCLE_MAXACCDPDT_box.value(),
+            "PCYCLE_MAXBLEEDTIME": ui.PCYCLE_MAXBLEEDTIME_box.value(),
+            "PCYCLE_MAXBLEEDDPDT": ui.PCYCLE_MAXBLEEDDPDT_box.value(),
+            "PCYCLE_SLOWCOMP_SET": ui.PCYCLE_SLOWCOMP_SET_box.value(),
+            "WRITE_SLOWDAQ": ui.WRITE_SLOWDAQ_box.value(),
+            "PRESSURE_CYCLE": ui.PRESSURE_CYCLE_box.value(),
+            "TS_ADDREM_FF": ui.TS_ADDREM_FF_box.value(),
+            "TS_EMPTY_FF": ui.TS_EMPTY_FF_box.value(),
+            "TS_EMPTYALL_FF": ui.TS_EMPTYALL_FF_box.value(),
+            "SLOWDAQ_FF": ui.SLOWDAQ_FF_box.value(),
+            "PCYCLE_ABORT_FF": ui.PCYCLE_ABORT_FF_box.value(),
+            "PCYCLE_FASTCOMP_FF": ui.PCYCLE_FASTCOMP_FF_box.value(),
+            "PCYCLE_SLOWCOMP_FF": ui.PCYCLE_SLOWCOMP_FF_box.value(),
+            "PCYCLE_CYLEQ_FF": ui.PCYCLE_CYLEQ_FF_box.value(),
+            "PCYCLE_CYLBLEED_FF": ui.PCYCLE_CYLBLEED_FF_box.value(),
+            "PCYCLE_ACCHARGE_FF": ui.PCYCLE_ACCHARGE_FF_box.value(),
+        }
+        plc_config["registers"] = plc_registers
 
         # apply general config
         sql_config = {
@@ -741,6 +792,7 @@ class Config(QObject):
             self.run_pressure_profiles.append(self.run_pressure_profiles.pop(0))
         else:
             self.logger.error("No pressure mode selected.")
+            self.event_pressure = {}
             return
         self.logger.info(f"Event pressure: Pset: {self.event_pressure["setpoint"]}, "
                          f"Pset_high: {self.event_pressure['setpoint_high']}, "
