@@ -417,7 +417,7 @@ class MainWindow(QMainWindow):
         elif self.run_state == self.run_states["starting_run"]:
             # SiPM amp 1/2/3, Cam 1/2/3, clock/position/trigger arduino, NI USB, CAEN
             if len(self.starting_run_ready) >= 12:
-                self.logger.info(f"Run {self.run_id} started. Modules started: {self.starting_run_ready}")
+                self.logger.info(f"Run {self.run_id} started. Modules started: {self.starting_run_ready}\n")
                 self.start_event()
         elif self.run_state == self.run_states["starting_event"]:
             # cam 1/2/3, *PLC, NIUSB, CAEN, GaGe
@@ -428,7 +428,7 @@ class MainWindow(QMainWindow):
         elif self.run_state == self.run_states["stopping_event"]:
             # SQL, cam 1/2/3, NIUSB, CAEN, GaGe
             if len(self.stopping_event_ready) >= 7:
-                self.logger.info(f"Event {self.event_id} stopped. Modules stopped: {self.stopping_event_ready}")
+                self.logger.info(f"Event {self.event_id} stopped. Modules stopped: {self.stopping_event_ready}\n")
                 self.start_event()
         elif self.run_state == self.run_states["stopping_run"]:
             # SQL, cam 1/2/3, sipm amp 1/2/3, NIUSB, CAEN
@@ -454,7 +454,9 @@ class MainWindow(QMainWindow):
 
     @Slot(str)
     def starting_program_wait(self, module):
-        self.starting_program_ready.append(module)
+        if module not in self.starting_program_ready:
+            self.starting_program_ready.append(module)
+            self.starting_program_ready.sort()
 
     @Slot(str)
     def starting_run_wait(self, module):
@@ -467,14 +469,14 @@ class MainWindow(QMainWindow):
             name = re.search(r'^(.*?)-', module).group(1)
             self.logger.debug(f"Starting Run: {name} is disabled")
             vars[f"status_{name}"].idle()
+        else:
+            self.logger.debug(f"Starting Run: {module} is complete")
+            # change status lights
+            vars[f"status_{module}"].active()
+        
+        if module not in self.starting_run_ready:
             self.starting_run_ready.append(module)
-            return
-
-        self.logger.debug(f"Starting Run: {module} is complete")
-        # change status lights
-
-        vars[f"status_{module}"].active()
-        self.starting_run_ready.append(module)
+            self.starting_run_ready.sort()
 
     @Slot(str)
     def stopping_run_wait(self, module):
@@ -487,13 +489,14 @@ class MainWindow(QMainWindow):
             name = re.search(r'^(.*?)-', module).group(1)
             self.logger.debug(f"Stopping Run: {name} is disabled")
             vars[f"status_{name}"].idle()
+        else:
+            self.logger.debug(f"Stopping Run: {module} is complete")
+            # change status lights
+            vars[f"status_{module}"].idle()
+        
+        if module not in self.stopping_run_ready:
             self.stopping_run_ready.append(module)
-            return
-
-        self.logger.debug(f"Stopping Run: {module} is complete")
-        # change status lights
-        vars[f"status_{module}"].idle()
-        self.stopping_run_ready.append(module)
+            self.stopping_run_ready.sort()
 
     @Slot(str)
     def starting_event_wait(self, module):
@@ -506,14 +509,14 @@ class MainWindow(QMainWindow):
             name = re.search(r'^(.*?)-', module).group(1)
             self.logger.debug(f"Starting Event: {name} is disabled")
             vars[f"status_{name}"].idle()
+        else:
+            self.logger.debug(f"Starting Event: {module} is complete")
+            # change status lights
+            vars[f"status_{module}"].active()
+
+        if module not in self.starting_event_ready:
             self.starting_event_ready.append(module)
-            return
-
-        self.logger.debug(f"Starting Event: {module} is complete")
-
-        # change status lights
-        vars[f"status_{module}"].active()
-        self.starting_event_ready.append(module)
+            self.starting_event_ready.sort()
 
     @Slot(str)
     def stopping_event_wait(self, module):
@@ -526,14 +529,14 @@ class MainWindow(QMainWindow):
             name = re.search(r'^(.*?)-', module).group(1)
             self.logger.debug(f"Stopping Event: {name} is disabled")
             vars[f"status_{name}"].idle()
+        else:
+            self.logger.debug(f"Stopping Event: {module} is complete")
+            # change status lights
+            vars[f"status_{module}"].idle()
+            
+        if module not in self.stopping_event_ready:
             self.stopping_event_ready.append(module)
-            return
-
-        self.logger.debug(f"Stopping Event: {module} is complete")
-
-        # change status lights
-        vars[f"status_{module}"].idle()
-        self.stopping_event_ready.append(module)
+            self.stopping_event_ready.sort()
 
     def create_run_directory(self):
         """
