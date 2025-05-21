@@ -889,9 +889,9 @@
            <property name="geometry">
             <rect>
              <x>0</x>
-             <y>-16</y>
+             <y>-45</y>
              <width>874</width>
-             <height>538</height>
+             <height>567</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_14">
@@ -1683,52 +1683,38 @@
               <property name="spacing">
                <number>3</number>
               </property>
-              <item row="10" column="5">
-               <widget class="NoWheelSpinBox" name="PCYCLE_CYLEQ_FF_box">
+              <item row="9" column="3">
+               <widget class="NoWheelSpinBox" name="PCYCLE_MAXACCDPDT_box">
                 <property name="maximum">
                  <number>99999</number>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="1">
-               <widget class="NoWheelSpinBox" name="PRESSURE_CYCLE_box">
-                <property name="maximum">
-                 <number>99999</number>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="5">
-               <widget class="NoWheelSpinBox" name="plc_modbus_port_box">
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="maximum">
-                 <number>65535</number>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="0">
-               <widget class="QLabel" name="WRITE_SLOWDAQ_label">
-                <property name="text">
-                 <string>WRITE_SLOWDAQ</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="0">
-               <widget class="QLabel" name="PRESSURE_CYCLE_label">
-                <property name="text">
-                 <string>PRESSURE_CYCLE</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                </widget>
               </item>
               <item row="1" column="1" colspan="3">
                <widget class="QLineEdit" name="plc_hostname_edit"/>
+              </item>
+              <item row="6" column="4">
+               <widget class="QLabel" name="SLOWDAQ_FF_label">
+                <property name="text">
+                 <string>SLOWDAQ_FF</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="plc_hostname_label">
+                <property name="text">
+                 <string>Hostname</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>plc_hostname_edit</cstring>
+                </property>
+               </widget>
               </item>
               <item row="2" column="0" colspan="6">
                <widget class="QLabel" name="plc_registers_label">
@@ -1745,10 +1731,10 @@
                 </property>
                </widget>
               </item>
-              <item row="0" column="0">
-               <widget class="QCheckBox" name="plc_enable_box">
-                <property name="text">
-                 <string>Enabled</string>
+              <item row="4" column="5">
+               <widget class="NoWheelSpinBox" name="TS_EMPTY_FF_box">
+                <property name="maximum">
+                 <number>99999</number>
                 </property>
                </widget>
               </item>
@@ -1767,8 +1753,76 @@
                 </property>
                </widget>
               </item>
+              <item row="7" column="2">
+               <widget class="QLabel" name="PCYCLE_MAXEQPDIFF_label">
+                <property name="text">
+                 <string>PCYCLE_MAXEQPDIFF</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="3">
+               <widget class="NoWheelSpinBox" name="PCYCLE_MAXEQTIME_box">
+                <property name="maximum">
+                 <number>99999</number>
+                </property>
+               </widget>
+              </item>
+              <item row="9" column="2">
+               <widget class="QLabel" name="PCYCLE_MAXACCDPDT_label">
+                <property name="text">
+                 <string>PCYCLE_MAXACCDPDT</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="5">
+               <widget class="NoWheelSpinBox" name="SLOWDAQ_FF_box">
+                <property name="maximum">
+                 <number>99999</number>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="2">
+               <widget class="QLabel" name="PCYCLE_MAXEQTIME_label">
+                <property name="text">
+                 <string>PCYCLE_MAXEQTIME</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
               <item row="3" column="1">
                <widget class="NoWheelSpinBox" name="WRITE_SLOWDAQ_box">
+                <property name="maximum">
+                 <number>99999</number>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="1">
+               <widget class="NoWheelSpinBox" name="PRESSURE_CYCLE_box">
+                <property name="maximum">
+                 <number>99999</number>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="0">
+               <widget class="QLabel" name="PRESSURE_CYCLE_label">
+                <property name="text">
+                 <string>PRESSURE_CYCLE</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="9" column="5">
+               <widget class="NoWheelSpinBox" name="PCYCLE_SLOWCOMP_FF_box">
                 <property name="maximum">
                  <number>99999</number>
                 </property>
@@ -1787,63 +1841,6 @@
                 </property>
                </widget>
               </item>
-              <item row="1" column="0">
-               <widget class="QLabel" name="plc_hostname_label">
-                <property name="text">
-                 <string>Hostname</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>plc_hostname_edit</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="11" column="5">
-               <widget class="NoWheelSpinBox" name="PCYCLE_CYLBLEED_FF_box">
-                <property name="maximum">
-                 <number>99999</number>
-                </property>
-               </widget>
-              </item>
-              <item row="11" column="4">
-               <widget class="QLabel" name="PCYCLE_CYLBLEED_FF_label">
-                <property name="text">
-                 <string>PCYCLE_CYLBLEED_FF</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="10" column="4">
-               <widget class="QLabel" name="PCYCLE_CYLEQ_FF_label">
-                <property name="text">
-                 <string>PCYCLE_CYLEQ_FF</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="9" column="4">
-               <widget class="QLabel" name="PCYCLE_SLOWCOMP_FF_label">
-                <property name="text">
-                 <string>PCYCLE_SLOWCOMP_FF</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="9" column="5">
-               <widget class="NoWheelSpinBox" name="PCYCLE_SLOWCOMP_FF_box">
-                <property name="maximum">
-                 <number>99999</number>
-                </property>
-               </widget>
-              </item>
               <item row="8" column="4">
                <widget class="QLabel" name="PCYCLE_FASTCOMP_FF_label">
                 <property name="text">
@@ -1854,42 +1851,8 @@
                 </property>
                </widget>
               </item>
-              <item row="8" column="5">
-               <widget class="NoWheelSpinBox" name="PCYCLE_FASTCOMP_FF_box">
-                <property name="maximum">
-                 <number>99999</number>
-                </property>
-               </widget>
-              </item>
-              <item row="7" column="4">
-               <widget class="QLabel" name="PCYCLE_ABORT_FF_label">
-                <property name="text">
-                 <string>PCYCLE_ABORT_FF</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="7" column="5">
-               <widget class="NoWheelSpinBox" name="PCYCLE_ABORT_FF_box">
-                <property name="maximum">
-                 <number>99999</number>
-                </property>
-               </widget>
-              </item>
-              <item row="6" column="4">
-               <widget class="QLabel" name="SLOWDAQ_FF_label">
-                <property name="text">
-                 <string>SLOWDAQ_FF</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="6" column="5">
-               <widget class="NoWheelSpinBox" name="SLOWDAQ_FF_box">
+              <item row="8" column="3">
+               <widget class="NoWheelSpinBox" name="PCYCLE_MAXACCTIME_box">
                 <property name="maximum">
                  <number>99999</number>
                 </property>
@@ -1905,86 +1868,13 @@
                 </property>
                </widget>
               </item>
-              <item row="3" column="5">
-               <widget class="NoWheelSpinBox" name="TS_ADDREM_FF_box">
-                <property name="maximum">
-                 <number>99999</number>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="4">
-               <widget class="QLabel" name="TS_EMPTY_FF_label">
+              <item row="7" column="4">
+               <widget class="QLabel" name="PCYCLE_ABORT_FF_label">
                 <property name="text">
-                 <string>TS_EMPTY_FF</string>
+                 <string>PCYCLE_ABORT_FF</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="5">
-               <widget class="NoWheelSpinBox" name="TS_EMPTY_FF_box">
-                <property name="maximum">
-                 <number>99999</number>
-                </property>
-               </widget>
-              </item>
-              <item row="5" column="4">
-               <widget class="QLabel" name="TS_EMPTYALL_FF_label">
-                <property name="text">
-                 <string>TS_EMPTYALL_FF</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="5" column="5">
-               <widget class="NoWheelSpinBox" name="TS_EMPTYALL_FF_box">
-                <property name="maximum">
-                 <number>99999</number>
-                </property>
-               </widget>
-              </item>
-              <item row="11" column="3">
-               <widget class="NoWheelSpinBox" name="PCYCLE_SLOWCOMP_SET_box">
-                <property name="maximum">
-                 <number>99999</number>
-                </property>
-               </widget>
-              </item>
-              <item row="10" column="3">
-               <widget class="NoWheelSpinBox" name="PCYCLE_MAXBLEEDTIME_box">
-                <property name="maximum">
-                 <number>99999</number>
-                </property>
-               </widget>
-              </item>
-              <item row="9" column="3">
-               <widget class="NoWheelSpinBox" name="PCYCLE_MAXACCDPDT_box">
-                <property name="maximum">
-                 <number>99999</number>
-                </property>
-               </widget>
-              </item>
-              <item row="8" column="3">
-               <widget class="NoWheelSpinBox" name="PCYCLE_MAXACCTIME_box">
-                <property name="maximum">
-                 <number>99999</number>
-                </property>
-               </widget>
-              </item>
-              <item row="7" column="3">
-               <widget class="NoWheelSpinBox" name="PCYCLE_MAXEQPDIFF_box">
-                <property name="maximum">
-                 <number>99999</number>
-                </property>
-               </widget>
-              </item>
-              <item row="6" column="3">
-               <widget class="NoWheelSpinBox" name="PCYCLE_MAXEQTIME_box">
-                <property name="maximum">
-                 <number>99999</number>
                 </property>
                </widget>
               </item>
@@ -1995,7 +1885,7 @@
                 </property>
                </widget>
               </item>
-              <item row="11" column="2">
+              <item row="12" column="2">
                <widget class="QLabel" name="PCYCLE_SLOWCOMP_SET_label">
                 <property name="text">
                  <string>PCYCLE_SLOWCOMP_SET</string>
@@ -2005,60 +1895,27 @@
                 </property>
                </widget>
               </item>
-              <item row="10" column="2">
-               <widget class="QLabel" name="PCYCLE_MAXBLEEDTIME_label">
+              <item row="4" column="2">
+               <widget class="QLabel" name="PCYCLE_EXPTIME_label">
                 <property name="text">
-                 <string>PCYCLE_MAXBLEEDTIME</string>
+                 <string>PCYCLE_EXPTIME</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                </widget>
               </item>
-              <item row="9" column="2">
-               <widget class="QLabel" name="PCYCLE_MAXACCDPDT_label">
-                <property name="text">
-                 <string>PCYCLE_MAXACCDPDT</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+              <item row="10" column="3">
+               <widget class="NoWheelSpinBox" name="PCYCLE_MAXBLEEDTIME_box">
+                <property name="maximum">
+                 <number>99999</number>
                 </property>
                </widget>
               </item>
-              <item row="8" column="2">
-               <widget class="QLabel" name="PCYCLE_MAXACCTIME_label">
+              <item row="10" column="4">
+               <widget class="QLabel" name="PCYCLE_CYLEQ_FF_label">
                 <property name="text">
-                 <string>PCYCLE_MAXACCTIME</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="7" column="2">
-               <widget class="QLabel" name="PCYCLE_MAXEQPDIFF_label">
-                <property name="text">
-                 <string>PCYCLE_MAXEQPDIFF</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="6" column="2">
-               <widget class="QLabel" name="PCYCLE_MAXEQTIME_label">
-                <property name="text">
-                 <string>PCYCLE_MAXEQTIME</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="5" column="2">
-               <widget class="QLabel" name="PCYCLE_MAXEXPTIME_label">
-                <property name="text">
-                 <string>PCYCLE_MAXEXPTIME</string>
+                 <string>PCYCLE_CYLEQ_FF</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
@@ -2069,6 +1926,16 @@
                <widget class="NoWheelSpinBox" name="PCYCLE_EXPTIME_box">
                 <property name="maximum">
                  <number>99999</number>
+                </property>
+               </widget>
+              </item>
+              <item row="8" column="2">
+               <widget class="QLabel" name="PCYCLE_MAXACCTIME_label">
+                <property name="text">
+                 <string>PCYCLE_MAXACCTIME</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                </widget>
               </item>
@@ -2089,13 +1956,180 @@
                 </property>
                </widget>
               </item>
-              <item row="4" column="2">
-               <widget class="QLabel" name="PCYCLE_EXPTIME_label">
+              <item row="10" column="2">
+               <widget class="QLabel" name="PCYCLE_MAXBLEEDTIME_label">
                 <property name="text">
-                 <string>PCYCLE_EXPTIME</string>
+                 <string>PCYCLE_MAXBLEEDTIME</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="10" column="5">
+               <widget class="NoWheelSpinBox" name="PCYCLE_CYLEQ_FF_box">
+                <property name="maximum">
+                 <number>99999</number>
+                </property>
+               </widget>
+              </item>
+              <item row="7" column="5">
+               <widget class="NoWheelSpinBox" name="PCYCLE_ABORT_FF_box">
+                <property name="maximum">
+                 <number>99999</number>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="2">
+               <widget class="QLabel" name="PCYCLE_MAXEXPTIME_label">
+                <property name="text">
+                 <string>PCYCLE_MAXEXPTIME</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="4">
+               <widget class="QLabel" name="TS_EMPTYALL_FF_label">
+                <property name="text">
+                 <string>TS_EMPTYALL_FF</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="4">
+               <widget class="QLabel" name="TS_EMPTY_FF_label">
+                <property name="text">
+                 <string>TS_EMPTY_FF</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="9" column="4">
+               <widget class="QLabel" name="PCYCLE_SLOWCOMP_FF_label">
+                <property name="text">
+                 <string>PCYCLE_SLOWCOMP_FF</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="12" column="3">
+               <widget class="NoWheelSpinBox" name="PCYCLE_SLOWCOMP_SET_box">
+                <property name="maximum">
+                 <number>99999</number>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0">
+               <widget class="QCheckBox" name="plc_enable_box">
+                <property name="text">
+                 <string>Enabled</string>
+                </property>
+               </widget>
+              </item>
+              <item row="8" column="5">
+               <widget class="NoWheelSpinBox" name="PCYCLE_FASTCOMP_FF_box">
+                <property name="maximum">
+                 <number>99999</number>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="0">
+               <widget class="QLabel" name="WRITE_SLOWDAQ_label">
+                <property name="text">
+                 <string>WRITE_SLOWDAQ</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="7" column="3">
+               <widget class="NoWheelSpinBox" name="PCYCLE_MAXEQPDIFF_box">
+                <property name="maximum">
+                 <number>99999</number>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="5">
+               <widget class="NoWheelSpinBox" name="TS_EMPTYALL_FF_box">
+                <property name="maximum">
+                 <number>99999</number>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="5">
+               <widget class="NoWheelSpinBox" name="plc_modbus_port_box">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="maximum">
+                 <number>65535</number>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="5">
+               <widget class="NoWheelSpinBox" name="TS_ADDREM_FF_box">
+                <property name="maximum">
+                 <number>99999</number>
+                </property>
+               </widget>
+              </item>
+              <item row="11" column="2">
+               <widget class="QLabel" name="PCYCLE_MAXBLEEDDPDT_label">
+                <property name="text">
+                 <string>PCYCLE_MAXBLEEDDPDT</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="11" column="3">
+               <widget class="NoWheelSpinBox" name="PCYCLE_MAXBLEEDDPDT_box">
+                <property name="maximum">
+                 <number>99999</number>
+                </property>
+               </widget>
+              </item>
+              <item row="11" column="4">
+               <widget class="QLabel" name="PCYCLE_CYLBLEED_FF_label">
+                <property name="text">
+                 <string>PCYCLE_CYLBLEED_FF</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="11" column="5">
+               <widget class="NoWheelSpinBox" name="PCYCLE_CYLBLEED_FF_box">
+                <property name="maximum">
+                 <number>99999</number>
+                </property>
+               </widget>
+              </item>
+              <item row="12" column="4">
+               <widget class="QLabel" name="PCYCLE_ACCHARGE_FF_label">
+                <property name="text">
+                 <string>PCYCLE_ACCHARGE_FF</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="12" column="5">
+               <widget class="NoWheelSpinBox" name="PCYCLE_ACCHARGE_FF_box">
+                <property name="maximum">
+                 <number>99999</number>
                 </property>
                </widget>
               </item>
@@ -2153,7 +2187,7 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>769</width>
+             <width>876</width>
              <height>1203</height>
             </rect>
            </property>
@@ -5841,7 +5875,7 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>870</width>
+             <width>876</width>
              <height>998</height>
             </rect>
            </property>
