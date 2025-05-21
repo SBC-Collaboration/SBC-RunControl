@@ -232,10 +232,9 @@ class MainWindow(QMainWindow):
         self.sql_thread.start()
 
         # establish mutex and wait conditions for syncing
-        self.config_mutex = QMutex()
-        self.config_wait = QWaitCondition()
         self.trigff_mutex = QMutex()
         self.trigff_wait = QWaitCondition()
+        self.trigff_ready = False
 
     # TODO: handle closing during run
     def closeEvent(self, event):

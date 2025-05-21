@@ -1,6 +1,6 @@
 from ni_usb_6501 import *
 import logging
-from PySide6.QtCore import QTimer, QObject, QThread, Slot, Signal
+from PySide6.QtCore import QTimer, QObject, QThread, Slot, Signal, QMutex, QWaitCondition
 import os
 import time
 
@@ -88,7 +88,12 @@ class NIUSB(QObject):
         self.ff_pin = ""
         self.cams_ready = []
 
-        self.output_initialized = False
+        self.run_mutex = QMutex()
+        self.run_wait = QWaitCondition()
+        self.run_ready = False
+        self.cam_config_mutex = QMutex()
+        self.cam_config_wait = QWaitCondition()
+        self.cam_config_ready = False
 
     @Slot()
     def run(self):
@@ -167,7 +172,10 @@ class NIUSB(QObject):
         self.dev.write_pin(*self.reverse_config["trig"], False)
         self.dev.write_pin(*self.reverse_config["reset"], True)
 
-        self.output_initialized = True
+        self.run_mutex.lock()
+        self.run_wait.wakeOne()
+        self.run_ready = True
+        self.run_mutex.unlock()
         self.run_started.emit("niusb")
 
     @Slot()
@@ -183,11 +191,18 @@ class NIUSB(QObject):
             self.dev.write_pin(*self.reverse_config["trig"], True)
             self.dev.write_pin(*self.reverse_config["reset"], False)
         self.dev.write_pin(*self.reverse_config["reset"], 0)
+        # reset trigff ready flag
+        self.main.trigff_mutex.lock()
+        self.main.trigff_ready = True
+        self.main.trigff_mutex.unlock()
         self.event_started.emit("niusb")
 
-        # sync with config module
-        while not self.main.config_class.cam_config_saved:
-            time.sleep(0.001)
+        # check if cameras config are saved
+        self.cam_config_mutex.lock()
+        while not self.cam_config_ready:
+            self.cam_config_wait.wait()
+        self.cam_config_ready = False
+        self.cam_config_mutex.unlock()
 
         # check cameras ready
         cam_ready = {"cam1": "idle", "cam2": "idle", "cam3": "idle"}
@@ -240,9 +255,14 @@ class NIUSB(QObject):
             self.logger.debug(f"First fault pin for the event is {self.ff_pin}")
         self.trigger_ff.emit(self.ff_pin)
         self.main.trigff_mutex.lock()
-        self.main.trigff_wait.wakeAll()
+        self.main.trigff_wait.wakeOne()
+        self.main.trigff_ready = True
         self.main.trigff_mutex.unlock()
         self.event_stopped.emit("niusb")
+
+        self.cam_config_mutex.lock()
+        self.cam_config_ready = False
+        self.cam_config_mutex.unlock()
 
         cam_ready = {}
         for cam in ["cam1", "cam2", "cam3"]:
@@ -251,13 +271,10 @@ class NIUSB(QObject):
                 self.dev.write_pin(*self.reverse_config[f"trigen_{cam}"], False)
                 while self.dev.read_pin(*self.reverse_config[f"state_{cam}"]):
                     time.sleep(0.01)
-                    # print("cam not ready")
                 self.logger.debug(f"{cam} is complete.")
                 self.event_stopped.emit(cam)
             else:
                 self.event_stopped.emit(f"{cam}-disabled")
-
-        self.main.config_class.cam_config_saved = False
 
     @Slot()
     def stop_run(self):
@@ -265,4 +282,7 @@ class NIUSB(QObject):
         self.logger.debug("NIUSB device released")
         self.run_stopped.emit("niusb")
 
-        self.output_initialized = False
+        # reset run initialized flag
+        self.run_mutex.lock()
+        self.run_ready = False
+        self.run_mutex.unlock()

@@ -66,8 +66,12 @@ class Camera(QObject):
         # make ssh connection
         self.client.connect(self.config["ip_addr"], username=self.username)
 
-        while not self.main.niusb_worker.output_initialized:
-            time.sleep(0.01)
+        # check if NIUSB has initialized its outputs
+        self.main.niusb_worker.run_mutex.lock()
+        while not self.main.niusb_worker.run_ready:
+            self.main.niusb_worker.run_wait.wait()
+        self.main.niusb_worker.run_ready = False
+        self.main.niusb_worker.run_mutex.unlock()
 
         # start executing command
         command = "cd /home/pi/RPi_CameraServers && python3 imdaq.py"

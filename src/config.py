@@ -716,7 +716,12 @@ class Config(QObject):
                 json.dump(cam_config, file, indent=2)
             self.logger.debug(f"Configuration file saved for {cam}")
 
-        self.logger.info(f"Configuration saved to file for run {self.main.run_id}.")
+        self.main.niusb_worker.cam_config_mutex.lock()
+        self.main.niusb_worker.cam_config_ready = True
+        self.main.niusb_worker.cam_config_wait.wakeOne()
+        self.main.niusb_worker.cam_config_mutex.unlock()
+
+        self.logger.info(f"Configuration saved to file for run {self.main.run_id}.\n")
         self.run_config_saved.emit()
 
     @Slot()

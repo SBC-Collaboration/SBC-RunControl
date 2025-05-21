@@ -76,7 +76,7 @@ class SQL(QObject):
         # overwrite delete method to close connections
         self.close_connection()
         self.main.trigff_mutex.lock()
-        self.main.trigff_wait.wakeAll() # wake in case it's hanging
+        self.main.trigff_wait.wakeOne() # wake in case it's hanging
         self.main.trigff_mutex.unlock() 
         super().deleteLater()
 
@@ -157,7 +157,9 @@ class SQL(QObject):
         self.cursor.execute(query)
 
         self.main.trigff_mutex.lock()
-        self.main.trigff_wait.wait(self.main.trigff_mutex)
+        while not self.main.trigff_ready:
+            self.main.trigff_wait.wait(self.main.trigff_mutex)
+        self.main.trigff_ready = False
         self.main.trigff_mutex.unlock()
 
         query = (f"INSERT INTO {self.event_table} "
