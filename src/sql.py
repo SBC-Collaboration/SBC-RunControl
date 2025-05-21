@@ -111,26 +111,45 @@ class SQL(QObject):
 
         self.db.ping()  # ping mysql server to make sure it's alive
         # TODO: data validation steps ...
-        query = (f"INSERT INTO {self.run_table} "
-                 f"VALUES(NULL, "
-                        f"'{self.main.run_id}', "
-                        f"0, "
-                        f"'00:00:00.000', "
-                        f"'{self.main.ui.comment_edit.toPlainText()}', "
-                        f"'', "
-                        f"'random', "
-                        f"NULL, "
-                        f"'{self.main.run_start_time}', "
-                        f"'{self.main.run_start_time}', "
-                        f"'{self.main.ui.source_box.currentText()}', "
-                        f"'{self.main.ui.source_location_box.currentText()}', "
-                        f"NULL, "
-                        f"NULL, "
-                        f"NULL, "
-                        f"NULL, "
-                        f"'{json.dumps(self.config)}'"
-                        f");")
-        self.cursor.execute(query)
+
+        query = f"""
+            INSERT INTO {self.run_table} (
+                ID, run_ID, num_events, run_livetime, comment,
+                active_datastreams, pset_mode, pset,
+                start_time, end_time,
+                source1_ID, source1_location,
+                source2_ID, source2_location,
+                source3_ID, source3_location,
+                config
+            )
+            VALUES (
+                NULL, %s, %s, %s, %s,
+                %s, %s, %s,
+                %s, %s,
+                %s, %s,
+                %s, %s,
+                %s, %s,
+                %s
+            )
+        """
+        values = (
+            self.main.run_id,                      # run_ID
+            0,                                     # num_events
+            "00:00:00.000",                        # run_livetime
+            self.main.ui.comment_edit.toPlainText() or None,  # comment
+            "",                                    # active_datastreams
+            self.main.config_class.run_pressure_mode,                   # pset_mode
+            self.main.config_class.run_pressure_profiles[0]["setpoint"]     # pset
+                if len(self.main.config_class.run_pressure_profiles)==1 else None,                                   
+            self.main.run_start_time,              # start_time
+            self.main.run_start_time,              # end_time
+            self.main.ui.source_box.currentText() or None,              # source1_ID
+            self.main.ui.source_location_box.currentText() or None,     # source1_location
+            None, None,                            # source2_ID, source2_location
+            None, None,                            # source3_ID, source3_location
+            json.dumps(self.main.config_class.run_config),              # config (as JSON string)
+        )
+        self.cursor.execute(query, values)
         self.db.commit()
 
         self.run_started.emit("sql")
@@ -162,20 +181,31 @@ class SQL(QObject):
         self.main.trigff_ready = False
         self.main.trigff_mutex.unlock()
 
-        query = (f"INSERT INTO {self.event_table} "
-                 f"VALUES(NULL,"
-                        f"'{self.main.run_id}',"
-                        f"{self.main.event_id},"
-                        f"'{str(datetime.timedelta(milliseconds=self.main.event_livetime))}',"
-                        f"'{str(datetime.timedelta(milliseconds=self.main.run_livetime))}',"
-                        f"{0},"
-                        f"NULL,"
-                        f"1,"
-                        f"NULL,"
-                        f"'{self.main.event_start_time}',"
-                        f"'{self.main.event_end_time}',"
-                        f"'{self.main.ui.trigger_edit.text()}'"
-                        f");")
-        self.cursor.execute(query)
+        query = f"""
+            INSERT INTO {self.event_table} (
+                ID, run_ID, event_ID, event_livetime, cum_livetime,
+                pset, pset_hi, pset_slope, pset_period,
+                start_time, stop_time, trigger_source
+            )
+            VALUES (
+                NULL, %s, %s, %s, %s,
+                %s, %s, %s, %s,
+                %s, %s, %s
+            )
+        """
+        values = (
+            self.main.run_id,
+            self.main.event_id,
+            str(datetime.timedelta(milliseconds=self.main.event_livetime)),
+            str(datetime.timedelta(milliseconds=self.main.run_livetime)),
+            self.main.config_class.event_pressure["setpoint"],
+            self.main.config_class.event_pressure["setpoint_high"],
+            self.main.config_class.event_pressure["slope"],
+            self.main.config_class.event_pressure["period"],
+            self.main.event_start_time,
+            self.main.event_end_time,
+            self.main.ui.trigger_edit.text()
+        )
+        self.cursor.execute(query, values)
         self.db.commit()
         self.event_stopped.emit("sql")
