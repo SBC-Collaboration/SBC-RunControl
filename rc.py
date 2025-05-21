@@ -634,7 +634,12 @@ class MainWindow(QMainWindow):
         self.config_class.start_event()
         if not os.path.exists(self.event_dir):
             os.mkdir(self.event_dir)
-
+        
+        # update main window pressure display
+        self.ui.ev_pset_box.setValue(self.config_class.event_pressure["setpoint"] or -1)
+        self.ui.ev_pset_hi_box.setValue(self.config_class.event_pressure["setpoint_high"] or -1)
+        self.ui.ev_pset_slope_box.setValue(self.config_class.event_pressure["slope"] or -1)
+        self.ui.ev_pset_period_box.setValue(self.config_class.event_pressure["period"] or -1)
         current_path = os.path.join(self.config_class.config["general"]["data_dir"], "current_event")
         if os.path.islink(current_path):
             os.unlink(current_path)
