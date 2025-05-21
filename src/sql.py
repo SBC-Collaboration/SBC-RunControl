@@ -1,17 +1,12 @@
-import os.path
-from sshtunnel import SSHTunnelForwarder
 from PySide6.QtCore import Signal, Slot
-import mysql.connector
 import datetime
-import time as tm
-import paramiko, pymysql
-import random
-import pandas as pd
+import pymysql
+import os
 import logging
 import numpy as np
 import json
 from PySide6.QtCore import QTimer, QObject, Slot, Signal, QThread
-import time
+import red_caen, ni_usb_6501, sbcbinaryformat
 
 """
 Modified from SBC-SlowControl Database_SBC.py
@@ -120,6 +115,7 @@ class SQL(QObject):
                 source1_ID, source1_location,
                 source2_ID, source2_location,
                 source3_ID, source3_location,
+                red_caen_ver, niusb_ver, sbc_binary_ver,
                 config
             )
             VALUES (
@@ -129,6 +125,7 @@ class SQL(QObject):
                 %s, %s,
                 %s, %s,
                 %s, %s,
+                %s, %s, %s,
                 %s
             )
         """
@@ -147,6 +144,9 @@ class SQL(QObject):
             self.main.ui.source_location_box.currentText() or None,     # source1_location
             None, None,                            # source2_ID, source2_location
             None, None,                            # source3_ID, source3_location
+            red_caen.__version__,                # red_caen_ver
+            ni_usb_6501.__version__,             # niusb_ver
+            sbcbinaryformat.__version__,         # sbc_binary_ver
             json.dumps(self.main.config_class.run_config),              # config (as JSON string)
         )
         self.cursor.execute(query, values)
@@ -156,7 +156,10 @@ class SQL(QObject):
 
     @Slot()
     def stop_run(self):
-        self.run_stopped.emit("sql")
+        if not self.enabled:
+            self.run_stopped.emit("sql-disabled")
+        else:
+            self.run_stopped.emit("sql")
 
     @Slot()
     def stop_event(self):
