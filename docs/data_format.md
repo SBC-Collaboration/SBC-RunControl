@@ -8,19 +8,16 @@ The data structure is:
 - **general**: General configuration for the run control software. This includes paths that the software uses in 
   normal operation. This information generally doesn't change across runs and different days.
   - **config_path** (`str`): Path to the master config json file.
-  - **log_path** (`str`): Path to the log file.
   - **data_dir** (`str`): Main directory where all of the data is saved.
+  - **log_dir** (`str`): Directory in which log files will be saved. If the folder doesn't exist, run control will create one. A new file will be created every day when run control is started first time after midnight.
   - **max_ev_time** (`int`, s): Max time an event can last. After the maximum is reached, a software trigger is sent from run control.
   - **max_num_evs** (`int`): Max number of events that a run can have. If the max number is reached, then the run will end, instead of starting a new event.
-  - **sql**: SQL configurations
-    - **hostname** (`str`): Host name of SQL server
-    - **port** (`int`): Port used by SQL server
-    - **user** (`str`): User name for SQL connection
-    - **token** (`str`): Environment variable of the password used for SQL connection
-    - **database** (`str`): Name of database to which the data is saved
-    - **run_table** (`str`): Name of the table in the database that the information for the run is saved to
-    - **event_table** (`str`): Name of the table in the database that the event data is saved to.
+- **plc**: 
+  - **hostname**: Hostname of PLC modbus server.
+  - **port**: TCP port of modbus server.
+  - **registers**: Modbus register addresses of PLC variables that may be intersing in run control. The unit is in modbus words (2 bytes), and includes the starting address offset. Python `pymodbus` library uses this register value for communication.
   - **pressure**: Pressure profiles for the run.
+    - **enabled**: Whether pressure profiles are enabled.
     - **mode**: The selection mode of pressure profiles for events in a run. If `random`, then a profile is chosen randomly among enabled ones. If `cycle`, then it will cycle through all enabled ones in order.
     - **profile1**, **profile2**, **profile3**, **profile4**, **profile5**, **profile6**: Six slots for pressure profiles to choose from.
       - **enabled** (`bool`): Whether this profile is enabled to be used in the run.
@@ -28,6 +25,14 @@ The data structure is:
       - **setpoint_high** (`float`, bara): Higher pressure set point if it oscillates between two values. If only one setpoint is needed, just set this value to number smaller than `setpoint`, preferably 0.
       - **slope** (`float`, bar/s): The speed of expansion at the start of the event.
       - **period** (`float`, s): The period of oscillation between the low and high pressure set points.
+- **sql**: SQL configurations
+  - **hostname** (`str`): Host name of SQL server
+  - **port** (`int`): Port used by SQL server
+  - **user** (`str`): User name for SQL connection
+  - **token** (`str`): Environment variable of the password used for SQL connection
+  - **database** (`str`): Name of database to which the data is saved
+  - **run_table** (`str`): Name of the table in the database that the information for the run is saved to
+  - **event_table** (`str`): Name of the table in the database that the event data is saved to.
 - **scint**: Scintillation related settings, including SiPM amplifiers and CAEN digitizer.
   - **amp1**, **amp2**, **amp3**
     - **enabled** (`bool`): Whether this amplifier is enabled.
@@ -42,7 +47,8 @@ The data structure is:
     - **iv_stop** (`float`, V): End (higher) voltage of measurement.
     - **iv_step** (`float`, V): Voltage step of measurement.
     - **ch_offset** (`float`, V): Voltage offset for each channel.
-  - **caen**: General config for CAEN digitizer.
+- **caen**: Configuration for CAEN digitizer.
+  - **global**: General config the digitizer as a whole.
     - **enabled** (`bool`): Whether this module in run control is enabled. If disabled, nothing will be done.
     - **data_path** (`str`): Path on the DAQ PC that the data of the current event should be saved to. This can be a symbolic link.
     - **model** (`str`): Model of digitizer (DT5740 for Fermilab chamber).
@@ -65,7 +71,7 @@ The data structure is:
     - **ext_trig** (`str`): Mode of external trigger if `trig_in_as_gate` not enabled. Can be `disabled`, `extout only`, `acq only` or `extout+acq`. This sets if the external trigger is used to generate acquisition trigger, or trigger output, or both, or neither.
     - **sw_trig** (`str`): Mode of software trigger, with the same set of options as previous.
     - **ch_trig** (`str`): Mode of channel self trigger, with the same set of options as previous.
-  - **caen_g0**, **caen_g1**, **caen_g2**, **caen_g3**: Per-group config for CAEN digitizer.
+  - **group0**, **group1**, **group2**, **group3**: Per-group config for CAEN digitizer.
     - **enabled** (`bool`): Whether this entire group is enabled.
     - **offset** (`int`): 16-bit offset value for entire group for 2Vpp \[0..65535\].
     - **range** (`str`): Voltage range of this group. DT5740 can only be "2 Vpp".
