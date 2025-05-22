@@ -581,6 +581,15 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
                   <property name="buttonSymbols">
                    <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
                   </property>
+                  <property name="suffix">
+                   <string> bara</string>
+                  </property>
+                  <property name="minimum">
+                   <double>-1.000000000000000</double>
+                  </property>
+                  <property name="maximum">
+                   <double>1000.000000000000000</double>
+                  </property>
                  </widget>
                 </item>
                 <item row="3" column="2">
@@ -616,6 +625,15 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
                   </property>
                   <property name="buttonSymbols">
                    <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+                  </property>
+                  <property name="suffix">
+                   <string> bara</string>
+                  </property>
+                  <property name="minimum">
+                   <double>-1.000000000000000</double>
+                  </property>
+                  <property name="maximum">
+                   <double>1000.000000000000000</double>
                   </property>
                  </widget>
                 </item>
@@ -759,6 +777,15 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
                   <property name="buttonSymbols">
                    <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
                   </property>
+                  <property name="suffix">
+                   <string> bara/s</string>
+                  </property>
+                  <property name="minimum">
+                   <double>-1.000000000000000</double>
+                  </property>
+                  <property name="maximum">
+                   <double>1000.000000000000000</double>
+                  </property>
                  </widget>
                 </item>
                 <item row="4" column="3">
@@ -768,6 +795,18 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
                   </property>
                   <property name="buttonSymbols">
                    <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+                  </property>
+                  <property name="suffix">
+                   <string> s</string>
+                  </property>
+                  <property name="decimals">
+                   <number>0</number>
+                  </property>
+                  <property name="minimum">
+                   <double>-1.000000000000000</double>
+                  </property>
+                  <property name="maximum">
+                   <double>1000000.000000000000000</double>
                   </property>
                  </widget>
                 </item>
