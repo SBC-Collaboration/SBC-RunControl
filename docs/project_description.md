@@ -9,26 +9,19 @@ structure of this repository:
 ├── README.md
 ├── config.json
 ├── dependencies
-│   ├── ArduinoSketches
-│   │   ├── README.md
-│   │   ├── clock/
-│   │   ├── ln2autofill_rtd/
-│   │   ├── ln2autofill_scale/
-│   │   ├── position/
-│   │   ├── trigger/
-│   │   └── uti-docs/
-│   ├── NI_USB6501/
-│   └── conda_rc.yml
+│   ├── ArduinoSketches/
+│   ├── CAENDrivers/
+│   ├── gati-linux-driver/
+│   ├── conda_rc.yml
+│   └── root-init.sh
 ├── docs
+│   ├── images/
+│   ├── .readthedocs.yaml
 │   ├── api.rst
 │   ├── conf.py
 │   ├── data_format.md
-│   ├── dependencies.md
-│   ├── images/
 │   ├── index.md
-│   ├── program_behavior.md
 │   ├── project_structure.md
-│   ├── requirements.txt
 │   └── usage.rst
 ├── init.sh
 ├── rc.py
@@ -40,6 +33,7 @@ structure of this repository:
 │   ├── cameras.py
 │   ├── config.py
 │   ├── niusb.py
+│   ├── plc.py
 │   ├── sipm_amp.py
 │   ├── sql.py
 │   ├── ui_loader.py
@@ -114,13 +108,25 @@ Using the third party custom driver, this modules handles all digitital input/ou
 At the start of each run, the Arduinos module checks that the build on the Arduino is up to date. It generates a zip file containing the `.ino` C++ file as well as wll supporting files, including the `.json` configuration file. Then it compares the zip file to the existing zip file in the build folder. If that zip file doesn't exist, or if they are different, the module will compile the code and upload to the corresponding Arduino, while overwriting the zip file with the newer version. If the two zip files are the same, then nothing will happen to prevent unnecessary writes to the EEPROM.
 
 ### Writer
+The writer module is responsible for writing the event info into a binary file in the event data folder. This file includes event ID, livetime, and trigger source. This is roughly the same as the data saved in **EventData** SQL table. TODO: Write a `run_info` file including data about each run, similar to the **RunData** table.
 
 ### SQL
+The SQL module sets up a connection when run control starts, and closes connection when run control quits. At the start of each run, it inserts a line into the **RunData** table with information including run ID, livetime, sources, user provided comments, active datastreams, pressure setpoint (if same for all events), and driver versions. At the end of each event, it updates number of events, livetime, comments, etc. This ensures a software crash will not cause all data to be lost. At the end of each event, a new line is also inserted into **EventData** table, including event livetime, event pressure setpoint, and trigger source.
 
 ### Cameras
+Before this module starts for a run, the **Config** module saves a `.json` file for each camera in the shared data folder. At the start of each run, this module establishes SSH connections to the camera Raspberry Pis. Then it waits for the NIUSB module to finish setting up the digital input / output lines. Afterwards, it starts up the camera server script. The start and end of each event is handled by the NIUSB module only via the digital IO signals. At end of run, this module closes the SSH connection.
 
 ### CAEN
+This module uses the `red_caen` C++ driver to communicate with the CAEN digitizer via USB. When a run starts, the CAEN module reads configuration from the master Run Control configuration and populates fields in the `GlobalConfiguration` and `GroupConfiguration` structs. Then it establishes a serial connection, sets configuration, reads them back from the digitizer, and clears the buffer. At the start of an event, it sets up the `SBCBinaryFormat` writer, and enables acquisition through the driver. When an event is active, the module runs a loop retrieving raw data from digitizer back to memory handled by the driver, and decodes into structured waveform formats. Retrievals needs to happen frequently before the on-board buffer fills up, and number of triggers retrieved each time is also limited in configuration. The retrieved data is saved in a buffer managed by the module. At the end of the event, the module disables CAEN acquisition using software, and retrieves all data left on the on-board buffer into the module's buffer. Then it saves all data to file in the SBC binary format. At the end of a run, the module releases all buffer and handle to the digitizer.
 
 ### SiPM Amp
+At the start of a run this modules checks the time of last IV curve taken. If it is longer than the duration in setting, it will start taking an IV curve, adn save data to the data folder. Then at the start and end of an event, it will bias and unbias the SiPMs. 
 
 ### Acoustics
+The acoustics module controls the GaGe digitizer using the provided `gati-linux-driver`, as well as the custom `SBC-Piezo-Base-Code`. We need ~100 ms of data at 1 MHz for 8 channels around the bubble trigger. This is much lower than the on-board buffer size of the GaGe digitizer, but more than the length limit imposed on the pre-trigger length. The work around is to start an acquisition and immediately sends a software trigger, wait for the buffer to fill up, which takes about 4 minutes. If no bubble trigger happens during this time, this modules kills the acquisition instance and starts again. If there is a bubble trigger, it immediately stops acquisition, retrieves all data from the digitizer to the PC, and save the period of interest to SBC binary file. When a run starts, run control saves a `.ini` file to the main repository directory, which the GaGe driver then loads.
+
+### PLC
+Run control communicates with the PLC using Modbus in this module. It opens and closes the Modbus-TCP connection at the start and end of a run, respectively. When a event starts, it starts the `WRITE_SLOWDAQ` procedure on the PLC, starts data taking. Also it sets all relavent variables for the event, like pressure setpoint. When the event becomes active, it start the `PRESSURE_CYCLE` procedure, telling the PLC to start a pressure cycle. When a trigger happens at the end of an event, the module waits until the `PRESSURE_CYCLE` procedure ends, reads the `PCYCLE_*_FF` for any first fault information, stops the `WRITE_SLOWDAQ` procedure, and copies the data via SMB to the data folder. 
+
+### Digiscope
+This module uses NI CompactRIO device to serve as a global clock sync at 1 us resolution for up to 64 digital lines.
