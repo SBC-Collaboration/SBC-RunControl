@@ -19,11 +19,14 @@
 - [**SBC-ArduinoSketches**](https://github.com/SBC-Collaboration/SBC-ArduinoSketches): This repository includes Arduino sketches for clock, trigger fan-in/fan-out, and position sensing Arduinos.
 - [**SBCBinaryFormat**](https://github.com/SBC-Collaboration/SBCBinaryFormat): This repository provides the python library for writing to and reading from sbc binary data format.
 - [**RedDigitizerplusplus**](https://github.com/shengzhiheng/RedDigitizerplusplus): This is a PyBind11 wrapper around a C++ wrapper for CAEN's C API. It can be used to control the CAEN digitizer directly from python.
-- [**CAENDigitizer**](https://www.caen.it/products/caendigitizer-library/): Library of functions for CAEN Digitizers high level management.
-- [**CAENComm**](https://www.caen.it/products/caencomm-library/): Interface library for CAEN Data Acquistion Modules/
-- [**CAENVMELib**](https://www.caen.it/products/caenvmelib-library/): Interface library for CAEN VME Bridges.
+- [**CAENDrivers**](https://github.com/SBC-Collaboration/CAENDrivers): Proprietary libraries for the CAEN digitizer.
+  - [**CAENDigitizer**](https://www.caen.it/products/caendigitizer-library/): Library of functions for CAEN Digitizers high level management.
+  - [**CAENComm**](https://www.caen.it/products/caencomm-library/): Interface library for CAEN Data Acquistion Modules.
+  - [**CAENVMELib**](https://www.caen.it/products/caenvmelib-library/): Interface library for CAEN VME Bridges.
+- [**gati-linux-driver**](https://github.com/SBC-Collaboration/gati-linux-driver): C driver for GaGe digitizer.
 - [**SBC-Piezo-Base-Code**](https://github.com/SBC-Collaboration/SBC-Piezo-Base-Code): This is a C++ driver for the GaGe digitizer. It is modified to work around the pre-trigger length limit imposed by the GaGe driver.
 - [**NI_USB-6501**](https://github.com/shengzhiheng/NI_USB-6501): A third party driver for NI USB device, modified to work with Python3.
+- [**PyModbus**](https://pypi.org/project/pymodbus/): Pymodbus is used for Modbus communication between run control and PLC.
 - [**Icons8**](https://icons8.com/icon/set/file/ios): Icons used in the program is by Icons8, specifically the IOS17 Outlined icon set.
 - Other standard python libraries including `logging`, `json`, `time`, `datetime`, `os`, `sys`, `enum`, `re`, etc.
 

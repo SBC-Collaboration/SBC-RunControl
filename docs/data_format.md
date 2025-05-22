@@ -171,18 +171,21 @@ The run data is saved in the `RunData` tables in the slow control SQL database. 
 - **num_events** (`INT UNSIGNED`, `NOT NULL`): Number of events in the run.
 - **run_livetime** (`TIME(3)`, `NOT NULL`): Total livetime of the run, with ms precision.
 - **comment** (`TEXT`): Any comments entered by the user during the run.
-- **active_datastreams** (`SET('imaging', 'scintillation', 'acoustics')`, `NOT NULL`): A list of active data streams 
+- **active_datastreams** (`SET('imaging', 'scintillation', 'acoustics')`, `NOT NULL`): A list of active data streams .
   for the run. It can have zero, one, or multiple entries, from the predetermined list. If it has zero elements, it is saved as an empty string, and not NULL.
 - **pset_mode** (`ENUM('random', 'sequential')`, `NOT NULL`): Mode of pressure setpoint in this run. If `random`, then run control will choose randomly from the list. If `sequential`, then run control will cycle through the pressure setpoints in the list in order.
-- **pset** (`FLOAT`, `NOT NULL`): Pressure set point of the run. If the run is doing pressure ramping, then the higher setpoint of the ramp
-- **start_time** (`TIMESTAMP(3)`, `NOT NULL`): UTC timestamp of when the run starts, with ms precision
-- **end_time** (`TIMESTAMP(3)`, `NOT NULL`): UTC timestamp of when the run ends, with ms precision
-- **source1_ID** (`VARCHAR(100)`): Name of source 1
-- **source1_location** (`VARCHAR(100)`): Location of source 1
-- **source2_ID** (`VARCHAR(100)`): Name of source 2
-- **source2_location** (`VARCHAR(100)`): Location of source 2
-- **source3_ID** (`VARCHAR(100)`): Name of source 3
-- **source3_location** (`VARCHAR(100)`): Location of source 3
+- **pset** (`FLOAT`, `NOT NULL`): Pressure set point of the run. If the run is doing pressure ramping, then the higher setpoint of the ramp.
+- **start_time** (`TIMESTAMP(3)`, `NOT NULL`): UTC timestamp of when the run starts, with ms precision.
+- **end_time** (`TIMESTAMP(3)`, `NOT NULL`): UTC timestamp of when the run ends, with ms precision.
+- **source1_ID** (`VARCHAR(100)`): Name of source 1.
+- **source1_location** (`VARCHAR(100)`): Location of source 1.
+- **source2_ID** (`VARCHAR(100)`): Name of source 2.
+- **source2_location** (`VARCHAR(100)`): Location of source 2.
+- **source3_ID** (`VARCHAR(100)`): Name of source 3.
+- **source3_location** (`VARCHAR(100)`): Location of source 3.
+- **red_caen_ver** (`VARCHAR(100)`): Version of red_caen library.
+- **niusb_ver** (`VARCHAR(100)`): Version of the ni_usb_6501 library.
+- **sbc_binary_ver** (`VARCHAR(100)`): Version of the SBC binary format library.
 - **config** (`JSON`): Saves the master config file in addition to the data folder. Should enable some SQL query using config info.
 - More columns will be added when analysis module is running, like the last data reduction version performed and the date, etc.
 
@@ -193,9 +196,9 @@ The event data is saved in the `EventData` tables in the slow control SQL databa
 - **event_ID** (`INT UNSIGNED`, `NOT NULL`, `MULTIPLE KEY (2)`): Integer event ID starting from 0 in the run. 
 - **event_livetime** (`TIME(3)`, `NOT NULL`): Run control livetime for this event.
 - **cum_livetime** (`TIME(3)`, `NOT NULL`): Cumulative livetime of the run at the end of the event.
-- **pset** (`FLOAT`, `NOT NULL`): Pressure set point for this event, in units of bara. If `pset_hi` exists, then this is the lower of the two set points.
+- **pset** (`FLOAT`): Pressure set point for this event, in units of bara. If `pset_hi` exists, then this is the lower of the two set points.
 - **pset_hi** (`FLOAT`): Higher pressure set point, in units of bara. If this number is lower than `pset` or is `NULL`, then there is only one set point.
-- **pset_slope** (`FLOAT`, `NOT NULL`): Slope of expansion from compressed state to the higher pressure set point, in units of bar/s.
+- **pset_slope** (`FLOAT`): Slope of expansion from compressed state to the higher pressure set point, in units of bar/s.
 - **pset_period** (`FLOAT`): Period of oscillation between higher and lower set points. In units of seconds.
 - **start_time** (`TIMESTAMP(3)`): Timestamp of the event start.
 - **stop_time** (`TIMESTAMP(3)`): Timestamp of the event stop.
