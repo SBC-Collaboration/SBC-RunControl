@@ -66,8 +66,7 @@ class MainWindow(QMainWindow):
         self.log_dir = self.config_class.config["general"]["log_dir"]
         if not os.path.exists(self.log_dir):
             os.mkdir(self.log_dir)
-        current_date = datetime.datetime.now().strftime("%Y%m%d")
-        self.log_filename = os.path.join(self.log_dir, f"rc-{current_date}.log")
+        self.log_filename = os.path.join(self.log_dir, "rc.log")
         self.log_format = "%(asctime)s %(levelname)s > %(message)s"
         self.log_formatter = logging.Formatter(self.log_format)
         self.file_handler = TimedRotatingFileHandler(
