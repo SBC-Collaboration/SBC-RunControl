@@ -26,6 +26,7 @@ import time
 import re
 import sys
 import os
+import fcntl
 
 
 # Loads Main window
@@ -41,6 +42,16 @@ class MainWindow(QMainWindow):
 
     def __init__(self):
         super(MainWindow, self).__init__()
+
+        # Acquire a lock to prevent multiple instances of the program
+        self.lock_file = "/tmp/runcontrol.lock"
+        self.lock_fd = open(self.lock_file, 'w')
+        try:
+            fcntl.flock(self.lock_fd, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        except BlockingIOError:
+            print("Run Control is already running. Exiting.")
+            sys.exit(1)
+
         self.run_id = ""
         self.event_id = None
 
@@ -268,6 +279,14 @@ class MainWindow(QMainWindow):
         QApplication.processEvents()
         event.accept()
         QApplication.quit()
+
+        # Optional, release the lock file
+        try:
+            fcntl.flock(self.lock_fd, fcntl.LOCK_UN)
+            self.lock_fd.close()
+            os.remove(self.lock_file)
+        except BlockingIOError:
+            self.logger.error("Failed to release the lock file.")
 
         self.logger.info("Run control successfully stopped.\n")
         
