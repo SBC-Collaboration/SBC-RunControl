@@ -188,8 +188,8 @@ class NIUSB(QObject):
         self.dev.write_pin(*self.reverse_config["reset"], True)
         # wait until trigger latch is low
         while self.dev.read_pin(*self.reverse_config["latch"]):
-            self.dev.write_pin(*self.reverse_config["trig"], True)
-            self.dev.write_pin(*self.reverse_config["reset"], False)
+            self.dev.write_pin(*self.reverse_config["trig"], False)
+            self.dev.write_pin(*self.reverse_config["reset"], True)
         self.dev.write_pin(*self.reverse_config["reset"], 0)
         # reset trigff ready flag
         self.main.trigff_mutex.lock()
