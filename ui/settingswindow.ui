@@ -889,7 +889,7 @@
            <property name="geometry">
             <rect>
              <x>0</x>
-             <y>-45</y>
+             <y>0</y>
              <width>874</width>
              <height>567</height>
             </rect>
@@ -14916,7 +14916,7 @@
                 </property>
                </widget>
               </item>
-              <item row="12" column="8" colspan="2">
+              <item row="14" column="8" colspan="2">
                <widget class="QLabel" name="trig_led_gate_pin_label">
                 <property name="text">
                  <string>LED Gate Pin</string>
@@ -14929,7 +14929,7 @@
                 </property>
                </widget>
               </item>
-              <item row="13" column="8" colspan="2">
+              <item row="15" column="8" colspan="2">
                <widget class="NoWheelSpinBox" name="trig_led_gate_pin_box">
                 <property name="focusPolicy">
                  <enum>Qt::FocusPolicy::StrongFocus</enum>
@@ -14951,7 +14951,7 @@
                 </property>
                </widget>
               </item>
-              <item row="14" column="8" colspan="2">
+              <item row="16" column="8" colspan="2">
                <widget class="QLabel" name="trig_led_gate_cycles_label">
                 <property name="text">
                  <string>LED Gate Cycles</string>
@@ -14964,7 +14964,7 @@
                 </property>
                </widget>
               </item>
-              <item row="15" column="8" colspan="2">
+              <item row="17" column="8" colspan="2">
                <widget class="NoWheelSpinBox" name="trig_led_gate_cycles_box">
                 <property name="focusPolicy">
                  <enum>Qt::FocusPolicy::StrongFocus</enum>
@@ -14980,6 +14980,41 @@
                 </property>
                 <property name="maximum">
                  <number>1000000000</number>
+                </property>
+               </widget>
+              </item>
+              <item row="12" column="8" colspan="2">
+               <widget class="QLabel" name="trig_fast_comp_pin_label">
+                <property name="text">
+                 <string>Fast Compress</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>trig_led_gate_pin_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="13" column="8" colspan="2">
+               <widget class="NoWheelSpinBox" name="trig_fast_comp_pin_box">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(119, 118, 123);</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+                </property>
+                <property name="maximum">
+                 <number>53</number>
                 </property>
                </widget>
               </item>
