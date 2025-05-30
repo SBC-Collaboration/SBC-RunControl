@@ -189,6 +189,26 @@ class MainWindow(QMainWindow):
         self.acous_thread.start()
         time.sleep(0.001)
 
+
+#     Modbus changes started ###
+        self.modbus_worker = Modbus(self)                                  #change for RC-PLC comm.
+        self.modbus_worker.run_started.connect(self.starting_run_wait)     #change for RC-PLC comm.
+        self.modbus_worker.run_stopped.connect(self.stopping_run_wait)     #change for RC-PLC comm.
+        self.modbus_worker.event_started.connect(self.starting_event_wait) #change for RC-PLC comm.
+        self.modbus_worker.event_stopped.connect(self.stopping_event_wait) #change for RC-PLC comm.
+        self.modbus_thread = QThread()                                     #change for RC-PLC comm.
+        self.modbus_thread.setObjectName("modbus_thread")                  #change for RC-PLC comm.
+        self.modbus_worker.moveToThread(self.modbus_thread)                #change for RC-PLC comm.
+        self.modbus_thread.started.connect(self.modbus_worker.run)         #change for RC-PLC comm.
+        self.run_starting.connect(self.modbus_worker.start_run)            #change for RC-PLC comm.
+        self.event_starting.connect(self.modbus_worker.start_event)        #change for RC-PLC comm.
+        self.event_stopping.connect(self.modbus_worker.stop_event)         #change for RC-PLC comm.
+        self.run_stopping.connect(self.modbus_worker.stop_run)             #change for RC-PLC comm.
+        self.modbus_thread.start()                                         #change for RC-PLC comm.
+        time.sleep(0.001)                                                  #change for RC-PLC comm.
+#     Modbus changes ended ###
+
+
         self.niusb_worker = NIUSB(self)
         self.niusb_worker.run_started.connect(self.starting_run_wait)
         self.niusb_worker.event_started.connect(self.starting_event_wait)
@@ -415,24 +435,24 @@ class MainWindow(QMainWindow):
             ):
                 self.send_trigger.emit("Timeout")
         elif self.run_state == self.run_states["starting_run"]:
-            # SiPM amp 1/2/3, Cam 1/2/3, clock/position/trigger arduino, NI USB, CAEN
-            if len(self.starting_run_ready) >= 12:
+            # SiPM amp 1/2/3, Cam 1/2/3, clock/position/trigger arduino, NI USB, CAEN, MODBUS #change for RC-PLC comm.
+            if len(self.starting_run_ready) >= 13:
                 self.logger.info(f"Run {self.run_id} started. Modules started: {self.starting_run_ready}\n")
                 self.start_event()
         elif self.run_state == self.run_states["starting_event"]:
-            # cam 1/2/3, *PLC, NIUSB, CAEN, GaGe
+            # cam 1/2/3, *PLC, NIUSB, CAEN, GaGe, MODBUS   #change for RC-PLC comm.
             self.event_timer.start()
-            if len(self.starting_event_ready) >= 6:
+            if len(self.starting_event_ready) >= 7:        #change for RC-PLC comm.
                 self.logger.info(f"Event {self.event_id} started. Modules started: {self.starting_event_ready}")
                 self.update_state("active")
         elif self.run_state == self.run_states["stopping_event"]:
-            # SQL, cam 1/2/3, NIUSB, CAEN, GaGe
-            if len(self.stopping_event_ready) >= 7:
+            # SQL, cam 1/2/3, NIUSB, CAEN, GaGe, MODBUS   #change for RC-PLC comm.
+            if len(self.stopping_event_ready) >= 8:       #change for RC-PLC comm.
                 self.logger.info(f"Event {self.event_id} stopped. Modules stopped: {self.stopping_event_ready}\n")
                 self.start_event()
         elif self.run_state == self.run_states["stopping_run"]:
-            # SQL, cam 1/2/3, sipm amp 1/2/3, NIUSB, CAEN
-            if len(self.stopping_run_ready) >= 9:
+            # SQL, cam 1/2/3, sipm amp 1/2/3, NIUSB, CAEN, MODBUS  #change for RC-PLC comm.
+            if len(self.stopping_run_ready) >= 10:        #change for RC-PLC comm.
                 self.logger.info(f"Run {self.run_id} stopped. Modules stopped: {self.stopping_run_ready}")
                 self.update_state("idle")
 
