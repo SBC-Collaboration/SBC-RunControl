@@ -109,7 +109,7 @@ class SQL(QObject):
 
         query = f"""
             INSERT INTO {self.run_table} (
-                ID, run_ID, num_events, run_livetime, comment,
+                ID, run_ID, run_exit_code, num_events, run_livetime, comment,
                 active_datastreams, pset_mode, pset,
                 start_time, end_time,
                 source1_ID, source1_location,
@@ -119,7 +119,7 @@ class SQL(QObject):
                 config
             )
             VALUES (
-                NULL, %s, %s, %s, %s,
+                NULL, %s, %s, %s, %s, %s,
                 %s, %s, %s,
                 %s, %s,
                 %s, %s,
@@ -131,6 +131,7 @@ class SQL(QObject):
         """
         values = (
             self.main.run_id,                      # run_ID
+            None,                                  # run_exit_code
             0,                                     # num_events
             "00:00:00.000",                        # run_livetime
             self.main.ui.comment_edit.toPlainText() or None,  # comment
@@ -158,8 +159,14 @@ class SQL(QObject):
     def stop_run(self):
         if not self.enabled:
             self.run_stopped.emit("sql-disabled")
-        else:
-            self.run_stopped.emit("sql")
+            return
+        self.db.ping()
+        query = (f"UPDATE {self.run_table} "
+                 f"SET run_exit_code = {self.main.run_exit_code} "
+                 f"WHERE run_ID = '{self.main.run_id}';")
+        self.cursor.execute(query)
+        self.db.commit()
+        self.run_stopped.emit("sql")
 
     @Slot()
     def stop_event(self):

@@ -613,6 +613,7 @@ class MainWindow(QMainWindow):
                 vars[v].idle()
 
         # reset event number and livetimes
+        self.run_exit_code = 255
         self.event_id = -1
         self.event_livetime = 0
         self.run_livetime = 0
@@ -637,6 +638,7 @@ class MainWindow(QMainWindow):
         self.run_end_time = datetime.datetime.now().isoformat(sep=" ", timespec="milliseconds")
         self.stopping_run_ready = []
         self.stopping_run = False
+        self.run_exit_code = 0
 
         self.run_stopping.emit()
         self.update_state("stopping_run")
