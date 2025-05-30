@@ -173,8 +173,8 @@ class NIUSB(QObject):
         self.dev.write_pin(*self.reverse_config["reset"], True)
 
         self.run_mutex.lock()
-        self.run_wait.wakeOne()
         self.run_ready = True
+        self.run_wait.wakeAll()
         self.run_mutex.unlock()
         self.run_started.emit("niusb")
 
@@ -200,8 +200,7 @@ class NIUSB(QObject):
         # check if cameras config are saved
         self.cam_config_mutex.lock()
         while not self.cam_config_ready:
-            self.cam_config_wait.wait()
-        self.cam_config_ready = False
+            self.cam_config_wait.wait(self.cam_config_mutex)
         self.cam_config_mutex.unlock()
 
         # check cameras ready
@@ -259,10 +258,6 @@ class NIUSB(QObject):
         self.main.trigff_ready = True
         self.main.trigff_mutex.unlock()
         self.event_stopped.emit("niusb")
-
-        self.cam_config_mutex.lock()
-        self.cam_config_ready = False
-        self.cam_config_mutex.unlock()
 
         cam_ready = {}
         for cam in ["cam1", "cam2", "cam3"]:

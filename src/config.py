@@ -802,3 +802,7 @@ class Config(QObject):
     @Slot()
     def stop_run(self):
         self.run_config = self.config
+
+        self.cam_config_mutex.lock()
+        self.cam_config_ready = False
+        self.cam_config_mutex.unlock()
