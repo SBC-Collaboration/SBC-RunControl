@@ -254,6 +254,7 @@ class MainWindow(QMainWindow):
         self.sql_worker.moveToThread(self.sql_thread)
         self.sql_thread.started.connect(self.sql_worker.run)
         self.run_starting.connect(self.sql_worker.start_run)
+        self.event_starting.connect(self.sql_worker.start_event)
         self.event_stopping.connect(self.sql_worker.stop_event)
         self.run_stopping.connect(self.sql_worker.stop_run)
         self.sql_thread.start()
@@ -662,6 +663,7 @@ class MainWindow(QMainWindow):
 
         self.event_timer.start()
         self.event_start_time = datetime.datetime.now().isoformat(sep=" ", timespec="milliseconds")
+        self.event_exit_code = 255
         self.starting_event_ready = []
         self.update_state("starting_event")
         self.event_livetime = 0
@@ -687,6 +689,7 @@ class MainWindow(QMainWindow):
         self.stopping_event_ready = []
         self.event_livetime = self.event_timer.elapsed()
         self.run_livetime += self.event_livetime
+        self.event_exit_code = 0
         self.event_stopping.emit()
         self.update_state("stopping_event")
 
