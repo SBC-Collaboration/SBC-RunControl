@@ -12,6 +12,7 @@ from src.ui_loader import SettingsWindow, LogWindow
 from src.arduinos import Arduino
 from src.caen import Caen
 from src.acoustics import Acoustics
+from src.modbus import Modbus
 from src.cameras import Camera
 from src.sipm_amp import SiPMAmp
 from src.sql import SQL
