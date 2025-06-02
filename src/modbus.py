@@ -20,8 +20,7 @@ def safe_modbus(func):
         try:
             return func(*args, **kwargs)
         except Exception as e:
-            # Try to get `pos` from kwargs or args
-            pos = kwargs.get('pos') if 'pos' in kwargs else args[0] if args else '?'
+            pos = kwargs.get('pos') if 'pos' in kwargs else args[1] if len(args) > 1 else '?'
             print(f"ERROR in {func.__name__} at register {pos}: {e}")
             return None
     return wrapper
@@ -41,6 +40,7 @@ class Modbus(QObject):
         self.logger = logging.getLogger("rc")
         self.config = self.main.config_class.config["plc"]
         self.registers = self.config["registers"]
+        self.client = None
 
         self.timer = QTimer(self)
         self.timer.setInterval(10)
@@ -48,16 +48,16 @@ class Modbus(QObject):
     
     # Private helper functions to read / write Modbus registers
     @safe_modbus
-    def _read_float(client,pos, endian='<'):
+    def _read_float(self, pos, endian='<'):
         # PARAM_F
         length = 2
-        response = client.read_holding_registers(pos, count=length)
+        response = self.client.read_holding_registers(pos, count=length)
         packed_registers = struct.pack(f"{endian}HH", *response.registers)
         value_float = struct.unpack(f"{endian}f", packed_registers)[0]
         return value_float
 
     @safe_modbus
-    def _write_float(client, pos, value, endian='<'):
+    def _write_float(self, pos, value, endian='<'):
         """Write a 32-bit float value to two words at a Modbus register.
 
         Args:
@@ -72,41 +72,41 @@ class Modbus(QObject):
         fl = float(value)
         bytes = struct.pack(f'{endian}f', fl)
         words = struct.unpack(f'{endian}HH', bytes)
-        response = client.write_registers(pos, words)
+        response = self.client.write_registers(pos, words)
         return True
 
     @safe_modbus
-    def _read_int(client,pos, endian='<'):
+    def _read_int(self, pos, endian='<'):
         # PARAM_I
         length = 1
-        response = client.read_holding_registers(pos, count=length)
+        response = self.client.read_holding_registers(pos, count=length)
         value_int = struct.unpack(f"{endian}i", response.registers[0])[0]
         return value_int
 
     @safe_modbus
-    def _read_time(client, pos, endian='<'):
+    def _read_time(self, pos, endian='<'):
         # PARAM_T, TIME
         length = 2
-        response = client.read_holding_registers(pos, count=length)
+        response = self.client.read_holding_registers(pos, count=length)
         words = response.registers
         packed = struct.pack(f"{endian}HH", *words)
         value_time = struct.unpack(f"{endian}i", packed)[0]
         return value_time  # ms
 
     @safe_modbus
-    def _write_time(client, pos, value, endian='<'):
+    def _write_time(self, pos, value, endian='<'):
         # PARAM_T
         t = int(value)
         bytes = struct.pack(f'{endian}i', t)
         words = struct.unpack(f'{endian}HH', bytes)
-        response = client.write_registers(pos, words)
+        response = self.client.write_registers(pos, words)
         return True
 
     @safe_modbus
-    def _read_flag(client, pos):
+    def _read_flag(self, pos):
         # FLAG
         length = 1
-        response = client.read_holding_registers(pos, count=length)
+        response = self.client.read_holding_registers(pos, count=length)
         word = response.registers[0]
         # Get running state at bit 0 and interlocked at bit 1
         running = (word >> 0) & 1 == 1
@@ -115,35 +115,35 @@ class Modbus(QObject):
         return running, interlocked
 
     @safe_modbus
-    def _write_flag(client, pos, value):
+    def _write_flag(self, pos, value):
         # FLAG
         # If true, set flag, set 1 to bit 1
         # If false, reset flag, set 1 to bit 2
-        client.write_register(pos, 1<<(1 if value else 2))
+        self.client.write_register(pos, 1<<(1 if value else 2))
         return True
 
     @safe_modbus
-    def _read_FF(client, pos):
+    def _read_FF(self, pos):
         # FF
         length = 1
-        response = client.read_holding_registers(pos, count=length)
+        response = self.client.read_holding_registers(pos, count=length)
         word = response.registers[0]
         # Check if each bit is true or false
         fault_bits = [(word >> i) & 1 == 1  for i in range(15)]
         return fault_bits
 
     @safe_modbus
-    def _reset_FF(client, pos):
+    def _reset_FF(self, pos):
         # FF
         # Reset all fault bits
-        client.write_register(pos, 1<<15)
+        self.client.write_register(pos, 1<<15)
         return True
 
     @safe_modbus
-    def _read_procedure(client, pos):
+    def _read_procedure(self, pos):
         # PROCEDURE
         length = 2
-        response = client.read_holding_registers(pos, count=length)
+        response = self.client.read_holding_registers(pos, count=length)
         word = response.registers[0]
         # make sure bit 2,3,4 are all 0, otherwise return error
         if (word >> 2) & 1 == 1:
@@ -158,26 +158,30 @@ class Modbus(QObject):
         exit = response.registers[1]
         # TODO: make return into a named tuple
         return state, interlocked, exit
+    
+    @safe_modbus
+    def _get_procedure_state(self, pos):
+        return self._read_procedure(pos)[0]
 
     @safe_modbus
-    def _start_procedure(client, pos):
+    def _start_procedure(self, pos):
         # PROCEDURE
         # Write 1 to bit 2 to start procedure
-        client.write_register(pos, 1<<2)
+        self.client.write_register(pos, 1<<2)
         return True
 
     @safe_modbus
-    def _stop_procedure(client, pos):
+    def _stop_procedure(self, pos):
         # PROCEDURE
         # Write 1 to bit 3 to stop procedure
-        client.write_register(pos, 1<<3)
+        self.client.write_register(pos, 1<<3)
         return True
 
     @safe_modbus
-    def _abort_procedure(client, pos):
+    def _abort_procedure(self, pos):
         # PROCEDURE
         # Write 1 to bit 4 to abort procedure
-        client.write_register(pos, 1<<4)
+        self.client.write_register(pos, 1<<4)
         return True
 
     @Slot()
@@ -188,9 +192,9 @@ class Modbus(QObject):
     @Slot()
     def periodic_task(self):
         if (self.main.run_state == self.main.run_states["active"] and self.pressure_cycle ==  False): 
-            pressure_state  = _read_procedure(self.client, self.registers["PRESSURE_CYCLE"]) 
+            pressure_state  = _read_procedure(self.registers["PRESSURE_CYCLE"]) 
             if(pressure_state[0] == False):
-                start_pressure = _start_procedure(self.client, self.registers["PRESSURE_CYCLE"])
+                start_pressure = _start_procedure(self.registers["PRESSURE_CYCLE"])
                 if((start_pressure)==True):
                     self.pressure_cycle  = True
                     self.logger.debug(f" Pressure cycle started successfully.")
@@ -204,18 +208,18 @@ class Modbus(QObject):
             self.connected = self.client.connect()
             self.logger.debug(f"Beckoff PLC connected: {str(self.connected)}.")
         except Exception as e:
-            self.logger.debug(f"Beckoff PLC connection failed: {e}.")
+            self.logger.error(f"Beckoff PLC connection failed: {e}.")
         self.run_started.emit("modbus")
 
 
     @Slot()                                                                      
     def start_event(self):
-        if (self._start_procedure(self.client,self.registers["WRITE_SLOWDAQ"])) == True:
+        if (self._start_procedure(self.registers["WRITE_SLOWDAQ"])) == True:
             self.logger.debug(f"SLOW DAQ process started.")
         else:
             self.logger.error(f"SLOW DAQ process start is unsuccessful.")
 
-        if ((self._write_float(self.client,self.registers["PCYCLE_PSET"],self.config["pressure"]["profile1"]["setpoint"]))==True):
+        if ((self._write_float(self.registers["PCYCLE_PSET"],self.config["pressure"]["profile1"]["setpoint"]))==True):
             self.logger.debug(f"write of PSET is successful.")
         else:
             self.logger.error(f"write of PSET is unsuccessful.")
@@ -225,37 +229,42 @@ class Modbus(QObject):
 
     @Slot()
     def stop_event(self):
-        pressure_counter = 0
         slowdaq_counter = 0
-        end_state = self._read_procedure(self.client,self.registers["PRESSURE_CYCLE"])
-        while(end_state[0] == True and pressure_counter < 20):
-            end_state = self._read_procedure(self.client,self.registers["PRESSURE_CYCLE"])
-            pressure_counter += 1
+        stop_procedure_wait = 30 * 1000  # ms
+        abort_procedure_wait = 30 * 1000  # ms
+        pc_register = self.registers["PRESSURE_CYCLE"]
+        self.stop_event_timer = QElapsedTimer(self)
+        self.stop_event_timer.start()
+
+        while(self._get_procedure_state(pc_register) and \
+            self.stop_event_timer.elapsed() < stop_procedure_wait):
             time.sleep(0.1)
-        if end_state[0] == True:
-            stop_state = self._stop_procedure(self.client,self.registers["PRESSURE_CYCLE"])
+        if self._get_procedure_state(pc_register):
+            stop_state = self._stop_procedure(pc_register)
             if stop_state != True:
-                abort_state = self._abort_procedure(self.client,self.registers["PRESSURE_CYCLE"])
+                abort_state = self._abort_procedure(pc_register)
                 if abort_state != True:
                     self.error_msg.emit("PRESSURE_CYCLE still running")
                 else:
-                    self.logger.debug("Pressure cycle aborted.")
+                    self.logger.debug("PRESSURE_CYCLE aborted.")
             else:
-                self.logger.debug("Pressure cycle stopped.")
+                self.logger.debug("PRESSURE_CYCLE stopped.")
         else:
-            self.logger.debug("Pressure cycle ended.")
-        fault_bits = self._read_FF(self.client,self.registers["PCYCLE_ABORT_FF"])
+            self.logger.debug("PRESSURE_CYCLE ended.")
+        
+        # Read the first fault bits
+        fault_bits = self._read_FF(self.registers["PCYCLE_ABORT_FF"])
         self.logger.debug("fault_bits.")
         self.logger.debug(fault_bits)
         # TODO: write the fault bits in a file
-        slowdaq_stop = self._stop_procedure(self.client,self.registers["WRITE_SLOWDAQ"])
+        slowdaq_stop = self._stop_procedure(self.registers["WRITE_SLOWDAQ"])
         self.pressure_cycle = False
         if (slowdaq_stop == True):
-            self.logger.debug(f"SLOW DAQ process ended successfully.")
+            self.logger.debug(f"SLOW_DAQ process ended successfully.")
         else:
-            self.logger.error(f"SLOW DAQ process didn't end successfully.")
+            self.logger.error(f"SLOW_DAQ process didn't end successfully.")
        
-       # TODO: write log file from plc to RC ####
+        # TODO: write log file from plc to RC
         self.event_stopped.emit("modbus")
 
     @Slot()
