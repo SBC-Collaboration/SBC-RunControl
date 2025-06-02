@@ -220,7 +220,7 @@
              </layout>
             </item>
             <item>
-             <layout class="QGridLayout" name="ev_setting_grid" columnstretch="0,1,0,1">
+             <layout class="QGridLayout" name="ev_setting_grid" columnstretch="0,0,0,0">
               <property name="topMargin">
                <number>0</number>
               </property>
@@ -233,6 +233,19 @@
               <property name="spacing">
                <number>3</number>
               </property>
+              <item row="0" column="2">
+               <widget class="QLabel" name="max_ev_time_label">
+                <property name="text">
+                 <string>Max Event Time</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>max_ev_time_box</cstring>
+                </property>
+               </widget>
+              </item>
               <item row="0" column="3">
                <widget class="NoWheelDoubleSpinBox" name="max_ev_time_box">
                 <property name="focusPolicy">
@@ -246,6 +259,19 @@
                 </property>
                 <property name="maximum">
                  <double>100000.000000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0">
+               <widget class="QLabel" name="max_num_ev_label">
+                <property name="text">
+                 <string>Max Num of Events</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>max_num_ev_box</cstring>
                 </property>
                </widget>
               </item>
@@ -265,29 +291,21 @@
                 </property>
                </widget>
               </item>
-              <item row="0" column="0">
-               <widget class="QLabel" name="max_num_ev_label">
+              <item row="1" column="0">
+               <widget class="QCheckBox" name="active_cams_2">
+                <property name="font">
+                 <font>
+                  <bold>false</bold>
+                 </font>
+                </property>
+                <property name="layoutDirection">
+                 <enum>Qt::LayoutDirection::RightToLeft</enum>
+                </property>
                 <property name="text">
-                 <string>Max Num of Events</string>
+                 <string>Autorun</string>
                 </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>max_num_ev_box</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="2">
-               <widget class="QLabel" name="max_ev_time_label">
-                <property name="text">
-                 <string>Max Event Time</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>max_ev_time_box</cstring>
+                <property name="tristate">
+                 <bool>true</bool>
                 </property>
                </widget>
               </item>
@@ -304,8 +322,8 @@
               <property name="spacing">
                <number>3</number>
               </property>
-              <item row="1" column="5">
-               <widget class="QCheckBox" name="active_caen">
+              <item row="3" column="0">
+               <widget class="QCheckBox" name="active_led">
                 <property name="font">
                  <font>
                   <bold>true</bold>
@@ -315,38 +333,30 @@
                  <enum>Qt::LayoutDirection::RightToLeft</enum>
                 </property>
                 <property name="text">
-                 <string>CAEN</string>
+                 <string>LEDs</string>
                 </property>
                 <property name="tristate">
                  <bool>true</bool>
                 </property>
                </widget>
               </item>
-              <item row="4" column="4">
-               <widget class="QCheckBox" name="active_amp3">
+              <item row="3" column="4">
+               <widget class="QCheckBox" name="active_led3">
                 <property name="text">
-                 <string>Amp 3</string>
+                 <string>LED 3</string>
                 </property>
                </widget>
               </item>
-              <item row="2" column="7">
-               <widget class="QCheckBox" name="active_caen_g0_trg">
-                <property name="text">
-                 <string>G0 Trg</string>
+              <item row="1" column="6" rowspan="4">
+               <widget class="Line" name="line_6">
+                <property name="frameShadow">
+                 <enum>QFrame::Shadow::Raised</enum>
                 </property>
-               </widget>
-              </item>
-              <item row="5" column="2">
-               <widget class="QCheckBox" name="active_amp1_iv">
-                <property name="text">
-                 <string>Amp 1 IV</string>
+                <property name="lineWidth">
+                 <number>2</number>
                 </property>
-               </widget>
-              </item>
-              <item row="1" column="9">
-               <widget class="QCheckBox" name="active_caen_g2">
-                <property name="text">
-                 <string>Group 2</string>
+                <property name="orientation">
+                 <enum>Qt::Orientation::Vertical</enum>
                 </property>
                </widget>
               </item>
@@ -368,237 +378,35 @@
                 </property>
                </widget>
               </item>
-              <item row="3" column="10">
-               <widget class="QCheckBox" name="active_caen_g3_acq">
+              <item row="2" column="5">
+               <widget class="QCheckBox" name="active_caen">
+                <property name="font">
+                 <font>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="layoutDirection">
+                 <enum>Qt::LayoutDirection::RightToLeft</enum>
+                </property>
                 <property name="text">
-                 <string>G3 Acq</string>
+                 <string>CAEN</string>
+                </property>
+                <property name="tristate">
+                 <bool>true</bool>
                 </property>
                </widget>
               </item>
               <item row="2" column="9">
-               <widget class="QCheckBox" name="active_caen_g2_trg">
+               <widget class="QCheckBox" name="active_caen_g2">
                 <property name="text">
-                 <string>G2 Trg</string>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="4">
-               <widget class="QCheckBox" name="active_led3">
-                <property name="text">
-                 <string>LED 3</string>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="2">
-               <widget class="QCheckBox" name="active_cam1">
-                <property name="text">
-                 <string>Cam 1</string>
-                </property>
-               </widget>
-              </item>
-              <item row="5" column="4">
-               <widget class="QCheckBox" name="active_amp3_iv">
-                <property name="text">
-                 <string>Amp 3 IV</string>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="10">
-               <widget class="QCheckBox" name="active_caen_g3_trg">
-                <property name="text">
-                 <string>G3 Trg</string>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="9">
-               <widget class="QCheckBox" name="active_caen_g2_acq">
-                <property name="text">
-                 <string>G2 Acq</string>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="3">
-               <widget class="QCheckBox" name="active_amp2">
-                <property name="text">
-                 <string>Amp 2</string>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="0">
-               <widget class="QCheckBox" name="active_amps">
-                <property name="font">
-                 <font>
-                  <bold>true</bold>
-                 </font>
-                </property>
-                <property name="layoutDirection">
-                 <enum>Qt::LayoutDirection::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>SiPM Amps</string>
-                </property>
-                <property name="tristate">
-                 <bool>true</bool>
+                 <string>Group 2</string>
                 </property>
                </widget>
               </item>
               <item row="1" column="8">
-               <widget class="QCheckBox" name="active_caen_g1">
+               <widget class="QCheckBox" name="active_amp2">
                 <property name="text">
-                 <string>Group 1</string>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="2">
-               <widget class="QCheckBox" name="active_pressure">
-                <property name="text">
-                 <string>Pressure</string>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="1" rowspan="5">
-               <widget class="Line" name="line_2">
-                <property name="frameShadow">
-                 <enum>QFrame::Shadow::Raised</enum>
-                </property>
-                <property name="lineWidth">
-                 <number>2</number>
-                </property>
-                <property name="orientation">
-                 <enum>Qt::Orientation::Vertical</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="6" rowspan="5">
-               <widget class="Line" name="line_6">
-                <property name="frameShadow">
-                 <enum>QFrame::Shadow::Raised</enum>
-                </property>
-                <property name="lineWidth">
-                 <number>2</number>
-                </property>
-                <property name="orientation">
-                 <enum>Qt::Orientation::Vertical</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="2">
-               <widget class="QCheckBox" name="active_led1">
-                <property name="text">
-                 <string>LED 1</string>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="3">
-               <widget class="QCheckBox" name="active_sql">
-                <property name="text">
-                 <string>SQL</string>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="10">
-               <widget class="QCheckBox" name="active_caen_g3">
-                <property name="text">
-                 <string>Group 3</string>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="3">
-               <widget class="QCheckBox" name="active_led2">
-                <property name="text">
-                 <string>LED 2</string>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="0" colspan="11">
-               <widget class="QLabel" name="active_label">
-                <property name="font">
-                 <font>
-                  <bold>true</bold>
-                 </font>
-                </property>
-                <property name="layoutDirection">
-                 <enum>Qt::LayoutDirection::LeftToRight</enum>
-                </property>
-                <property name="text">
-                 <string>Active Modules</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="0">
-               <widget class="QCheckBox" name="active_led">
-                <property name="font">
-                 <font>
-                  <bold>true</bold>
-                 </font>
-                </property>
-                <property name="layoutDirection">
-                 <enum>Qt::LayoutDirection::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>LEDs</string>
-                </property>
-                <property name="tristate">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="8">
-               <widget class="QCheckBox" name="active_caen_g1_acq">
-                <property name="text">
-                 <string>G1 Acq</string>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="4">
-               <widget class="QCheckBox" name="active_cam3">
-                <property name="text">
-                 <string>Cam 3</string>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="3">
-               <widget class="QCheckBox" name="active_cam2">
-                <property name="text">
-                 <string>Cam 2</string>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="7">
-               <widget class="QCheckBox" name="active_caen_g0_acq">
-                <property name="text">
-                 <string>G0 Acq</string>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="8">
-               <widget class="QCheckBox" name="active_caen_g1_trg">
-                <property name="text">
-                 <string>G1 Trg</string>
-                </property>
-               </widget>
-              </item>
-              <item row="5" column="3">
-               <widget class="QCheckBox" name="active_amp2_iv">
-                <property name="text">
-                 <string>Amp 2 IV</string>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="2">
-               <widget class="QCheckBox" name="active_amp1">
-                <property name="text">
-                 <string>Amp 1</string>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="7">
-               <widget class="QCheckBox" name="active_caen_g0">
-                <property name="text">
-                 <string>Group 0</string>
+                 <string>Amp 2</string>
                 </property>
                </widget>
               </item>
@@ -620,7 +428,46 @@
                 </property>
                </widget>
               </item>
-              <item row="4" column="5">
+              <item row="3" column="2">
+               <widget class="QCheckBox" name="active_led1">
+                <property name="text">
+                 <string>LED 1</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="5">
+               <widget class="QCheckBox" name="active_amps">
+                <property name="font">
+                 <font>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="layoutDirection">
+                 <enum>Qt::LayoutDirection::RightToLeft</enum>
+                </property>
+                <property name="text">
+                 <string>SiPM Amps</string>
+                </property>
+                <property name="tristate">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="3">
+               <widget class="QCheckBox" name="active_cam2">
+                <property name="text">
+                 <string>Cam 2</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="8">
+               <widget class="QCheckBox" name="active_caen_g1">
+                <property name="text">
+                 <string>Group 1</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="5">
                <widget class="QCheckBox" name="active_acous">
                 <property name="font">
                  <font>
@@ -635,6 +482,100 @@
                 </property>
                 <property name="tristate">
                  <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="7">
+               <widget class="QCheckBox" name="active_caen_g0">
+                <property name="text">
+                 <string>Group 0</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="2">
+               <widget class="QCheckBox" name="active_pressure">
+                <property name="text">
+                 <string>Pressure</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="3">
+               <widget class="QCheckBox" name="active_led2">
+                <property name="text">
+                 <string>LED 2</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="4">
+               <widget class="QCheckBox" name="active_cam3">
+                <property name="text">
+                 <string>Cam 3</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1" rowspan="4">
+               <widget class="Line" name="line_2">
+                <property name="frameShadow">
+                 <enum>QFrame::Shadow::Raised</enum>
+                </property>
+                <property name="lineWidth">
+                 <number>2</number>
+                </property>
+                <property name="orientation">
+                 <enum>Qt::Orientation::Vertical</enum>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="7">
+               <widget class="QCheckBox" name="active_amp1">
+                <property name="text">
+                 <string>Amp 1</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="9">
+               <widget class="QCheckBox" name="active_amp3">
+                <property name="text">
+                 <string>Amp 3</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="2">
+               <widget class="QCheckBox" name="active_cam1">
+                <property name="text">
+                 <string>Cam 1</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0" colspan="11">
+               <widget class="QLabel" name="active_label">
+                <property name="font">
+                 <font>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="layoutDirection">
+                 <enum>Qt::LayoutDirection::LeftToRight</enum>
+                </property>
+                <property name="text">
+                 <string>Active Modules</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="10">
+               <widget class="QCheckBox" name="active_caen_g3">
+                <property name="text">
+                 <string>Group 3</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="3">
+               <widget class="QCheckBox" name="active_sql">
+                <property name="text">
+                 <string>SQL</string>
                 </property>
                </widget>
               </item>
@@ -2186,7 +2127,7 @@
            <property name="geometry">
             <rect>
              <x>0</x>
-             <y>0</y>
+             <y>-356</y>
              <width>876</width>
              <height>1203</height>
             </rect>
@@ -17345,22 +17286,22 @@
   </customwidget>
  </customwidgets>
  <tabstops>
-  <tabstop>acoustics_scroll_area</tabstop>
-  <tabstop>cam_scroll_area</tabstop>
-  <tabstop>acous_offset_ch1</tabstop>
-  <tabstop>acous_trig_ch1</tabstop>
-  <tabstop>acous_polarity_ch1</tabstop>
-  <tabstop>acous_threshold_ch1</tabstop>
-  <tabstop>acous_offset_ch2</tabstop>
-  <tabstop>acous_trig_ch2</tabstop>
-  <tabstop>acous_threshold_ch2</tabstop>
+  <tabstop>config_path_edit</tabstop>
+  <tabstop>config_path_but</tabstop>
+  <tabstop>log_dir_edit</tabstop>
+  <tabstop>log_dir_but</tabstop>
+  <tabstop>data_dir_edit</tabstop>
+  <tabstop>data_dir_but</tabstop>
+  <tabstop>max_num_ev_box</tabstop>
+  <tabstop>max_ev_time_box</tabstop>
   <tabstop>acous_offset_ch3</tabstop>
   <tabstop>acous_trig_ch3</tabstop>
   <tabstop>acous_threshold_ch3</tabstop>
   <tabstop>acous_offset_ch4</tabstop>
   <tabstop>acous_trig_ch4</tabstop>
-  <tabstop>acous_threshold_ch4</tabstop>
+  <tabstop>tabWidget</tabstop>
   <tabstop>acous_offset_ch5</tabstop>
+  <tabstop>active_pressure</tabstop>
   <tabstop>acous_trig_ch5</tabstop>
   <tabstop>acous_threshold_ch5</tabstop>
   <tabstop>acous_offset_ch6</tabstop>
@@ -17461,6 +17402,731 @@
   <tabstop>clock_period_wave9</tabstop>
   <tabstop>clock_phase_wave9</tabstop>
   <tabstop>clock_polarity_wave9</tabstop>
+  <tabstop>acous_threshold_ch2</tabstop>
+  <tabstop>files_scroll_area</tabstop>
+  <tabstop>acous_offset_ch1</tabstop>
+  <tabstop>acous_trig_ch1</tabstop>
+  <tabstop>cam_scroll_area</tabstop>
+  <tabstop>acoustics_scroll_area</tabstop>
+  <tabstop>acous_polarity_ch1</tabstop>
+  <tabstop>acous_threshold_ch1</tabstop>
+  <tabstop>acous_trig_ch2</tabstop>
+  <tabstop>acous_offset_ch2</tabstop>
+  <tabstop>active_caen</tabstop>
+  <tabstop>active_amp3</tabstop>
+  <tabstop>active_caen_g2</tabstop>
+  <tabstop>active_led3</tabstop>
+  <tabstop>active_cam1</tabstop>
+  <tabstop>active_amp2</tabstop>
+  <tabstop>active_amps</tabstop>
+  <tabstop>active_caen_g1</tabstop>
+  <tabstop>acous_threshold_ch4</tabstop>
+  <tabstop>active_led1</tabstop>
+  <tabstop>active_sql</tabstop>
+  <tabstop>active_caen_g3</tabstop>
+  <tabstop>active_led2</tabstop>
+  <tabstop>active_led</tabstop>
+  <tabstop>active_cam3</tabstop>
+  <tabstop>active_cam2</tabstop>
+  <tabstop>active_amp1</tabstop>
+  <tabstop>active_caen_g0</tabstop>
+  <tabstop>active_cams</tabstop>
+  <tabstop>active_acous</tabstop>
+  <tabstop>sql_hostname_edit</tabstop>
+  <tabstop>sql_user_edit</tabstop>
+  <tabstop>sql_run_table_edit</tabstop>
+  <tabstop>sql_token_edit</tabstop>
+  <tabstop>sql_event_table_edit</tabstop>
+  <tabstop>sql_port_box</tabstop>
+  <tabstop>sql_database_edit</tabstop>
+  <tabstop>sql_enabled_box</tabstop>
+  <tabstop>plc_scroll_area</tabstop>
+  <tabstop>pressure1_set</tabstop>
+  <tabstop>pressure3_slope</tabstop>
+  <tabstop>pressure2_set</tabstop>
+  <tabstop>pressure4_slope</tabstop>
+  <tabstop>pressure4_period</tabstop>
+  <tabstop>pressure6_high</tabstop>
+  <tabstop>pressure3_set</tabstop>
+  <tabstop>pressure2_high</tabstop>
+  <tabstop>pressure5_enable</tabstop>
+  <tabstop>pressure4_enable</tabstop>
+  <tabstop>pressure2_period</tabstop>
+  <tabstop>pressure6_set</tabstop>
+  <tabstop>p_random_but</tabstop>
+  <tabstop>pressure6_slope</tabstop>
+  <tabstop>pressure3_period</tabstop>
+  <tabstop>pressure1_slope</tabstop>
+  <tabstop>pressure1_period</tabstop>
+  <tabstop>pressure6_period</tabstop>
+  <tabstop>pressure1_high</tabstop>
+  <tabstop>pressure6_enable</tabstop>
+  <tabstop>pressure3_enable</tabstop>
+  <tabstop>p_enabled_box</tabstop>
+  <tabstop>pressure5_set</tabstop>
+  <tabstop>pressure5_period</tabstop>
+  <tabstop>p_cycle_but</tabstop>
+  <tabstop>pressure4_set</tabstop>
+  <tabstop>pressure1_enable</tabstop>
+  <tabstop>pressure2_enable</tabstop>
+  <tabstop>pressure2_slope</tabstop>
+  <tabstop>pressure3_high</tabstop>
+  <tabstop>pressure5_slope</tabstop>
+  <tabstop>pressure5_high</tabstop>
+  <tabstop>pressure4_high</tabstop>
+  <tabstop>PCYCLE_MAXACCDPDT_box</tabstop>
+  <tabstop>plc_hostname_edit</tabstop>
+  <tabstop>TS_EMPTY_FF_box</tabstop>
+  <tabstop>PCYCLE_MAXEQTIME_box</tabstop>
+  <tabstop>SLOWDAQ_FF_box</tabstop>
+  <tabstop>WRITE_SLOWDAQ_box</tabstop>
+  <tabstop>PRESSURE_CYCLE_box</tabstop>
+  <tabstop>PCYCLE_SLOWCOMP_FF_box</tabstop>
+  <tabstop>PCYCLE_MAXACCTIME_box</tabstop>
+  <tabstop>PCYCLE_MAXEXPTIME_box</tabstop>
+  <tabstop>PCYCLE_MAXBLEEDTIME_box</tabstop>
+  <tabstop>PCYCLE_EXPTIME_box</tabstop>
+  <tabstop>PCYCLE_PSET_box</tabstop>
+  <tabstop>PCYCLE_CYLEQ_FF_box</tabstop>
+  <tabstop>PCYCLE_ABORT_FF_box</tabstop>
+  <tabstop>PCYCLE_SLOWCOMP_SET_box</tabstop>
+  <tabstop>plc_enable_box</tabstop>
+  <tabstop>PCYCLE_FASTCOMP_FF_box</tabstop>
+  <tabstop>PCYCLE_MAXEQPDIFF_box</tabstop>
+  <tabstop>TS_EMPTYALL_FF_box</tabstop>
+  <tabstop>plc_modbus_port_box</tabstop>
+  <tabstop>TS_ADDREM_FF_box</tabstop>
+  <tabstop>PCYCLE_MAXBLEEDDPDT_box</tabstop>
+  <tabstop>PCYCLE_CYLBLEED_FF_box</tabstop>
+  <tabstop>PCYCLE_ACCHARGE_FF_box</tabstop>
+  <tabstop>sipm_scroll_area</tabstop>
+  <tabstop>sipm_amp1_enabled_box</tabstop>
+  <tabstop>sipm_amp1_iv_enabled_box</tabstop>
+  <tabstop>sipm_amp1_iv_rc_data_dir_edit</tabstop>
+  <tabstop>sipm_amp1_bias_box</tabstop>
+  <tabstop>sipm_amp1_iv_interval_box</tabstop>
+  <tabstop>sipm_amp1_ip_addr_edit</tabstop>
+  <tabstop>sipm_amp1_iv_step_box</tabstop>
+  <tabstop>sipm_amp1_iv_data_dir_edit</tabstop>
+  <tabstop>sipm_amp1_iv_start_box</tabstop>
+  <tabstop>sipm_amp1_iv_rc_data_dir_but</tabstop>
+  <tabstop>sipm_amp1_qp_box</tabstop>
+  <tabstop>sipm_amp1_iv_stop_box</tabstop>
+  <tabstop>sipm_amp1_ch16_offset</tabstop>
+  <tabstop>sipm_amp1_ch15_offset</tabstop>
+  <tabstop>sipm_amp1_ch14_offset</tabstop>
+  <tabstop>sipm_amp1_ch1_offset</tabstop>
+  <tabstop>sipm_amp1_ch3_offset</tabstop>
+  <tabstop>sipm_amp1_name_ch1</tabstop>
+  <tabstop>sipm_amp1_ch11_offset</tabstop>
+  <tabstop>sipm_amp1_ch8_offset</tabstop>
+  <tabstop>sipm_amp1_ch13_offset</tabstop>
+  <tabstop>sipm_amp1_ch4_offset</tabstop>
+  <tabstop>sipm_amp1_ch6_offset</tabstop>
+  <tabstop>sipm_amp1_ch9_offset</tabstop>
+  <tabstop>sipm_amp1_ch2_offset</tabstop>
+  <tabstop>sipm_amp1_ch12_offset</tabstop>
+  <tabstop>sipm_amp1_ch7_offset</tabstop>
+  <tabstop>sipm_amp1_ch10_offset</tabstop>
+  <tabstop>sipm_amp1_ch5_offset</tabstop>
+  <tabstop>sipm_amp1_name_ch2</tabstop>
+  <tabstop>sipm_amp1_name_ch3</tabstop>
+  <tabstop>sipm_amp1_name_ch4</tabstop>
+  <tabstop>sipm_amp1_name_ch5</tabstop>
+  <tabstop>sipm_amp1_name_ch6</tabstop>
+  <tabstop>sipm_amp1_name_ch7</tabstop>
+  <tabstop>sipm_amp1_name_ch8</tabstop>
+  <tabstop>sipm_amp1_name_ch9</tabstop>
+  <tabstop>sipm_amp1_name_ch10</tabstop>
+  <tabstop>sipm_amp1_name_ch11</tabstop>
+  <tabstop>sipm_amp1_name_ch12</tabstop>
+  <tabstop>sipm_amp1_name_ch13</tabstop>
+  <tabstop>sipm_amp1_name_ch14</tabstop>
+  <tabstop>sipm_amp1_name_ch15</tabstop>
+  <tabstop>sipm_amp1_name_ch16</tabstop>
+  <tabstop>sipm_amp2_iv_step_box</tabstop>
+  <tabstop>sipm_amp2_enabled_box</tabstop>
+  <tabstop>sipm_amp2_iv_rc_data_dir_but</tabstop>
+  <tabstop>sipm_amp2_qp_box</tabstop>
+  <tabstop>sipm_amp2_ip_addr_edit</tabstop>
+  <tabstop>sipm_amp2_iv_interval_box</tabstop>
+  <tabstop>sipm_amp2_bias_box</tabstop>
+  <tabstop>sipm_amp2_iv_stop_box</tabstop>
+  <tabstop>sipm_amp2_iv_data_dir_edit</tabstop>
+  <tabstop>sipm_amp2_iv_start_box</tabstop>
+  <tabstop>sipm_amp2_iv_enabled_box</tabstop>
+  <tabstop>sipm_amp2_iv_rc_data_dir_edit</tabstop>
+  <tabstop>sipm_amp2_ch11_offset</tabstop>
+  <tabstop>sipm_amp2_ch13_offset</tabstop>
+  <tabstop>sipm_amp2_ch15_offset</tabstop>
+  <tabstop>sipm_amp2_ch5_offset</tabstop>
+  <tabstop>sipm_amp2_ch7_offset</tabstop>
+  <tabstop>sipm_amp2_ch1_offset</tabstop>
+  <tabstop>sipm_amp2_ch12_offset</tabstop>
+  <tabstop>sipm_amp2_ch16_offset</tabstop>
+  <tabstop>sipm_amp2_ch3_offset</tabstop>
+  <tabstop>sipm_amp2_ch6_offset</tabstop>
+  <tabstop>sipm_amp2_ch10_offset</tabstop>
+  <tabstop>sipm_amp2_ch14_offset</tabstop>
+  <tabstop>sipm_amp2_ch9_offset</tabstop>
+  <tabstop>sipm_amp2_ch4_offset</tabstop>
+  <tabstop>sipm_amp2_ch8_offset</tabstop>
+  <tabstop>sipm_amp2_ch2_offset</tabstop>
+  <tabstop>sipm_amp2_name_ch1</tabstop>
+  <tabstop>sipm_amp2_name_ch2</tabstop>
+  <tabstop>sipm_amp2_name_ch3</tabstop>
+  <tabstop>sipm_amp2_name_ch4</tabstop>
+  <tabstop>sipm_amp2_name_ch5</tabstop>
+  <tabstop>sipm_amp2_name_ch6</tabstop>
+  <tabstop>sipm_amp2_name_ch7</tabstop>
+  <tabstop>sipm_amp2_name_ch8</tabstop>
+  <tabstop>sipm_amp2_name_ch9</tabstop>
+  <tabstop>sipm_amp2_name_ch10</tabstop>
+  <tabstop>sipm_amp2_name_ch11</tabstop>
+  <tabstop>sipm_amp2_name_ch12</tabstop>
+  <tabstop>sipm_amp2_name_ch13</tabstop>
+  <tabstop>sipm_amp2_name_ch14</tabstop>
+  <tabstop>sipm_amp2_name_ch15</tabstop>
+  <tabstop>sipm_amp2_name_ch16</tabstop>
+  <tabstop>sipm_amp3_iv_rc_data_dir_but</tabstop>
+  <tabstop>sipm_amp3_iv_interval_box</tabstop>
+  <tabstop>sipm_amp3_bias_box</tabstop>
+  <tabstop>sipm_amp3_qp_box</tabstop>
+  <tabstop>sipm_amp3_iv_start_box</tabstop>
+  <tabstop>sipm_amp3_iv_data_dir_edit</tabstop>
+  <tabstop>sipm_amp3_iv_enabled_box</tabstop>
+  <tabstop>sipm_amp3_iv_step_box</tabstop>
+  <tabstop>sipm_amp3_ip_addr_edit</tabstop>
+  <tabstop>sipm_amp3_enabled_box</tabstop>
+  <tabstop>sipm_amp3_iv_rc_data_dir_edit</tabstop>
+  <tabstop>sipm_amp3_iv_stop_box</tabstop>
+  <tabstop>sipm_amp3_ch11_offset</tabstop>
+  <tabstop>sipm_amp3_ch9_offset</tabstop>
+  <tabstop>sipm_amp3_ch15_offset</tabstop>
+  <tabstop>sipm_amp3_ch3_offset</tabstop>
+  <tabstop>sipm_amp3_ch5_offset</tabstop>
+  <tabstop>sipm_amp3_ch12_offset</tabstop>
+  <tabstop>sipm_amp3_ch2_offset</tabstop>
+  <tabstop>sipm_amp3_ch16_offset</tabstop>
+  <tabstop>sipm_amp3_ch1_offset</tabstop>
+  <tabstop>sipm_amp3_ch6_offset</tabstop>
+  <tabstop>sipm_amp3_ch13_offset</tabstop>
+  <tabstop>sipm_amp3_ch7_offset</tabstop>
+  <tabstop>sipm_amp3_ch4_offset</tabstop>
+  <tabstop>sipm_amp3_ch10_offset</tabstop>
+  <tabstop>sipm_amp3_ch8_offset</tabstop>
+  <tabstop>sipm_amp3_ch14_offset</tabstop>
+  <tabstop>sipm_amp3_name_ch1</tabstop>
+  <tabstop>sipm_amp3_name_ch2</tabstop>
+  <tabstop>sipm_amp3_name_ch3</tabstop>
+  <tabstop>sipm_amp3_name_ch4</tabstop>
+  <tabstop>sipm_amp3_name_ch5</tabstop>
+  <tabstop>sipm_amp3_name_ch6</tabstop>
+  <tabstop>sipm_amp3_name_ch7</tabstop>
+  <tabstop>sipm_amp3_name_ch8</tabstop>
+  <tabstop>sipm_amp3_name_ch9</tabstop>
+  <tabstop>sipm_amp3_name_ch10</tabstop>
+  <tabstop>sipm_amp3_name_ch11</tabstop>
+  <tabstop>sipm_amp3_name_ch12</tabstop>
+  <tabstop>sipm_amp3_name_ch13</tabstop>
+  <tabstop>sipm_amp3_name_ch14</tabstop>
+  <tabstop>sipm_amp3_name_ch15</tabstop>
+  <tabstop>sipm_amp3_name_ch16</tabstop>
+  <tabstop>scrollArea</tabstop>
+  <tabstop>caen_enabled_box</tabstop>
+  <tabstop>caen_majority_window_box</tabstop>
+  <tabstop>caen_clock_box</tabstop>
+  <tabstop>caen_acq_box</tabstop>
+  <tabstop>caen_conn_box</tabstop>
+  <tabstop>caen_mem_full_box</tabstop>
+  <tabstop>caen_link_box</tabstop>
+  <tabstop>caen_overlap_box</tabstop>
+  <tabstop>caen_polarity_box</tabstop>
+  <tabstop>caen_io_box</tabstop>
+  <tabstop>caen_majority_box</tabstop>
+  <tabstop>caen_length_box</tabstop>
+  <tabstop>caen_trigin_gate_box</tabstop>
+  <tabstop>caen_ext_trig_box</tabstop>
+  <tabstop>caen_post_trig_box</tabstop>
+  <tabstop>caen_evs_box</tabstop>
+  <tabstop>caen_ch_trig_box</tabstop>
+  <tabstop>caen_decimation_box</tabstop>
+  <tabstop>caen_sw_trig_box</tabstop>
+  <tabstop>caen_model_box</tabstop>
+  <tabstop>caen_data_path_box</tabstop>
+  <tabstop>caen_data_path_but</tabstop>
+  <tabstop>caen_counting_box</tabstop>
+  <tabstop>caen_g0_plot_mask_1</tabstop>
+  <tabstop>caen_g0_trig_mask_2</tabstop>
+  <tabstop>caen_g0_offset_3</tabstop>
+  <tabstop>caen_g0_acq_mask_0</tabstop>
+  <tabstop>caen_g0_offset_0</tabstop>
+  <tabstop>caen_g0_offset_7</tabstop>
+  <tabstop>caen_g0_enable_box</tabstop>
+  <tabstop>caen_g0_thres_box</tabstop>
+  <tabstop>caen_g0_acq_mask_5</tabstop>
+  <tabstop>caen_g0_offset_box</tabstop>
+  <tabstop>caen_g0_trig_mask_3</tabstop>
+  <tabstop>caen_g0_plot_mask_6</tabstop>
+  <tabstop>caen_g0_plot_box</tabstop>
+  <tabstop>caen_g0_offset_5</tabstop>
+  <tabstop>caen_g0_plot_mask_5</tabstop>
+  <tabstop>caen_g0_offset_6</tabstop>
+  <tabstop>caen_g0_acq_mask_3</tabstop>
+  <tabstop>caen_g0_trig_mask_1</tabstop>
+  <tabstop>caen_g0_plot_mask_7</tabstop>
+  <tabstop>caen_g0_trig_mask_7</tabstop>
+  <tabstop>caen_g0_trig_mask_6</tabstop>
+  <tabstop>caen_g0_offset_4</tabstop>
+  <tabstop>caen_g0_trig_mask_5</tabstop>
+  <tabstop>caen_g0_offset_1</tabstop>
+  <tabstop>caen_g0_acq_mask_7</tabstop>
+  <tabstop>caen_g0_acq_mask_1</tabstop>
+  <tabstop>caen_g0_offset_2</tabstop>
+  <tabstop>caen_g0_trig_mask_0</tabstop>
+  <tabstop>caen_g0_acq_mask_2</tabstop>
+  <tabstop>caen_g0_trig_mask_4</tabstop>
+  <tabstop>caen_g0_range_box</tabstop>
+  <tabstop>caen_g0_plot_mask_3</tabstop>
+  <tabstop>caen_g0_plot_mask_2</tabstop>
+  <tabstop>caen_g0_trig_box</tabstop>
+  <tabstop>caen_g0_acq_box</tabstop>
+  <tabstop>caen_g0_plot_mask_4</tabstop>
+  <tabstop>caen_g0_acq_mask_4</tabstop>
+  <tabstop>caen_g0_plot_mask_0</tabstop>
+  <tabstop>caen_g0_acq_mask_6</tabstop>
+  <tabstop>caen_g0_name_0</tabstop>
+  <tabstop>caen_g0_name_1</tabstop>
+  <tabstop>caen_g0_name_2</tabstop>
+  <tabstop>caen_g0_name_3</tabstop>
+  <tabstop>caen_g0_name_4</tabstop>
+  <tabstop>caen_g0_name_5</tabstop>
+  <tabstop>caen_g0_name_6</tabstop>
+  <tabstop>caen_g0_name_7</tabstop>
+  <tabstop>caen_g1_offset_box</tabstop>
+  <tabstop>caen_g1_plot_mask_6</tabstop>
+  <tabstop>caen_g1_trig_mask_0</tabstop>
+  <tabstop>caen_g1_offset_4</tabstop>
+  <tabstop>caen_g1_trig_box</tabstop>
+  <tabstop>caen_g1_acq_mask_3</tabstop>
+  <tabstop>caen_g1_trig_mask_6</tabstop>
+  <tabstop>caen_g1_acq_mask_6</tabstop>
+  <tabstop>caen_g1_plot_mask_3</tabstop>
+  <tabstop>caen_g1_plot_mask_1</tabstop>
+  <tabstop>caen_g1_offset_5</tabstop>
+  <tabstop>caen_g1_trig_mask_7</tabstop>
+  <tabstop>caen_g1_acq_mask_7</tabstop>
+  <tabstop>caen_g1_acq_mask_1</tabstop>
+  <tabstop>caen_g1_acq_mask_5</tabstop>
+  <tabstop>caen_g1_acq_box</tabstop>
+  <tabstop>caen_g1_plot_mask_5</tabstop>
+  <tabstop>caen_g1_plot_mask_2</tabstop>
+  <tabstop>caen_g1_offset_6</tabstop>
+  <tabstop>caen_g1_plot_mask_7</tabstop>
+  <tabstop>caen_g1_enable_box</tabstop>
+  <tabstop>caen_g1_plot_mask_4</tabstop>
+  <tabstop>caen_g1_offset_7</tabstop>
+  <tabstop>caen_g1_trig_mask_3</tabstop>
+  <tabstop>caen_g1_offset_2</tabstop>
+  <tabstop>caen_g1_acq_mask_2</tabstop>
+  <tabstop>caen_g1_range_box</tabstop>
+  <tabstop>caen_g1_thres_box</tabstop>
+  <tabstop>caen_g1_offset_0</tabstop>
+  <tabstop>caen_g1_trig_mask_2</tabstop>
+  <tabstop>caen_g1_trig_mask_1</tabstop>
+  <tabstop>caen_g1_acq_mask_0</tabstop>
+  <tabstop>caen_g1_trig_mask_5</tabstop>
+  <tabstop>caen_g1_trig_mask_4</tabstop>
+  <tabstop>caen_g1_offset_3</tabstop>
+  <tabstop>caen_g1_plot_mask_0</tabstop>
+  <tabstop>caen_g1_offset_1</tabstop>
+  <tabstop>caen_g1_plot_box</tabstop>
+  <tabstop>caen_g1_acq_mask_4</tabstop>
+  <tabstop>caen_g1_name_0</tabstop>
+  <tabstop>caen_g1_name_1</tabstop>
+  <tabstop>caen_g1_name_2</tabstop>
+  <tabstop>caen_g1_name_3</tabstop>
+  <tabstop>caen_g1_name_4</tabstop>
+  <tabstop>caen_g1_name_5</tabstop>
+  <tabstop>caen_g1_name_6</tabstop>
+  <tabstop>caen_g1_name_7</tabstop>
+  <tabstop>caen_g2_offset_1</tabstop>
+  <tabstop>caen_g2_trig_box</tabstop>
+  <tabstop>caen_g2_offset_3</tabstop>
+  <tabstop>caen_g2_enable_box</tabstop>
+  <tabstop>caen_g2_acq_mask_1</tabstop>
+  <tabstop>caen_g2_acq_mask_2</tabstop>
+  <tabstop>caen_g2_plot_mask_5</tabstop>
+  <tabstop>caen_g2_plot_mask_7</tabstop>
+  <tabstop>caen_g2_offset_0</tabstop>
+  <tabstop>caen_g2_acq_mask_6</tabstop>
+  <tabstop>caen_g2_plot_mask_1</tabstop>
+  <tabstop>caen_g2_offset_6</tabstop>
+  <tabstop>caen_g2_acq_box</tabstop>
+  <tabstop>caen_g2_plot_box</tabstop>
+  <tabstop>caen_g2_trig_mask_1</tabstop>
+  <tabstop>caen_g2_acq_mask_4</tabstop>
+  <tabstop>caen_g2_trig_mask_0</tabstop>
+  <tabstop>caen_g2_plot_mask_6</tabstop>
+  <tabstop>caen_g2_plot_mask_4</tabstop>
+  <tabstop>caen_g2_trig_mask_7</tabstop>
+  <tabstop>caen_g2_plot_mask_3</tabstop>
+  <tabstop>caen_g2_plot_mask_0</tabstop>
+  <tabstop>caen_g2_trig_mask_4</tabstop>
+  <tabstop>caen_g2_offset_box</tabstop>
+  <tabstop>caen_g2_trig_mask_6</tabstop>
+  <tabstop>caen_g2_trig_mask_2</tabstop>
+  <tabstop>caen_g2_acq_mask_3</tabstop>
+  <tabstop>caen_g2_offset_2</tabstop>
+  <tabstop>caen_g2_range_box</tabstop>
+  <tabstop>caen_g2_offset_4</tabstop>
+  <tabstop>caen_g2_trig_mask_5</tabstop>
+  <tabstop>caen_g2_thres_box</tabstop>
+  <tabstop>caen_g2_acq_mask_7</tabstop>
+  <tabstop>caen_g2_offset_7</tabstop>
+  <tabstop>caen_g2_plot_mask_2</tabstop>
+  <tabstop>caen_g2_acq_mask_0</tabstop>
+  <tabstop>caen_g2_trig_mask_3</tabstop>
+  <tabstop>caen_g2_acq_mask_5</tabstop>
+  <tabstop>caen_g2_offset_5</tabstop>
+  <tabstop>caen_g2_name_0</tabstop>
+  <tabstop>caen_g2_name_1</tabstop>
+  <tabstop>caen_g2_name_2</tabstop>
+  <tabstop>caen_g2_name_3</tabstop>
+  <tabstop>caen_g2_name_4</tabstop>
+  <tabstop>caen_g2_name_5</tabstop>
+  <tabstop>caen_g2_name_6</tabstop>
+  <tabstop>caen_g2_name_7</tabstop>
+  <tabstop>caen_g3_plot_mask_2</tabstop>
+  <tabstop>caen_g3_enable_box</tabstop>
+  <tabstop>caen_g3_name_0</tabstop>
+  <tabstop>caen_g3_name_2</tabstop>
+  <tabstop>caen_g3_offset_1</tabstop>
+  <tabstop>caen_g3_acq_mask_5</tabstop>
+  <tabstop>caen_g3_offset_box</tabstop>
+  <tabstop>caen_g3_name_5</tabstop>
+  <tabstop>caen_g3_trig_mask_4</tabstop>
+  <tabstop>caen_g3_acq_mask_4</tabstop>
+  <tabstop>caen_g3_offset_3</tabstop>
+  <tabstop>caen_g3_offset_2</tabstop>
+  <tabstop>caen_g3_trig_mask_6</tabstop>
+  <tabstop>caen_g3_range_box</tabstop>
+  <tabstop>caen_g3_trig_mask_3</tabstop>
+  <tabstop>caen_g3_name_4</tabstop>
+  <tabstop>caen_g3_acq_mask_6</tabstop>
+  <tabstop>caen_g3_offset_4</tabstop>
+  <tabstop>caen_g3_offset_5</tabstop>
+  <tabstop>caen_g3_acq_box</tabstop>
+  <tabstop>caen_g3_plot_mask_7</tabstop>
+  <tabstop>caen_g3_offset_0</tabstop>
+  <tabstop>caen_g3_acq_mask_1</tabstop>
+  <tabstop>caen_g3_name_1</tabstop>
+  <tabstop>caen_g3_plot_mask_1</tabstop>
+  <tabstop>caen_g3_offset_7</tabstop>
+  <tabstop>caen_g3_plot_mask_3</tabstop>
+  <tabstop>caen_g3_acq_mask_3</tabstop>
+  <tabstop>caen_g3_trig_mask_5</tabstop>
+  <tabstop>caen_g3_acq_mask_7</tabstop>
+  <tabstop>caen_g3_thres_box</tabstop>
+  <tabstop>caen_g3_trig_mask_0</tabstop>
+  <tabstop>caen_g3_plot_mask_0</tabstop>
+  <tabstop>caen_g3_offset_6</tabstop>
+  <tabstop>caen_g3_name_3</tabstop>
+  <tabstop>caen_g3_trig_box</tabstop>
+  <tabstop>caen_g3_trig_mask_1</tabstop>
+  <tabstop>caen_g3_trig_mask_7</tabstop>
+  <tabstop>caen_g3_plot_mask_5</tabstop>
+  <tabstop>caen_g3_name_6</tabstop>
+  <tabstop>caen_g3_acq_mask_0</tabstop>
+  <tabstop>caen_g3_acq_mask_2</tabstop>
+  <tabstop>caen_g3_trig_mask_2</tabstop>
+  <tabstop>caen_g3_plot_box</tabstop>
+  <tabstop>caen_g3_plot_mask_4</tabstop>
+  <tabstop>caen_g3_plot_mask_6</tabstop>
+  <tabstop>caen_g3_name_7</tabstop>
+  <tabstop>acous_sample_rate_box</tabstop>
+  <tabstop>acous_driver_path_but</tabstop>
+  <tabstop>acous_trig_holdoff_box</tabstop>
+  <tabstop>acous_driver_path_edit</tabstop>
+  <tabstop>acous_trig_delay_box</tabstop>
+  <tabstop>acous_acq_seg_count_box</tabstop>
+  <tabstop>acous_trig_timeout_box</tabstop>
+  <tabstop>acous_mode_box</tabstop>
+  <tabstop>acous_pre_trig_box</tabstop>
+  <tabstop>acous_data_dir_but</tabstop>
+  <tabstop>acous_timestamp_mode_box</tabstop>
+  <tabstop>acous_post_trig_box</tabstop>
+  <tabstop>acous_data_dir_edit</tabstop>
+  <tabstop>acous_timestamp_clock_box</tabstop>
+  <tabstop>acous_enabled_box</tabstop>
+  <tabstop>acous_coupling_ch8</tabstop>
+  <tabstop>acous_range_ch3</tabstop>
+  <tabstop>acous_polarity_ext</tabstop>
+  <tabstop>acous_impedance_ch1</tabstop>
+  <tabstop>acous_polarity_ch3</tabstop>
+  <tabstop>acous_coupling_ch2</tabstop>
+  <tabstop>acous_range_ch8</tabstop>
+  <tabstop>acous_impedance_ch2</tabstop>
+  <tabstop>acous_range_ch1</tabstop>
+  <tabstop>acous_impedance_ch3</tabstop>
+  <tabstop>acous_coupling_ch1</tabstop>
+  <tabstop>acous_coupling_ch3</tabstop>
+  <tabstop>acous_polarity_ch2</tabstop>
+  <tabstop>acous_impedance_ch4</tabstop>
+  <tabstop>acous_polarity_ch6</tabstop>
+  <tabstop>acous_polarity_ch8</tabstop>
+  <tabstop>acous_range_ch2</tabstop>
+  <tabstop>acous_coupling_ch7</tabstop>
+  <tabstop>acous_polarity_ch4</tabstop>
+  <tabstop>acous_range_ch4</tabstop>
+  <tabstop>acous_polarity_ch7</tabstop>
+  <tabstop>acous_impedance_ch8</tabstop>
+  <tabstop>acous_range_ch7</tabstop>
+  <tabstop>acous_range_ch6</tabstop>
+  <tabstop>acous_coupling_ch4</tabstop>
+  <tabstop>acous_coupling_ch5</tabstop>
+  <tabstop>acous_impedance_ch6</tabstop>
+  <tabstop>acous_polarity_ch5</tabstop>
+  <tabstop>acous_range_ext</tabstop>
+  <tabstop>acous_impedance_ch5</tabstop>
+  <tabstop>acous_range_ch5</tabstop>
+  <tabstop>acous_impedance_ch7</tabstop>
+  <tabstop>acous_coupling_ch6</tabstop>
+  <tabstop>acous_name_ch1</tabstop>
+  <tabstop>acous_name_ch2</tabstop>
+  <tabstop>acous_name_ch3</tabstop>
+  <tabstop>acous_name_ch4</tabstop>
+  <tabstop>acous_name_ch5</tabstop>
+  <tabstop>acous_name_ch6</tabstop>
+  <tabstop>acous_name_ch7</tabstop>
+  <tabstop>acous_name_ch8</tabstop>
+  <tabstop>acous_page_size_box</tabstop>
+  <tabstop>acous_transfer_len_box</tabstop>
+  <tabstop>acous_seg_start_box</tabstop>
+  <tabstop>acous_start_pos_box</tabstop>
+  <tabstop>acous_file_format_box</tabstop>
+  <tabstop>acous_seg_count_box</tabstop>
+  <tabstop>acous_file_name_edit</tabstop>
+  <tabstop>cam3_label</tabstop>
+  <tabstop>cam1_label</tabstop>
+  <tabstop>cam1_rc_config_path</tabstop>
+  <tabstop>cam2_label</tabstop>
+  <tabstop>cam3_rc_config_path</tabstop>
+  <tabstop>cam2_rc_config_path</tabstop>
+  <tabstop>cam1_enabled_box</tabstop>
+  <tabstop>cam2_enabled_box</tabstop>
+  <tabstop>cam3_enabled_box</tabstop>
+  <tabstop>cams_enabled_box</tabstop>
+  <tabstop>dio_scroll_area</tabstop>
+  <tabstop>niusb_table</tabstop>
+  <tabstop>trig_pin14_name_edit</tabstop>
+  <tabstop>trig_latch_pin4_box</tabstop>
+  <tabstop>trig4_enabled</tabstop>
+  <tabstop>trig_in_pin2_box</tabstop>
+  <tabstop>trig_ff_pin14_box</tabstop>
+  <tabstop>trig_latch_pin11_box</tabstop>
+  <tabstop>trig13_compression</tabstop>
+  <tabstop>trigger_sketch_edit</tabstop>
+  <tabstop>trig_in_pin12_box</tabstop>
+  <tabstop>trig_latch_pin8_box</tabstop>
+  <tabstop>trig1_enabled</tabstop>
+  <tabstop>trig_in_pin16_box</tabstop>
+  <tabstop>trig_ff_pin12_box</tabstop>
+  <tabstop>trig_in_pin9_box</tabstop>
+  <tabstop>trig_ff_pin7_box</tabstop>
+  <tabstop>trig_pin13_name_edit</tabstop>
+  <tabstop>trig7_compression</tabstop>
+  <tabstop>trig15_enabled</tabstop>
+  <tabstop>trig11_compression</tabstop>
+  <tabstop>trig7_enabled</tabstop>
+  <tabstop>trig12_enabled</tabstop>
+  <tabstop>trig_latch_pin9_box</tabstop>
+  <tabstop>trig6_enabled</tabstop>
+  <tabstop>trig_pin12_name_edit</tabstop>
+  <tabstop>trig_ff_pin1_box</tabstop>
+  <tabstop>trig_ff_pin4_box</tabstop>
+  <tabstop>trig_pin6_name_edit</tabstop>
+  <tabstop>trig_in_pin10_box</tabstop>
+  <tabstop>trig_ff_pin3_box</tabstop>
+  <tabstop>trig_pin3_name_edit</tabstop>
+  <tabstop>trig_pin10_name_edit</tabstop>
+  <tabstop>trig_in_pin8_box</tabstop>
+  <tabstop>trig8_compression</tabstop>
+  <tabstop>trig11_enabled</tabstop>
+  <tabstop>trig14_compression</tabstop>
+  <tabstop>trig_pin8_name_edit</tabstop>
+  <tabstop>trig_latch_pin5_box</tabstop>
+  <tabstop>trig_latch_pin13_box</tabstop>
+  <tabstop>trig_ff_pin16_box</tabstop>
+  <tabstop>trig2_enabled</tabstop>
+  <tabstop>trig_ff_pin2_box</tabstop>
+  <tabstop>trig10_compression</tabstop>
+  <tabstop>trig_in_pin5_box</tabstop>
+  <tabstop>trigger_port_edit</tabstop>
+  <tabstop>trig_in_pin3_box</tabstop>
+  <tabstop>trig_pin4_name_edit</tabstop>
+  <tabstop>trig9_enabled</tabstop>
+  <tabstop>trig_latch_pin2_box</tabstop>
+  <tabstop>trig_latch_pin12_box</tabstop>
+  <tabstop>trig4_compression</tabstop>
+  <tabstop>trig_latch_pin3_box</tabstop>
+  <tabstop>trig_ff_pin10_box</tabstop>
+  <tabstop>trig_ff_pin9_box</tabstop>
+  <tabstop>trig_ff_pin13_box</tabstop>
+  <tabstop>trig3_enabled</tabstop>
+  <tabstop>trig12_compression</tabstop>
+  <tabstop>trig_in_pin7_box</tabstop>
+  <tabstop>trig1_compression</tabstop>
+  <tabstop>trig_in_pin11_box</tabstop>
+  <tabstop>trig_pin9_name_edit</tabstop>
+  <tabstop>trig8_enabled</tabstop>
+  <tabstop>trig_ff_pin6_box</tabstop>
+  <tabstop>trig15_compression</tabstop>
+  <tabstop>trig_latch_pin7_box</tabstop>
+  <tabstop>trig16_enabled</tabstop>
+  <tabstop>trig_ff_pin11_box</tabstop>
+  <tabstop>trig6_compression</tabstop>
+  <tabstop>trig9_compression</tabstop>
+  <tabstop>trig_in_pin1_box</tabstop>
+  <tabstop>trig_latch_pin6_box</tabstop>
+  <tabstop>trig_latch_pin10_box</tabstop>
+  <tabstop>trig_ff_pin5_box</tabstop>
+  <tabstop>trig_in_pin6_box</tabstop>
+  <tabstop>trig_latch_pin1_box</tabstop>
+  <tabstop>trigger_sketch_but</tabstop>
+  <tabstop>trig_pin1_name_edit</tabstop>
+  <tabstop>trig_ff_pin8_box</tabstop>
+  <tabstop>trig_in_pin14_box</tabstop>
+  <tabstop>trig_in_pin13_box</tabstop>
+  <tabstop>trig_pin15_name_edit</tabstop>
+  <tabstop>trig3_compression</tabstop>
+  <tabstop>trig16_compression</tabstop>
+  <tabstop>trig10_enabled</tabstop>
+  <tabstop>trig2_compression</tabstop>
+  <tabstop>trig_ff_pin15_box</tabstop>
+  <tabstop>trig_in_pin15_box</tabstop>
+  <tabstop>trig14_enabled</tabstop>
+  <tabstop>trig5_compression</tabstop>
+  <tabstop>trig_pin11_name_edit</tabstop>
+  <tabstop>trig13_enabled</tabstop>
+  <tabstop>trig_pin5_name_edit</tabstop>
+  <tabstop>trig_pin2_name_edit</tabstop>
+  <tabstop>trig5_enabled</tabstop>
+  <tabstop>trig_pin16_name_edit</tabstop>
+  <tabstop>trig_in_pin4_box</tabstop>
+  <tabstop>trig_pin7_name_edit</tabstop>
+  <tabstop>trig_loop_box</tabstop>
+  <tabstop>trig_reset_pin_box</tabstop>
+  <tabstop>trig_or_pin_box</tabstop>
+  <tabstop>trig_on_time_pin_box</tabstop>
+  <tabstop>trig_heartbeat_pin_box</tabstop>
+  <tabstop>trig_led_gate_pin_box</tabstop>
+  <tabstop>trig_led_gate_cycles_box</tabstop>
+  <tabstop>trig_fast_comp_pin_box</tabstop>
+  <tabstop>clock_period_wave15</tabstop>
+  <tabstop>clock_phase_wave14</tabstop>
+  <tabstop>clock_name_wave3</tabstop>
+  <tabstop>clock_polarity_wave10</tabstop>
+  <tabstop>clock_name_wave7</tabstop>
+  <tabstop>clock_duty_wave3</tabstop>
+  <tabstop>clock_period_wave13</tabstop>
+  <tabstop>wave12_enabled</tabstop>
+  <tabstop>clock_phase_wave12</tabstop>
+  <tabstop>wave15_enabled</tabstop>
+  <tabstop>clock_sketch_but</tabstop>
+  <tabstop>clock_duty_wave6</tabstop>
+  <tabstop>clock_name_wave2</tabstop>
+  <tabstop>clock_name_wave16</tabstop>
+  <tabstop>clock_gate_wave2</tabstop>
+  <tabstop>clock_pin_wave12</tabstop>
+  <tabstop>clock_duty_wave7</tabstop>
+  <tabstop>clock_period_wave14</tabstop>
+  <tabstop>clock_sketch_edit</tabstop>
+  <tabstop>clock_period_wave10</tabstop>
+  <tabstop>wave7_enabled</tabstop>
+  <tabstop>clock_polarity_wave11</tabstop>
+  <tabstop>clock_duty_wave2</tabstop>
+  <tabstop>clock_phase_wave13</tabstop>
+  <tabstop>clock_pin_wave13</tabstop>
+  <tabstop>clock_gate_wave6</tabstop>
+  <tabstop>clock_polarity_wave16</tabstop>
+  <tabstop>clock_name_wave5</tabstop>
+  <tabstop>clock_polarity_wave12</tabstop>
+  <tabstop>clock_pin_wave14</tabstop>
+  <tabstop>clock_period_wave16</tabstop>
+  <tabstop>wave16_enabled</tabstop>
+  <tabstop>wave11_enabled</tabstop>
+  <tabstop>wave10_enabled</tabstop>
+  <tabstop>clock_duty_wave11</tabstop>
+  <tabstop>clock_name_wave8</tabstop>
+  <tabstop>clock_polarity_wave14</tabstop>
+  <tabstop>clock_gate_wave7</tabstop>
+  <tabstop>clock_pin_wave11</tabstop>
+  <tabstop>clock_gate_wave1</tabstop>
+  <tabstop>clock_name_wave1</tabstop>
+  <tabstop>clock_duty_wave4</tabstop>
+  <tabstop>clock_phase_wave15</tabstop>
+  <tabstop>clock_duty_wave13</tabstop>
+  <tabstop>clock_name_wave9</tabstop>
+  <tabstop>clock_gate_wave14</tabstop>
+  <tabstop>clock_gate_wave5</tabstop>
+  <tabstop>clock_phase_wave16</tabstop>
+  <tabstop>clock_name_wave11</tabstop>
+  <tabstop>wave14_enabled</tabstop>
+  <tabstop>clock_phase_wave11</tabstop>
+  <tabstop>clock_period_wave11</tabstop>
+  <tabstop>clock_gate_wave9</tabstop>
+  <tabstop>wave5_enabled</tabstop>
+  <tabstop>clock_duty_wave5</tabstop>
+  <tabstop>clock_polarity_wave15</tabstop>
+  <tabstop>clock_duty_wave10</tabstop>
+  <tabstop>clock_duty_wave14</tabstop>
+  <tabstop>wave6_enabled</tabstop>
+  <tabstop>clock_duty_wave12</tabstop>
+  <tabstop>clock_gate_wave12</tabstop>
+  <tabstop>clock_name_wave15</tabstop>
+  <tabstop>clock_duty_wave9</tabstop>
+  <tabstop>wave13_enabled</tabstop>
+  <tabstop>clock_name_wave6</tabstop>
+  <tabstop>wave1_enabled</tabstop>
+  <tabstop>clock_gate_wave13</tabstop>
+  <tabstop>wave2_enabled</tabstop>
+  <tabstop>clock_name_wave4</tabstop>
+  <tabstop>clock_pin_wave16</tabstop>
+  <tabstop>clock_gate_wave15</tabstop>
+  <tabstop>clock_pin_wave10</tabstop>
+  <tabstop>clock_name_wave14</tabstop>
+  <tabstop>wave8_enabled</tabstop>
+  <tabstop>wave3_enabled</tabstop>
+  <tabstop>clock_port_edit</tabstop>
+  <tabstop>clock_gate_wave10</tabstop>
+  <tabstop>clock_gate_wave8</tabstop>
+  <tabstop>clock_polarity_wave13</tabstop>
+  <tabstop>clock_gate_wave3</tabstop>
+  <tabstop>clock_name_wave10</tabstop>
+  <tabstop>clock_phase_wave10</tabstop>
+  <tabstop>clock_gate_wave4</tabstop>
+  <tabstop>clock_gate_wave11</tabstop>
+  <tabstop>clock_name_wave13</tabstop>
+  <tabstop>wave9_enabled</tabstop>
+  <tabstop>clock_pin_wave15</tabstop>
+  <tabstop>clock_duty_wave16</tabstop>
+  <tabstop>clock_duty_wave15</tabstop>
+  <tabstop>clock_duty_wave1</tabstop>
+  <tabstop>wave4_enabled</tabstop>
+  <tabstop>clock_duty_wave8</tabstop>
+  <tabstop>clock_name_wave12</tabstop>
+  <tabstop>clock_period_wave12</tabstop>
+  <tabstop>clock_gate_wave16</tabstop>
+  <tabstop>clock_loop_box</tabstop>
+  <tabstop>position_mac_edit</tabstop>
+  <tabstop>position_port_edit</tabstop>
+  <tabstop>position_sketch_edit</tabstop>
+  <tabstop>position_sketch_but</tabstop>
+  <tabstop>position_gateway_edit</tabstop>
+  <tabstop>position_ip_edit</tabstop>
+  <tabstop>position_subnet_edit</tabstop>
+  <tabstop>active_cams_2</tabstop>
  </tabstops>
  <resources>
   <include location="../resources/resources.qrc"/>
@@ -17537,8 +18203,8 @@
    <slot>select_position_sketch_dir()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>829</x>
-     <y>1315</y>
+     <x>879</x>
+     <y>1365</y>
     </hint>
     <hint type="destinationlabel">
      <x>199</x>
@@ -17553,7 +18219,7 @@
    <slot>select_trigger_sketch_dir()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>829</x>
+     <x>879</x>
      <y>255</y>
     </hint>
     <hint type="destinationlabel">
@@ -17569,7 +18235,7 @@
    <slot>select_log_dir()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>829</x>
+     <x>893</x>
      <y>123</y>
     </hint>
     <hint type="destinationlabel">
@@ -17585,7 +18251,7 @@
    <slot>select_data_dir()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>829</x>
+     <x>893</x>
      <y>151</y>
     </hint>
     <hint type="destinationlabel">
@@ -17601,8 +18267,8 @@
    <slot>select_clock_sketch_dir()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>829</x>
-     <y>788</y>
+     <x>879</x>
+     <y>818</y>
     </hint>
     <hint type="destinationlabel">
      <x>199</x>
@@ -17617,7 +18283,7 @@
    <slot>select_config_path()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>829</x>
+     <x>893</x>
      <y>95</y>
     </hint>
     <hint type="destinationlabel">
@@ -17633,8 +18299,8 @@
    <slot>select_amp1_iv_dir()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>829</x>
-     <y>149</y>
+     <x>879</x>
+     <y>-207</y>
     </hint>
     <hint type="destinationlabel">
      <x>399</x>
@@ -17649,8 +18315,8 @@
    <slot>select_amp2_iv_dir()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>829</x>
-     <y>367</y>
+     <x>879</x>
+     <y>67</y>
     </hint>
     <hint type="destinationlabel">
      <x>399</x>
@@ -17681,12 +18347,28 @@
    <slot>select_caen_data_path()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>743</x>
-     <y>110</y>
+     <x>742</x>
+     <y>121</y>
     </hint>
     <hint type="destinationlabel">
      <x>424</x>
      <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>sipm_amp3_iv_rc_data_dir_but</sender>
+   <signal>clicked()</signal>
+   <receiver>SettingsWindow</receiver>
+   <slot>select_amp3_iv_dir()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>871</x>
+     <y>337</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>660</x>
+     <y>642</y>
     </hint>
    </hints>
   </connection>
@@ -17707,5 +18389,6 @@
   <slot>on_caen_group_changed()</slot>
   <slot>load_config_from_file()</slot>
   <slot>select_caen_data_path()</slot>
+  <slot>select_amp3_iv_dir()</slot>
  </slots>
 </ui>
