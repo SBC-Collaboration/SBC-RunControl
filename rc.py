@@ -190,25 +190,21 @@ class MainWindow(QMainWindow):
         self.acous_thread.start()
         time.sleep(0.001)
 
-
-#     Modbus changes started ###
-        self.modbus_worker = Modbus(self)                                  #change for RC-PLC comm.
-        self.modbus_worker.run_started.connect(self.starting_run_wait)     #change for RC-PLC comm.
-        self.modbus_worker.run_stopped.connect(self.stopping_run_wait)     #change for RC-PLC comm.
-        self.modbus_worker.event_started.connect(self.starting_event_wait) #change for RC-PLC comm.
-        self.modbus_worker.event_stopped.connect(self.stopping_event_wait) #change for RC-PLC comm.
-        self.modbus_thread = QThread()                                     #change for RC-PLC comm.
-        self.modbus_thread.setObjectName("modbus_thread")                  #change for RC-PLC comm.
-        self.modbus_worker.moveToThread(self.modbus_thread)                #change for RC-PLC comm.
-        self.modbus_thread.started.connect(self.modbus_worker.run)         #change for RC-PLC comm.
-        self.run_starting.connect(self.modbus_worker.start_run)            #change for RC-PLC comm.
-        self.event_starting.connect(self.modbus_worker.start_event)        #change for RC-PLC comm.
-        self.event_stopping.connect(self.modbus_worker.stop_event)         #change for RC-PLC comm.
-        self.run_stopping.connect(self.modbus_worker.stop_run)             #change for RC-PLC comm.
-        self.modbus_thread.start()                                         #change for RC-PLC comm.
-        time.sleep(0.001)                                                  #change for RC-PLC comm.
-#     Modbus changes ended ###
-
+        self.modbus_worker = Modbus(self)
+        self.modbus_worker.run_started.connect(self.starting_run_wait)
+        self.modbus_worker.run_stopped.connect(self.stopping_run_wait)
+        self.modbus_worker.event_started.connect(self.starting_event_wait)
+        self.modbus_worker.event_stopped.connect(self.stopping_event_wait)
+        self.modbus_thread = QThread()
+        self.modbus_thread.setObjectName("modbus_thread")
+        self.modbus_worker.moveToThread(self.modbus_thread)
+        self.modbus_thread.started.connect(self.modbus_worker.run)
+        self.run_starting.connect(self.modbus_worker.start_run)
+        self.event_starting.connect(self.modbus_worker.start_event)
+        self.event_stopping.connect(self.modbus_worker.stop_event)
+        self.run_stopping.connect(self.modbus_worker.stop_run)
+        self.modbus_thread.start()
+        time.sleep(0.001)
 
         self.niusb_worker = NIUSB(self)
         self.niusb_worker.run_started.connect(self.starting_run_wait)
