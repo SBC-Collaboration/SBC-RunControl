@@ -236,8 +236,8 @@ class Modbus(QObject):
         response = self.client.read_holding_registers(pos, count=length)
         word = response.registers[0]
         # Get running state at bit 0 and interlocked at bit 1
-        running = (word >> self._FlagBits.RUNNING) & 1 == 1
-        interlocked = (word >> self._FlagBits.INTERLOCKED) & 1 == 1
+        running = (word >> self._FlagBits.RUNNING.value) & 1 == 1
+        interlocked = (word >> self._FlagBits.INTERLOCKED.value) & 1 == 1
         # TODO: make return into a named tuple
         return running, interlocked
 
@@ -246,7 +246,7 @@ class Modbus(QObject):
         # FLAG
         # If true, set flag, set 1 to bit 1
         # If false, reset flag, set 1 to bit 2
-        return self.client.write_register(pos, 1<<(self._FlagBits.SET if value else self._FlagBits.RESET))
+        return self.client.write_register(pos, 1<<(self._FlagBits.SET.value if value else self._FlagBits.RESET.value))
 
     @safe_modbus
     def _read_FF(self, pos):
