@@ -641,7 +641,7 @@ class MainWindow(QMainWindow):
 
     def stop_run(self):
         # set up multithreading thread and workers
-        self.run_end_time = datetime.datetime.now().isoformat(sep=" ", timespec="milliseconds")
+        self.run_end_time = datetime.datetime.now()
         self.stopping_run_ready = []
         self.stopping_run = False
         self.run_exit_code = 0
@@ -667,7 +667,7 @@ class MainWindow(QMainWindow):
             return
 
         self.event_timer.start()
-        self.event_start_time = datetime.datetime.now().isoformat(sep=" ", timespec="milliseconds")
+        self.event_start_time = datetime.datetime.now()
         self.event_exit_code = 255
         self.starting_event_ready = []
         self.update_state("starting_event")
@@ -690,7 +690,7 @@ class MainWindow(QMainWindow):
         Stop the event. Enter into compressing state. If the "Stop Run" button is pressed or the max number of events
         are reached, then it will enter into "stopping" state. Otherwise, it will start another event.
         """
-        self.event_end_time = datetime.datetime.now().isoformat(sep=" ", timespec="milliseconds")
+        self.event_end_time = datetime.datetime.now()
         self.stopping_event_ready = []
         self.event_livetime = self.event_timer.elapsed()
         self.run_livetime += self.event_livetime

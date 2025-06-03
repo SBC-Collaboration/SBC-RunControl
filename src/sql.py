@@ -196,7 +196,7 @@ class SQL(QObject):
             self.main.config_class.event_pressure["setpoint_high"],
             self.main.config_class.event_pressure["slope"],
             self.main.config_class.event_pressure["period"],
-            self.main.event_start_time,
+            self.main.event_start_time.isoformat(sep=" ", timespec="milliseconds"),
             None,  # end time
             None   # trigger source
         )
@@ -214,7 +214,7 @@ class SQL(QObject):
                  f"SET num_events = {self.main.event_id}, "
                      f"run_livetime = '{str(datetime.timedelta(milliseconds=self.main.run_livetime))}', "
                      f"comment = '{self.main.ui.comment_edit.toPlainText()}', "
-                     f"end_time = '{self.main.event_end_time}', "
+                     f"end_time = '{self.main.run_end_time.isoformat(sep=" ", timespec="milliseconds")}', "
                      f"source1_ID = '{self.main.ui.source_box.currentText()}', "
                      f"source1_location = '{self.main.ui.source_location_box.currentText()}' "
                  f"WHERE run_ID = '{self.main.run_id}';")
@@ -239,7 +239,7 @@ class SQL(QObject):
             self.main.event_exit_code,
             str(datetime.timedelta(milliseconds=self.main.event_livetime)),
             str(datetime.timedelta(milliseconds=self.main.run_livetime)),
-            self.main.event_end_time,
+            self.main.event_end_time.isoformat(sep=" ", timespec="milliseconds"),
             self.main.ui.trigger_edit.text(),
             self.main.run_id,
             self.main.event_id
