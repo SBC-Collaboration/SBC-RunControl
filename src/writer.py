@@ -27,21 +27,45 @@ class Writer(QObject):
 
     @Slot()
     def write_event_data(self, last_trigger):
-        ev_number = [int(i) for i in self.main.run_id.split("_")]
-        ev_number.append(self.main.event_id)
         self.event_data = {
-            "event_id": ev_number,
-            # list of date, run number, event number: [20240101, 0, 0]
+            "run_id": self.main.run_id,  # run id (str) e.g. 20240101_0
+            "event_id": self.main.event_id,  # event id (int) e.g. 0
             "ev_livetime": self.main.event_livetime,  # event livetime (ms)
-            "run_livetime": self.main.run_livetime,  # event livetime (ms)
+            "cum_livetime": self.main.run_livetime,  # cumulative livetime (ms)
+            "pset": self.main.config_class.event_pressure["setpoint"],  # pressure setpoint (float)
+            "pset_hi": self.main.config_class.event_pressure["setpoint_hi"],  # pressure setpoint high (float)
+            "pset_slope": self.main.config_class.event_pressure["slope"],  # pressure setpoint slope (float)
+            "pset_period": self.main.config_class.event_pressure["period"],  # pressure setpoint period (float)
             "trigger_source": last_trigger,  # trigger source (str)
         }
+        headers = ["run_id", "event_id", "ev_exit_code", "ev_livetime", "cum_livetime", \
+                   "pset", "pset_hi", "pset_slope", "pset_period", \
+                   "start_time", "end_time", "trigger_source"]
+        dtypes = ["U100", "u4", "u1", "u8", "u8", "f4", "f4", "f4", "f4", "U100"]
+        shapes = [[1], [1], [1], [1], [1], [1], [1], [1], [1], [1]]
         with SBCWriter(
-                os.path.join(
-                    self.main.event_dir, f"event_info.sbc"
-                ),
-                ["event_id", "ev_livetime", "run_livetime", "trigger_source"],
-                ["u4", "u8", "u8", "U100"],
-                [[3], [1], [1], [1]],
+                os.path.join(self.main.event_dir, f"event_info.sbc"),
+                headers, dtypes, shapes,
         ) as event_writer:
             event_writer.write(self.event_data)
+    
+    @Slot()
+    def write_run_data(self):
+        run_data = {
+            "run_id": self.main.run_id,
+            "run_exit_code": self.main.run_exit_code,
+            "num_events": self.main.num_events,
+            "run_livetime": self.main.run_livetime,
+            "run_start_time": self.main.run_start_time.timestamp(),
+            "run_end_time": self.main.run_end_time.timestamp(),
+        }
+        headers = ["run_id", "run_exit_code", "num_events", "run_livetime", "run_start_time", "run_end_time"]
+        dtypes = ["U100", "u1", "u4", "u8", "f8", "f8"]
+        shapes = [[1], [1], [1], [1], [1], [1]]
+        with SBCWriter(
+                os.path.join(
+                    self.main.run_dir, f"run_info.sbc"
+                ),
+                headers, dtypes, shapes
+        ) as run_writer:
+            run_writer.write(run_data)
