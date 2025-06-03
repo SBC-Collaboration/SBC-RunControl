@@ -12,6 +12,7 @@ import struct
 import numpy as np
 import time
 from functools import wraps
+from enum import Enum
 
 # Wrapper to handle exceptions in Modbus functions
 def safe_modbus(func):
@@ -54,9 +55,9 @@ class Modbus(QObject):
     @Slot()
     def periodic_task(self):
         if (self.main.run_state == self.main.run_states["active"] and self.pressure_cycle ==  False): 
-            pressure_state  = _read_procedure(self.registers["PRESSURE_CYCLE"]) 
-            if(pressure_state[0] == False):
-                start_pressure = _start_procedure(self.registers["PRESSURE_CYCLE"])
+            pressure_state  = self._read_procedure(self.registers["PRESSURE_CYCLE"]) 
+            if(pressure_state is None or pressure_state[0] == False):
+                start_pressure = self._start_procedure(self.registers["PRESSURE_CYCLE"])
                 if((start_pressure)==True):
                     self.pressure_cycle  = True
                     self.logger.debug(f" Pressure cycle started successfully.")
@@ -127,7 +128,7 @@ class Modbus(QObject):
         stop_proc_wait_ms = 30 * 1000
         abort_proc_wait_ms = 30 * 100
         pc_register = self.registers["PRESSURE_CYCLE"]
-        self.stop_event_timer = QElapsedTimer(self)
+        self.stop_event_timer = QElapsedTimer()
         self.stop_event_timer.start()
 
         # Check status every 100ms until the procedure is not running anymore, or timeout occurs
@@ -235,8 +236,8 @@ class Modbus(QObject):
         response = self.client.read_holding_registers(pos, count=length)
         word = response.registers[0]
         # Get running state at bit 0 and interlocked at bit 1
-        running = (word >> _FlagBits.RUNNING) & 1 == 1
-        interlocked = (word >> _FlagBits.INTERLOCKED) & 1 == 1
+        running = (word >> self._FlagBits.RUNNING) & 1 == 1
+        interlocked = (word >> self._FlagBits.INTERLOCKED) & 1 == 1
         # TODO: make return into a named tuple
         return running, interlocked
 
@@ -245,7 +246,7 @@ class Modbus(QObject):
         # FLAG
         # If true, set flag, set 1 to bit 1
         # If false, reset flag, set 1 to bit 2
-        return self.client.write_register(pos, 1<<(_FlagBits.SET if value else _FlagBits.RESET))
+        return self.client.write_register(pos, 1<<(self._FlagBits.SET if value else self._FlagBits.RESET))
 
     @safe_modbus
     def _read_FF(self, pos):
@@ -278,15 +279,15 @@ class Modbus(QObject):
         response = self.client.read_holding_registers(pos, count=length)
         word = response.registers[0]
         # make sure bit 2,3,4 are all 0, otherwise return error
-        if (word >> _ProcedureBits.START) & 1 == 1:
+        if (word >> self._ProcedureBits.START.value) & 1 == 1:
             raise ValueError("Procedure is still being started. Value is not valid.")
-        elif (word >> _ProcedureBits.STOP) & 1 == 1:
+        elif (word >> self._ProcedureBits.STOP.value) & 1 == 1:
             raise ValueError("Procedure is still being stopped. Value is not valid.")
-        elif (word >> _ProcedureBits.ABORT) & 1 == 1:
+        elif (word >> self._ProcedureBits.ABORT.value) & 1 == 1:
             raise ValueError("Procedure is still being aborted. Value is not valid.")
         # Get state at bit 0 and interlocked at bit 1
-        state = (word >> _ProcedureBits.RUNNING) & 1 == 1
-        interlocked = (word >> _ProcedureBits.INTERLOCKED) & 1 == 1
+        state = (word >> self._ProcedureBits.RUNNING.value) & 1 == 1
+        interlocked = (word >> self._ProcedureBits.INTERLOCKED.value) & 1 == 1
         exit = response.registers[1]
         # TODO: make return into a named tuple
         return state, interlocked, exit
@@ -299,19 +300,19 @@ class Modbus(QObject):
     def _start_procedure(self, pos):
         # PROCEDURE
         # Write 1 to bit 2 to start procedure
-        self.client.write_register(pos, 1<<_ProcedureBits.START)
+        self.client.write_register(pos, 1<<self._ProcedureBits.START.value)
         return True
 
     @safe_modbus
     def _stop_procedure(self, pos):
         # PROCEDURE
         # Write 1 to bit 3 to stop procedure
-        self.client.write_register(pos, 1<<_ProcedureBits.STOP)
+        self.client.write_register(pos, 1<<self._ProcedureBits.STOP.value)
         return True
 
     @safe_modbus
     def _abort_procedure(self, pos):
         # PROCEDURE
         # Write 1 to bit 4 to abort procedure
-        self.client.write_register(pos, 1<<_ProcedureBits.ABORT)
+        self.client.write_register(pos, 1<<self._ProcedureBits.ABORT.value)
         return True
