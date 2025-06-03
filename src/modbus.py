@@ -124,9 +124,9 @@ class Modbus(QObject):
         If stopping fails, or after some time it's still running, it tries to abort.
         If aborting fails, or after some time it's still running, it raises an error.
         """
-        trigger_proc_wait_ms = 30 * 1000
-        stop_proc_wait_ms = 30 * 1000
-        abort_proc_wait_ms = 30 * 100
+        trigger_proc_wait_ms = self.config["trig_timeout"] * 1000
+        stop_proc_wait_ms = self.config["stop_timeout"] * 1000
+        abort_proc_wait_ms = self.config["abort_timeout"] * 1000
         pc_register = self.registers["PRESSURE_CYCLE"]
         self.stop_event_timer = QElapsedTimer()
         self.stop_event_timer.start()

@@ -2151,7 +2151,7 @@
               <item row="2" column="0">
                <widget class="QLabel" name="pc_trig_timeout_label">
                 <property name="text">
-                 <string>PC Stop Timeout</string>
+                 <string>PC Trig Timeout</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>

@@ -78,6 +78,9 @@ class Config(QObject):
         plc_config = self.config["plc"]
         ui.plc_hostname_edit.setText(plc_config["hostname"])
         ui.plc_modbus_port_box.setValue(plc_config["port"])
+        ui.pc_trig_timeout_box.setValue(plc_config["trig_timeout"])
+        ui.pc_stop_timeout_box.setValue(plc_config["stop_timeout"])
+        ui.pc_abort_timeout_box.setValue(plc_config["abort_timeout"])
 
         # pressure
         pressure_config = self.config["plc"]["pressure"]
@@ -377,6 +380,9 @@ class Config(QObject):
             # TODO: add PLC enabled box
             "hostname": ui.plc_hostname_edit.text(),
             "port": ui.plc_modbus_port_box.value(),
+            "trig_timeout": ui.pc_trig_timeout_box.value(),
+            "stop_timeout": ui.pc_stop_timeout_box.value(),
+            "abort_timeout": ui.pc_abort_timeout_box.value(),
         }
 
         # get mode from radio buttons

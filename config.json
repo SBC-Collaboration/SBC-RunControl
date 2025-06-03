@@ -9,6 +9,9 @@
   "plc": {
     "hostname": "192.168.137.11",
     "port": 502,
+    "trig_timeout": 30.0,
+    "stop_timeout": 30.0,
+    "abort_timeout": 30.0,
     "pressure": {
       "enabled": false,
       "mode": "random",
