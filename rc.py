@@ -456,19 +456,19 @@ class MainWindow(QMainWindow):
                 self.logger.info(f"Run {self.run_id} started. Modules started: {self.starting_run_ready}\n")
                 self.start_event()
         elif self.run_state == self.run_states["starting_event"]:
-            # cam 1/2/3, *PLC, NIUSB, CAEN, GaGe, MODBUS   #change for RC-PLC comm.
+            # cam 1/2/3, *PLC, NIUSB, CAEN, GaGe, MODBUS
             self.event_timer.start()
-            if len(self.starting_event_ready) >= 7:        #change for RC-PLC comm.
+            if len(self.starting_event_ready) >= 7:
                 self.logger.info(f"Event {self.event_id} started. Modules started: {self.starting_event_ready}")
                 self.update_state("active")
         elif self.run_state == self.run_states["stopping_event"]:
-            # SQL, cam 1/2/3, NIUSB, CAEN, GaGe, MODBUS   #change for RC-PLC comm.
-            if len(self.stopping_event_ready) >= 8:       #change for RC-PLC comm.
+            # SQL, cam 1/2/3, NIUSB, CAEN, GaGe, MODBUS
+            if len(self.stopping_event_ready) >= 8:
                 self.logger.info(f"Event {self.event_id} stopped. Modules stopped: {self.stopping_event_ready}\n")
                 self.start_event()
         elif self.run_state == self.run_states["stopping_run"]:
-            # SQL, cam 1/2/3, sipm amp 1/2/3, NIUSB, CAEN, MODBUS  #change for RC-PLC comm.
-            if len(self.stopping_run_ready) >= 10:        #change for RC-PLC comm.
+            # SQL, cam 1/2/3, sipm amp 1/2/3, NIUSB, CAEN, MODBUS
+            if len(self.stopping_run_ready) >= 10:
                 self.logger.info(f"Run {self.run_id} stopped. Modules stopped: {self.stopping_run_ready}")
                 self.update_state("idle")
 
