@@ -51,7 +51,7 @@ class Writer(QObject):
         headers = ["run_id", "event_id", "ev_exit_code", "ev_livetime", "cum_livetime",
                    "pset", "pset_hi", "pset_slope", "pset_period",
                    "start_time", "end_time", "trigger_source"]
-        dtypes = ["U100", "u4", "u1", "u8", "u8", "f", "f", "f", "f", "f", "f", "U100"]
+        dtypes = ["U100", "u4", "u1", "u8", "u8", "f", "f", "f", "f", "d", "d", "U100"]
         shapes = [[1], [1], [1], [1], [1], [1], [1], [1], [1], [1], [1], [1]]
         with SBCWriter(
                 os.path.join(self.main.event_dir, f"event_info.sbc"),
@@ -69,18 +69,24 @@ class Writer(QObject):
             "comment": self.main.ui.comment_edit.toPlainText() or "",
             "run_start_time": self.main.run_start_time.timestamp(),
             "run_end_time": self.main.run_end_time.timestamp(),
+            "active_datastreams": "", 
+            "pset_mode": self.main.config_class.run_pressure_mode,
+            "pset": self.main.config_class.run_pressure_profiles[0]["setpoint"]
+                if len(self.main.config_class.run_pressure_profiles)==1 else None, 
             "source1_ID": self.main.ui.source_box.currentText() or "",
             "source1_location": self.main.ui.source_location_box.currentText() or "",
             "red_caen_ver": red_caen.__version__,
             "niusb_ver": ni_usb_6501.__version__,
             "sbc_binary_ver": sbcbinaryformat.__version__,
         }
-        text_len = len(run_data["comment"]) if run_data["comment"] else 1
+        comment_len = len(run_data["comment"]) if run_data["comment"] else 1
         headers = ["run_id", "run_exit_code", "num_events", "run_livetime", "comment", 
-                   "run_start_time", "run_end_time", "source1_ID", "source1_location",
-                   "red_caen_ver", "niusb_ver", "sbc_binary_ver"]
-        dtypes = ["U100", "u1", "u4", "u8", f"U{text_len}", "d", "d", "U100", "U100", "U100", "U100", "U100"]
-        shapes = [[1], [1], [1], [1], [1], [1], [1], [1], [1], [1], [1], [1]]
+                   "run_start_time", "run_end_time", "active_datastreams", "pset_mode", "pset",
+                   "source1_ID", "source1_location", "red_caen_ver", "niusb_ver", "sbc_binary_ver"]
+        dtypes = ["U100", "u1", "u4", "u8", f"U{comment_len}", 
+                  "d", "d", "U100", "U100", "f",
+                  "U100", "U100", "U100", "U100", "U100"]
+        shapes = [[1], [1], [1], [1], [1], [1], [1], [1], [1], [1], [1], [1], [1], [1], [1]]
         with SBCWriter(
                 os.path.join(
                     self.main.run_dir, f"run_info.sbc"
