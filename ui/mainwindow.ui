@@ -1043,7 +1043,7 @@ background-color: #969696;</string>
                  </widget>
                 </item>
                 <item row="0" column="2">
-                 <widget class="StatusLight" name="status_plc">
+                 <widget class="StatusLight" name="status_modbus">
                   <property name="minimumSize">
                    <size>
                     <width>0</width>
@@ -1055,7 +1055,7 @@ background-color: #969696;</string>
 background-color: #969696;</string>
                   </property>
                   <property name="text">
-                   <string>PLC</string>
+                   <string>Modbus</string>
                   </property>
                   <property name="alignment">
                    <set>Qt::AlignmentFlag::AlignCenter</set>

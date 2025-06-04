@@ -12,6 +12,7 @@ from src.ui_loader import SettingsWindow, LogWindow
 from src.arduinos import Arduino
 from src.caen import Caen
 from src.acoustics import Acoustics
+from src.modbus import Modbus
 from src.cameras import Camera
 from src.sipm_amp import SiPMAmp
 from src.sql import SQL
@@ -26,6 +27,7 @@ import time
 import re
 import sys
 import os
+import fcntl
 
 
 # Loads Main window
@@ -41,6 +43,16 @@ class MainWindow(QMainWindow):
 
     def __init__(self):
         super(MainWindow, self).__init__()
+
+        # Acquire a lock to prevent multiple instances of the program
+        self.lock_file = "/tmp/runcontrol.lock"
+        self.lock_fd = open(self.lock_file, 'w')
+        try:
+            fcntl.flock(self.lock_fd, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        except BlockingIOError:
+            self.logger.error("Run Control is already running. Exiting.")
+            sys.exit(1)
+
         self.run_id = ""
         self.event_id = None
 
@@ -65,8 +77,7 @@ class MainWindow(QMainWindow):
         self.log_dir = self.config_class.config["general"]["log_dir"]
         if not os.path.exists(self.log_dir):
             os.mkdir(self.log_dir)
-        current_date = datetime.datetime.now().strftime("%Y%m%d")
-        self.log_filename = os.path.join(self.log_dir, f"rc-{current_date}.log")
+        self.log_filename = os.path.join(self.log_dir, "rc.log")
         self.log_format = "%(asctime)s %(levelname)s > %(message)s"
         self.log_formatter = logging.Formatter(self.log_format)
         self.file_handler = TimedRotatingFileHandler(
@@ -189,6 +200,22 @@ class MainWindow(QMainWindow):
         self.acous_thread.start()
         time.sleep(0.001)
 
+        self.modbus_worker = Modbus(self)
+        self.modbus_worker.run_started.connect(self.starting_run_wait)
+        self.modbus_worker.run_stopped.connect(self.stopping_run_wait)
+        self.modbus_worker.event_started.connect(self.starting_event_wait)
+        self.modbus_worker.event_stopped.connect(self.stopping_event_wait)
+        self.modbus_thread = QThread()
+        self.modbus_thread.setObjectName("modbus_thread")
+        self.modbus_worker.moveToThread(self.modbus_thread)
+        self.modbus_thread.started.connect(self.modbus_worker.run)
+        self.run_starting.connect(self.modbus_worker.start_run)
+        self.event_starting.connect(self.modbus_worker.start_event)
+        self.event_stopping.connect(self.modbus_worker.stop_event)
+        self.run_stopping.connect(self.modbus_worker.stop_run)
+        self.modbus_thread.start()
+        time.sleep(0.001)
+
         self.niusb_worker = NIUSB(self)
         self.niusb_worker.run_started.connect(self.starting_run_wait)
         self.niusb_worker.event_started.connect(self.starting_event_wait)
@@ -214,7 +241,8 @@ class MainWindow(QMainWindow):
         self.writer_thread.setObjectName("writer_thread")
         self.writer_worker.moveToThread(self.writer_thread)
         self.writer_thread.started.connect(self.writer_worker.run)
-        self.niusb_worker.trigger_ff.connect(self.writer_worker.write_event_data)
+        self.event_stopping.connect(self.writer_worker.write_event_data)
+        self.run_stopping.connect(self.writer_worker.write_run_data)
         self.writer_thread.start()
         time.sleep(0.001)
 
@@ -227,6 +255,7 @@ class MainWindow(QMainWindow):
         self.sql_worker.moveToThread(self.sql_thread)
         self.sql_thread.started.connect(self.sql_worker.run)
         self.run_starting.connect(self.sql_worker.start_run)
+        self.event_starting.connect(self.sql_worker.start_event)
         self.event_stopping.connect(self.sql_worker.stop_event)
         self.run_stopping.connect(self.sql_worker.stop_run)
         self.sql_thread.start()
@@ -269,6 +298,14 @@ class MainWindow(QMainWindow):
         QApplication.processEvents()
         event.accept()
         QApplication.quit()
+
+        # Optional, release the lock file
+        try:
+            fcntl.flock(self.lock_fd, fcntl.LOCK_UN)
+            self.lock_fd.close()
+            os.remove(self.lock_file)
+        except BlockingIOError:
+            self.logger.error("Failed to release the lock file.")
 
         self.logger.info("Run control successfully stopped.\n")
         
@@ -415,24 +452,24 @@ class MainWindow(QMainWindow):
             ):
                 self.send_trigger.emit("Timeout")
         elif self.run_state == self.run_states["starting_run"]:
-            # SiPM amp 1/2/3, Cam 1/2/3, clock/position/trigger arduino, NI USB, CAEN
-            if len(self.starting_run_ready) >= 12:
+            # SiPM amp 1/2/3, Cam 1/2/3, clock/position/trigger arduino, NI USB, CAEN, MODBUS #change for RC-PLC comm.
+            if len(self.starting_run_ready) >= 13:
                 self.logger.info(f"Run {self.run_id} started. Modules started: {self.starting_run_ready}\n")
                 self.start_event()
         elif self.run_state == self.run_states["starting_event"]:
-            # cam 1/2/3, *PLC, NIUSB, CAEN, GaGe
+            # cam 1/2/3, *PLC, NIUSB, CAEN, GaGe, MODBUS
             self.event_timer.start()
-            if len(self.starting_event_ready) >= 6:
+            if len(self.starting_event_ready) >= 7:
                 self.logger.info(f"Event {self.event_id} started. Modules started: {self.starting_event_ready}")
                 self.update_state("active")
         elif self.run_state == self.run_states["stopping_event"]:
-            # SQL, cam 1/2/3, NIUSB, CAEN, GaGe
-            if len(self.stopping_event_ready) >= 7:
+            # SQL, cam 1/2/3, NIUSB, CAEN, GaGe, MODBUS
+            if len(self.stopping_event_ready) >= 8:
                 self.logger.info(f"Event {self.event_id} stopped. Modules stopped: {self.stopping_event_ready}\n")
                 self.start_event()
         elif self.run_state == self.run_states["stopping_run"]:
-            # SQL, cam 1/2/3, sipm amp 1/2/3, NIUSB, CAEN
-            if len(self.stopping_run_ready) >= 9:
+            # SQL, cam 1/2/3, sipm amp 1/2/3, NIUSB, CAEN, MODBUS
+            if len(self.stopping_run_ready) >= 10:
                 self.logger.info(f"Run {self.run_id} stopped. Modules stopped: {self.stopping_run_ready}")
                 self.update_state("idle")
 
@@ -560,6 +597,11 @@ class MainWindow(QMainWindow):
             os.mkdir(self.run_dir)
         self.ui.run_id_edit.setText(self.run_id)
 
+        current_run_path = os.path.join(self.config_class.config["general"]["data_dir"], "current_run")
+        if os.path.islink(current_run_path):
+            os.unlink(current_run_path)
+        os.symlink(self.run_dir, current_run_path, target_is_directory=True)
+
     def start_program(self):
         
         self.program_starting.emit()
@@ -570,7 +612,7 @@ class MainWindow(QMainWindow):
         Start a new run. Copies configuration into run-specific config. Creates run directory. Initializes data submodules.
         """
         self.create_run_directory()
-        self.run_start_time = datetime.datetime.now().isoformat(sep=" ", timespec="milliseconds")
+        self.run_start_time = datetime.datetime.now()
         self.starting_run_ready = []
         vars = self.ui.__dict__
         for v in vars.keys():
@@ -578,6 +620,7 @@ class MainWindow(QMainWindow):
                 vars[v].idle()
 
         # reset event number and livetimes
+        self.run_exit_code = 255
         self.event_id = -1
         self.event_livetime = 0
         self.run_livetime = 0
@@ -599,9 +642,10 @@ class MainWindow(QMainWindow):
 
     def stop_run(self):
         # set up multithreading thread and workers
-        self.run_end_time = datetime.datetime.now().isoformat(sep=" ", timespec="milliseconds")
+        self.run_end_time = datetime.datetime.now()
         self.stopping_run_ready = []
         self.stopping_run = False
+        self.run_exit_code = 0
 
         self.run_stopping.emit()
         self.update_state("stopping_run")
@@ -624,7 +668,8 @@ class MainWindow(QMainWindow):
             return
 
         self.event_timer.start()
-        self.event_start_time = datetime.datetime.now().isoformat(sep=" ", timespec="milliseconds")
+        self.event_start_time = datetime.datetime.now()
+        self.event_exit_code = 255
         self.starting_event_ready = []
         self.update_state("starting_event")
         self.event_livetime = 0
@@ -634,12 +679,7 @@ class MainWindow(QMainWindow):
         self.config_class.start_event()
         if not os.path.exists(self.event_dir):
             os.mkdir(self.event_dir)
-        
-        # update main window pressure display
-        self.ui.ev_pset_box.setValue(self.config_class.event_pressure["setpoint"] or -1)
-        self.ui.ev_pset_hi_box.setValue(self.config_class.event_pressure["setpoint_high"] or -1)
-        self.ui.ev_pset_slope_box.setValue(self.config_class.event_pressure["slope"] or -1)
-        self.ui.ev_pset_period_box.setValue(self.config_class.event_pressure["period"] or -1)
+
         current_path = os.path.join(self.config_class.config["general"]["data_dir"], "current_event")
         if os.path.islink(current_path):
             os.unlink(current_path)
@@ -651,10 +691,11 @@ class MainWindow(QMainWindow):
         Stop the event. Enter into compressing state. If the "Stop Run" button is pressed or the max number of events
         are reached, then it will enter into "stopping" state. Otherwise, it will start another event.
         """
-        self.event_end_time = datetime.datetime.now().isoformat(sep=" ", timespec="milliseconds")
+        self.event_end_time = datetime.datetime.now()
         self.stopping_event_ready = []
         self.event_livetime = self.event_timer.elapsed()
         self.run_livetime += self.event_livetime
+        self.event_exit_code = 0
         self.event_stopping.emit()
         self.update_state("stopping_event")
 

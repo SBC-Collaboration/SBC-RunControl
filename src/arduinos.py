@@ -123,14 +123,14 @@ class Arduino(QObject):
         elif not (archives := glob.glob(os.path.join(build_path, "*.zip"))):
             # check if a zip file exists in the build folder, without in the filename
             checksum = 0
-            self.logger.debug(f"Sketch archive doesn't exist for {self.arduino} arduino.")
+            self.logger.debug(f"Sketch archive doesn't exist for {self.arduino} arduino. Creating archive.")
         elif len(archives)==1:
             # generate checksum for old zip file
             with open(archives[0], "rb") as f:
                 checksum = hashlib.sha256(f.read()).digest()
         else:
-            self.logger.error(f"More than one sketch archive for {self.arduino} arduino.")
-            cheskum = 0
+            self.logger.debug(f"More than one sketch archive for {self.arduino} arduino. Recreating archive.")
+            checksum = 0
 
         # generate a new zip archive of sketch
         os.environ["PATH"] += os.pathsep + os.path.join(os.path.dirname(os.path.dirname(__file__)), "dependencies")

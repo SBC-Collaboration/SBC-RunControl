@@ -69,8 +69,7 @@ class Camera(QObject):
         # check if NIUSB has initialized its outputs
         self.main.niusb_worker.run_mutex.lock()
         while not self.main.niusb_worker.run_ready:
-            self.main.niusb_worker.run_wait.wait()
-        self.main.niusb_worker.run_ready = False
+            self.main.niusb_worker.run_wait.wait(self.main.niusb_worker.run_mutex)
         self.main.niusb_worker.run_mutex.unlock()
 
         # start executing command

@@ -109,7 +109,7 @@ class SQL(QObject):
 
         query = f"""
             INSERT INTO {self.run_table} (
-                ID, run_ID, num_events, run_livetime, comment,
+                ID, run_ID, run_exit_code, num_events, run_livetime, comment,
                 active_datastreams, pset_mode, pset,
                 start_time, end_time,
                 source1_ID, source1_location,
@@ -119,7 +119,7 @@ class SQL(QObject):
                 config
             )
             VALUES (
-                NULL, %s, %s, %s, %s,
+                NULL, %s, %s, %s, %s, %s,
                 %s, %s, %s,
                 %s, %s,
                 %s, %s,
@@ -131,6 +131,7 @@ class SQL(QObject):
         """
         values = (
             self.main.run_id,                      # run_ID
+            None,                                  # run_exit_code
             0,                                     # num_events
             "00:00:00.000",                        # run_livetime
             self.main.ui.comment_edit.toPlainText() or None,  # comment
@@ -138,15 +139,15 @@ class SQL(QObject):
             self.main.config_class.run_pressure_mode,                   # pset_mode
             self.main.config_class.run_pressure_profiles[0]["setpoint"]     # pset
                 if len(self.main.config_class.run_pressure_profiles)==1 else None,                                   
-            self.main.run_start_time,              # start_time
-            self.main.run_start_time,              # end_time
+            self.main.run_start_time.isoformat(sep=" ", timespec="milliseconds"),              # start_time
+            None,                                  # end_time
             self.main.ui.source_box.currentText() or None,              # source1_ID
             self.main.ui.source_location_box.currentText() or None,     # source1_location
             None, None,                            # source2_ID, source2_location
             None, None,                            # source3_ID, source3_location
-            red_caen.__version__,                # red_caen_ver
-            ni_usb_6501.__version__,             # niusb_ver
-            sbcbinaryformat.__version__,         # sbc_binary_ver
+            red_caen.__version__,                  # red_caen_ver
+            ni_usb_6501.__version__,               # niusb_ver
+            sbcbinaryformat.__version__,           # sbc_binary_ver
             json.dumps(self.main.config_class.run_config),              # config (as JSON string)
         )
         self.cursor.execute(query, values)
@@ -158,8 +159,50 @@ class SQL(QObject):
     def stop_run(self):
         if not self.enabled:
             self.run_stopped.emit("sql-disabled")
-        else:
-            self.run_stopped.emit("sql")
+            return
+        self.db.ping()
+        query = (f"UPDATE {self.run_table} "
+                 f"SET run_exit_code = {self.main.run_exit_code}, "
+                 f"end_time = '{self.main.run_end_time.isoformat(sep=" ", timespec="milliseconds")}' "
+                 f"WHERE run_ID = '{self.main.run_id}';")
+        self.cursor.execute(query)
+        self.db.commit()
+        self.run_stopped.emit("sql")
+    
+    @Slot()
+    def start_event(self):
+        if not self.enabled:
+            self.event_stopped.emit("sql-disabled")
+            return
+        self.db.ping()
+        query = f"""
+            INSERT INTO {self.event_table} (
+                ID, run_ID, event_ID, event_exit_code, event_livetime, cum_livetime,
+                pset, pset_hi, pset_slope, pset_period,
+                start_time, stop_time, trigger_source
+            )
+            VALUES (
+                NULL, %s, %s, %s, %s, %s,
+                %s, %s, %s, %s,
+                %s, %s, %s
+            )
+        """
+        values = (
+            self.main.run_id,
+            self.main.event_id,
+            None,
+            0,  # event livetime
+            str(datetime.timedelta(milliseconds=self.main.run_livetime)),
+            self.main.config_class.event_pressure["setpoint"],
+            self.main.config_class.event_pressure["setpoint_high"],
+            self.main.config_class.event_pressure["slope"],
+            self.main.config_class.event_pressure["period"],
+            self.main.event_start_time.isoformat(sep=" ", timespec="milliseconds"),
+            None,  # end time
+            None   # trigger source
+        )
+        self.cursor.execute(query, values)
+        self.db.commit()
 
     @Slot()
     def stop_event(self):
@@ -172,7 +215,7 @@ class SQL(QObject):
                  f"SET num_events = {self.main.event_id}, "
                      f"run_livetime = '{str(datetime.timedelta(milliseconds=self.main.run_livetime))}', "
                      f"comment = '{self.main.ui.comment_edit.toPlainText()}', "
-                     f"end_time = '{self.main.event_end_time}', "
+                     f"end_time = '{self.main.event_end_time.isoformat(sep=" ", timespec="milliseconds")}', "
                      f"source1_ID = '{self.main.ui.source_box.currentText()}', "
                      f"source1_location = '{self.main.ui.source_location_box.currentText()}' "
                  f"WHERE run_ID = '{self.main.run_id}';")
@@ -181,34 +224,27 @@ class SQL(QObject):
         self.main.trigff_mutex.lock()
         while not self.main.trigff_ready:
             self.main.trigff_wait.wait(self.main.trigff_mutex)
-        self.main.trigff_ready = False
         self.main.trigff_mutex.unlock()
 
         query = f"""
-            INSERT INTO {self.event_table} (
-                ID, run_ID, event_ID, event_livetime, cum_livetime,
-                pset, pset_hi, pset_slope, pset_period,
-                start_time, stop_time, trigger_source
-            )
-            VALUES (
-                NULL, %s, %s, %s, %s,
-                %s, %s, %s, %s,
-                %s, %s, %s
-            )
+            UPDATE {self.event_table} SET
+                event_exit_code = %s,
+                event_livetime = %s,
+                cum_livetime = %s,
+                stop_time = %s,
+                trigger_source = %s
+            WHERE run_ID = %s AND event_ID = %s
         """
         values = (
-            self.main.run_id,
-            self.main.event_id,
+            self.main.event_exit_code,
             str(datetime.timedelta(milliseconds=self.main.event_livetime)),
             str(datetime.timedelta(milliseconds=self.main.run_livetime)),
-            self.main.config_class.event_pressure["setpoint"],
-            self.main.config_class.event_pressure["setpoint_high"],
-            self.main.config_class.event_pressure["slope"],
-            self.main.config_class.event_pressure["period"],
-            self.main.event_start_time,
-            self.main.event_end_time,
-            self.main.ui.trigger_edit.text()
+            self.main.event_end_time.isoformat(sep=" ", timespec="milliseconds"),
+            self.main.ui.trigger_edit.text(),
+            self.main.run_id,
+            self.main.event_id
         )
+
         self.cursor.execute(query, values)
         self.db.commit()
         self.event_stopped.emit("sql")

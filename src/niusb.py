@@ -173,8 +173,8 @@ class NIUSB(QObject):
         self.dev.write_pin(*self.reverse_config["reset"], True)
 
         self.run_mutex.lock()
-        self.run_wait.wakeOne()
         self.run_ready = True
+        self.run_wait.wakeAll()
         self.run_mutex.unlock()
         self.run_started.emit("niusb")
 
@@ -188,20 +188,19 @@ class NIUSB(QObject):
         self.dev.write_pin(*self.reverse_config["reset"], True)
         # wait until trigger latch is low
         while self.dev.read_pin(*self.reverse_config["latch"]):
-            self.dev.write_pin(*self.reverse_config["trig"], True)
-            self.dev.write_pin(*self.reverse_config["reset"], False)
+            self.dev.write_pin(*self.reverse_config["trig"], False)
+            self.dev.write_pin(*self.reverse_config["reset"], True)
         self.dev.write_pin(*self.reverse_config["reset"], 0)
         # reset trigff ready flag
         self.main.trigff_mutex.lock()
-        self.main.trigff_ready = True
+        self.main.trigff_ready = False
         self.main.trigff_mutex.unlock()
         self.event_started.emit("niusb")
 
         # check if cameras config are saved
         self.cam_config_mutex.lock()
         while not self.cam_config_ready:
-            self.cam_config_wait.wait()
-        self.cam_config_ready = False
+            self.cam_config_wait.wait(self.cam_config_mutex)
         self.cam_config_mutex.unlock()
 
         # check cameras ready
@@ -255,14 +254,10 @@ class NIUSB(QObject):
             self.logger.debug(f"First fault pin for the event is {self.ff_pin}")
         self.trigger_ff.emit(self.ff_pin)
         self.main.trigff_mutex.lock()
-        self.main.trigff_wait.wakeOne()
         self.main.trigff_ready = True
+        self.main.trigff_wait.wakeAll()
         self.main.trigff_mutex.unlock()
         self.event_stopped.emit("niusb")
-
-        self.cam_config_mutex.lock()
-        self.cam_config_ready = False
-        self.cam_config_mutex.unlock()
 
         cam_ready = {}
         for cam in ["cam1", "cam2", "cam3"]:
