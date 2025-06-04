@@ -9,6 +9,7 @@ import ctypes
 class Acoustics(QObject):
     event_started = Signal(str)
     event_stopped = Signal(str)
+    error = Signal(int)
 
     # convert sample_rate to a number
     sample_rate_conversion = {

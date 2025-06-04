@@ -50,6 +50,7 @@ class SiPMAmp(QObject):
 
     run_started = Signal(str)
     run_stopped = Signal(str)
+    error = Signal(int)
 
     def __init__(self, mainwindow, amp):
         super().__init__()
