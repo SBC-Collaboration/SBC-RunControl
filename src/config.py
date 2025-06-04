@@ -11,6 +11,7 @@ class Config(QObject):
     Class object to load and save run config files
     """
     run_config_saved = Signal()
+    error = Signal(int)
 
     def __init__(self, mainwindow):
         super().__init__()

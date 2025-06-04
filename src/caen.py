@@ -11,6 +11,7 @@ class Caen(QObject):
     event_started = Signal(str)
     event_stopped = Signal(str)
     data_retrieved = Signal(dict)
+    error = Signal(int)
 
     def __init__(self, mainwindow):
         super().__init__()
