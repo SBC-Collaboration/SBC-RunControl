@@ -9,4 +9,5 @@ project_description
 data_format
 documentation
 api
+changelog
 ```
