@@ -596,6 +596,11 @@ class MainWindow(QMainWindow):
             os.mkdir(self.run_dir)
         self.ui.run_id_edit.setText(self.run_id)
 
+        current_run_path = os.path.join(self.config_class.config["general"]["data_dir"], "current_run")
+        if os.path.islink(current_run_path):
+            os.unlink(current_run_path)
+        os.symlink(self.run_dir, current_run_path, target_is_directory=True)
+
     def start_program(self):
         
         self.program_starting.emit()
