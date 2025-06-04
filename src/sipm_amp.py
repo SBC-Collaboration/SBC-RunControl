@@ -50,6 +50,7 @@ class SiPMAmp(QObject):
 
     sipm_biased = Signal(str)
     sipm_unbiased = Signal(str)
+    error = Signal(int)
 
     def __init__(self, mainwindow, amp):
         super().__init__()

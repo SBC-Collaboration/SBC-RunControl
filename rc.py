@@ -18,6 +18,7 @@ from src.sipm_amp import SiPMAmp
 from src.sql import SQL
 from src.niusb import NIUSB
 from src.writer import Writer
+from src.guardian import Guardian
 import logging
 from logging.handlers import TimedRotatingFileHandler
 from enum import Enum
@@ -40,6 +41,7 @@ class MainWindow(QMainWindow):
     event_stopping = Signal()
     send_trigger = Signal(str)
     program_stopping = Signal()
+    error = Signal(int)
 
     def __init__(self):
         super(MainWindow, self).__init__()
@@ -146,10 +148,21 @@ class MainWindow(QMainWindow):
     def set_up_workers(self):
         # set up run handling thread and the worker
         d = self.__dict__
+
+        self.guardian_worker = Guardian(self)
+        self.guardian_thread = QThread()
+        self.guardian_thread.setObjectName("guardian_thread")
+        self.guardian_worker.moveToThread(self.guardian_thread)
+        self.guardian_thread.started.connect(self.guardian_worker.run)
+        self.error.connect(self.guardian_worker.error_handler)
+        self.guardian_thread.start()
+        time.sleep(0.001)
+
         for cam in ["cam1", "cam2", "cam3"]:
             d[f"{cam}_worker"] = Camera(self, cam)
             d[f"{cam}_worker"].camera_started.connect(self.starting_run_wait)
             d[f"{cam}_worker"].camera_closed.connect(self.stopping_run_wait)
+            d[f"{cam}_worker"].error.connect(self.guardian_worker.error_handler)
             d[f"{cam}_thread"] = QThread()
             d[f"{cam}_thread"].setObjectName(f"{cam}_thread")
             d[f"{cam}_worker"].moveToThread(d[f"{cam}_thread"])
@@ -163,6 +176,7 @@ class MainWindow(QMainWindow):
             d[f"{amp}_worker"] = SiPMAmp(self, amp)
             d[f"{amp}_worker"].sipm_biased.connect(self.starting_run_wait)
             d[f"{amp}_worker"].sipm_unbiased.connect(self.stopping_run_wait)
+            d[f"{amp}_worker"].error.connect(self.guardian_worker.error_handler)
             d[f"{amp}_thread"] = QThread()
             d[f"{amp}_thread"].setObjectName(f"{amp}_thread")
             d[f"{amp}_worker"].moveToThread(d[f"{amp}_thread"])
@@ -175,6 +189,7 @@ class MainWindow(QMainWindow):
         for ino in ["trigger", "clock", "position"]:
             d[f"arduino_{ino}_worker"] = Arduino(self, ino)
             d[f"arduino_{ino}_worker"].sketch_uploaded.connect(self.starting_run_wait)
+            d[f"arduino_{ino}_worker"].error.connect(self.guardian_worker.error_handler)
             d[f"arduino_{ino}_thread"] = QThread()
             d[f"arduino_{ino}_thread"].setObjectName(f"arduino_{ino}_thread")
             d[f"arduino_{ino}_worker"].moveToThread(d[f"arduino_{ino}_thread"])
@@ -189,6 +204,7 @@ class MainWindow(QMainWindow):
         self.caen_worker.event_started.connect(self.starting_event_wait)
         self.caen_worker.event_stopped.connect(self.stopping_event_wait)
         self.caen_worker.data_retrieved.connect(self.update_caen_plot)
+        self.caen_worker.error.connect(self.guardian_worker.error_handler)
         self.caen_thread = QThread()
         self.caen_thread.setObjectName("caen_thread")
         self.caen_worker.moveToThread(self.caen_thread)
@@ -203,6 +219,7 @@ class MainWindow(QMainWindow):
         self.acous_worker = Acoustics(self)
         self.acous_worker.event_started.connect(self.starting_event_wait)
         self.acous_worker.event_stopped.connect(self.stopping_event_wait)
+        self.acous_worker.error.connect(self.guardian_worker.error_handler)
         self.acous_thread = QThread()
         self.acous_thread.setObjectName("acous_thread")
         self.acous_worker.moveToThread(self.acous_thread)
@@ -217,6 +234,7 @@ class MainWindow(QMainWindow):
         self.modbus_worker.run_stopped.connect(self.stopping_run_wait)
         self.modbus_worker.event_started.connect(self.starting_event_wait)
         self.modbus_worker.event_stopped.connect(self.stopping_event_wait)
+        self.modbus_worker.error.connect(self.guardian_worker.error_handler)
         self.modbus_thread = QThread()
         self.modbus_thread.setObjectName("modbus_thread")
         self.modbus_worker.moveToThread(self.modbus_thread)
@@ -235,6 +253,7 @@ class MainWindow(QMainWindow):
         self.niusb_worker.run_stopped.connect(self.stopping_run_wait)
         self.niusb_worker.trigger_detected.connect(self.stop_event)
         self.niusb_worker.trigger_ff.connect(self.ui.trigger_edit.setText)
+        self.niusb_worker.error.connect(self.guardian_worker.error_handler)
         self.niusb_thread = QThread()
         self.niusb_thread.setObjectName("niusb_thread")
         self.niusb_worker.moveToThread(self.niusb_thread)
@@ -250,6 +269,7 @@ class MainWindow(QMainWindow):
         self.writer_worker = Writer(self)
         self.writer_worker.event_stopped.connect(self.stopping_event_wait)
         self.writer_worker.run_stopped.connect(self.stopping_run_wait)
+        self.writer_worker.error.connect(self.guardian_worker.error_handler)
         self.writer_thread = QThread()
         self.writer_thread.setObjectName("writer_thread")
         self.writer_worker.moveToThread(self.writer_thread)
@@ -264,6 +284,7 @@ class MainWindow(QMainWindow):
         self.sql_worker.run_stopped.connect(self.stopping_run_wait)
         self.sql_worker.event_started.connect(self.starting_event_wait)
         self.sql_worker.event_stopped.connect(self.stopping_event_wait)
+        self.sql_worker.error.connect(self.guardian_worker.error_handler)
         self.sql_thread = QThread()
         self.sql_thread.setObjectName("sql_thread")
         self.sql_worker.moveToThread(self.sql_thread)
@@ -273,6 +294,7 @@ class MainWindow(QMainWindow):
         self.event_stopping.connect(self.sql_worker.stop_event)
         self.run_stopping.connect(self.sql_worker.stop_run)
         self.sql_thread.start()
+        time.sleep(0.001)
 
         # establish mutex and wait conditions for syncing
         self.trigff_mutex = QMutex()
