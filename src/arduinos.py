@@ -71,6 +71,7 @@ class Arduino(QObject):
     latch_pins = [0,1,5,2,3,17,16,6,7,8,9,15,14]
 
     run_started = Signal(str)
+    error = Signal(int)
 
     def __init__(self, mainwindow, arduino):
         super().__init__()

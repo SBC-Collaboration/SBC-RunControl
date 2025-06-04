@@ -9,6 +9,7 @@ class Writer(QObject):
 
     event_stopped = Signal(str)
     run_stopped = Signal(str)
+    error = Signal(int)
 
     def __init__(self, mainwindow):
         super().__init__()

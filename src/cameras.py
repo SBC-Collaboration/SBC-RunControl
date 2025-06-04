@@ -11,6 +11,7 @@ class Camera(QObject):
     camera_started = Signal(str)
     camera_connected = Signal(str)
     camera_closed = Signal(str)
+    error = Signal(int)
 
     def __init__(self, mainwindow, cam_name):
         super().__init__()
