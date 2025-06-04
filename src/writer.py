@@ -7,6 +7,7 @@ import red_caen, ni_usb_6501, sbcbinaryformat
 class Writer(QObject):
 
     event_data_saved = Signal(str)
+    error = Signal(int)
 
     def __init__(self, mainwindow):
         super().__init__()

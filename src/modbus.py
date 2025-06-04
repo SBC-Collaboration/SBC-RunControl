@@ -32,8 +32,7 @@ class Modbus(QObject):
     run_stopped = Signal(str)
     event_started = Signal(str)
     event_stopped = Signal(str)
-    success_msg = Signal(str)
-    error_msg = Signal(str)
+    error = Signal(int)
 
     def __init__(self, mainwindow):
         super().__init__()
@@ -81,12 +80,13 @@ class Modbus(QObject):
             self.logger.debug(f"SLOW DAQ process started.")
         else:
             self.logger.error(f"SLOW DAQ process start is unsuccessful.")
+            self.error.emit("slowdaq")
 
         if ((self._write_float(self.registers["PCYCLE_PSET"],self.config["pressure"]["profile1"]["setpoint"]))==True):
             self.logger.debug(f"write of PSET is successful.")
         else:
             self.logger.error(f"write of PSET is unsuccessful.")
-            self.error_msg.emit("pset")
+            self.error.emit("pset")
         self.event_started.emit("modbus")
 
     @Slot()

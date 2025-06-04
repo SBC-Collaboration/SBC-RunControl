@@ -9,6 +9,7 @@ import ctypes
 class Acoustics(QObject):
     event_started = Signal(str)
     event_stopped = Signal(str)
+    error = Signal(int)
 
     def __init__(self, mainwindow):
         super().__init__()
