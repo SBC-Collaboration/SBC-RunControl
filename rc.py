@@ -50,7 +50,7 @@ class MainWindow(QMainWindow):
         try:
             fcntl.flock(self.lock_fd, fcntl.LOCK_EX | fcntl.LOCK_NB)
         except BlockingIOError:
-            print("Run Control is already running. Exiting.")
+            self.logger.error("Run Control is already running. Exiting.")
             sys.exit(1)
 
         self.run_id = ""

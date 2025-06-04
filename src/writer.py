@@ -33,7 +33,6 @@ class Writer(QObject):
         while not self.main.trigff_ready:
             self.main.trigff_wait.wait(self.main.trigff_mutex)
         self.main.trigff_mutex.unlock()
-        print(f"TrigFF in writer: {self.main.ui.trigger_edit.text()}")
 
         self.event_data = {
             "run_id": self.main.run_id,  # run id (str) e.g. 20240101_0
