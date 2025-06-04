@@ -139,7 +139,7 @@ class SQL(QObject):
             self.main.config_class.run_pressure_mode,                   # pset_mode
             self.main.config_class.run_pressure_profiles[0]["setpoint"]     # pset
                 if len(self.main.config_class.run_pressure_profiles)==1 else None,                                   
-            self.main.run_start_time,              # start_time
+            self.main.run_start_time.isoformat(sep=" ", timespec="milliseconds"),              # start_time
             None,                                  # end_time
             self.main.ui.source_box.currentText() or None,              # source1_ID
             self.main.ui.source_location_box.currentText() or None,     # source1_location
@@ -162,7 +162,8 @@ class SQL(QObject):
             return
         self.db.ping()
         query = (f"UPDATE {self.run_table} "
-                 f"SET run_exit_code = {self.main.run_exit_code} "
+                 f"SET run_exit_code = {self.main.run_exit_code}, "
+                 f"end_time = '{self.main.run_end_time.isoformat(sep=" ", timespec="milliseconds")}' "
                  f"WHERE run_ID = '{self.main.run_id}';")
         self.cursor.execute(query)
         self.db.commit()
@@ -214,7 +215,7 @@ class SQL(QObject):
                  f"SET num_events = {self.main.event_id}, "
                      f"run_livetime = '{str(datetime.timedelta(milliseconds=self.main.run_livetime))}', "
                      f"comment = '{self.main.ui.comment_edit.toPlainText()}', "
-                     f"end_time = '{self.main.run_end_time.isoformat(sep=" ", timespec="milliseconds")}', "
+                     f"end_time = '{self.main.event_end_time.isoformat(sep=" ", timespec="milliseconds")}', "
                      f"source1_ID = '{self.main.ui.source_box.currentText()}', "
                      f"source1_location = '{self.main.ui.source_location_box.currentText()}' "
                  f"WHERE run_ID = '{self.main.run_id}';")
@@ -223,7 +224,6 @@ class SQL(QObject):
         self.main.trigff_mutex.lock()
         while not self.main.trigff_ready:
             self.main.trigff_wait.wait(self.main.trigff_mutex)
-        self.main.trigff_ready = False
         self.main.trigff_mutex.unlock()
 
         query = f"""

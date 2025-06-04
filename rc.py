@@ -241,7 +241,8 @@ class MainWindow(QMainWindow):
         self.writer_thread.setObjectName("writer_thread")
         self.writer_worker.moveToThread(self.writer_thread)
         self.writer_thread.started.connect(self.writer_worker.run)
-        self.niusb_worker.trigger_ff.connect(self.writer_worker.write_event_data)
+        self.event_stopping.connect(self.writer_worker.write_event_data)
+        self.run_stopping.connect(self.writer_worker.write_run_data)
         self.writer_thread.start()
         time.sleep(0.001)
 
@@ -611,7 +612,7 @@ class MainWindow(QMainWindow):
         Start a new run. Copies configuration into run-specific config. Creates run directory. Initializes data submodules.
         """
         self.create_run_directory()
-        self.run_start_time = datetime.datetime.now().isoformat(sep=" ", timespec="milliseconds")
+        self.run_start_time = datetime.datetime.now()
         self.starting_run_ready = []
         vars = self.ui.__dict__
         for v in vars.keys():

@@ -193,7 +193,7 @@ class NIUSB(QObject):
         self.dev.write_pin(*self.reverse_config["reset"], 0)
         # reset trigff ready flag
         self.main.trigff_mutex.lock()
-        self.main.trigff_ready = True
+        self.main.trigff_ready = False
         self.main.trigff_mutex.unlock()
         self.event_started.emit("niusb")
 
@@ -254,8 +254,8 @@ class NIUSB(QObject):
             self.logger.debug(f"First fault pin for the event is {self.ff_pin}")
         self.trigger_ff.emit(self.ff_pin)
         self.main.trigff_mutex.lock()
-        self.main.trigff_wait.wakeOne()
         self.main.trigff_ready = True
+        self.main.trigff_wait.wakeAll()
         self.main.trigff_mutex.unlock()
         self.event_stopped.emit("niusb")
 
