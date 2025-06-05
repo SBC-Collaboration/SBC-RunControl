@@ -32,6 +32,10 @@ class StatusLight(QtWidgets.QLabel):
         self.setStyleSheet("color: #FFFFFF;"
                            "background-color: #969696;")
 
+    def disabled(self):
+        self.setStyleSheet("color: #FFFFFF;"
+                           "background-color: #303030;")
+
     def working(self):
         self.setStyleSheet("color: #303030;"
                            "background-color: #FCBA03;")
@@ -39,3 +43,7 @@ class StatusLight(QtWidgets.QLabel):
     def active(self):
         self.setStyleSheet("color: #000000;"
                            "background-color: #96BE25;")
+    
+    def error(self):
+        self.setStyleSheet("color: #FFFFFF;"
+                           "background-color: #E03030;")

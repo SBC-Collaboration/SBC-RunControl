@@ -505,7 +505,7 @@ class MainWindow(QMainWindow):
         if "disabled" in module:
             name = re.search(r'^(.*?)-', module).group(1)
             self.logger.debug(f"Starting Run: {name} is disabled")
-            vars[f"status_{name}"].idle()
+            vars[f"status_{name}"].disabled()
         else:
             self.logger.debug(f"Starting Run: {module} is complete")
             # change status lights
@@ -545,7 +545,7 @@ class MainWindow(QMainWindow):
         if "disabled" in module:
             name = re.search(r'^(.*?)-', module).group(1)
             self.logger.debug(f"Starting Event: {name} is disabled")
-            vars[f"status_{name}"].idle()
+            vars[f"status_{name}"].disabled()
         else:
             self.logger.debug(f"Starting Event: {module} is complete")
             # change status lights
@@ -614,10 +614,6 @@ class MainWindow(QMainWindow):
         self.create_run_directory()
         self.run_start_time = datetime.datetime.now()
         self.starting_run_ready = []
-        vars = self.ui.__dict__
-        for v in vars.keys():
-            if v.startswith("status"):
-                vars[v].idle()
 
         # reset event number and livetimes
         self.run_exit_code = 255
@@ -646,6 +642,11 @@ class MainWindow(QMainWindow):
         self.stopping_run_ready = []
         self.stopping_run = False
         self.run_exit_code = 0
+
+        vars = self.ui.__dict__
+        for v in vars.keys():
+            if v.startswith("status"):
+                vars[v].idle()
 
         self.run_stopping.emit()
         self.update_state("stopping_run")
