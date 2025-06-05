@@ -13,6 +13,8 @@ import numpy as np
 import time
 from functools import wraps
 from enum import Enum
+from sbcbinaryformat import Writer as SBCWriter
+import subprocess
 
 # Wrapper to handle exceptions in Modbus functions
 def safe_modbus(func):
@@ -96,19 +98,48 @@ class Modbus(QObject):
         # Stop the pressure cycle if it's running
         self._stop_pressure_cycle()
 
-        # Read the first fault bits
-        fault_bits = self._read_FF(self.registers["PCYCLE_ABORT_FF"])
-        self.logger.debug("fault_bits.")
-        self.logger.debug(fault_bits)
-        # TODO: write the fault bits in a file
+        # Read the first fault bits, PSET value, and exit code of the pressure cycle procedure
+        plc_data = {
+            "SLOWDAQ_FF": self._read_FF(self.registers["SLOWDAQ_FF"]),
+            "PCYCLE_ABORT_FF": self._read_FF(self.registers["PCYCLE_ABORT_FF"]),
+            "PCYCLE_FASTCOMP_FF": self._read_FF(self.registers["PCYCLE_FASTCOMP_FF"]),
+            "PCYCLE_SLOWCOMP_FF": self._read_FF(self.registers["PCYCLE_SLOWCOMP_FF"]),
+            "PCYCLE_PSET": self._read_float(self.registers["PCYCLE_PSET"]),
+            "PCYCLE_EXIT_CODE": self._read_procedure(self.registers["PRESSURE_CYCLE"])[2]                      
+        }
+
+        # write the plc_data in a file
+        headers = [ "SLOWDAQ_FF","PCYCLE_ABORT_FF","PCYCLE_FASTCOMP_FF","PCYCLE_SLOWCOMP_FF", "PCYCLE_PSET", "PCYCLE_EXIT_CODE"]
+        dtypes = [ "i1", "i1", "i1", "i1", "f", "u2"]
+        shapes = [[15], [15], [15], [15],[1],[1]]
+        with SBCWriter(
+                os.path.join(
+                    self.main.event_dir, f"plc.sbc"
+                ),
+                headers, dtypes, shapes
+        ) as plc_writer:
+            plc_writer.write(plc_data)
+                    
         slowdaq_stop = self._stop_procedure(self.registers["WRITE_SLOWDAQ"])
         self.pressure_cycle = False
-        if (slowdaq_stop == True):
+        time.sleep(1)
+        if (self._read_procedure(self.registers["WRITE_SLOWDAQ"])[0] == False):
             self.logger.debug(f"SLOW_DAQ process ended successfully.")
+            cwd = os.getcwd()   
+            os.chdir(self.main.event_dir)
+            
+            # copy data file from plc to RC
+            command = "smbclient //192.168.137.11/Public -A /home/sbc/RunControl/PLCSMBperm.txt -c 'get slowDAQ_0.bin'"
+            ret_os = os.system(command)
+            os.chdir(cwd)
+            if (ret_os == 0):
+                self.logger.debug(f"PLC log file  copied  successfully.")
+            else:
+                self.logger.error(f"PLC log File  copy is  unsuccessful.")
         else:
             self.logger.error(f"SLOW_DAQ process didn't end successfully.")
-       
-        # TODO: copy data file from plc to RC
+
+
         self.event_stopped.emit("modbus")
 
     @Slot()
@@ -254,8 +285,7 @@ class Modbus(QObject):
         length = 1
         response = self.client.read_holding_registers(pos, count=length)
         word = response.registers[0]
-        # Check if each bit is true or false
-        fault_bits = [(word >> i) & 1 == 1  for i in range(15)]
+        fault_bits = [(word >> i) & 1   for i in range(15)]
         return fault_bits
 
     @safe_modbus
