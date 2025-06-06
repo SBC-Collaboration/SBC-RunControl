@@ -31,11 +31,12 @@ class SQL(QObject):
         # self.home = os.path.expanduser('~')
         self.hostname = self.config["hostname"]
         self.user = self.config["user"]
-        self.token = os.environ.get(self.config["token"])
         self.database = self.config["database"]
         self.run_table = self.config["run_table"]
         self.event_table = self.config["event_table"]
         self.port = self.config["port"]
+        with open(os.path.expanduser("~/.config/runcontrol/sql_token"), "r") as f:
+            self.password = f.read().strip()
 
         self.timer = QTimer(self)
         self.timer.setInterval(100)
@@ -54,7 +55,7 @@ class SQL(QObject):
         self.db = pymysql.connect(
             host=self.hostname, 
             user=self.user, 
-            passwd=self.token,
+            passwd=self.password,
             database=self.database, 
             port=self.port,
             connect_timeout=10)

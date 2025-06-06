@@ -114,7 +114,7 @@ class Modbus(QObject):
         shapes = [[15], [15], [15], [15],[1],[1]]
         with SBCWriter(
                 os.path.join(
-                    self.main.event_dir, f"plc.sbc"
+                    self.main.event_dir, "plc.sbc"
                 ),
                 headers, dtypes, shapes
         ) as plc_writer:
@@ -123,22 +123,26 @@ class Modbus(QObject):
         slowdaq_stop = self._stop_procedure(self.registers["WRITE_SLOWDAQ"])
         self.pressure_cycle = False
         time.sleep(1)
-        if (self._read_procedure(self.registers["WRITE_SLOWDAQ"])[0] == False):
-            self.logger.debug(f"SLOW_DAQ process ended successfully.")
-            cwd = os.getcwd()   
-            os.chdir(self.main.event_dir)
-            
-            # copy data file from plc to RC
-            command = "smbclient //192.168.137.11/Public -A /home/sbc/RunControl/PLCSMBperm.txt -c 'get slowDAQ_0.bin'"
-            ret_os = os.system(command)
-            os.chdir(cwd)
-            if (ret_os == 0):
-                self.logger.debug(f"PLC log file  copied  successfully.")
-            else:
-                self.logger.error(f"PLC log File  copy is  unsuccessful.")
+        if (self._read_procedure(self.registers["WRITE_SLOWDAQ"])[0]):
+            self.logger.error("SLOW_DAQ process didn't end successfully.")
         else:
-            self.logger.error(f"SLOW_DAQ process didn't end successfully.")
-
+            self.logger.debug("SLOW_DAQ process ended successfully.")
+            
+        # copy data file from plc to RC
+        hostname = self.config["hostname"]
+        share = "Public"
+        perm_file = os.path.expanduser("~/.config/runcontrol/smb_token")
+        remote_file = "slowDAQ_0.bin"
+        local_path = os.path.join(self.main.event_dir, "slow_daq.sbc")
+        if not os.path.exists(perm_file):
+            self.logger.error(f"PLC SMB Permission file {perm_file} does not exist.")
+            return
+        command = f"smbclient //{hostname}/{share} -A {perm_file} -c 'get {remote_file} {local_path}'"
+        ret_os = os.system(command)
+        if (ret_os == 0):
+            self.logger.debug("PLC log file copied successfully.")
+        else:
+            self.logger.error("PLC log File copy is unsuccessful.")
 
         self.event_stopped.emit("modbus")
 

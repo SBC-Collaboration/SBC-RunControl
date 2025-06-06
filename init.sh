@@ -85,21 +85,6 @@ if [ "$FILE_PERM" != "600" ]; then
     echo "File permissions for '$FILE' have been corrected to 600."
 fi
 
-# Check if line exists in .bashrc
-if ! grep -Fxq "$LINE" "$BASHRC"; then
-    echo "$LINE" >> "$BASHRC"
-    echo "Added SQL_DAQ_TOKEN export line to $BASHRC"
-else
-    echo "SQL_DAQ_TOKEN export line already present in $BASHRC"
-fi
-
-eval "$LINE"
-if [ "$NEW_TOKEN" == "true" ]; then
-    echo "SQL_DAQ_TOKEN set from user input."
-else
-    echo "SQL_DAQ_TOKEN set from file."
-fi
-
 # =================================================
 # Install root init script
 # =================================================
