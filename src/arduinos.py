@@ -78,7 +78,6 @@ class Arduino(QObject):
         self.arduino = arduino
         self.config = mainwindow.config_class.config["dio"][arduino]
         self.logger = logging.getLogger("rc")
-        os.putenv("PATH", "/home/sbc/packages")
         # create reverse port map
         for pin, port in self.arduino_port_map.items():
             self.reverse_port_map[port] = pin

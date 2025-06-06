@@ -20,7 +20,6 @@ class Camera(QObject):
         self.cam_name = cam_name
         self.config = mainwindow.config_class.config["cam"][self.cam_name]
         self.logger = logging.getLogger("rc")
-        os.putenv("PATH", "/home/sbc/packages")
         self.username = "pi"
         self.client = pm.client.SSHClient()
         self.client.set_missing_host_key_policy(pm.AutoAddPolicy())
