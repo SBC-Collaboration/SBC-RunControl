@@ -1732,7 +1732,7 @@
                </widget>
               </item>
               <item row="0" column="0">
-               <widget class="QCheckBox" name="plc_enable_box">
+               <widget class="QCheckBox" name="plc_enabled_box">
                 <property name="text">
                  <string>Enabled</string>
                 </property>
@@ -17580,7 +17580,7 @@
   <tabstop>PCYCLE_CYLEQ_FF_box</tabstop>
   <tabstop>PCYCLE_ABORT_FF_box</tabstop>
   <tabstop>PCYCLE_SLOWCOMP_SET_box</tabstop>
-  <tabstop>plc_enable_box</tabstop>
+  <tabstop>plc_enabled_box</tabstop>
   <tabstop>PCYCLE_FASTCOMP_FF_box</tabstop>
   <tabstop>PCYCLE_MAXEQPDIFF_box</tabstop>
   <tabstop>TS_EMPTYALL_FF_box</tabstop>

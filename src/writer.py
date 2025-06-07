@@ -6,7 +6,8 @@ import red_caen, ni_usb_6501, sbcbinaryformat
 
 class Writer(QObject):
 
-    event_data_saved = Signal(str)
+    event_stopped = Signal(str)
+    run_stopped = Signal(str)
 
     def __init__(self, mainwindow):
         super().__init__()
@@ -58,6 +59,8 @@ class Writer(QObject):
                 headers, dtypes, shapes,
         ) as event_writer:
             event_writer.write(self.event_data)
+        
+        self.event_stopped.emit("writer")
     
     @Slot()
     def write_run_data(self):
@@ -94,3 +97,5 @@ class Writer(QObject):
                 headers, dtypes, shapes
         ) as run_writer:
             run_writer.write(run_data)
+
+        self.run_stopped.emit("writer")

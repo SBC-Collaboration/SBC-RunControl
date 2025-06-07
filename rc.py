@@ -58,6 +58,7 @@ class MainWindow(QMainWindow):
 
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
+        self.widgets = self.ui.__dict__
 
         # initialize config class
         self.config_class = Config(self, "config.json")
@@ -104,9 +105,20 @@ class MainWindow(QMainWindow):
             ],
         )
 
+        # List populated by ready modules at each state. After all modules are ready, it will proceed to the next state
+        self.all_modules = ["config", "niusb", "modbus", "sql", "writer", 
+                            "cam1", "cam2", "cam3", "clock", "trigger", "position",
+                            "amp1", "amp2", "amp3", "caen", "gage"]
+        self.starting_program_modules = []
+        self.starting_run_modules = ["amp1", "amp2", "amp3", "cam1", "cam2", "cam3",
+                                     "clock", "position", "trigger", "niusb", "caen", "modbus", "sql"]
+        self.stopping_run_modules = ["amp1", "amp2", "amp3", "cam1", "cam2", "cam3",
+                                     "sql", "niusb", "caen", "modbus", "writer"]
+        self.starting_event_modules = ["cam1", "cam2", "cam3", "niusb", "caen", "gage", "modbus", "sql"]
+        self.stopping_event_modules = ["cam1", "cam2", "cam3", "niusb", "caen", "gage", "modbus", "sql", "writer"]
+        
         self.update_state("preparing")
 
-        # List populated by ready modules at each state. After all modules are ready, it will proceed to the next state
         self.starting_program_ready = []
         self.starting_run_ready = []
         self.stopping_run_ready = []
@@ -132,43 +144,42 @@ class MainWindow(QMainWindow):
 
     def set_up_workers(self):
         # set up run handling thread and the worker
-        vars = self.__dict__
-        ui_vars = self.ui.__dict__
+        d = self.__dict__
         for cam in ["cam1", "cam2", "cam3"]:
-            vars[f"{cam}_worker"] = Camera(self, cam)
-            vars[f"{cam}_worker"].camera_started.connect(self.starting_run_wait)
-            vars[f"{cam}_worker"].camera_closed.connect(self.stopping_run_wait)
-            vars[f"{cam}_thread"] = QThread()
-            vars[f"{cam}_thread"].setObjectName(f"{cam}_thread")
-            vars[f"{cam}_worker"].moveToThread(vars[f"{cam}_thread"])
-            vars[f"{cam}_thread"].started.connect(vars[f"{cam}_worker"].run)
-            self.run_starting.connect(vars[f"{cam}_worker"].start_camera)
-            self.run_stopping.connect(vars[f"{cam}_worker"].stop_camera)
-            vars[f"{cam}_thread"].start()
+            d[f"{cam}_worker"] = Camera(self, cam)
+            d[f"{cam}_worker"].camera_started.connect(self.starting_run_wait)
+            d[f"{cam}_worker"].camera_closed.connect(self.stopping_run_wait)
+            d[f"{cam}_thread"] = QThread()
+            d[f"{cam}_thread"].setObjectName(f"{cam}_thread")
+            d[f"{cam}_worker"].moveToThread(d[f"{cam}_thread"])
+            d[f"{cam}_thread"].started.connect(d[f"{cam}_worker"].run)
+            self.run_starting.connect(d[f"{cam}_worker"].start_camera)
+            self.run_stopping.connect(d[f"{cam}_worker"].stop_camera)
+            d[f"{cam}_thread"].start()
             time.sleep(0.001)
 
         for amp in ["amp1", "amp2", "amp3"]:
-            vars[f"{amp}_worker"] = SiPMAmp(self, amp)
-            vars[f"{amp}_worker"].sipm_biased.connect(self.starting_run_wait)
-            vars[f"{amp}_worker"].sipm_unbiased.connect(self.stopping_run_wait)
-            vars[f"{amp}_thread"] = QThread()
-            vars[f"{amp}_thread"].setObjectName(f"{amp}_thread")
-            vars[f"{amp}_worker"].moveToThread(vars[f"{amp}_thread"])
-            vars[f"{amp}_thread"].started.connect(vars[f"{amp}_worker"].run)
-            self.run_starting.connect(vars[f"{amp}_worker"].bias_sipm)
-            self.run_stopping.connect(vars[f"{amp}_worker"].unbias_sipm)
-            vars[f"{amp}_thread"].start()
+            d[f"{amp}_worker"] = SiPMAmp(self, amp)
+            d[f"{amp}_worker"].sipm_biased.connect(self.starting_run_wait)
+            d[f"{amp}_worker"].sipm_unbiased.connect(self.stopping_run_wait)
+            d[f"{amp}_thread"] = QThread()
+            d[f"{amp}_thread"].setObjectName(f"{amp}_thread")
+            d[f"{amp}_worker"].moveToThread(d[f"{amp}_thread"])
+            d[f"{amp}_thread"].started.connect(d[f"{amp}_worker"].run)
+            self.run_starting.connect(d[f"{amp}_worker"].bias_sipm)
+            self.run_stopping.connect(d[f"{amp}_worker"].unbias_sipm)
+            d[f"{amp}_thread"].start()
             time.sleep(0.001)
 
         for ino in ["trigger", "clock", "position"]:
-            vars[f"arduino_{ino}_worker"] = Arduino(self, ino)
-            vars[f"arduino_{ino}_worker"].sketch_uploaded.connect(self.starting_run_wait)
-            vars[f"arduino_{ino}_thread"] = QThread()
-            vars[f"arduino_{ino}_thread"].setObjectName(f"arduino_{ino}_thread")
-            vars[f"arduino_{ino}_worker"].moveToThread(vars[f"arduino_{ino}_thread"])
-            vars[f"arduino_{ino}_thread"].started.connect(vars[f"arduino_{ino}_worker"].run)
-            self.run_starting.connect(vars[f"arduino_{ino}_worker"].upload_sketch)
-            vars[f"arduino_{ino}_thread"].start()
+            d[f"arduino_{ino}_worker"] = Arduino(self, ino)
+            d[f"arduino_{ino}_worker"].sketch_uploaded.connect(self.starting_run_wait)
+            d[f"arduino_{ino}_thread"] = QThread()
+            d[f"arduino_{ino}_thread"].setObjectName(f"arduino_{ino}_thread")
+            d[f"arduino_{ino}_worker"].moveToThread(d[f"arduino_{ino}_thread"])
+            d[f"arduino_{ino}_thread"].started.connect(d[f"arduino_{ino}_worker"].run)
+            self.run_starting.connect(d[f"arduino_{ino}_worker"].upload_sketch)
+            d[f"arduino_{ino}_thread"].start()
             time.sleep(0.001)
 
         self.caen_worker = Caen(self)
@@ -236,7 +247,8 @@ class MainWindow(QMainWindow):
         time.sleep(0.001)
 
         self.writer_worker = Writer(self)
-        self.writer_worker.event_data_saved.connect(self.starting_event_wait)
+        self.writer_worker.event_stopped.connect(self.stopping_event_wait)
+        self.writer_worker.run_stopped.connect(self.stopping_run_wait)
         self.writer_thread = QThread()
         self.writer_thread.setObjectName("writer_thread")
         self.writer_worker.moveToThread(self.writer_thread)
@@ -249,6 +261,7 @@ class MainWindow(QMainWindow):
         self.sql_worker = SQL(self)
         self.sql_worker.run_started.connect(self.starting_run_wait)
         self.sql_worker.run_stopped.connect(self.stopping_run_wait)
+        self.sql_worker.event_started.connect(self.starting_event_wait)
         self.sql_worker.event_stopped.connect(self.stopping_event_wait)
         self.sql_thread = QThread()
         self.sql_thread.setObjectName("sql_thread")
@@ -283,8 +296,7 @@ class MainWindow(QMainWindow):
             pass
 
         # quit all created workers and threads
-        vars = self.__dict__
-        for name, var in vars.items():
+        for name, var in self.widgets.items():
             if name.endswith("_worker"):
                 var.deleteLater()
             elif name.endswith("_thread"):
@@ -437,8 +449,6 @@ class MainWindow(QMainWindow):
         In the active state, it will update event and run timer, and check if max event time is reached. If so, it will end the event.
         In the starting_run, stopping_run, starting_event, and stopping_event states, it will check if all modules are ready to proceed to the next state.
         """
-        vars = self.ui.__dict__
-
         if self.run_state == self.run_states["active"]:
             self.ui.event_time_edit.setText(
                 self.format_time(self.event_timer.elapsed())
@@ -453,24 +463,28 @@ class MainWindow(QMainWindow):
                 self.send_trigger.emit("Timeout")
         elif self.run_state == self.run_states["starting_run"]:
             # SiPM amp 1/2/3, Cam 1/2/3, clock/position/trigger arduino, NI USB, CAEN, MODBUS #change for RC-PLC comm.
-            if len(self.starting_run_ready) >= 13:
-                self.logger.info(f"Run {self.run_id} started. Modules started: {self.starting_run_ready}\n")
+            if len(self.starting_run_ready) >= len(self.starting_run_modules):
+                self.logger.info(f"Run {self.run_id} started.")
+                self.logger.debug(f"Modules started for run: {self.starting_run_ready}\n")
                 self.start_event()
         elif self.run_state == self.run_states["starting_event"]:
             # cam 1/2/3, *PLC, NIUSB, CAEN, GaGe, MODBUS
             self.event_timer.start()
-            if len(self.starting_event_ready) >= 7:
-                self.logger.info(f"Event {self.event_id} started. Modules started: {self.starting_event_ready}")
+            if len(self.starting_event_ready) >= len(self.starting_event_modules):
+                self.logger.info(f"Event {self.event_id} started.")
+                self.logger.debug(f"Modules started for event: {self.starting_event_ready}\n")
                 self.update_state("active")
         elif self.run_state == self.run_states["stopping_event"]:
             # SQL, cam 1/2/3, NIUSB, CAEN, GaGe, MODBUS
-            if len(self.stopping_event_ready) >= 8:
-                self.logger.info(f"Event {self.event_id} stopped. Modules stopped: {self.stopping_event_ready}\n")
+            if len(self.stopping_event_ready) >= len(self.stopping_event_modules):
+                self.logger.info(f"Event {self.event_id} stopped.")
+                self.logger.debug(f"Modules stopped for event: {self.stopping_event_ready}\n")
                 self.start_event()
         elif self.run_state == self.run_states["stopping_run"]:
             # SQL, cam 1/2/3, sipm amp 1/2/3, NIUSB, CAEN, MODBUS
-            if len(self.stopping_run_ready) >= 10:
-                self.logger.info(f"Run {self.run_id} stopped. Modules stopped: {self.stopping_run_ready}")
+            if len(self.stopping_run_ready) >= len(self.stopping_run_modules):
+                self.logger.info(f"Run {self.run_id} stopped.")
+                self.logger.debug(f"Modules stopped for run: {self.stopping_run_ready}\n")
                 self.update_state("idle")
 
         self.display_image(
@@ -501,16 +515,15 @@ class MainWindow(QMainWindow):
         A slot method to append ready module names to the list. It will add the module to a list and change the status light.
         The update function will check the length of the list. When all modules are ready, it will proceed to the start_event state.
         """
-        vars = self.ui.__dict__
         if "disabled" in module:
             name = re.search(r'^(.*?)-', module).group(1)
             self.logger.debug(f"Starting Run: {name} is disabled")
-            vars[f"status_{name}"].disabled()
+            self.widgets[f"status_{name}"].disabled()
         else:
             self.logger.debug(f"Starting Run: {module} is complete")
             # change status lights
-            vars[f"status_{module}"].active()
-        
+            self.widgets[f"status_{module}"].active()
+
         if module not in self.starting_run_ready:
             self.starting_run_ready.append(module)
             self.starting_run_ready.sort()
@@ -521,16 +534,15 @@ class MainWindow(QMainWindow):
         A slot method to append ready module names to the list. It will add the module to a list and change the status light.
         The update function will check the length of the list. When all modules are ready, it will proceed to the idle state.
         """
-        vars = self.ui.__dict__
         if "disabled" in module:
             name = re.search(r'^(.*?)-', module).group(1)
             self.logger.debug(f"Stopping Run: {name} is disabled")
-            vars[f"status_{name}"].idle()
+            self.widgets[f"status_{name}"].idle()
         else:
             self.logger.debug(f"Stopping Run: {module} is complete")
             # change status lights
-            vars[f"status_{module}"].idle()
-        
+            self.widgets[f"status_{module}"].idle()
+
         if module not in self.stopping_run_ready:
             self.stopping_run_ready.append(module)
             self.stopping_run_ready.sort()
@@ -541,15 +553,14 @@ class MainWindow(QMainWindow):
         A slot method to append ready module names to the list. It will add the module to a list and change the status light.
         The update function will check the length of the list. When all modules are ready, it will proceed to the active state.
         """
-        vars = self.ui.__dict__
         if "disabled" in module:
             name = re.search(r'^(.*?)-', module).group(1)
             self.logger.debug(f"Starting Event: {name} is disabled")
-            vars[f"status_{name}"].disabled()
+            self.widgets[f"status_{name}"].disabled()
         else:
             self.logger.debug(f"Starting Event: {module} is complete")
             # change status lights
-            vars[f"status_{module}"].active()
+            self.widgets[f"status_{module}"].active()
 
         if module not in self.starting_event_ready:
             self.starting_event_ready.append(module)
@@ -561,16 +572,15 @@ class MainWindow(QMainWindow):
         A slot method to append ready module names to the list. It will add the module to a list and change the status light.
         The update function will check the length of the list. When all modules are ready, it will proceed to next event or stopping run.
         """
-        vars = self.ui.__dict__
         if "disabled" in module:
             name = re.search(r'^(.*?)-', module).group(1)
             self.logger.debug(f"Stopping Event: {name} is disabled")
-            vars[f"status_{name}"].idle()
+            self.widgets[f"status_{name}"].disabled()
         else:
             self.logger.debug(f"Stopping Event: {module} is complete")
             # change status lights
-            vars[f"status_{module}"].idle()
-            
+            self.widgets[f"status_{module}"].active()
+
         if module not in self.stopping_event_ready:
             self.stopping_event_ready.append(module)
             self.stopping_event_ready.sort()
@@ -626,14 +636,21 @@ class MainWindow(QMainWindow):
         self.ui.trigger_edit.setText("")
 
         self.run_log_dir = os.path.join(self.run_dir, f"rc.log")
+        self.widgets["status_config"].working()
         self.config_class.start_run()
+        self.widgets["status_config"].active()
 
         file_handler = logging.FileHandler(self.run_log_dir, mode="a")
         file_handler.setLevel(logging.INFO)
         file_handler.setFormatter(self.log_formatter)
         self.logger.addHandler(file_handler)
-        self.update_state("starting_run")
+        for m in self.all_modules:
+            if m in self.starting_run_modules:
+                self.widgets[f"status_{m}"].working()
+            else:
+                self.widgets[f"status_{m}"].idle()
 
+        self.update_state("starting_run")
         self.run_starting.emit()
 
     def stop_run(self):
@@ -643,10 +660,11 @@ class MainWindow(QMainWindow):
         self.stopping_run = False
         self.run_exit_code = 0
 
-        vars = self.ui.__dict__
-        for v in vars.keys():
-            if v.startswith("status"):
-                vars[v].idle()
+        for m in self.all_modules:
+            if m in self.stopping_run_modules:
+                self.widgets[f"status_{m}"].working()
+            else:
+                self.widgets[f"status_{m}"].idle()
 
         self.run_stopping.emit()
         self.update_state("stopping_run")
@@ -677,6 +695,8 @@ class MainWindow(QMainWindow):
         self.ui.event_id_edit.setText(f"{self.event_id:2d}")
         self.ui.event_time_edit.setText(self.format_time(0))
         self.event_dir = os.path.join(self.run_dir, str(self.event_id))
+
+        self.widgets["status_config"].working()
         self.config_class.start_event()
         if not os.path.exists(self.event_dir):
             os.mkdir(self.event_dir)
@@ -691,11 +711,17 @@ class MainWindow(QMainWindow):
         self.ui.ev_pset_hi_box.setEnabled(status)
         self.ui.ev_pset_slope_box.setEnabled(status)
         self.ui.ev_pset_period_box.setEnabled(status)
+        for m in self.all_modules:
+            if m in self.starting_event_modules:
+                self.widgets[f"status_{m}"].working()
+            else:
+                self.widgets[f"status_{m}"].idle()
 
         current_path = os.path.join(self.config_class.config["general"]["data_dir"], "current_event")
         if os.path.islink(current_path):
             os.unlink(current_path)
         os.symlink(self.event_dir, current_path,target_is_directory=True)
+        self.widgets["status_config"].active()
         self.event_starting.emit()
 
     def stop_event(self):
@@ -708,6 +734,12 @@ class MainWindow(QMainWindow):
         self.event_livetime = self.event_timer.elapsed()
         self.run_livetime += self.event_livetime
         self.event_exit_code = 0
+        for m in self.all_modules:
+            if m in self.stopping_event_modules:
+                self.widgets[f"status_{m}"].working()
+            else:
+                self.widgets[f"status_{m}"].idle()
+
         self.event_stopping.emit()
         self.update_state("stopping_event")
 

@@ -18,6 +18,7 @@ https://docs.google.com/document/d/1o2LEL3cKEVQ6zuR_jJgt-p3UgnVysMm6LkXXOvfMZeE/
 class SQL(QObject):
     run_started = Signal(str)
     run_stopped = Signal(str)
+    event_started = Signal(str)
     event_stopped = Signal(str)
 
     def __init__(self, mainwindow):
@@ -173,7 +174,7 @@ class SQL(QObject):
     @Slot()
     def start_event(self):
         if not self.enabled:
-            self.event_stopped.emit("sql-disabled")
+            self.event_started.emit("sql-disabled")
             return
         self.db.ping()
         query = f"""
@@ -204,6 +205,7 @@ class SQL(QObject):
         )
         self.cursor.execute(query, values)
         self.db.commit()
+        self.event_started.emit("sql")
 
     @Slot()
     def stop_event(self):

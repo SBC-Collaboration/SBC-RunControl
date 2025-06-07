@@ -56,18 +56,25 @@ class Modbus(QObject):
 
     @Slot()
     def periodic_task(self):
-        if (self.main.run_state == self.main.run_states["active"] and self.pressure_cycle ==  False): 
+        if (self.main.run_state == self.main.run_states["active"] and 
+            self.enabled and self.pressure_cycle ==  False): 
             pressure_state  = self._read_procedure(self.registers["PRESSURE_CYCLE"]) 
             if(pressure_state is None or pressure_state[0] == False):
                 start_pressure = self._start_procedure(self.registers["PRESSURE_CYCLE"])
                 if((start_pressure)==True):
                     self.pressure_cycle  = True
-                    self.logger.debug(f" Pressure cycle started successfully.")
+                    self.logger.debug(f"Pressure cycle started successfully.")
                 else:
-                    self.logger.error(f" Pressure cycle start is unsuccessful.")
- 
+                    self.logger.error(f"Pressure cycle start is unsuccessful.")
+
     @Slot()
     def start_run(self):
+        self.config = self.main.config_class.run_config["plc"]
+        self.enabled = self.config["enabled"]
+        if not self.enabled:
+            self.run_started.emit("modbus-disabled")
+            return
+
         self.client = ModbusTcpClient(self.config["hostname"], port=self.config["port"])
         try:
             self.connected = self.client.connect()
@@ -79,6 +86,10 @@ class Modbus(QObject):
 
     @Slot()                                                                      
     def start_event(self):
+        if not self.enabled:
+            self.event_started.emit("modbus-disabled")
+            return
+        
         if (self._start_procedure(self.registers["WRITE_SLOWDAQ"])) == True:
             self.logger.debug(f"SLOW DAQ process started.")
         else:
@@ -93,7 +104,9 @@ class Modbus(QObject):
 
     @Slot()
     def stop_event(self):
-        slowdaq_counter = 0
+        if not self.enabled:
+            self.event_stopped.emit("modbus-disabled")
+            return
 
         # Stop the pressure cycle if it's running
         self._stop_pressure_cycle()
@@ -148,6 +161,10 @@ class Modbus(QObject):
 
     @Slot()
     def stop_run(self):
+        if not self.enabled:
+            self.run_stopped.emit("modbus-disabled")
+            return
+        
         self.client.close()
         self.run_stopped.emit("modbus")
     
