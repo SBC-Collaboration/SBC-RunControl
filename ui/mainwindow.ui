@@ -676,17 +676,52 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
                   </item>
                   <item>
                    <property name="text">
-                    <string>Cf-252</string>
+                    <string>22Na</string>
                    </property>
                   </item>
                   <item>
                    <property name="text">
-                    <string>Co-57</string>
+                    <string>60Co</string>
                    </property>
                   </item>
                   <item>
                    <property name="text">
-                    <string>Cs-137</string>
+                    <string>88Y</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>124Sb</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>152Eu</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>228Th</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>252Cf</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>58Co-Be</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>124Sb-Be</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>207Bi-Be</string>
                    </property>
                   </item>
                  </widget>
