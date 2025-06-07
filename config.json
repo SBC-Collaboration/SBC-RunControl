@@ -7,6 +7,7 @@
     "max_num_evs": 1
   },
   "plc": {
+    "enabled": false,
     "hostname": "192.168.137.11",
     "port": 502,
     "smb_share": "Public",
@@ -595,7 +596,7 @@
       "threshold": 0
     }
   },
-  "cam": {
+  "cams": {
     "cam1": {
       "enabled": false,
       "rc_config_path": "/mnt/nas/rc-data/config/cam1-config.json",

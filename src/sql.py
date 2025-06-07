@@ -109,10 +109,24 @@ class SQL(QObject):
         self.db.ping()  # ping mysql server to make sure it's alive
         # TODO: data validation steps ...
 
+        # get active modules
+        self.active_modules = []
+        for cam in ["cam1", "cam2", "cam3"]:
+            if self.main.config_class.run_config["cams"][cam]["enabled"]:
+                self.active_modules.append(cam)
+        for amp in ["amp1", "amp2", "amp3"]:
+            if self.main.config_class.run_config["scint"][amp]["enabled"]:
+                self.active_modules.append(amp)
+        for m in ["acous", "sql", "plc"]:
+            if self.main.config_class.run_config[m]["enabled"]:
+                self.active_modules.append(m)
+        if self.main.config_class.run_config["caen"]["global"]["enabled"]:
+            self.active_modules.append("caen")
+
         query = f"""
             INSERT INTO {self.run_table} (
                 ID, run_ID, run_exit_code, num_events, run_livetime, comment,
-                active_datastreams, pset_mode, pset,
+                active_modules, pset_mode, pset,
                 start_time, end_time,
                 source1_ID, source1_location,
                 source2_ID, source2_location,
@@ -137,7 +151,7 @@ class SQL(QObject):
             0,                                     # num_events
             "00:00:00.000",                        # run_livetime
             self.main.ui.comment_edit.toPlainText() or None,  # comment
-            "",                                    # active_datastreams
+            ", ".join(self.active_modules) or "",                   # active_modules
             self.main.config_class.run_pressure_mode,                   # pset_mode
             self.main.config_class.run_pressure_profiles[0]["setpoint"]     # pset
                 if len(self.main.config_class.run_pressure_profiles)==1 else None,                                   

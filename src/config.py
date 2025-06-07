@@ -271,7 +271,7 @@ class Config(QObject):
         widgets[f"acous_threshold_ext"].setValue(acous_ext_config["threshold"])
 
         # cameras
-        cam_config = self.config["cam"]
+        cam_config = self.config["cams"]
         for cam in ["cam1", "cam2", "cam3"]:
             config = cam_config[cam]
             widgets[f"{cam}_enabled_box"].setChecked(config["enabled"])
@@ -707,7 +707,7 @@ class Config(QObject):
                 "group3": caen_g3_config
             },
             "acous": acous_config,
-            "cam": cam_config,
+            "cams": cam_config,
             "dio": {"trigger": trigger_config,
                     "clock": clock_config,
                     "position": position_config,
@@ -769,7 +769,7 @@ class Config(QObject):
 
         # save camera json files
         for cam in ["cam1", "cam2", "cam3"]:
-            cam_config = copy.deepcopy(self.run_config["cam"][cam])
+            cam_config = copy.deepcopy(self.run_config["cams"][cam])
             if not cam_config["enabled"]:
                 continue
             with open(cam_config["rc_config_path"], "w") as file:

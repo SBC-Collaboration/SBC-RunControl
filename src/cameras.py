@@ -18,7 +18,7 @@ class Camera(QObject):
         super().__init__()
         self.main = mainwindow
         self.cam_name = cam_name
-        self.config = mainwindow.config_class.config["cam"][self.cam_name]
+        self.config = mainwindow.config_class.config["cams"][self.cam_name]
         self.logger = logging.getLogger("rc")
         self.username = "pi"
         self.client = pm.client.SSHClient()
@@ -52,7 +52,7 @@ class Camera(QObject):
     @Slot()
     def start_camera(self):
         # use run config, which is stable during a run
-        self.config = self.main.config_class.run_config["cam"][self.cam_name]
+        self.config = self.main.config_class.run_config["cams"][self.cam_name]
 
         if not self.config["enabled"]:
             self.camera_started.emit(f"{self.cam_name}-disabled")

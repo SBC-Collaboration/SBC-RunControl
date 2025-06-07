@@ -64,6 +64,19 @@ class Writer(QObject):
     
     @Slot()
     def write_run_data(self):
+        self.active_modules = []
+        for cam in ["cam1", "cam2", "cam3"]:
+            if self.main.config_class.run_config["cams"][cam]["enabled"]:
+                self.active_modules.append(cam)
+        for amp in ["amp1", "amp2", "amp3"]:
+            if self.main.config_class.run_config["scint"][amp]["enabled"]:
+                self.active_modules.append(amp)
+        for m in ["acous", "sql", "plc"]:
+            if self.main.config_class.run_config[m]["enabled"]:
+                self.active_modules.append(m)
+        if self.main.config_class.run_config["caen"]["global"]["enabled"]:
+            self.active_modules.append("caen")
+
         run_data = {
             "run_id": self.main.run_id,
             "run_exit_code": self.main.run_exit_code,
@@ -72,7 +85,7 @@ class Writer(QObject):
             "comment": self.main.ui.comment_edit.toPlainText() or "",
             "run_start_time": self.main.run_start_time.timestamp(),
             "run_end_time": self.main.run_end_time.timestamp(),
-            "active_datastreams": "", 
+            "active_modules": ", ".join(self.active_modules) or "",
             "pset_mode": self.main.config_class.run_pressure_mode,
             "pset": self.main.config_class.run_pressure_profiles[0]["setpoint"]
                 if len(self.main.config_class.run_pressure_profiles)==1 else None, 
@@ -84,7 +97,7 @@ class Writer(QObject):
         }
         comment_len = len(run_data["comment"]) if run_data["comment"] else 1
         headers = ["run_id", "run_exit_code", "num_events", "run_livetime", "comment", 
-                   "run_start_time", "run_end_time", "active_datastreams", "pset_mode", "pset",
+                   "run_start_time", "run_end_time", "active_modules", "pset_mode", "pset",
                    "source1_ID", "source1_location", "red_caen_ver", "niusb_ver", "sbc_binary_ver"]
         dtypes = ["U100", "u1", "u4", "u8", f"U{comment_len}", 
                   "d", "d", "U100", "U100", "f",
