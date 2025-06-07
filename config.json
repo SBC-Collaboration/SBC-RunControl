@@ -90,7 +90,6 @@
     "hostname": "sbcslowcontrol.fnal.gov",
     "port": 3306,
     "user": "daq",
-    "token": "SQL_DAQ_TOKEN",
     "database": "SBCslowcontrol",
     "run_table": "RunData",
     "event_table": "EventData"

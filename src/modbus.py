@@ -139,10 +139,10 @@ class Modbus(QObject):
             return
         command = f"smbclient //{hostname}/{share} -A {perm_file} -c 'get {remote_file} {local_path}'"
         ret_os = os.system(command)
-        if (ret_os == 0):
-            self.logger.debug("PLC log file copied successfully.")
-        else:
+        if (ret_os > 0):
             self.logger.error("PLC log File copy is unsuccessful.")
+        else:
+            self.logger.debug("PLC log File copied successfully.")
 
         self.event_stopped.emit("modbus")
 

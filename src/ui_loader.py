@@ -95,7 +95,6 @@ class SettingsWindow(QMainWindow):
         self.main = mainwindow
         self.config_class = self.main.config_class
         self.config = self.config_class.config
-        self.load_config()
         self.logger = logging.getLogger("rc")
 
         self.widgets = self.ui.__dict__
@@ -171,6 +170,7 @@ class SettingsWindow(QMainWindow):
             for ch in range(8):
                 self.widgets[f"caen_{gp}_name_{ch}"].setModel(self.amp_names)
 
+        self.load_config()
         self.logger.debug("Settings window loaded.")
 
     def load_config(self):
