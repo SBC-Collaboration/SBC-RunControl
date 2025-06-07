@@ -60,12 +60,35 @@ arduino-cli core install arduino:avr
 arduino-cli lib install incbin ArduinoJson Ethernet
 
 # =================================================
+# Check and prepare SMB token
+# =================================================
+FILE="$HOME/.config/runcontrol/smb_token"
+
+# Check if file already exists
+if [ -e "$FILE" ]; then
+    echo "File '$FILE' already exists. Skipping password save."
+else
+    # Prompt for password without echo
+    read -s -p "Enter SMB user name: " USERNAME
+    echo
+    read -s -p "Enter SMB password: " PASSWORD
+    echo
+    echo -e "username=$USERNAME\npassword=$PASSWORD" > "$FILE"
+    echo "Password saved to '$FILE'."
+fi
+
+FILE_PERM=$(stat -c "%a" "$FILE")
+if [ "$FILE_PERM" != "600" ]; then
+    chmod 600 "$FILE"
+    echo "File permissions for '$FILE' have been corrected to 600."
+fi
+
+# =================================================
 # Save and prepare SQL token
 # =================================================
 FILE="$HOME/.config/runcontrol/sql_token"
 LINE="export SQL_DAQ_TOKEN=\$(<\"$FILE\" tr -d '\\n')"
 BASHRC="$HOME/.bashrc"
-NEW_TOKEN=false
 
 # Check if file already exists
 if [ -e "$FILE" ]; then
@@ -76,7 +99,6 @@ else
     echo
     echo "$PASSWORD" > "$FILE"
     echo "Password saved to '$FILE'."
-    NEW_TOKEN=true
 fi
 
 FILE_PERM=$(stat -c "%a" "$FILE")
