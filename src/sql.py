@@ -151,7 +151,7 @@ class SQL(QObject):
             0,                                     # num_events
             "00:00:00.000",                        # run_livetime
             self.main.ui.comment_edit.toPlainText() or None,  # comment
-            ", ".join(self.active_modules) or "",                   # active_modules
+            ",".join(self.active_modules) or None,                   # active_modules
             self.main.config_class.run_pressure_mode,                   # pset_mode
             self.main.config_class.run_pressure_profiles[0]["setpoint"]     # pset
                 if len(self.main.config_class.run_pressure_profiles)==1 else None,                                   

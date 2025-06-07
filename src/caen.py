@@ -119,6 +119,8 @@ class Caen(QObject):
         # Check connection status
         if not self.caen or not self.caen.IsConnected():
             self.logger.error("CAEN not connected.")
+            self.event_started.emit("caen-error")
+            raise ConnectionError("CAEN not connected.")
         
         self.caen.ClearData()
         self.buffer = [] # create a list for data dictionaries

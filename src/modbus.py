@@ -34,7 +34,6 @@ class Modbus(QObject):
     run_stopped = Signal(str)
     event_started = Signal(str)
     event_stopped = Signal(str)
-    success_msg = Signal(str)
     error_msg = Signal(str)
 
     def __init__(self, mainwindow):
@@ -100,6 +99,8 @@ class Modbus(QObject):
         else:
             self.logger.error(f"write of PSET is unsuccessful.")
             self.error_msg.emit("pset")
+            self.event_started.emit("modbus-error")
+            return
         self.event_started.emit("modbus")
 
     @Slot()
@@ -138,6 +139,7 @@ class Modbus(QObject):
         time.sleep(1)
         if (self._read_procedure(self.registers["WRITE_SLOWDAQ"])[0]):
             self.logger.error("SLOW_DAQ process didn't end successfully.")
+            self.event_stopped.emit("modbus-error")
         else:
             self.logger.debug("SLOW_DAQ process ended successfully.")
             
@@ -149,11 +151,14 @@ class Modbus(QObject):
         local_path = os.path.join(self.main.event_dir, "slow_daq.sbc")
         if not os.path.exists(perm_file):
             self.logger.error(f"PLC SMB Permission file {perm_file} does not exist.")
+            self.event_stopped.emit("modbus-error")
             return
         command = f"smbclient //{hostname}/{share} -A {perm_file} -c 'get {remote_file} {local_path}'"
         ret_os = os.system(command)
         if (ret_os > 0):
             self.logger.error("PLC log File copy is unsuccessful.")
+            self.event_stopped.emit("modbus-error")
+            return
         else:
             self.logger.debug("PLC log File copied successfully.")
 

@@ -519,6 +519,10 @@ class MainWindow(QMainWindow):
             name = re.search(r'^(.*?)-', module).group(1)
             self.logger.debug(f"Starting Run: {name} is disabled")
             self.widgets[f"status_{name}"].disabled()
+        elif "error" in module:
+            name = re.search(r'^(.*?)-', module).group(1)
+            self.logger.error(f"Starting Run: {name} has an error")
+            self.widgets[f"status_{name}"].error()
         else:
             self.logger.debug(f"Starting Run: {module} is complete")
             # change status lights
@@ -538,6 +542,10 @@ class MainWindow(QMainWindow):
             name = re.search(r'^(.*?)-', module).group(1)
             self.logger.debug(f"Stopping Run: {name} is disabled")
             self.widgets[f"status_{name}"].idle()
+        elif "error" in module:
+            name = re.search(r'^(.*?)-', module).group(1)
+            self.logger.error(f"Stopping Run: {name} has an error")
+            self.widgets[f"status_{name}"].error()
         else:
             self.logger.debug(f"Stopping Run: {module} is complete")
             # change status lights
@@ -557,6 +565,10 @@ class MainWindow(QMainWindow):
             name = re.search(r'^(.*?)-', module).group(1)
             self.logger.debug(f"Starting Event: {name} is disabled")
             self.widgets[f"status_{name}"].disabled()
+        elif "error" in module:
+            name = re.search(r'^(.*?)-', module).group(1)
+            self.logger.error(f"Starting Event: {name} has an error")
+            self.widgets[f"status_{name}"].error()
         else:
             self.logger.debug(f"Starting Event: {module} is complete")
             # change status lights
@@ -576,6 +588,10 @@ class MainWindow(QMainWindow):
             name = re.search(r'^(.*?)-', module).group(1)
             self.logger.debug(f"Stopping Event: {name} is disabled")
             self.widgets[f"status_{name}"].disabled()
+        elif "error" in module:
+            name = re.search(r'^(.*?)-', module).group(1)
+            self.logger.error(f"Stopping Event: {name} has an error")
+            self.widgets[f"status_{name}"].error()
         else:
             self.logger.debug(f"Stopping Event: {module} is complete")
             # change status lights
