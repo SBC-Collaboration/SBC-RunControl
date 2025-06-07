@@ -585,7 +585,7 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
                    <string> bara</string>
                   </property>
                   <property name="minimum">
-                   <double>-1.000000000000000</double>
+                   <double>0.000000000000000</double>
                   </property>
                   <property name="maximum">
                    <double>1000.000000000000000</double>
@@ -630,7 +630,7 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
                    <string> bara</string>
                   </property>
                   <property name="minimum">
-                   <double>-1.000000000000000</double>
+                   <double>0.000000000000000</double>
                   </property>
                   <property name="maximum">
                    <double>1000.000000000000000</double>
@@ -781,7 +781,7 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
                    <string> bara/s</string>
                   </property>
                   <property name="minimum">
-                   <double>-1.000000000000000</double>
+                   <double>0.000000000000000</double>
                   </property>
                   <property name="maximum">
                    <double>1000.000000000000000</double>
@@ -803,7 +803,7 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
                    <number>0</number>
                   </property>
                   <property name="minimum">
-                   <double>-1.000000000000000</double>
+                   <double>0.000000000000000</double>
                   </property>
                   <property name="maximum">
                    <double>1000000.000000000000000</double>
