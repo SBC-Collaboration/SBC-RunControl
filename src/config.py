@@ -78,6 +78,8 @@ class Config(QObject):
         plc_config = self.config["plc"]
         ui.plc_hostname_edit.setText(plc_config["hostname"])
         ui.plc_modbus_port_box.setValue(plc_config["port"])
+        ui.smb_share_edit.setText(plc_config["smb_share"])
+        ui.smb_filename_edit.setText(plc_config["smb_filename"])
         ui.pc_trig_timeout_box.setValue(plc_config["trig_timeout"])
         ui.pc_stop_timeout_box.setValue(plc_config["stop_timeout"])
         ui.pc_abort_timeout_box.setValue(plc_config["abort_timeout"])
@@ -129,7 +131,6 @@ class Config(QObject):
         ui.sql_hostname_edit.setText(sql_config["hostname"])
         ui.sql_port_box.setValue(sql_config["port"])
         ui.sql_user_edit.setText(sql_config["user"])
-        ui.sql_token_edit.setText(sql_config["token"])
         ui.sql_database_edit.setText(sql_config["database"])
         ui.sql_run_table_edit.setText(sql_config["run_table"])
         ui.sql_event_table_edit.setText(sql_config["event_table"])
@@ -380,6 +381,8 @@ class Config(QObject):
             # TODO: add PLC enabled box
             "hostname": ui.plc_hostname_edit.text(),
             "port": ui.plc_modbus_port_box.value(),
+            "smb_share": ui.smb_share_edit.text(),
+            "smb_filename": ui.smb_filename_edit.text(),
             "trig_timeout": ui.pc_trig_timeout_box.value(),
             "stop_timeout": ui.pc_stop_timeout_box.value(),
             "abort_timeout": ui.pc_abort_timeout_box.value(),
@@ -441,7 +444,6 @@ class Config(QObject):
             "hostname": ui.sql_hostname_edit.text(),
             "port": ui.sql_port_box.value(),
             "user": ui.sql_user_edit.text(),
-            "token": ui.sql_token_edit.text(),
             "database": ui.sql_database_edit.text(),
             "run_table": ui.sql_run_table_edit.text(),
             "event_table": ui.sql_event_table_edit.text(),

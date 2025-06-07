@@ -130,9 +130,9 @@ class Modbus(QObject):
             
         # copy data file from plc to RC
         hostname = self.config["hostname"]
-        share = "Public"
+        share = self.config["smb_share"]
         perm_file = os.path.expanduser("~/.config/runcontrol/smb_token")
-        remote_file = "slowDAQ_0.bin"
+        remote_file = self.config["smb_filename"]
         local_path = os.path.join(self.main.event_dir, "slow_daq.sbc")
         if not os.path.exists(perm_file):
             self.logger.error(f"PLC SMB Permission file {perm_file} does not exist.")

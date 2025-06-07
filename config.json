@@ -9,6 +9,8 @@
   "plc": {
     "hostname": "192.168.137.11",
     "port": 502,
+    "smb_share": "Public",
+    "smb_filename": "slowDAQ_0.bin",
     "trig_timeout": 30.0,
     "stop_timeout": 30.0,
     "abort_timeout": 30.0,
