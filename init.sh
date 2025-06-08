@@ -62,6 +62,8 @@ arduino-cli lib install incbin ArduinoJson Ethernet
 # =================================================
 # Check and prepare SMB token
 # =================================================
+# Crete config directory if it doesn't exist
+mkdir -p "$HOME/.config/runcontrol"
 FILE="$HOME/.config/runcontrol/smb_token"
 
 # Check if file already exists
