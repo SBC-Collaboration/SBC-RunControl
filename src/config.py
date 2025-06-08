@@ -61,9 +61,19 @@ class Config(QObject):
         # update existing dict with new settings
         self.update_dict(self.config, self.new_config)
         self.load_config_to_window(ui)
+    
+    @Slot()
+    def load_config_to_mainwindow(self):
+        main_ui = self.main.ui
+        config = self.config["general"]
+        main_ui.autorun_box.setChecked(config["autorun"])
+        main_ui.source_box.setCurrentText(config["source"])
+        main_ui.source_location_box.setCurrentText(config["source_location"])
+
 
     @Slot()
     def load_config_to_window(self, ui):
+        # settings window
         widgets = ui.__dict__
 
         # general
@@ -367,9 +377,16 @@ class Config(QObject):
 
     @Slot()
     def apply_config(self, ui):
+        # main window
+        main_ui = self.main.ui
+
+        # settings window
         widgets = ui.__dict__
 
         general_config = {
+            "autorun": main_ui.autorun_box.isChecked(),
+            "source": main_ui.source_box.currentText(),
+            "source_location": main_ui.source_location_box.currentText(),
             "config_path": ui.config_path_edit.text(),
             "data_dir": ui.data_dir_edit.text(),
             "log_dir": ui.log_dir_edit.text(),

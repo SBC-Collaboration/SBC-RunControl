@@ -526,10 +526,10 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
                 <property name="spacing">
                  <number>3</number>
                 </property>
-                <item row="4" column="2">
-                 <widget class="QLabel" name="ev_pset_period_label">
+                <item row="3" column="2">
+                 <widget class="QLabel" name="ev_pset_slope_label">
                   <property name="text">
-                   <string>Period</string>
+                   <string>Slope</string>
                   </property>
                   <property name="alignment">
                    <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
@@ -539,37 +539,22 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
                   </property>
                  </widget>
                 </item>
-                <item row="0" column="2" colspan="2">
-                 <widget class="QLabel" name="ev_pressure_label">
-                  <property name="font">
-                   <font>
-                    <bold>true</bold>
-                   </font>
+                <item row="3" column="3">
+                 <widget class="QDoubleSpinBox" name="ev_pset_slope_box">
+                  <property name="readOnly">
+                   <bool>true</bool>
                   </property>
-                  <property name="midLineWidth">
-                   <number>0</number>
+                  <property name="buttonSymbols">
+                   <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
                   </property>
-                  <property name="text">
-                   <string>Event Pressure Profile</string>
+                  <property name="suffix">
+                   <string> bara/s</string>
                   </property>
-                  <property name="alignment">
-                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                  <property name="minimum">
+                   <double>0.000000000000000</double>
                   </property>
-                  <property name="buddy">
-                   <cstring>source_box</cstring>
-                  </property>
-                 </widget>
-                </item>
-                <item row="1" column="2">
-                 <widget class="QLabel" name="ev_pset_label">
-                  <property name="text">
-                   <string>Setpoint</string>
-                  </property>
-                  <property name="alignment">
-                   <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                  </property>
-                  <property name="buddy">
-                   <cstring>source_box</cstring>
+                  <property name="maximum">
+                   <double>1000.000000000000000</double>
                   </property>
                  </widget>
                 </item>
@@ -592,79 +577,14 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
                   </property>
                  </widget>
                 </item>
-                <item row="3" column="2">
-                 <widget class="QLabel" name="ev_pset_slope_label">
+                <item row="4" column="5">
+                 <widget class="QPushButton" name="save_comment_but">
                   <property name="text">
-                   <string>Slope</string>
-                  </property>
-                  <property name="alignment">
-                   <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                  </property>
-                  <property name="buddy">
-                   <cstring>source_box</cstring>
+                   <string>Save</string>
                   </property>
                  </widget>
                 </item>
-                <item row="2" column="2">
-                 <widget class="QLabel" name="ev_pset_hi_label">
-                  <property name="text">
-                   <string>Setpoint Hi</string>
-                  </property>
-                  <property name="alignment">
-                   <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                  </property>
-                  <property name="buddy">
-                   <cstring>source_box</cstring>
-                  </property>
-                 </widget>
-                </item>
-                <item row="2" column="3">
-                 <widget class="QDoubleSpinBox" name="ev_pset_hi_box">
-                  <property name="readOnly">
-                   <bool>true</bool>
-                  </property>
-                  <property name="buttonSymbols">
-                   <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
-                  </property>
-                  <property name="suffix">
-                   <string> bara</string>
-                  </property>
-                  <property name="minimum">
-                   <double>0.000000000000000</double>
-                  </property>
-                  <property name="maximum">
-                   <double>1000.000000000000000</double>
-                  </property>
-                 </widget>
-                </item>
-                <item row="2" column="4">
-                 <widget class="QLabel" name="source_location_label">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <kerning>true</kerning>
-                   </font>
-                  </property>
-                  <property name="text">
-                   <string>Location</string>
-                  </property>
-                  <property name="alignment">
-                   <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                  </property>
-                  <property name="buddy">
-                   <cstring>source_location_box</cstring>
-                  </property>
-                 </widget>
-                </item>
-                <item row="2" column="5">
-                 <widget class="QComboBox" name="source_location_box"/>
-                </item>
-                <item row="1" column="5">
+                <item row="3" column="1">
                  <widget class="QComboBox" name="source_box">
                   <property name="editable">
                    <bool>true</bool>
@@ -726,7 +646,47 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
                   </item>
                  </widget>
                 </item>
-                <item row="1" column="4">
+                <item row="4" column="2">
+                 <widget class="QLabel" name="ev_pset_period_label">
+                  <property name="text">
+                   <string>Period</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                  </property>
+                  <property name="buddy">
+                   <cstring>source_box</cstring>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="2">
+                 <widget class="QLabel" name="ev_pset_label">
+                  <property name="text">
+                   <string>Setpoint</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                  </property>
+                  <property name="buddy">
+                   <cstring>source_box</cstring>
+                  </property>
+                 </widget>
+                </item>
+                <item row="4" column="1">
+                 <widget class="QComboBox" name="source_location_box">
+                  <item>
+                   <property name="text">
+                    <string>None</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Source Tube</string>
+                   </property>
+                  </item>
+                 </widget>
+                </item>
+                <item row="3" column="0">
                  <widget class="QLabel" name="source_label">
                   <property name="text">
                    <string>Source</string>
@@ -739,42 +699,7 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
                   </property>
                  </widget>
                 </item>
-                <item row="0" column="4" colspan="2">
-                 <widget class="QLabel" name="run_source_label">
-                  <property name="font">
-                   <font>
-                    <bold>true</bold>
-                   </font>
-                  </property>
-                  <property name="midLineWidth">
-                   <number>0</number>
-                  </property>
-                  <property name="text">
-                   <string>Run Source Profile</string>
-                  </property>
-                  <property name="alignment">
-                   <set>Qt::AlignmentFlag::AlignCenter</set>
-                  </property>
-                  <property name="buddy">
-                   <cstring>source_box</cstring>
-                  </property>
-                 </widget>
-                </item>
-                <item row="4" column="6">
-                 <widget class="QPushButton" name="edit_comment_but">
-                  <property name="text">
-                   <string>Edit</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="4" column="7">
-                 <widget class="QPushButton" name="save_comment_but">
-                  <property name="text">
-                   <string>Save</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="0" column="6" rowspan="4" colspan="2">
+                <item row="0" column="4" rowspan="4" colspan="2">
                  <widget class="QPlainTextEdit" name="comment_edit">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -804,22 +729,45 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
                   </property>
                  </widget>
                 </item>
-                <item row="3" column="3">
-                 <widget class="QDoubleSpinBox" name="ev_pset_slope_box">
-                  <property name="readOnly">
-                   <bool>true</bool>
+                <item row="0" column="2" colspan="2">
+                 <widget class="QLabel" name="ev_pressure_label">
+                  <property name="font">
+                   <font>
+                    <bold>true</bold>
+                   </font>
                   </property>
-                  <property name="buttonSymbols">
-                   <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+                  <property name="midLineWidth">
+                   <number>0</number>
                   </property>
-                  <property name="suffix">
-                   <string> bara/s</string>
+                  <property name="text">
+                   <string>Event Pressure Profile</string>
                   </property>
-                  <property name="minimum">
-                   <double>0.000000000000000</double>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
                   </property>
-                  <property name="maximum">
-                   <double>1000.000000000000000</double>
+                  <property name="buddy">
+                   <cstring>source_box</cstring>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="0" colspan="2">
+                 <widget class="QLabel" name="run_source_label">
+                  <property name="font">
+                   <font>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="midLineWidth">
+                   <number>0</number>
+                  </property>
+                  <property name="text">
+                   <string>Run Source Profile</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignCenter</set>
+                  </property>
+                  <property name="buddy">
+                   <cstring>source_box</cstring>
                   </property>
                  </widget>
                 </item>
@@ -842,6 +790,84 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
                   </property>
                   <property name="maximum">
                    <double>1000000.000000000000000</double>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="3">
+                 <widget class="QDoubleSpinBox" name="ev_pset_hi_box">
+                  <property name="readOnly">
+                   <bool>true</bool>
+                  </property>
+                  <property name="buttonSymbols">
+                   <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+                  </property>
+                  <property name="suffix">
+                   <string> bara</string>
+                  </property>
+                  <property name="minimum">
+                   <double>0.000000000000000</double>
+                  </property>
+                  <property name="maximum">
+                   <double>1000.000000000000000</double>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="2">
+                 <widget class="QLabel" name="ev_pset_hi_label">
+                  <property name="text">
+                   <string>Setpoint Hi</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                  </property>
+                  <property name="buddy">
+                   <cstring>source_box</cstring>
+                  </property>
+                 </widget>
+                </item>
+                <item row="4" column="0">
+                 <widget class="QLabel" name="source_location_label">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <kerning>true</kerning>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Location</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                  </property>
+                  <property name="buddy">
+                   <cstring>source_location_box</cstring>
+                  </property>
+                 </widget>
+                </item>
+                <item row="4" column="4">
+                 <widget class="QPushButton" name="edit_comment_but">
+                  <property name="text">
+                   <string>Edit</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="0">
+                 <widget class="QCheckBox" name="autorun_box">
+                  <property name="font">
+                   <font>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="layoutDirection">
+                   <enum>Qt::LayoutDirection::RightToLeft</enum>
+                  </property>
+                  <property name="text">
+                   <string>Autorun</string>
                   </property>
                  </widget>
                 </item>
@@ -1244,8 +1270,8 @@ background-color: #969696;</string>
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>838</width>
-               <height>672</height>
+               <width>382</width>
+               <height>119</height>
               </rect>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -1562,8 +1588,8 @@ background-color: rgb(150, 150, 150);</string>
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>836</width>
-               <height>670</height>
+               <width>98</width>
+               <height>614</height>
               </rect>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_11">

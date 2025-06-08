@@ -63,6 +63,7 @@ class MainWindow(QMainWindow):
         # initialize config class
         self.config_class = Config(self, "config.json")
         self.config_class.load_config()
+        self.config_class.load_config_to_mainwindow()
         self.stopping_run = False
 
         # logger initialization
@@ -485,7 +486,13 @@ class MainWindow(QMainWindow):
             if len(self.stopping_run_ready) >= len(self.stopping_run_modules):
                 self.logger.info(f"Run {self.run_id} stopped.")
                 self.logger.debug(f"Modules stopped for run: {self.stopping_run_ready}\n")
-                self.update_state("idle")
+
+                # check for autorun condition
+                autorun = self.ui.autorun_box.isChecked() and not self.manual_stop_run
+                if autorun:
+                    self.start_run()
+                else:
+                    self.update_state("idle")
 
         self.display_image(
             "resources/cam1.png",
@@ -646,6 +653,7 @@ class MainWindow(QMainWindow):
         self.event_id = -1
         self.event_livetime = 0
         self.run_livetime = 0
+        self.manual_stop_run = False
         self.ui.event_id_edit.setText(f"{self.event_id:2d}")
         self.ui.event_time_edit.setText(self.format_time(self.event_livetime))
         self.ui.run_live_time_edit.setText(self.format_time(self.run_livetime))
@@ -761,6 +769,7 @@ class MainWindow(QMainWindow):
 
     def stop_run_but_pressed(self):
         self.stopping_run = True
+        self.manual_stop_run = True
         self.ui.stop_run_but.setEnabled(False)
 
     def sw_trigger(self):

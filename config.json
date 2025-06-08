@@ -1,5 +1,8 @@
 {
   "general": {
+    "autorun": true,
+    "source": "Bg",
+    "source_location": "None",
     "config_path": "./config.json",
     "data_dir": "/mnt/nas/rc-data",
     "log_dir": "/mnt/nas/rc-data/logs/",
