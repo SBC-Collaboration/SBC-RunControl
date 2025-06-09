@@ -6,6 +6,7 @@
     "config_path": "./config.json",
     "data_dir": "/mnt/nas/rc-data",
     "log_dir": "/mnt/nas/rc-data/logs/",
+    "writer_enabled": true,
     "max_ev_time": 30.0,
     "max_num_evs": 1
   },
@@ -19,8 +20,7 @@
     "stop_timeout": 30.0,
     "abort_timeout": 30.0,
     "pressure": {
-      "enabled": false,
-      "mode": "random",
+      "mode": "Random",
       "profile1": {
         "enabled": true,
         "setpoint": 2.0,

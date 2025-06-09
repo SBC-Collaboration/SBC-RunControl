@@ -29,6 +29,11 @@ class Writer(QObject):
 
     @Slot()
     def write_event_data(self):
+        if not self.config["writer_enabled"]:
+            self.logger.debug("Writer module is disabled.")
+            self.event_stopped.emit("writer-disabled")
+            return
+
         # wait until trig ff is ready
         self.main.trigff_mutex.lock()
         while not self.main.trigff_ready:
@@ -64,6 +69,11 @@ class Writer(QObject):
     
     @Slot()
     def write_run_data(self):
+        if not self.config["writer_enabled"]:
+            self.logger.debug("Writer module is disabled.")
+            self.run_stopped.emit("writer-disabled")
+            return
+
         self.active_modules = []
         for cam in ["cam1", "cam2", "cam3"]:
             if self.main.config_class.run_config["cams"][cam]["enabled"]:

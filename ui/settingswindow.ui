@@ -46,7 +46,7 @@
     <property name="spacing">
      <number>3</number>
     </property>
-    <item row="6" column="0">
+    <item row="1" column="0">
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
        <number>0</number>
@@ -93,8 +93,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>888</width>
-             <height>531</height>
+             <width>890</width>
+             <height>524</height>
             </rect>
            </property>
            <property name="maximumSize">
@@ -120,6 +120,277 @@
              <number>0</number>
             </property>
             <item>
+             <layout class="QGridLayout" name="active_modules_grid">
+              <property name="topMargin">
+               <number>3</number>
+              </property>
+              <property name="bottomMargin">
+               <number>3</number>
+              </property>
+              <property name="spacing">
+               <number>3</number>
+              </property>
+              <item row="1" column="0">
+               <widget class="QLabel" name="active_general_label">
+                <property name="font">
+                 <font>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="layoutDirection">
+                 <enum>Qt::LayoutDirection::LeftToRight</enum>
+                </property>
+                <property name="text">
+                 <string>General</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="2">
+               <widget class="QCheckBox" name="active_led1">
+                <property name="text">
+                 <string>LED 1</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="9">
+               <widget class="QCheckBox" name="active_amp3">
+                <property name="text">
+                 <string>Amp 3</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="5">
+               <widget class="QCheckBox" name="active_acous">
+                <property name="font">
+                 <font>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="layoutDirection">
+                 <enum>Qt::LayoutDirection::RightToLeft</enum>
+                </property>
+                <property name="text">
+                 <string>Acoustics</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="6" rowspan="5">
+               <widget class="Line" name="line_6">
+                <property name="frameShadow">
+                 <enum>QFrame::Shadow::Raised</enum>
+                </property>
+                <property name="lineWidth">
+                 <number>2</number>
+                </property>
+                <property name="orientation">
+                 <enum>Qt::Orientation::Vertical</enum>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="4">
+               <widget class="QCheckBox" name="active_led3">
+                <property name="text">
+                 <string>LED 3</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="8">
+               <widget class="QCheckBox" name="active_caen_g1">
+                <property name="text">
+                 <string>Group 1</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="4">
+               <widget class="QCheckBox" name="active_cam3">
+                <property name="text">
+                 <string>Cam 3</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="10">
+               <widget class="QCheckBox" name="active_caen_g3">
+                <property name="text">
+                 <string>Group 3</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="2">
+               <widget class="QCheckBox" name="active_plc">
+                <property name="text">
+                 <string>PLC</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="3">
+               <widget class="QCheckBox" name="active_led2">
+                <property name="text">
+                 <string>LED 2</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="3">
+               <widget class="QCheckBox" name="active_cam2">
+                <property name="text">
+                 <string>Cam 2</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="7">
+               <widget class="QCheckBox" name="active_caen_g0">
+                <property name="text">
+                 <string>Group 0</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="5">
+               <widget class="QCheckBox" name="active_caen">
+                <property name="font">
+                 <font>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="layoutDirection">
+                 <enum>Qt::LayoutDirection::RightToLeft</enum>
+                </property>
+                <property name="text">
+                 <string>CAEN</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="7">
+               <widget class="QCheckBox" name="active_amp1">
+                <property name="text">
+                 <string>Amp 1</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="2">
+               <widget class="QCheckBox" name="active_cam1">
+                <property name="text">
+                 <string>Cam 1</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="8">
+               <widget class="QCheckBox" name="active_amp2">
+                <property name="text">
+                 <string>Amp 2</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="3">
+               <widget class="QCheckBox" name="active_sql">
+                <property name="text">
+                 <string>SQL</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1" rowspan="5">
+               <widget class="Line" name="line_2">
+                <property name="frameShadow">
+                 <enum>QFrame::Shadow::Raised</enum>
+                </property>
+                <property name="lineWidth">
+                 <number>2</number>
+                </property>
+                <property name="orientation">
+                 <enum>Qt::Orientation::Vertical</enum>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0" colspan="11">
+               <widget class="QLabel" name="active_label">
+                <property name="font">
+                 <font>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="layoutDirection">
+                 <enum>Qt::LayoutDirection::LeftToRight</enum>
+                </property>
+                <property name="text">
+                 <string>Active Modules</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="9">
+               <widget class="QCheckBox" name="active_caen_g2">
+                <property name="text">
+                 <string>Group 2</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="0">
+               <widget class="QLabel" name="active_led_laebl">
+                <property name="font">
+                 <font>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="layoutDirection">
+                 <enum>Qt::LayoutDirection::LeftToRight</enum>
+                </property>
+                <property name="text">
+                 <string>LEDs</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="5">
+               <widget class="QLabel" name="active_amps_laebl">
+                <property name="font">
+                 <font>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="layoutDirection">
+                 <enum>Qt::LayoutDirection::LeftToRight</enum>
+                </property>
+                <property name="text">
+                 <string>Amps</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="4">
+               <widget class="QCheckBox" name="active_writer">
+                <property name="text">
+                 <string>Writer</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QLabel" name="active_cams_laebl">
+                <property name="font">
+                 <font>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="layoutDirection">
+                 <enum>Qt::LayoutDirection::LeftToRight</enum>
+                </property>
+                <property name="text">
+                 <string>Cams</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
              <layout class="QGridLayout" name="path_grid">
               <property name="topMargin">
                <number>0</number>
@@ -133,38 +404,6 @@
               <property name="spacing">
                <number>3</number>
               </property>
-              <item row="2" column="0">
-               <widget class="QLabel" name="data_dir_label">
-                <property name="lineWidth">
-                 <number>0</number>
-                </property>
-                <property name="text">
-                 <string>Data Dir</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>data_dir_edit</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="0">
-               <widget class="QLabel" name="log_dir_label">
-                <property name="lineWidth">
-                 <number>0</number>
-                </property>
-                <property name="text">
-                 <string>Log Dir</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>log_dir_edit</cstring>
-                </property>
-               </widget>
-              </item>
               <item row="0" column="0">
                <widget class="QLabel" name="config_path_label">
                 <property name="minimumSize">
@@ -187,95 +426,52 @@
                 </property>
                </widget>
               </item>
-              <item row="1" column="1">
-               <widget class="QLineEdit" name="log_dir_edit"/>
-              </item>
-              <item row="2" column="1">
-               <widget class="QLineEdit" name="data_dir_edit"/>
-              </item>
-              <item row="0" column="1">
+              <item row="0" column="1" colspan="4">
                <widget class="QLineEdit" name="config_path_edit"/>
               </item>
-              <item row="1" column="2">
+              <item row="1" column="1" colspan="4">
+               <widget class="QLineEdit" name="log_dir_edit"/>
+              </item>
+              <item row="1" column="5">
                <widget class="QToolButton" name="log_dir_but">
                 <property name="text">
                  <string>...</string>
                 </property>
                </widget>
               </item>
-              <item row="0" column="2">
-               <widget class="QToolButton" name="config_path_but">
-                <property name="text">
-                 <string>...</string>
+              <item row="1" column="0">
+               <widget class="QLabel" name="log_dir_label">
+                <property name="lineWidth">
+                 <number>0</number>
                 </property>
-               </widget>
-              </item>
-              <item row="2" column="2">
-               <widget class="QToolButton" name="data_dir_but">
                 <property name="text">
-                 <string>...</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </item>
-            <item>
-             <layout class="QGridLayout" name="ev_setting_grid" columnstretch="0,0,0,0,0,0">
-              <property name="topMargin">
-               <number>0</number>
-              </property>
-              <property name="rightMargin">
-               <number>0</number>
-              </property>
-              <property name="bottomMargin">
-               <number>0</number>
-              </property>
-              <property name="spacing">
-               <number>3</number>
-              </property>
-              <item row="0" column="2">
-               <widget class="QLabel" name="max_num_ev_label">
-                <property name="text">
-                 <string>Max Num of Events</string>
+                 <string>Log Dir</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
-                 <cstring>max_num_ev_box</cstring>
+                 <cstring>log_dir_edit</cstring>
                 </property>
                </widget>
               </item>
-              <item row="0" column="3">
-               <widget class="NoWheelSpinBox" name="max_num_ev_box">
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+              <item row="2" column="0">
+               <widget class="QLabel" name="data_dir_label">
+                <property name="lineWidth">
+                 <number>0</number>
                 </property>
-                <property name="minimum">
-                 <number>1</number>
-                </property>
-                <property name="maximum">
-                 <number>1000</number>
-                </property>
-                <property name="value">
-                 <number>100</number>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="4">
-               <widget class="QLabel" name="max_ev_time_label">
                 <property name="text">
-                 <string>Max Event Time</string>
+                 <string>Data Dir</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
-                 <cstring>max_ev_time_box</cstring>
+                 <cstring>data_dir_edit</cstring>
                 </property>
                </widget>
               </item>
-              <item row="0" column="5">
+              <item row="3" column="4" colspan="2">
                <widget class="NoWheelDoubleSpinBox" name="max_ev_time_box">
                 <property name="focusPolicy">
                  <enum>Qt::FocusPolicy::StrongFocus</enum>
@@ -291,291 +487,72 @@
                 </property>
                </widget>
               </item>
-              <item row="0" column="0">
-               <widget class="QCheckBox" name="active_cams_2">
-                <property name="font">
-                 <font>
-                  <bold>false</bold>
-                 </font>
-                </property>
-                <property name="layoutDirection">
-                 <enum>Qt::LayoutDirection::RightToLeft</enum>
-                </property>
+              <item row="0" column="5">
+               <widget class="QToolButton" name="config_path_but">
                 <property name="text">
-                 <string>Autorun</string>
-                </property>
-                <property name="tristate">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </item>
-            <item>
-             <layout class="QGridLayout" name="gridLayout_2">
-              <property name="topMargin">
-               <number>3</number>
-              </property>
-              <property name="bottomMargin">
-               <number>3</number>
-              </property>
-              <property name="spacing">
-               <number>3</number>
-              </property>
-              <item row="3" column="0">
-               <widget class="QCheckBox" name="active_led">
-                <property name="font">
-                 <font>
-                  <bold>true</bold>
-                 </font>
-                </property>
-                <property name="layoutDirection">
-                 <enum>Qt::LayoutDirection::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>LEDs</string>
-                </property>
-                <property name="tristate">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="4">
-               <widget class="QCheckBox" name="active_led3">
-                <property name="text">
-                 <string>LED 3</string>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="6" rowspan="4">
-               <widget class="Line" name="line_6">
-                <property name="frameShadow">
-                 <enum>QFrame::Shadow::Raised</enum>
-                </property>
-                <property name="lineWidth">
-                 <number>2</number>
-                </property>
-                <property name="orientation">
-                 <enum>Qt::Orientation::Vertical</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="0">
-               <widget class="QLabel" name="active_general_label">
-                <property name="font">
-                 <font>
-                  <bold>true</bold>
-                 </font>
-                </property>
-                <property name="layoutDirection">
-                 <enum>Qt::LayoutDirection::LeftToRight</enum>
-                </property>
-                <property name="text">
-                 <string>General</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                 <string>...</string>
                 </property>
                </widget>
               </item>
               <item row="2" column="5">
-               <widget class="QCheckBox" name="active_caen">
-                <property name="font">
-                 <font>
-                  <bold>true</bold>
-                 </font>
-                </property>
-                <property name="layoutDirection">
-                 <enum>Qt::LayoutDirection::RightToLeft</enum>
-                </property>
+               <widget class="QToolButton" name="data_dir_but">
                 <property name="text">
-                 <string>CAEN</string>
-                </property>
-                <property name="tristate">
-                 <bool>true</bool>
+                 <string>...</string>
                 </property>
                </widget>
               </item>
-              <item row="2" column="9">
-               <widget class="QCheckBox" name="active_caen_g2">
-                <property name="text">
-                 <string>Group 2</string>
-                </property>
-               </widget>
+              <item row="2" column="1" colspan="4">
+               <widget class="QLineEdit" name="data_dir_edit"/>
               </item>
-              <item row="1" column="8">
-               <widget class="QCheckBox" name="active_amp2">
+              <item row="3" column="3">
+               <widget class="QLabel" name="max_ev_time_label">
                 <property name="text">
-                 <string>Amp 2</string>
+                 <string>Max Event Time</string>
                 </property>
-               </widget>
-              </item>
-              <item row="2" column="0">
-               <widget class="QCheckBox" name="active_cams">
-                <property name="font">
-                 <font>
-                  <bold>true</bold>
-                 </font>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
-                <property name="layoutDirection">
-                 <enum>Qt::LayoutDirection::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>Cameras</string>
-                </property>
-                <property name="tristate">
-                 <bool>true</bool>
+                <property name="buddy">
+                 <cstring>max_ev_time_box</cstring>
                 </property>
                </widget>
               </item>
               <item row="3" column="2">
-               <widget class="QCheckBox" name="active_led1">
+               <widget class="NoWheelSpinBox" name="max_num_ev_box">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="minimum">
+                 <number>1</number>
+                </property>
+                <property name="maximum">
+                 <number>1000</number>
+                </property>
+                <property name="value">
+                 <number>100</number>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="1">
+               <widget class="QLabel" name="max_num_ev_label">
                 <property name="text">
-                 <string>LED 1</string>
+                 <string>Max Num of Events</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>max_num_ev_box</cstring>
                 </property>
                </widget>
               </item>
-              <item row="1" column="5">
-               <widget class="QCheckBox" name="active_amps">
-                <property name="font">
-                 <font>
-                  <bold>true</bold>
-                 </font>
-                </property>
-                <property name="layoutDirection">
-                 <enum>Qt::LayoutDirection::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>SiPM Amps</string>
-                </property>
-                <property name="tristate">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="3">
-               <widget class="QCheckBox" name="active_cam2">
-                <property name="text">
-                 <string>Cam 2</string>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="8">
-               <widget class="QCheckBox" name="active_caen_g1">
-                <property name="text">
-                 <string>Group 1</string>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="5">
-               <widget class="QCheckBox" name="active_acous">
-                <property name="font">
-                 <font>
-                  <bold>true</bold>
-                 </font>
-                </property>
-                <property name="layoutDirection">
-                 <enum>Qt::LayoutDirection::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>Acoustics</string>
-                </property>
-                <property name="tristate">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="7">
-               <widget class="QCheckBox" name="active_caen_g0">
-                <property name="text">
-                 <string>Group 0</string>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="2">
-               <widget class="QCheckBox" name="active_pressure">
-                <property name="text">
-                 <string>Pressure</string>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="3">
-               <widget class="QCheckBox" name="active_led2">
-                <property name="text">
-                 <string>LED 2</string>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="4">
-               <widget class="QCheckBox" name="active_cam3">
-                <property name="text">
-                 <string>Cam 3</string>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="1" rowspan="4">
-               <widget class="Line" name="line_2">
-                <property name="frameShadow">
-                 <enum>QFrame::Shadow::Raised</enum>
-                </property>
-                <property name="lineWidth">
-                 <number>2</number>
-                </property>
-                <property name="orientation">
-                 <enum>Qt::Orientation::Vertical</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="7">
-               <widget class="QCheckBox" name="active_amp1">
-                <property name="text">
-                 <string>Amp 1</string>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="9">
-               <widget class="QCheckBox" name="active_amp3">
-                <property name="text">
-                 <string>Amp 3</string>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="2">
-               <widget class="QCheckBox" name="active_cam1">
-                <property name="text">
-                 <string>Cam 1</string>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="0" colspan="11">
-               <widget class="QLabel" name="active_label">
-                <property name="font">
-                 <font>
-                  <bold>true</bold>
-                 </font>
-                </property>
+              <item row="3" column="0">
+               <widget class="QCheckBox" name="writer_enabled_box">
                 <property name="layoutDirection">
                  <enum>Qt::LayoutDirection::LeftToRight</enum>
                 </property>
                 <property name="text">
-                 <string>Active Modules</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="10">
-               <widget class="QCheckBox" name="active_caen_g3">
-                <property name="text">
-                 <string>Group 3</string>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="3">
-               <widget class="QCheckBox" name="active_sql">
-                <property name="text">
-                 <string>SQL</string>
+                 <string>Writer Enabled</string>
                 </property>
                </widget>
               </item>
@@ -598,41 +575,29 @@
               <property name="spacing">
                <number>3</number>
               </property>
-              <item row="1" column="7">
-               <widget class="NoWheelSpinBox" name="sql_port_box">
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="maximum">
-                 <number>65535</number>
-                </property>
-               </widget>
+              <item row="1" column="1" colspan="5">
+               <widget class="QLineEdit" name="sql_hostname_edit"/>
               </item>
-              <item row="0" column="0" colspan="7">
-               <widget class="QLabel" name="sql_label">
-                <property name="font">
-                 <font>
-                  <bold>true</bold>
-                 </font>
-                </property>
+              <item row="2" column="6">
+               <widget class="QLabel" name="sql_event_tabel_label">
                 <property name="text">
-                 <string>SQL</string>
+                 <string>Event Table</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
-                 <cstring>sql_enabled_box</cstring>
+                 <cstring>sql_event_table_edit</cstring>
                 </property>
                </widget>
               </item>
-              <item row="0" column="7">
-               <widget class="QCheckBox" name="sql_enabled_box">
-                <property name="layoutDirection">
-                 <enum>Qt::LayoutDirection::LeftToRight</enum>
-                </property>
-                <property name="text">
-                 <string>Enabled</string>
+              <item row="2" column="1">
+               <widget class="QLineEdit" name="sql_user_edit">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
                 </property>
                </widget>
               </item>
@@ -649,10 +614,23 @@
                 </property>
                </widget>
               </item>
-              <item row="2" column="7">
-               <widget class="QLineEdit" name="sql_event_table_edit">
+              <item row="1" column="6">
+               <widget class="QLabel" name="sql_port_label">
+                <property name="text">
+                 <string>SQL Port</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>sql_port_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="3">
+               <widget class="QLineEdit" name="sql_database_edit">
                 <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
@@ -672,8 +650,8 @@
                 </property>
                </widget>
               </item>
-              <item row="2" column="5">
-               <widget class="QLineEdit" name="sql_run_table_edit">
+              <item row="2" column="7">
+               <widget class="QLineEdit" name="sql_event_table_edit">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                   <horstretch>0</horstretch>
@@ -682,39 +660,13 @@
                 </property>
                </widget>
               </item>
-              <item row="1" column="1" colspan="5">
-               <widget class="QLineEdit" name="sql_hostname_edit"/>
-              </item>
-              <item row="2" column="3">
-               <widget class="QLineEdit" name="sql_database_edit">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
+              <item row="0" column="0">
+               <widget class="QCheckBox" name="sql_enabled_box">
+                <property name="layoutDirection">
+                 <enum>Qt::LayoutDirection::LeftToRight</enum>
                 </property>
-               </widget>
-              </item>
-              <item row="1" column="6">
-               <widget class="QLabel" name="sql_port_label">
                 <property name="text">
-                 <string>SQL Port</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>sql_port_box</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="1">
-               <widget class="QLineEdit" name="sql_user_edit">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
+                 <string>Enabled</string>
                 </property>
                </widget>
               </item>
@@ -744,16 +696,41 @@
                 </property>
                </widget>
               </item>
-              <item row="2" column="6">
-               <widget class="QLabel" name="sql_event_tabel_label">
+              <item row="1" column="7">
+               <widget class="NoWheelSpinBox" name="sql_port_box">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="maximum">
+                 <number>65535</number>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="5">
+               <widget class="QLineEdit" name="sql_run_table_edit">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="2" colspan="4">
+               <widget class="QLabel" name="sql_label">
+                <property name="font">
+                 <font>
+                  <bold>true</bold>
+                 </font>
+                </property>
                 <property name="text">
-                 <string>Event Table</string>
+                 <string>SQL</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
                 </property>
                 <property name="buddy">
-                 <cstring>sql_event_table_edit</cstring>
+                 <cstring>sql_enabled_box</cstring>
                 </property>
                </widget>
               </item>
@@ -809,7 +786,7 @@
              <x>0</x>
              <y>0</y>
              <width>874</width>
-             <height>561</height>
+             <height>626</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_14">
@@ -845,25 +822,67 @@
               <property name="spacing">
                <number>3</number>
               </property>
-              <item row="3" column="1">
-               <widget class="NoWheelDoubleSpinBox" name="pressure1_set">
+              <item row="2" column="5">
+               <widget class="QCheckBox" name="pressure5_enable">
+                <property name="text">
+                 <string>Profile 5</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="3">
+               <widget class="QCheckBox" name="pressure3_enable">
+                <property name="text">
+                 <string>Profile 3</string>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="6">
+               <widget class="NoWheelDoubleSpinBox" name="pressure6_period">
                 <property name="focusPolicy">
                  <enum>Qt::FocusPolicy::StrongFocus</enum>
                 </property>
                 <property name="suffix">
-                 <string> bara</string>
+                 <string> s</string>
                 </property>
                 <property name="decimals">
                  <number>2</number>
                 </property>
                 <property name="minimum">
-                 <double>0.000000000000000</double>
+                 <double>-1.000000000000000</double>
                 </property>
                 <property name="maximum">
                  <double>1000.000000000000000</double>
                 </property>
                 <property name="singleStep">
                  <double>0.100000000000000</double>
+                </property>
+                <property name="value">
+                 <double>-1.000000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="1">
+               <widget class="NoWheelDoubleSpinBox" name="pressure1_period">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string> s</string>
+                </property>
+                <property name="decimals">
+                 <number>2</number>
+                </property>
+                <property name="minimum">
+                 <double>-1.000000000000000</double>
+                </property>
+                <property name="maximum">
+                 <double>1000.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+                <property name="value">
+                 <double>-1.000000000000000</double>
                 </property>
                </widget>
               </item>
@@ -892,8 +911,8 @@
                 </property>
                </widget>
               </item>
-              <item row="3" column="2">
-               <widget class="NoWheelDoubleSpinBox" name="pressure2_set">
+              <item row="3" column="6">
+               <widget class="NoWheelDoubleSpinBox" name="pressure6_set">
                 <property name="focusPolicy">
                  <enum>Qt::FocusPolicy::StrongFocus</enum>
                 </property>
@@ -911,6 +930,13 @@
                 </property>
                 <property name="singleStep">
                  <double>0.100000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="QCheckBox" name="pressure1_enable">
+                <property name="text">
+                 <string>Profile 1</string>
                 </property>
                </widget>
               </item>
@@ -939,21 +965,15 @@
                 </property>
                </widget>
               </item>
-              <item row="1" column="4">
-               <widget class="QLabel" name="p_mode_label">
+              <item row="2" column="6">
+               <widget class="QCheckBox" name="pressure6_enable">
                 <property name="text">
-                 <string>Mode</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>p_random_but</cstring>
+                 <string>Profile 6</string>
                 </property>
                </widget>
               </item>
-              <item row="6" column="4">
-               <widget class="NoWheelDoubleSpinBox" name="pressure4_period">
+              <item row="6" column="2">
+               <widget class="NoWheelDoubleSpinBox" name="pressure2_period">
                 <property name="focusPolicy">
                  <enum>Qt::FocusPolicy::StrongFocus</enum>
                 </property>
@@ -977,16 +997,57 @@
                 </property>
                </widget>
               </item>
-              <item row="5" column="0">
-               <widget class="QLabel" name="p_slope_label">
+              <item row="0" column="0">
+               <widget class="QCheckBox" name="plc_enabled_box">
                 <property name="text">
-                 <string>Slope</string>
+                 <string>Enabled</string>
                 </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+               </widget>
+              </item>
+              <item row="4" column="5">
+               <widget class="NoWheelDoubleSpinBox" name="pressure5_high">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
                 </property>
-                <property name="buddy">
-                 <cstring>pressure1_slope</cstring>
+                <property name="suffix">
+                 <string> bara</string>
+                </property>
+                <property name="decimals">
+                 <number>2</number>
+                </property>
+                <property name="minimum">
+                 <double>0.000000000000000</double>
+                </property>
+                <property name="maximum">
+                 <double>1000.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+                <property name="value">
+                 <double>0.000000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="1">
+               <widget class="NoWheelDoubleSpinBox" name="pressure1_set">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string> bara</string>
+                </property>
+                <property name="decimals">
+                 <number>2</number>
+                </property>
+                <property name="minimum">
+                 <double>0.000000000000000</double>
+                </property>
+                <property name="maximum">
+                 <double>1000.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
                 </property>
                </widget>
               </item>
@@ -1006,6 +1067,119 @@
                 </property>
                 <property name="maximum">
                  <double>1000.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+                <property name="value">
+                 <double>0.000000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="4">
+               <widget class="QCheckBox" name="pressure4_enable">
+                <property name="text">
+                 <string>Profile 4</string>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="0">
+               <widget class="QLabel" name="p_high_label">
+                <property name="toolTip">
+                 <string>If this number is the same or lower than setpoint, or if period is negative, it will be ignored.</string>
+                </property>
+                <property name="text">
+                 <string>Setpoint High</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>pressure1_high</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="3">
+               <widget class="QLabel" name="pressure_label">
+                <property name="font">
+                 <font>
+                  <bold>false</bold>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>Pressure</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="4">
+               <widget class="NoWheelDoubleSpinBox" name="pressure4_high">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string> bara</string>
+                </property>
+                <property name="decimals">
+                 <number>2</number>
+                </property>
+                <property name="minimum">
+                 <double>0.000000000000000</double>
+                </property>
+                <property name="maximum">
+                 <double>1000.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+                <property name="value">
+                 <double>0.000000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="2">
+               <widget class="NoWheelDoubleSpinBox" name="pressure2_slope">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string> bar/s</string>
+                </property>
+                <property name="decimals">
+                 <number>2</number>
+                </property>
+                <property name="minimum">
+                 <double>0.000000000000000</double>
+                </property>
+                <property name="maximum">
+                 <double>99.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+                <property name="value">
+                 <double>0.000000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="6">
+               <widget class="NoWheelDoubleSpinBox" name="pressure6_slope">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string> bar/s</string>
+                </property>
+                <property name="decimals">
+                 <number>2</number>
+                </property>
+                <property name="minimum">
+                 <double>0.000000000000000</double>
+                </property>
+                <property name="maximum">
+                 <double>99.000000000000000</double>
                 </property>
                 <property name="singleStep">
                  <double>0.100000000000000</double>
@@ -1037,72 +1211,21 @@
                 </property>
                </widget>
               </item>
-              <item row="4" column="2">
-               <widget class="NoWheelDoubleSpinBox" name="pressure2_high">
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="suffix">
-                 <string> bara</string>
-                </property>
-                <property name="decimals">
-                 <number>2</number>
-                </property>
-                <property name="minimum">
-                 <double>0.000000000000000</double>
-                </property>
-                <property name="maximum">
-                 <double>1000.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
-                <property name="value">
-                 <double>0.000000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="5">
-               <widget class="QCheckBox" name="pressure5_enable">
+              <item row="5" column="0">
+               <widget class="QLabel" name="p_slope_label">
                 <property name="text">
-                 <string>Profile 5</string>
+                 <string>Slope</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>pressure1_slope</cstring>
                 </property>
                </widget>
               </item>
-              <item row="2" column="4">
-               <widget class="QCheckBox" name="pressure4_enable">
-                <property name="text">
-                 <string>Profile 4</string>
-                </property>
-               </widget>
-              </item>
-              <item row="6" column="2">
-               <widget class="NoWheelDoubleSpinBox" name="pressure2_period">
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="suffix">
-                 <string> s</string>
-                </property>
-                <property name="decimals">
-                 <number>2</number>
-                </property>
-                <property name="minimum">
-                 <double>-1.000000000000000</double>
-                </property>
-                <property name="maximum">
-                 <double>1000.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
-                <property name="value">
-                 <double>-1.000000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="6">
-               <widget class="NoWheelDoubleSpinBox" name="pressure6_set">
+              <item row="3" column="2">
+               <widget class="NoWheelDoubleSpinBox" name="pressure2_set">
                 <property name="focusPolicy">
                  <enum>Qt::FocusPolicy::StrongFocus</enum>
                 </property>
@@ -1123,21 +1246,21 @@
                 </property>
                </widget>
               </item>
-              <item row="1" column="5">
-               <widget class="QRadioButton" name="p_random_but">
+              <item row="3" column="0">
+               <widget class="QLabel" name="p_setpoint_label">
                 <property name="text">
-                 <string>Random</string>
+                 <string>Setpoint</string>
                 </property>
-                <property name="checked">
-                 <bool>false</bool>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
-                <property name="autoExclusive">
-                 <bool>true</bool>
+                <property name="buddy">
+                 <cstring>pressure1_set</cstring>
                 </property>
                </widget>
               </item>
-              <item row="5" column="6">
-               <widget class="NoWheelDoubleSpinBox" name="pressure6_slope">
+              <item row="5" column="5">
+               <widget class="NoWheelDoubleSpinBox" name="pressure5_slope">
                 <property name="focusPolicy">
                  <enum>Qt::FocusPolicy::StrongFocus</enum>
                 </property>
@@ -1158,31 +1281,6 @@
                 </property>
                 <property name="value">
                  <double>0.000000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="6" column="3">
-               <widget class="NoWheelDoubleSpinBox" name="pressure3_period">
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="suffix">
-                 <string> s</string>
-                </property>
-                <property name="decimals">
-                 <number>2</number>
-                </property>
-                <property name="minimum">
-                 <double>-1.000000000000000</double>
-                </property>
-                <property name="maximum">
-                 <double>1000.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
-                <property name="value">
-                 <double>-1.000000000000000</double>
                 </property>
                </widget>
               </item>
@@ -1211,8 +1309,8 @@
                 </property>
                </widget>
               </item>
-              <item row="6" column="1">
-               <widget class="NoWheelDoubleSpinBox" name="pressure1_period">
+              <item row="6" column="4">
+               <widget class="NoWheelDoubleSpinBox" name="pressure4_period">
                 <property name="focusPolicy">
                  <enum>Qt::FocusPolicy::StrongFocus</enum>
                 </property>
@@ -1236,19 +1334,26 @@
                 </property>
                </widget>
               </item>
-              <item row="6" column="6">
-               <widget class="NoWheelDoubleSpinBox" name="pressure6_period">
+              <item row="2" column="2">
+               <widget class="QCheckBox" name="pressure2_enable">
+                <property name="text">
+                 <string>Profile 2</string>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="3">
+               <widget class="NoWheelDoubleSpinBox" name="pressure3_high">
                 <property name="focusPolicy">
                  <enum>Qt::FocusPolicy::StrongFocus</enum>
                 </property>
                 <property name="suffix">
-                 <string> s</string>
+                 <string> bara</string>
                 </property>
                 <property name="decimals">
                  <number>2</number>
                 </property>
                 <property name="minimum">
-                 <double>-1.000000000000000</double>
+                 <double>0.000000000000000</double>
                 </property>
                 <property name="maximum">
                  <double>1000.000000000000000</double>
@@ -1257,7 +1362,23 @@
                  <double>0.100000000000000</double>
                 </property>
                 <property name="value">
-                 <double>-1.000000000000000</double>
+                 <double>0.000000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="0">
+               <widget class="QLabel" name="p_period_label">
+                <property name="toolTip">
+                 <string>Period of oscillation between P_high and P_low. Negative number means disabled.</string>
+                </property>
+                <property name="text">
+                 <string>Period</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>pressure1_period</cstring>
                 </property>
                </widget>
               </item>
@@ -1286,48 +1407,33 @@
                 </property>
                </widget>
               </item>
-              <item row="2" column="6">
-               <widget class="QCheckBox" name="pressure6_enable">
-                <property name="text">
-                 <string>Profile 6</string>
+              <item row="4" column="2">
+               <widget class="NoWheelDoubleSpinBox" name="pressure2_high">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string> bara</string>
+                </property>
+                <property name="decimals">
+                 <number>2</number>
+                </property>
+                <property name="minimum">
+                 <double>0.000000000000000</double>
+                </property>
+                <property name="maximum">
+                 <double>1000.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+                <property name="value">
+                 <double>0.000000000000000</double>
                 </property>
                </widget>
               </item>
-              <item row="4" column="0">
-               <widget class="QLabel" name="p_high_label">
-                <property name="toolTip">
-                 <string>If this number is the same or lower than setpoint, or if period is negative, it will be ignored.</string>
-                </property>
-                <property name="text">
-                 <string>Setpoint High</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>pressure1_high</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="3">
-               <widget class="QCheckBox" name="pressure3_enable">
-                <property name="text">
-                 <string>Profile 3</string>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="0">
-               <widget class="QCheckBox" name="p_enabled_box">
-                <property name="layoutDirection">
-                 <enum>Qt::LayoutDirection::LeftToRight</enum>
-                </property>
-                <property name="text">
-                 <string>Enabled</string>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="5">
-               <widget class="NoWheelDoubleSpinBox" name="pressure5_set">
+              <item row="3" column="4">
+               <widget class="NoWheelDoubleSpinBox" name="pressure4_set">
                 <property name="focusPolicy">
                  <enum>Qt::FocusPolicy::StrongFocus</enum>
                 </property>
@@ -1373,34 +1479,33 @@
                 </property>
                </widget>
               </item>
-              <item row="6" column="0">
-               <widget class="QLabel" name="p_period_label">
-                <property name="toolTip">
-                 <string>Period of oscillation between P_high and P_low. Negative number means disabled.</string>
+              <item row="6" column="3">
+               <widget class="NoWheelDoubleSpinBox" name="pressure3_period">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
                 </property>
-                <property name="text">
-                 <string>Period</string>
+                <property name="suffix">
+                 <string> s</string>
                 </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                <property name="decimals">
+                 <number>2</number>
                 </property>
-                <property name="buddy">
-                 <cstring>pressure1_period</cstring>
+                <property name="minimum">
+                 <double>-1.000000000000000</double>
+                </property>
+                <property name="maximum">
+                 <double>1000.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+                <property name="value">
+                 <double>-1.000000000000000</double>
                 </property>
                </widget>
               </item>
-              <item row="1" column="6">
-               <widget class="QRadioButton" name="p_cycle_but">
-                <property name="text">
-                 <string>Cycle</string>
-                </property>
-                <property name="autoExclusive">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="4">
-               <widget class="NoWheelDoubleSpinBox" name="pressure4_set">
+              <item row="3" column="5">
+               <widget class="NoWheelDoubleSpinBox" name="pressure5_set">
                 <property name="focusPolicy">
                  <enum>Qt::FocusPolicy::StrongFocus</enum>
                 </property>
@@ -1421,302 +1526,7 @@
                 </property>
                </widget>
               </item>
-              <item row="2" column="1">
-               <widget class="QCheckBox" name="pressure1_enable">
-                <property name="text">
-                 <string>Profile 1</string>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="2">
-               <widget class="QCheckBox" name="pressure2_enable">
-                <property name="text">
-                 <string>Profile 2</string>
-                </property>
-               </widget>
-              </item>
-              <item row="5" column="2">
-               <widget class="NoWheelDoubleSpinBox" name="pressure2_slope">
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="suffix">
-                 <string> bar/s</string>
-                </property>
-                <property name="decimals">
-                 <number>2</number>
-                </property>
-                <property name="minimum">
-                 <double>0.000000000000000</double>
-                </property>
-                <property name="maximum">
-                 <double>99.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
-                <property name="value">
-                 <double>0.000000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="3">
-               <widget class="NoWheelDoubleSpinBox" name="pressure3_high">
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="suffix">
-                 <string> bara</string>
-                </property>
-                <property name="decimals">
-                 <number>2</number>
-                </property>
-                <property name="minimum">
-                 <double>0.000000000000000</double>
-                </property>
-                <property name="maximum">
-                 <double>1000.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
-                <property name="value">
-                 <double>0.000000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="5" column="5">
-               <widget class="NoWheelDoubleSpinBox" name="pressure5_slope">
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="suffix">
-                 <string> bar/s</string>
-                </property>
-                <property name="decimals">
-                 <number>2</number>
-                </property>
-                <property name="minimum">
-                 <double>0.000000000000000</double>
-                </property>
-                <property name="maximum">
-                 <double>99.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
-                <property name="value">
-                 <double>0.000000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="0" colspan="7">
-               <widget class="QLabel" name="pressure_label">
-                <property name="font">
-                 <font>
-                  <bold>true</bold>
-                 </font>
-                </property>
-                <property name="text">
-                 <string>Pressure</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>p_enabled_box</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="5">
-               <widget class="NoWheelDoubleSpinBox" name="pressure5_high">
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="suffix">
-                 <string> bara</string>
-                </property>
-                <property name="decimals">
-                 <number>2</number>
-                </property>
-                <property name="minimum">
-                 <double>0.000000000000000</double>
-                </property>
-                <property name="maximum">
-                 <double>1000.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
-                <property name="value">
-                 <double>0.000000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="4">
-               <widget class="NoWheelDoubleSpinBox" name="pressure4_high">
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="suffix">
-                 <string> bara</string>
-                </property>
-                <property name="decimals">
-                 <number>2</number>
-                </property>
-                <property name="minimum">
-                 <double>0.000000000000000</double>
-                </property>
-                <property name="maximum">
-                 <double>1000.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
-                <property name="value">
-                 <double>0.000000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="0">
-               <widget class="QLabel" name="p_setpoint_label">
-                <property name="text">
-                 <string>Setpoint</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>pressure1_set</cstring>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </item>
-            <item>
-             <layout class="QGridLayout" name="plc_grid">
-              <property name="topMargin">
-               <number>6</number>
-              </property>
-              <property name="spacing">
-               <number>3</number>
-              </property>
-              <item row="10" column="5">
-               <widget class="NoWheelSpinBox" name="PCYCLE_FASTCOMP_FF_box">
-                <property name="maximum">
-                 <number>99999</number>
-                </property>
-               </widget>
-              </item>
-              <item row="13" column="3">
-               <widget class="NoWheelSpinBox" name="PCYCLE_MAXBLEEDDPDT_box">
-                <property name="maximum">
-                 <number>99999</number>
-                </property>
-               </widget>
-              </item>
-              <item row="8" column="4">
-               <widget class="QLabel" name="SLOWDAQ_FF_label">
-                <property name="text">
-                 <string>SLOWDAQ_FF</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="8" column="5">
-               <widget class="NoWheelSpinBox" name="SLOWDAQ_FF_box">
-                <property name="maximum">
-                 <number>99999</number>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="2">
-               <widget class="QLabel" name="pc_stop_timeout_label">
-                <property name="text">
-                 <string>PC Stop Timeout</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>max_num_ev_box</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="8" column="2">
-               <widget class="QLabel" name="PCYCLE_MAXEQTIME_label">
-                <property name="text">
-                 <string>PCYCLE_MAXEQTIME</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="11" column="4">
-               <widget class="QLabel" name="PCYCLE_SLOWCOMP_FF_label">
-                <property name="text">
-                 <string>PCYCLE_SLOWCOMP_FF</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="6" column="5">
-               <widget class="NoWheelSpinBox" name="TS_EMPTY_FF_box">
-                <property name="maximum">
-                 <number>99999</number>
-                </property>
-               </widget>
-              </item>
-              <item row="14" column="3">
-               <widget class="NoWheelSpinBox" name="PCYCLE_SLOWCOMP_SET_box">
-                <property name="maximum">
-                 <number>99999</number>
-                </property>
-               </widget>
-              </item>
-              <item row="6" column="4">
-               <widget class="QLabel" name="TS_EMPTY_FF_label">
-                <property name="text">
-                 <string>TS_EMPTY_FF</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="11" column="2">
-               <widget class="QLabel" name="PCYCLE_MAXACCDPDT_label">
-                <property name="text">
-                 <string>PCYCLE_MAXACCDPDT</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="13" column="4">
-               <widget class="QLabel" name="PCYCLE_CYLBLEED_FF_label">
-                <property name="text">
-                 <string>PCYCLE_CYLBLEED_FF</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="11" column="5">
-               <widget class="NoWheelSpinBox" name="PCYCLE_SLOWCOMP_FF_box">
-                <property name="maximum">
-                 <number>99999</number>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="1" colspan="4">
+              <item row="0" column="2" colspan="3">
                <widget class="QLabel" name="plc_label">
                 <property name="font">
                  <font>
@@ -1731,71 +1541,44 @@
                 </property>
                </widget>
               </item>
-              <item row="0" column="0">
-               <widget class="QCheckBox" name="plc_enabled_box">
+              <item row="1" column="5">
+               <widget class="QLabel" name="p_mode_label">
                 <property name="text">
-                 <string>Enabled</string>
-                </property>
-               </widget>
-              </item>
-              <item row="12" column="2">
-               <widget class="QLabel" name="PCYCLE_MAXBLEEDTIME_label">
-                <property name="text">
-                 <string>PCYCLE_MAXBLEEDTIME</string>
+                 <string>Mode</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                </widget>
               </item>
+              <item row="1" column="6">
+               <widget class="QComboBox" name="p_mode_box">
+                <item>
+                 <property name="text">
+                  <string>Random</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Cycle</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QGridLayout" name="plc_grid">
+              <property name="topMargin">
+               <number>6</number>
+              </property>
+              <property name="spacing">
+               <number>3</number>
+              </property>
               <item row="8" column="3">
                <widget class="NoWheelSpinBox" name="PCYCLE_MAXEQTIME_box">
                 <property name="maximum">
                  <number>99999</number>
-                </property>
-               </widget>
-              </item>
-              <item row="12" column="4">
-               <widget class="QLabel" name="PCYCLE_CYLEQ_FF_label">
-                <property name="text">
-                 <string>PCYCLE_CYLEQ_FF</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="9" column="3">
-               <widget class="NoWheelSpinBox" name="PCYCLE_MAXEQPDIFF_box">
-                <property name="maximum">
-                 <number>99999</number>
-                </property>
-               </widget>
-              </item>
-              <item row="9" column="2">
-               <widget class="QLabel" name="PCYCLE_MAXEQPDIFF_label">
-                <property name="text">
-                 <string>PCYCLE_MAXEQPDIFF</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="6" column="1">
-               <widget class="NoWheelSpinBox" name="PRESSURE_CYCLE_box">
-                <property name="maximum">
-                 <number>99999</number>
-                </property>
-               </widget>
-              </item>
-              <item row="14" column="2">
-               <widget class="QLabel" name="PCYCLE_SLOWCOMP_SET_label">
-                <property name="text">
-                 <string>PCYCLE_SLOWCOMP_SET</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                </widget>
               </item>
@@ -1806,19 +1589,172 @@
                 </property>
                </widget>
               </item>
-              <item row="3" column="3">
-               <widget class="NoWheelDoubleSpinBox" name="pc_stop_timeout_box">
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+              <item row="1" column="4">
+               <widget class="QLabel" name="plc_modbus_port_label">
+                <property name="text">
+                 <string>Modbus Port</string>
                 </property>
-                <property name="suffix">
-                 <string> s</string>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
-                <property name="decimals">
-                 <number>1</number>
+                <property name="buddy">
+                 <cstring>plc_modbus_port_box</cstring>
                 </property>
+               </widget>
+              </item>
+              <item row="9" column="4">
+               <widget class="QLabel" name="PCYCLE_ABORT_FF_label">
+                <property name="text">
+                 <string>PCYCLE_ABORT_FF</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="plc_hostname_label">
+                <property name="text">
+                 <string>Hostname</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>plc_hostname_edit</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="2">
+               <widget class="QLabel" name="smb_filename_label">
+                <property name="text">
+                 <string>SMB Filename</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>max_num_ev_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="1">
+               <widget class="NoWheelSpinBox" name="WRITE_SLOWDAQ_box">
                 <property name="maximum">
-                 <double>100000.000000000000000</double>
+                 <number>99999</number>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="1">
+               <widget class="NoWheelSpinBox" name="PRESSURE_CYCLE_box">
+                <property name="maximum">
+                 <number>99999</number>
+                </property>
+               </widget>
+              </item>
+              <item row="7" column="3">
+               <widget class="NoWheelSpinBox" name="PCYCLE_MAXEXPTIME_box">
+                <property name="maximum">
+                 <number>99999</number>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="QLineEdit" name="smb_share_edit"/>
+              </item>
+              <item row="10" column="2">
+               <widget class="QLabel" name="PCYCLE_MAXACCTIME_label">
+                <property name="text">
+                 <string>PCYCLE_MAXACCTIME</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="14" column="5">
+               <widget class="NoWheelSpinBox" name="PCYCLE_ACCHARGE_FF_box">
+                <property name="maximum">
+                 <number>99999</number>
+                </property>
+               </widget>
+              </item>
+              <item row="11" column="2">
+               <widget class="QLabel" name="PCYCLE_MAXACCDPDT_label">
+                <property name="text">
+                 <string>PCYCLE_MAXACCDPDT</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="10" column="5">
+               <widget class="NoWheelSpinBox" name="PCYCLE_FASTCOMP_FF_box">
+                <property name="maximum">
+                 <number>99999</number>
+                </property>
+               </widget>
+              </item>
+              <item row="13" column="3">
+               <widget class="NoWheelSpinBox" name="PCYCLE_MAXBLEEDDPDT_box">
+                <property name="maximum">
+                 <number>99999</number>
+                </property>
+               </widget>
+              </item>
+              <item row="10" column="4">
+               <widget class="QLabel" name="PCYCLE_FASTCOMP_FF_label">
+                <property name="text">
+                 <string>PCYCLE_FASTCOMP_FF</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="0">
+               <widget class="QLabel" name="WRITE_SLOWDAQ_label">
+                <property name="text">
+                 <string>WRITE_SLOWDAQ</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="12" column="3">
+               <widget class="NoWheelSpinBox" name="PCYCLE_MAXBLEEDTIME_box">
+                <property name="maximum">
+                 <number>99999</number>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="2" colspan="2">
+               <widget class="QLabel" name="pressure_label_2">
+                <property name="font">
+                 <font>
+                  <bold>false</bold>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>Modbus</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QLabel" name="smb_share_label">
+                <property name="text">
+                 <string>SMB Share</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>max_num_ev_box</cstring>
                 </property>
                </widget>
               </item>
@@ -1837,10 +1773,63 @@
                 </property>
                </widget>
               </item>
-              <item row="5" column="1">
-               <widget class="NoWheelSpinBox" name="WRITE_SLOWDAQ_box">
+              <item row="12" column="4">
+               <widget class="QLabel" name="PCYCLE_CYLEQ_FF_label">
+                <property name="text">
+                 <string>PCYCLE_CYLEQ_FF</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="5">
+               <widget class="NoWheelDoubleSpinBox" name="pc_abort_timeout_box">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string> s</string>
+                </property>
+                <property name="decimals">
+                 <number>1</number>
+                </property>
+                <property name="maximum">
+                 <double>100000.000000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="12" column="5">
+               <widget class="NoWheelSpinBox" name="PCYCLE_CYLEQ_FF_box">
                 <property name="maximum">
                  <number>99999</number>
+                </property>
+               </widget>
+              </item>
+              <item row="12" column="2">
+               <widget class="QLabel" name="PCYCLE_MAXBLEEDTIME_label">
+                <property name="text">
+                 <string>PCYCLE_MAXBLEEDTIME</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="14" column="3">
+               <widget class="NoWheelSpinBox" name="PCYCLE_SLOWCOMP_SET_box">
+                <property name="maximum">
+                 <number>99999</number>
+                </property>
+               </widget>
+              </item>
+              <item row="9" column="2">
+               <widget class="QLabel" name="PCYCLE_MAXEQPDIFF_label">
+                <property name="text">
+                 <string>PCYCLE_MAXEQPDIFF</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                </widget>
               </item>
@@ -1857,6 +1846,110 @@
                 </property>
                 <property name="maximum">
                  <double>100000.000000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="2">
+               <widget class="QLabel" name="pc_stop_timeout_label">
+                <property name="text">
+                 <string>PC Stop Timeout</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>max_num_ev_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="14" column="2">
+               <widget class="QLabel" name="PCYCLE_SLOWCOMP_SET_label">
+                <property name="text">
+                 <string>PCYCLE_SLOWCOMP_SET</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="8" column="2">
+               <widget class="QLabel" name="PCYCLE_MAXEQTIME_label">
+                <property name="text">
+                 <string>PCYCLE_MAXEQTIME</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="2">
+               <widget class="QLabel" name="PCYCLE_EXPTIME_label">
+                <property name="text">
+                 <string>PCYCLE_EXPTIME</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="9" column="3">
+               <widget class="NoWheelSpinBox" name="PCYCLE_MAXEQPDIFF_box">
+                <property name="maximum">
+                 <number>99999</number>
+                </property>
+               </widget>
+              </item>
+              <item row="8" column="5">
+               <widget class="NoWheelSpinBox" name="SLOWDAQ_FF_box">
+                <property name="maximum">
+                 <number>99999</number>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="0">
+               <widget class="QLabel" name="PRESSURE_CYCLE_label">
+                <property name="text">
+                 <string>PRESSURE_CYCLE</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="11" column="4">
+               <widget class="QLabel" name="PCYCLE_SLOWCOMP_FF_label">
+                <property name="text">
+                 <string>PCYCLE_SLOWCOMP_FF</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="4">
+               <widget class="QLabel" name="pc_abort_timeout_label">
+                <property name="text">
+                 <string>PC Abort Timeout</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>max_num_ev_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="11" column="5">
+               <widget class="NoWheelSpinBox" name="PCYCLE_SLOWCOMP_FF_box">
+                <property name="maximum">
+                 <number>99999</number>
+                </property>
+               </widget>
+              </item>
+              <item row="9" column="5">
+               <widget class="NoWheelSpinBox" name="PCYCLE_ABORT_FF_box">
+                <property name="maximum">
+                 <number>99999</number>
                 </property>
                </widget>
               </item>
@@ -1880,50 +1973,29 @@
                 </property>
                </widget>
               </item>
-              <item row="7" column="4">
-               <widget class="QLabel" name="TS_EMPTYALL_FF_label">
-                <property name="text">
-                 <string>TS_EMPTYALL_FF</string>
+              <item row="3" column="3">
+               <widget class="NoWheelDoubleSpinBox" name="pc_stop_timeout_box">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
                 </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                <property name="suffix">
+                 <string> s</string>
+                </property>
+                <property name="decimals">
+                 <number>1</number>
+                </property>
+                <property name="maximum">
+                 <double>100000.000000000000000</double>
                 </property>
                </widget>
               </item>
-              <item row="1" column="1" colspan="3">
-               <widget class="QLineEdit" name="plc_hostname_edit"/>
+              <item row="2" column="3">
+               <widget class="QLineEdit" name="smb_filename_edit"/>
               </item>
               <item row="5" column="2">
                <widget class="QLabel" name="PCYCLE_PSET_label">
                 <property name="text">
                  <string>PCYCLE_PSET</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="12" column="5">
-               <widget class="NoWheelSpinBox" name="PCYCLE_CYLEQ_FF_box">
-                <property name="maximum">
-                 <number>99999</number>
-                </property>
-               </widget>
-              </item>
-              <item row="6" column="2">
-               <widget class="QLabel" name="PCYCLE_EXPTIME_label">
-                <property name="text">
-                 <string>PCYCLE_EXPTIME</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="5" column="0">
-               <widget class="QLabel" name="WRITE_SLOWDAQ_label">
-                <property name="text">
-                 <string>WRITE_SLOWDAQ</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
@@ -1937,65 +2009,28 @@
                 </property>
                </widget>
               </item>
-              <item row="1" column="0">
-               <widget class="QLabel" name="plc_hostname_label">
-                <property name="text">
-                 <string>Hostname</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>plc_hostname_edit</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="14" column="5">
-               <widget class="NoWheelSpinBox" name="PCYCLE_ACCHARGE_FF_box">
+              <item row="13" column="5">
+               <widget class="NoWheelSpinBox" name="PCYCLE_CYLBLEED_FF_box">
                 <property name="maximum">
                  <number>99999</number>
                 </property>
                </widget>
               </item>
-              <item row="10" column="4">
-               <widget class="QLabel" name="PCYCLE_FASTCOMP_FF_label">
-                <property name="text">
-                 <string>PCYCLE_FASTCOMP_FF</string>
+              <item row="1" column="5">
+               <widget class="NoWheelSpinBox" name="plc_modbus_port_box">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
                 </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="12" column="3">
-               <widget class="NoWheelSpinBox" name="PCYCLE_MAXBLEEDTIME_box">
                 <property name="maximum">
-                 <number>99999</number>
+                 <number>65535</number>
                 </property>
                </widget>
               </item>
-              <item row="7" column="3">
-               <widget class="NoWheelSpinBox" name="PCYCLE_MAXEXPTIME_box">
-                <property name="maximum">
-                 <number>99999</number>
-                </property>
-               </widget>
+              <item row="1" column="1" colspan="3">
+               <widget class="QLineEdit" name="plc_hostname_edit"/>
               </item>
-              <item row="3" column="4">
-               <widget class="QLabel" name="pc_abort_timeout_label">
-                <property name="text">
-                 <string>PC Abort Timeout</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>max_num_ev_box</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="7" column="5">
-               <widget class="NoWheelSpinBox" name="TS_EMPTYALL_FF_box">
+              <item row="10" column="3">
+               <widget class="NoWheelSpinBox" name="PCYCLE_MAXACCTIME_box">
                 <property name="maximum">
                  <number>99999</number>
                 </property>
@@ -2011,59 +2046,20 @@
                 </property>
                </widget>
               </item>
-              <item row="6" column="0">
-               <widget class="QLabel" name="PRESSURE_CYCLE_label">
+              <item row="13" column="4">
+               <widget class="QLabel" name="PCYCLE_CYLBLEED_FF_label">
                 <property name="text">
-                 <string>PRESSURE_CYCLE</string>
+                 <string>PCYCLE_CYLBLEED_FF</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                </widget>
               </item>
-              <item row="5" column="5">
-               <widget class="NoWheelSpinBox" name="TS_ADDREM_FF_box">
+              <item row="6" column="3">
+               <widget class="NoWheelSpinBox" name="PCYCLE_EXPTIME_box">
                 <property name="maximum">
                  <number>99999</number>
-                </property>
-               </widget>
-              </item>
-              <item row="9" column="4">
-               <widget class="QLabel" name="PCYCLE_ABORT_FF_label">
-                <property name="text">
-                 <string>PCYCLE_ABORT_FF</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="5">
-               <widget class="NoWheelDoubleSpinBox" name="pc_abort_timeout_box">
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="suffix">
-                 <string> s</string>
-                </property>
-                <property name="decimals">
-                 <number>1</number>
-                </property>
-                <property name="maximum">
-                 <double>100000.000000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="4">
-               <widget class="QLabel" name="plc_modbus_port_label">
-                <property name="text">
-                 <string>Modbus Port</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>plc_modbus_port_box</cstring>
                 </property>
                </widget>
               </item>
@@ -2080,18 +2076,52 @@
                 </property>
                </widget>
               </item>
-              <item row="10" column="2">
-               <widget class="QLabel" name="PCYCLE_MAXACCTIME_label">
+              <item row="8" column="4">
+               <widget class="QLabel" name="SLOWDAQ_FF_label">
                 <property name="text">
-                 <string>PCYCLE_MAXACCTIME</string>
+                 <string>SLOWDAQ_FF</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                </widget>
               </item>
-              <item row="9" column="5">
-               <widget class="NoWheelSpinBox" name="PCYCLE_ABORT_FF_box">
+              <item row="7" column="5">
+               <widget class="NoWheelSpinBox" name="TS_EMPTYALL_FF_box">
+                <property name="maximum">
+                 <number>99999</number>
+                </property>
+               </widget>
+              </item>
+              <item row="7" column="4">
+               <widget class="QLabel" name="TS_EMPTYALL_FF_label">
+                <property name="text">
+                 <string>TS_EMPTYALL_FF</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="4">
+               <widget class="QLabel" name="TS_EMPTY_FF_label">
+                <property name="text">
+                 <string>TS_EMPTY_FF</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="5">
+               <widget class="NoWheelSpinBox" name="TS_EMPTY_FF_box">
+                <property name="maximum">
+                 <number>99999</number>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="5">
+               <widget class="NoWheelSpinBox" name="TS_ADDREM_FF_box">
                 <property name="maximum">
                  <number>99999</number>
                 </property>
@@ -2106,69 +2136,6 @@
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                </widget>
-              </item>
-              <item row="13" column="5">
-               <widget class="NoWheelSpinBox" name="PCYCLE_CYLBLEED_FF_box">
-                <property name="maximum">
-                 <number>99999</number>
-                </property>
-               </widget>
-              </item>
-              <item row="6" column="3">
-               <widget class="NoWheelSpinBox" name="PCYCLE_EXPTIME_box">
-                <property name="maximum">
-                 <number>99999</number>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="5">
-               <widget class="NoWheelSpinBox" name="plc_modbus_port_box">
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="maximum">
-                 <number>65535</number>
-                </property>
-               </widget>
-              </item>
-              <item row="10" column="3">
-               <widget class="NoWheelSpinBox" name="PCYCLE_MAXACCTIME_box">
-                <property name="maximum">
-                 <number>99999</number>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="0">
-               <widget class="QLabel" name="smb_share_label">
-                <property name="text">
-                 <string>SMB Share</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>max_num_ev_box</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="1">
-               <widget class="QLineEdit" name="smb_share_edit"/>
-              </item>
-              <item row="2" column="2">
-               <widget class="QLabel" name="smb_filename_label">
-                <property name="text">
-                 <string>SMB Filename</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>max_num_ev_box</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="3">
-               <widget class="QLineEdit" name="smb_filename_edit"/>
               </item>
              </layout>
             </item>
@@ -2225,7 +2192,7 @@
              <x>0</x>
              <y>0</y>
              <width>876</width>
-             <height>1143</height>
+             <height>1203</height>
             </rect>
            </property>
            <property name="maximumSize">
@@ -2581,6 +2548,9 @@
                 </property>
                 <property name="text">
                  <string>SiPM Amplifier 1</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
                 </property>
                 <property name="buddy">
                  <cstring>sipm_amp1_enabled_box</cstring>
@@ -3749,6 +3719,9 @@
                 </property>
                 <property name="text">
                  <string>SiPM Amplifier 2</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
                 </property>
                 <property name="buddy">
                  <cstring>sipm_amp2_enabled_box</cstring>
@@ -4958,6 +4931,9 @@
                 <property name="text">
                  <string>SiPM Amplifier 3</string>
                 </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                </property>
                 <property name="buddy">
                  <cstring>sipm_amp3_enabled_box</cstring>
                 </property>
@@ -5913,7 +5889,7 @@
              <x>0</x>
              <y>0</y>
              <width>876</width>
-             <height>920</height>
+             <height>998</height>
             </rect>
            </property>
            <property name="maximumSize">
@@ -5946,13 +5922,6 @@
               <property name="spacing">
                <number>3</number>
               </property>
-              <item row="0" column="7">
-               <widget class="QCheckBox" name="caen_enabled_box">
-                <property name="text">
-                 <string>Enabled</string>
-                </property>
-               </widget>
-              </item>
               <item row="4" column="3">
                <widget class="NoWheelSpinBox" name="caen_majority_window_box">
                 <property name="maximum">
@@ -6488,7 +6457,17 @@
                 </item>
                </widget>
               </item>
-              <item row="0" column="0" colspan="4">
+              <item row="0" column="0">
+               <widget class="QCheckBox" name="caen_enabled_box">
+                <property name="layoutDirection">
+                 <enum>Qt::LayoutDirection::RightToLeft</enum>
+                </property>
+                <property name="text">
+                 <string>Enabled</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="2" colspan="5">
                <widget class="QLabel" name="caen_general_label">
                 <property name="font">
                  <font>
@@ -6497,6 +6476,9 @@
                 </property>
                 <property name="text">
                  <string>CAEN Digitizer General</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
                 </property>
                 <property name="buddy">
                  <cstring>caen_enabled_box</cstring>
@@ -9199,8 +9181,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>888</width>
-             <height>531</height>
+             <width>876</width>
+             <height>549</height>
             </rect>
            </property>
            <property name="maximumSize">
@@ -11292,8 +11274,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>888</width>
-             <height>531</height>
+             <width>876</width>
+             <height>562</height>
             </rect>
            </property>
            <property name="maximumSize">
@@ -12516,7 +12498,7 @@
              <x>0</x>
              <y>0</y>
              <width>876</width>
-             <height>1258</height>
+             <height>1364</height>
             </rect>
            </property>
            <property name="maximumSize">
@@ -17388,15 +17370,13 @@
   <tabstop>log_dir_but</tabstop>
   <tabstop>data_dir_edit</tabstop>
   <tabstop>data_dir_but</tabstop>
-  <tabstop>max_num_ev_box</tabstop>
-  <tabstop>max_ev_time_box</tabstop>
   <tabstop>acous_offset_ch3</tabstop>
   <tabstop>acous_trig_ch3</tabstop>
   <tabstop>acous_threshold_ch3</tabstop>
   <tabstop>acous_offset_ch4</tabstop>
   <tabstop>acous_trig_ch4</tabstop>
   <tabstop>acous_offset_ch5</tabstop>
-  <tabstop>active_pressure</tabstop>
+  <tabstop>active_plc</tabstop>
   <tabstop>acous_trig_ch5</tabstop>
   <tabstop>acous_threshold_ch5</tabstop>
   <tabstop>acous_offset_ch6</tabstop>
@@ -17513,23 +17493,19 @@
   <tabstop>active_led3</tabstop>
   <tabstop>active_cam1</tabstop>
   <tabstop>active_amp2</tabstop>
-  <tabstop>active_amps</tabstop>
   <tabstop>active_caen_g1</tabstop>
   <tabstop>acous_threshold_ch4</tabstop>
   <tabstop>active_led1</tabstop>
   <tabstop>active_sql</tabstop>
   <tabstop>active_caen_g3</tabstop>
   <tabstop>active_led2</tabstop>
-  <tabstop>active_led</tabstop>
   <tabstop>active_cam3</tabstop>
   <tabstop>active_cam2</tabstop>
   <tabstop>active_amp1</tabstop>
   <tabstop>active_caen_g0</tabstop>
-  <tabstop>active_cams</tabstop>
   <tabstop>active_acous</tabstop>
   <tabstop>sql_hostname_edit</tabstop>
   <tabstop>sql_port_box</tabstop>
-  <tabstop>sql_enabled_box</tabstop>
   <tabstop>plc_scroll_area</tabstop>
   <tabstop>pressure1_set</tabstop>
   <tabstop>pressure3_slope</tabstop>
@@ -17543,7 +17519,6 @@
   <tabstop>pressure4_enable</tabstop>
   <tabstop>pressure2_period</tabstop>
   <tabstop>pressure6_set</tabstop>
-  <tabstop>p_random_but</tabstop>
   <tabstop>pressure6_slope</tabstop>
   <tabstop>pressure3_period</tabstop>
   <tabstop>pressure1_slope</tabstop>
@@ -17552,10 +17527,8 @@
   <tabstop>pressure1_high</tabstop>
   <tabstop>pressure6_enable</tabstop>
   <tabstop>pressure3_enable</tabstop>
-  <tabstop>p_enabled_box</tabstop>
   <tabstop>pressure5_set</tabstop>
   <tabstop>pressure5_period</tabstop>
-  <tabstop>p_cycle_but</tabstop>
   <tabstop>pressure4_set</tabstop>
   <tabstop>pressure1_enable</tabstop>
   <tabstop>pressure2_enable</tabstop>
@@ -17580,7 +17553,6 @@
   <tabstop>PCYCLE_CYLEQ_FF_box</tabstop>
   <tabstop>PCYCLE_ABORT_FF_box</tabstop>
   <tabstop>PCYCLE_SLOWCOMP_SET_box</tabstop>
-  <tabstop>plc_enabled_box</tabstop>
   <tabstop>PCYCLE_FASTCOMP_FF_box</tabstop>
   <tabstop>PCYCLE_MAXEQPDIFF_box</tabstop>
   <tabstop>TS_EMPTYALL_FF_box</tabstop>
@@ -17723,7 +17695,6 @@
   <tabstop>sipm_amp3_name_ch15</tabstop>
   <tabstop>sipm_amp3_name_ch16</tabstop>
   <tabstop>scrollArea</tabstop>
-  <tabstop>caen_enabled_box</tabstop>
   <tabstop>caen_majority_window_box</tabstop>
   <tabstop>caen_clock_box</tabstop>
   <tabstop>caen_acq_box</tabstop>

@@ -108,8 +108,10 @@ class SettingsWindow(QMainWindow):
 
         # set up checkboxes pairs and groups
         # Individual checkbox pairs (general tab <-> specific tab)
-        self.checkpair_pressure = CheckBoxPairBinder(self.widgets["active_pressure"], self.widgets["p_enabled_box"])
+        self.checkpair_pressure = CheckBoxPairBinder(self.widgets["active_plc"], self.widgets["plc_enabled_box"])
         self.checkpair_sql = CheckBoxPairBinder(self.widgets["active_sql"], self.widgets["sql_enabled_box"])
+        self.checkpair_writer = CheckBoxPairBinder(self.widgets["active_writer"], self.widgets["writer_enabled_box"])
+        self.checkpair_acoustic = CheckBoxPairBinder(self.widgets["active_acous"], self.widgets["acous_enabled_box"])
         
         # Camera checkboxes
         self.checkpair_cam1 = CheckBoxPairBinder(self.widgets["active_cam1"], self.widgets["cam1_enabled_box"])
@@ -122,6 +124,7 @@ class SettingsWindow(QMainWindow):
         self.checkpair_amp3 = CheckBoxPairBinder(self.widgets["active_amp3"], self.widgets["sipm_amp3_enabled_box"])
         
         # CAEN checkboxes
+        self.checkpair_caen = CheckBoxPairBinder(self.widgets["active_caen"], self.widgets["caen_enabled_box"])
         self.checkpair_caen0 = CheckBoxPairBinder(self.widgets["active_caen_g0"], self.widgets["caen_g0_enable_box"])
         self.checkpair_caen1 = CheckBoxPairBinder(self.widgets["active_caen_g1"], self.widgets["caen_g1_enable_box"])
         self.checkpair_caen2 = CheckBoxPairBinder(self.widgets["active_caen_g2"], self.widgets["caen_g2_enable_box"])
@@ -129,20 +132,10 @@ class SettingsWindow(QMainWindow):
 
         # Group checkboxes (group checkbox controls multiple individual checkboxes)
         # Cameras group - "active_cams" controls cam1, cam2, cam3 AND also syncs with "cams_enabled_box"
-        cam_individual_checkboxes = [self.widgets["active_cam1"], self.widgets["active_cam2"], self.widgets["active_cam3"]]
-        self.checkgroup_cams = CheckBoxGroupBinder(self.widgets["active_cams"], cam_individual_checkboxes)
-        
-        # Also sync the group checkbox with its corresponding specific tab checkbox
-        self.checkpair_cams = CheckBoxPairBinder(self.widgets["active_cams"], self.widgets["cams_enabled_box"])
-        
-        # SiPM Amps group - "active_amps" controls amp1, amp2, amp3
-        amp_individual_checkboxes = [self.widgets["active_amp1"], self.widgets["active_amp2"], self.widgets["active_amp3"]]
-        self.checkgroup_amps = CheckBoxGroupBinder(self.widgets["active_amps"], amp_individual_checkboxes)
-        
-        # CAEN group - "active_caen" controls caen_g0, caen_g1, caen_g2, caen_g3
-        caen_individual_checkboxes = [self.widgets["active_caen_g0"], self.widgets["active_caen_g1"], 
-                                      self.widgets["active_caen_g2"], self.widgets["active_caen_g3"]]
-        self.checkgroup_caen = CheckBoxGroupBinder(self.widgets["active_caen"], caen_individual_checkboxes)
+        cam_individual_checkboxes = [self.widgets["cam1_enabled_box"], 
+                                     self.widgets["cam2_enabled_box"], 
+                                     self.widgets["cam3_enabled_box"]]
+        self.checkgroup_cams = CheckBoxGroupBinder(self.widgets["cams_enabled_box"], cam_individual_checkboxes)
 
         # set up shared combo boxes
         self.sipm_names = QStringListModel(["NC",

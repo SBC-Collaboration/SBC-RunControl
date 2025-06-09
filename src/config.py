@@ -81,6 +81,7 @@ class Config(QObject):
         ui.config_path_edit.setText(general_config["config_path"])
         ui.log_dir_edit.setText(general_config["log_dir"])
         ui.data_dir_edit.setText(general_config["data_dir"])
+        ui.writer_enabled_box.setChecked(general_config["writer_enabled"])
         ui.max_ev_time_box.setValue(general_config["max_ev_time"])
         ui.max_num_ev_box.setValue(general_config["max_num_evs"])
 
@@ -97,13 +98,7 @@ class Config(QObject):
 
         # pressure
         pressure_config = self.config["plc"]["pressure"]
-        ui.p_enabled_box.setChecked(pressure_config["enabled"])
-        if pressure_config["mode"] == "random":
-            ui.p_random_but.setChecked(True)
-        elif pressure_config["mode"] == "cycle":
-            ui.p_cycle_but.setChecked(True)
-        else:
-            self.logger.error("Invalid pressure mode.")
+        ui.p_mode_box.setCurrentText(pressure_config["mode"])
         for i in range(1,7):
             profile = pressure_config[f"profile{i}"]
             widgets[f"pressure{i}_enable"].setChecked(profile["enabled"])
@@ -390,6 +385,7 @@ class Config(QObject):
             "config_path": ui.config_path_edit.text(),
             "data_dir": ui.data_dir_edit.text(),
             "log_dir": ui.log_dir_edit.text(),
+            "writer_enabled": ui.writer_enabled_box.isChecked(),
             "max_ev_time": ui.max_ev_time_box.value(),
             "max_num_evs": ui.max_num_ev_box.value(),
         }
@@ -406,18 +402,8 @@ class Config(QObject):
             "abort_timeout": ui.pc_abort_timeout_box.value(),
         }
 
-        # get mode from radio buttons
-        if ui.p_random_but.isChecked():
-            mode = "random"
-        elif ui.p_cycle_but.isChecked():
-            mode = "cycle"
-        else:
-            self.logger.error("No pressure mode selected.")
-            mode = ""
-
         pressure_config = {
-            "enabled": ui.p_enabled_box.isChecked(),
-            "mode": mode,
+            "mode": ui.p_mode_box.currentText(),
         }
 
         for i in range(1,7):
@@ -759,7 +745,7 @@ class Config(QObject):
 
         enabled_profiles = 0
         self.run_pressure_profiles = []
-        if pressure_profiles["enabled"]:
+        if self.run_config["plc"]["enabled"]:
             for k, v in pressure_profiles.items():
                 if ("profile" in k) and v["enabled"]:
                     self.run_pressure_profiles.append(v)
@@ -811,9 +797,9 @@ class Config(QObject):
                 "slope": None, 
                 "period": None
                 }
-        elif self.run_pressure_mode == "random":
+        elif self.run_pressure_mode == "Random":
             self.event_pressure = random.choice(self.run_pressure_profiles)
-        elif self.run_pressure_mode == "cycle":
+        elif self.run_pressure_mode == "Cycle":
             self.event_pressure = self.run_pressure_profiles[0]
             self.run_pressure_profiles.append(self.run_pressure_profiles.pop(0))
         else:
