@@ -122,14 +122,16 @@ SUDOER_SET=false
 # Check if root script already installed
 if [ -f "$ROOT_SCRIPT_DEST" ]; then
     echo "Root components already installed."
-    SOURCE_HASH=$(sha256sum "$ROOT_SCRIPT_SOURCE")
-    DESTINATION_HASH=$(sha256sum "$ROOT_SCRIPT_DEST")
+    SOURCE_HASH=$(sha256sum "$ROOT_SCRIPT_SOURCE" | awk '{print $1}')
+    DESTINATION_HASH=$(sha256sum "$ROOT_SCRIPT_DEST" | awk '{print $1}')
     # Check if the script is up to date
     if [ "$SOURCE_HASH" = "$DESTINATION_HASH" ]; then
         echo "Root script is up to date."
         SCRIPT_UPDATED=true
     else
-        echo "Root script is not up to date. Updating..."
+        echo "Root script is not up to date."
+        echo "Source hash: $SOURCE_HASH, Destination hash: $DESTINATION_HASH"
+        echo "Updating..."
         SCRIPT_UPDATED=false
     fi
 else
