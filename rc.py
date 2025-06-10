@@ -297,14 +297,20 @@ class MainWindow(QMainWindow):
             pass
 
         # quit all created workers and threads
-        for name, var in self.widgets.items():
-            if name.endswith("_worker"):
-                var.deleteLater()
-            elif name.endswith("_thread"):
-                self.logger.debug(f"Stopping {name}.")
-                var.quit()
-                if not var.wait(1000):  # 1 sec timeout
-                    self.logger.error(f"Thread {name} failed to stop")
+        modules = ["cam1", "cam2", "cam3", "amp1", "amp2", "amp3",
+                   "arduino_trigger", "arduino_clock", "arduino_position", 
+                   "caen", "acous", "modbus", "niusb", "writer", "sql"]
+        for m in modules:
+            worker = getattr(self, f"{m}_worker", None)
+            thread = getattr(self, f"{m}_thread", None)
+            self.logger.debug(f"Stopping {worker}.")
+            thread.quit()
+            if not thread.wait(1000):  # 1 sec timeout
+                self.logger.error(f"Thread {m} failed to stop")
+            
+            worker.deleteLater()
+            thread.deleteLater()
+        
         self.logger.info("All threads stopped.")
 
         # Cleanup resources
