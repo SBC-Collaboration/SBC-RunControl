@@ -61,9 +61,19 @@ class Config(QObject):
         # update existing dict with new settings
         self.update_dict(self.config, self.new_config)
         self.load_config_to_window(ui)
+    
+    @Slot()
+    def load_config_to_mainwindow(self):
+        main_ui = self.main.ui
+        config = self.config["general"]
+        main_ui.autorun_box.setChecked(config["autorun"])
+        main_ui.source_box.setCurrentText(config["source"])
+        main_ui.source_location_box.setCurrentText(config["source_location"])
+
 
     @Slot()
     def load_config_to_window(self, ui):
+        # settings window
         widgets = ui.__dict__
 
         # general
@@ -71,23 +81,24 @@ class Config(QObject):
         ui.config_path_edit.setText(general_config["config_path"])
         ui.log_dir_edit.setText(general_config["log_dir"])
         ui.data_dir_edit.setText(general_config["data_dir"])
+        ui.writer_enabled_box.setChecked(general_config["writer_enabled"])
         ui.max_ev_time_box.setValue(general_config["max_ev_time"])
         ui.max_num_ev_box.setValue(general_config["max_num_evs"])
 
         # PLC
         plc_config = self.config["plc"]
+        ui.plc_enabled_box.setChecked(plc_config["enabled"])
         ui.plc_hostname_edit.setText(plc_config["hostname"])
         ui.plc_modbus_port_box.setValue(plc_config["port"])
+        ui.smb_share_edit.setText(plc_config["smb_share"])
+        ui.smb_filename_edit.setText(plc_config["smb_filename"])
+        ui.pc_trig_timeout_box.setValue(plc_config["trig_timeout"])
+        ui.pc_stop_timeout_box.setValue(plc_config["stop_timeout"])
+        ui.pc_abort_timeout_box.setValue(plc_config["abort_timeout"])
 
         # pressure
         pressure_config = self.config["plc"]["pressure"]
-        ui.p_enabled_box.setChecked(pressure_config["enabled"])
-        if pressure_config["mode"] == "random":
-            ui.p_random_but.setChecked(True)
-        elif pressure_config["mode"] == "cycle":
-            ui.p_cycle_but.setChecked(True)
-        else:
-            self.logger.error("Invalid pressure mode.")
+        ui.p_mode_box.setCurrentText(pressure_config["mode"])
         for i in range(1,7):
             profile = pressure_config[f"profile{i}"]
             widgets[f"pressure{i}_enable"].setChecked(profile["enabled"])
@@ -126,7 +137,6 @@ class Config(QObject):
         ui.sql_hostname_edit.setText(sql_config["hostname"])
         ui.sql_port_box.setValue(sql_config["port"])
         ui.sql_user_edit.setText(sql_config["user"])
-        ui.sql_token_edit.setText(sql_config["token"])
         ui.sql_database_edit.setText(sql_config["database"])
         ui.sql_run_table_edit.setText(sql_config["run_table"])
         ui.sql_event_table_edit.setText(sql_config["event_table"])
@@ -266,7 +276,7 @@ class Config(QObject):
         widgets[f"acous_threshold_ext"].setValue(acous_ext_config["threshold"])
 
         # cameras
-        cam_config = self.config["cam"]
+        cam_config = self.config["cams"]
         for cam in ["cam1", "cam2", "cam3"]:
             config = cam_config[cam]
             widgets[f"{cam}_enabled_box"].setChecked(config["enabled"])
@@ -362,35 +372,38 @@ class Config(QObject):
 
     @Slot()
     def apply_config(self, ui):
+        # main window
+        main_ui = self.main.ui
+
+        # settings window
         widgets = ui.__dict__
 
         general_config = {
+            "autorun": main_ui.autorun_box.isChecked(),
+            "source": main_ui.source_box.currentText(),
+            "source_location": main_ui.source_location_box.currentText(),
             "config_path": ui.config_path_edit.text(),
             "data_dir": ui.data_dir_edit.text(),
             "log_dir": ui.log_dir_edit.text(),
+            "writer_enabled": ui.writer_enabled_box.isChecked(),
             "max_ev_time": ui.max_ev_time_box.value(),
             "max_num_evs": ui.max_num_ev_box.value(),
         }
 
         # apply plc config
         plc_config = {
-            # TODO: add PLC enabled box
+            "enabled": ui.plc_enabled_box.isChecked(),
             "hostname": ui.plc_hostname_edit.text(),
             "port": ui.plc_modbus_port_box.value(),
+            "smb_share": ui.smb_share_edit.text(),
+            "smb_filename": ui.smb_filename_edit.text(),
+            "trig_timeout": ui.pc_trig_timeout_box.value(),
+            "stop_timeout": ui.pc_stop_timeout_box.value(),
+            "abort_timeout": ui.pc_abort_timeout_box.value(),
         }
 
-        # get mode from radio buttons
-        if ui.p_random_but.isChecked():
-            mode = "random"
-        elif ui.p_cycle_but.isChecked():
-            mode = "cycle"
-        else:
-            self.logger.error("No pressure mode selected.")
-            mode = ""
-
         pressure_config = {
-            "enabled": ui.p_enabled_box.isChecked(),
-            "mode": mode,
+            "mode": ui.p_mode_box.currentText(),
         }
 
         for i in range(1,7):
@@ -435,7 +448,6 @@ class Config(QObject):
             "hostname": ui.sql_hostname_edit.text(),
             "port": ui.sql_port_box.value(),
             "user": ui.sql_user_edit.text(),
-            "token": ui.sql_token_edit.text(),
             "database": ui.sql_database_edit.text(),
             "run_table": ui.sql_run_table_edit.text(),
             "event_table": ui.sql_event_table_edit.text(),
@@ -698,7 +710,7 @@ class Config(QObject):
                 "group3": caen_g3_config
             },
             "acous": acous_config,
-            "cam": cam_config,
+            "cams": cam_config,
             "dio": {"trigger": trigger_config,
                     "clock": clock_config,
                     "position": position_config,
@@ -733,7 +745,7 @@ class Config(QObject):
 
         enabled_profiles = 0
         self.run_pressure_profiles = []
-        if pressure_profiles["enabled"]:
+        if self.run_config["plc"]["enabled"]:
             for k, v in pressure_profiles.items():
                 if ("profile" in k) and v["enabled"]:
                     self.run_pressure_profiles.append(v)
@@ -760,7 +772,7 @@ class Config(QObject):
 
         # save camera json files
         for cam in ["cam1", "cam2", "cam3"]:
-            cam_config = copy.deepcopy(self.run_config["cam"][cam])
+            cam_config = copy.deepcopy(self.run_config["cams"][cam])
             if not cam_config["enabled"]:
                 continue
             with open(cam_config["rc_config_path"], "w") as file:
@@ -785,9 +797,9 @@ class Config(QObject):
                 "slope": None, 
                 "period": None
                 }
-        elif self.run_pressure_mode == "random":
+        elif self.run_pressure_mode == "Random":
             self.event_pressure = random.choice(self.run_pressure_profiles)
-        elif self.run_pressure_mode == "cycle":
+        elif self.run_pressure_mode == "Cycle":
             self.event_pressure = self.run_pressure_profiles[0]
             self.run_pressure_profiles.append(self.run_pressure_profiles.pop(0))
         else:
@@ -802,3 +814,7 @@ class Config(QObject):
     @Slot()
     def stop_run(self):
         self.run_config = self.config
+
+        self.cam_config_mutex.lock()
+        self.cam_config_ready = False
+        self.cam_config_mutex.unlock()

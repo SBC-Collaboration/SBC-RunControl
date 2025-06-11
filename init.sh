@@ -60,12 +60,37 @@ arduino-cli core install arduino:avr
 arduino-cli lib install incbin ArduinoJson Ethernet
 
 # =================================================
+# Check and prepare SMB token
+# =================================================
+# Crete config directory if it doesn't exist
+mkdir -p "$HOME/.config/runcontrol"
+FILE="$HOME/.config/runcontrol/smb_token"
+
+# Check if file already exists
+if [ -e "$FILE" ]; then
+    echo "File '$FILE' already exists. Skipping password save."
+else
+    # Prompt for password without echo
+    read -s -p "Enter SMB user name: " USERNAME
+    echo
+    read -s -p "Enter SMB password: " PASSWORD
+    echo
+    echo -e "username=$USERNAME\npassword=$PASSWORD" > "$FILE"
+    echo "Password saved to '$FILE'."
+fi
+
+FILE_PERM=$(stat -c "%a" "$FILE")
+if [ "$FILE_PERM" != "600" ]; then
+    chmod 600 "$FILE"
+    echo "File permissions for '$FILE' have been corrected to 600."
+fi
+
+# =================================================
 # Save and prepare SQL token
 # =================================================
 FILE="$HOME/.config/runcontrol/sql_token"
 LINE="export SQL_DAQ_TOKEN=\$(<\"$FILE\" tr -d '\\n')"
 BASHRC="$HOME/.bashrc"
-NEW_TOKEN=false
 
 # Check if file already exists
 if [ -e "$FILE" ]; then
@@ -76,28 +101,12 @@ else
     echo
     echo "$PASSWORD" > "$FILE"
     echo "Password saved to '$FILE'."
-    NEW_TOKEN=true
 fi
 
 FILE_PERM=$(stat -c "%a" "$FILE")
 if [ "$FILE_PERM" != "600" ]; then
     chmod 600 "$FILE"
     echo "File permissions for '$FILE' have been corrected to 600."
-fi
-
-# Check if line exists in .bashrc
-if ! grep -Fxq "$LINE" "$BASHRC"; then
-    echo "$LINE" >> "$BASHRC"
-    echo "Added SQL_DAQ_TOKEN export line to $BASHRC"
-else
-    echo "SQL_DAQ_TOKEN export line already present in $BASHRC"
-fi
-
-eval "$LINE"
-if [ "$NEW_TOKEN" == "true" ]; then
-    echo "SQL_DAQ_TOKEN set from user input."
-else
-    echo "SQL_DAQ_TOKEN set from file."
 fi
 
 # =================================================
@@ -113,14 +122,16 @@ SUDOER_SET=false
 # Check if root script already installed
 if [ -f "$ROOT_SCRIPT_DEST" ]; then
     echo "Root components already installed."
-    SOURCE_HASH=$(sha256sum "$ROOT_SCRIPT_SOURCE")
-    DESTINATION_HASH=$(sha256sum "$ROOT_SCRIPT_DEST")
+    SOURCE_HASH=$(sha256sum "$ROOT_SCRIPT_SOURCE" | awk '{print $1}')
+    DESTINATION_HASH=$(sha256sum "$ROOT_SCRIPT_DEST" | awk '{print $1}')
     # Check if the script is up to date
     if [ "$SOURCE_HASH" = "$DESTINATION_HASH" ]; then
         echo "Root script is up to date."
         SCRIPT_UPDATED=true
     else
-        echo "Root script is not up to date. Updating..."
+        echo "Root script is not up to date."
+        echo "Source hash: $SOURCE_HASH, Destination hash: $DESTINATION_HASH"
+        echo "Updating..."
         SCRIPT_UPDATED=false
     fi
 else

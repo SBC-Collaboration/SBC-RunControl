@@ -53,8 +53,7 @@ There are seven states, which are `preparing`, `idle`. `starting_run`, `stopping
 
 ### Preparing
 When the run control program starts, it will first enter the `preparing` state. In this state it will instantiate all the secondary threads and workers, and load the GUI with initial information.
-- Arduinos: Flash sketch to board?
-- SiPM amp: run IV curve if no data for today?
+- Config: Load config from file to a dictionary in memory.
 
 ### Idle
 After the `preparing` state ends, it will enter the `idle` state. The "Start Run" button will be available to start a new run, and any changes to the configuration can be applied immediately.
@@ -63,33 +62,50 @@ After the `preparing` state ends, it will enter the `idle` state. The "Start Run
 After the "Start Run" button is pressed, the program will enter this state. When all modules are ready, it will enter into `starting_event` state.
 - GUI: set run ID, event ID, event livetime, run livetime
 - Writer: create run folder. Save current config file. Create log file and add to logger. Initialize run_data variable.
-- SiPM amp: bias SiPMs
+- SQL: Insert a new row for the current run into the Run Data table.
+- SiPM amp: Bias SiPMs.
+- CAEN: Establish connection. Apply configuration to CAEN. 
+- Arduinos: Check if the code on the arduino is the same as the one in the repository. This includes any json configuration files. If they are different, compile the code in the repository and upload to the arduino.
+- Camera: Send config file. Start `imdaq` script.
 - Config: save current config to run folder.
+- Modbus: Start connection to the PLC modbus server. 
 
 ### Stopping Run
-This is the state then the run is stopping.
+This is the state then the run is stopping. If autorun is selected and this run is not stopped by manually pressing the button, a new run will automatically start after this one.
+- SQL: Update the row for current event with end of run exit code and timestamp.
 - SiPM amp: unbias SiPM
-- Write run data into SQL RunData table.
+- Writer: Write run info binary file.
+- Camera: close connection to camera.
+- NIUSB: Release USB device.
 
 ### Starting Event
 When the `starting_run` state ends, or then `stopping_event` state ends, and neither "Stop Run" button is pressed, or maximum number of events is reached, the program will start a new event. It will send out a `Signal` to all modules. When all modules are ready, it will enter `active` state.
 - GUI: set event ID and event livetime display.
 - Writer: Create folder for the event.
-- Camera: Send config file. Start `imdaq` script.
-- NIUSB: set input/output pins. Sends out `trig_reset` signal. Set outputs to camera.
-- CAEN: save config file. Start data acquisition.
-- Acoustics: save config file. Start data acquisition.
+- NIUSB: Set input/output pins. Sends out `trig_reset` signal. Set outputs to camera.
+- CAEN: Start data acquisition.
+- Acoustics: Save config file. Start a data acquisition process.
+- Modbus: Start SLOWDAQ procesure, and set pressure setpoint.
+- NIUSB: Send out trigger reset signal until trigger latch is back to low.
+- SQL: Insert row for the current event.
 
 ### Stopping Event
 This is the state when the event is stopping. A `Signal` is sent to all modules to save data for the event. After the state is finished, it will enter into either `starting_event` to start a new event, or `stopping_run` to end the run. That decision will depend on if the "Stop Run" button is pressed, or maximum number of events is reached.
 - Writer: save event binary data.
+- SQL: Update row for current event inth the Event Data with information like exit code and livetime. Update the row for current run in the Run Data table with up to date information.
+- Modbus: wait for PLC pressure cycle procedure to stop, and stop/abort if times out. Stops SLOWDAQ procedure and copies file into event folder at `slow_daq.sbc`. Saves PLC first fault bits into `plc.sbc`.
 - Cameras: Take remaining images. Save images, info table and log into event folder.
-- CAEN: stop data acquisition, save data to event folder.
-- Acoustics: save data to event folder.
+- CAEN: Stop data acquisition. Retrieve any data from CAEN buffer to PC. Save data to event folder.
+- Acoustics: Terminate the data taking process. Transfer all data to PC's memory. Save data around trigger to event folder.
+- NIUSB: Retrieve first fault information. Monitor that all cameras successfully goes back into idle state.
 
 ### Active
 All modules in this state will be actively taking data in buffer, and waiting for a trigger. When a trigger is received by run control, it will enter into `stopping_event` state.
-GUI: Start event timer. Update event livetime and run livetime. Check for max event time to send out trigger.
+- GUI: Start event timer. Update event livetime and run livetime. Check for max event time to send out trigger.
+- Acoustics: Check if the GaGe process is still running. If it has quitted after the buffer is full, start another process.
+- CAEN: Retrieve data from CAEN buffer to PC memory on a loop. 
+- Camera: (In NIUSB module) send out start event digital signal. Send out trigger enable signal after certain wait time.
+- Modbus: Start PRESSURE_CYCLE procedure.
 
 ## Modules
 The run control program is organized in modules. The main module is responsible for the graphical interface. All other modules are launched in their own threads. Each module is defined by a python script in the `src/` folder, and one or more instances of a module may be created. For example, there are three camera threads, each controlling a camera RPi. A thread is created at the start of the program for each module, and the module class is instantiated into a worker inside that thread. The communication between modules and the main thread is handled by PySide6 signals and threads, and there is also limited number of communication between modules directly. The threads live across events and runs, and are only killed when run control is closed.

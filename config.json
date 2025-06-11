@@ -1,17 +1,26 @@
 {
   "general": {
+    "autorun": true,
+    "source": "Bg",
+    "source_location": "None",
     "config_path": "./config.json",
     "data_dir": "/mnt/nas/rc-data",
     "log_dir": "/mnt/nas/rc-data/logs/",
+    "writer_enabled": true,
     "max_ev_time": 30.0,
     "max_num_evs": 1
   },
   "plc": {
+    "enabled": false,
     "hostname": "192.168.137.11",
     "port": 502,
+    "smb_share": "Public",
+    "smb_filename": "slowDAQ_0.bin",
+    "trig_timeout": 30.0,
+    "stop_timeout": 30.0,
+    "abort_timeout": 30.0,
     "pressure": {
-      "enabled": false,
-      "mode": "random",
+      "mode": "Random",
       "profile1": {
         "enabled": true,
         "setpoint": 2.0,
@@ -85,7 +94,6 @@
     "hostname": "sbcslowcontrol.fnal.gov",
     "port": 3306,
     "user": "daq",
-    "token": "SQL_DAQ_TOKEN",
     "database": "SBCslowcontrol",
     "run_table": "RunData",
     "event_table": "EventData"
@@ -121,21 +129,21 @@
         0.0
       ],
       "name": [
-        "NC",
-        "NC",
-        "NC",
-        "NC",
-        "NC",
-        "NC",
-        "NC",
-        "NC",
-        "NC",
-        "NC",
-        "NC",
-        "NC",
-        "NC",
-        "NC",
-        "NC"
+        "SiPM11",
+        "SiPM12",
+        "SiPM14",
+        "SiPM15",
+        "SiPM22",
+        "SiPM23",
+        "SiPM25",
+        "SiPM26",
+        "SiPM31",
+        "SiPM32",
+        "SiPM34",
+        "SiPM35",
+        "SiPM42",
+        "SiPM43",
+        "SiPM45"
       ]
     },
     "amp2": {
@@ -168,21 +176,21 @@
         0.0
       ],
       "name": [
-        "NC",
-        "NC",
-        "NC",
-        "NC",
-        "NC",
-        "NC",
-        "NC",
-        "NC",
-        "NC",
-        "NC",
-        "NC",
-        "NC",
-        "NC",
-        "NC",
-        "NC"
+        "SiPM51",
+        "SiPM52",
+        "SiPM54",
+        "SiPM55",
+        "SiPM62",
+        "SiPM63",
+        "SiPM65",
+        "SiPM66",
+        "SiPM71",
+        "SiPM72",
+        "SiPM74",
+        "SiPM75",
+        "SiPM82",
+        "SiPM83",
+        "SiPM85"
       ]
     },
     "amp3": {
@@ -264,14 +272,14 @@
       "offset": 32768,
       "range": "2 Vpp",
       "name": [
-        "NC",
-        "NC",
-        "NC",
-        "NC",
-        "NC",
-        "NC",
-        "NC",
-        "NC"
+        "1-01",
+        "1-02",
+        "1-03",
+        "1-04",
+        "1-05",
+        "1-06",
+        "1-07",
+        "1-08"
       ],
       "trig_mask": [
         true,
@@ -320,14 +328,14 @@
       "offset": 32768,
       "range": "2 Vpp",
       "name": [
-        "NC",
-        "NC",
-        "NC",
-        "NC",
-        "NC",
-        "NC",
-        "NC",
-        "NC"
+        "1-09",
+        "1-10",
+        "1-11",
+        "1-12",
+        "1-13",
+        "1-14",
+        "1-15",
+        "1-16"
       ],
       "trig_mask": [
         true,
@@ -376,14 +384,14 @@
       "offset": 32768,
       "range": "2 Vpp",
       "name": [
-        "NC",
-        "NC",
-        "NC",
-        "NC",
-        "NC",
-        "NC",
-        "NC",
-        "NC"
+        "2-01",
+        "2-02",
+        "2-03",
+        "2-04",
+        "2-05",
+        "2-06",
+        "2-07",
+        "2-08"
       ],
       "trig_mask": [
         false,
@@ -432,14 +440,14 @@
       "offset": 32768,
       "range": "2 Vpp",
       "name": [
-        "NC",
-        "NC",
-        "NC",
-        "NC",
-        "NC",
-        "NC",
-        "NC",
-        "NC"
+        "2-09",
+        "2-10",
+        "2-11",
+        "2-12",
+        "2-13",
+        "2-14",
+        "2-15",
+        "2-16"
       ],
       "trig_mask": [
         false,
@@ -591,7 +599,7 @@
       "threshold": 0
     }
   },
-  "cam": {
+  "cams": {
     "cam1": {
       "enabled": false,
       "rc_config_path": "/mnt/nas/rc-data/config/cam1-config.json",
@@ -947,8 +955,8 @@
       "0.6": "state_cam3",
       "0.7": "comm_cam3",
       "1.0": "trigen_cam3",
-      "1.1": "trig",
-      "1.2": "latch",
+      "1.1": "latch",
+      "1.2": "trig",
       "1.3": "reset",
       "1.4": "trigff_rc",
       "1.5": "trigff_p",

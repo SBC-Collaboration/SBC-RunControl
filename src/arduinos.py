@@ -78,7 +78,6 @@ class Arduino(QObject):
         self.arduino = arduino
         self.config = mainwindow.config_class.config["dio"][arduino]
         self.logger = logging.getLogger("rc")
-        os.putenv("PATH", "/home/sbc/packages")
         # create reverse port map
         for pin, port in self.arduino_port_map.items():
             self.reverse_port_map[port] = pin
@@ -123,14 +122,14 @@ class Arduino(QObject):
         elif not (archives := glob.glob(os.path.join(build_path, "*.zip"))):
             # check if a zip file exists in the build folder, without in the filename
             checksum = 0
-            self.logger.debug(f"Sketch archive doesn't exist for {self.arduino} arduino.")
+            self.logger.debug(f"Sketch archive doesn't exist for {self.arduino} arduino. Creating archive.")
         elif len(archives)==1:
             # generate checksum for old zip file
             with open(archives[0], "rb") as f:
                 checksum = hashlib.sha256(f.read()).digest()
         else:
-            self.logger.error(f"More than one sketch archive for {self.arduino} arduino.")
-            cheskum = 0
+            self.logger.debug(f"More than one sketch archive for {self.arduino} arduino. Recreating archive.")
+            checksum = 0
 
         # generate a new zip archive of sketch
         os.environ["PATH"] += os.pathsep + os.path.join(os.path.dirname(os.path.dirname(__file__)), "dependencies")

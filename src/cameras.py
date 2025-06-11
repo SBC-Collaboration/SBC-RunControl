@@ -18,9 +18,8 @@ class Camera(QObject):
         super().__init__()
         self.main = mainwindow
         self.cam_name = cam_name
-        self.config = mainwindow.config_class.config["cam"][self.cam_name]
+        self.config = mainwindow.config_class.config["cams"][self.cam_name]
         self.logger = logging.getLogger("rc")
-        os.putenv("PATH", "/home/sbc/packages")
         self.username = "pi"
         self.client = pm.client.SSHClient()
         self.client.set_missing_host_key_policy(pm.AutoAddPolicy())
@@ -53,7 +52,7 @@ class Camera(QObject):
     @Slot()
     def start_camera(self):
         # use run config, which is stable during a run
-        self.config = self.main.config_class.run_config["cam"][self.cam_name]
+        self.config = self.main.config_class.run_config["cams"][self.cam_name]
 
         if not self.config["enabled"]:
             self.camera_started.emit(f"{self.cam_name}-disabled")
@@ -69,8 +68,7 @@ class Camera(QObject):
         # check if NIUSB has initialized its outputs
         self.main.niusb_worker.run_mutex.lock()
         while not self.main.niusb_worker.run_ready:
-            self.main.niusb_worker.run_wait.wait()
-        self.main.niusb_worker.run_ready = False
+            self.main.niusb_worker.run_wait.wait(self.main.niusb_worker.run_mutex)
         self.main.niusb_worker.run_mutex.unlock()
 
         # start executing command

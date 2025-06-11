@@ -1,13 +1,15 @@
 [submodule "dependencies/gati-linux-driver"]
 	path = dependencies/gati-linux-driver
 	url = git@github.com:SBC-Collaboration/gati-linux-driver.git
-        branch = runcontrol
-	ignore = untracked
+	branch = runcontrol
+	ignore = all
 [submodule "dependencies/CAENDrivers"]
 	path = dependencies/CAENDrivers
 	url = git@github.com:SBC-Collaboration/CAENDrivers.git
-	ignore = untracked
+	branch = main
+	ignore = all
 [submodule "dependencies/ArduinoSketches"]
 	path = dependencies/ArduinoSketches
 	url = git@github.com:SBC-Collaboration/SBC-ArduinoSketches.git
-	ignore = untracked
+	branch = main
+	ignore = all

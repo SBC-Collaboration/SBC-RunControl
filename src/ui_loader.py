@@ -32,6 +32,60 @@ class CheckBoxPairBinder(QObject):
                 self.checkbox1.setCheckState(Qt.CheckState(state))
 
 
+# Class for handling group checkbox synchronization (group checkbox with multiple individual checkboxes)
+class CheckBoxGroupBinder(QObject):
+    def __init__(self, group_checkbox, individual_checkboxes):
+        super(CheckBoxGroupBinder, self).__init__()
+        self.group_checkbox = group_checkbox
+        self.individual_checkboxes = individual_checkboxes
+        self._updating_group = False  # Flag to prevent infinite loops
+        
+        # Enable tristate for the group checkbox
+        self.group_checkbox.setTristate(True)
+        
+        # Connect signals
+        self.group_checkbox.stateChanged.connect(self.group_changed)
+        for checkbox in self.individual_checkboxes:
+            checkbox.stateChanged.connect(self.individual_changed)
+        
+        # Initialize the group state
+        self.update_group_state()
+
+    def group_changed(self, state):
+        """When group checkbox changes, update all individual checkboxes"""
+        if self._updating_group or Qt.CheckState(state) == Qt.PartiallyChecked:
+            # Don't change individual checkboxes when we're updating the group state
+            # or when partially checked
+            return
+            
+        new_state = Qt.CheckState(state)
+        # Don't use QSignalBlocker here - let the signals propagate to pair binders
+        for checkbox in self.individual_checkboxes:
+            checkbox.setCheckState(new_state)
+
+    def individual_changed(self, state):
+        """When any individual checkbox changes, update the group checkbox"""
+        if not self._updating_group:
+            self.update_group_state()
+
+    def update_group_state(self):
+        """Update group checkbox state based on individual checkboxes"""
+        self._updating_group = True  # Set flag to prevent recursion
+        
+        checked_count = sum(1 for cb in self.individual_checkboxes if cb.isChecked())
+        total_count = len(self.individual_checkboxes)
+        
+        with QSignalBlocker(self.group_checkbox):
+            if checked_count == 0:
+                self.group_checkbox.setCheckState(Qt.Unchecked)
+            elif checked_count == total_count:
+                self.group_checkbox.setCheckState(Qt.Checked)
+            else:
+                self.group_checkbox.setCheckState(Qt.PartiallyChecked)
+        
+        self._updating_group = False  # Reset flag
+
+
 # Loads settings window
 class SettingsWindow(QMainWindow):
     def __init__(self, mainwindow):
@@ -41,7 +95,6 @@ class SettingsWindow(QMainWindow):
         self.main = mainwindow
         self.config_class = self.main.config_class
         self.config = self.config_class.config
-        self.load_config()
         self.logger = logging.getLogger("rc")
 
         self.widgets = self.ui.__dict__
@@ -53,31 +106,36 @@ class SettingsWindow(QMainWindow):
             self.widgets[f"caen_{group}_acq_box"].stateChanged.connect(self.caen_group_changed)
         self.caen_individual_changed()
 
-        # set up checkboxes pairs
-        self.checkpair_pressure = CheckBoxPairBinder(self.widgets["active_pressure"], self.widgets["p_enabled_box"])
+        # set up checkboxes pairs and groups
+        # Individual checkbox pairs (general tab <-> specific tab)
+        self.checkpair_pressure = CheckBoxPairBinder(self.widgets["active_plc"], self.widgets["plc_enabled_box"])
         self.checkpair_sql = CheckBoxPairBinder(self.widgets["active_sql"], self.widgets["sql_enabled_box"])
-        self.checkpair_cams = CheckBoxPairBinder(self.widgets["active_cams"], self.widgets["cams_enabled_box"])
+        self.checkpair_writer = CheckBoxPairBinder(self.widgets["active_writer"], self.widgets["writer_enabled_box"])
+        self.checkpair_acoustic = CheckBoxPairBinder(self.widgets["active_acous"], self.widgets["acous_enabled_box"])
+        
+        # Camera checkboxes
         self.checkpair_cam1 = CheckBoxPairBinder(self.widgets["active_cam1"], self.widgets["cam1_enabled_box"])
         self.checkpair_cam2 = CheckBoxPairBinder(self.widgets["active_cam2"], self.widgets["cam2_enabled_box"])
         self.checkpair_cam3 = CheckBoxPairBinder(self.widgets["active_cam3"], self.widgets["cam3_enabled_box"])
+        
+        # SiPM amp checkboxes
         self.checkpair_amp1 = CheckBoxPairBinder(self.widgets["active_amp1"], self.widgets["sipm_amp1_enabled_box"])
         self.checkpair_amp2 = CheckBoxPairBinder(self.widgets["active_amp2"], self.widgets["sipm_amp2_enabled_box"])
         self.checkpair_amp3 = CheckBoxPairBinder(self.widgets["active_amp3"], self.widgets["sipm_amp3_enabled_box"])
-        self.checkpair_iv1 = CheckBoxPairBinder(self.widgets["active_amp1_iv"], self.widgets["sipm_amp1_iv_enabled_box"])
-        self.checkpair_iv2 = CheckBoxPairBinder(self.widgets["active_amp2_iv"], self.widgets["sipm_amp2_iv_enabled_box"])
-        self.checkpair_iv3 = CheckBoxPairBinder(self.widgets["active_amp3_iv"], self.widgets["sipm_amp3_iv_enabled_box"])
+        
+        # CAEN checkboxes
+        self.checkpair_caen = CheckBoxPairBinder(self.widgets["active_caen"], self.widgets["caen_enabled_box"])
         self.checkpair_caen0 = CheckBoxPairBinder(self.widgets["active_caen_g0"], self.widgets["caen_g0_enable_box"])
         self.checkpair_caen1 = CheckBoxPairBinder(self.widgets["active_caen_g1"], self.widgets["caen_g1_enable_box"])
         self.checkpair_caen2 = CheckBoxPairBinder(self.widgets["active_caen_g2"], self.widgets["caen_g2_enable_box"])
         self.checkpair_caen3 = CheckBoxPairBinder(self.widgets["active_caen_g3"], self.widgets["caen_g3_enable_box"])
-        self.checkpair_caen0_trg = CheckBoxPairBinder(self.widgets["active_caen_g0_trg"], self.widgets["caen_g0_trig_box"])
-        self.checkpair_caen1_trg = CheckBoxPairBinder(self.widgets["active_caen_g1_trg"], self.widgets["caen_g1_trig_box"])
-        self.checkpair_caen2_trg = CheckBoxPairBinder(self.widgets["active_caen_g2_trg"], self.widgets["caen_g2_trig_box"])
-        self.checkpair_caen3_trg = CheckBoxPairBinder(self.widgets["active_caen_g3_trg"], self.widgets["caen_g3_trig_box"])
-        self.checkpair_caen0_acq = CheckBoxPairBinder(self.widgets["active_caen_g0_trg"], self.widgets["caen_g0_acq_box"])
-        self.checkpair_caen1_acq = CheckBoxPairBinder(self.widgets["active_caen_g1_trg"], self.widgets["caen_g1_acq_box"])
-        self.checkpair_caen2_acq = CheckBoxPairBinder(self.widgets["active_caen_g2_trg"], self.widgets["caen_g2_acq_box"])
-        self.checkpair_caen3_acq = CheckBoxPairBinder(self.widgets["active_caen_g3_trg"], self.widgets["caen_g3_acq_box"])
+
+        # Group checkboxes (group checkbox controls multiple individual checkboxes)
+        # Cameras group - "active_cams" controls cam1, cam2, cam3 AND also syncs with "cams_enabled_box"
+        cam_individual_checkboxes = [self.widgets["cam1_enabled_box"], 
+                                     self.widgets["cam2_enabled_box"], 
+                                     self.widgets["cam3_enabled_box"]]
+        self.checkgroup_cams = CheckBoxGroupBinder(self.widgets["cams_enabled_box"], cam_individual_checkboxes)
 
         # set up shared combo boxes
         self.sipm_names = QStringListModel(["NC",
@@ -105,6 +163,7 @@ class SettingsWindow(QMainWindow):
             for ch in range(8):
                 self.widgets[f"caen_{gp}_name_{ch}"].setModel(self.amp_names)
 
+        self.load_config()
         self.logger.debug("Settings window loaded.")
 
     def load_config(self):
@@ -167,9 +226,16 @@ class SettingsWindow(QMainWindow):
     def select_amp2_iv_dir(self):
         amp2_iv_dir = QFileDialog.getExistingDirectory(
             self,
-            caption="SiPM Amp1 IV Data Directory",
+            caption="SiPM Amp2 IV Data Directory",
             dir=self.config["scint"]["amp2"]["iv_rc_dir"])
         self.ui.sipm_amp2_iv_rc_data_dir_edit.setText(amp2_iv_dir)
+    
+    def select_amp3_iv_dir(self):
+        amp3_iv_dir = QFileDialog.getExistingDirectory(
+            self,
+            caption="SiPM Amp3 IV Data Directory",
+            dir=self.config["scint"]["amp3"]["iv_rc_dir"])
+        self.ui.sipm_amp3_iv_rc_data_dir_edit.setText(amp3_iv_dir)
 
     def select_caen_data_path(self):
         caen_data_path = QFileDialog.getExistingDirectory(

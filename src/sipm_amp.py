@@ -57,7 +57,6 @@ class SiPMAmp(QObject):
         self.amp = amp
         self.config = mainwindow.config_class.config["scint"][amp]
         self.logger = logging.getLogger("rc")
-        os.putenv("PATH", "/home/sbc/packages")
         self.username = "root"
         self.client = pm.client.SSHClient()
         self.client.set_missing_host_key_policy(pm.AutoAddPolicy())
