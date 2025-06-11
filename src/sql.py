@@ -131,7 +131,7 @@ class SQL(QObject):
                 source1_ID, source1_location,
                 source2_ID, source2_location,
                 source3_ID, source3_location,
-                red_caen_ver, niusb_ver, sbc_binary_ver,
+                rc_ver, red_caen_ver, niusb_ver, sbc_binary_ver,
                 config
             )
             VALUES (
@@ -141,7 +141,7 @@ class SQL(QObject):
                 %s, %s,
                 %s, %s,
                 %s, %s,
-                %s, %s, %s,
+                %s, %s, %s, %s,
                 %s
             )
         """
@@ -161,6 +161,7 @@ class SQL(QObject):
             self.main.ui.source_location_box.currentText() or None,     # source1_location
             None, None,                            # source2_ID, source2_location
             None, None,                            # source3_ID, source3_location
+            self.main.writer_worker.rc_version,    # rc_ver
             red_caen.__version__,                  # red_caen_ver
             ni_usb_6501.__version__,               # niusb_ver
             sbcbinaryformat.__version__,           # sbc_binary_ver

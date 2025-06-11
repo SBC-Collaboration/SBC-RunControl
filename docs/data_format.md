@@ -184,6 +184,7 @@ The run data is saved in the `RunData` tables in the slow control SQL database. 
 - **source2_location** (`VARCHAR(100)`): Location of source 2.
 - **source3_ID** (`VARCHAR(100)`): Name of source 3.
 - **source3_location** (`VARCHAR(100)`): Location of source 3.
+- **rc_ver** (`VARCHAR(100)`): Version of the run control software. Dependencies like **ArduinoSketches**, **SBC-Piezo-Base-Code**, **gati-linux-driver** and **CAENDrivers** have specific commits recorded in git submodules in each run control commit, so the changes there are also reflected in run control versions. The version here is in the format of `0.0.3.dev64+gd14b86c.d20250611`, where `0.0.3` is the semantic version with major, minor and patch version numbers. `dev64` means there are 64 commits from the `0.0.3` version release, `gd14b86c.d20250611` means current commit is `d14b86c`, and is built on `2025-06-11`. Every merge / pull request into main branch of run control should have a new version number generated, meaning all real data should only have the first part (`0.0.3`) of this version string.
 - **red_caen_ver** (`VARCHAR(100)`): Version of red_caen library.
 - **niusb_ver** (`VARCHAR(100)`): Version of the ni_usb_6501 library.
 - **sbc_binary_ver** (`VARCHAR(100)`): Version of the SBC binary format library.
@@ -225,6 +226,7 @@ This data is very similar to the **RunData** SQL table, but saved locally. It is
 - **source2_location** (`string100`): Location of source 2.
 - **source3_ID** (`string100`): Name of source 3.
 - **source3_location** (`string100`): Location of source 3.
+- **rc_ver** (`string100`): Version of the run control software. Dependencies like **ArduinoSketches**, **SBC-Piezo-Base-Code**, **gati-linux-driver** and **CAENDrivers** have specific commits recorded in git submodules in each run control commit, so the changes there are also reflected in run control versions. The version here is in the format of `0.0.3.dev64+gd14b86c.d20250611`, where `0.0.3` is the semantic version with major, minor and patch version numbers. `dev64` means there are 64 commits from the `0.0.3` version release, `gd14b86c.d20250611` means current commit is `d14b86c`, and is built on `2025-06-11`. Every merge / pull request into main branch of run control should have a new version number generated, meaning all real data should only have the first part (`0.0.3`) of this version string.
 - **red_caen_ver** (`string100`): Version of red_caen library.
 - **niusb_ver** (`string100`): Version of the ni_usb_6501 library.
 - **sbc_binary_ver** (`string100`): Version of the SBC binary format library.

@@ -3,6 +3,7 @@ from PySide6.QtCore import QTimer, QObject, QThread, Slot, Signal
 import logging
 from sbcbinaryformat import Writer as SBCWriter
 import red_caen, ni_usb_6501, sbcbinaryformat
+from setuptools_scm import get_version
 
 class Writer(QObject):
 
@@ -17,6 +18,11 @@ class Writer(QObject):
         self.timer = QTimer(self)
         self.timer.setInterval(100)
         self.timer.timeout.connect(self.periodic_task)
+
+        try:
+            self.rc_version = get_version(root='..', relative_to=__file__)
+        except Exception:
+            self.rc_version = '0+unknown'
 
     Slot()
     def run(self):
@@ -101,6 +107,7 @@ class Writer(QObject):
                 if len(self.main.config_class.run_pressure_profiles)==1 else None, 
             "source1_ID": self.main.ui.source_box.currentText() or "",
             "source1_location": self.main.ui.source_location_box.currentText() or "",
+            "rc_ver": self.rc_version,
             "red_caen_ver": red_caen.__version__,
             "niusb_ver": ni_usb_6501.__version__,
             "sbc_binary_ver": sbcbinaryformat.__version__,
@@ -108,11 +115,11 @@ class Writer(QObject):
         comment_len = len(run_data["comment"]) if run_data["comment"] else 1
         headers = ["run_id", "run_exit_code", "num_events", "run_livetime", "comment", 
                    "run_start_time", "run_end_time", "active_modules", "pset_mode", "pset",
-                   "source1_ID", "source1_location", "red_caen_ver", "niusb_ver", "sbc_binary_ver"]
+                   "source1_ID", "source1_location", "rc_ver", "red_caen_ver", "niusb_ver", "sbc_binary_ver"]
         dtypes = ["U100", "u1", "u4", "u8", f"U{comment_len}", 
                   "d", "d", "U100", "U100", "f",
-                  "U100", "U100", "U100", "U100", "U100"]
-        shapes = [[1], [1], [1], [1], [1], [1], [1], [1], [1], [1], [1], [1], [1], [1], [1]]
+                  "U100", "U100", "U100", "U100", "U100", "U100"]
+        shapes = [[1], [1], [1], [1], [1], [1], [1], [1], [1], [1], [1], [1], [1], [1], [1], [1]]
         with SBCWriter(
                 os.path.join(
                     self.main.run_dir, f"run_info.sbc"
