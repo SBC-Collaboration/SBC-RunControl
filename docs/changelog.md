@@ -1,6 +1,6 @@
 # Changelog
 
-## [latest]
+## [Run Control v0.1.0](https://github.com/SBC-Collaboration/SBC-RunControl/releases/tag/v0.1.0) (2025-06-11)
 ### Added
 - Add PLC / modbus module. This enables communication between run control and PLC. It can start and stop pressure cycle, set pressure setpoint, start and stop PLC taking high resolution data.
 - Implement autorun. If autorun box is checked and the previous run didn't end by pressing the "STOP RUN" button, a new run will automatically start. 
