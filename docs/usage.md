@@ -91,7 +91,7 @@ RunControl> git push
 1. Update the submodule
 ```bash
 RunControl> cd dependencies/CAENDrivers
-CAENDrivers> git add . 
+CAENDrivers> git add <file>
 CAENDrivers> git commit -m <commit_message>
 CAENDrivers> git push
 CAENDrivers> cd ../..

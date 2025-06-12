@@ -199,5 +199,8 @@ fi
 # =================================================
 echo "Executing root script"
 sudo "$ROOT_SCRIPT_DEST"
+# Compile SBC-Piezo-Base-Code
+cd /home/sbc/RunControl/dependencies/gati-linux-driver/Sdk/ && \
+  make -j10
 
 echo "Run Control environment successfully initialized."

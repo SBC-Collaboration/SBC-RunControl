@@ -383,7 +383,6 @@ class MainWindow(QMainWindow):
         else:
             label.clear()
 
-
     def update_state(self, s):
         """
         The update_state function will change the self.run_state variable to the current state, and also change the GUI
@@ -642,7 +641,6 @@ class MainWindow(QMainWindow):
         os.symlink(self.run_dir, current_run_path, target_is_directory=True)
 
     def start_program(self):
-        
         self.program_starting.emit()
         self.update_state("idle")
 
