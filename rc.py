@@ -45,8 +45,9 @@ class MainWindow(QMainWindow):
         super(MainWindow, self).__init__()
 
         # Acquire a lock to prevent multiple instances of the program
+        os.umask(0o000) # allow r/w for all users
         self.lock_file = "/tmp/runcontrol.lock"
-        self.lock_fd = open(self.lock_file, 'w')
+        self.lock_fd = open(self.lock_file, 'w+')
         try:
             fcntl.flock(self.lock_fd, fcntl.LOCK_EX | fcntl.LOCK_NB)
         except BlockingIOError:
@@ -794,7 +795,6 @@ class MainWindow(QMainWindow):
         self.caen_plots = [self.ui.caen_plot_0, self.ui.caen_plot_1, self.ui.caen_plot_2, self.ui.caen_plot_3]
         self.caen_texts = [pg.TextItem(text="Event: 0", color='k', anchor=(0,0)) for _ in self.caen_plots]
         self.caen_curves = []
-        # self.caen_legends = []
         # one pen for each channel in a group
         self.caen_pens = [pg.mkPen(color=c, width=2) for c in ["green", "red", "blue", "orange","violet","brown","pink","gray"]] 
 
