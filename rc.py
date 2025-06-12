@@ -817,7 +817,7 @@ class MainWindow(QMainWindow):
             # create curves for each channel
             curves = []
             for j in range(8):
-                c = p.plot([], [], pen=self.caen_pens[j], name=f"Ch{i*8+j}")
+                c = p.plot(x=[], y=[], pen=self.caen_pens[j], name=f"Ch{i*8+j}")
                 curves.append(c)
             self.caen_curves.append(curves)
 
@@ -832,7 +832,7 @@ class MainWindow(QMainWindow):
             lower_mask = (1 << ch) - 1
             return bin(mask & lower_mask).count("1")
 
-        scint_configs = self.config_class.config["scint"]
+        caen_configs = self.config_class.config["caen"]
         for i in range(len(self.caen_plots)):
             p = self.caen_plots[i]
             t = self.caen_texts[i]
@@ -840,14 +840,16 @@ class MainWindow(QMainWindow):
 
             # update text and curves
             t.setText(f"Event: {data['EventCounter'][-1]}")
+            # frequency is 62.5MHz
+            time_axis = [i*16 for i in range(data["Waveforms"].shape[2])]
             for j in range(8):
-                if not scint_configs[f"caen_g{i}"]["enabled"] or \
-                  not scint_configs[f"caen_g{i}"]["acq_mask"][j] or \
-                  not scint_configs[f"caen_g{i}"]["plot_mask"][j]:
-                    curves[j].setData([], [])
+                if not caen_configs[f"group{i}"]["enabled"] or \
+                  not caen_configs[f"group{i}"]["acq_mask"][j] or \
+                  not caen_configs[f"group{i}"]["plot_mask"][j]:
+                    curves[j].setData(x=[], y=[])
                 else:
                     ind = get_ch_index(data["AcquisitionMask"], 8*i+j)
-                    curves[j].setData(data['Waveforms'][-1][ind])
+                    curves[j].setData(x=time_axis, y=data['Waveforms'][-1][ind])
 
 
 if __name__ == "__main__":
