@@ -28,6 +28,7 @@ import re
 import sys
 import os
 import fcntl
+from sbcbinaryformat import Streamer
 
 
 # Loads Main window
@@ -129,6 +130,7 @@ class MainWindow(QMainWindow):
         self.set_up_workers()
 
         self.setup_caen_plot()
+        self.setup_acous_plot()
 
         # timer for event loop
         self.timer = QTimer()
@@ -140,8 +142,6 @@ class MainWindow(QMainWindow):
         self.event_timer = QElapsedTimer()
         self.run_livetime = 0
         self.event_livetime = 0
-        # initialize writer for sbc binary format
-        # sbc_writer = Writer()
         self.start_program()
 
     def set_up_workers(self):
@@ -204,6 +204,7 @@ class MainWindow(QMainWindow):
         self.acous_worker = Acoustics(self)
         self.acous_worker.event_started.connect(self.starting_event_wait)
         self.acous_worker.event_stopped.connect(self.stopping_event_wait)
+        self.acous_worker.event_stopped.connect(self.update_acous_plot)
         self.acous_thread = QThread()
         self.acous_thread.setObjectName("acous_thread")
         self.acous_worker.moveToThread(self.acous_thread)
@@ -746,10 +747,10 @@ class MainWindow(QMainWindow):
             else:
                 self.widgets[f"status_{m}"].idle()
 
-        current_path = os.path.join(self.config_class.config["general"]["data_dir"], "current_event")
-        if os.path.islink(current_path):
-            os.unlink(current_path)
-        os.symlink(self.event_dir, current_path,target_is_directory=True)
+        self.current_path = os.path.join(self.config_class.config["general"]["data_dir"], "current_event")
+        if os.path.islink(self.current_path):
+            os.unlink(self.current_path)
+        os.symlink(self.event_dir, self.current_path,target_is_directory=True)
         self.widgets["status_config"].active()
         self.event_starting.emit()
 
@@ -786,7 +787,6 @@ class MainWindow(QMainWindow):
         subprocess.Popen(["nemo", path])
         self.logger.debug(f"Opened data folder: {path}")
 
-    # set up parameters for the CAEN plot widgets
     def setup_caen_plot(self):
         """
         Set up the CAEN plot widgets. It will create the plot and text items for each plot, and set up basic properties.
@@ -821,9 +821,11 @@ class MainWindow(QMainWindow):
                 curves.append(c)
             self.caen_curves.append(curves)
 
-    # update the CAEN plot widgets every time data is retrieved
     @Slot(dict)
     def update_caen_plot(self, data):
+        """
+        Update the CAEN plot widgets every time data is retrieved
+        """
         def get_ch_index(mask, ch):
             """
             Get the index of the channel in list using mask
@@ -851,6 +853,54 @@ class MainWindow(QMainWindow):
                     ind = get_ch_index(data["AcquisitionMask"], 8*i+j)
                     curves[j].setData(x=time_axis, y=data['Waveforms'][-1][ind])
 
+    def setup_acous_plot(self):
+        """
+        Set up the Acous plot widgets. It will create the plot and text items for each plot, and set up basic properties.
+        """
+        # plot and text items for each plot
+        self.acous_plot = self.ui.acous_plot
+        self.acous_curves = []
+        self.acous_text = pg.TextItem(text="Event: 0", color='k', anchor=(0,0))
+
+        # one pen for each channel in a group
+        self.acous_pens = [pg.mkPen(color=c, width=2) for c in ["green", "red", "blue", "orange","violet","brown","pink","gray"]] 
+
+        # setup some basic plot properties
+        self.acous_plot.setBackground("w")
+        self.acous_plot.showGrid(x=True, y=True)
+        self.acous_plot.setTitle(f"Acous Waveforms", color='k')
+        self.acous_plot.setLabel('left', "Amplitude (ADC)", color='k')
+        self.acous_plot.setLabel('bottom', "Time (us)", color='k')
+        self.acous_plot.addLegend()
+
+        # setup text counter
+        self.acous_text.setParentItem(self.acous_plot.getViewBox())
+        self.acous_text.setPos(0, 1)
+
+        # create curves for each channel
+        for i in range(8):
+            c = self.acous_plot.plot(x=[], y=[], pen=self.acous_pens[i], name=f"Ch{i+1}")
+            self.acous_curves.append(c)
+
+    @Slot(dict)
+    def update_acous_plot(self):
+        """
+        Update the acous plot widgets every time data is retrieved
+        """
+        acous_configs = self.config_class.config["acous"]
+        if not acous_configs["enabled"]:
+            return
+        
+        import glob
+        file = glob.glob(os.path.join(self.current_path, "acoustics.sbc*"))[0]
+        data = Streamer(file).to_dict()
+        sample_rate = self.acous_worker.sample_rate_conversion[acous_configs["sample_rate"]]/1e6
+        time_axis = [i/sample_rate for i in range(data["Waveform"].shape[2])]
+        for i in range(8):
+            if not acous_configs[f"ch{i+1}"]["plot"]:
+                self.acous_curves[i].setData(x=[], y=[])
+            else:
+                self.acous_curves[i].setData(x=time_axis, y=data['Waveform'][-1][i])
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

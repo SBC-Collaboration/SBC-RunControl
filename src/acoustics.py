@@ -10,6 +10,36 @@ class Acoustics(QObject):
     event_started = Signal(str)
     event_stopped = Signal(str)
 
+    # convert sample_rate to a number
+    sample_rate_conversion = {
+        "100 MS/s": 100000000,
+        "50 MS/s": 50000000,
+        "25 MS/s": 25000000,
+        "12.5 MS/s": 12500000,
+        "10 MS/s": 10000000,
+        "5 MS/s": 5000000,
+        "2 MS/s": 2000000,
+        "1 MS/s": 1000000,
+        "500 kS/s": 500000,
+        "200 kS/s": 200000,
+        "100 kS/s": 100000,
+        "50 kS/s": 50000,
+        "20 kS/s": 20000,
+        "10 kS/s": 10000,
+        "5 kS/s": 5000,
+        "2 kS/s": 2000,
+        "1 kS/s": 1000,
+    }
+    
+    range_conversion = {
+        "±5 V": 10000,
+        "±2 V": 4000,
+        "±1 V": 2000,
+        "±500 mV": 1000,
+        "±200 mV": 400,
+        "±100 mV": 200,
+    }
+
     def __init__(self, mainwindow):
         super().__init__()
         self.main = mainwindow
@@ -39,40 +69,9 @@ class Acoustics(QObject):
         n_trig = 1
         config = {}
 
-        # convert sample_rate to a number
-        sample_rate_conversion = {
-            "100 MS/s": 100000000,
-            "50 MS/s": 50000000,
-            "25 MS/s": 25000000,
-            "12.5 MS/s": 12500000,
-            "10 MS/s": 10000000,
-            "5 MS/s": 5000000,
-            "2 MS/s": 2000000,
-            "1 MS/s": 1000000,
-            "500 kS/s": 500000,
-            "200 kS/s": 200000,
-            "100 kS/s": 100000,
-            "50 kS/s": 50000,
-            "20 kS/s": 20000,
-            "10 kS/s": 10000,
-            "5 kS/s": 5000,
-            "2 kS/s": 2000,
-            "1 kS/s": 1000,
-        }
-
-        # convert range to a number
-        range_conversion = {
-            "±5 V": 10000,
-            "±2 V": 4000,
-            "±1 V": 2000,
-            "±500 mV": 1000,
-            "±200 mV": 400,
-            "±100 mV": 200,
-        }
-
         config["Acquisition"] = {
             "Mode": self.config["mode"],
-            "SampleRate": sample_rate_conversion[self.config["sample_rate"]],
+            "SampleRate": self.sample_rate_conversion[self.config["sample_rate"]],
             "Depth": self.config["post_trig_len"],
             "SegmentSize": self.config["pre_trig_len"] + self.config["post_trig_len"],
             "SegmentCount": self.config["acq_seg_count"],
@@ -95,7 +94,7 @@ class Acoustics(QObject):
         for ch in range(1, 9):
             # All 8 channels must be enabled
             config[f"Channel{ch}"] = {
-                "Range": range_conversion[self.config[f"ch{ch}"]["range"]],
+                "Range": self.range_conversion[self.config[f"ch{ch}"]["range"]],
                 "Coupling": self.config[f"ch{ch}"]["coupling"],
                 "Impedance": 50 if self.config[f"ch{ch}"]["impedance"]=="50 Ω" else 1000000,
                 "DCOffset": self.config[f"ch{ch}"]["offset"],
@@ -126,6 +125,7 @@ class Acoustics(QObject):
             }
 
         parser = ConfigParser()
+        parser.optionxform = str
         parser.read_dict(config)
         with open("SBCAcquisition.ini", "w") as f:
             parser.write(f)
@@ -157,5 +157,5 @@ class Acoustics(QObject):
             os.kill(self.gage_process.pid, signal.SIGINT)
             self.gage_process.join()
             self.gage_process = None
-        
+                
         self.event_stopped.emit("gage")

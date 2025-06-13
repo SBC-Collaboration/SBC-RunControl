@@ -267,6 +267,7 @@ class Config(QObject):
             widgets[f"acous_trig_{ch}"].setChecked(ch_config["trig"])
             widgets[f"acous_polarity_{ch}"].setCurrentText(ch_config["polarity"])
             widgets[f"acous_threshold_{ch}"].setValue(ch_config["threshold"])
+            widgets[f"acous_plot_{ch}"].setChecked(ch_config["plot"])
 
         # external trigger settings
         acous_ext_config = acous_config["ext"]
@@ -609,6 +610,7 @@ class Config(QObject):
             ch_config["trig"] = widgets[f"acous_trig_{ch}"].isChecked()
             ch_config["polarity"] = widgets[f"acous_polarity_{ch}"].currentText()
             ch_config["threshold"] = widgets[f"acous_threshold_{ch}"].value()
+            ch_config["plot"] = widgets[f"acous_plot_{ch}"].isChecked()
             acous_config[ch] = ch_config
 
         acous_config["ext"] = {
