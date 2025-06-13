@@ -79,9 +79,7 @@ class Camera(QObject):
             self.logger.debug(line.rstrip("\r\n"))
             if "Image acquisition started" in line:
                 self.camera_started.emit(self.cam_name)
-
-        self.client.close()
-        self.logger.debug(f"Camera {self.cam_name} closed.")
+                return
 
     @Slot()
     def stop_camera(self):
