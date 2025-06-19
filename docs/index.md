@@ -8,6 +8,7 @@ usage
 project_description
 data_format
 documentation
+git_workflow
 api
 changelog
 ```
