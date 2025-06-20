@@ -1,5 +1,16 @@
 # Changelog
 
+## [latest]
+### Added
+- Add LED current control via PLC modbus.
+- Add a page of documentation on git workflow.
+### Changed
+- Move status lights to the bottom area out of the tabs.
+- Change the name of acoustic file to use only the provided name, no suffix.
+- Change a few file paths to be interpreted relative to main run control directory, and not current working directory.
+### Fixed
+- Fix the issue that camera imdaq program not getting killed at the end of run.
+
 ## [Run Control v0.1.0](https://github.com/SBC-Collaboration/SBC-RunControl/releases/tag/v0.1.0) (2025-06-11)
 ### Added
 - Add PLC / modbus module. This enables communication between run control and PLC. It can start and stop pressure cycle, set pressure setpoint, start and stop PLC taking high resolution data.

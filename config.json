@@ -19,6 +19,10 @@
     "trig_timeout": 30.0,
     "stop_timeout": 30.0,
     "abort_timeout": 30.0,
+    "led1_control": 0,
+    "led2_control": 0,
+    "led3_control": 0,
+    "led_control_max": 0.3,
     "pressure": {
       "mode": "Random",
       "profile1": {
@@ -75,6 +79,10 @@
       "PCYCLE_MAXBLEEDTIME": 16808,
       "PCYCLE_MAXBLEEDDPDT": 16810,
       "PCYCLE_SLOWCOMP_SET": 16812,
+      "LED1_OUT": 16824,
+      "LED2_OUT": 16826,
+      "LED3_OUT": 16828,
+      "LED_MAX": 16830,
       "WRITE_SLOWDAQ": 15296,
       "PRESSURE_CYCLE": 15298,
       "TS_ADDREM_FF": 14788,

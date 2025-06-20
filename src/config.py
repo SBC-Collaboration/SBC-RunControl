@@ -95,6 +95,10 @@ class Config(QObject):
         ui.pc_trig_timeout_box.setValue(plc_config["trig_timeout"])
         ui.pc_stop_timeout_box.setValue(plc_config["stop_timeout"])
         ui.pc_abort_timeout_box.setValue(plc_config["abort_timeout"])
+        ui.led1_control_box.setValue(plc_config["led1_control"])
+        ui.led2_control_box.setValue(plc_config["led2_control"])
+        ui.led3_control_box.setValue(plc_config["led3_control"])
+        ui.led_control_max_box.setValue(plc_config["led_control_max"])
 
         # pressure
         pressure_config = self.config["plc"]["pressure"]
@@ -118,6 +122,10 @@ class Config(QObject):
         ui.PCYCLE_MAXBLEEDTIME_box.setValue(plc_registers["PCYCLE_MAXBLEEDTIME"])
         ui.PCYCLE_MAXBLEEDDPDT_box.setValue(plc_registers["PCYCLE_MAXBLEEDDPDT"])
         ui.PCYCLE_SLOWCOMP_SET_box.setValue(plc_registers["PCYCLE_SLOWCOMP_SET"])
+        ui.LED1_OUT_box.setValue(plc_registers["LED1_OUT"])
+        ui.LED2_OUT_box.setValue(plc_registers["LED2_OUT"])
+        ui.LED3_OUT_box.setValue(plc_registers["LED3_OUT"])
+        ui.LED_MAX_box.setValue(plc_registers["LED_MAX"])
         ui.WRITE_SLOWDAQ_box.setValue(plc_registers["WRITE_SLOWDAQ"])
         ui.PRESSURE_CYCLE_box.setValue(plc_registers["PRESSURE_CYCLE"])
         ui.TS_ADDREM_FF_box.setValue(plc_registers["TS_ADDREM_FF"])
@@ -401,6 +409,10 @@ class Config(QObject):
             "trig_timeout": ui.pc_trig_timeout_box.value(),
             "stop_timeout": ui.pc_stop_timeout_box.value(),
             "abort_timeout": ui.pc_abort_timeout_box.value(),
+            "led1_control": ui.led1_control_box.value(),
+            "led2_control": ui.led2_control_box.value(),
+            "led3_control": ui.led3_control_box.value(),
+            "led_control_max": ui.led_control_max_box.value(),
         }
 
         pressure_config = {
@@ -428,6 +440,10 @@ class Config(QObject):
             "PCYCLE_MAXBLEEDTIME": ui.PCYCLE_MAXBLEEDTIME_box.value(),
             "PCYCLE_MAXBLEEDDPDT": ui.PCYCLE_MAXBLEEDDPDT_box.value(),
             "PCYCLE_SLOWCOMP_SET": ui.PCYCLE_SLOWCOMP_SET_box.value(),
+            "LED1_OUT": ui.LED1_OUT_box.value(),
+            "LED2_OUT": ui.LED2_OUT_box.value(),
+            "LED3_OUT": ui.LED3_OUT_box.value(),
+            "LED_MAX": ui.LED_MAX_box.value(),
             "WRITE_SLOWDAQ": ui.WRITE_SLOWDAQ_box.value(),
             "PRESSURE_CYCLE": ui.PRESSURE_CYCLE_box.value(),
             "TS_ADDREM_FF": ui.TS_ADDREM_FF_box.value(),
