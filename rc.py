@@ -63,7 +63,8 @@ class MainWindow(QMainWindow):
         self.widgets = self.ui.__dict__
 
         # initialize config class
-        self.config_class = Config(self, "config.json")
+        path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "config.json")
+        self.config_class = Config(self, path)
         self.config_class.load_config()
         self.config_class.load_config_to_mainwindow()
         self.stopping_run = False
@@ -891,16 +892,18 @@ class MainWindow(QMainWindow):
         if not acous_configs["enabled"]:
             return
         
-        import glob
-        file = glob.glob(os.path.join(self.current_path, "acoustics.sbc*"))[0]
-        data = Streamer(file).to_dict()
+        try:
+            data = Streamer(os.path.join(self.current_path, "acoustics.sbc")).to_dict()
+        except FileNotFoundError:
+            self.logger.warning("Acoustics data file not found.")
+            return
         sample_rate = self.acous_worker.sample_rate_conversion[acous_configs["sample_rate"]]/1e6
-        time_axis = [i/sample_rate for i in range(data["Waveform"].shape[2])]
+        time_axis = [i/sample_rate for i in range(data["Waveforms"].shape[2])]
         for i in range(8):
             if not acous_configs[f"ch{i+1}"]["plot"]:
                 self.acous_curves[i].setData(x=[], y=[])
             else:
-                self.acous_curves[i].setData(x=time_axis, y=data['Waveform'][-1][i])
+                self.acous_curves[i].setData(x=time_axis, y=data['Waveforms'][-1][i])
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

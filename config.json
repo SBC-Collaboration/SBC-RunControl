@@ -520,7 +520,8 @@
       "coupling": "DC",
       "trig": false,
       "polarity": "Rising",
-      "threshold": 0
+      "threshold": 0,
+      "plot": true
     },
     "ch2": {
       "name": "Piezo2",
@@ -530,7 +531,8 @@
       "coupling": "DC",
       "trig": false,
       "polarity": "Rising",
-      "threshold": 0
+      "threshold": 0,
+      "plot": true
     },
     "ch3": {
       "name": "Piezo3",
@@ -540,7 +542,8 @@
       "coupling": "DC",
       "trig": false,
       "polarity": "Rising",
-      "threshold": 0
+      "threshold": 0,
+      "plot": true
     },
     "ch4": {
       "name": "Piezo4",
@@ -550,7 +553,8 @@
       "coupling": "DC",
       "trig": false,
       "polarity": "Rising",
-      "threshold": 0
+      "threshold": 0,
+      "plot": true
     },
     "ch5": {
       "name": "Piezo5",
@@ -560,7 +564,8 @@
       "coupling": "DC",
       "trig": false,
       "polarity": "Rising",
-      "threshold": 0
+      "threshold": 0,
+      "plot": true
     },
     "ch6": {
       "name": "Piezo6",
@@ -570,7 +575,8 @@
       "coupling": "DC",
       "trig": false,
       "polarity": "Rising",
-      "threshold": 0
+      "threshold": 0,
+      "plot": true
     },
     "ch7": {
       "name": "Piezo7",
@@ -580,7 +586,8 @@
       "coupling": "DC",
       "trig": false,
       "polarity": "Rising",
-      "threshold": 0
+      "threshold": 0,
+      "plot": true
     },
     "ch8": {
       "name": "Trig Latch",
@@ -590,7 +597,8 @@
       "coupling": "DC",
       "trig": false,
       "polarity": "Rising",
-      "threshold": 0
+      "threshold": 0,
+      "plot": true
     },
     "ext": {
       "range": "\u00b11 V",

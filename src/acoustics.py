@@ -131,7 +131,9 @@ class Acoustics(QObject):
             parser.write(f)
     
     def start_gage(self):
-        lib = ctypes.cdll.LoadLibrary(self.config["driver_path"])
+        path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 
+                            "..", self.config["driver_path"])
+        lib = ctypes.cdll.LoadLibrary(path)
         lib.main()
 
     @Slot()                                                                      

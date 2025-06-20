@@ -759,7 +759,8 @@ class Config(QObject):
             if ino=="clock":
                 for w in range(1, 17):
                     ino_config[f"wave{w}"].pop("name")
-            json_file = os.path.join(ino_config["sketch"], f"{ino}_config.json")
+            json_file = os.path.join(os.path.dirname(__file__), "..",
+                                     ino_config["sketch"], f"{ino}_config.json")
 
             # comparing json file with config, and save if they are different
             if os.path.exists(json_file):
