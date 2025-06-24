@@ -162,7 +162,7 @@ class Config(QObject):
         ui.sipm_amp1_iv_start_box.setValue(sipm_amp1_config["iv_start"])
         ui.sipm_amp1_iv_stop_box.setValue(sipm_amp1_config["iv_stop"])
         ui.sipm_amp1_iv_step_box.setValue(sipm_amp1_config["iv_step"])
-        for ch in range(1, 16):
+        for ch in range(1, 17):
             widgets[f"sipm_amp1_ch{ch}_offset"].setValue(sipm_amp1_config["ch_offset"][ch-1])
             widgets[f"sipm_amp1_name_ch{ch}"].setCurrentText(sipm_amp1_config["name"][ch-1])
 
@@ -178,7 +178,7 @@ class Config(QObject):
         ui.sipm_amp2_iv_start_box.setValue(sipm_amp2_config["iv_start"])
         ui.sipm_amp2_iv_stop_box.setValue(sipm_amp2_config["iv_stop"])
         ui.sipm_amp2_iv_step_box.setValue(sipm_amp2_config["iv_step"])
-        for ch in range(1, 16):
+        for ch in range(1, 17):
             widgets[f"sipm_amp2_ch{ch}_offset"].setValue(sipm_amp2_config["ch_offset"][ch-1])
             widgets[f"sipm_amp2_name_ch{ch}"].setCurrentText(sipm_amp2_config["name"][ch-1])
 
@@ -194,7 +194,7 @@ class Config(QObject):
         ui.sipm_amp3_iv_start_box.setValue(sipm_amp3_config["iv_start"])
         ui.sipm_amp3_iv_stop_box.setValue(sipm_amp3_config["iv_stop"])
         ui.sipm_amp3_iv_step_box.setValue(sipm_amp3_config["iv_step"])
-        for ch in range(1, 16):
+        for ch in range(1, 17):
             widgets[f"sipm_amp3_ch{ch}_offset"].setValue(sipm_amp3_config["ch_offset"][ch-1])
             widgets[f"sipm_amp3_name_ch{ch}"].setCurrentText(sipm_amp3_config["name"][ch-1])
 
@@ -482,8 +482,8 @@ class Config(QObject):
             "iv_start": ui.sipm_amp1_iv_start_box.value(),
             "iv_stop": ui.sipm_amp1_iv_stop_box.value(),
             "iv_step": ui.sipm_amp1_iv_step_box.value(),
-            "ch_offset": [widgets[f"sipm_amp1_ch{ch}_offset"].value() for ch in range(1,16)],
-            "name": [widgets[f"sipm_amp1_name_ch{ch}"].currentText() for ch in range(1,16)],
+            "ch_offset": [widgets[f"sipm_amp1_ch{ch}_offset"].value() for ch in range(1,17)],
+            "name": [widgets[f"sipm_amp1_name_ch{ch}"].currentText() for ch in range(1,17)],
         }
 
         sipm_amp2_config = {
@@ -498,8 +498,8 @@ class Config(QObject):
             "iv_start": ui.sipm_amp2_iv_start_box.value(),
             "iv_stop": ui.sipm_amp2_iv_stop_box.value(),
             "iv_step": ui.sipm_amp2_iv_step_box.value(),
-            "ch_offset": [widgets[f"sipm_amp2_ch{ch}_offset"].value() for ch in range(1, 16)],
-            "name": [widgets[f"sipm_amp2_name_ch{ch}"].currentText() for ch in range(1,16)],
+            "ch_offset": [widgets[f"sipm_amp2_ch{ch}_offset"].value() for ch in range(1,17)],
+            "name": [widgets[f"sipm_amp2_name_ch{ch}"].currentText() for ch in range(1,17)],
         }
 
         sipm_amp3_config = {
@@ -514,8 +514,8 @@ class Config(QObject):
             "iv_start": ui.sipm_amp3_iv_start_box.value(),
             "iv_stop": ui.sipm_amp3_iv_stop_box.value(),
             "iv_step": ui.sipm_amp3_iv_step_box.value(),
-            "ch_offset": [widgets[f"sipm_amp3_ch{ch}_offset"].value() for ch in range(1, 16)],
-            "name": [widgets[f"sipm_amp3_name_ch{ch}"].currentText() for ch in range(1,16)],
+            "ch_offset": [widgets[f"sipm_amp3_ch{ch}_offset"].value() for ch in range(1,17)],
+            "name": [widgets[f"sipm_amp3_name_ch{ch}"].currentText() for ch in range(1,17)],
         }
 
         caen_config = {
