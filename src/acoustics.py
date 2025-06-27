@@ -1,9 +1,8 @@
 import os
 import logging
-from PySide6.QtCore import QTimer, QObject, Slot, Signal, QThread
+from PySide6.QtCore import QTimer, QObject, Slot, Signal, QThread, QProcess
 import signal
 from configparser import ConfigParser
-from multiprocessing import Process
 import ctypes
 
 class Acoustics(QObject):
@@ -45,12 +44,11 @@ class Acoustics(QObject):
         self.main = mainwindow
         self.logger = logging.getLogger("rc")
         self.config = self.main.config_class.config["acous"]
+        self.process = None
 
         self.timer = QTimer(self)
         self.timer.setInterval(100)
         self.timer.timeout.connect(self.periodic_task)
-
-        self.gage_process = None
 
     @Slot()
     def run(self):
@@ -59,11 +57,7 @@ class Acoustics(QObject):
 
     @Slot()
     def periodic_task(self):
-        if (self.main.run_state == self.main.run_states["active"] and self.gage_process):
-            if not self.gage_process.is_alive():
-                self.logger.debug(f"GaGe process not alive. Starting new thread.")
-                self.gage_process = Process(target=self.start_gage)
-                self.gage_process.start()
+        pass
 
     def save_config(self):
         n_trig = 1
@@ -132,11 +126,28 @@ class Acoustics(QObject):
         with open("SBCAcquisition.ini", "w") as f:
             parser.write(f)
     
-    def start_gage(self):
-        path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 
-                            "..", self.config["driver_path"])
-        lib = ctypes.cdll.LoadLibrary(path)
-        lib.main()
+    def start_gage_process(self):
+        """Helper method to start/restart the GaGe process"""
+        if self.process is not None and self.process.state() != QProcess.ProcessState.NotRunning:
+            self.logger.warning("GaGe process already running")
+            return False
+        
+        # Clean up old process if it exists
+        if self.process is not None:
+            self.process.deleteLater()
+
+        # Create new process
+        self.process = QProcess(self)
+        self.process.readyReadStandardOutput.connect(self.handle_stdout)
+        self.process.finished.connect(self.process_finished)
+
+        # Start with error checking
+        self.process.start(self.config["driver_path"])
+        if not self.process.waitForStarted(3000):  # 3 second timeout
+            self.logger.error(f"Failed to start GaGe process: {self.process.errorString()}")
+            return False
+        
+        return True
 
     @Slot()                                                                      
     def start_event(self):
@@ -147,9 +158,24 @@ class Acoustics(QObject):
         self.save_config()
         
         self.logger.debug(f"Acoustic data acquisition starting.")
-        self.gage_process = Process(target=self.start_gage)
-        self.gage_process.start()
+        self.start_gage_process()
         self.event_started.emit("gage")
+
+    @Slot()
+    def handle_stdout(self):
+        if self.process:
+            data = self.process.readAllStandardOutput()
+            text = data.data().decode('utf-8')
+            self.logger.debug(f"GaGe: {text.strip()}")
+    
+    @Slot()
+    def process_finished(self, exit_code, exit_status):
+        self.logger.debug(f"GaGe process finished with exit code {exit_code} and status {exit_status}.")
+        if self.process and self.main.run_state == self.main.run_states["active"]:
+            self.logger.info(f"Restarting GaGe process.")
+            self.process.start(self.config["driver_path"])
+        else:
+            self.process = None
 
     @Slot()
     def stop_event(self):
@@ -157,9 +183,13 @@ class Acoustics(QObject):
             self.event_stopped.emit(f"gage-disabled")
             return
 
-        if self.gage_process and self.gage_process.is_alive():
-            os.kill(self.gage_process.pid, signal.SIGINT)
-            self.gage_process.join()
-            self.gage_process = None
+        if self.process and \
+            self.process and self.process.state() != QProcess.ProcessState.NotRunning:
+            self.logger.debug("Terminating GaGe process.")
+            self.process.terminate()
+            if not self.process.waitForFinished(15000):  # 15 second timeout
+                self.logger.warning("GaGe process did not terminate gracefully, killing it.")
+                self.process.kill()
                 
+        self.process = None
         self.event_stopped.emit("gage")
