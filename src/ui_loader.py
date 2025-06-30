@@ -102,8 +102,10 @@ class SettingsWindow(QMainWindow):
             for ch in range(8):
                 self.widgets[f"caen_{group}_trig_mask_{ch}"].stateChanged.connect(self.caen_individual_changed)
                 self.widgets[f"caen_{group}_acq_mask_{ch}"].stateChanged.connect(self.caen_individual_changed)
+                self.widgets[f"caen_{group}_plot_mask_{ch}"].stateChanged.connect(self.caen_individual_changed)
             self.widgets[f"caen_{group}_trig_box"].stateChanged.connect(self.caen_group_changed)
             self.widgets[f"caen_{group}_acq_box"].stateChanged.connect(self.caen_group_changed)
+            self.widgets[f"caen_{group}_plot_box"].stateChanged.connect(self.caen_group_changed)
         self.caen_individual_changed()
 
         # set up checkboxes pairs and groups
@@ -248,11 +250,11 @@ class SettingsWindow(QMainWindow):
     def caen_individual_changed(self):
         if self.sender():
             sender = self.sender().objectName()
-            pattern = r"_g[0-3]_(trig|acq)_"
+            pattern = r"_g[0-3]_(trig|acq|plot)_"
             match = re.search(pattern, sender)
-            settings = [match.group(0)[1:-1]]  # g0-3_trig/acq
+            settings = [match.group(0)[1:-1]]  # g0-3_trig/acq/plot
         else:
-            settings = [f"{group}_{mode}" for group in ["g0", "g1", "g2", "g3"] for mode in ["trig", "acq"]]
+            settings = [f"{group}_{mode}" for group in ["g0", "g1", "g2", "g3"] for mode in ["trig", "acq", "plot"]]
 
         for setting in settings:
             trigger_enabled = [self.widgets[f"caen_{setting}_mask_{ch}"].isChecked() for ch in range(8)]
@@ -266,9 +268,9 @@ class SettingsWindow(QMainWindow):
     def caen_group_changed(self, state):
         if self.sender():
             sender = self.sender().objectName()
-            pattern = r"_g[0-3]_(trig|acq)_"
+            pattern = r"_g[0-3]_(trig|acq|plot)_"
             match = re.search(pattern, sender)
-            setting = match.group(0)[1:-1] # g0-3_trig/acq
+            setting = match.group(0)[1:-1] # g0-3_trig/acq/plot
         else:
             return
 
