@@ -68,6 +68,7 @@ class MainWindow(QMainWindow):
         self.config_class.load_config()
         self.config_class.load_config_to_mainwindow()
         self.stopping_run = False
+        self.stopping_event_flag = False
 
         # logger initialization
         self.logger = logging.getLogger("rc")
@@ -721,6 +722,7 @@ class MainWindow(QMainWindow):
         self.event_start_time = datetime.datetime.now()
         self.event_exit_code = 255
         self.starting_event_ready = []
+        self.stopping_event_flag = False
         self.update_state("starting_event")
         self.event_livetime = 0
         self.ui.event_id_edit.setText(f"{self.event_id:2d}")
@@ -760,6 +762,10 @@ class MainWindow(QMainWindow):
         Stop the event. Enter into compressing state. If the "Stop Run" button is pressed or the max number of events
         are reached, then it will enter into "stopping" state. Otherwise, it will start another event.
         """
+        # In case it is called multiple times before one call is finished.
+        if self.stopping_event_flag:
+            return
+        self.stopping_event_flag = True
         self.event_end_time = datetime.datetime.now()
         self.stopping_event_ready = []
         self.event_livetime = self.event_timer.elapsed()
