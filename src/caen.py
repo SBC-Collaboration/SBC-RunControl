@@ -107,7 +107,6 @@ class Caen(QObject):
             raise ConnectionError("CAEN connection failed.\n")
 
         self.set_config()
-        self.caen.ClearData()
         self.run_started.emit("caen")
 
     @Slot()
@@ -122,7 +121,6 @@ class Caen(QObject):
             self.event_started.emit("caen-error")
             raise ConnectionError("CAEN not connected.")
         
-        self.caen.ClearData()
         self.buffer = [] # create a list for data dictionaries
 
         # create writer
@@ -155,7 +153,6 @@ class Caen(QObject):
         if self.caen.GetNumberOfEvents() > 0:
             self.buffer.append(self.caen.GetDataDict())
             self.data_retrieved.emit(self.buffer[-1])
-        self.caen.ClearData()
 
         # write data to file
         for b in self.buffer:
