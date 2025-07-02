@@ -18,7 +18,7 @@ from src.sipm_amp import SiPMAmp
 from src.sql import SQL
 from src.niusb import NIUSB
 from src.writer import Writer
-from src.guardian import Guardian
+from src.guardian import Guardian, ErrorCodes
 from src.visualization import CAENPlotManager, AcousPlotManager
 import logging
 from logging.handlers import TimedRotatingFileHandler
@@ -55,7 +55,7 @@ class MainWindow(QMainWindow):
         try:
             fcntl.flock(self.lock_fd, fcntl.LOCK_EX | fcntl.LOCK_NB)
         except BlockingIOError:
-            print("Run Control is already running. Exiting.")
+            print("Another instance of RunControl is running. Quitting RunControl.")
             sys.exit(1)
 
         self.run_id = ""
@@ -327,14 +327,10 @@ class MainWindow(QMainWindow):
         self.logger.info("Quitting run control.")
 
         # close other opened windows before closing
-        try:
+        if hasattr(self, "log_window"):
             self.log_window.close()
-        except AttributeError:
-            pass
-        try:
+        if hasattr(self, "settings_window"):
             self.settings_window.close()
-        except AttributeError:
-            pass
 
         # quit all created workers and threads
         modules = ["cam1", "cam2", "cam3", "amp1", "amp2", "amp3",
@@ -364,7 +360,7 @@ class MainWindow(QMainWindow):
             self.lock_fd.close()
             os.remove(self.lock_file)
         except BlockingIOError:
-            self.logger.error("Failed to release the lock file.")
+            self.error.emit(ErrorCodes.LOCKFILE_FAILED_TO_RELEASE)
 
         self.logger.info("Run control successfully stopped.\n")
         

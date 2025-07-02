@@ -1,8 +1,14 @@
 from PySide6.QtCore import Signal, Slot
 from PySide6.QtCore import QTimer, QObject, Slot, Signal, QThread
 import logging
+from enum import IntEnum
 
 # Error code list: https://docs.google.com/spreadsheets/d/1l-7dthFAcyHkQRA3YD875fsAcTKyn0Vgf3X5fvdhq5I/edit?gid=0#gid=0
+
+class ErrorCodes(IntEnum):
+    LOCKFILE_LOCKED = 1001
+    LOCKFILE_FAILED_TO_RELEASE = 1002
+    CONFIG_SAVE_FAILED = 1101
 
 class Guardian(QObject):
     def __init__(self, mainwindow):
@@ -24,5 +30,11 @@ class Guardian(QObject):
         pass
 
     @Slot()
-    def error_handler(self, error_message):
-        self.logger.error(f"Error received: {error_message}")
+    def error_handler(self, error):
+        match error:
+            case 2:
+                self.logger.error("Error 0002: Lock file cannot be released.")
+            case 1101:
+                self.logger.error("Error 1101: Failed to save config file to disk.")
+            case _:
+                self.logger.error(f"Unknown error code: {error}")
