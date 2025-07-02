@@ -799,27 +799,54 @@ class MainWindow(QMainWindow):
         Set up the CAEN plot widgets. It will create the plot and text items for each plot, and set up basic properties.
         """
         # plot and text items for each plot
-        self.caen_plots = [self.ui.caen_plot_0, self.ui.caen_plot_1, self.ui.caen_plot_2, self.ui.caen_plot_3]
-        self.caen_texts = [pg.TextItem(text="Event: 0", color='k', anchor=(0,0)) for _ in self.caen_plots]
+        self.caen_plots = []
         self.caen_curves = []
+        container = self.ui.caen_plot_container
+        container.ci.layout.setSpacing(0)
+        container.clear()
+        container.setBackground("w")
+        y_label = container.addLabel("Amplitude (ADC)", 
+                    color='k', row=0, col=0, angle=-90, rowspan=4, anchor=(0,0.5))
+        self.caen_event_label = pg.TextItem(text="Event: 0", color='k', anchor=(0, 0))
+        self.caen_event_label.setParentItem(y_label)
+        self.caen_event_label.setPos(0, 1)
+        container.ci.layout.setColumnFixedWidth(0, 8)
+        container.ci.layout.setColumnStretchFactor(1, 4)
+        container.ci.layout.setColumnFixedWidth(2, 10)
+        container.ci.layout.setColumnFixedWidth(3, 10)
+        # self.legend_layout = container.addLayout(row=0, col=2, rowspan=4)
         # one pen for each channel in a group
-        self.caen_pens = [pg.mkPen(color=c, width=2) for c in ["green", "red", "blue", "orange","violet","brown","pink","gray"]] 
+        self.caen_pen_colors = ["green", "red", "blue", "orange", "violet", "brown", "pink", "gray"]
+        self.caen_pens = [pg.mkPen(color=c, width=2) for c in self.caen_pen_colors]
 
-        for i in range(len(self.caen_plots)):
-            p = self.caen_plots[i]
-            t = self.caen_texts[i]
-
-            # setup some basic plot properties
-            p.setBackground("w")
+        for i in range(4):
+            p = container.addPlot(row=i, col=1)
+            self.caen_plots.append(p)
             p.showGrid(x=True, y=True)
-            p.setTitle(f"CAEN Waveforms G{i}", color='k')
-            p.setLabel('left', "Amplitude (ADC)", color='k')
-            p.setLabel('bottom', "Time (ns)", color='k')
-            p.addLegend()
+            p.getViewBox().setBackgroundColor("w")
+            p.enableAutoRange('xy', True)
+            border_pen = pg.mkPen(color='black', width=2)
+            p.getViewBox().border = border_pen
+            legend = p.addLegend()
+            legend.scene().removeItem(legend)
+            legend_layout = container.addLayout(row=(i//2)*2, col=2+(i%2), rowspan=2)
+            legend_layout.layout.setSpacing(0)
+            legend_layout.addItem(legend, 0, 0)
 
-            # setup text counter
-            t.setParentItem(p.getViewBox())
-            t.setPos(0, 1)
+            # Do different things for each subplot
+            if i == 0:
+                p.setTitle(f"CAEN Waveforms", color='k')
+                axis = p.getAxis('bottom')
+                axis.setStyle(tickLength=0, showValues=False)
+            elif i in [1, 2]:
+                p.setXLink(self.caen_plots[0])
+                axis = p.getAxis('bottom')
+                axis.setStyle(tickLength=0, showValues=False)
+            elif i == 3:
+                p.setXLink(self.caen_plots[0])
+                p.setLabel('bottom', "Time (us)", color='k')
+            else:
+                raise ValueError("Invalid CAEN plot index")
 
             # create curves for each channel
             curves = []
@@ -827,6 +854,7 @@ class MainWindow(QMainWindow):
                 c = p.plot(x=[], y=[], pen=self.caen_pens[j], name=f"Ch{i*8+j}")
                 curves.append(c)
             self.caen_curves.append(curves)
+
 
     @Slot(dict)
     def update_caen_plot(self, data):
@@ -842,15 +870,12 @@ class MainWindow(QMainWindow):
             return bin(mask & lower_mask).count("1")
 
         caen_configs = self.config_class.config["caen"]
-        for i in range(len(self.caen_plots)):
-            p = self.caen_plots[i]
-            t = self.caen_texts[i]
-            curves = self.caen_curves[i]
+        self.caen_event_label.setText(f"Event: {data['EventCounter'][-1]}")
 
-            # update text and curves
-            t.setText(f"Event: {data['EventCounter'][-1]}")
+        for i in range(len(self.caen_plots)):
+            curves = self.caen_curves[i]
             # frequency is 62.5MHz
-            time_axis = [i*16 for i in range(data["Waveforms"].shape[2])]
+            time_axis = [i*0.016 for i in range(data["Waveforms"].shape[2])]
             for j in range(8):
                 if not caen_configs[f"group{i}"]["enabled"] or \
                   not caen_configs[f"group{i}"]["acq_mask"][j] or \
@@ -858,7 +883,8 @@ class MainWindow(QMainWindow):
                     curves[j].setData(x=[], y=[])
                 else:
                     ind = get_ch_index(data["AcquisitionMask"], 8*i+j)
-                    curves[j].setData(x=time_axis, y=data['Waveforms'][-1][ind])
+                    wfs = data['Waveforms'][-1][ind]
+                    curves[j].setData(x=time_axis, y=wfs)
 
     def setup_acous_plot(self):
         """

@@ -923,7 +923,7 @@ background-color: rgb(150, 150, 150);</string>
                  <number>3</number>
                 </property>
                 <item row="0" column="0">
-                 <widget class="GraphicsLayoutWidget" name="caen_plot" native="true">
+                 <widget class="GraphicsLayoutWidget" name="caen_plot_container" native="true">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
                     <horstretch>0</horstretch>
