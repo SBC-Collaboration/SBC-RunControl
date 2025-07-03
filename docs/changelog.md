@@ -5,11 +5,18 @@
 - Add LED current control via PLC modbus.
 - Add a page of documentation on git workflow.
 ### Changed
-- Move status lights to the bottom area out of the tabs.
+- Acoustic data now has all only one row of ndarray per trigger, instead of one row per sample.
 - Change the name of acoustic file to use only the provided name, no suffix.
 - Change a few file paths to be interpreted relative to main run control directory, and not current working directory.
+- Acoustic driver will save 10s of data per trigger, instead of 100ms. (Need to parametrize this at some point).
+- Move status lights to the bottom area out of the tabs.
+- Consolidate CAEN plots into subplots. Moved legends to the side.
+- Moved CAEN and acoustic plotting into their own classes.
 ### Fixed
 - Fix the issue that camera imdaq program not getting killed at the end of run.
+- Fix CAEN module seg fault and errors when in external or self trigger mode.
+- Added a check so that stop event only runs once per event. (Need to add similar checks for other states).
+- Fix sync of CAEN per group plot checkbox and individual channel boxes.
 
 ## [Run Control v0.1.0](https://github.com/SBC-Collaboration/SBC-RunControl/releases/tag/v0.1.0) (2025-06-11)
 ### Added
