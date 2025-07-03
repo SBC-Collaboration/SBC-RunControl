@@ -258,9 +258,9 @@ This data is saved in the SBC binary format using `SBCBinaryFormat` library, nam
 
 ## Acoustics Data
 This data is saved in the SBC binary format using `SBCBinaryFormat` library, named **acoustics.sbc** in the event data folder. It can be read into a python dictionary of numpy arrays. All arrays will have the same number of rows `n_segs`, each correspond to a GaGe triggers / segments. This number will typically only be 1, since we send a software trigger at the start of event, or when the acquisiton restarts, and at the end of event retrieve the waveforms around the bubble trigger. Also assume the number of channels enabled for acquisition is `n_chs`, which is always 8, since all channels need to be enabled. The number of samples per channel per trigger `len`, which is 100 ms * sample_rate. The data structure is:
-- **Range** (`int16`, [`n_segs`, `n_chs`], mV): Voltage range for each channel. For example, range of 2000 mV means it's 2 Vpp.
-- **DC Offset** (`int16`, [`n_segs`, `n_chs`], mV): Voltage offset for each channel. For a 2 Vpp range, the minimum is -1000 mV, and maximum is +1000 mV.
-- **Waveforms** (`int16`, [`n_segs`, `n_chs`, `len`]): The raw 14-bit ADC waveforms data in 3d-array. The two least significant bits are padded with 0, meaning this can be treated as a 16-bit number when converting to voltage, or divide by 4 and treat it as a 14-bit number.
+- **Range** (`int16`, [`n_chs`], mV): Voltage range for each channel. For example, range of 2000 mV means it's 2 Vpp.
+- **DCOffset** (`int16`, [`n_chs`], mV): Voltage offset for each channel. For a 2 Vpp range, the minimum is -1000 mV, and maximum is +1000 mV.
+- **Waveform** (`int16`, [`n_chs`, `len`]): The raw 14-bit ADC waveforms data in 3d-array. The two least significant bits are padded with 0, meaning this can be treated as a 16-bit number when converting to voltage, or divide by 4 and treat it as a 14-bit number.
 
 ## Camera Info
 Each camera will save a certain number of pre-trigger and post-trigger images in the specified format in the event data folder. In addition to that, each camera will save a log file. For camera 1, the file is named **cam1.log**. Also, each camera will save a info file, named **cam1-info.csv**. Each row of the file will correspond to a image saved in the folder. The structure of the file is 

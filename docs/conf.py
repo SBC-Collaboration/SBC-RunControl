@@ -5,10 +5,10 @@ import os, sys
 
 project = 'SBC Run Control'
 copyright = '2024-2025 SBC Collaboration'
-author = 'Zhiheng Sheng'
+author = 'SBC Collaboration'
 
-release = '0.1'
-version = '0.1.0'
+release = '0.2'
+version = '0.2.0'
 
 # -- General configuration
 
