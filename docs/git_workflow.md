@@ -28,12 +28,14 @@ The run control git repo has these branches:
         ```
         git fetch
         git switch develop
+        git pull
         git merge feature/xxx
         ```
     - Or if you don’t care about the commit history, can squash all the changes into one commit in the develop branch.
         ```
         git fetch
         git switch develop
+        git pull
         git merge –squash feature/xxx
         git commit
         ```
@@ -43,3 +45,12 @@ The run control git repo has these branches:
     git push origin --delete feature/xxx
     ```
 6. When the develop branch is stable enough, it can be merged into the main branch. Then we can generate a release with a version number, update documentation, etc.
+    ```
+    git switch main
+    git pull  # make sure we have latest version of main
+    git switch develop
+    git rebase main
+    git switch main
+    git merge develop
+    git push origin main
+    ```
