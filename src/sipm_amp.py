@@ -91,7 +91,8 @@ class SiPMAmp(QObject):
         self.client.connect(host, username=self.username)
         command = "; ".join(commands)
         _stdin, _stdout, _stderr = self.client.exec_command(command)
-        print(_stdout.read().decode())
+        self.logger.error(_stderr.read().decode())
+        self.logger.debug(_stdout.read().decode())
         self.client.close()
 
     @Slot()
@@ -101,14 +102,15 @@ class SiPMAmp(QObject):
             self.sipm_biased.emit(f"{self.amp}-disabled")
             return
         commands = [
-            "dactest -v hv 1 0",  # set HV rail to 0V
-            "setPin ENQP hi",  # enable charge pump
-            f"dactest -v hv 0 {self.config['qp']}",  # set charge pump voltage
-            "enhv enable",  # enable HV rail
-            f"dactest -v hv 1 {self.config['bias']}",  # set HV rail voltage
-            "adctest -l 1000 -r 8 hv 1 0",  # readback HV rail voltage
+            "/root/nanopi/dactest -v hv 1 0",  # set HV rail to 0V
+            "/root/nanopi/setPin ENQP hi",  # enable charge pump
+            f"/root/nanopi/dactest -v hv 0 {self.config['qp']}",  # set charge pump voltage
+            "/root/nanopi/enhv enable",  # enable HV rail
+            f"/root/nanopi/dactest -v hv 1 {self.config['bias']}",  # set HV rail voltage
+            "/root/nanopi/adctest -l 1000 -r 8 hv 1 0",  # readback HV rail voltage
         ]
         self.exec_commands(self.config["ip_addr"], commands)
+        self.logger.debug(f"SiPM {self.amp} bias command executed.")
         self.sipm_biased.emit(self.amp)
 
     @Slot()
@@ -127,11 +129,12 @@ class SiPMAmp(QObject):
                 return
 
         commands = [
-            "dactest -v hv 1 0",  # set HV rail to 0V
-            "enhv disable",  # disable HV rails
-            "setPin ENQP lo",  # enable charge pump
+            "/root/nanopi/dactest -v hv 1 0",  # set HV rail to 0V
+            "/root/nanopi/enhv disable",  # disable HV rails
+            "/root/nanopi/setPin ENQP lo",  # enable charge pump
         ]
         self.exec_commands(self.config["ip_addr"], commands)
+        self.logger.debug(f"SiPM {self.amp} unbias command executed.")
         self.sipm_unbiased.emit(self.amp)
 
     @Slot()
