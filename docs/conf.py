@@ -8,7 +8,7 @@ copyright = '2024-2025 SBC Collaboration'
 author = 'SBC Collaboration'
 
 release = '0.2'
-version = '0.2.0'
+version = '0.2.1'
 
 # -- General configuration
 

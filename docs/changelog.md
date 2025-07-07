@@ -1,6 +1,6 @@
 # Changelog
 
-## [Latest]
+## [Run Control v0.2.1](https://github.com/SBC-Collaboration/SBC-RunControl/releases/tag/v0.2.1) (2025-07-06)
 ### Added
 ### Changed
 ### Fixed
