@@ -3,7 +3,7 @@ from PySide6.QtCore import QTimer, QObject, QThread, Slot, Signal
 import logging
 from sbcbinaryformat import Writer as SBCWriter
 import red_caen, ni_usb_6501, sbcbinaryformat
-from setuptools_scm import get_version
+import subprocess
 
 class Writer(QObject):
 
@@ -20,9 +20,11 @@ class Writer(QObject):
         self.timer.timeout.connect(self.periodic_task)
 
         try:
-            self.rc_version = get_version(root='..', relative_to=__file__)
-        except Exception:
-            self.rc_version = '0+unknown'
+            result = subprocess.run(['git', 'describe', '--tags'], 
+                                capture_output=True, text=True, check=True)
+            self.rc_version = result.stdout.strip()
+        except subprocess.CalledProcessError:
+            self.rc_version = 'v0.0.0'  # fallback
 
     Slot()
     def run(self):
