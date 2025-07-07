@@ -139,7 +139,7 @@ class AcousPlotManager(QObject):
         """
         Update the acous plot widgets every time data is retrieved
         """
-        acous_configs = self.config["acous"]
+        acous_configs = self.main_config["acous"]
         if not acous_configs["enabled"]:
             return
         

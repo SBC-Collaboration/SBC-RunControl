@@ -1,5 +1,11 @@
 # Changelog
 
+## [Latest]
+### Added
+### Changed
+### Fixed
+- Fix the SiPM amplifier PATH not loaded when using paramiko.
+
 ## [Run Control v0.2.0](https://github.com/SBC-Collaboration/SBC-RunControl/releases/tag/v0.2.0) (2025-07-03)
 ### Added
 - Add LED current control via PLC modbus.

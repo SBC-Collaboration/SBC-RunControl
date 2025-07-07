@@ -102,6 +102,8 @@ class MainWindow(QMainWindow):
             self.ui.caen_plot_container, self.config_class.config)
         self.acous_plot_mgr = AcousPlotManager(
             self.ui.acous_plot, self.config_class.config)
+        self.caen_plot_mgr.setup_plot()
+        self.acous_plot_mgr.setup_plot()
 
         # define four run states
         self.run_states = Enum(
@@ -137,9 +139,6 @@ class MainWindow(QMainWindow):
         self.starting_event_ready = []
         self.stopping_event_ready = []
         self.set_up_workers()
-
-        self.caen_plot_mgr.setup_plot()
-        self.acous_plot_mgr.setup_plot()
 
         # timer for event loop
         self.timer = QTimer()
@@ -289,6 +288,7 @@ class MainWindow(QMainWindow):
         self.trigff_mutex = QMutex()
         self.trigff_wait = QWaitCondition()
         self.trigff_ready = False
+
 
     # TODO: handle closing during run
     def closeEvent(self, event):
