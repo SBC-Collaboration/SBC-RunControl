@@ -230,7 +230,7 @@ class SQL(QObject):
         self.db.ping()  # ping mysql server to make sure it's alive
         # TODO: data validation steps ...
         query = (f"UPDATE {self.run_table} "
-                 f"SET num_events = {self.main.event_id}, "
+                 f"SET num_events = {self.main.event_id + 1}, "  # event ID not updated yet
                      f"run_livetime = '{str(datetime.timedelta(milliseconds=self.main.run_livetime))}', "
                      f"comment = '{self.main.ui.comment_edit.toPlainText()}', "
                      f"end_time = '{self.main.event_end_time.isoformat(sep=" ", timespec="milliseconds")}', "

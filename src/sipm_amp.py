@@ -131,7 +131,7 @@ class SiPMAmp(QObject):
         commands = [
             "/root/nanopi/dactest -v hv 1 0",  # set HV rail to 0V
             "/root/nanopi/enhv disable",  # disable HV rails
-            "/root/nanopi/setPin ENQP lo",  # enable charge pump
+            "/root/nanopi/setPin ENQP lo",  # disable charge pump
         ]
         self.exec_commands(self.config["ip_addr"], commands)
         self.logger.debug(f"SiPM {self.amp} unbias command executed.")
