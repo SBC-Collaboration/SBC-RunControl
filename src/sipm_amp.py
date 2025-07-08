@@ -5,7 +5,7 @@ with warnings.catch_warnings():
 import logging
 import os
 import re
-import datetime
+import datetime as dt
 from PySide6.QtCore import QTimer, QObject, Slot, Signal, QThread
 import subprocess
 
@@ -48,8 +48,8 @@ class SiPMAmp(QObject):
         16: "1 2 3",
     }
 
-    sipm_biased = Signal(str)
-    sipm_unbiased = Signal(str)
+    run_started = Signal(str)
+    run_stopped = Signal(str)
 
     def __init__(self, mainwindow, amp):
         super().__init__()
@@ -97,10 +97,6 @@ class SiPMAmp(QObject):
 
     @Slot()
     def bias_sipm(self):
-        self.test_sipm_amp()
-        if not self.config["enabled"]:
-            self.sipm_biased.emit(f"{self.amp}-disabled")
-            return
         commands = [
             "/root/nanopi/dactest -v hv 1 0",  # set HV rail to 0V
             "/root/nanopi/setPin ENQP hi",  # enable charge pump
@@ -110,44 +106,25 @@ class SiPMAmp(QObject):
             "/root/nanopi/adctest -l 1000 -r 8 hv 1 0",  # readback HV rail voltage
         ]
         self.exec_commands(self.config["ip_addr"], commands)
-        self.logger.debug(f"SiPM {self.amp} bias command executed.")
-        self.sipm_biased.emit(self.amp)
 
     @Slot()
     def unbias_sipm(self):
-        """
-        if not enabled, try pinging the IP address
-        if ping successes, still unbias. if not, quit
-        ping with only 1 packet, with 1s timeout
-        """
-        if not self.config["enabled"]:
-            self.sipm_unbiased.emit(f"{self.amp}-disabled")
-            return
-            if subprocess.call(f"ping -c 1 -W 1 {self.config["ip_addr"]}", shell=True):
-                self.logger.debug(f"SiPM {self.amp} is disabled and not connected")
-                self.sipm_unbiased.emit(f"{self.amp}-disabled")
-                return
-
         commands = [
             "/root/nanopi/dactest -v hv 1 0",  # set HV rail to 0V
             "/root/nanopi/enhv disable",  # disable HV rails
             "/root/nanopi/setPin ENQP lo",  # disable charge pump
         ]
         self.exec_commands(self.config["ip_addr"], commands)
-        self.logger.debug(f"SiPM {self.amp} unbias command executed.")
-        self.sipm_unbiased.emit(self.amp)
 
     @Slot()
     def run_iv_curve(self):
         """ tell the SiPM amplifier to do an IV curve measurement"""
-        if not self.config["enabled"] or not self.config["iv_enabled"]:
-            return
         start_v = self.config["iv_start"]
         stop_v = self.config["iv_stop"]
         step = self.config["iv_step"]
         adc_rate = 4 # 80 sps
         num_readings =  6
-        now = datetime.date.today().strftime("%Y%m%d%H%M")
+        now = dt.date.today().strftime("%Y%m%d%H%M")
         filename = os.path.join(self.config["iv_data_dir"], f"{self.amp}-{str(now)}.csv")
         commands = [
             "cd /root/nanopi",
@@ -157,16 +134,19 @@ class SiPMAmp(QObject):
 
     def check_iv_interval(self):
         """ return the time stamp of last IV curve measurement"""
-        data_dir = self.config["iv_rc_data_dir"]
+        if not self.config["enabled"] or not self.config["iv_enabled"]:
+            return False
+        
+        data_dir = self.config["iv_rc_dir"]
         files = os.listdir(data_dir)
         valid_dates = []
-        now = datetime.now()
+        now = dt.datetime.now()
         pattern = re.compile(rf"^{self.amp}-\d{{12}}\.csv$")  # ampN - 12 digit time followed by .csv
         for file in files:
             if pattern.match(file):
                 try:
                     datetime_str = file[5:17]  # extract datetime part from filename
-                    timestamp = datetime.strptime(datetime_str, "%Y%m%d%H%M")
+                    timestamp = dt.datetime.strptime(datetime_str, "%Y%m%d%H%M")
                     if timestamp > now:
                         self.logger.error("IV curve data timestamp in the future.")
                         raise ValueError
@@ -177,7 +157,7 @@ class SiPMAmp(QObject):
 
         # check if latest time is more than interval
         interval = self.config["iv_interval"]
-        if now - max(valid_dates) > datetime.timedelta(hours=interval):
+        if not valid_dates or now - max(valid_dates) > dt.timedelta(hours=interval):
             return True  # return if we need a new measurement
         else:
             return False
@@ -186,8 +166,20 @@ class SiPMAmp(QObject):
     def start_run(self):
         self.config = self.main.config_class.run_config["scint"][self.amp]
         if not self.config["enabled"]:
-            self.sipm_biased.emit(f"{self.amp}-disabled")
+            self.run_started.emit(f"{self.amp}-disabled")
             return
         if self.check_iv_interval():
-            self.run_iv_curve
+            self.run_iv_curve()
+        self.logger.debug(f"SiPM {self.amp} bias command executed.")
         self.bias_sipm()
+        self.run_started.emit(self.amp)
+    
+
+    @Slot()
+    def stop_run(self):
+        if not self.config["enabled"]:
+            self.run_stopped.emit(f"{self.amp}-disabled")
+            return
+        self.unbias_sipm()
+        self.logger.debug(f"SiPM {self.amp} unbias command executed.")
+        self.run_stopped.emit(self.amp)

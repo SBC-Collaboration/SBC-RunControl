@@ -170,14 +170,14 @@ class MainWindow(QMainWindow):
 
         for amp in ["amp1", "amp2", "amp3"]:
             d[f"{amp}_worker"] = SiPMAmp(self, amp)
-            d[f"{amp}_worker"].sipm_biased.connect(self.starting_run_wait)
-            d[f"{amp}_worker"].sipm_unbiased.connect(self.stopping_run_wait)
+            d[f"{amp}_worker"].run_started.connect(self.starting_run_wait)
+            d[f"{amp}_worker"].run_stopped.connect(self.stopping_run_wait)
             d[f"{amp}_thread"] = QThread()
             d[f"{amp}_thread"].setObjectName(f"{amp}_thread")
             d[f"{amp}_worker"].moveToThread(d[f"{amp}_thread"])
             d[f"{amp}_thread"].started.connect(d[f"{amp}_worker"].run)
-            self.run_starting.connect(d[f"{amp}_worker"].bias_sipm)
-            self.run_stopping.connect(d[f"{amp}_worker"].unbias_sipm)
+            self.run_starting.connect(d[f"{amp}_worker"].start_run)
+            self.run_stopping.connect(d[f"{amp}_worker"].stop_run)
             d[f"{amp}_thread"].start()
             time.sleep(0.001)
 

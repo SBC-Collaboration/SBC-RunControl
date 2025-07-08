@@ -4,6 +4,7 @@
 ### Fixed
 - Use `git describe --tags` to get the correct run control version, instead of `setuptools_scm.get_version`.
 - Fix an off-by-one error in SQL RunData table number of events field.
+- Update SiPM amp config at start of run.
 
 ## [Run Control v0.2.1](https://github.com/SBC-Collaboration/SBC-RunControl/releases/tag/v0.2.1) (2025-07-06)
 ### Fixed
