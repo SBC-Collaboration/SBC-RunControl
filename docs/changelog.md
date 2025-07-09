@@ -1,6 +1,8 @@
 # Changelog
 
 ## [Latest]
+### Added
+- Turn off position arduino UTI chips at runs, and turn on at end of runs. (Need to find a better time for that to happen to record pressure cycle).
 ### Fixed
 - Use `git describe --tags` to get the correct run control version, instead of `setuptools_scm.get_version`.
 - Fix an off-by-one error in SQL RunData table number of events field.

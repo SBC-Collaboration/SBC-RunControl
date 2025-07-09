@@ -183,12 +183,13 @@ class MainWindow(QMainWindow):
 
         for ino in ["trigger", "clock", "position"]:
             d[f"arduino_{ino}_worker"] = Arduino(self, ino)
-            d[f"arduino_{ino}_worker"].sketch_uploaded.connect(self.starting_run_wait)
+            d[f"arduino_{ino}_worker"].run_started.connect(self.starting_run_wait)
             d[f"arduino_{ino}_thread"] = QThread()
             d[f"arduino_{ino}_thread"].setObjectName(f"arduino_{ino}_thread")
             d[f"arduino_{ino}_worker"].moveToThread(d[f"arduino_{ino}_thread"])
             d[f"arduino_{ino}_thread"].started.connect(d[f"arduino_{ino}_worker"].run)
-            self.run_starting.connect(d[f"arduino_{ino}_worker"].upload_sketch)
+            self.run_starting.connect(d[f"arduino_{ino}_worker"].start_run)
+            self.run_stopping.connect(d[f"arduino_{ino}_worker"].stop_run)
             d[f"arduino_{ino}_thread"].start()
             time.sleep(0.001)
 

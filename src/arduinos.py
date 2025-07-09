@@ -4,7 +4,7 @@ import glob
 import hashlib
 import logging
 from PySide6.QtCore import QTimer, QObject, QThread, Slot, Signal
-
+from pymodbus.client import ModbusTcpClient
 
 class Arduino(QObject):
     # A map of pin number to port in Arduino Mega 2560
@@ -70,12 +70,13 @@ class Arduino(QObject):
     reverse_port_map = {}
     latch_pins = [0,1,5,2,3,17,16,6,7,8,9,15,14]
 
-    sketch_uploaded = Signal(str)
+    run_started = Signal(str)
 
     def __init__(self, mainwindow, arduino):
         super().__init__()
         self.main = mainwindow
         self.arduino = arduino
+        self.client = None
         self.config = mainwindow.config_class.config["dio"][arduino]
         self.logger = logging.getLogger("rc")
         # create reverse port map
@@ -104,7 +105,6 @@ class Arduino(QObject):
         self.logger.debug(f"Arduino {self.arduino} connected")
         return 0
 
-    @Slot()
     def upload_sketch(self):
         self.config = self.main.config_class.run_config["dio"][self.arduino]
         if self.check_arduino():
@@ -142,8 +142,7 @@ class Arduino(QObject):
             with open(archives[0], "rb") as f:
                 if checksum == hashlib.sha256(f.read()).digest():
                     self.logger.info(f"Sketch for {self.arduino} arduino not changed. Skipping upload.")
-                    self.sketch_uploaded.emit(self.arduino)
-                    return
+                    return True
 
         # if not the same, compile and upload
         command = (f"cd {sketch_path} && "
@@ -155,6 +154,49 @@ class Arduino(QObject):
             self.logger.error(result.stderr.decode("utf-8"))
             command = f"cd {sketch_path} && rm -f {build_path}/*.zip"
             result = subprocess.run(command, shell=True, capture_output=True)
-            return
+            return False
+        
         self.logger.info(f"Sketch successfully uploaded for {self.arduino} arduino.")
-        self.sketch_uploaded.emit(self.arduino)
+        return True
+    
+    def connect_modbus(self):
+        if self.client is not None and self.client.is_socket_open():
+            return self.client
+        self.client = ModbusTcpClient(self.config["ip_addr"], port=502)
+        if not self.client.connect():
+            self.logger.error(f"Failed to connect to Modbus server at {self.config['ip_addr']}.")
+            raise ConnectionError(f"Modbus connection failed for {self.arduino} arduino.")
+        self.logger.debug(f"Connected to Modbus server at {self.config['ip_addr']} for {self.arduino} arduino.")
+        return self.client
+    
+    @Slot()
+    def enable_position(self):
+        if self.arduino != "position":
+            return
+        self.connect_modbus()
+        self.client.write_register(0, 3)
+        self.logger.debug("Position arduino UTI chip enabled.")
+
+    @Slot()
+    def disable_position(self):
+        if self.arduino != "position":
+            return
+        self.connect_modbus()
+        self.client.write_register(0, 0)
+        self.logger.debug("Position arduino UTI chip disabled.")
+
+    @Slot()
+    def start_run(self):
+        if self.upload_sketch():
+            self.run_started.emit(self.arduino)
+        else:
+            self.run_started.emit(f"{self.arduino}-error")
+            
+        #TODO: find a good time to turn on and off the position chips
+        if self.arduino == "position":
+            self.disable_position()
+    
+    @Slot()
+    def stop_run(self):
+        if self.arduino == "position":
+            self.enable_position()
