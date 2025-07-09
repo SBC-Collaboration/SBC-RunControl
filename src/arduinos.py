@@ -105,7 +105,8 @@ class Arduino(QObject):
         self.logger.debug(f"Arduino {self.arduino} connected")
         return 0
 
-    def upload_sketch(self):
+    @Slot()
+    def upload_sketch(self, check_archive=True):
         self.config = self.main.config_class.run_config["dio"][self.arduino]
         if self.check_arduino():
             return
@@ -118,10 +119,10 @@ class Arduino(QObject):
         build_path = os.path.join(sketch_path, "build")
         if not os.path.exists(build_path):
             os.mkdir(build_path)
-            checksum = 0
+            checksum = b""  # empty checksum
         elif not (archives := glob.glob(os.path.join(build_path, "*.zip"))):
             # check if a zip file exists in the build folder, without in the filename
-            checksum = 0
+            checksum = b""
             self.logger.debug(f"Sketch archive doesn't exist for {self.arduino} arduino. Creating archive.")
         elif len(archives)==1:
             # generate checksum for old zip file
@@ -129,22 +130,28 @@ class Arduino(QObject):
                 checksum = hashlib.sha256(f.read()).digest()
         else:
             self.logger.debug(f"More than one sketch archive for {self.arduino} arduino. Recreating archive.")
-            checksum = 0
+            checksum = b""
 
         # generate a new zip archive of sketch
+        self.logger.debug(f"Creating sketch archive for {self.arduino} arduino.")
         os.environ["PATH"] += os.pathsep + os.path.join(os.path.dirname(os.path.dirname(__file__)), "dependencies")
         command = (f"cd {sketch_path} && rm -f {build_path}/*.zip && "
                    f"arduino-cli sketch archive {sketch_path} {build_path}")
         result = subprocess.run(command, shell=True, capture_output=True)
+        if result.returncode != 0:
+            self.logger.error("Failed to archive sketch.")
+            self.logger.error(result.stderr.decode("utf-8"))
+            return False
 
         # check if hash of new archive is the same as the old
-        if (archives := glob.glob(os.path.join(build_path, "*.zip"))) and len(archives)==1:
+        if (archives := glob.glob(os.path.join(build_path, "*.zip"))) and len(archives)==1 and check_archive:
             with open(archives[0], "rb") as f:
                 if checksum == hashlib.sha256(f.read()).digest():
                     self.logger.info(f"Sketch for {self.arduino} arduino not changed. Skipping upload.")
                     return True
 
         # if not the same, compile and upload
+        self.logger.debug(f"Uploading sketch for {self.arduino} arduino.")
         command = (f"cd {sketch_path} && "
                    f"arduino-cli compile -b {fqbn} --build-path {build_path} {sketch_path} && "
                    f"arduino-cli upload -p {port} -b {fqbn} --input-dir {build_path}")

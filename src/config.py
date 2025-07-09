@@ -19,6 +19,8 @@ class Config(QObject):
         self.config = {}
         self.run_config = {}  # A copy of config for the run
         self.run_pressure_profiles = []
+        self.load_config()
+        self.run_config = copy.deepcopy(self.config)
 
         self.logger = logging.getLogger("rc")
         self.timer = QTimer(self)

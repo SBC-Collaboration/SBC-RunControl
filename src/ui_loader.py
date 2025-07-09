@@ -1,7 +1,7 @@
 import sys
 from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog
 from PySide6.QtGui import QTextCursor
-from PySide6.QtCore import QTimer, Qt, QObject, QSignalBlocker, QStringListModel
+from PySide6.QtCore import QTimer, Qt, QObject, QSignalBlocker, QStringListModel, Signal, Slot
 import logging
 from enum import Enum
 import time
@@ -107,6 +107,14 @@ class SettingsWindow(QMainWindow):
             self.widgets[f"caen_{group}_acq_box"].stateChanged.connect(self.caen_group_changed)
             self.widgets[f"caen_{group}_plot_box"].stateChanged.connect(self.caen_group_changed)
         self.caen_individual_changed()
+
+        # connect upload sketch signals, force upload
+        self.ui.trigger_upload_but.clicked.connect(
+            lambda: self.main.arduino_trigger_worker.upload_sketch(check_archive=False))
+        self.ui.clock_upload_but.clicked.connect(
+            lambda: self.main.arduino_clock_worker.upload_sketch(check_archive=False))
+        self.ui.position_upload_but.clicked.connect(
+            lambda: self.main.arduino_position_worker.upload_sketch(check_archive=False))
 
         # set up checkboxes pairs and groups
         # Individual checkbox pairs (general tab <-> specific tab)
