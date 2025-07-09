@@ -1,6 +1,6 @@
 # Changelog
 
-## [Latest]
+## [Run Control v0.2.2](https://github.com/SBC-Collaboration/SBC-RunControl/releases/tag/v0.2.2) (2025-07-08)
 ### Added
 - Turn off position arduino UTI chips at runs, and turn on at end of runs. (Need to find a better time for that to happen to record pressure cycle).
 ### Fixed
