@@ -64,8 +64,7 @@ class MainWindow(QMainWindow):
         self.widgets = self.ui.__dict__
 
         # initialize config class
-        path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "config.json")
-        self.config_class = Config(self, path)
+        self.config_class = Config(self)
         self.config_class.load_config()
         self.config_class.load_config_to_mainwindow()
         self.stopping_run = False
