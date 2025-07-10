@@ -12,10 +12,10 @@ class Config(QObject):
     """
     run_config_saved = Signal()
 
-    def __init__(self, mainwindow, path):
+    def __init__(self, mainwindow):
         super().__init__()
         self.main = mainwindow
-        self.path = path
+        self.path = os.path.join(os.path.expanduser("~"), ".config", "runcontrol", "config.json")
         self.config = {}
         self.run_config = {}  # A copy of config for the run
         self.run_pressure_profiles = []
@@ -45,8 +45,14 @@ class Config(QObject):
 
     @Slot()
     def load_config(self):
-        with open(self.path, "r") as file:
-            self.new_config = json.load(file)
+        # check if the config file exists, if not, copy the template
+        if not os.path.isfile(self.path):
+            os.makedirs(os.path.dirname(self.path), exist_ok=True)
+            self.logger.info(f"Config file not found. Created a new one at {self.path}")
+            self.new_config = {}
+        else:
+            with open(self.path, "r") as file:
+                self.new_config = json.load(file)
 
         # update existing dict with new settings
         self.update_dict(self.config, self.new_config)
@@ -57,11 +63,7 @@ class Config(QObject):
         Updates the config dict with new json dict. The new json has to follow the same structure,
         but doesn't need to have all the values
         """
-        with open(path, "r") as file:
-            self.new_config = json.load(file)
-
-        # update existing dict with new settings
-        self.update_dict(self.config, self.new_config)
+        self.load_config()
         self.load_config_to_window(ui)
     
     @Slot()
@@ -746,13 +748,13 @@ class Config(QObject):
         self.logger.info("Configuration applied.")
 
     @Slot()
-    def save_config_from_ui(self, ui, path):
+    def save_config_from_ui(self, ui):
         self.apply_config(ui)
-        self.save_config(path)
+        self.save_config()
 
     @Slot()
-    def save_config(self, path):
-        with open(path, "w") as file:
+    def save_config(self):
+        with open(self.path, "w") as file:
             json.dump(self.config, file, indent=2)
         self.logger.info("Configuration saved to file.")
 
