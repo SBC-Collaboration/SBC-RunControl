@@ -53,7 +53,7 @@ class MainWindow(QMainWindow):
         try:
             fcntl.flock(self.lock_fd, fcntl.LOCK_EX | fcntl.LOCK_NB)
         except BlockingIOError:
-            self.logger.error("Run Control is already running. Exiting.")
+            print("Run Control is already running. Exiting.")
             sys.exit(1)
 
         self.run_id = ""
@@ -315,7 +315,7 @@ class MainWindow(QMainWindow):
         for m in modules:
             worker = getattr(self, f"{m}_worker", None)
             thread = getattr(self, f"{m}_thread", None)
-            self.logger.debug(f"Stopping {worker}.")
+            self.logger.debug(f"Stopping {m} module.")
             thread.quit()
             if not thread.wait(1000):  # 1 sec timeout
                 self.logger.error(f"Thread {m} failed to stop")

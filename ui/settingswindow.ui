@@ -1977,7 +1977,7 @@
               <item row="4" column="4">
                <widget class="QLabel" name="led3_control_label">
                 <property name="text">
-                 <string>LED2 Control</string>
+                 <string>LED3 Control</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>

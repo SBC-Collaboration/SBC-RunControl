@@ -104,13 +104,13 @@ class Modbus(QObject):
             return
         
         ret = True
-        ret = ret and self._write_float(self.registers["LED_MAX"], self.config["led_max"])
+        ret = ret and self._write_float(self.registers["LED_MAX"], self.config["led_control_max"])
         ret = ret and self._write_float(self.registers["LED1_OUT"], 
-                      min(self.config["led1_control"], self.config["led_max"]))
+                      min(self.config["led1_control"], self.config["led_control_max"]))
         ret = ret and self._write_float(self.registers["LED2_OUT"], 
-                      min(self.config["led2_control"], self.config["led_max"]))
+                      min(self.config["led2_control"], self.config["led_control_max"]))
         ret = ret and self._write_float(self.registers["LED3_OUT"], 
-                      min(self.config["led3_control"], self.config["led_max"]))
+                      min(self.config["led3_control"], self.config["led_control_max"]))
         if ret:
             self.logger.debug(f"Writing of LED control voltages successful.")
         else:
@@ -156,9 +156,10 @@ class Modbus(QObject):
         }
 
         # write the plc_data in a file
-        headers = [ "SLOWDAQ_FF","PCYCLE_ABORT_FF","PCYCLE_FASTCOMP_FF","PCYCLE_SLOWCOMP_FF", "PCYCLE_PSET", "PCYCLE_EXIT_CODE"]
-        dtypes = [ "i1", "i1", "i1", "i1", "f", "u2"]
-        shapes = [[15], [15], [15], [15],[1],[1]]
+        headers = ["SLOWDAQ_FF","PCYCLE_ABORT_FF","PCYCLE_FASTCOMP_FF","PCYCLE_SLOWCOMP_FF", "PCYCLE_PSET", 
+                   "PCYCLE_EXIT_CODE", "LED1_OUT", "LED2_OUT", "LED3_OUT", "LED_MAX"]
+        dtypes = [ "i1", "i1", "i1", "i1", "f", "u2", "f", "f", "f", "f"]
+        shapes = [[15], [15], [15], [15], [1], [1], [1], [1], [1], [1]]
         with SBCWriter(
                 os.path.join(
                     self.main.event_dir, "plc.sbc"
