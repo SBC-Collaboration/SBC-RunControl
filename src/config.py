@@ -155,6 +155,7 @@ class Config(QObject):
         sipm_amp1_config = self.config["scint"]["amp1"]
         ui.sipm_amp1_enabled_box.setChecked(sipm_amp1_config["enabled"])
         ui.sipm_amp1_ip_addr_edit.setText(sipm_amp1_config["ip_addr"])
+        ui.sipm_amp1_user_edit.setText(sipm_amp1_config["user"])
         ui.sipm_amp1_bias_box.setValue(sipm_amp1_config["bias"])
         ui.sipm_amp1_qp_box.setValue(sipm_amp1_config["qp"])
         ui.sipm_amp1_iv_enabled_box.setChecked(sipm_amp1_config["iv_enabled"])
@@ -171,6 +172,7 @@ class Config(QObject):
         sipm_amp2_config = self.config["scint"]["amp2"]
         ui.sipm_amp2_enabled_box.setChecked(sipm_amp2_config["enabled"])
         ui.sipm_amp2_ip_addr_edit.setText(sipm_amp2_config["ip_addr"])
+        ui.sipm_amp2_user_edit.setText(sipm_amp2_config["user"])
         ui.sipm_amp2_bias_box.setValue(sipm_amp2_config["bias"])
         ui.sipm_amp2_qp_box.setValue(sipm_amp2_config["qp"])
         ui.sipm_amp2_iv_enabled_box.setChecked(sipm_amp2_config["iv_enabled"])
@@ -187,6 +189,7 @@ class Config(QObject):
         sipm_amp3_config = self.config["scint"]["amp3"]
         ui.sipm_amp3_enabled_box.setChecked(sipm_amp3_config["enabled"])
         ui.sipm_amp3_ip_addr_edit.setText(sipm_amp3_config["ip_addr"])
+        ui.sipm_amp3_user_edit.setText(sipm_amp3_config["user"])
         ui.sipm_amp3_bias_box.setValue(sipm_amp3_config["bias"])
         ui.sipm_amp3_qp_box.setValue(sipm_amp3_config["qp"])
         ui.sipm_amp3_iv_enabled_box.setChecked(sipm_amp3_config["iv_enabled"])
@@ -475,6 +478,7 @@ class Config(QObject):
         sipm_amp1_config = {
             "enabled": ui.sipm_amp1_enabled_box.isChecked(),
             "ip_addr": ui.sipm_amp1_ip_addr_edit.text(),
+            "user": ui.sipm_amp1_user_edit.text(),
             "bias": ui.sipm_amp1_bias_box.value(),
             "qp": ui.sipm_amp1_qp_box.value(),
             "iv_enabled": ui.sipm_amp1_iv_enabled_box.isChecked(),
@@ -491,6 +495,7 @@ class Config(QObject):
         sipm_amp2_config = {
             "enabled": ui.sipm_amp2_enabled_box.isChecked(),
             "ip_addr": ui.sipm_amp2_ip_addr_edit.text(),
+            "user": ui.sipm_amp2_user_edit.text(),
             "bias": ui.sipm_amp2_bias_box.value(),
             "qp": ui.sipm_amp2_qp_box.value(),
             "iv_enabled": ui.sipm_amp2_iv_enabled_box.isChecked(),
@@ -507,6 +512,7 @@ class Config(QObject):
         sipm_amp3_config = {
             "enabled": ui.sipm_amp3_enabled_box.isChecked(),
             "ip_addr": ui.sipm_amp3_ip_addr_edit.text(),
+            "user": ui.sipm_amp3_user_edit.text(),
             "bias": ui.sipm_amp3_bias_box.value(),
             "qp": ui.sipm_amp3_qp_box.value(),
             "iv_enabled": ui.sipm_amp3_iv_enabled_box.isChecked(),

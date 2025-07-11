@@ -404,6 +404,127 @@
               <property name="spacing">
                <number>3</number>
               </property>
+              <item row="3" column="2">
+               <widget class="QLabel" name="max_num_ev_label">
+                <property name="text">
+                 <string>Max Num of Events</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>max_num_ev_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="4">
+               <widget class="QLabel" name="max_ev_time_label">
+                <property name="text">
+                 <string>Max Event Time</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>max_ev_time_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="0">
+               <widget class="QCheckBox" name="autorun_box">
+                <property name="layoutDirection">
+                 <enum>Qt::LayoutDirection::LeftToRight</enum>
+                </property>
+                <property name="text">
+                 <string>Autorun</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QLabel" name="data_dir_label">
+                <property name="lineWidth">
+                 <number>0</number>
+                </property>
+                <property name="text">
+                 <string>Data Dir</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>data_dir_edit</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="log_dir_label">
+                <property name="lineWidth">
+                 <number>0</number>
+                </property>
+                <property name="text">
+                 <string>Log Dir</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>log_dir_edit</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="3">
+               <widget class="NoWheelSpinBox" name="max_num_ev_box">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="minimum">
+                 <number>1</number>
+                </property>
+                <property name="maximum">
+                 <number>1000</number>
+                </property>
+                <property name="value">
+                 <number>100</number>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="6">
+               <widget class="QToolButton" name="config_path_but">
+                <property name="text">
+                 <string>...</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="6">
+               <widget class="QToolButton" name="data_dir_but">
+                <property name="text">
+                 <string>...</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="6">
+               <widget class="QToolButton" name="log_dir_but">
+                <property name="text">
+                 <string>...</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="5" colspan="2">
+               <widget class="NoWheelDoubleSpinBox" name="max_ev_time_box">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string> s</string>
+                </property>
+                <property name="decimals">
+                 <number>1</number>
+                </property>
+                <property name="maximum">
+                 <double>100000.000000000000000</double>
+                </property>
+               </widget>
+              </item>
               <item row="0" column="0">
                <widget class="QLabel" name="config_path_label">
                 <property name="minimumSize">
@@ -426,127 +547,7 @@
                 </property>
                </widget>
               </item>
-              <item row="0" column="1" colspan="4">
-               <widget class="QLineEdit" name="config_path_edit"/>
-              </item>
-              <item row="1" column="1" colspan="4">
-               <widget class="QLineEdit" name="log_dir_edit"/>
-              </item>
-              <item row="1" column="5">
-               <widget class="QToolButton" name="log_dir_but">
-                <property name="text">
-                 <string>...</string>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="0">
-               <widget class="QLabel" name="log_dir_label">
-                <property name="lineWidth">
-                 <number>0</number>
-                </property>
-                <property name="text">
-                 <string>Log Dir</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>log_dir_edit</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="0">
-               <widget class="QLabel" name="data_dir_label">
-                <property name="lineWidth">
-                 <number>0</number>
-                </property>
-                <property name="text">
-                 <string>Data Dir</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>data_dir_edit</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="4" colspan="2">
-               <widget class="NoWheelDoubleSpinBox" name="max_ev_time_box">
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="suffix">
-                 <string> s</string>
-                </property>
-                <property name="decimals">
-                 <number>1</number>
-                </property>
-                <property name="maximum">
-                 <double>100000.000000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="5">
-               <widget class="QToolButton" name="config_path_but">
-                <property name="text">
-                 <string>...</string>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="5">
-               <widget class="QToolButton" name="data_dir_but">
-                <property name="text">
-                 <string>...</string>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="1" colspan="4">
-               <widget class="QLineEdit" name="data_dir_edit"/>
-              </item>
-              <item row="3" column="3">
-               <widget class="QLabel" name="max_ev_time_label">
-                <property name="text">
-                 <string>Max Event Time</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>max_ev_time_box</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="2">
-               <widget class="NoWheelSpinBox" name="max_num_ev_box">
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="minimum">
-                 <number>1</number>
-                </property>
-                <property name="maximum">
-                 <number>1000</number>
-                </property>
-                <property name="value">
-                 <number>100</number>
-                </property>
-               </widget>
-              </item>
               <item row="3" column="1">
-               <widget class="QLabel" name="max_num_ev_label">
-                <property name="text">
-                 <string>Max Num of Events</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>max_num_ev_box</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="0">
                <widget class="QCheckBox" name="writer_enabled_box">
                 <property name="layoutDirection">
                  <enum>Qt::LayoutDirection::LeftToRight</enum>
@@ -555,6 +556,15 @@
                  <string>Writer Enabled</string>
                 </property>
                </widget>
+              </item>
+              <item row="2" column="1" colspan="5">
+               <widget class="QLineEdit" name="data_dir_edit"/>
+              </item>
+              <item row="1" column="1" colspan="5">
+               <widget class="QLineEdit" name="log_dir_edit"/>
+              </item>
+              <item row="0" column="1" colspan="5">
+               <widget class="QLineEdit" name="config_path_edit"/>
               </item>
              </layout>
             </item>
@@ -785,7 +795,7 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>809</width>
+             <width>874</width>
              <height>684</height>
             </rect>
            </property>
@@ -2350,8 +2360,8 @@
            <property name="geometry">
             <rect>
              <x>0</x>
-             <y>0</y>
-             <width>769</width>
+             <y>-276</y>
+             <width>876</width>
              <height>1203</height>
             </rect>
            </property>
@@ -2388,93 +2398,19 @@
               <property name="spacing">
                <number>3</number>
               </property>
-              <item row="1" column="1">
-               <widget class="QLabel" name="sipm_amp1_ip_addr_label">
+              <item row="2" column="5">
+               <widget class="QLabel" name="sipm_amp1_iv_rc_data_dir_label">
                 <property name="layoutDirection">
                  <enum>Qt::LayoutDirection::LeftToRight</enum>
                 </property>
                 <property name="text">
-                 <string>IP Addr</string>
+                 <string>RC Data Dir</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
-                 <cstring>sipm_amp1_ip_addr_edit</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="0">
-               <widget class="QCheckBox" name="sipm_amp1_enabled_box">
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="layoutDirection">
-                 <enum>Qt::LayoutDirection::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>Enabled</string>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="5">
-               <widget class="QLabel" name="sipm_amp1_bias_label">
-                <property name="layoutDirection">
-                 <enum>Qt::LayoutDirection::LeftToRight</enum>
-                </property>
-                <property name="text">
-                 <string>Bias Voltage</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>sipm_amp1_bias_box</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="7">
-               <widget class="QLabel" name="sipm_amp1_iv_stop_label">
-                <property name="layoutDirection">
-                 <enum>Qt::LayoutDirection::LeftToRight</enum>
-                </property>
-                <property name="text">
-                 <string>IV Stop</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>sipm_amp1_iv_stop_box</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="0">
-               <widget class="QCheckBox" name="sipm_amp1_iv_enabled_box">
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="layoutDirection">
-                 <enum>Qt::LayoutDirection::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>IV Enabled</string>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="1">
-               <widget class="QLabel" name="sipm_amp1_iv_interval_label">
-                <property name="layoutDirection">
-                 <enum>Qt::LayoutDirection::LeftToRight</enum>
-                </property>
-                <property name="text">
-                 <string>IV Interval</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>sipm_amp1_iv_interval_box</cstring>
+                 <cstring>sipm_amp1_iv_rc_data_dir_edit</cstring>
                 </property>
                </widget>
               </item>
@@ -2494,26 +2430,23 @@
                 </property>
                </widget>
               </item>
-              <item row="2" column="6" colspan="3">
-               <widget class="QLineEdit" name="sipm_amp1_iv_rc_data_dir_edit">
+              <item row="1" column="0">
+               <widget class="QCheckBox" name="sipm_amp1_enabled_box">
                 <property name="focusPolicy">
                  <enum>Qt::FocusPolicy::StrongFocus</enum>
                 </property>
-               </widget>
-              </item>
-              <item row="2" column="1">
-               <widget class="QLabel" name="sipm_amp1_iv_data_dir_label">
                 <property name="layoutDirection">
-                 <enum>Qt::LayoutDirection::LeftToRight</enum>
+                 <enum>Qt::LayoutDirection::RightToLeft</enum>
                 </property>
                 <property name="text">
-                 <string>Data Dir</string>
+                 <string>Enabled</string>
                 </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>sipm_amp1_iv_data_dir_edit</cstring>
+               </widget>
+              </item>
+              <item row="1" column="2">
+               <widget class="QLineEdit" name="sipm_amp1_ip_addr_edit">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
                 </property>
                </widget>
               </item>
@@ -2539,112 +2472,6 @@
                 </property>
                </widget>
               </item>
-              <item row="3" column="3">
-               <widget class="QLabel" name="sipm_amp1_iv_step_label">
-                <property name="layoutDirection">
-                 <enum>Qt::LayoutDirection::LeftToRight</enum>
-                </property>
-                <property name="text">
-                 <string>IV Step</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>sipm_amp1_iv_step_box</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="5">
-               <widget class="QLabel" name="sipm_amp1_iv_rc_data_dir_label">
-                <property name="layoutDirection">
-                 <enum>Qt::LayoutDirection::LeftToRight</enum>
-                </property>
-                <property name="text">
-                 <string>RC Data Dir</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>sipm_amp1_iv_rc_data_dir_edit</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="2">
-               <widget class="NoWheelDoubleSpinBox" name="sipm_amp1_iv_interval_box">
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="suffix">
-                 <string> h</string>
-                </property>
-                <property name="decimals">
-                 <number>1</number>
-                </property>
-                <property name="minimum">
-                 <double>0.000000000000000</double>
-                </property>
-                <property name="maximum">
-                 <double>10000.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="2" colspan="3">
-               <widget class="QLineEdit" name="sipm_amp1_ip_addr_edit">
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="4">
-               <widget class="NoWheelDoubleSpinBox" name="sipm_amp1_iv_step_box">
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="suffix">
-                 <string> V</string>
-                </property>
-                <property name="decimals">
-                 <number>2</number>
-                </property>
-                <property name="minimum">
-                 <double>0.000000000000000</double>
-                </property>
-                <property name="maximum">
-                 <double>10.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.050000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="5">
-               <widget class="QLabel" name="sipm_amp1_iv_start_label">
-                <property name="layoutDirection">
-                 <enum>Qt::LayoutDirection::LeftToRight</enum>
-                </property>
-                <property name="text">
-                 <string>IV Start</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>sipm_amp1_iv_start_box</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="2" colspan="3">
-               <widget class="QLineEdit" name="sipm_amp1_iv_data_dir_edit">
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
               <item row="3" column="6">
                <widget class="NoWheelDoubleSpinBox" name="sipm_amp1_iv_start_box">
                 <property name="focusPolicy">
@@ -2667,10 +2494,90 @@
                 </property>
                </widget>
               </item>
+              <item row="2" column="1">
+               <widget class="QLabel" name="sipm_amp1_iv_data_dir_label">
+                <property name="layoutDirection">
+                 <enum>Qt::LayoutDirection::LeftToRight</enum>
+                </property>
+                <property name="text">
+                 <string>Data Dir</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp1_iv_data_dir_edit</cstring>
+                </property>
+               </widget>
+              </item>
               <item row="2" column="9">
                <widget class="QToolButton" name="sipm_amp1_iv_rc_data_dir_but">
                 <property name="text">
                  <string>...</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="1">
+               <widget class="QLabel" name="sipm_amp1_iv_interval_label">
+                <property name="layoutDirection">
+                 <enum>Qt::LayoutDirection::LeftToRight</enum>
+                </property>
+                <property name="text">
+                 <string>IV Interval</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp1_iv_interval_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="3">
+               <widget class="QLabel" name="sipm_amp1_iv_step_label">
+                <property name="layoutDirection">
+                 <enum>Qt::LayoutDirection::LeftToRight</enum>
+                </property>
+                <property name="text">
+                 <string>IV Step</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp1_iv_step_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="7">
+               <widget class="QLabel" name="sipm_amp1_iv_stop_label">
+                <property name="layoutDirection">
+                 <enum>Qt::LayoutDirection::LeftToRight</enum>
+                </property>
+                <property name="text">
+                 <string>IV Stop</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp1_iv_stop_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="5">
+               <widget class="QLabel" name="sipm_amp1_iv_start_label">
+                <property name="layoutDirection">
+                 <enum>Qt::LayoutDirection::LeftToRight</enum>
+                </property>
+                <property name="text">
+                 <string>IV Start</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp1_iv_start_box</cstring>
                 </property>
                </widget>
               </item>
@@ -2699,6 +2606,87 @@
                 </property>
                </widget>
               </item>
+              <item row="2" column="0">
+               <widget class="QCheckBox" name="sipm_amp1_iv_enabled_box">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="layoutDirection">
+                 <enum>Qt::LayoutDirection::RightToLeft</enum>
+                </property>
+                <property name="text">
+                 <string>IV Enabled</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="5">
+               <widget class="QLabel" name="sipm_amp1_bias_label">
+                <property name="layoutDirection">
+                 <enum>Qt::LayoutDirection::LeftToRight</enum>
+                </property>
+                <property name="text">
+                 <string>Bias Voltage</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp1_bias_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="6" colspan="3">
+               <widget class="QLineEdit" name="sipm_amp1_iv_rc_data_dir_edit">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1">
+               <widget class="QLabel" name="sipm_amp1_ip_addr_label">
+                <property name="layoutDirection">
+                 <enum>Qt::LayoutDirection::LeftToRight</enum>
+                </property>
+                <property name="text">
+                 <string>IP Addr</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp1_ip_addr_edit</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="4">
+               <widget class="QLineEdit" name="sipm_amp1_user_edit">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="4">
+               <widget class="NoWheelDoubleSpinBox" name="sipm_amp1_iv_step_box">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string> V</string>
+                </property>
+                <property name="decimals">
+                 <number>2</number>
+                </property>
+                <property name="minimum">
+                 <double>0.000000000000000</double>
+                </property>
+                <property name="maximum">
+                 <double>10.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.050000000000000</double>
+                </property>
+               </widget>
+              </item>
               <item row="0" column="0" colspan="10">
                <widget class="QLabel" name="sipm_amp1_label">
                 <property name="font">
@@ -2714,6 +2702,35 @@
                 </property>
                 <property name="buddy">
                  <cstring>sipm_amp1_enabled_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="2">
+               <widget class="NoWheelDoubleSpinBox" name="sipm_amp1_iv_interval_box">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string> h</string>
+                </property>
+                <property name="decimals">
+                 <number>1</number>
+                </property>
+                <property name="minimum">
+                 <double>0.000000000000000</double>
+                </property>
+                <property name="maximum">
+                 <double>10000.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="2" colspan="3">
+               <widget class="QLineEdit" name="sipm_amp1_iv_data_dir_edit">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
                 </property>
                </widget>
               </item>
@@ -2736,6 +2753,22 @@
                 </property>
                 <property name="singleStep">
                  <double>0.100000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="3">
+               <widget class="QLabel" name="sipm_amp1_user_label">
+                <property name="layoutDirection">
+                 <enum>Qt::LayoutDirection::LeftToRight</enum>
+                </property>
+                <property name="text">
+                 <string>User</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp1_iv_step_box</cstring>
                 </property>
                </widget>
               </item>
@@ -3710,13 +3743,6 @@
                 </property>
                </widget>
               </item>
-              <item row="1" column="2" colspan="3">
-               <widget class="QLineEdit" name="sipm_amp2_ip_addr_edit">
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
               <item row="3" column="2">
                <widget class="NoWheelDoubleSpinBox" name="sipm_amp2_iv_interval_box">
                 <property name="focusPolicy">
@@ -3937,6 +3963,36 @@
                 </property>
                 <property name="buddy">
                  <cstring>sipm_amp2_iv_rc_data_dir_edit</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="2">
+               <widget class="QLineEdit" name="sipm_amp2_ip_addr_edit">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="3">
+               <widget class="QLabel" name="sipm_amp2_user_label">
+                <property name="layoutDirection">
+                 <enum>Qt::LayoutDirection::LeftToRight</enum>
+                </property>
+                <property name="text">
+                 <string>User</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp1_iv_step_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="4">
+               <widget class="QLineEdit" name="sipm_amp2_user_edit">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
                 </property>
                </widget>
               </item>
@@ -5099,13 +5155,6 @@
                 </property>
                </widget>
               </item>
-              <item row="1" column="2" colspan="3">
-               <widget class="QLineEdit" name="sipm_amp3_ip_addr_edit">
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-               </widget>
-              </item>
               <item row="1" column="0">
                <widget class="QCheckBox" name="sipm_amp3_enabled_box">
                 <property name="focusPolicy">
@@ -5145,6 +5194,36 @@
                 </property>
                 <property name="singleStep">
                  <double>0.100000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="2">
+               <widget class="QLineEdit" name="sipm_amp3_ip_addr_edit">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="3">
+               <widget class="QLabel" name="sipm_amp3_user_label">
+                <property name="layoutDirection">
+                 <enum>Qt::LayoutDirection::LeftToRight</enum>
+                </property>
+                <property name="text">
+                 <string>User</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>sipm_amp1_iv_step_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="4">
+               <widget class="QLineEdit" name="sipm_amp3_user_edit">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
                 </property>
                </widget>
               </item>
@@ -6048,7 +6127,7 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>874</width>
+             <width>876</width>
              <height>998</height>
             </rect>
            </property>
@@ -9341,7 +9420,7 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>686</width>
+             <width>876</width>
              <height>549</height>
             </rect>
            </property>
@@ -11490,7 +11569,7 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>398</width>
+             <width>876</width>
              <height>562</height>
             </rect>
            </property>
@@ -12713,7 +12792,7 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>658</width>
+             <width>876</width>
              <height>1388</height>
             </rect>
            </property>
