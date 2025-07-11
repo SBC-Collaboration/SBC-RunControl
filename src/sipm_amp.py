@@ -244,7 +244,8 @@ class SiPMAmp(QObject):
         ch_command_1 = f"/root/nanopi/dactest -r 5" # first half of the channels
         ch_command_2 = f"/root/nanopi/dactest -r 2" # second half of the channels
 
-        readback = {'timestamp': dt.datetime.now().timestamp()}
+        readback = {'amp': self.amp, 
+                    'timestamp': dt.datetime.now().timestamp()}
         _stdin, _stdout, _stderr = self.exec_command(hv_command)
         readback.update(self._parse_hv_output(_stdout.read().decode()))
         _stdin, _stdout, _stderr = self.exec_command(qp_command)
@@ -260,6 +261,21 @@ class SiPMAmp(QObject):
         readback["ch_offsets_v"] = [offset * scale_v for offset in dac_offsets]
 
         return readback
+    
+    @Slot()
+    def measure_and_write_voltages(self):
+        voltages = self.read_voltages()
+        self.logger.debug(f"SiPM {self.amp} bias readback: {voltages['hv_mean_v']} V")
+
+        # TODO: Add mutex lock
+        headers = ["amp", "timestamp", "hv_mean_adc", "hv_stdev_adc", "hv_mean_v", "hv_stdev_v", "qp_mean_adc", "qp_stdev_adc", 
+                   "qp_mean_v", "qp_stdev_v", "ch_offsets_adc", "ch_offsets_v"]
+        dtypes = ["U10", "f", "i4", "i4", "f", "f", "i4", "i4", "f", "f", "i4", "f"]
+        shapes = [[1], [1], [1], [1], [1], [1], [1], [1], [1], [1], [16], [16]]
+        writer = Writer(
+            os.path.join(self.main.event_dir, f"sipm_amp.sbc"), 
+            headers, dtypes, shapes)
+        writer.write(voltages)
 
     @Slot()
     def start_run(self):
@@ -274,12 +290,7 @@ class SiPMAmp(QObject):
             self.logger.debug(f"SiPM {self.amp} IV curve measurement executed.")
         self.bias_sipm()
         self.logger.debug(f"SiPM {self.amp} bias command executed.")
-
-        voltages = self.read_voltages()
-        self.logger.debug(f"SiPM {self.amp} bias readback: {voltages['hv_mean_v']} V")
-
-        # TODO: write to binary file
-
+        self.measure_and_write_voltages()
         self.run_started.emit(self.amp)
     
 
@@ -288,6 +299,7 @@ class SiPMAmp(QObject):
         if not self.config["enabled"]:
             self.run_stopped.emit(f"{self.amp}-disabled")
             return
+        self.measure_and_write_voltages()
         self.unbias_sipm()
         if self.client.get_transport() and self.client.get_transport().is_active():
             self.client.close()
