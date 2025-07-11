@@ -8,6 +8,7 @@ import re
 import datetime as dt
 from PySide6.QtCore import QTimer, QObject, Slot, Signal, QThread
 import subprocess
+from sbcbinaryformat import Writer
 
 class SiPMAmp(QObject):
     daq_mapping = {  # the two numbers are DAC address and DAC channel number
@@ -48,6 +49,18 @@ class SiPMAmp(QObject):
         16: "1 2 3",
     }
 
+    hv_dac_mapping = {
+        "QPout": "hv 0",
+        "HVout": "hv 1",
+        "Enable HVout": "hv 3"
+    }
+
+    hv_adc_mapping = {
+        "HVout": "hv 1 0",
+        "+QPout": "hv 3 2",
+        "-QPout": "hv 4 5"
+    }
+
     run_started = Signal(str)
     run_stopped = Signal(str)
 
@@ -78,22 +91,26 @@ class SiPMAmp(QObject):
         if not self.config["enabled"]:
             self.logger.debug(f"SiPM {self.amp} disabled.")
             return
-        host = self.config["ip_addr"]
 
         # ping with 1 packet, and 1s timeout
-        if not subprocess.call(f"ping -c 1 -W 1 {host}", shell=True):
+        if not subprocess.call(f"ping -c 1 -W 1 {self.config['ip_addr']}", shell=True):
             self.logger.debug(f"SiPM {self.amp} connected.")
         else:
-            self.logger.error(f"SiPM {self.amp} at {host} not connected.")
+            self.logger.error(f"SiPM {self.amp} at {self.config['ip_addr']} not connected.")
             raise ConnectionError
 
-    def exec_commands(self, host, commands):
-        self.client.connect(host, username=self.username)
+    def exec_commands(self, commands):
+        already_connected = False
+        if self.client.get_transport() and self.client.get_transport().is_active():
+            already_connected = True
+        else:
+            self.client.connect(self.config['ip_addr'], username=self.config["user"])
         command = "; ".join(commands)
         _stdin, _stdout, _stderr = self.client.exec_command(command)
         self.logger.error(_stderr.read().decode())
         self.logger.debug(_stdout.read().decode())
-        self.client.close()
+        if not already_connected:
+            self.client.close()
 
     @Slot()
     def bias_sipm(self):
@@ -161,6 +178,88 @@ class SiPMAmp(QObject):
             return True  # return if we need a new measurement
         else:
             return False
+    
+    def _parse_hv_output(output):
+        """
+        Parse the ADC test output and extract relevant data
+        """
+        data = {}
+        voltage_conversion = {
+            'nV': 1e-9,
+            'uV': 1e-6,
+            'mV': 1e-3,
+            'V': 1
+        }
+        
+        # Extract channels
+        channels_match = re.search(r'Measuring between channels (\d+) and (\d+)', output)
+        if channels_match:
+            channels = (int(channels_match.group(1)), int(channels_match.group(2)))
+            if channels == (1, 0):
+                ch = "hv"
+            elif channels == (3, 2):
+                ch = "qp"
+            elif channels == (4, 5):
+                ch = "-qp"
+            else:
+                raise ValueError(f"Unexpected channel pair for HV readback: {channels}")
+
+        # Extract ADC statistics
+        adcvalue_match = re.search(r'ADCValue:\s+mean: ([\d.]+), stdev: ([\d.]+)', output)
+        if adcvalue_match:
+            data[f'{ch}_mean_adc'] = float(adcvalue_match.group(1))
+            data[f'{ch}_stdev_adc'] = float(adcvalue_match.group(2))
+        else:
+            data[f'{ch}_mean_adc'] = None
+            data[f'{ch}_stdev_adc'] = None
+
+        # Extract Converted statistics
+        converted_match = re.search(r'Converted:\s*mean:\s*([\d.]+)\s*(nV|uV|mV|V),\s*stdev:\s*([\d.]+)\s*(nV|uV|mV|V)', output)
+        if converted_match:
+            mean_value = float(converted_match.group(1))
+            mean_unit = converted_match.group(2)
+            stdev_value = float(converted_match.group(3))
+            stdev_unit = converted_match.group(4)
+            
+            # Convert both to volts
+            data[f'{ch}_mean_v'] = mean_value * voltage_conversion[mean_unit]
+            data[f'{ch}_stdev_v'] = stdev_value * voltage_conversion[stdev_unit]
+        else:
+            data[f'{ch}_mean_v'] = None
+            data[f'{ch}_stdev_v'] = None
+
+        return data
+
+    def _parse_dac_output(output):
+        values_match = re.findall(r'V\[\d+\] = (\d+)', output)
+        values = [int(v) for v in values_match]
+        return values
+    
+    @Slot()
+    def read_voltages(self):
+        rate = 8
+        n_samples = 100
+        hv_command = f"/root/nanopi/adctest -l {n_samples} -r {rate} hv 1 0"
+        qp_command = f"/root/nanopi/adctest -l {n_samples} -r {rate} hv 3 2"
+        ch_command_1 = f"/root/nanopi/dactest -r 5" # first half of the channels
+        ch_command_2 = f"/root/nanopi/dactest -r 2" # second half of the channels
+
+        readback = {'timestamp': dt.datetime.now().timestamp()}
+        _stdin, _stdout, _stderr = self.exec_command(hv_command)
+        readback.update(self._parse_hv_output(_stdout.read().decode()))
+        _stdin, _stdout, _stderr = self.exec_command(qp_command)
+        readback.update(self._parse_hv_output(_stdout.read().decode()))
+
+        _stdin, _stdout, _stderr = self.exec_command(ch_command_1)
+        offsets1 = self._parse_dac_output(_stdout.read().decode())
+        _stdin, _stdout, _stderr = self.exec_command(ch_command_2)
+        offsets2 = self._parse_dac_output(_stdout.read().decode())
+        dac_offsets = offsets1 + offsets2
+        readback["ch_offsets_adc"] = dac_offsets
+        scale_v = 5.0 / 2**16
+        readback["ch_offsets_v"] = [offset * scale_v for offset in dac_offsets]
+
+        return readback
 
     @Slot()
     def start_run(self):
@@ -168,10 +267,19 @@ class SiPMAmp(QObject):
         if not self.config["enabled"]:
             self.run_started.emit(f"{self.amp}-disabled")
             return
+        self.client.connect(self.config["ip_addr"], username=self.config["user"])
+        self.logger.debug(f"SiPM {self.amp} connected to {self.config['ip_addr']}.")
         if self.check_iv_interval():
             self.run_iv_curve()
-        self.logger.debug(f"SiPM {self.amp} bias command executed.")
+            self.logger.debug(f"SiPM {self.amp} IV curve measurement executed.")
         self.bias_sipm()
+        self.logger.debug(f"SiPM {self.amp} bias command executed.")
+
+        voltages = self.read_voltages()
+        self.logger.debug(f"SiPM {self.amp} bias readback: {voltages['hv_mean_v']} V")
+
+        # TODO: write to binary file
+
         self.run_started.emit(self.amp)
     
 
@@ -181,5 +289,8 @@ class SiPMAmp(QObject):
             self.run_stopped.emit(f"{self.amp}-disabled")
             return
         self.unbias_sipm()
+        if self.client.get_transport() and self.client.get_transport().is_active():
+            self.client.close()
+            self.logger.debug(f"SiPM {self.amp} disconnected from {self.config['ip_addr']}.")
         self.logger.debug(f"SiPM {self.amp} unbias command executed.")
         self.run_stopped.emit(self.amp)
