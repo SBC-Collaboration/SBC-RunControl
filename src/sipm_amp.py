@@ -63,6 +63,8 @@ class SiPMAmp(QObject):
 
     run_started = Signal(str)
     run_stopped = Signal(str)
+    event_started = Signal(str)
+    event_stopped = Signal(str)
 
     def __init__(self, mainwindow, amp):
         super().__init__()
@@ -107,8 +109,6 @@ class SiPMAmp(QObject):
             self.client.connect(self.config['ip_addr'], username=self.config["user"])
         command = "; ".join(commands)
         _stdin, _stdout, _stderr = self.client.exec_command(command)
-        self.logger.error(_stderr.read().decode())
-        self.logger.debug(_stdout.read().decode())
         if not already_connected:
             self.client.close()
 
@@ -122,7 +122,7 @@ class SiPMAmp(QObject):
             f"/root/nanopi/dactest -v hv 1 {self.config['bias']}",  # set HV rail voltage
             "/root/nanopi/adctest -l 1000 -r 8 hv 1 0",  # readback HV rail voltage
         ]
-        self.exec_commands(self.config["ip_addr"], commands)
+        self.exec_commands(commands)
 
     @Slot()
     def unbias_sipm(self):
@@ -131,7 +131,7 @@ class SiPMAmp(QObject):
             "/root/nanopi/enhv disable",  # disable HV rails
             "/root/nanopi/setPin ENQP lo",  # disable charge pump
         ]
-        self.exec_commands(self.config["ip_addr"], commands)
+        self.exec_commands(commands)
 
     @Slot()
     def run_iv_curve(self):
@@ -145,9 +145,9 @@ class SiPMAmp(QObject):
         filename = os.path.join(self.config["iv_data_dir"], f"{self.amp}-{str(now)}.csv")
         commands = [
             "cd /root/nanopi",
-            f"iv_cmd.py --start_v {start_v} --stop_v {stop_v} --step {step} --adc_rate {adc_rate} --num_readings {num_readings} --file {filename}"
+            f"/root/nanopi/iv_cmd.py --start_v {start_v} --stop_v {stop_v} --step {step} --adc_rate {adc_rate} --num_readings {num_readings} --file {filename}"
         ]
-        self.exec_commands(self.config["ip_addr"], commands)
+        self.exec_commands(commands)
 
     def check_iv_interval(self):
         """ return the time stamp of last IV curve measurement"""
@@ -179,7 +179,7 @@ class SiPMAmp(QObject):
         else:
             return False
     
-    def _parse_hv_output(output):
+    def _parse_hv_output(self, output):
         """
         Parse the ADC test output and extract relevant data
         """
@@ -203,18 +203,22 @@ class SiPMAmp(QObject):
                 ch = "-qp"
             else:
                 raise ValueError(f"Unexpected channel pair for HV readback: {channels}")
+        else:
+            self.logger.error(f"Could not find channel information in HV output: {output}")
+            raise ValueError("Could not find channel information in HV output.")
 
         # Extract ADC statistics
-        adcvalue_match = re.search(r'ADCValue:\s+mean: ([\d.]+), stdev: ([\d.]+)', output)
+        adcvalue_match = re.search(r'ADCValue:\s+mean: ([\d.e+-]+), stdev: ([\d.e+-]+)', output)
         if adcvalue_match:
             data[f'{ch}_mean_adc'] = float(adcvalue_match.group(1))
             data[f'{ch}_stdev_adc'] = float(adcvalue_match.group(2))
         else:
+            self.logger.error(f"Could not find ADC values for {ch} in output: {output}")
             data[f'{ch}_mean_adc'] = None
             data[f'{ch}_stdev_adc'] = None
 
         # Extract Converted statistics
-        converted_match = re.search(r'Converted:\s*mean:\s*([\d.]+)\s*(nV|uV|mV|V),\s*stdev:\s*([\d.]+)\s*(nV|uV|mV|V)', output)
+        converted_match = re.search(r'Converted:\s*mean:\s*([\d.e+-]+)\s*(nV|uV|mV|V),\s*stdev:\s*([\d.e+-]+)\s*(nV|uV|mV|V)', output)
         if converted_match:
             mean_value = float(converted_match.group(1))
             mean_unit = converted_match.group(2)
@@ -225,12 +229,13 @@ class SiPMAmp(QObject):
             data[f'{ch}_mean_v'] = mean_value * voltage_conversion[mean_unit]
             data[f'{ch}_stdev_v'] = stdev_value * voltage_conversion[stdev_unit]
         else:
+            self.logger.error(f"Could not find converted voltages for {ch} in output: {output}")
             data[f'{ch}_mean_v'] = None
             data[f'{ch}_stdev_v'] = None
 
         return data
 
-    def _parse_dac_output(output):
+    def _parse_dac_output(self, output):
         values_match = re.findall(r'V\[\d+\] = (\d+)', output)
         values = [int(v) for v in values_match]
         return values
@@ -246,14 +251,14 @@ class SiPMAmp(QObject):
 
         readback = {'amp': self.amp, 
                     'timestamp': dt.datetime.now().timestamp()}
-        _stdin, _stdout, _stderr = self.exec_command(hv_command)
+        _stdin, _stdout, _stderr = self.client.exec_command(hv_command)
         readback.update(self._parse_hv_output(_stdout.read().decode()))
-        _stdin, _stdout, _stderr = self.exec_command(qp_command)
+        _stdin, _stdout, _stderr = self.client.exec_command(qp_command)
         readback.update(self._parse_hv_output(_stdout.read().decode()))
 
-        _stdin, _stdout, _stderr = self.exec_command(ch_command_1)
+        _stdin, _stdout, _stderr = self.client.exec_command(ch_command_1)
         offsets1 = self._parse_dac_output(_stdout.read().decode())
-        _stdin, _stdout, _stderr = self.exec_command(ch_command_2)
+        _stdin, _stdout, _stderr = self.client.exec_command(ch_command_2)
         offsets2 = self._parse_dac_output(_stdout.read().decode())
         dac_offsets = offsets1 + offsets2
         readback["ch_offsets_adc"] = dac_offsets
@@ -267,15 +272,20 @@ class SiPMAmp(QObject):
         voltages = self.read_voltages()
         self.logger.debug(f"SiPM {self.amp} bias readback: {voltages['hv_mean_v']} V")
 
-        # TODO: Add mutex lock
         headers = ["amp", "timestamp", "hv_mean_adc", "hv_stdev_adc", "hv_mean_v", "hv_stdev_v", "qp_mean_adc", "qp_stdev_adc", 
                    "qp_mean_v", "qp_stdev_v", "ch_offsets_adc", "ch_offsets_v"]
         dtypes = ["U10", "f", "f", "f", "f", "f", "f", "f", "f", "f", "i4", "f"]
         shapes = [[1], [1], [1], [1], [1], [1], [1], [1], [1], [1], [16], [16]]
-        writer = Writer(
-            os.path.join(self.main.event_dir, f"sipm_amp.sbc"), 
-            headers, dtypes, shapes)
-        writer.write(voltages)
+        
+        # lock mutex before writing
+        self.main.sipm_mutex.lock()
+        try:
+            with Writer(os.path.join(self.main.event_dir, f"sipm_amp.sbc"), 
+                headers, dtypes, shapes) as writer:
+                writer.write(voltages)
+        finally:
+            self.main.sipm_mutex.unlock()
+        self.logger.debug(f"SiPM {self.amp} biases written to file.")
 
     @Slot()
     def start_run(self):
@@ -288,9 +298,6 @@ class SiPMAmp(QObject):
         if self.check_iv_interval():
             self.run_iv_curve()
             self.logger.debug(f"SiPM {self.amp} IV curve measurement executed.")
-        self.bias_sipm()
-        self.logger.debug(f"SiPM {self.amp} bias command executed.")
-        self.measure_and_write_voltages()
         self.run_started.emit(self.amp)
     
 
@@ -299,10 +306,27 @@ class SiPMAmp(QObject):
         if not self.config["enabled"]:
             self.run_stopped.emit(f"{self.amp}-disabled")
             return
-        self.measure_and_write_voltages()
-        self.unbias_sipm()
         if self.client.get_transport() and self.client.get_transport().is_active():
             self.client.close()
             self.logger.debug(f"SiPM {self.amp} disconnected from {self.config['ip_addr']}.")
-        self.logger.debug(f"SiPM {self.amp} unbias command executed.")
         self.run_stopped.emit(self.amp)
+
+    @Slot()
+    def start_event(self):
+        if not self.config["enabled"]:
+            self.event_started.emit(f"{self.amp}-disabled")
+            return
+        self.bias_sipm()
+        self.logger.debug(f"SiPM {self.amp} bias command executed.")
+        self.measure_and_write_voltages()
+        self.event_started.emit(self.amp)
+    
+    @Slot()
+    def stop_event(self):
+        if not self.config["enabled"]:
+            self.event_stopped.emit(f"{self.amp}-disabled")
+            return
+        self.measure_and_write_voltages()
+        self.unbias_sipm()
+        self.logger.debug(f"SiPM {self.amp} unbias command executed.")
+        self.event_stopped.emit(self.amp)

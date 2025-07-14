@@ -128,8 +128,10 @@ class MainWindow(QMainWindow):
                                      "clock", "position", "trigger", "niusb", "caen", "modbus", "sql"]
         self.stopping_run_modules = ["amp1", "amp2", "amp3", "cam1", "cam2", "cam3",
                                      "sql", "niusb", "caen", "modbus", "writer"]
-        self.starting_event_modules = ["cam1", "cam2", "cam3", "niusb", "caen", "gage", "modbus", "sql"]
-        self.stopping_event_modules = ["cam1", "cam2", "cam3", "niusb", "caen", "gage", "modbus", "sql", "writer"]
+        self.starting_event_modules = ["cam1", "cam2", "cam3", "amp1", "amp2", "amp3", 
+                                       "niusb", "caen", "gage", "modbus", "sql"]
+        self.stopping_event_modules = ["cam1", "cam2", "cam3", "amp1", "amp2", "amp3", 
+                                       "niusb", "caen", "gage", "modbus", "sql", "writer"]
         
         self.update_state("preparing")
 
@@ -172,12 +174,16 @@ class MainWindow(QMainWindow):
             d[f"{amp}_worker"] = SiPMAmp(self, amp)
             d[f"{amp}_worker"].run_started.connect(self.starting_run_wait)
             d[f"{amp}_worker"].run_stopped.connect(self.stopping_run_wait)
+            d[f"{amp}_worker"].event_started.connect(self.starting_event_wait)
+            d[f"{amp}_worker"].event_stopped.connect(self.stopping_event_wait)
             d[f"{amp}_thread"] = QThread()
             d[f"{amp}_thread"].setObjectName(f"{amp}_thread")
             d[f"{amp}_worker"].moveToThread(d[f"{amp}_thread"])
             d[f"{amp}_thread"].started.connect(d[f"{amp}_worker"].run)
             self.run_starting.connect(d[f"{amp}_worker"].start_run)
             self.run_stopping.connect(d[f"{amp}_worker"].stop_run)
+            self.event_starting.connect(d[f"{amp}_worker"].start_event)
+            self.event_stopping.connect(d[f"{amp}_worker"].stop_event)
             d[f"{amp}_thread"].start()
             time.sleep(0.001)
 
@@ -290,6 +296,8 @@ class MainWindow(QMainWindow):
         self.trigff_wait = QWaitCondition()
         self.trigff_ready = False
 
+        # mutex for sipm modules writing to file
+        self.sipm_mutex = QMutex()
 
     # TODO: handle closing during run
     def closeEvent(self, event):
@@ -486,14 +494,14 @@ class MainWindow(QMainWindow):
                 self.logger.debug(f"Modules started for run: {self.starting_run_ready}\n")
                 self.start_event()
         elif self.run_state == self.run_states["starting_event"]:
-            # cam 1/2/3, *PLC, NIUSB, CAEN, GaGe, MODBUS
+            # cam 1/2/3, sipm amp 1/2/3, *PLC, NIUSB, CAEN, GaGe, MODBUS
             self.event_timer.start()
             if len(self.starting_event_ready) >= len(self.starting_event_modules):
                 self.logger.info(f"Event {self.event_id} started.")
                 self.logger.debug(f"Modules started for event: {self.starting_event_ready}\n")
                 self.update_state("active")
         elif self.run_state == self.run_states["stopping_event"]:
-            # SQL, cam 1/2/3, NIUSB, CAEN, GaGe, MODBUS
+            # SQL, cam 1/2/3, sipm amp 1/2/3, NIUSB, CAEN, GaGe, MODBUS
             if len(self.stopping_event_ready) >= len(self.stopping_event_modules):
                 self.logger.info(f"Event {self.event_id} stopped.")
                 self.logger.debug(f"Modules stopped for event: {self.stopping_event_ready}\n")
