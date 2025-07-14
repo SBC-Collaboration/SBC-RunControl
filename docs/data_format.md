@@ -7,7 +7,6 @@ At the start of a run, a copy of the config dictionay to the run_config dictiona
 The data structure is:
 - **general**: General configuration for the run control software. This includes paths that the software uses in 
   normal operation. This information generally doesn't change across runs and different days.
-  - **config_path** (`str`): Path to the master config json file.
   - **data_dir** (`str`): Main directory where all of the data is saved.
   - **log_dir** (`str`): Directory in which log files will be saved. If the folder doesn't exist, run control will create one. A new file will be created every day when run control is started first time after midnight.
   - **max_ev_time** (`int`, s): Max time an event can last. After the maximum is reached, a software trigger is sent from run control.

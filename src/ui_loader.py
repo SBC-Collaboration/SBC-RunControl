@@ -180,22 +180,13 @@ class SettingsWindow(QMainWindow):
         self.config_class.load_config_to_window(self.ui)
 
     def load_config_from_file(self):
-        config_path, _ = QFileDialog.getOpenFileName(
-            self,
-            caption="Config file to load",
-            dir=self.config["general"]["config_path"]
-        )
-        self.config_class.load_config_from_file(config_path, self.ui)
+        self.config_class.load_config_from_file(self.ui)
 
     def apply_config(self):
         self.config_class.apply_config(self.ui)
 
     def save_config(self):
         self.config_class.save_config_from_ui(self.ui)
-
-    def select_config_path(self):
-        config_path, _ = QFileDialog.getOpenFileName(self, self.config["general"]["config_path"])
-        self.ui.config_path_edit.setText(config_path)
 
     def select_log_dir(self):
         log_dir = QFileDialog.getExistingDirectory(self, self.config["general"]["log_dir"])

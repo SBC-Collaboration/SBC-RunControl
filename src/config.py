@@ -58,7 +58,7 @@ class Config(QObject):
         self.update_dict(self.config, self.new_config)
 
     @Slot()
-    def load_config_from_file(self, path, ui):
+    def load_config_from_file(self, ui):
         """
         Updates the config dict with new json dict. The new json has to follow the same structure,
         but doesn't need to have all the values
@@ -82,7 +82,6 @@ class Config(QObject):
 
         # general
         general_config = self.config["general"]
-        ui.config_path_edit.setText(general_config.get("config_path", ""))
         ui.log_dir_edit.setText(general_config.get("log_dir", ""))
         ui.data_dir_edit.setText(general_config.get("data_dir", ""))
         ui.writer_enabled_box.setChecked(general_config.get("writer_enabled", False))
@@ -365,7 +364,6 @@ class Config(QObject):
             "autorun": main_ui.autorun_box.isChecked(),
             "source": main_ui.source_box.currentText(),
             "source_location": main_ui.source_location_box.currentText(),
-            "config_path": ui.config_path_edit.text(),
             "data_dir": ui.data_dir_edit.text(),
             "log_dir": ui.log_dir_edit.text(),
             "writer_enabled": ui.writer_enabled_box.isChecked(),
