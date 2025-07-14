@@ -270,7 +270,7 @@ class SiPMAmp(QObject):
         # TODO: Add mutex lock
         headers = ["amp", "timestamp", "hv_mean_adc", "hv_stdev_adc", "hv_mean_v", "hv_stdev_v", "qp_mean_adc", "qp_stdev_adc", 
                    "qp_mean_v", "qp_stdev_v", "ch_offsets_adc", "ch_offsets_v"]
-        dtypes = ["U10", "f", "i4", "i4", "f", "f", "i4", "i4", "f", "f", "i4", "f"]
+        dtypes = ["U10", "f", "f", "f", "f", "f", "f", "f", "f", "f", "i4", "f"]
         shapes = [[1], [1], [1], [1], [1], [1], [1], [1], [1], [1], [16], [16]]
         writer = Writer(
             os.path.join(self.main.event_dir, f"sipm_amp.sbc"), 

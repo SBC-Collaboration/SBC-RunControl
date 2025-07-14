@@ -246,6 +246,51 @@ This data is very similar the the **EventData** SQL table, but saved locally. It
 - **stop_time** (`double`): Timestamp of the event stop.
 - **trigger_source** (`string100`): Name of trigger's first fault.
 
+## Slow DAQ Data
+For each pressure cycle, the PLC saves the 10 ms resolution data of a few important pressure transducers and valves. When an event ends, run control copies the data to the `slow_daq.sbc` file in the data folder.
+- **time_ms** (`uint32`):
+- **valves** (`uint32`):
+- **PT3308** (`float`):
+- **PT3309** (`float`):
+- **PT3311** (`float`):
+- **PT3314** (`float`):
+- **PT3320** (`float`):
+- **PT3332** (`float`):
+- **PT3333** (`float`):
+- **CYL3334** (`float`):
+- **LT3335** (`float`):
+- **SERVO3321_OUT** (`float`):
+- **SERVO3321_IN** (`float`):
+
+## PLC Variables
+At the end of each event, run control reads the first fault values and a few important values and saves them into a binary file named `plc.sbc`. 
+The first fault variables are arrays of 15 bits, each bit corresponds to a separate exit code. The specific definition of the bits will be updated when they are implemented. Here they are saved as `int8` since the **SBCBinaryFormat** does not have `bool` type.
+- **SLOWDAQ_FF** (`int8`, 15): 
+- **PCYCLE_ABORT_FF** (`int8`, 15): 
+- **PCYCLE_FASTCOMP_FF** (`int8`, 15): 
+- **PCYCLE_SLOWCOMP_FF** (`int8`, 15): 
+- **PCYCLE_PSET** (`float`, bara):
+- **PCYCLE_EXIT_CODE** (`uint16`):
+- **LED1_OUT** (`float`, V): Control voltage of LED ring 1. If the value is less than the `LED_MAX`, then the analog output channel is set to this voltage. Otherwise, the `LED_MAX` value is used. For each segment of each LED ring, an 1 Ohm power resistor is connected in series, so the LED current would be $I_{LED} = V_{LED} / 1 \Omega$, where $V_{LED}$ is the analog out voltage set here. 
+- **LED2_OUT** (`float`, V): See above.
+- **LED3_OUT** (`float`, V): See above.
+- **LED_MAX** (`float`, V): Maximum value the three control voltages should be set. The PLC analog channels are 1 - 10 V, but the LEDs are rated only to 1 A. So the control voltages should never be set above 1 V, ideally lower than that.
+
+## SiPM Bias Voltages
+For each of the SiPM amplifiers, just after the SiPMs are biased at the start of an event, and just before the SiPMs are unbiased at the end of an event, the voltages of the high voltage rail and the charge pump are measured and saved into a `sipm_amp.sbc` file, along with the register values of per-channel offset. The real high voltage value read back from the `adctest` command can be off by up to a few volts compared to the initial value set using the `dactest` command. The off set is unique to each amplifier board, and may shift over time. Each ADC readout takes the average of 100 samples taken at 1000 samples/s. The parameters are set in the run control SiPM amplifier module. 
+- **amp** (`string10`): Name of the amplifier. All three amplfier saves data into this file.
+- **timestamp** (`float`): Unix timestamp of when this line is saved. This uses the DAQ PC system clock.
+- **hv_mean_adc** (`float`): Average of all high voltage rail measurements in ADC value.
+- **hv_stdev_adc** (`float`): Standard deviation of all high voltage rail measurements in ADC value.
+- **hv_mean_v** (`float`): Average of all high voltage rail measurements in volts.
+- **hv_stdev_v** (`float`): Standard deviation of all high voltage rail measurements in volts.
+- **qp_mean_adc** (`float`): Average of all charge pump rail measurements in ADC value.
+- **qp_stdev_adc** (`float`): Standard deviation of all charge pump rail measurements in ADC value.
+- **qp_mean_v** (`float`): Average of all charge pump rail measurements in volts.
+- **qp_stdev_v** (`float`): Standard deviation of all charge pump rail measurements in volts.
+- **ch_offsets_adc** (`int32`, 16): Array of register values setting the per-channel offset up to 5V. The amplifier developer did not provide an ADC readback function for this because it is precise enough.
+- **ch_offsets_v** (`float`, 16): The array of per-channel offset converted into volts.
+
 ## Scintillation Data
 This data is saved in the SBC binary format using `SBCBinaryFormat` library, named **scintillation.sbc** in the event data folder. It can be read into a python dictionary of numpy arrays. All arrays will have the same number of rows `n_trigs`, each correspond to a CAEN trigger. Also assume the number of channels enabled for acquisition is `n_chs`, and the record length (number of samples per channel per trigger) is `rec_len`. The data structure is:
 - **EventCounter** (`uint32`, `n_trigs`): The index for this CAEN event (CAEN trigger). If **counting_mode** is "All", then this counter will increment for both accepted and rejected triggers.
