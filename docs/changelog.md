@@ -1,5 +1,14 @@
 # Changelog
 
+## [Latest]
+### Added
+- SiPM Amp module now queries the amplifier for HV and QP voltages and per-channel offsets at the start and end of each event. This data is saved into `sipm_amp.sbc`. 
+- Added a button to manually force upload arduino sketch without comparing to archived sketch. 
+### Fixed
+- Minor bug fix for PLC LED control voltage code.
+### Changed
+- Moved config file to `~/.config/runcontrol/config.json`. Now in the project folder there doesn't need to be a `config.json`. When loading config into settings window, if a field is non existent, a default value will be used instead of throwing an error. This should make adding fields to the config file easier.
+
 ## [Run Control v0.2.2](https://github.com/SBC-Collaboration/SBC-RunControl/releases/tag/v0.2.2) (2025-07-08)
 ### Added
 - Turn off position arduino UTI chips at runs, and turn on at end of runs. (Need to find a better time for that to happen to record pressure cycle).
