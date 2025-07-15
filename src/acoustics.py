@@ -72,14 +72,16 @@ class Acoustics(QObject):
         config["Acquisition"] = {
             "Mode": self.config["mode"],
             "SampleRate": self.sample_rate_conversion[self.config["sample_rate"]],
-            "Depth": self.config["post_trig_len"],
-            "SegmentSize": self.config["pre_trig_len"] + self.config["post_trig_len"],
+            "Depth": self.config["depth"],
+            "SegmentSize": self.config["segment_size"],
             "SegmentCount": self.config["acq_seg_count"],
             "TriggerDelay": self.config["trig_delay"],
             "TriggerTimeout": self.config["trig_timeout"],
             "TriggerHoldOff": self.config["trig_holdoff"],
             "TimeStampMode": self.config["timestamp_mode"],
             "TimeStampClock": self.config["timestamp_clock"],
+            "PreTrigLen": self.config["pre_trig_len"],
+            "PostTrigLen": self.config["post_trig_len"],
         }
 
         config["Application"] = {

@@ -6,7 +6,7 @@ import os
 class CAENPlotManager(QObject):
     def __init__(self, main):
         super().__init__()
-        self,main = main
+        self.main = main
         self.container = main.ui.caen_plot_container
         self.main_config = main.config_class.run_config
         self.plots = []
@@ -106,8 +106,8 @@ class CAENPlotManager(QObject):
 class AcousPlotManager(QObject):
     def __init__(self, main):
         super().__init__()
-        self.plot = self.main.ui.acous_plot
         self.main = main
+        self.plot = self.main.ui.acous_plot
         self.main_config = self.main.config_class.run_config
         self.curves = []
         self.text = None

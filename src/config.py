@@ -220,12 +220,14 @@ class Config(QObject):
         ui.acous_sample_rate_box.setCurrentText(acous_config.get("sample_rate", ""))
         ui.acous_timestamp_mode_box.setCurrentText(acous_config.get("timestamp_mode", ""))
         ui.acous_timestamp_clock_box.setCurrentText(acous_config.get("timestamp_clock", ""))
-        ui.acous_pre_trig_box.setValue(acous_config.get("pre_trig_len", 0))
-        ui.acous_post_trig_box.setValue(acous_config.get("post_trig_len", 0))
+        ui.acous_depth_box.setValue(acous_config.get("depth", 0))
+        ui.acous_seg_size_box.setValue(acous_config.get("segment_size", 0))
         ui.acous_acq_seg_count_box.setValue(acous_config.get("acq_seg_count", 0))
         ui.acous_trig_timeout_box.setValue(acous_config.get("trig_timeout", 0))
         ui.acous_trig_delay_box.setValue(acous_config.get("trig_delay", 0))
         ui.acous_trig_holdoff_box.setValue(acous_config.get("trig_holdoff", 0))
+        ui.acous_pre_trig_box.setValue(acous_config.get("pre_trig_len", 0))
+        ui.acous_post_trig_box.setValue(acous_config.get("post_trig_len", 0))
 
         # Application settings
         ui.acous_start_pos_box.setValue(acous_config.get("start_pos", 0))
@@ -573,11 +575,13 @@ class Config(QObject):
             "driver_path": ui.acous_driver_path_edit.text(),
             "mode": ui.acous_mode_box.currentText(),
             "sample_rate": ui.acous_sample_rate_box.currentText(),
+            "depth": ui.acous_depth_box.value(),
+            "segment_size": ui.acous_seg_size_box.value(),
+            "acq_seg_count": ui.acous_acq_seg_count_box.value(),
             "timestamp_mode": ui.acous_timestamp_mode_box.currentText(),
             "timestamp_clock": ui.acous_timestamp_clock_box.currentText(),
             "pre_trig_len": ui.acous_pre_trig_box.value(),
             "post_trig_len": ui.acous_post_trig_box.value(),
-            "acq_seg_count": ui.acous_acq_seg_count_box.value(),
             "trig_timeout": ui.acous_trig_timeout_box.value(),
             "trig_delay": ui.acous_trig_delay_box.value(),
             "trig_holdoff": ui.acous_trig_holdoff_box.value(),

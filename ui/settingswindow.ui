@@ -9889,7 +9889,7 @@
                  <number>3</number>
                 </property>
                 <property name="maximum">
-                 <double>999.999000000000024</double>
+                 <double>999.999000000000000</double>
                 </property>
                </widget>
               </item>
@@ -9908,7 +9908,7 @@
                  <number>3</number>
                 </property>
                 <property name="maximum">
-                 <double>999.999000000000024</double>
+                 <double>999.999000000000000</double>
                 </property>
                </widget>
               </item>

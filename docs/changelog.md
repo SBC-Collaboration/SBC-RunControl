@@ -6,8 +6,10 @@
 - Added a button to manually force upload arduino sketch without comparing to archived sketch. 
 ### Fixed
 - Minor bug fix for PLC LED control voltage code.
+- Fix acoustic plotting in run control.
 ### Changed
 - Moved config file to `~/.config/runcontrol/config.json`. Now in the project folder there doesn't need to be a `config.json`. When loading config into settings window, if a field is non existent, a default value will be used instead of throwing an error. This should make adding fields to the config file easier.
+- Renamed **Depth** and **Segment Size** fields in the GaGe driver config to `depth` and `segment_size`. Now the `pre_trig_len` and `post_trig_len` are used for our workaround triggering after retrieving all the data. Those lengths are in seconds.
 
 ## [Run Control v0.2.2](https://github.com/SBC-Collaboration/SBC-RunControl/releases/tag/v0.2.2) (2025-07-08)
 ### Added
