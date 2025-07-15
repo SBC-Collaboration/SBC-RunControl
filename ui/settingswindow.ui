@@ -9844,7 +9844,10 @@
                  <bool>true</bool>
                 </property>
                 <property name="maximum">
-                 <number>4096</number>
+                 <number>256000000</number>
+                </property>
+                <property name="singleStep">
+                 <number>16</number>
                 </property>
                </widget>
               </item>

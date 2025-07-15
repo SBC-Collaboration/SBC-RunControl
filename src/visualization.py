@@ -2,6 +2,7 @@ import pyqtgraph as pg
 from PySide6.QtCore import QObject
 from sbcbinaryformat import Streamer
 import os
+import logging
 
 class CAENPlotManager(QObject):
     def __init__(self, main):
@@ -15,6 +16,8 @@ class CAENPlotManager(QObject):
         # one pen for each channel in a group
         self.pen_colors = ["green", "red", "blue", "orange", "violet", "brown", "pink", "gray"]
         self.pens = [pg.mkPen(color=c, width=2) for c in self.pen_colors]
+
+        self.logger = logging.getLogger("rc")
         
     def setup_plot(self):
         """
@@ -112,6 +115,7 @@ class AcousPlotManager(QObject):
         self.curves = []
         self.text = None
         self.pens = []
+        self.logger = logging.getLogger("rc")
 
     def setup_plot(self):
         """
