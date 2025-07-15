@@ -1,4 +1,5 @@
 from ni_usb_6501 import *
+import usb.core
 import logging
 from PySide6.QtCore import QTimer, QObject, QThread, Slot, Signal, QMutex, QWaitCondition
 import os
@@ -140,7 +141,13 @@ class NIUSB(QObject):
     def start_run(self):
         # check serial connection and initialize object
         self.check_niusb()
-        self.dev = get_adapter()
+        try:
+            self.dev = get_adapter()
+        except usb.core.USBError as e:
+            dev = usb.core.find(idVendor=ID_VENDOR, idProduct=ID_PRODUCT)
+            if dev.is_kernel_driver_active(0):
+                dev.detach_kernel_driver(0)
+            self.dev = get_adapter()
         self.dev.reset()
         if not self.dev:
             self.logger.error("NI USB device not found!")
