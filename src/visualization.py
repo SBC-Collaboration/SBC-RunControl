@@ -4,16 +4,17 @@ from sbcbinaryformat import Streamer
 import os
 
 class CAENPlotManager(QObject):
-    def __init__(self, plot_container, config):
+    def __init__(self, main):
         super().__init__()
-        self.container = plot_container
+        self,main = main
+        self.container = main.ui.caen_plot_container
+        self.main_config = main.config_class.run_config
         self.plots = []
         self.curves = []
         self.event_label = None
         # one pen for each channel in a group
         self.pen_colors = ["green", "red", "blue", "orange", "violet", "brown", "pink", "gray"]
         self.pens = [pg.mkPen(color=c, width=2) for c in self.pen_colors]
-        self.main_config = config
         
     def setup_plot(self):
         """
@@ -103,13 +104,14 @@ class CAENPlotManager(QObject):
 
 
 class AcousPlotManager(QObject):
-    def __init__(self, plot, config):
+    def __init__(self, main):
         super().__init__()
-        self.plot = plot
+        self.plot = self.main.ui.acous_plot
+        self.main = main
+        self.main_config = self.main.config_class.run_config
         self.curves = []
         self.text = None
         self.pens = []
-        self.main_config = config
 
     def setup_plot(self):
         """
@@ -144,11 +146,11 @@ class AcousPlotManager(QObject):
             return
         
         try:
-            data = Streamer(os.path.join(self.current_path, "acoustics.sbc")).to_dict()
+            data = Streamer(os.path.join(self.main.current_path, "acoustics.sbc")).to_dict()
         except FileNotFoundError:
             self.logger.warning("Acoustics data file not found.")
             return
-        sample_rate = self.acous_worker.sample_rate_conversion[acous_configs["sample_rate"]]/1e6
+        sample_rate = self.main.acous_worker.sample_rate_conversion[acous_configs["sample_rate"]]/1e6
         time_axis = [i/sample_rate for i in range(data["Waveforms"].shape[2])]
         for i in range(8):
             if not acous_configs[f"ch{i+1}"]["plot"]:

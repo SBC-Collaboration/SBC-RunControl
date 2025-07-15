@@ -97,10 +97,8 @@ class MainWindow(QMainWindow):
         self.logger.addHandler(self.file_handler)
 
         # visualization setup
-        self.caen_plot_mgr = CAENPlotManager(
-            self.ui.caen_plot_container, self.config_class.config)
-        self.acous_plot_mgr = AcousPlotManager(
-            self.ui.acous_plot, self.config_class.config)
+        self.caen_plot_mgr = CAENPlotManager(self)
+        self.acous_plot_mgr = AcousPlotManager(self)
         self.caen_plot_mgr.setup_plot()
         self.acous_plot_mgr.setup_plot()
 

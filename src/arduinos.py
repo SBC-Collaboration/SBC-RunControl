@@ -182,7 +182,8 @@ class Arduino(QObject):
             return
         self.connect_modbus()
         self.client.write_register(0, 3)
-        self.logger.debug("Position arduino UTI chip enabled.")
+        self.client.write_register(8, 3)
+        self.logger.debug("Position arduino UTI chips enabled.")
 
     @Slot()
     def disable_position(self):
@@ -190,7 +191,8 @@ class Arduino(QObject):
             return
         self.connect_modbus()
         self.client.write_register(0, 0)
-        self.logger.debug("Position arduino UTI chip disabled.")
+        self.client.write_register(8, 0)
+        self.logger.debug("Position arduino UTI chips disabled.")
 
     @Slot()
     def start_run(self):
