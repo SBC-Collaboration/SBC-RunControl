@@ -1,6 +1,6 @@
 # Changelog
 
-## [Latest]
+## [Run Control v0.3.0](https://github.com/SBC-Collaboration/SBC-RunControl/releases/tag/v0.3.0) (2025-07-15)
 ### Added
 - SiPM Amp module now queries the amplifier for HV and QP voltages and per-channel offsets at the start and end of each event. This data is saved into `sipm_amp.sbc`. 
 - Added a button to manually force upload arduino sketch without comparing to archived sketch. 
