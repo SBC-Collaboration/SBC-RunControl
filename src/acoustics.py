@@ -148,7 +148,10 @@ class Acoustics(QObject):
         self.process.finished.connect(self.process_finished)
 
         # Start with error checking
-        self.process.start(self.config["driver_path"])
+        rc_path = os.path.join(os.path.dirname(__file__), '..')
+        self.process.setWorkingDirectory(rc_path)
+        self.logger.debug(f"RC path: {rc_path}")
+        self.process.start(os.path.join(rc_path, self.config["driver_path"]))
         if not self.process.waitForStarted(3000):  # 3 second timeout
             self.logger.error(f"Failed to start GaGe process: {self.process.errorString()}")
             return False
@@ -177,6 +180,7 @@ class Acoustics(QObject):
     
     @Slot()
     def process_finished(self, exit_code, exit_status):
+        self.handle_stdout()
         self.logger.debug(f"GaGe process finished with exit code {exit_code} and status {exit_status}.")
         if self.process and self.main.run_state == self.main.run_states["active"]:
             self.logger.info(f"Restarting GaGe process.")
