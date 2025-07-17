@@ -109,6 +109,11 @@ class SiPMAmp(QObject):
             self.client.connect(self.config['ip_addr'], username=self.config["user"])
         command = "; ".join(commands)
         _stdin, _stdout, _stderr = self.client.exec_command(command)
+        exit_status = _stdout.channel.recv_exit_status()  # wait for command to finish
+        if exit_status != 0:
+            error_message = _stderr.read().decode()
+            self.logger.error(f"SiPM {self.amp} command failed with exit status {exit_status}: {error_message}")
+            raise RuntimeError(f"Command execution failed: {error_message}")
         if not already_connected:
             self.client.close()
 
@@ -120,7 +125,7 @@ class SiPMAmp(QObject):
             f"/root/nanopi/dactest -v hv 0 {self.config['qp']}",  # set charge pump voltage
             "/root/nanopi/enhv enable",  # enable HV rail
             f"/root/nanopi/dactest -v hv 1 {self.config['bias']}",  # set HV rail voltage
-            "/root/nanopi/adctest -l 1000 -r 8 hv 1 0",  # readback HV rail voltage
+            "/root/nanopi/adctest -l 100 -r 8 hv 1 0",  # readback HV rail voltage
         ]
         self.exec_commands(commands)
 

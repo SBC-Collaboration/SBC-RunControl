@@ -1,5 +1,11 @@
 # Changelog
 
+## [Latest]
+### Added
+- Added the Guardian module responsible for everything related to error handling.
+### Fixed
+- Fixed the bug that SiPM are not biased at start of event.
+
 ## [Run Control v0.3.0](https://github.com/SBC-Collaboration/SBC-RunControl/releases/tag/v0.3.0) (2025-07-15)
 ### Added
 - SiPM Amp module now queries the amplifier for HV and QP voltages and per-channel offsets at the start and end of each event. This data is saved into `sipm_amp.sbc`. 
@@ -8,6 +14,7 @@
 - Moved config file to `~/.config/runcontrol/config.json`. Now in the project folder there doesn't need to be a `config.json`. When loading config into settings window, if a field is non existent, a default value will be used instead of throwing an error. This should make adding fields to the config file easier.
 - GaGe driver has now new fields `PreTrigLen` and `PostTrigLen` in seconds that controls how much data to save before and after the bubble trigger in Ch1 of the digitizer.
 - Renamed **Depth** and **Segment Size** fields in the GaGe driver config to `depth` and `segment_size`. Now the `pre_trig_len` and `post_trig_len` are used for our workaround triggering after retrieving all the data. Those lengths are in seconds.
+- Renamed `Waveform` to `Waveforms` in acoustics data.
 ### Fixed
 - Minor bug fix for PLC LED control voltage code.
 - Fix acoustic plotting in run control.
