@@ -12,7 +12,12 @@ import subprocess
 from sbcbinaryformat import Writer
 
 class SiPMAmp(QObject):
-    daq_mapping = {  # the two numbers are DAC address and DAC channel number
+    """
+    SiPM amplifier module, responsible for controlling the SiPM amplifier boards.
+    It handles the connection to the amplifier, reading and writing voltages, and performing IV curve measurements.
+    """
+
+    _dac_mapping = {  # the two numbers are DAC address and DAC channel number
         1: "5 0",
         2: "5 1",
         3: "5 2",
@@ -31,7 +36,7 @@ class SiPMAmp(QObject):
         16: "2 7",
     }
 
-    adc_mapping = {  # the three numbers are ADC address and ADC POS/NEG channel number
+    _adc_mapping = {  # the three numbers are ADC address and ADC POS/NEG channel number
         1: "6 0 1",
         2: "6 4 5",
         3: "6 6 7",
@@ -50,13 +55,13 @@ class SiPMAmp(QObject):
         16: "1 2 3",
     }
 
-    hv_dac_mapping = {
+    _hv_dac_mapping = {
         "QPout": "hv 0",
         "HVout": "hv 1",
         "Enable HVout": "hv 3"
     }
 
-    hv_adc_mapping = {
+    _hv_adc_mapping = {
         "HVout": "hv 1 0",
         "+QPout": "hv 3 2",
         "-QPout": "hv 4 5"
@@ -91,6 +96,11 @@ class SiPMAmp(QObject):
 
     @Slot()
     def test_sipm_amp(self):
+        """
+        Test if the SiPM amplifier is connected by pinging its IP address.
+
+        :raises ConnectionError: If the SiPM amplifier is not connected
+        """
         if not self.config["enabled"]:
             self.logger.debug(f"SiPM {self.amp} disabled.")
             return
@@ -103,6 +113,14 @@ class SiPMAmp(QObject):
             raise ConnectionError
 
     def exec_commands(self, commands):
+        """
+        Execute a list of commands on the SiPM amplifier via SSH. If no active connection exists, 
+        it will establish one, and close connection when execution ends.
+
+        :param commands: List of commands to execute
+        :type commands: list
+        :raises RuntimeError: If command execution fails
+        """
         already_connected = False
         if self.client.get_transport() and self.client.get_transport().is_active():
             already_connected = True
@@ -121,10 +139,12 @@ class SiPMAmp(QObject):
     @Slot()
     def bias_sipm(self, error=0.01, iterations=3):
         """ 
-        bias SiPM amplifier, and then make small changes so the bias readback is close to target value 
+        Bias SiPM amplifier, and then make small changes so the bias readback is close to target value 
+
         :param error: acceptable error in volts
+        :type error: float
         :param iterations: number of iterations to adjust the bias. If 1, it will set only once
-        :return: None
+        :type iterations: int
         """
         setup_commands = [
             "/root/nanopi/dactest -v hv 1 0",  # set HV rail to 0V
@@ -155,6 +175,9 @@ class SiPMAmp(QObject):
 
     @Slot()
     def unbias_sipm(self):
+        """
+        Unbias SiPM amplifier HV rail, disable HV and charge pump.
+        """
         unset_commands = [
             "/root/nanopi/dactest -v hv 1 0",  # set HV rail to 0V
             "/root/nanopi/enhv disable",  # disable HV rails
@@ -164,7 +187,9 @@ class SiPMAmp(QObject):
 
     @Slot()
     def run_iv_curve(self):
-        """ tell the SiPM amplifier to do an IV curve measurement"""
+        """
+        Tell the SiPM amplifier to do an IV curve measurement
+        """
         start_v = self.config["iv_start"]
         stop_v = self.config["iv_stop"]
         step = self.config["iv_step"]
@@ -179,7 +204,12 @@ class SiPMAmp(QObject):
         self.exec_commands(commands)
 
     def check_iv_interval(self):
-        """ return the time stamp of last IV curve measurement"""
+        """
+        Return the time stamp of last IV curve measurement
+
+        :return: True if a new IV measurement is needed, False if last one is still within the interval.
+        :rtype: bool
+        """
         if not self.config["enabled"] or not self.config["iv_enabled"]:
             return False
         
@@ -211,6 +241,11 @@ class SiPMAmp(QObject):
     def _parse_hv_output(self, output):
         """
         Parse the ADC test output and extract relevant data
+
+        :param output: The output string from the ADC test command
+        :type output: str
+        :return: HV or QP readback data, both in ADC and converted voltages
+        :rtype: dict
         """
         data = {}
         voltage_conversion = {
@@ -265,12 +300,26 @@ class SiPMAmp(QObject):
         return data
 
     def _parse_dac_output(self, output):
+        """
+        Parse of DAC output of per-channel offset
+
+        :param output: The output string from the DAC test readback command
+        :type output: str
+        :return: List of per-channel offsets in ADC counts
+        :rtype: list
+        """
         values_match = re.findall(r'V\[\d+\] = (\d+)', output)
         values = [int(v) for v in values_match]
         return values
     
     @Slot()
     def read_voltages(self):
+        """
+        Read the SiPM amplifier HV and QP voltages, and per-channel offsets.
+
+        :return: Dictionary with HV, QP, and channel offsets in ADC counts and volts
+        :rtype: dict
+        """
         rate = 8
         n_samples = 100
         hv_command = f"/root/nanopi/adctest -l {n_samples} -r {rate} hv 1 0"
@@ -297,8 +346,13 @@ class SiPMAmp(QObject):
         return readback
     
     @Slot()
-    def measure_and_write_voltages(self):
-        voltages = self.read_voltages()
+    def write_voltages(self, voltages):
+        """
+        Read the SiPM amplifier HV and QP voltages, and per-channel offsets, and write the values to a binary file.
+
+        :param voltages: Dictionary with HV, QP, and channel offsets in ADC counts and volts
+        :type voltages: dict
+        """
         self.logger.debug(f"SiPM {self.amp} bias readback: {voltages['hv_mean_v']} V")
 
         headers = ["amp", "timestamp", "hv_mean_adc", "hv_stdev_adc", "hv_mean_v", "hv_stdev_v", "qp_mean_adc", "qp_stdev_adc", 
@@ -318,6 +372,9 @@ class SiPMAmp(QObject):
 
     @Slot()
     def start_run(self):
+        """
+        Prepare SiPM amplifier for a run. Connect to the device, and perform IV curve measurement if needed.
+        """
         self.config = self.main.config_class.run_config["scint"][self.amp]
         if not self.config["enabled"]:
             self.run_started.emit(f"{self.amp}-disabled")
@@ -329,9 +386,11 @@ class SiPMAmp(QObject):
             self.logger.debug(f"SiPM {self.amp} IV curve measurement executed.")
         self.run_started.emit(self.amp)
     
-
     @Slot()
     def stop_run(self):
+        """
+        Unarm SiPM amplifier, and disconnect from the device.
+        """
         if not self.config["enabled"]:
             self.run_stopped.emit(f"{self.amp}-disabled")
             return
@@ -342,20 +401,26 @@ class SiPMAmp(QObject):
 
     @Slot()
     def start_event(self):
+        """
+        Prepare SiPM amplifier for an event. Bias the SiPM, and write the readback voltages to a file.
+        """
         if not self.config["enabled"]:
             self.event_started.emit(f"{self.amp}-disabled")
             return
         self.bias_sipm()
         self.logger.debug(f"SiPM {self.amp} bias command executed.")
-        self.measure_and_write_voltages()
+        self.write_voltages(voltages=self.read_voltages())
         self.event_started.emit(self.amp)
     
     @Slot()
     def stop_event(self):
+        """
+        At the end of event, unbias SiPM amplifier, and write the readback voltages to a file.
+        """
         if not self.config["enabled"]:
             self.event_stopped.emit(f"{self.amp}-disabled")
             return
-        self.measure_and_write_voltages()
+        self.write_voltages(voltages=self.read_voltages())
         self.unbias_sipm()
         self.logger.debug(f"SiPM {self.amp} unbias command executed.")
         self.event_stopped.emit(self.amp)
