@@ -5,6 +5,7 @@ with warnings.catch_warnings():
 import logging
 import os
 import re
+import time
 import datetime as dt
 from PySide6.QtCore import QTimer, QObject, Slot, Signal, QThread
 import subprocess
@@ -118,25 +119,48 @@ class SiPMAmp(QObject):
             self.client.close()
 
     @Slot()
-    def bias_sipm(self):
-        commands = [
+    def bias_sipm(self, error=0.01, iterations=3):
+        """ 
+        bias SiPM amplifier, and then make small changes so the bias readback is close to target value 
+        :param error: acceptable error in volts
+        :param iterations: number of iterations to adjust the bias. If 1, it will set only once
+        :return: None
+        """
+        setup_commands = [
             "/root/nanopi/dactest -v hv 1 0",  # set HV rail to 0V
             "/root/nanopi/setPin ENQP hi",  # enable charge pump
             f"/root/nanopi/dactest -v hv 0 {self.config['qp']}",  # set charge pump voltage
             "/root/nanopi/enhv enable",  # enable HV rail
-            f"/root/nanopi/dactest -v hv 1 {self.config['bias']}",  # set HV rail voltage
-            "/root/nanopi/adctest -l 100 -r 8 hv 1 0",  # readback HV rail voltage
         ]
-        self.exec_commands(commands)
+        self.exec_commands(setup_commands)
+
+        # start feedback loop to set the bias voltage
+        target_v = self.config["bias"]
+        set_v = target_v
+        offset = 0
+        for i in range(1, iterations+1):
+            bias_command = [f"/root/nanopi/dactest -v hv 1 {set_v}"]  # set HV rail voltage
+            self.exec_commands(bias_command)
+            if i == 1:
+                time.sleep(1)  # wait for voltage to stablize after big swing
+
+            readback_v = self.read_voltages()["hv_mean_v"]
+            offset = readback_v - target_v
+            self.logger.debug(f"SiPM {self.amp} bias setting try {i}, readback: {readback_v:.3f} V, set: {set_v:.3f} V, target: {target_v:.3f} V, offset: {offset:.3f} V")
+            if abs(offset) < error:
+                break
+            set_v -= offset  # adjust target voltage
+
+        self.logger.debug(f"SiPM {self.amp} bias set to {readback_v:.3f} V after {iterations} iterations, with target {target_v:.3f} V.")
 
     @Slot()
     def unbias_sipm(self):
-        commands = [
+        unset_commands = [
             "/root/nanopi/dactest -v hv 1 0",  # set HV rail to 0V
             "/root/nanopi/enhv disable",  # disable HV rails
             "/root/nanopi/setPin ENQP lo",  # disable charge pump
         ]
-        self.exec_commands(commands)
+        self.exec_commands(unset_commands)
 
     @Slot()
     def run_iv_curve(self):

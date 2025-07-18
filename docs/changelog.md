@@ -3,6 +3,7 @@
 ## [Latest]
 ### Added
 - Added the Guardian module responsible for everything related to error handling.
+- Add a feedback loop when setting SiPM amp biases so the readback real voltage matches the target voltage.
 ### Fixed
 - Fixed the bug that SiPM are not biased at start of event.
 
