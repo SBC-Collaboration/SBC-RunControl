@@ -1,11 +1,12 @@
 # Changelog
 
-## [Latest]
+## [Run Control v0.3.1](https://github.com/SBC-Collaboration/SBC-RunControl/releases/tag/v0.3.1) (2025-07-18)
 ### Added
 - Added the Guardian module responsible for everything related to error handling.
 - Add a feedback loop when setting SiPM amp biases so the readback real voltage matches the target voltage.
 ### Fixed
 - Fixed the bug that SiPM are not biased at start of event.
+- Updated SiPM Amp class docstrings.
 
 ## [Run Control v0.3.0](https://github.com/SBC-Collaboration/SBC-RunControl/releases/tag/v0.3.0) (2025-07-15)
 ### Added
