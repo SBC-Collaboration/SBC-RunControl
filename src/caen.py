@@ -31,7 +31,13 @@ class Caen(QObject):
 
     @Slot()
     def periodic_task(self):
-        # check if CAEN has enough events in buffer
+        """
+        This periodic task is controlled by a timer set to 100 ms.
+        When the run state is active and CAEN is enabled, it tries to retrieve data from the CAEN digitizer.
+        If the number of triggers on the on-board buffer is greater than the number of events per read,
+        it retrieves the data, decodes the events, and appends the data dictionary to the buffer.
+        It then updates the CAEN plot on main window with the latest data.
+        """
         if (self.main.run_state == self.main.run_states["active"] and self.caen):
             if self.caen.RetrieveDataUntilNEvents(self.evs_per_read):
                 self.logger.info(f"Retrieving {self.evs_per_read} CAEN events.")
@@ -41,6 +47,13 @@ class Caen(QObject):
 
 
     def set_config(self):
+        """
+        Setup configuration into CAENGlobalConfig and CAENGroupConfig objects.
+        It reads from the config dictionary and sets the attributes accordingly.
+        The CAENGlobalConfig and CAENGroupConfig objects are then passed to the CAEN instance.
+        Then the configuration is read back from the CAEN instance, so we would catch 
+        any discrepancies like the record length.
+        """
         self.config = self.main.config_class.run_config["caen"]["global"]
 
         # set global config from dict to class attributes
@@ -84,6 +97,13 @@ class Caen(QObject):
 
     @Slot()
     def start_run(self):
+        """
+        Initialize CAEN class for the run.
+        It creates CAENGlobalConfig and CAENGroupConfig objects, and establishes connection 
+        to the CAEN digitizer, and then sets the configuration.
+
+        :raises ConnectionError: If the CAEN digitizer connection fails.
+        """
         self.global_config = red_caen.CAENGlobalConfig()
         self.group_configs = [red_caen.CAENGroupConfig() for _ in range(8)]
         self.config = self.main.config_class.run_config["caen"]["global"]
@@ -111,6 +131,9 @@ class Caen(QObject):
 
     @Slot()
     def start_event(self):
+        """
+        This function will initialize the writer, and start the acquisition on the CAEN digitizer.
+        """
         if not self.config["enabled"]:
             self.event_started.emit(f"caen-disabled")
             return
@@ -141,6 +164,10 @@ class Caen(QObject):
 
     @Slot()
     def stop_event(self):
+        """
+        At the end of the event, this function will disable the acquisition, retrieve data from CAEN 
+        until the buffer is empty, decode the events, and write the data to file.
+        """
         if not self.config["enabled"]:
             self.event_stopped.emit(f"caen-disabled")
             return
@@ -163,6 +190,9 @@ class Caen(QObject):
 
     @Slot()
     def stop_run(self):
+        """
+        At the end of the run, this function will delete all buffers and handles.
+        """
         if not self.config["enabled"]:
             self.run_stopped.emit(f"caen-disabled")
             return
