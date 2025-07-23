@@ -4,6 +4,9 @@ API
    This is a rst file because sphinx autodoc will output to rst, and not markdown
    (As far as I know)
 
+Run Control
+-----
+
 .. autoclass:: rc.MainWindow
    :members: 
    :undoc-members:
@@ -68,4 +71,17 @@ API
    :members: 
    :undoc-members:
    :exclude-members: staticMetaObject
-   
+
+SBC Binary Format
+-----
+
+.. autoclass:: sbcbinaryformat.Streamer
+   :members:
+   :undoc-members:
+   :exclude-members: staticMetaObject
+
+.. autoclass:: sbcbinaryformat.Writer
+   :members:
+   :undoc-members:
+   :exclude-members: staticMetaObject
+ 
