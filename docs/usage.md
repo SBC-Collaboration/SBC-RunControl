@@ -33,36 +33,6 @@
 ## Managing and Updating Dependencies
 The dependencies of this project is managed in a few different ways. `PySide6` is a public python library installed from pip into the conda environment. `SBCBinaryFormat` is a custom python library that is compiled and installed locally using pip into the conda environment. `SBC-ArduinoSketches` and `NI_USB-6501` are custom/modified code that is included in this repository in the `dependencies/` folder. They are managed using `git subtree` comand. The drivers for CAEN and GaGe digitizers are also copied into `dependencies/` folder, but using `git submodule` command for copyright reasons. `Arduino-Cli` is a public command line program, and the binary executable is downloaded to the DAQ PC, and the path to it is specified in config file.
 
-### Using `git subtree`
-`git subtree` can be used to handle dependencies on external code. Unlike `git submodule` which contains a link to the original git repository, `git subtree` contains a hard copy of the repository. Here's a brief tutorial for using `git subtree`, using the example of `SBC-ArduinoSketches` which is saved to `dependencies/ArduinoSketches`.
-- First add the `SBC-ArduinoSketches` as a remote in the `RunControl` repository: 
-```bash
-git remote add arduino-repo https://github.com/SBC-Collaboration/SBC-ArduinoSketches.git
-```
-- Check that the remote has been added. Run `git remote -v`. The output should be:
-```bash
-arduino-repo	https://github.com/SBC-Collaboration/SBC-ArduinoSketches.git (fetch)
-arduino-repo	https://github.com/SBC-Collaboration/SBC-ArduinoSketches.git (push)
-origin	https://github.com/SBC-Collaboration/SBC-RunControl.git (fetch)
-origin	https://github.com/SBC-Collaboration/SBC-RunControl.git (push)
-```
-- Add the repository into git subtree: 
-```bash
-git subtree add --prefix {local directory being pulled into} {remote repo} {remote branch} --squash
-``` 
-In this example, it would be:
-```bash
-git subtree add --prefix dependencies/ArduinoSketches arduino-repo main --squash
-```
-This should copy the external repository in the the local directory. The `--squash` parameter consolidates all commit history of the external repository into one commit, simplifying the local repository history.
-- After changes have been made locally in the `dependencies/ArduinoSketches` folder, committhe changes using `git add` and `git commit`.
-- Upload the changes to external repository by running the following command in the main directory of `RunControl`:
-```bash
-git subtree push --prefix=dependencies/ArduinoSketches arduino-repo main
-```
-- Upload changes to `RunControl` repository by running `git push origin main`.
-- If there has been some changes in the external repository, run `git subtree pull --prefix=dependencies/ArduinoSketches arduino-repo main` to pull the changes. Commit merges in `RunControl` repository and upload.
-
 ### Using `git submodule`
 Like `git subtree`, `git submodule` also handles including other git repositories as dependencies. Submodules act as pointers to external repositories, which are managed independently, including access control and pointers to specific commits. Using the example of `CAENDrivers`, which has a nested working tree as `dependencies/CAENDrivers`. The remote repository of `CAENDrivers` is private, requiring authentication.  
 - To download submodule repositories while cloning the main repo. By default, only the submodule configuration file `.gitmodules` and an empty folder is created at cloning.
@@ -109,6 +79,39 @@ RunControl> git add dependencies/CAENDrivers
 RunControl> git commit -m <commit_message>
 RunControl> git push
 ```
+### Using `git subtree`
+```{caution}
+`git submodule` has now replaced the `git subtree` in this project. The documentation is left here for reference only. 
+```
+
+`git subtree` can be used to handle dependencies on external code. Unlike `git submodule` which contains a link to the original git repository, `git subtree` contains a hard copy of the repository. Here's a brief tutorial for using `git subtree`, using the example of `SBC-ArduinoSketches` which is saved to `dependencies/ArduinoSketches`.
+- First add the `SBC-ArduinoSketches` as a remote in the `RunControl` repository: 
+```bash
+git remote add arduino-repo https://github.com/SBC-Collaboration/SBC-ArduinoSketches.git
+```
+- Check that the remote has been added. Run `git remote -v`. The output should be:
+```bash
+arduino-repo	https://github.com/SBC-Collaboration/SBC-ArduinoSketches.git (fetch)
+arduino-repo	https://github.com/SBC-Collaboration/SBC-ArduinoSketches.git (push)
+origin	https://github.com/SBC-Collaboration/SBC-RunControl.git (fetch)
+origin	https://github.com/SBC-Collaboration/SBC-RunControl.git (push)
+```
+- Add the repository into git subtree: 
+```bash
+git subtree add --prefix {local directory being pulled into} {remote repo} {remote branch} --squash
+``` 
+In this example, it would be:
+```bash
+git subtree add --prefix dependencies/ArduinoSketches arduino-repo main --squash
+```
+This should copy the external repository in the the local directory. The `--squash` parameter consolidates all commit history of the external repository into one commit, simplifying the local repository history.
+- After changes have been made locally in the `dependencies/ArduinoSketches` folder, committhe changes using `git add` and `git commit`.
+- Upload the changes to external repository by running the following command in the main directory of `RunControl`:
+```bash
+git subtree push --prefix=dependencies/ArduinoSketches arduino-repo main
+```
+- Upload changes to `RunControl` repository by running `git push origin main`.
+- If there has been some changes in the external repository, run `git subtree pull --prefix=dependencies/ArduinoSketches arduino-repo main` to pull the changes. Commit merges in `RunControl` repository and upload.
 
 ## Using Qt designer and resource manager
 Qt designer can be used to edit all the UI components, then a python script can load the UI and add functionalities to the widgets (buttons, labels, etc). To use the designer program, run `pyside6-designer` within the conda envrionment. After saving the `.ui` file, run 
