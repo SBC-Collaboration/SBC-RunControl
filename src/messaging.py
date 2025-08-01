@@ -1,19 +1,11 @@
-import requests
 import os
-import json
-from dotenv import load_dotenv
+from slack_sdk import WebClient
+import os
 
-# export SLACK_WEBHOOK_URL = "https://hooks.slack.com/services/xxx/yyy"
-# can't just use os.getenv because this isn't the name of an environment but a webhook, so use terminal for export
-#Also, make sure it is in the terminal window with the jupyter launching
-
-load_dotenv()
-#loads the environment file
-
-slack_url = os.getenv("SLACK_WEBHOOK_URL")
-
-if not slack_url:
-    print("Slack URL not found.")
+with open(os.path.expanduser("~/.config/runcontrol/slack_token"), "r") as f:
+    token = f.read().strip()
+client = WebClient(token=token)
+channel_id = "C01A549VDHS"
 
 #edited dictionary to incldue all errors (log and inform)
 error_dict = {
@@ -56,9 +48,10 @@ def error_handling(error_code):
         return
 
     value = error_dict[error_code]
-    slack_message = f"Error code {error_code}: {value}."
-    requests.post(slack_url, json={"text": slack_message})
-    
+    slack_message = f"Run Control: Error code {error_code}: {value}."
+    result = client.chat_postMessage(channel=channel_id, text=str(slack_message))
+    print("slackalarm", result)
+
 error_code = 2300
 # will end up being error code = what is returned from the run control
 # what if more than one error?
