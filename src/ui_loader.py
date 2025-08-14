@@ -1,15 +1,11 @@
-import sys
 from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog
 from PySide6.QtGui import QTextCursor
 from PySide6.QtCore import QTimer, Qt, QObject, QSignalBlocker, QStringListModel, Signal, Slot
 import logging
-from enum import Enum
-import time
 from ui.settingswindow import Ui_SettingsWindow
 from ui.logwindow import Ui_LogWindow
 import re
 import numpy as np
-from src.config import Config
 
 
 # initialize class for syncing the status of two checkboxes

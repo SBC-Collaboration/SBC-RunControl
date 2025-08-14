@@ -1,20 +1,12 @@
 import os
 import logging
 from PySide6.QtCore import QTimer, QElapsedTimer, QObject, Slot, Signal, QThread
-import signal
-from configparser import ConfigParser
-from multiprocessing import Process
-import ctypes
 from pymodbus.client import ModbusTcpClient
-from pymodbus.payload import BinaryPayloadDecoder
-from pymodbus.constants import Endian
 import struct
-import numpy as np
 import time
 from functools import wraps
 from enum import Enum
 from sbcbinaryformat import Writer as SBCWriter
-import subprocess
 
 # Wrapper to handle exceptions in Modbus functions
 def safe_modbus(func):
