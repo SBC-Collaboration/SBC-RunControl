@@ -84,6 +84,11 @@ class SQL(QObject):
 
     @Slot()
     def retrieve_run_id(self, date=""):
+        self.enabled = self.config["enabled"]
+        if not self.enabled:
+            return set()
+        
+        self.setup_connection()
         run_query = f"SELECT run_id FROM {self.run_table} WHERE run_ID LIKE '{date}%'" if date \
             else f"SELECT run_id FROM {self.run_table}"
         self.cursor.execute(run_query)
@@ -94,7 +99,11 @@ class SQL(QObject):
             else f"SELECT run_id FROM {self.event_table}"
         self.cursor.execute(event_query)
         more_runs = set(np.array(self.cursor.fetchall())[:,0])
-        return runs.union(more_runs)
+        all_runs = runs.union(more_runs)
+        self.close_connection()
+
+        # get only the run number without date
+        return {int(run.split("_")[-1]) for run in all_runs}
 
     @Slot()
     def start_run(self):

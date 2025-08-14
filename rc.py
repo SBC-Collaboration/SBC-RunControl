@@ -644,6 +644,10 @@ class MainWindow(QMainWindow):
             int(re.search(r"\d+", r[9:])[0]) for r in os.listdir(data_dir) if today in r
         ]
         num = 0 if len(todays_runs) == 0 else max(todays_runs) + 1
+
+        todays_sql_runs = self.sql_worker.retrieve_run_id(today)
+        sql_num = 0 if len(todays_sql_runs) == 0 else max(todays_sql_runs) + 1
+        num = max(num, sql_num)
         # self.run_id = f"{today}_{num:02d}" # minimum two digits
         self.run_id = f"{today}_{num}"
 
