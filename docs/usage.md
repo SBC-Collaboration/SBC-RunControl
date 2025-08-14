@@ -33,6 +33,27 @@
 ## Managing and Updating Dependencies
 The dependencies of this project is managed in a few different ways. `PySide6` is a public python library installed from pip into the conda environment. `SBCBinaryFormat` is a custom python library that is compiled and installed locally using pip into the conda environment. `SBC-ArduinoSketches` and `NI_USB-6501` are custom/modified code that is included in this repository in the `dependencies/` folder. They are managed using `git subtree` comand. The drivers for CAEN and GaGe digitizers are also copied into `dependencies/` folder, but using `git submodule` command for copyright reasons. `Arduino-Cli` is a public command line program, and the binary executable is downloaded to the DAQ PC, and the path to it is specified in config file.
 
+### Conda
+The majority of dependencies (including listed above) are managed by conda. The requirements are described in the `dependencies/conda_rc.yml` file. It is easy to create a new conda environment called `runcontrol` from the file:
+```bash
+# remove environment of the same name if already exists.
+conda env remove -n runcontrol;
+conda env create -f "./conda_rc.yml";
+```
+To update the environment, and removed unused packages:
+```bash
+conda env update -f "./conda_rc.yml" --prune;
+```
+This file specifies the oldest software version that should work, which is typically the latest version when the dependencies is added to Run Control. Newer versions may have breaking changes. In case the previous method cannot create a working environment, a lock file (`conda_rc.lock.yml`) is also created, containing exact versions of all packages installed in a working environment. This file can be updated periodically, but is a fall back from the automatic updates. To create the lock file, activate and export:
+```bash
+conda activate runcontrol;
+conda env export > conda_rc.lock.yml;
+```
+To use the lock file:
+```bash
+conda env create -f "./conda_rc.lock.yml";
+```
+
 ### Using `git submodule`
 Like `git subtree`, `git submodule` also handles including other git repositories as dependencies. Submodules act as pointers to external repositories, which are managed independently, including access control and pointers to specific commits. Using the example of `CAENDrivers`, which has a nested working tree as `dependencies/CAENDrivers`. The remote repository of `CAENDrivers` is private, requiring authentication.  
 - To download submodule repositories while cloning the main repo. By default, only the submodule configuration file `.gitmodules` and an empty folder is created at cloning.

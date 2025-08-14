@@ -26,7 +26,7 @@ if conda info --envs | grep -q "$ENV_NAME"; then
 else
   # if runcontrol environment doesn't exist, create it
   echo "Conda environment \"$ENV_NAME\" doesn't exist. Creating environment...";
-  conda env create -y -n "$ENV_NAME" --file "$ENV_FILE";
+  conda env create --file "$ENV_FILE";
 fi
 conda activate "$ENV_NAME";
 

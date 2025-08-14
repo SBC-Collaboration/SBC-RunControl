@@ -1,5 +1,12 @@
 # Changelog
 
+## [latest]
+### Added
+- Conda lockfile of a working environment, in case newer package version breaks things.
+- Update README and badges.
+### Changed
+- Check SQL tables in addition to local data folder when picking a new run number.
+
 ## [Run Control v0.3.1](https://github.com/SBC-Collaboration/SBC-RunControl/releases/tag/v0.3.1) (2025-07-18)
 ### Added
 - Added the Guardian module responsible for everything related to error handling.
