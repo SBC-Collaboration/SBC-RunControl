@@ -116,7 +116,7 @@ class SettingsWindow(QMainWindow):
         # Individual checkbox pairs (general tab <-> specific tab)
         self.checkpair_pressure = CheckBoxPairBinder(self.widgets["active_plc"], self.widgets["plc_enabled_box"])
         self.checkpair_sql = CheckBoxPairBinder(self.widgets["active_sql"], self.widgets["sql_enabled_box"])
-        self.checkpair_writer = CheckBoxPairBinder(self.widgets["active_writer"], self.widgets["writer_enabled_box"])
+        self.checkpair_slack = CheckBoxPairBinder(self.widgets["active_slack"], self.widgets["slack_alarm_box"])
         self.checkpair_acoustic = CheckBoxPairBinder(self.widgets["active_acous"], self.widgets["acous_enabled_box"])
 
         # LED checkboxes

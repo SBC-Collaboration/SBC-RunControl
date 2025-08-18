@@ -368,14 +368,22 @@ class MainWindow(QMainWindow):
     def open_settings_window(self):
         """Create and show the settings window.
         """
-        self.settings_window = SettingsWindow(self)
-        self.settings_window.show()
+        if hasattr(self, "settings_window") and self.settings_window.isVisible():
+            self.settings_window.raise_()
+            self.settings_window.activateWindow()
+        else:
+            self.settings_window = SettingsWindow(self)
+            self.settings_window.show()
 
     def open_log_window(self):
         """Create and show the logs window.
         """
-        self.log_window = LogWindow(self)
-        self.log_window.show()
+        if hasattr(self, "log_window") and self.log_window.isVisible():
+            self.log_window.raise_()
+            self.log_window.activateWindow()
+        else:
+            self.log_window = LogWindow(self)
+            self.log_window.show()
 
     def select_file(self):
         """Open a file dialog to select a file. The selected file path will be set in the file_path line edit.

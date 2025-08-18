@@ -85,7 +85,7 @@ class Config(QObject):
         general_config = self.config["general"]
         ui.log_dir_edit.setText(general_config.get("log_dir", ""))
         ui.data_dir_edit.setText(general_config.get("data_dir", ""))
-        ui.writer_enabled_box.setChecked(general_config.get("writer_enabled", False))
+        ui.slack_alarm_box.setChecked(general_config.get("slack_alarm", False))
         ui.max_ev_time_box.setValue(general_config.get("max_ev_time", 0))
         ui.max_num_ev_box.setValue(general_config.get("max_num_evs", 0))
 
@@ -373,7 +373,7 @@ class Config(QObject):
             "source_location": main_ui.source_location_box.currentText(),
             "data_dir": ui.data_dir_edit.text(),
             "log_dir": ui.log_dir_edit.text(),
-            "writer_enabled": ui.writer_enabled_box.isChecked(),
+            "slack_alarm": ui.slack_alarm_box.isChecked(),
             "max_ev_time": ui.max_ev_time_box.value(),
             "max_num_evs": ui.max_num_ev_box.value(),
         }

@@ -363,13 +363,6 @@
                 </property>
                </widget>
               </item>
-              <item row="1" column="4">
-               <widget class="QCheckBox" name="active_writer">
-                <property name="text">
-                 <string>Writer</string>
-                </property>
-               </widget>
-              </item>
               <item row="2" column="0">
                <widget class="QLabel" name="active_cams_laebl">
                 <property name="font">
@@ -385,6 +378,16 @@
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="4">
+               <widget class="QCheckBox" name="active_slack">
+                <property name="layoutDirection">
+                 <enum>Qt::LayoutDirection::LeftToRight</enum>
+                </property>
+                <property name="text">
+                 <string>Slack Alarm</string>
                 </property>
                </widget>
               </item>
@@ -404,35 +407,6 @@
               <property name="spacing">
                <number>3</number>
               </property>
-              <item row="2" column="5" colspan="2">
-               <widget class="NoWheelDoubleSpinBox" name="max_ev_time_box">
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="suffix">
-                 <string> s</string>
-                </property>
-                <property name="decimals">
-                 <number>1</number>
-                </property>
-                <property name="maximum">
-                 <double>100000.000000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="1">
-               <widget class="QCheckBox" name="writer_enabled_box">
-                <property name="layoutDirection">
-                 <enum>Qt::LayoutDirection::LeftToRight</enum>
-                </property>
-                <property name="text">
-                 <string>Writer Enabled</string>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="1" colspan="5">
-               <widget class="QLineEdit" name="data_dir_edit"/>
-              </item>
               <item row="1" column="0">
                <widget class="QLabel" name="data_dir_label">
                 <property name="lineWidth">
@@ -449,6 +423,36 @@
                 </property>
                </widget>
               </item>
+              <item row="2" column="0">
+               <widget class="QCheckBox" name="autorun_box">
+                <property name="layoutDirection">
+                 <enum>Qt::LayoutDirection::LeftToRight</enum>
+                </property>
+                <property name="text">
+                 <string>Autorun</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1" colspan="5">
+               <widget class="QLineEdit" name="log_dir_edit"/>
+              </item>
+              <item row="0" column="6">
+               <widget class="QToolButton" name="log_dir_but">
+                <property name="text">
+                 <string>...</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="QCheckBox" name="slack_alarm_box">
+                <property name="layoutDirection">
+                 <enum>Qt::LayoutDirection::LeftToRight</enum>
+                </property>
+                <property name="text">
+                 <string>Slack Alarm</string>
+                </property>
+               </widget>
+              </item>
               <item row="2" column="4">
                <widget class="QLabel" name="max_ev_time_label">
                 <property name="text">
@@ -462,10 +466,38 @@
                 </property>
                </widget>
               </item>
-              <item row="1" column="6">
-               <widget class="QToolButton" name="data_dir_but">
+              <item row="0" column="0">
+               <widget class="QLabel" name="log_dir_label">
+                <property name="lineWidth">
+                 <number>0</number>
+                </property>
                 <property name="text">
-                 <string>...</string>
+                 <string>Log Dir</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>log_dir_edit</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1" colspan="5">
+               <widget class="QLineEdit" name="data_dir_edit"/>
+              </item>
+              <item row="2" column="5" colspan="2">
+               <widget class="NoWheelDoubleSpinBox" name="max_ev_time_box">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string> s</string>
+                </property>
+                <property name="decimals">
+                 <number>1</number>
+                </property>
+                <property name="maximum">
+                 <double>100000.000000000000000</double>
                 </property>
                </widget>
               </item>
@@ -498,39 +530,10 @@
                 </property>
                </widget>
               </item>
-              <item row="2" column="0">
-               <widget class="QCheckBox" name="autorun_box">
-                <property name="layoutDirection">
-                 <enum>Qt::LayoutDirection::LeftToRight</enum>
-                </property>
-                <property name="text">
-                 <string>Autorun</string>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="1" colspan="5">
-               <widget class="QLineEdit" name="log_dir_edit"/>
-              </item>
-              <item row="0" column="6">
-               <widget class="QToolButton" name="log_dir_but">
+              <item row="1" column="6">
+               <widget class="QToolButton" name="data_dir_but">
                 <property name="text">
                  <string>...</string>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="0">
-               <widget class="QLabel" name="log_dir_label">
-                <property name="lineWidth">
-                 <number>0</number>
-                </property>
-                <property name="text">
-                 <string>Log Dir</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>log_dir_edit</cstring>
                 </property>
                </widget>
               </item>
@@ -763,7 +766,7 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>874</width>
+             <width>809</width>
              <height>684</height>
             </rect>
            </property>
@@ -2329,7 +2332,7 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>876</width>
+             <width>769</width>
              <height>1203</height>
             </rect>
            </property>
@@ -6095,7 +6098,7 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>876</width>
+             <width>874</width>
              <height>998</height>
             </rect>
            </property>
@@ -9388,7 +9391,7 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>876</width>
+             <width>692</width>
              <height>578</height>
             </rect>
            </property>
@@ -11592,7 +11595,7 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>876</width>
+             <width>398</width>
              <height>590</height>
             </rect>
            </property>
@@ -12897,7 +12900,7 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>876</width>
+             <width>658</width>
              <height>1388</height>
             </rect>
            </property>
