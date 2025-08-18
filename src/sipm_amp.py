@@ -10,6 +10,7 @@ import datetime as dt
 from PySide6.QtCore import QTimer, QObject, Slot, Signal, QThread
 import subprocess
 from sbcbinaryformat import Writer
+from src.guardian import ErrorCodes
 
 class SiPMAmp(QObject):
     """
@@ -126,7 +127,11 @@ class SiPMAmp(QObject):
         if self.client.get_transport() and self.client.get_transport().is_active():
             already_connected = True
         else:
-            self.client.connect(self.config['ip_addr'], username=self.config["user"])
+            try:
+                self.client.connect(self.config['ip_addr'], username=self.config["user"])
+            except pm.ssh_exception.NoValidConnectionsError:
+                self.error.emit(ErrorCodes.SIPM_AMP_NOT_CONNECTED)
+                return
         command = "; ".join(commands)
         _stdin, _stdout, _stderr = self.client.exec_command(command)
         exit_status = _stdout.channel.recv_exit_status()  # wait for command to finish
@@ -380,7 +385,13 @@ class SiPMAmp(QObject):
         if not self.config["enabled"]:
             self.run_started.emit(f"{self.amp}-disabled")
             return
-        self.client.connect(self.config["ip_addr"], username=self.config["user"])
+        
+        try:
+            self.client.connect(self.config["ip_addr"], username=self.config["user"])
+        except pm.ssh_exception.NoValidConnectionsError:
+            self.error.emit(ErrorCodes.SIPM_AMP_NOT_CONNECTED)
+            return
+
         self.logger.debug(f"SiPM {self.amp} connected to {self.config['ip_addr']}.")
         if self.check_iv_interval():
             self.run_iv_curve()

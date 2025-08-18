@@ -81,7 +81,6 @@ class Guardian(QObject):
         with open(os.path.expanduser("~/.config/runcontrol/slack_token"), "r") as f:
             token = f.read().strip()
         self.client = WebClient(token=token)
-        self.channel_id = "C01A549VDHS"
 
         self.timer = QTimer(self)
         self.timer.setInterval(100)  # ms
@@ -98,15 +97,20 @@ class Guardian(QObject):
 
     def send_message(self, error):
         message = self.error_messages.get(error, "Unknown Error.")
-        self.client.chat_postMessage(channel=self.channel_id, text=f"RC TEST E{error}: {message}")
         self.logger.error(f"Error {error}: {message}")
+        config = self.main.config_class.run_config["general"]
+        if config.get("slack_alarm", False):
+            try:
+                channel_id = config["slack_channel_id"]
+                self.client.chat_postMessage(channel=channel_id, text=f"RC TEST E{error}: {message}")
+            except Exception as e:
+                self.logger.error(f"Failed to send Slack message: {e}")
 
     @Slot()
     def error_handler(self, error):
+        if error in ErrorCodes:
+            self.send_message(error)
+        
         match error:
             case 2:
-                self.logger.error("Error 0002: Lock file cannot be released.")
-            case 1101:
-                self.logger.error("Error 1101: Failed to save config file to disk.")
-            case _:
-                self.logger.error(f"Unknown error code: {error}")
+                pass

@@ -86,6 +86,7 @@ class Config(QObject):
         ui.log_dir_edit.setText(general_config.get("log_dir", ""))
         ui.data_dir_edit.setText(general_config.get("data_dir", ""))
         ui.slack_alarm_box.setChecked(general_config.get("slack_alarm", False))
+        ui.slack_channel_id_edit.setText(general_config.get("slack_channel_id", ""))
         ui.max_ev_time_box.setValue(general_config.get("max_ev_time", 0))
         ui.max_num_ev_box.setValue(general_config.get("max_num_evs", 0))
 
@@ -374,6 +375,7 @@ class Config(QObject):
             "data_dir": ui.data_dir_edit.text(),
             "log_dir": ui.log_dir_edit.text(),
             "slack_alarm": ui.slack_alarm_box.isChecked(),
+            "slack_channel_id": ui.slack_channel_id_edit.text(),
             "max_ev_time": ui.max_ev_time_box.value(),
             "max_num_evs": ui.max_num_ev_box.value(),
         }
