@@ -7,8 +7,12 @@ At the start of a run, a copy of the config dictionay to the run_config dictiona
 The data structure is:
 - **general**: General configuration for the run control software. This includes paths that the software uses in 
   normal operation. This information generally doesn't change across runs and different days.
+  - **autorun** (`bool`): When a run ends (by reaching the maximum number of events, not by pressing the "STOP RUN" button, and when there's no serious errors), whether a new run should automatically start.
+  - **source** (`str`): Name of the source for current run.
+  - **source_location** (`str`): Location of the source for current run.
   - **data_dir** (`str`): Main directory where all of the data is saved.
   - **log_dir** (`str`): Directory in which log files will be saved. If the folder doesn't exist, run control will create one. A new file will be created every day when run control is started first time after midnight.
+  - **slack_alarm** (`bool`): When an error appears, should alarms be sent to slack, in addition to being logged?
   - **max_ev_time** (`int`, s): Max time an event can last. After the maximum is reached, a software trigger is sent from run control.
   - **max_num_evs** (`int`): Max number of events that a run can have. If the max number is reached, then the run will end, instead of starting a new event.
 - **plc**: 
