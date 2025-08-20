@@ -118,7 +118,12 @@ class SettingsWindow(QMainWindow):
         self.checkpair_sql = CheckBoxPairBinder(self.widgets["active_sql"], self.widgets["sql_enabled_box"])
         self.checkpair_writer = CheckBoxPairBinder(self.widgets["active_writer"], self.widgets["writer_enabled_box"])
         self.checkpair_acoustic = CheckBoxPairBinder(self.widgets["active_acous"], self.widgets["acous_enabled_box"])
-        
+
+        # LED checkboxes
+        self.checkpair_led1 = CheckBoxPairBinder(self.widgets["active_led1"], self.widgets["led1_control_enabled"])
+        self.checkpair_led2 = CheckBoxPairBinder(self.widgets["active_led2"], self.widgets["led2_control_enabled"])
+        self.checkpair_led3 = CheckBoxPairBinder(self.widgets["active_led3"], self.widgets["led3_control_enabled"])
+
         # Camera checkboxes
         self.checkpair_cam1 = CheckBoxPairBinder(self.widgets["active_cam1"], self.widgets["cam1_enabled_box"])
         self.checkpair_cam2 = CheckBoxPairBinder(self.widgets["active_cam2"], self.widgets["cam2_enabled_box"])

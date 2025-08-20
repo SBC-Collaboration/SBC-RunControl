@@ -246,6 +246,7 @@ class MainWindow(QMainWindow):
         self.niusb_worker.run_started.connect(self.starting_run_wait)
         self.niusb_worker.event_started.connect(self.starting_event_wait)
         self.niusb_worker.event_stopped.connect(self.stopping_event_wait)
+        self.niusb_worker.all_cams_stopped.connect(self.modbus_worker.turn_off_leds)
         self.niusb_worker.run_stopped.connect(self.stopping_run_wait)
         self.niusb_worker.trigger_detected.connect(self.stop_event)
         self.niusb_worker.trigger_ff.connect(self.ui.trigger_edit.setText)

@@ -98,6 +98,9 @@ class Config(QObject):
         ui.pc_trig_timeout_box.setValue(plc_config.get("trig_timeout", 0))
         ui.pc_stop_timeout_box.setValue(plc_config.get("stop_timeout", 0))
         ui.pc_abort_timeout_box.setValue(plc_config.get("abort_timeout", 0))
+        ui.led1_control_enabled.setChecked(plc_config.get("led1_enabled", False))
+        ui.led2_control_enabled.setChecked(plc_config.get("led2_enabled", False))
+        ui.led3_control_enabled.setChecked(plc_config.get("led3_enabled", False))
         ui.led1_control_box.setValue(plc_config.get("led1_control", 0))
         ui.led2_control_box.setValue(plc_config.get("led2_control", 0))
         ui.led3_control_box.setValue(plc_config.get("led3_control", 0))
@@ -383,6 +386,9 @@ class Config(QObject):
             "trig_timeout": ui.pc_trig_timeout_box.value(),
             "stop_timeout": ui.pc_stop_timeout_box.value(),
             "abort_timeout": ui.pc_abort_timeout_box.value(),
+            "led1_enabled": ui.led1_control_enabled.isChecked(),
+            "led2_enabled": ui.led2_control_enabled.isChecked(),
+            "led3_enabled": ui.led3_control_enabled.isChecked(),
             "led1_control": ui.led1_control_box.value(),
             "led2_control": ui.led2_control_box.value(),
             "led3_control": ui.led3_control_box.value(),

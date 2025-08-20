@@ -1763,16 +1763,6 @@
                 </property>
                </widget>
               </item>
-              <item row="4" column="0">
-               <widget class="QLabel" name="led1_control_label">
-                <property name="text">
-                 <string>LED1 Control</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
               <item row="8" column="2">
                <widget class="QLabel" name="PCYCLE_EXPTIME_label">
                 <property name="text">
@@ -1805,16 +1795,6 @@
               </item>
               <item row="2" column="3">
                <widget class="QLineEdit" name="smb_filename_edit"/>
-              </item>
-              <item row="4" column="2">
-               <widget class="QLabel" name="led2_control_label">
-                <property name="text">
-                 <string>LED2 Control</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-               </widget>
               </item>
               <item row="8" column="0">
                <widget class="QLabel" name="PRESSURE_CYCLE_label">
@@ -1946,16 +1926,6 @@
                <widget class="QLabel" name="LED1_OUT_label">
                 <property name="text">
                  <string>LED1_OUT</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="4">
-               <widget class="QLabel" name="led3_control_label">
-                <property name="text">
-                 <string>LED3 Control</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
@@ -2272,6 +2242,36 @@
                 </property>
                 <property name="singleStep">
                  <double>0.010000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="0">
+               <widget class="QCheckBox" name="led1_control_enabled">
+                <property name="layoutDirection">
+                 <enum>Qt::LayoutDirection::RightToLeft</enum>
+                </property>
+                <property name="text">
+                 <string>LED1 Control</string>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="2">
+               <widget class="QCheckBox" name="led2_control_enabled">
+                <property name="layoutDirection">
+                 <enum>Qt::LayoutDirection::RightToLeft</enum>
+                </property>
+                <property name="text">
+                 <string>LED2 Control</string>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="4">
+               <widget class="QCheckBox" name="led3_control_enabled">
+                <property name="layoutDirection">
+                 <enum>Qt::LayoutDirection::RightToLeft</enum>
+                </property>
+                <property name="text">
+                 <string>LED3 Control</string>
                 </property>
                </widget>
               </item>
@@ -9892,7 +9892,7 @@
                  <number>3</number>
                 </property>
                 <property name="maximum">
-                 <double>999.999000000000000</double>
+                 <double>999.999000000000024</double>
                 </property>
                </widget>
               </item>
@@ -9911,7 +9911,7 @@
                  <number>3</number>
                 </property>
                 <property name="maximum">
-                 <double>999.999000000000000</double>
+                 <double>999.999000000000024</double>
                 </property>
                </widget>
               </item>

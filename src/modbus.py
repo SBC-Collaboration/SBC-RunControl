@@ -57,6 +57,19 @@ class Modbus(QObject):
                     self.logger.debug(f"Pressure cycle started successfully.")
                 else:
                     self.logger.error(f"Pressure cycle start failed.")
+    
+    @Slot()
+    def turn_off_leds(self):
+        # Turn off LEDs
+        ret = True
+        ret = ret and self._write_float(self.registers["LED1_OUT"], 0)
+        ret = ret and self._write_float(self.registers["LED2_OUT"], 0)
+        ret = ret and self._write_float(self.registers["LED3_OUT"], 0)
+        if ret:
+            self.logger.debug(f"LED control voltages successfully changed to 0.")
+        else:
+            self.logger.error(f"Writing of LED control voltages failed.")
+            self.error_msg.emit("led")
 
     @Slot()
     def start_run(self):
@@ -95,14 +108,18 @@ class Modbus(QObject):
             self.event_started.emit("modbus-error")
             return
         
+        # turn on LEDs
         ret = True
         ret = ret and self._write_float(self.registers["LED_MAX"], self.config["led_control_max"])
-        ret = ret and self._write_float(self.registers["LED1_OUT"], 
-                      min(self.config["led1_control"], self.config["led_control_max"]))
-        ret = ret and self._write_float(self.registers["LED2_OUT"], 
-                      min(self.config["led2_control"], self.config["led_control_max"]))
-        ret = ret and self._write_float(self.registers["LED3_OUT"], 
-                      min(self.config["led3_control"], self.config["led_control_max"]))
+        ret = ret and self._write_float(self.registers["LED1_OUT"],
+            min(self.config["led1_control"], self.config["led_control_max"]) 
+            if self.config["led1_enabled"] else 0)
+        ret = ret and self._write_float(self.registers["LED2_OUT"],
+            min(self.config["led2_control"], self.config["led_control_max"])
+            if self.config["led2_enabled"] else 0)
+        ret = ret and self._write_float(self.registers["LED3_OUT"],
+            min(self.config["led3_control"], self.config["led_control_max"])
+            if self.config["led3_enabled"] else 0)
         if ret:
             self.logger.debug(f"Writing of LED control voltages successful.")
         else:
@@ -118,17 +135,6 @@ class Modbus(QObject):
         if not self.enabled:
             self.event_stopped.emit("modbus-disabled")
             return
-        
-        # Turn off LEDs
-        ret = True
-        ret = ret and self._write_float(self.registers["LED1_OUT"], 0)
-        ret = ret and self._write_float(self.registers["LED2_OUT"], 0)
-        ret = ret and self._write_float(self.registers["LED3_OUT"], 0)
-        if ret:
-            self.logger.debug(f"Writing of LED control voltages successful.")
-        else:
-            self.logger.error(f"Writing of LED control voltages failed.")
-            self.error_msg.emit("led")
 
         # Stop the pressure cycle if it's running
         self._stop_pressure_cycle()

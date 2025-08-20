@@ -74,6 +74,7 @@ class NIUSB(QObject):
     event_started = Signal(str)
     trigger_detected = Signal()
     event_stopped = Signal(str)
+    all_cams_stopped = Signal()
     run_stopped = Signal(str)
     trigger_ff = Signal(str)
 
@@ -277,6 +278,7 @@ class NIUSB(QObject):
                 self.event_stopped.emit(cam)
             else:
                 self.event_stopped.emit(f"{cam}-disabled")
+        self.all_cams_stopped.emit()
 
     @Slot()
     def stop_run(self):
