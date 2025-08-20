@@ -1,11 +1,14 @@
 # Changelog
 
-## [latest]
+## [Run Control v0.3.2](https://github.com/SBC-Collaboration/SBC-RunControl/releases/tag/v0.3.2) (2025-08-20)
 ### Added
 - Conda lockfile of a working environment, in case newer package version breaks things.
-- Update README and badges.
+- Added more documentation on readthedocs
 ### Changed
 - Check SQL tables in addition to local data folder when picking a new run number.
+- Update README and badges.
+### Fixed
+- Removed unused dependencies.
 
 ## [Run Control v0.3.1](https://github.com/SBC-Collaboration/SBC-RunControl/releases/tag/v0.3.1) (2025-07-18)
 ### Added
