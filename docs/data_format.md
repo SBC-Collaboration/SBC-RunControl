@@ -12,11 +12,19 @@ The data structure is:
   - **max_ev_time** (`int`, s): Max time an event can last. After the maximum is reached, a software trigger is sent from run control.
   - **max_num_evs** (`int`): Max number of events that a run can have. If the max number is reached, then the run will end, instead of starting a new event.
 - **plc**: 
-  - **hostname**: Hostname of PLC modbus server.
-  - **port**: TCP port of modbus server.
+  - **enabled** (`bool`): Whether pressure cycle related components are enabled. This does not control the LED control voltage settings.
+  - **hostname** (`str`): Hostname of PLC modbus server.
+  - **port** (`int`): TCP port of modbus server.
+  - **smb_share** (`str`): Name of the SMB share on the PLC. This is for accessing slow DAQ data.
+  - **smb_filename** (`str`): Filename of the slow DAQ data to be retrieved.
+  - **trig_timeout** (`str`): When a bubble trigger is sent to the PLC, it should go trough its own pressure cycle compressure procedure. If after this much time, the pressure cycle procedure is still active, then run control will send a stop signal to more forcibly stop the PC.
+  - **stop_timeout**(`float`, s): After this much time after a stop signal is sent, run control will send a abort signal, which should more forcibly stop the procedure.
+  - **abort_timeout** (`float`, s): If after this much time after the abort signal has been sent, the PLC is still stuck in the pressure cycle procedure, then something is very wrong. Run control should send an error message for some one to check what's going on.
+  - **led1_enabled**, **led2_enabled**, **led3_enabled** (`bool`): Boolean flags of whether each of the LED ring should be turned on. If disabled, then run control will set the control voltage to 0.
+  - **led1_control**, **led2_control**, **led3_control** (`float`, V): Control voltage setting LED brightness. There's a 1 Ohm resistor in LED driver box. The current through LED is set by V_CTRL/1 Ohm.
   - **registers**: Modbus register addresses of PLC variables that may be intersing in run control. The unit is in modbus words (2 bytes), and includes the starting address offset. Python `pymodbus` library uses this register value for communication.
   - **pressure**: Pressure profiles for the run.
-    - **enabled**: Whether pressure profiles are enabled.
+    - **enabled** (`bool`): Whether pressure profiles are enabled.
     - **mode**: The selection mode of pressure profiles for events in a run. If `random`, then a profile is chosen randomly among enabled ones. If `cycle`, then it will cycle through all enabled ones in order.
     - **profile1**, **profile2**, **profile3**, **profile4**, **profile5**, **profile6**: Six slots for pressure profiles to choose from.
       - **enabled** (`bool`): Whether this profile is enabled to be used in the run.
