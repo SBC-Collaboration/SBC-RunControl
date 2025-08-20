@@ -1,5 +1,10 @@
 # Changelog
 
+## [Run Control v0.3.3](https://github.com/SBC-Collaboration/SBC-RunControl/releases/tag/v0.3.3) (2025-08-20)
+### Changed
+- Modbus module will wait for cameras to finish for an event before turning off LED control voltages.
+- Update documentation on PLC modbus settings.
+
 ## [Run Control v0.3.2](https://github.com/SBC-Collaboration/SBC-RunControl/releases/tag/v0.3.2) (2025-08-20)
 ### Added
 - Conda lockfile of a working environment, in case newer package version breaks things.

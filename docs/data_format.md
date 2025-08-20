@@ -17,7 +17,7 @@ The data structure is:
   - **port** (`int`): TCP port of modbus server.
   - **smb_share** (`str`): Name of the SMB share on the PLC. This is for accessing slow DAQ data.
   - **smb_filename** (`str`): Filename of the slow DAQ data to be retrieved.
-  - **trig_timeout** (`str`): When a bubble trigger is sent to the PLC, it should go trough its own pressure cycle compressure procedure. If after this much time, the pressure cycle procedure is still active, then run control will send a stop signal to more forcibly stop the PC.
+  - **trig_timeout** (`float`, s): When a bubble trigger is sent to the PLC, it should go trough its own pressure cycle compressure procedure. If after this much time, the pressure cycle procedure is still active, then run control will send a stop signal to more forcibly stop the PC.
   - **stop_timeout**(`float`, s): After this much time after a stop signal is sent, run control will send a abort signal, which should more forcibly stop the procedure.
   - **abort_timeout** (`float`, s): If after this much time after the abort signal has been sent, the PLC is still stuck in the pressure cycle procedure, then something is very wrong. Run control should send an error message for some one to check what's going on.
   - **led1_enabled**, **led2_enabled**, **led3_enabled** (`bool`): Boolean flags of whether each of the LED ring should be turned on. If disabled, then run control will set the control voltage to 0.
