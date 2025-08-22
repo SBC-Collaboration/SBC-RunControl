@@ -92,13 +92,25 @@ class SQL(QObject):
         run_query = f"SELECT run_id FROM {self.run_table} WHERE run_ID LIKE '{date}%'" if date \
             else f"SELECT run_id FROM {self.run_table}"
         self.cursor.execute(run_query)
-        runs = set(np.array(self.cursor.fetchall())[:,0])
+        dates = np.array(self.cursor.fetchall())
+        if dates.ndim == 1:
+            runs = set(dates)
+        elif dates.ndim == 2:
+            runs = set(dates[:,0])
+        else:
+            self.logger.warning("Unexpected dimensions for run IDs.")
 
         # now do the event table
         event_query = f"SELECT run_id FROM {self.event_table} WHERE run_ID LIKE '{date}%'" if date \
             else f"SELECT run_id FROM {self.event_table}"
         self.cursor.execute(event_query)
-        more_runs = set(np.array(self.cursor.fetchall())[:,0])
+        dates = np.array(self.cursor.fetchall())
+        if dates.ndim == 1:
+            more_runs = set(dates)
+        elif dates.ndim == 2:
+            more_runs = set(dates[:,0])
+        else:
+            self.logger.warning("Unexpected dimensions for run IDs.")
         all_runs = runs.union(more_runs)
         self.close_connection()
 
