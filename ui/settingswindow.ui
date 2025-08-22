@@ -11593,7 +11593,7 @@
              <x>0</x>
              <y>0</y>
              <width>876</width>
-             <height>562</height>
+             <height>590</height>
             </rect>
            </property>
            <property name="maximumSize">
@@ -11621,224 +11621,8 @@
             <property name="spacing">
              <number>3</number>
             </property>
-            <item row="13" column="0">
-             <widget class="QLabel" name="post_trig_len_label">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="text">
-               <string>Post-Trig Length</string>
-              </property>
-              <property name="buddy">
-               <cstring>cam1_post_trig_len</cstring>
-              </property>
-             </widget>
-            </item>
-            <item row="12" column="1">
-             <widget class="NoWheelSpinBox" name="cam1_buffer_len">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="focusPolicy">
-               <enum>Qt::FocusPolicy::StrongFocus</enum>
-              </property>
-              <property name="minimum">
-               <number>1</number>
-              </property>
-              <property name="maximum">
-               <number>1000</number>
-              </property>
-             </widget>
-            </item>
-            <item row="15" column="3">
-             <widget class="NoWheelSpinBox" name="cam3_pix_threshold">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="focusPolicy">
-               <enum>Qt::FocusPolicy::StrongFocus</enum>
-              </property>
-              <property name="maximum">
-               <number>100000</number>
-              </property>
-             </widget>
-            </item>
-            <item row="4" column="2">
-             <widget class="QLineEdit" name="cam2_data_path">
-              <property name="focusPolicy">
-               <enum>Qt::FocusPolicy::StrongFocus</enum>
-              </property>
-              <property name="text">
-               <string/>
-              </property>
-             </widget>
-            </item>
-            <item row="22" column="0">
-             <widget class="QLabel" name="trig_enbl_pin_label">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="text">
-               <string>Trig Enable Pin</string>
-              </property>
-              <property name="buddy">
-               <cstring>cam1_trig_enbl_pin</cstring>
-              </property>
-             </widget>
-            </item>
-            <item row="26" column="0" colspan="4">
-             <spacer name="cam_spacer">
-              <property name="orientation">
-               <enum>Qt::Orientation::Vertical</enum>
-              </property>
-              <property name="sizeType">
-               <enum>QSizePolicy::Policy::Expanding</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>20</width>
-                <height>10</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-            <item row="13" column="2">
-             <widget class="NoWheelSpinBox" name="cam2_post_trig_len">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="focusPolicy">
-               <enum>Qt::FocusPolicy::StrongFocus</enum>
-              </property>
-              <property name="maximum">
-               <number>1000</number>
-              </property>
-             </widget>
-            </item>
-            <item row="3" column="2">
-             <widget class="QLineEdit" name="cam2_config_path">
-              <property name="focusPolicy">
-               <enum>Qt::FocusPolicy::StrongFocus</enum>
-              </property>
-             </widget>
-            </item>
             <item row="19" column="2">
-             <widget class="QLineEdit" name="cam2_date_format">
-              <property name="focusPolicy">
-               <enum>Qt::FocusPolicy::StrongFocus</enum>
-              </property>
-             </widget>
-            </item>
-            <item row="23" column="2">
-             <widget class="NoWheelSpinBox" name="cam2_trig_latch_pin">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="focusPolicy">
-               <enum>Qt::FocusPolicy::StrongFocus</enum>
-              </property>
-             </widget>
-            </item>
-            <item row="4" column="3">
-             <widget class="QLineEdit" name="cam3_data_path">
-              <property name="focusPolicy">
-               <enum>Qt::FocusPolicy::StrongFocus</enum>
-              </property>
-             </widget>
-            </item>
-            <item row="23" column="3">
-             <widget class="NoWheelSpinBox" name="cam3_trig_latch_pin">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="focusPolicy">
-               <enum>Qt::FocusPolicy::StrongFocus</enum>
-              </property>
-             </widget>
-            </item>
-            <item row="12" column="0">
-             <widget class="QLabel" name="buffer_len_label">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="text">
-               <string>Buffer Length</string>
-              </property>
-              <property name="buddy">
-               <cstring>cam1_buffer_len</cstring>
-              </property>
-             </widget>
-            </item>
-            <item row="11" column="1">
-             <widget class="NoWheelSpinBox" name="cam1_exposure">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="focusPolicy">
-               <enum>Qt::FocusPolicy::StrongFocus</enum>
-              </property>
-              <property name="maximum">
-               <number>10000</number>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="3">
-             <widget class="QLabel" name="cam3_label">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="font">
-               <font>
-                <bold>true</bold>
-                <kerning>true</kerning>
-               </font>
-              </property>
-              <property name="focusPolicy">
-               <enum>Qt::FocusPolicy::StrongFocus</enum>
-              </property>
-              <property name="text">
-               <string>Cam 3</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignmentFlag::AlignCenter</set>
-              </property>
-              <property name="buddy">
-               <cstring>cam3_enabled_box</cstring>
-              </property>
-             </widget>
-            </item>
-            <item row="18" column="1">
-             <widget class="NoWheelComboBox" name="cam1_image_format">
+             <widget class="NoWheelComboBox" name="cam2_image_format">
               <property name="focusPolicy">
                <enum>Qt::FocusPolicy::StrongFocus</enum>
               </property>
@@ -11857,6 +11641,38 @@
                 <string>jpg</string>
                </property>
               </item>
+             </widget>
+            </item>
+            <item row="23" column="3">
+             <widget class="NoWheelSpinBox" name="cam3_trig_enbl_pin">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="focusPolicy">
+               <enum>Qt::FocusPolicy::StrongFocus</enum>
+              </property>
+             </widget>
+            </item>
+            <item row="13" column="1">
+             <widget class="NoWheelSpinBox" name="cam1_buffer_len">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="focusPolicy">
+               <enum>Qt::FocusPolicy::StrongFocus</enum>
+              </property>
+              <property name="minimum">
+               <number>1</number>
+              </property>
+              <property name="maximum">
+               <number>1000</number>
+              </property>
              </widget>
             </item>
             <item row="0" column="1">
@@ -11888,121 +11704,7 @@
               </property>
              </widget>
             </item>
-            <item row="12" column="2">
-             <widget class="NoWheelSpinBox" name="cam2_buffer_len">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="focusPolicy">
-               <enum>Qt::FocusPolicy::StrongFocus</enum>
-              </property>
-              <property name="minimum">
-               <number>1</number>
-              </property>
-              <property name="maximum">
-               <number>1000</number>
-              </property>
-             </widget>
-            </item>
-            <item row="24" column="1">
-             <widget class="NoWheelSpinBox" name="cam1_state_pin">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="focusPolicy">
-               <enum>Qt::FocusPolicy::StrongFocus</enum>
-              </property>
-             </widget>
-            </item>
-            <item row="6" column="2">
-             <widget class="NoWheelSpinBox" name="cam2_mode">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="focusPolicy">
-               <enum>Qt::FocusPolicy::StrongFocus</enum>
-              </property>
-             </widget>
-            </item>
-            <item row="5" column="3">
-             <widget class="QLineEdit" name="cam3_ip_addr">
-              <property name="focusPolicy">
-               <enum>Qt::FocusPolicy::StrongFocus</enum>
-              </property>
-              <property name="text">
-               <string/>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="0">
-             <widget class="QLabel" name="cam_rc_config_path_label">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="text">
-               <string>RC Config Path</string>
-              </property>
-              <property name="buddy">
-               <cstring>cam1_rc_config_path</cstring>
-              </property>
-             </widget>
-            </item>
-            <item row="19" column="3">
-             <widget class="QLineEdit" name="cam3_date_format">
-              <property name="focusPolicy">
-               <enum>Qt::FocusPolicy::StrongFocus</enum>
-              </property>
-             </widget>
-            </item>
-            <item row="3" column="3">
-             <widget class="QLineEdit" name="cam3_config_path">
-              <property name="focusPolicy">
-               <enum>Qt::FocusPolicy::StrongFocus</enum>
-              </property>
-             </widget>
-            </item>
-            <item row="11" column="3">
-             <widget class="NoWheelSpinBox" name="cam3_exposure">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="focusPolicy">
-               <enum>Qt::FocusPolicy::StrongFocus</enum>
-              </property>
-              <property name="maximum">
-               <number>10000</number>
-              </property>
-             </widget>
-            </item>
-            <item row="25" column="3">
-             <widget class="NoWheelSpinBox" name="cam3_trig_pin">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="focusPolicy">
-               <enum>Qt::FocusPolicy::StrongFocus</enum>
-              </property>
-             </widget>
-            </item>
-            <item row="18" column="0">
+            <item row="19" column="0">
              <widget class="QLabel" name="image_format_label">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -12018,81 +11720,31 @@
               </property>
              </widget>
             </item>
-            <item row="23" column="1">
-             <widget class="NoWheelSpinBox" name="cam1_trig_latch_pin">
+            <item row="0" column="3">
+             <widget class="QLabel" name="cam3_label">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
               </property>
-              <property name="focusPolicy">
-               <enum>Qt::FocusPolicy::StrongFocus</enum>
-              </property>
-             </widget>
-            </item>
-            <item row="25" column="1">
-             <widget class="NoWheelSpinBox" name="cam1_trig_pin">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
+              <property name="font">
+               <font>
+                <bold>true</bold>
+                <kerning>true</kerning>
+               </font>
               </property>
               <property name="focusPolicy">
                <enum>Qt::FocusPolicy::StrongFocus</enum>
-              </property>
-             </widget>
-            </item>
-            <item row="14" column="0">
-             <widget class="QLabel" name="adc_threshold_label">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
               </property>
               <property name="text">
-               <string>ADC Threshold</string>
+               <string>Cam 3</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignmentFlag::AlignCenter</set>
               </property>
               <property name="buddy">
-               <cstring>cam1_adc_threshold</cstring>
-              </property>
-             </widget>
-            </item>
-            <item row="20" column="2">
-             <widget class="NoWheelSpinBox" name="cam2_state_comm_pin">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="focusPolicy">
-               <enum>Qt::FocusPolicy::StrongFocus</enum>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="1">
-             <widget class="QLineEdit" name="cam1_rc_config_path">
-              <property name="focusPolicy">
-               <enum>Qt::FocusPolicy::StrongFocus</enum>
-              </property>
-             </widget>
-            </item>
-            <item row="14" column="3">
-             <widget class="NoWheelSpinBox" name="cam3_adc_threshold">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="focusPolicy">
-               <enum>Qt::FocusPolicy::StrongFocus</enum>
-              </property>
-              <property name="maximum">
-               <number>10000</number>
+               <cstring>cam3_enabled_box</cstring>
               </property>
              </widget>
             </item>
@@ -12124,8 +11776,31 @@
               </property>
              </widget>
             </item>
-            <item row="23" column="0">
-             <widget class="QLabel" name="trig_latch_pin_label">
+            <item row="16" column="3">
+             <widget class="NoWheelSpinBox" name="cam3_pix_threshold">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="focusPolicy">
+               <enum>Qt::FocusPolicy::StrongFocus</enum>
+              </property>
+              <property name="maximum">
+               <number>100000</number>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="3">
+             <widget class="QLineEdit" name="cam3_data_path">
+              <property name="focusPolicy">
+               <enum>Qt::FocusPolicy::StrongFocus</enum>
+              </property>
+             </widget>
+            </item>
+            <item row="15" column="0">
+             <widget class="QLabel" name="adc_threshold_label">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                 <horstretch>0</horstretch>
@@ -12133,15 +11808,261 @@
                </sizepolicy>
               </property>
               <property name="text">
-               <string>Trig Latch Pin</string>
+               <string>ADC Threshold</string>
               </property>
               <property name="buddy">
-               <cstring>cam1_trig_latch_pin</cstring>
+               <cstring>cam1_adc_threshold</cstring>
+              </property>
+             </widget>
+            </item>
+            <item row="24" column="2">
+             <widget class="NoWheelSpinBox" name="cam2_trig_latch_pin">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="focusPolicy">
+               <enum>Qt::FocusPolicy::StrongFocus</enum>
+              </property>
+             </widget>
+            </item>
+            <item row="6" column="2">
+             <widget class="NoWheelSpinBox" name="cam2_mode">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="focusPolicy">
+               <enum>Qt::FocusPolicy::StrongFocus</enum>
+              </property>
+             </widget>
+            </item>
+            <item row="15" column="3">
+             <widget class="NoWheelSpinBox" name="cam3_adc_threshold">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="focusPolicy">
+               <enum>Qt::FocusPolicy::StrongFocus</enum>
+              </property>
+              <property name="maximum">
+               <number>10000</number>
+              </property>
+             </widget>
+            </item>
+            <item row="11" column="0">
+             <widget class="QLabel" name="gain_label">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="text">
+               <string>Gain</string>
+              </property>
+              <property name="buddy">
+               <cstring>cam1_exposure</cstring>
+              </property>
+             </widget>
+            </item>
+            <item row="12" column="3">
+             <widget class="NoWheelSpinBox" name="cam3_exposure">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="focusPolicy">
+               <enum>Qt::FocusPolicy::StrongFocus</enum>
+              </property>
+              <property name="maximum">
+               <number>10000</number>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="0">
+             <widget class="QCheckBox" name="cams_enabled_box">
+              <property name="focusPolicy">
+               <enum>Qt::FocusPolicy::StrongFocus</enum>
+              </property>
+              <property name="text">
+               <string>All Cams</string>
+              </property>
+             </widget>
+            </item>
+            <item row="20" column="3">
+             <widget class="QLineEdit" name="cam3_date_format">
+              <property name="focusPolicy">
+               <enum>Qt::FocusPolicy::StrongFocus</enum>
+              </property>
+             </widget>
+            </item>
+            <item row="19" column="3">
+             <widget class="NoWheelComboBox" name="cam3_image_format">
+              <property name="focusPolicy">
+               <enum>Qt::FocusPolicy::StrongFocus</enum>
+              </property>
+              <item>
+               <property name="text">
+                <string>bmp</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>png</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>jpg</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+            <item row="23" column="0">
+             <widget class="QLabel" name="trig_enbl_pin_label">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="text">
+               <string>Trig Enable Pin</string>
+              </property>
+              <property name="buddy">
+               <cstring>cam1_trig_enbl_pin</cstring>
+              </property>
+             </widget>
+            </item>
+            <item row="14" column="0">
+             <widget class="QLabel" name="post_trig_len_label">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="text">
+               <string>Post-Trig Length</string>
+              </property>
+              <property name="buddy">
+               <cstring>cam1_post_trig_len</cstring>
+              </property>
+             </widget>
+            </item>
+            <item row="23" column="1">
+             <widget class="NoWheelSpinBox" name="cam1_trig_enbl_pin">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="focusPolicy">
+               <enum>Qt::FocusPolicy::StrongFocus</enum>
+              </property>
+             </widget>
+            </item>
+            <item row="14" column="1">
+             <widget class="NoWheelSpinBox" name="cam1_post_trig_len">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="focusPolicy">
+               <enum>Qt::FocusPolicy::StrongFocus</enum>
+              </property>
+              <property name="maximum">
+               <number>1000</number>
+              </property>
+             </widget>
+            </item>
+            <item row="13" column="3">
+             <widget class="NoWheelSpinBox" name="cam3_buffer_len">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="focusPolicy">
+               <enum>Qt::FocusPolicy::StrongFocus</enum>
+              </property>
+              <property name="minimum">
+               <number>1</number>
+              </property>
+              <property name="maximum">
+               <number>1000</number>
+              </property>
+             </widget>
+            </item>
+            <item row="5" column="2">
+             <widget class="QLineEdit" name="cam2_ip_addr">
+              <property name="focusPolicy">
+               <enum>Qt::FocusPolicy::StrongFocus</enum>
+              </property>
+             </widget>
+            </item>
+            <item row="14" column="2">
+             <widget class="NoWheelSpinBox" name="cam2_post_trig_len">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="focusPolicy">
+               <enum>Qt::FocusPolicy::StrongFocus</enum>
+              </property>
+              <property name="maximum">
+               <number>1000</number>
               </property>
              </widget>
             </item>
             <item row="6" column="3">
              <widget class="NoWheelSpinBox" name="cam3_mode">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="focusPolicy">
+               <enum>Qt::FocusPolicy::StrongFocus</enum>
+              </property>
+             </widget>
+            </item>
+            <item row="5" column="1">
+             <widget class="QLineEdit" name="cam1_ip_addr">
+              <property name="focusPolicy">
+               <enum>Qt::FocusPolicy::StrongFocus</enum>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="1">
+             <widget class="QLineEdit" name="cam1_config_path">
+              <property name="focusPolicy">
+               <enum>Qt::FocusPolicy::StrongFocus</enum>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+            <item row="25" column="2">
+             <widget class="NoWheelSpinBox" name="cam2_state_pin">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -12169,8 +12090,83 @@
               </property>
              </widget>
             </item>
-            <item row="14" column="1">
-             <widget class="NoWheelSpinBox" name="cam1_adc_threshold">
+            <item row="25" column="0">
+             <widget class="QLabel" name="state_pin_label">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="text">
+               <string>State Pin</string>
+              </property>
+              <property name="buddy">
+               <cstring>cam1_state_pin</cstring>
+              </property>
+             </widget>
+            </item>
+            <item row="24" column="1">
+             <widget class="NoWheelSpinBox" name="cam1_trig_latch_pin">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="focusPolicy">
+               <enum>Qt::FocusPolicy::StrongFocus</enum>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="1">
+             <widget class="QLineEdit" name="cam1_rc_config_path">
+              <property name="focusPolicy">
+               <enum>Qt::FocusPolicy::StrongFocus</enum>
+              </property>
+             </widget>
+            </item>
+            <item row="13" column="0">
+             <widget class="QLabel" name="buffer_len_label">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="text">
+               <string>Buffer Length</string>
+              </property>
+              <property name="buddy">
+               <cstring>cam1_buffer_len</cstring>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="1">
+             <widget class="QLineEdit" name="cam1_data_path">
+              <property name="focusPolicy">
+               <enum>Qt::FocusPolicy::StrongFocus</enum>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="0">
+             <widget class="QLabel" name="cam_rc_config_path_label">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="text">
+               <string>RC Config Path</string>
+              </property>
+              <property name="buddy">
+               <cstring>cam1_rc_config_path</cstring>
+              </property>
+             </widget>
+            </item>
+            <item row="12" column="2">
+             <widget class="NoWheelSpinBox" name="cam2_exposure">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -12185,19 +12181,39 @@
               </property>
              </widget>
             </item>
-            <item row="15" column="0">
-             <widget class="QLabel" name="pix_threshold_label">
+            <item row="21" column="1">
+             <widget class="NoWheelSpinBox" name="cam1_state_comm_pin">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
               </property>
-              <property name="text">
-               <string>Pixel Treshold</string>
+              <property name="focusPolicy">
+               <enum>Qt::FocusPolicy::StrongFocus</enum>
               </property>
-              <property name="buddy">
-               <cstring>cam1_pix_threshold</cstring>
+             </widget>
+            </item>
+            <item row="16" column="2">
+             <widget class="NoWheelSpinBox" name="cam2_pix_threshold">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="focusPolicy">
+               <enum>Qt::FocusPolicy::StrongFocus</enum>
+              </property>
+              <property name="maximum">
+               <number>100000</number>
+              </property>
+             </widget>
+            </item>
+            <item row="20" column="1">
+             <widget class="QLineEdit" name="cam1_date_format">
+              <property name="focusPolicy">
+               <enum>Qt::FocusPolicy::StrongFocus</enum>
               </property>
              </widget>
             </item>
@@ -12217,8 +12233,8 @@
               </property>
              </widget>
             </item>
-            <item row="25" column="2">
-             <widget class="NoWheelSpinBox" name="cam2_trig_pin">
+            <item row="21" column="2">
+             <widget class="NoWheelSpinBox" name="cam2_state_comm_pin">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -12246,15 +12262,133 @@
               </property>
              </widget>
             </item>
-            <item row="5" column="2">
-             <widget class="QLineEdit" name="cam2_ip_addr">
+            <item row="6" column="1">
+             <widget class="NoWheelSpinBox" name="cam1_mode">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
               <property name="focusPolicy">
                <enum>Qt::FocusPolicy::StrongFocus</enum>
               </property>
              </widget>
             </item>
-            <item row="12" column="3">
-             <widget class="NoWheelSpinBox" name="cam3_buffer_len">
+            <item row="3" column="3">
+             <widget class="QLineEdit" name="cam3_config_path">
+              <property name="focusPolicy">
+               <enum>Qt::FocusPolicy::StrongFocus</enum>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="2">
+             <widget class="QLineEdit" name="cam2_config_path">
+              <property name="focusPolicy">
+               <enum>Qt::FocusPolicy::StrongFocus</enum>
+              </property>
+             </widget>
+            </item>
+            <item row="16" column="1">
+             <widget class="NoWheelSpinBox" name="cam1_pix_threshold">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="focusPolicy">
+               <enum>Qt::FocusPolicy::StrongFocus</enum>
+              </property>
+              <property name="maximum">
+               <number>100000</number>
+              </property>
+             </widget>
+            </item>
+            <item row="20" column="2">
+             <widget class="QLineEdit" name="cam2_date_format">
+              <property name="focusPolicy">
+               <enum>Qt::FocusPolicy::StrongFocus</enum>
+              </property>
+             </widget>
+            </item>
+            <item row="5" column="3">
+             <widget class="QLineEdit" name="cam3_ip_addr">
+              <property name="focusPolicy">
+               <enum>Qt::FocusPolicy::StrongFocus</enum>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+            <item row="19" column="1">
+             <widget class="NoWheelComboBox" name="cam1_image_format">
+              <property name="focusPolicy">
+               <enum>Qt::FocusPolicy::StrongFocus</enum>
+              </property>
+              <item>
+               <property name="text">
+                <string>bmp</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>png</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>jpg</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+            <item row="1" column="3">
+             <widget class="QCheckBox" name="cam3_enabled_box">
+              <property name="focusPolicy">
+               <enum>Qt::FocusPolicy::StrongFocus</enum>
+              </property>
+              <property name="text">
+               <string>Enabled</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="3">
+             <widget class="QLineEdit" name="cam3_rc_config_path">
+              <property name="focusPolicy">
+               <enum>Qt::FocusPolicy::StrongFocus</enum>
+              </property>
+             </widget>
+            </item>
+            <item row="26" column="3">
+             <widget class="NoWheelSpinBox" name="cam3_trig_pin">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="focusPolicy">
+               <enum>Qt::FocusPolicy::StrongFocus</enum>
+              </property>
+             </widget>
+            </item>
+            <item row="26" column="1">
+             <widget class="NoWheelSpinBox" name="cam1_trig_pin">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="focusPolicy">
+               <enum>Qt::FocusPolicy::StrongFocus</enum>
+              </property>
+             </widget>
+            </item>
+            <item row="13" column="2">
+             <widget class="NoWheelSpinBox" name="cam2_buffer_len">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -12272,58 +12406,7 @@
               </property>
              </widget>
             </item>
-            <item row="18" column="2">
-             <widget class="NoWheelComboBox" name="cam2_image_format">
-              <property name="focusPolicy">
-               <enum>Qt::FocusPolicy::StrongFocus</enum>
-              </property>
-              <item>
-               <property name="text">
-                <string>bmp</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>png</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>jpg</string>
-               </property>
-              </item>
-             </widget>
-            </item>
-            <item row="4" column="0">
-             <widget class="QLabel" name="data_path_label">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="text">
-               <string>Pi Data Path</string>
-              </property>
-              <property name="buddy">
-               <cstring>cam1_data_path</cstring>
-              </property>
-             </widget>
-            </item>
-            <item row="6" column="1">
-             <widget class="NoWheelSpinBox" name="cam1_mode">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="focusPolicy">
-               <enum>Qt::FocusPolicy::StrongFocus</enum>
-              </property>
-             </widget>
-            </item>
-            <item row="24" column="3">
+            <item row="25" column="3">
              <widget class="NoWheelSpinBox" name="cam3_state_pin">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
@@ -12336,46 +12419,116 @@
               </property>
              </widget>
             </item>
-            <item row="19" column="1">
-             <widget class="QLineEdit" name="cam1_date_format">
+            <item row="15" column="2">
+             <widget class="NoWheelSpinBox" name="cam2_adc_threshold">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="focusPolicy">
+               <enum>Qt::FocusPolicy::StrongFocus</enum>
+              </property>
+              <property name="maximum">
+               <number>10000</number>
+              </property>
+             </widget>
+            </item>
+            <item row="21" column="0">
+             <widget class="QLabel" name="state_comm_pin_label">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="text">
+               <string>State Comm Pin</string>
+              </property>
+              <property name="buddy">
+               <cstring>cam1_state_comm_pin</cstring>
+              </property>
+             </widget>
+            </item>
+            <item row="24" column="3">
+             <widget class="NoWheelSpinBox" name="cam3_trig_latch_pin">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
               <property name="focusPolicy">
                <enum>Qt::FocusPolicy::StrongFocus</enum>
               </property>
              </widget>
             </item>
-            <item row="3" column="1">
-             <widget class="QLineEdit" name="cam1_config_path">
+            <item row="11" column="1">
+             <widget class="NoWheelComboBox" name="cam1_gain">
+              <property name="focusPolicy">
+               <enum>Qt::FocusPolicy::StrongFocus</enum>
+              </property>
+              <item>
+               <property name="text">
+                <string>1</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>2</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>4</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="QCheckBox" name="cam1_enabled_box">
               <property name="focusPolicy">
                <enum>Qt::FocusPolicy::StrongFocus</enum>
               </property>
               <property name="text">
-               <string/>
+               <string>Enabled</string>
               </property>
              </widget>
             </item>
-            <item row="18" column="3">
-             <widget class="NoWheelComboBox" name="cam3_image_format">
-              <property name="focusPolicy">
-               <enum>Qt::FocusPolicy::StrongFocus</enum>
+            <item row="16" column="0">
+             <widget class="QLabel" name="pix_threshold_label">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
               </property>
-              <item>
-               <property name="text">
-                <string>bmp</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>png</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>jpg</string>
-               </property>
-              </item>
+              <property name="text">
+               <string>Pixel Treshold</string>
+              </property>
+              <property name="buddy">
+               <cstring>cam1_pix_threshold</cstring>
+              </property>
              </widget>
             </item>
-            <item row="13" column="3">
+            <item row="3" column="0">
+             <widget class="QLabel" name="cam_config_path_label">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="text">
+               <string>Pi Config Path</string>
+              </property>
+              <property name="buddy">
+               <cstring>cam1_config_path</cstring>
+              </property>
+             </widget>
+            </item>
+            <item row="14" column="3">
              <widget class="NoWheelSpinBox" name="cam3_post_trig_len">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
@@ -12391,8 +12544,8 @@
               </property>
              </widget>
             </item>
-            <item row="20" column="1">
-             <widget class="NoWheelSpinBox" name="cam1_state_comm_pin">
+            <item row="26" column="2">
+             <widget class="NoWheelSpinBox" name="cam2_trig_pin">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -12404,8 +12557,160 @@
               </property>
              </widget>
             </item>
-            <item row="14" column="2">
-             <widget class="NoWheelSpinBox" name="cam2_adc_threshold">
+            <item row="10" column="1">
+             <widget class="NoWheelDoubleSpinBox" name="cam1_trig_wait">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="focusPolicy">
+               <enum>Qt::FocusPolicy::StrongFocus</enum>
+              </property>
+              <property name="suffix">
+               <string> s</string>
+              </property>
+              <property name="maximum">
+               <double>1000.000000000000000</double>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="2">
+             <widget class="QCheckBox" name="cam2_enabled_box">
+              <property name="focusPolicy">
+               <enum>Qt::FocusPolicy::StrongFocus</enum>
+              </property>
+              <property name="text">
+               <string>Enabled</string>
+              </property>
+             </widget>
+            </item>
+            <item row="23" column="2">
+             <widget class="NoWheelSpinBox" name="cam2_trig_enbl_pin">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="focusPolicy">
+               <enum>Qt::FocusPolicy::StrongFocus</enum>
+              </property>
+             </widget>
+            </item>
+            <item row="12" column="1">
+             <widget class="NoWheelSpinBox" name="cam1_exposure">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="focusPolicy">
+               <enum>Qt::FocusPolicy::StrongFocus</enum>
+              </property>
+              <property name="maximum">
+               <number>10000</number>
+              </property>
+             </widget>
+            </item>
+            <item row="21" column="3">
+             <widget class="NoWheelSpinBox" name="cam3_state_comm_pin">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="focusPolicy">
+               <enum>Qt::FocusPolicy::StrongFocus</enum>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="2">
+             <widget class="QLineEdit" name="cam2_data_path">
+              <property name="focusPolicy">
+               <enum>Qt::FocusPolicy::StrongFocus</enum>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="2">
+             <widget class="QLineEdit" name="cam2_rc_config_path">
+              <property name="focusPolicy">
+               <enum>Qt::FocusPolicy::StrongFocus</enum>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+            <item row="24" column="0">
+             <widget class="QLabel" name="trig_latch_pin_label">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="text">
+               <string>Trig Latch Pin</string>
+              </property>
+              <property name="buddy">
+               <cstring>cam1_trig_latch_pin</cstring>
+              </property>
+             </widget>
+            </item>
+            <item row="26" column="0">
+             <widget class="QLabel" name="trig_pin_label">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="text">
+               <string>Trigger Pin</string>
+              </property>
+              <property name="buddy">
+               <cstring>cam1_trig_pin</cstring>
+              </property>
+             </widget>
+            </item>
+            <item row="12" column="0">
+             <widget class="QLabel" name="exposure_label">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="text">
+               <string>Exposure</string>
+              </property>
+              <property name="buddy">
+               <cstring>cam1_exposure</cstring>
+              </property>
+             </widget>
+            </item>
+            <item row="25" column="1">
+             <widget class="NoWheelSpinBox" name="cam1_state_pin">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="focusPolicy">
+               <enum>Qt::FocusPolicy::StrongFocus</enum>
+              </property>
+             </widget>
+            </item>
+            <item row="15" column="1">
+             <widget class="NoWheelSpinBox" name="cam1_adc_threshold">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -12439,37 +12744,21 @@
               </property>
              </widget>
             </item>
-            <item row="20" column="0">
-             <widget class="QLabel" name="state_comm_pin_label">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
+            <item row="27" column="0" colspan="4">
+             <spacer name="cam_spacer">
+              <property name="orientation">
+               <enum>Qt::Orientation::Vertical</enum>
               </property>
-              <property name="text">
-               <string>State Comm Pin</string>
+              <property name="sizeType">
+               <enum>QSizePolicy::Policy::Expanding</enum>
               </property>
-              <property name="buddy">
-               <cstring>cam1_state_comm_pin</cstring>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>10</height>
+               </size>
               </property>
-             </widget>
-            </item>
-            <item row="15" column="2">
-             <widget class="NoWheelSpinBox" name="cam2_pix_threshold">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="focusPolicy">
-               <enum>Qt::FocusPolicy::StrongFocus</enum>
-              </property>
-              <property name="maximum">
-               <number>100000</number>
-              </property>
-             </widget>
+             </spacer>
             </item>
             <item row="10" column="2">
              <widget class="NoWheelDoubleSpinBox" name="cam2_trig_wait">
@@ -12490,8 +12779,8 @@
               </property>
              </widget>
             </item>
-            <item row="25" column="0">
-             <widget class="QLabel" name="trig_pin_label">
+            <item row="4" column="0">
+             <widget class="QLabel" name="data_path_label">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                 <horstretch>0</horstretch>
@@ -12499,154 +12788,14 @@
                </sizepolicy>
               </property>
               <property name="text">
-               <string>Trigger Pin</string>
+               <string>Pi Data Path</string>
               </property>
               <property name="buddy">
-               <cstring>cam1_trig_pin</cstring>
+               <cstring>cam1_data_path</cstring>
               </property>
              </widget>
             </item>
-            <item row="20" column="3">
-             <widget class="NoWheelSpinBox" name="cam3_state_comm_pin">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="focusPolicy">
-               <enum>Qt::FocusPolicy::StrongFocus</enum>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="3">
-             <widget class="QLineEdit" name="cam3_rc_config_path">
-              <property name="focusPolicy">
-               <enum>Qt::FocusPolicy::StrongFocus</enum>
-              </property>
-             </widget>
-            </item>
-            <item row="13" column="1">
-             <widget class="NoWheelSpinBox" name="cam1_post_trig_len">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="focusPolicy">
-               <enum>Qt::FocusPolicy::StrongFocus</enum>
-              </property>
-              <property name="maximum">
-               <number>1000</number>
-              </property>
-             </widget>
-            </item>
-            <item row="11" column="2">
-             <widget class="NoWheelSpinBox" name="cam2_exposure">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="focusPolicy">
-               <enum>Qt::FocusPolicy::StrongFocus</enum>
-              </property>
-              <property name="maximum">
-               <number>10000</number>
-              </property>
-             </widget>
-            </item>
-            <item row="22" column="1">
-             <widget class="NoWheelSpinBox" name="cam1_trig_enbl_pin">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="focusPolicy">
-               <enum>Qt::FocusPolicy::StrongFocus</enum>
-              </property>
-             </widget>
-            </item>
-            <item row="24" column="0">
-             <widget class="QLabel" name="state_pin_label">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="text">
-               <string>State Pin</string>
-              </property>
-              <property name="buddy">
-               <cstring>cam1_state_pin</cstring>
-              </property>
-             </widget>
-            </item>
-            <item row="22" column="2">
-             <widget class="NoWheelSpinBox" name="cam2_trig_enbl_pin">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="focusPolicy">
-               <enum>Qt::FocusPolicy::StrongFocus</enum>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="2">
-             <widget class="QLineEdit" name="cam2_rc_config_path">
-              <property name="focusPolicy">
-               <enum>Qt::FocusPolicy::StrongFocus</enum>
-              </property>
-              <property name="text">
-               <string/>
-              </property>
-             </widget>
-            </item>
-            <item row="3" column="0">
-             <widget class="QLabel" name="cam_config_path_label">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="text">
-               <string>Pi Config Path</string>
-              </property>
-              <property name="buddy">
-               <cstring>cam1_config_path</cstring>
-              </property>
-             </widget>
-            </item>
-            <item row="5" column="1">
-             <widget class="QLineEdit" name="cam1_ip_addr">
-              <property name="focusPolicy">
-               <enum>Qt::FocusPolicy::StrongFocus</enum>
-              </property>
-             </widget>
-            </item>
-            <item row="24" column="2">
-             <widget class="NoWheelSpinBox" name="cam2_state_pin">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="focusPolicy">
-               <enum>Qt::FocusPolicy::StrongFocus</enum>
-              </property>
-             </widget>
-            </item>
-            <item row="19" column="0">
+            <item row="20" column="0">
              <widget class="QLabel" name="date_format_label">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -12662,115 +12811,48 @@
               </property>
              </widget>
             </item>
-            <item row="11" column="0">
-             <widget class="QLabel" name="exposure_label">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="text">
-               <string>Exposure</string>
-              </property>
-              <property name="buddy">
-               <cstring>cam1_exposure</cstring>
-              </property>
-             </widget>
-            </item>
-            <item row="22" column="3">
-             <widget class="NoWheelSpinBox" name="cam3_trig_enbl_pin">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
+            <item row="11" column="2">
+             <widget class="NoWheelComboBox" name="cam2_gain">
               <property name="focusPolicy">
                <enum>Qt::FocusPolicy::StrongFocus</enum>
               </property>
+              <item>
+               <property name="text">
+                <string>1</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>2</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>4</string>
+               </property>
+              </item>
              </widget>
             </item>
-            <item row="15" column="1">
-             <widget class="NoWheelSpinBox" name="cam1_pix_threshold">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
+            <item row="11" column="3">
+             <widget class="NoWheelComboBox" name="cam3_gain">
               <property name="focusPolicy">
                <enum>Qt::FocusPolicy::StrongFocus</enum>
               </property>
-              <property name="maximum">
-               <number>100000</number>
-              </property>
-             </widget>
-            </item>
-            <item row="4" column="1">
-             <widget class="QLineEdit" name="cam1_data_path">
-              <property name="focusPolicy">
-               <enum>Qt::FocusPolicy::StrongFocus</enum>
-              </property>
-             </widget>
-            </item>
-            <item row="10" column="1">
-             <widget class="NoWheelDoubleSpinBox" name="cam1_trig_wait">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="focusPolicy">
-               <enum>Qt::FocusPolicy::StrongFocus</enum>
-              </property>
-              <property name="suffix">
-               <string> s</string>
-              </property>
-              <property name="maximum">
-               <double>1000.000000000000000</double>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="1">
-             <widget class="QCheckBox" name="cam1_enabled_box">
-              <property name="focusPolicy">
-               <enum>Qt::FocusPolicy::StrongFocus</enum>
-              </property>
-              <property name="text">
-               <string>Enabled</string>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="2">
-             <widget class="QCheckBox" name="cam2_enabled_box">
-              <property name="focusPolicy">
-               <enum>Qt::FocusPolicy::StrongFocus</enum>
-              </property>
-              <property name="text">
-               <string>Enabled</string>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="3">
-             <widget class="QCheckBox" name="cam3_enabled_box">
-              <property name="focusPolicy">
-               <enum>Qt::FocusPolicy::StrongFocus</enum>
-              </property>
-              <property name="text">
-               <string>Enabled</string>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="0">
-             <widget class="QCheckBox" name="cams_enabled_box">
-              <property name="focusPolicy">
-               <enum>Qt::FocusPolicy::StrongFocus</enum>
-              </property>
-              <property name="text">
-               <string>All Cams</string>
-              </property>
+              <item>
+               <property name="text">
+                <string>1</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>2</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>4</string>
+               </property>
+              </item>
              </widget>
             </item>
            </layout>

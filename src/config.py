@@ -273,6 +273,7 @@ class Config(QObject):
             widgets[f"{cam}_ip_addr"].setText(config.get("ip_addr", ""))
             widgets[f"{cam}_mode"].setValue(config.get("mode", 0))
             widgets[f"{cam}_trig_wait"].setValue(config.get("trig_wait", 0))
+            widgets[f"{cam}_gain"].setCurrentText(str(config.get("gain", 1)))
             widgets[f"{cam}_exposure"].setValue(config.get("exposure", 0))
             widgets[f"{cam}_buffer_len"].setValue(config.get("buffer_len", 0))
             widgets[f"{cam}_post_trig_len"].setValue(config.get("post_trig", 0))
@@ -631,6 +632,7 @@ class Config(QObject):
                 "ip_addr": widgets[f"{cam}_ip_addr"].text(),
                 "mode": widgets[f"{cam}_mode"].value(),
                 "trig_wait": widgets[f"{cam}_trig_wait"].value(),
+                "gain": int(widgets[f"{cam}_gain"].currentText()),
                 "exposure": widgets[f"{cam}_exposure"].value(),
                 "buffer_len": widgets[f"{cam}_buffer_len"].value(),
                 "post_trig": widgets[f"{cam}_post_trig_len"].value(),
