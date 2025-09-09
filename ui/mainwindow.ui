@@ -969,7 +969,7 @@ background-color: rgb(150, 150, 150);</string>
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>98</width>
+               <width>84</width>
                <height>155</height>
               </rect>
              </property>
@@ -1465,6 +1465,26 @@ background-color: #969696;</string>
           </property>
           <property name="text">
            <string>SiPM Amp 3</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignmentFlag::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="5">
+         <widget class="StatusLight" name="status_digiscope">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">color: #ffffff;
+background-color: #969696;</string>
+          </property>
+          <property name="text">
+           <string>Digiscope</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignmentFlag::AlignCenter</set>
