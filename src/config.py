@@ -364,6 +364,15 @@ class Config(QObject):
                 except:
                     pass
 
+        digiscope_config = self.config.get("digiscope", {})
+        ui.digi_enabled_box.setChecked(digiscope_config.get("enabled", False))
+        ui.digi_hostname_edit.setText(digiscope_config.get("hostname", ""))
+        ui.digi_port_box.setValue(digiscope_config.get("port", 0))
+        for ch in range(1, 33):
+            digi_ch_config = digiscope_config.get(f"ch{ch}", {})
+            widgets[f"digi_ch{ch}_box"].setChecked(digi_ch_config.get("enabled", False))
+            widgets[f"digi_ch{ch}_name"].setText(digi_ch_config.get("name", ""))
+
         self.logger.info("Configuration loaded from file.")
 
         # TODO: implement loading and saving for more settings components
@@ -716,6 +725,17 @@ class Config(QObject):
         for port in range(3):
             for pin in range(8):
                 niusb_config[f"{port}.{pin}"] = ui.niusb_table.item(port, pin).text()
+        
+        digiscope_config = {
+            "enabled": ui.digi_enabled_box.isChecked(),
+            "hostname": ui.digi_hostname_edit.text(),
+            "port": ui.digi_port_box.value(),
+        }
+        for ch in range(1, 33):
+            digiscope_config[f"ch{ch}"] = {
+                "enabled": widgets[f"digi_ch{ch}_box"].isChecked(),
+                "name": widgets[f"digi_ch{ch}_name"].text()
+            }
 
         self.config = {
             "general": general_config,
