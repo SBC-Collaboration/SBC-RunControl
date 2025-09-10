@@ -82,7 +82,7 @@ class Config(QObject):
         widgets = ui.__dict__
 
         # general
-        general_config = self.config["general"]
+        general_config = self.config.get("general", {})
         ui.log_dir_edit.setText(general_config.get("log_dir", ""))
         ui.data_dir_edit.setText(general_config.get("data_dir", ""))
         ui.slack_alarm_box.setChecked(general_config.get("slack_alarm", False))
@@ -91,7 +91,7 @@ class Config(QObject):
         ui.max_num_ev_box.setValue(general_config.get("max_num_evs", 0))
 
         # PLC
-        plc_config = self.config["plc"]
+        plc_config = self.config.get("plc", {})
         ui.plc_enabled_box.setChecked(plc_config.get("enabled", False))
         ui.plc_hostname_edit.setText(plc_config.get("hostname", ""))
         ui.plc_modbus_port_box.setValue(plc_config.get("port", 0))
@@ -116,10 +116,10 @@ class Config(QObject):
         ui.led_post_time_box.setValue(plc_config.get("led_post_time", 0))
 
         # pressure
-        pressure_config = self.config["plc"]["pressure"]
+        pressure_config = plc_config.get("pressure", {})
         ui.p_mode_box.setCurrentText(pressure_config.get("mode", ""))
         for i in range(1,7):
-            profile = pressure_config[f"profile{i}"]
+            profile = pressure_config.get(f"profile{i}", {})
             widgets[f"pressure{i}_enable"].setChecked(profile.get("enabled", False))
             widgets[f"pressure{i}_low"].setValue(profile.get("setpoint_lo", 0))
             widgets[f"pressure{i}_high"].setValue(profile.get("setpoint_hi", 0))
@@ -127,7 +127,7 @@ class Config(QObject):
             widgets[f"pressure{i}_ramp_down"].setValue(profile.get("ramp_down", 0))
             widgets[f"pressure{i}_ramp_up"].setValue(profile.get("ramp_up", 0))
 
-        plc_registers = self.config["plc"]["registers"]
+        plc_registers = plc_config.get("registers", {})
         ui.LED1_OUT_reg_box.setValue(plc_registers.get("LED1_OUT", 0))
         ui.LED2_OUT_reg_box.setValue(plc_registers.get("LED2_OUT", 0))
         ui.LED3_OUT_reg_box.setValue(plc_registers.get("LED3_OUT", 0))
@@ -155,7 +155,7 @@ class Config(QObject):
         ui.PCYCLE_SLOWCOMP_FF_reg_box.setValue(plc_registers.get("PCYCLE_SLOWCOMP_FF", 0))
 
         # SQL
-        sql_config = self.config["sql"]
+        sql_config = self.config.get("sql", {})
         ui.sql_enabled_box.setChecked(sql_config.get("enabled", False))
         ui.sql_hostname_edit.setText(sql_config.get("hostname", ""))
         ui.sql_port_box.setValue(sql_config.get("port", 0))
@@ -165,8 +165,9 @@ class Config(QObject):
         ui.sql_event_table_edit.setText(sql_config.get("event_table", ""))
 
         # SiPM amplifiers
+        scint_config = self.config.get("scint", {})
         for amp in ["amp1", "amp2", "amp3"]:
-            sipm_amp_config = self.config["scint"][amp]
+            sipm_amp_config = scint_config.get(amp, {})
             widgets[f"sipm_{amp}_enabled_box"].setChecked(sipm_amp_config.get("enabled", False))
             widgets[f"sipm_{amp}_ip_addr_edit"].setText(sipm_amp_config.get("ip_addr", ""))
             widgets[f"sipm_{amp}_user_edit"].setText(sipm_amp_config.get("user", ""))
@@ -184,33 +185,34 @@ class Config(QObject):
                 widgets[f"sipm_{amp}_name_ch{ch}"].setCurrentText(sipm_amp_config["name"][ch-1])
 
         # CAEN
-        caen_config = self.config["caen"]["global"]
-        ui.caen_enabled_box.setChecked(caen_config.get("enabled", False))
-        ui.caen_data_path_box.setText(caen_config.get("data_path", ""))
-        ui.caen_model_box.setCurrentText(caen_config.get("model", ""))
-        ui.caen_link_box.setValue(caen_config.get("link", 0))
-        ui.caen_conn_box.setCurrentText(caen_config.get("connection", ""))
-        ui.caen_evs_box.setValue(caen_config.get("evs_per_read", 0))
-        ui.caen_length_box.setValue(caen_config.get("rec_length", 0))
-        ui.caen_post_trig_box.setValue(caen_config.get("post_trig", 0))
-        ui.caen_trigin_gate_box.setChecked(caen_config.get("trig_in_as_gate", False))
-        ui.caen_decimation_box.setValue(caen_config.get("decimation", 0))
-        ui.caen_overlap_box.setChecked(caen_config.get("overlap_en", False))
-        ui.caen_mem_full_box.setCurrentText(caen_config.get("memory_full", ""))
-        ui.caen_counting_box.setCurrentText(caen_config.get("counting_mode", ""))
-        ui.caen_polarity_box.setCurrentText(caen_config.get("polarity", ""))
-        ui.caen_majority_box.setValue(caen_config.get("majority_level", 0))
-        ui.caen_majority_window_box.setValue(caen_config.get("majority_window", 0))
-        ui.caen_clock_box.setCurrentText(caen_config.get("clock_source", ""))
-        ui.caen_acq_box.setCurrentText(caen_config.get("acq_mode", ""))
-        ui.caen_io_box.setCurrentText(caen_config.get("io_level", ""))
-        ui.caen_ext_trig_box.setCurrentText(caen_config.get("ext_trig", ""))
-        ui.caen_sw_trig_box.setCurrentText(caen_config.get("sw_trig", ""))
-        ui.caen_ch_trig_box.setCurrentText(caen_config.get("ch_trig", ""))
+        caen_config = self.config.get("caen", {})
+        caen_global_config = caen_config.get("global", {})
+        ui.caen_enabled_box.setChecked(caen_global_config.get("enabled", False))
+        ui.caen_data_path_box.setText(caen_global_config.get("data_path", ""))
+        ui.caen_model_box.setCurrentText(caen_global_config.get("model", ""))
+        ui.caen_link_box.setValue(caen_global_config.get("link", 0))
+        ui.caen_conn_box.setCurrentText(caen_global_config.get("connection", ""))
+        ui.caen_evs_box.setValue(caen_global_config.get("evs_per_read", 0))
+        ui.caen_length_box.setValue(caen_global_config.get("rec_length", 0))
+        ui.caen_post_trig_box.setValue(caen_global_config.get("post_trig", 0))
+        ui.caen_trigin_gate_box.setChecked(caen_global_config.get("trig_in_as_gate", False))
+        ui.caen_decimation_box.setValue(caen_global_config.get("decimation", 0))
+        ui.caen_overlap_box.setChecked(caen_global_config.get("overlap_en", False))
+        ui.caen_mem_full_box.setCurrentText(caen_global_config.get("memory_full", ""))
+        ui.caen_counting_box.setCurrentText(caen_global_config.get("counting_mode", ""))
+        ui.caen_polarity_box.setCurrentText(caen_global_config.get("polarity", ""))
+        ui.caen_majority_box.setValue(caen_global_config.get("majority_level", 0))
+        ui.caen_majority_window_box.setValue(caen_global_config.get("majority_window", 0))
+        ui.caen_clock_box.setCurrentText(caen_global_config.get("clock_source", ""))
+        ui.caen_acq_box.setCurrentText(caen_global_config.get("acq_mode", ""))
+        ui.caen_io_box.setCurrentText(caen_global_config.get("io_level", ""))
+        ui.caen_ext_trig_box.setCurrentText(caen_global_config.get("ext_trig", ""))
+        ui.caen_sw_trig_box.setCurrentText(caen_global_config.get("sw_trig", ""))
+        ui.caen_ch_trig_box.setCurrentText(caen_global_config.get("ch_trig", ""))
 
         for g in range(4):
             gp = f"g{g}"
-            gp_config = self.config["caen"][f"group{g}"]
+            gp_config = caen_config.get(f"group{g}", {})
             widgets[f"caen_{gp}_enable_box"].setChecked(gp_config.get("enabled", False))
             widgets[f"caen_{gp}_thres_box"].setValue(gp_config.get("threshold", 0))
             widgets[f"caen_{gp}_offset_box"].setValue(gp_config.get("offset", 0))
@@ -223,7 +225,7 @@ class Config(QObject):
                 widgets[f"caen_{gp}_offset_{ch}"].setValue(gp_config["ch_offset"][ch])
 
         # acoustics
-        acous_config = self.config["acous"]
+        acous_config = self.config.get("acous", {})
         # Acquisition settings
         ui.acous_enabled_box.setChecked(acous_config.get("enabled", False))
         ui.acous_data_dir_edit.setText(acous_config.get("data_dir", ""))
@@ -253,7 +255,7 @@ class Config(QObject):
         # Channel settings
         for i in range(1,9):
             ch = f"ch{i}"
-            ch_config = acous_config[ch]
+            ch_config = acous_config.get(ch, {})
             widgets[f"acous_name_{ch}"].setText(ch_config.get("name", ""))
             widgets[f"acous_range_{ch}"].setCurrentText(ch_config.get("range", ""))
             widgets[f"acous_offset_{ch}"].setValue(ch_config.get("offset", 0))
@@ -265,16 +267,16 @@ class Config(QObject):
             widgets[f"acous_plot_{ch}"].setChecked(ch_config.get("plot", False))
 
         # external trigger settings
-        acous_ext_config = acous_config["ext"]
+        acous_ext_config = acous_config.get("ext", {})
         widgets[f"acous_range_ext"].setCurrentText(acous_ext_config.get("range", ""))
         widgets[f"acous_trig_ext"].setChecked(acous_ext_config.get("trig", False))
         widgets[f"acous_polarity_ext"].setCurrentText(acous_ext_config.get("polarity", ""))
         widgets[f"acous_threshold_ext"].setValue(acous_ext_config.get("threshold", 0))
 
         # cameras
-        cam_config = self.config["cams"]
+        cam_config = self.config.get("cams", {})
         for cam in ["cam1", "cam2", "cam3"]:
-            config = cam_config[cam]
+            config = cam_config.get(cam, {})
             widgets[f"{cam}_enabled_box"].setChecked(config.get("enabled", False))
             widgets[f"{cam}_rc_config_path"].setText(config.get("rc_config_path", ""))
             widgets[f"{cam}_config_path"].setText(config.get("config_path", ""))
@@ -296,8 +298,8 @@ class Config(QObject):
             widgets[f"{cam}_state_pin"].setValue(config.get("state_pin", 0))
             widgets[f"{cam}_trig_pin"].setValue(config.get("trig_pin", 0))
 
-        dio_config = self.config["dio"]
-        trigger_config = dio_config["trigger"]
+        dio_config = self.config.get("dio", {})
+        trigger_config = dio_config.get("trigger", {})
         ui.trigger_port_edit.setText(trigger_config.get("port", ""))
         ui.trigger_sketch_edit.setText(trigger_config.get("sketch", ""))
         ui.trig_loop_box.setValue(trigger_config.get("loop", 0))
@@ -329,7 +331,7 @@ class Config(QObject):
             widgets[f"trig_latch_pin{i}_box"].setValue(latch_pin)
 
         clock_ports = ["C", "L"]
-        clock_config = dio_config["clock"]
+        clock_config = dio_config.get("clock", {})
         ui.clock_port_edit.setText(clock_config.get("port", ""))
         ui.clock_sketch_edit.setText(clock_config.get("sketch", ""))
         ui.clock_loop_box.setValue(clock_config.get("loop", 0))
@@ -347,7 +349,7 @@ class Config(QObject):
             widgets[f"clock_duty_{w}"].setValue(config.get("duty", 0))
             widgets[f"clock_polarity_{w}"].setCurrentText("Normal" if config.get("polarity", False) else "Reverse")
 
-        position_config = dio_config["position"]
+        position_config = dio_config.get("position", {})
         ui.position_port_edit.setText(position_config.get("port", ""))
         ui.position_sketch_edit.setText(position_config.get("sketch", ""))
         ui.position_mac_edit.setText(position_config.get("mac_addr", ""))
@@ -356,7 +358,7 @@ class Config(QObject):
         ui.position_subnet_edit.setText(position_config.get("subnet", ""))
         ui.position_disable_during_run_box.setChecked(position_config.get("disable_during_run", False))
 
-        niusb_config = dio_config["niusb"]
+        niusb_config = dio_config.get("niusb", {})
         for port in range(3):
             for pin in range(8):
                 try:
@@ -374,8 +376,6 @@ class Config(QObject):
             widgets[f"digi_ch{ch}_name"].setText(digi_ch_config.get("name", ""))
 
         self.logger.info("Configuration loaded from file.")
-
-        # TODO: implement loading and saving for more settings components
 
     @Slot()
     def apply_config(self, ui):
@@ -759,6 +759,7 @@ class Config(QObject):
                     "clock": clock_config,
                     "position": position_config,
                     "niusb": niusb_config},
+            "digiscope": digiscope_config,
         }
 
         self.logger.info("Configuration applied.")
@@ -778,8 +779,11 @@ class Config(QObject):
     def start_run(self):
         # self.apply_config(self.main.settings_window.ui)
         self.run_config = copy.deepcopy(self.config)
-        run_json_path = os.path.join(self.main.run_dir, f"rc.json")
+        # save config file to home config folder
+        with open(self.path, "w") as file:
+            json.dump(self.run_config, file, indent=2)
         # save run config file
+        run_json_path = os.path.join(self.main.run_dir, f"rc.json")
         with open(run_json_path, "w") as file:
             json.dump(self.run_config, file, indent=2)
 

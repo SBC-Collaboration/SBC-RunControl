@@ -121,7 +121,7 @@ class SettingsWindow(QMainWindow):
         self.checkpair_pressure = CheckBoxPairBinder(self.widgets["active_plc"], self.widgets["plc_enabled_box"])
         self.checkpair_sql = CheckBoxPairBinder(self.widgets["active_sql"], self.widgets["sql_enabled_box"])
         self.checkpair_slack = CheckBoxPairBinder(self.widgets["active_slack"], self.widgets["slack_alarm_box"])
-        self.checkpair_acoustic = CheckBoxPairBinder(self.widgets["active_digiscope"], self.widgets["digi_enabled_box"])
+        self.checkpair_digiscope = CheckBoxPairBinder(self.widgets["active_digiscope"], self.widgets["digi_enabled_box"])
         self.checkpair_acoustic = CheckBoxPairBinder(self.widgets["active_acous"], self.widgets["acous_enabled_box"])
 
         # LED checkboxes
