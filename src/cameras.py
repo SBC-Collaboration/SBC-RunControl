@@ -5,7 +5,7 @@ with warnings.catch_warnings():
 import logging
 from PySide6.QtCore import QTimer, QObject, QThread, Slot, Signal
 import subprocess
-
+from src.guardian import ErrorCodes
 
 class Camera(QObject):
     camera_started = Signal(str)
@@ -46,7 +46,7 @@ class Camera(QObject):
             self.logger.debug(f"Camera {self.cam_name} connected.")
         else:
             self.logger.error(f"Camera {self.cam_name} at {host} not connected.")
-            # raise ConnectionError
+            self.error.emit(ErrorCodes.CAMERA_NOT_CONNECTED)
 
     @Slot()
     def start_camera(self):

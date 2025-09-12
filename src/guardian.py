@@ -14,6 +14,15 @@ class ErrorCodes(IntEnum):
     CONFIG_SAVE_FAILED = 1101
     CONFIG_INVALID_PRESSURE = 1102
     PLC_DISABLED = 1300
+    PLC_CONNECTION_FAILED = 1301
+    PLC_SMB_PERMISSION_FILE_MISSING = 1302
+    PLC_PRESSURE_CYCLE_START_FAILED = 1303
+    PLC_PRESSURE_CYCLE_STOP_FAILED = 1304
+    PLC_LED_ON_FAILED = 1305
+    PLC_LED_OFF_FAILED = 1306
+    PLC_SLOWDAQ_START_FAILED = 1307
+    PLC_SLOWDAQ_STOP_FAILED = 1308
+    PLC_PSET_FAILED = 1309
     NIUSB_DISABLED = 1400
     NIUSB_NOT_CONNECTED = 1401
     NIUSB_CANNOT_RETRIEVE_HANDLE = 1402
@@ -22,8 +31,8 @@ class ErrorCodes(IntEnum):
     NIUSB_INVALID_PIN = 1405
     ARDUINO_DISABLED = 1500
     ARDUINO_NOT_CONNECTED = 1501
-    ARDUINO_SKETCH_COMPILE_FAILED = 1502
-    ARDUINO_SKETCH_UPLOAD_FAILED = 1503
+    ARDUINO_SKETCH_ARCHIVAL_FAILED = 1502
+    ARDUINO_SKETCH_COMPILE_UPLOAD_FAILED = 1503
     WRITER_DISABLED = 1600
     WRITER_NOT_MOUNTED = 1601
     SQL_DISABLED = 1700
@@ -47,6 +56,15 @@ class Guardian(QObject):
         ErrorCodes.CONFIG_SAVE_FAILED: "Config - Failed to save config file to disk",
         ErrorCodes.CONFIG_INVALID_PRESSURE: "Config - Invalid pressure setting.",
         ErrorCodes.PLC_DISABLED: "PLC - PLC Modbus disabled.",
+        ErrorCodes.PLC_CONNECTION_FAILED: "PLC - PLC connection failed.",
+        ErrorCodes.PLC_SMB_PERMISSION_FILE_MISSING: "PLC - PLC SMB permission file missing.",
+        ErrorCodes.PLC_PRESSURE_CYCLE_START_FAILED: "PLC - PLC pressure cycle start failed.",
+        ErrorCodes.PLC_PRESSURE_CYCLE_STOP_FAILED: "PLC - PLC pressure cycle stop failed.",
+        ErrorCodes.PLC_LED_ON_FAILED: "PLC - PLC LED on failed.",
+        ErrorCodes.PLC_LED_OFF_FAILED: "PLC - PLC LED off failed.",
+        ErrorCodes.PLC_SLOWDAQ_START_FAILED: "PLC - PLC SLOW DAQ start failed.",
+        ErrorCodes.PLC_SLOWDAQ_STOP_FAILED: "PLC - PLC SLOW DAQ stop failed.",
+        ErrorCodes.PLC_PSET_FAILED: "PLC - PLC PSET write failed.",
         ErrorCodes.NIUSB_DISABLED: "NIUSB - NIUSB disabled.",
         ErrorCodes.NIUSB_NOT_CONNECTED: "NIUSB - NIUSB not connected.",
         ErrorCodes.NIUSB_CANNOT_RETRIEVE_HANDLE: "NIUSB - Cannot retrieve NIUSB handle.",
@@ -55,8 +73,8 @@ class Guardian(QObject):
         ErrorCodes.NIUSB_INVALID_PIN: "NIUSB - Invalid NIUSB pin setting.",
         ErrorCodes.ARDUINO_DISABLED: "Arduino - Arduinos disabled.",
         ErrorCodes.ARDUINO_NOT_CONNECTED: "Arduino - Arduino not connected.",
-        ErrorCodes.ARDUINO_SKETCH_COMPILE_FAILED: "Arduino - Arduino sketch compile failed.",
-        ErrorCodes.ARDUINO_SKETCH_UPLOAD_FAILED: "Arduino - Arduino sketch upload failed.",
+        ErrorCodes.ARDUINO_SKETCH_ARCHIVAL_FAILED: "Arduino - Arduino sketch archival failed.",
+        ErrorCodes.ARDUINO_SKETCH_COMPILE_UPLOAD_FAILED: "Arduino - Arduino sketch compilation or upload failed.",
         ErrorCodes.WRITER_DISABLED: "Writer - Writer disabled.",
         ErrorCodes.WRITER_NOT_MOUNTED: "Writer - Data folder not mounted.",
         ErrorCodes.SQL_DISABLED: "SQL - SQL disabled.",

@@ -4,6 +4,7 @@ import logging
 from PySide6.QtCore import QTimer, QObject, Slot, Signal, QThread
 import red_caen
 from sbcbinaryformat import Writer
+from src.guardian import ErrorCodes
 
 class Caen(QObject):
     run_started = Signal(str)
@@ -102,8 +103,6 @@ class Caen(QObject):
         Initialize CAEN class for the run.
         It creates CAENGlobalConfig and CAENGroupConfig objects, and establishes connection 
         to the CAEN digitizer, and then sets the configuration.
-
-        :raises ConnectionError: If the CAEN digitizer connection fails.
         """
         self.global_config = red_caen.CAENGlobalConfig()
         self.group_configs = [red_caen.CAENGroupConfig() for _ in range(8)]
@@ -124,8 +123,7 @@ class Caen(QObject):
         if self.caen.IsConnected():
             self.logger.info("CAEN connection successful.\n")
         else:
-            self.logger.error("CAEN connection failed.\n")
-            raise ConnectionError("CAEN connection failed.\n")
+            self.error.emit(ErrorCodes.CAEN_NOT_CONNECTED)
 
         self.set_config()
         self.run_started.emit("caen")
@@ -141,9 +139,8 @@ class Caen(QObject):
 
         # Check connection status
         if not self.caen or not self.caen.IsConnected():
-            self.logger.error("CAEN not connected.")
             self.event_started.emit("caen-error")
-            raise ConnectionError("CAEN not connected.")
+            self.error.emit(ErrorCodes.CAEN_NOT_CONNECTED)
         
         self.buffer = [] # create a list for data dictionaries
 

@@ -5,6 +5,7 @@ import hashlib
 import logging
 from PySide6.QtCore import QTimer, QObject, QThread, Slot, Signal
 from pymodbus.client import ModbusTcpClient
+from src.guardian import ErrorCodes
 
 class Arduino(QObject):
     # A map of pin number to port in Arduino Mega 2560
@@ -140,8 +141,8 @@ class Arduino(QObject):
                    f"arduino-cli sketch archive {sketch_path} {build_path}")
         result = subprocess.run(command, shell=True, capture_output=True)
         if result.returncode != 0:
-            self.logger.error("Failed to archive sketch.")
             self.logger.error(result.stderr.decode("utf-8"))
+            self.error.emit(ErrorCodes.ARDUINO_SKETCH_ARCHIVAL_FAILED)
             return False
 
         # check if hash of new archive is the same as the old
@@ -158,10 +159,10 @@ class Arduino(QObject):
                    f"arduino-cli upload -p {port} -b {fqbn} --input-dir {build_path}")
         result = subprocess.run(command, shell=True, capture_output=True)
         if result.returncode:
-            self.logger.error(f"Sketch upload for {self.arduino} failed.")
             self.logger.error(result.stderr.decode("utf-8"))
             command = f"cd {sketch_path} && rm -f {build_path}/*.zip"
             result = subprocess.run(command, shell=True, capture_output=True)
+            self.error.emit(ErrorCodes.ARDUINO_SKETCH_COMPILE_UPLOAD_FAILED)
             return False
         
         self.logger.info(f"Sketch successfully uploaded for {self.arduino} arduino.")

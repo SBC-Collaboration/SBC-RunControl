@@ -7,6 +7,7 @@ import time
 from functools import wraps
 from enum import Enum
 from sbcbinaryformat import Writer as SBCWriter
+from src.guardian import ErrorCodes
 
 # Wrapper to handle exceptions in Modbus functions
 def safe_modbus(func):
@@ -57,6 +58,7 @@ class Modbus(QObject):
                     self.logger.debug(f"Pressure cycle started successfully.")
                 else:
                     self.logger.error(f"Pressure cycle start failed.")
+                    self.error.emit(ErrorCodes.PLC_PRESSURE_CYCLE_START_FAILED)
     
     @Slot()
     def turn_off_leds(self):
@@ -69,7 +71,7 @@ class Modbus(QObject):
             self.logger.debug(f"LED control voltages successfully changed to 0.")
         else:
             self.logger.error(f"Writing of LED control voltages failed.")
-            self.error_msg.emit("led")
+            self.error.emit(ErrorCodes.PLC_LED_OFF_FAILED)
 
     @Slot()
     def start_run(self):
@@ -85,6 +87,7 @@ class Modbus(QObject):
             self.logger.debug(f"Beckoff PLC connected: {str(self.connected)}.")
         except Exception as e:
             self.logger.error(f"Beckoff PLC connection failed: {e}.")
+            self.error.emit(ErrorCodes.PLC_CONNECTION_FAILED)
         self.run_started.emit("modbus")
 
 
@@ -98,14 +101,14 @@ class Modbus(QObject):
             self.logger.debug(f"SLOW DAQ process started.")
         else:
             self.logger.error(f"SLOW DAQ process start failed.")
-            self.error.emit("slowdaq")
+            self.error.emit(ErrorCodes.PLC_SLOWDAQ_START_FAILED)
 
         if (self._write_float(self.registers["PCYCLE_PSET"],
                                self.config["pressure"]["profile1"]["setpoint"]) == True):
             self.logger.debug(f"write of PSET is successful.")
         else:
             self.logger.error(f"write of PSET failed.")
-            self.error_msg.emit("pset")
+            self.error.emit(ErrorCodes.PLC_PSET_FAILED)
             self.event_started.emit("modbus-error")
             return
         
@@ -125,7 +128,7 @@ class Modbus(QObject):
             self.logger.debug(f"Writing of LED control voltages successful.")
         else:
             self.logger.error(f"Writing of LED control voltages failed.")
-            self.error_msg.emit("led")
+            self.error.emit(ErrorCodes.PLC_LED_ON_FAILED)
             self.event_started.emit("modbus-error")
             return
         
@@ -172,6 +175,7 @@ class Modbus(QObject):
         time.sleep(1)
         if (self._read_procedure(self.registers["WRITE_SLOWDAQ"])[0]):
             self.logger.error("SLOW_DAQ process didn't end successfully.")
+            self.error.emit(ErrorCodes.PLC_SLOWDAQ_STOP_FAILED)
             self.event_stopped.emit("modbus-error")
         else:
             self.logger.debug("SLOW_DAQ process ended successfully.")
@@ -184,6 +188,7 @@ class Modbus(QObject):
         local_path = os.path.join(self.main.event_dir, "slow_daq.sbc")
         if not os.path.exists(perm_file):
             self.logger.error(f"PLC SMB Permission file {perm_file} does not exist.")
+            self.error.emit(ErrorCodes.PLC_SMB_PERMISSION_FILE_MISSING)
             self.event_stopped.emit("modbus-error")
             return
         command = f"smbclient //{hostname}/{share} -A {perm_file} -c 'get {remote_file} {local_path}'"
@@ -251,7 +256,7 @@ class Modbus(QObject):
             self.logger.warning("PRESSURE_CYCLE aborted.")
         else:
             self.logger.error("PRESSURE_CYCLE failed to abort.")
-            self.error_msg.emit("PRESSURE_CYCLE still running")
+            self.error.emit("PRESSURE_CYCLE still running")
     
     #############################################################
     # Private helper functions to read / write Modbus registers
