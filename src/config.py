@@ -777,7 +777,8 @@ class Config(QObject):
 
     @Slot()
     def start_run(self):
-        # self.apply_config(self.main.settings_window.ui)
+        if hasattr(self.main, 'settings_window'):
+            self.apply_config(self.main.settings_window.ui)
         self.run_config = copy.deepcopy(self.config)
         # save config file to home config folder
         with open(self.path, "w") as file:

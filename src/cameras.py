@@ -38,15 +38,17 @@ class Camera(QObject):
     @Slot()
     def test_rpi(self):
         if not self.config["enabled"]:
-            return
+            return True
         host = self.config["ip_addr"]
 
         # ping with 1 packet, and 1s timeout
         if not subprocess.call(["ping", "-c", "1", "-W", "1", host]):
             self.logger.debug(f"Camera {self.cam_name} connected.")
+            return True
         else:
             self.logger.error(f"Camera {self.cam_name} at {host} not connected.")
             self.error.emit(ErrorCodes.CAMERA_NOT_CONNECTED)
+            return False
 
     @Slot()
     def start_camera(self):
@@ -57,13 +59,21 @@ class Camera(QObject):
             self.camera_started.emit(f"{self.cam_name}-disabled")
             return
         else:
-            self.test_rpi()
+            if not self.test_rpi():
+                self.camera_started.emit(f"{self.cam_name}-error")
+                return
 
         # self.save_config()
         self.logger.info(f"Starting camera {self.cam_name}")
         # make ssh connection
-        self.client.connect(self.config["ip_addr"], username=self.username)
-
+        try: 
+            self.client.connect(self.config["ip_addr"], username=self.username)
+        except pm.ssh_exception.NoValidConnectionsError:
+            self.logger.error(f"Camera {self.cam_name} at {self.config['ip_addr']} not connected.")
+            self.camera_started.emit(f"{self.cam_name}-error")
+            self.error.emit(ErrorCodes.CAMERA_NOT_CONNECTED)
+            return
+        
         # check if NIUSB has initialized its outputs
         self.main.niusb_worker.run_mutex.lock()
         while not self.main.niusb_worker.run_ready:
