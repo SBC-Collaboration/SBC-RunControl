@@ -199,10 +199,12 @@ class SiPMAmp(QObject):
         start_v = self.config["iv_start"]
         stop_v = self.config["iv_stop"]
         step = self.config["iv_step"]
-        adc_rate = 4 # 80 sps
-        num_readings =  6
-        now = dt.date.today().strftime("%Y%m%d%H%M")
+        adc_rate = 8 # 1000 sps
+        num_readings =  1000
+        now = dt.datetime.now().strftime("%Y%m%d-%H%M")
         filename = os.path.join(self.config["iv_data_dir"], f"{self.amp}-{str(now)}.csv")
+
+        self.logger.info(f"SiPM {self.amp} starting IV curve measurement. Voltage from {start_v} V to {stop_v} V in steps of {step} V. Data will be saved to {filename}.")
         commands = [
             "cd /root/nanopi",
             f"/root/nanopi/iv_cmd.py --start_v {start_v} --stop_v {stop_v} --step {step} --adc_rate {adc_rate} --num_readings {num_readings} --file {filename}"

@@ -238,6 +238,15 @@ class SettingsWindow(QMainWindow):
             caption="SiPM Amp3 IV Data Directory",
             dir=self.config["scint"]["amp3"]["iv_rc_dir"])
         self.ui.sipm_amp3_iv_rc_data_dir_edit.setText(amp3_iv_dir)
+    
+    def run_amp1_iv(self):
+        self.main.amp1_worker.run_iv_curve()
+    
+    def run_amp2_iv(self):
+        self.main.amp2_worker.run_iv_curve()
+
+    def run_amp3_iv(self):
+        self.main.amp3_worker.run_iv_curve()
 
     def select_caen_data_path(self):
         caen_data_path = QFileDialog.getExistingDirectory(

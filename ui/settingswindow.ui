@@ -165,7 +165,7 @@
                 <property name="text">
                  <string>Active Modules</string>
                 </property>
-               <property name="alignment">
+                <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignCenter</set>
                 </property>
                </widget>
@@ -177,14 +177,14 @@
                 </property>
                </widget>
               </item>
-                            <item row="2" column="11">
+              <item row="2" column="11">
                <widget class="QCheckBox" name="active_caen_g3">
                 <property name="text">
                  <string>Group 3</string>
                 </property>
                </widget>
               </item>
-                            <item row="3" column="3">
+              <item row="3" column="3">
                <widget class="QCheckBox" name="active_led2">
                 <property name="text">
                  <string>LED 2</string>
@@ -203,7 +203,7 @@
                 </property>
                 <property name="text">
                  <string>General</string>
-</property>
+                </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
@@ -218,7 +218,7 @@
               </item>
               <item row="1" column="4">
                <widget class="QCheckBox" name="active_slack">
-                                 <property name="layoutDirection">
+                <property name="layoutDirection">
                  <enum>Qt::LayoutDirection::LeftToRight</enum>
                 </property>
                 <property name="text">
@@ -240,7 +240,7 @@
                 </property>
                </widget>
               </item>
-                            <item row="1" column="3">
+              <item row="1" column="3">
                <widget class="QCheckBox" name="active_sql">
                 <property name="text">
                  <string>SQL</string>
@@ -303,7 +303,7 @@
                <widget class="QCheckBox" name="active_plc">
                 <property name="text">
                  <string>PLC</string>
-</property>
+                </property>
                </widget>
               </item>
               <item row="1" column="1" rowspan="5">
@@ -382,7 +382,7 @@
                 <property name="text">
                  <string>Acoustics</string>
                 </property>
-</widget>
+               </widget>
               </item>
               <item row="3" column="2">
                <widget class="QCheckBox" name="active_led1">
@@ -2357,7 +2357,7 @@
            <property name="geometry">
             <rect>
              <x>0</x>
-             <y>0</y>
+             <y>-451</y>
              <width>876</width>
              <height>1203</height>
             </rect>
@@ -2766,6 +2766,13 @@
                 </property>
                 <property name="buddy">
                  <cstring>sipm_amp1_iv_step_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="0">
+               <widget class="QPushButton" name="sipm_amp1_run_iv_but">
+                <property name="text">
+                 <string>Run IV</string>
                 </property>
                </widget>
               </item>
@@ -3990,6 +3997,13 @@
                <widget class="QLineEdit" name="sipm_amp2_user_edit">
                 <property name="focusPolicy">
                  <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="0">
+               <widget class="QPushButton" name="sipm_amp2_run_iv_but">
+                <property name="text">
+                 <string>Run IV</string>
                 </property>
                </widget>
               </item>
@@ -5221,6 +5235,13 @@
                <widget class="QLineEdit" name="sipm_amp3_user_edit">
                 <property name="focusPolicy">
                  <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="0">
+               <widget class="QPushButton" name="sipm_amp3_run_iv_but">
+                <property name="text">
+                 <string>Run IV</string>
                 </property>
                </widget>
               </item>
@@ -12927,7 +12948,7 @@
              <x>0</x>
              <y>0</y>
              <width>876</width>
-             <height>1388</height>
+             <height>1416</height>
             </rect>
            </property>
            <property name="maximumSize">
@@ -17527,12 +17548,12 @@
               <property name="spacing">
                <number>3</number>
               </property>
-<item row="2" column="3">
+              <item row="2" column="3">
                <widget class="QLineEdit" name="position_sketch_edit"/>
               </item>
               <item row="2" column="0">
                <widget class="QLabel" name="position_port_label">
-                                <property name="text">
+                <property name="text">
                  <string>Serial Port</string>
                 </property>
                 <property name="alignment">
@@ -17565,7 +17586,7 @@
               </item>
               <item row="3" column="0">
                <widget class="QLabel" name="position_mac_label">
-<property name="toolTip">
+                <property name="toolTip">
                  <string>MAC address of Ethernet shield. Any unique address would work.</string>
                 </property>
                 <property name="text">
@@ -17630,7 +17651,7 @@
                 </property>
                </widget>
               </item>
-<item row="2" column="1">
+              <item row="2" column="1">
                <widget class="QLineEdit" name="position_port_edit"/>
               </item>
               <item row="5" column="3" colspan="2">
@@ -18637,7 +18658,6 @@
   <tabstop>position_port_edit</tabstop>
   <tabstop>position_sketch_edit</tabstop>
   <tabstop>position_sketch_but</tabstop>
-  <tabstop>position_gateway_edit</tabstop>
   <tabstop>position_ip_edit</tabstop>
   <tabstop>position_subnet_edit</tabstop>
  </tabstops>
@@ -18716,8 +18736,8 @@
    <slot>select_position_sketch_dir()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>104</x>
-     <y>1361</y>
+     <x>825</x>
+     <y>1389</y>
     </hint>
     <hint type="destinationlabel">
      <x>199</x>
@@ -18732,8 +18752,8 @@
    <slot>select_trigger_sketch_dir()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>104</x>
-     <y>240</y>
+     <x>879</x>
+     <y>263</y>
     </hint>
     <hint type="destinationlabel">
      <x>199</x>
@@ -18780,8 +18800,8 @@
    <slot>select_clock_sketch_dir()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>104</x>
-     <y>777</y>
+     <x>879</x>
+     <y>834</y>
     </hint>
     <hint type="destinationlabel">
      <x>199</x>
@@ -18796,8 +18816,8 @@
    <slot>select_amp1_iv_dir()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>104</x>
-     <y>100</y>
+     <x>879</x>
+     <y>-302</y>
     </hint>
     <hint type="destinationlabel">
      <x>399</x>
@@ -18812,8 +18832,8 @@
    <slot>select_amp2_iv_dir()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>104</x>
-     <y>374</y>
+     <x>879</x>
+     <y>-28</y>
     </hint>
     <hint type="destinationlabel">
      <x>399</x>
@@ -18844,8 +18864,8 @@
    <slot>select_caen_data_path()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>104</x>
-     <y>100</y>
+     <x>742</x>
+     <y>121</y>
     </hint>
     <hint type="destinationlabel">
      <x>424</x>
@@ -18860,12 +18880,60 @@
    <slot>select_amp3_iv_dir()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>104</x>
-     <y>656</y>
+     <x>879</x>
+     <y>254</y>
     </hint>
     <hint type="destinationlabel">
      <x>660</x>
      <y>642</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>sipm_amp1_run_iv_but</sender>
+   <signal>clicked()</signal>
+   <receiver>SettingsWindow</receiver>
+   <slot>run_amp1_iv()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>75</x>
+     <y>-283</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>44</x>
+     <y>648</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>sipm_amp2_run_iv_but</sender>
+   <signal>clicked()</signal>
+   <receiver>SettingsWindow</receiver>
+   <slot>run_amp2_iv()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>58</x>
+     <y>-12</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>291</x>
+     <y>663</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>sipm_amp3_run_iv_but</sender>
+   <signal>clicked()</signal>
+   <receiver>SettingsWindow</receiver>
+   <slot>run_amp3_iv()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>28</x>
+     <y>270</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>233</x>
+     <y>650</y>
     </hint>
    </hints>
   </connection>
@@ -18886,5 +18954,8 @@
   <slot>load_config_from_file()</slot>
   <slot>select_caen_data_path()</slot>
   <slot>select_amp3_iv_dir()</slot>
+  <slot>run_amp1_iv()</slot>
+  <slot>run_amp2_iv()</slot>
+  <slot>run_amp3_iv()</slot>
  </slots>
 </ui>
