@@ -127,9 +127,9 @@ class MainWindow(QMainWindow):
                                      "clock", "position", "trigger", "niusb", "caen", "modbus", "sql"]
         self.stopping_run_modules = ["amp1", "amp2", "amp3", "cam1", "cam2", "cam3",
                                      "sql", "niusb", "caen", "modbus", "writer"]
-        self.starting_event_modules = ["cam1", "cam2", "cam3", "amp1", "amp2", "amp3", 
+        self.starting_event_modules = ["cam1", "cam2", "cam3", "amp1", "amp2", "amp3", "position",
                                        "niusb", "caen", "gage", "modbus", "sql"]
-        self.stopping_event_modules = ["cam1", "cam2", "cam3", "amp1", "amp2", "amp3", 
+        self.stopping_event_modules = ["cam1", "cam2", "cam3", "amp1", "amp2", "amp3", "position",
                                        "niusb", "caen", "gage", "modbus", "sql", "writer"]
         
         self.update_state("preparing")
@@ -207,7 +207,11 @@ class MainWindow(QMainWindow):
             d[f"arduino_{ino}_worker"].moveToThread(d[f"arduino_{ino}_thread"])
             d[f"arduino_{ino}_thread"].started.connect(d[f"arduino_{ino}_worker"].run)
             self.run_starting.connect(d[f"arduino_{ino}_worker"].start_run)
-            self.run_stopping.connect(d[f"arduino_{ino}_worker"].stop_run)
+            if ino == "position":
+                self.event_starting.connect(d[f"arduino_{ino}_worker"].start_event)
+                self.event_stopping.connect(d[f"arduino_{ino}_worker"].stop_event)
+                d[f"arduino_{ino}_worker"].event_started.connect(self.starting_event_wait)
+                d[f"arduino_{ino}_worker"].event_stopped.connect(self.stopping_event_wait)
             d[f"arduino_{ino}_thread"].start()
             time.sleep(0.001)
 

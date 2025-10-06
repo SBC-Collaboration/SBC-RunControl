@@ -347,6 +347,7 @@ class Config(QObject):
         ui.position_ip_edit.setText(position_config.get("ip_addr", ""))
         ui.position_gateway_edit.setText(position_config.get("gateway", ""))
         ui.position_subnet_edit.setText(position_config.get("subnet", ""))
+        ui.position_disable_during_run_box.setChecked(position_config.get("disable_during_run", False))
 
         niusb_config = dio_config["niusb"]
         for port in range(3):
@@ -694,6 +695,7 @@ class Config(QObject):
             "ip_addr": ui.position_ip_edit.text(),
             "gateway": ui.position_gateway_edit.text(),
             "subnet": ui.position_subnet_edit.text(),
+            "disable_during_run": ui.position_disable_during_run_box.isChecked(),
         }
 
         niusb_config = {}

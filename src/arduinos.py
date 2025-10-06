@@ -72,6 +72,8 @@ class Arduino(QObject):
     latch_pins = [0,1,5,2,3,17,16,6,7,8,9,15,14]
 
     run_started = Signal(str)
+    event_started = Signal(str)
+    event_stopped = Signal(str)
     error = Signal(int)
 
     def __init__(self, mainwindow, arduino):
@@ -191,6 +193,8 @@ class Arduino(QObject):
     def disable_position(self):
         if self.arduino != "position":
             return
+        elif not self.config.get("disable_during_run", False):
+            return
         self.connect_modbus()
         self.client.write_register(0, 0)
         self.client.write_register(8, 0)
@@ -202,12 +206,16 @@ class Arduino(QObject):
             self.run_started.emit(self.arduino)
         else:
             self.run_started.emit(f"{self.arduino}-error")
-            
-        #TODO: find a good time to turn on and off the position chips
-        if self.arduino == "position":
-            self.disable_position()
     
     @Slot()
-    def stop_run(self):
+    def start_event(self):            
+        if self.arduino == "position":
+            self.disable_position()
+        self.event_started.emit(self.arduino)
+    
+    @Slot()
+    def stop_event(self):
         if self.arduino == "position":
             self.enable_position()
+        self.event_stopped.emit(self.arduino)
+        
