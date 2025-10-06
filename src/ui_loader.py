@@ -84,6 +84,10 @@ class CheckBoxGroupBinder(QObject):
 
 # Loads settings window
 class SettingsWindow(QMainWindow):
+    amp1_iv = Signal()
+    amp2_iv = Signal()
+    amp3_iv = Signal()
+
     def __init__(self, mainwindow):
         super(SettingsWindow, self).__init__()
         self.ui = Ui_SettingsWindow()
@@ -240,13 +244,16 @@ class SettingsWindow(QMainWindow):
         self.ui.sipm_amp3_iv_rc_data_dir_edit.setText(amp3_iv_dir)
     
     def run_amp1_iv(self):
-        self.main.amp1_worker.run_iv_curve()
+        self.amp1_iv.connect(self.main.amp1_worker.run_iv_curve)
+        self.amp1_iv.emit()
     
     def run_amp2_iv(self):
-        self.main.amp2_worker.run_iv_curve()
+        self.amp2_iv.connect(self.main.amp2_worker.run_iv_curve)
+        self.amp2_iv.emit()
 
     def run_amp3_iv(self):
-        self.main.amp3_worker.run_iv_curve()
+        self.amp3_iv.connect(self.main.amp3_worker.run_iv_curve)
+        self.amp3_iv.emit()
 
     def select_caen_data_path(self):
         caen_data_path = QFileDialog.getExistingDirectory(

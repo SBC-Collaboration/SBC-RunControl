@@ -196,10 +196,16 @@ class SiPMAmp(QObject):
         """
         Tell the SiPM amplifier to do an IV curve measurement
         """
+        if self.main.run_state == self.main.run_states["idle"]:
+            self.config = self.main.config_class.config["scint"][self.amp]
+        elif self.main.run_state != self.main.run_states["starting_run"]:
+            self.logger.error("Cannot run IV curve measurement during a run.")
+            return
+
         start_v = self.config["iv_start"]
         stop_v = self.config["iv_stop"]
         step = self.config["iv_step"]
-        adc_rate = 8 # 1000 sps
+        adc_rate = 8  # 1000 sps
         num_readings =  1000
         now = dt.datetime.now().strftime("%Y%m%d-%H%M")
         filename = os.path.join(self.config["iv_data_dir"], f"{self.amp}-{str(now)}.csv")
