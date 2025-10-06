@@ -55,16 +55,16 @@ class Guardian(QObject):
         ErrorCodes.LOCKFILE_FAILED_TO_RELEASE: "Run Control - Failed to release lock file.",
         ErrorCodes.CONFIG_SAVE_FAILED: "Config - Failed to save config file to disk",
         ErrorCodes.CONFIG_INVALID_PRESSURE: "Config - Invalid pressure setting.",
-        ErrorCodes.PLC_DISABLED: "PLC - PLC Modbus disabled.",
-        ErrorCodes.PLC_CONNECTION_FAILED: "PLC - PLC connection failed.",
-        ErrorCodes.PLC_SMB_PERMISSION_FILE_MISSING: "PLC - PLC SMB permission file missing.",
-        ErrorCodes.PLC_PRESSURE_CYCLE_START_FAILED: "PLC - PLC pressure cycle start failed.",
-        ErrorCodes.PLC_PRESSURE_CYCLE_STOP_FAILED: "PLC - PLC pressure cycle stop failed.",
-        ErrorCodes.PLC_LED_ON_FAILED: "PLC - PLC LED on failed.",
-        ErrorCodes.PLC_LED_OFF_FAILED: "PLC - PLC LED off failed.",
-        ErrorCodes.PLC_SLOWDAQ_START_FAILED: "PLC - PLC SLOW DAQ start failed.",
-        ErrorCodes.PLC_SLOWDAQ_STOP_FAILED: "PLC - PLC SLOW DAQ stop failed.",
-        ErrorCodes.PLC_PSET_FAILED: "PLC - PLC PSET write failed.",
+        ErrorCodes.PLC_DISABLED: "PLC - Modbus disabled.",
+        ErrorCodes.PLC_CONNECTION_FAILED: "PLC - Connection failed.",
+        ErrorCodes.PLC_SMB_PERMISSION_FILE_MISSING: "PLC - SMB permission file missing.",
+        ErrorCodes.PLC_PRESSURE_CYCLE_START_FAILED: "PLC - PPressure cycle start failed.",
+        ErrorCodes.PLC_PRESSURE_CYCLE_STOP_FAILED: "PLC - PPressure cycle stop failed.",
+        ErrorCodes.PLC_LED_ON_FAILED: "PLC - LED on failed.",
+        ErrorCodes.PLC_LED_OFF_FAILED: "PLC - LED off failed.",
+        ErrorCodes.PLC_SLOWDAQ_START_FAILED: "PLC - SLOW DAQ start failed.",
+        ErrorCodes.PLC_SLOWDAQ_STOP_FAILED: "PLC - SLOW DAQ stop failed.",
+        ErrorCodes.PLC_PSET_FAILED: "PLC - PSET write failed.",
         ErrorCodes.NIUSB_DISABLED: "NIUSB - NIUSB disabled.",
         ErrorCodes.NIUSB_NOT_CONNECTED: "NIUSB - NIUSB not connected.",
         ErrorCodes.NIUSB_CANNOT_RETRIEVE_HANDLE: "NIUSB - Cannot retrieve NIUSB handle.",
@@ -120,7 +120,7 @@ class Guardian(QObject):
         if config.get("slack_alarm", False):
             try:
                 channel_id = config["slack_channel_id"]
-                self.client.chat_postMessage(channel=channel_id, text=f"RC TEST E{error}: {message}")
+                self.client.chat_postMessage(channel=channel_id, text=f"RC E{error}: {message}")
             except Exception as e:
                 self.logger.error(f"Failed to send Slack message: {e}")
 

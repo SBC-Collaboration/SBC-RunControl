@@ -767,6 +767,9 @@ class Config(QObject):
             if ino=="clock":
                 for w in range(1, 17):
                     ino_config[f"wave{w}"].pop("name")
+            # remove disable during run option in position arduino, since that's only relevant to RC
+            if ino=="position":
+                ino_config.pop("disable_during_run", None) 
             json_file = os.path.join(os.path.dirname(__file__), "..",
                                      ino_config["sketch"], f"{ino}_config.json")
 

@@ -77,9 +77,6 @@ class Modbus(QObject):
     def start_run(self):
         self.config = self.main.config_class.run_config["plc"]
         self.enabled = self.config["enabled"]
-        if not self.enabled:
-            self.run_started.emit("modbus-disabled")
-            return
 
         self.client = ModbusTcpClient(self.config["hostname"], port=self.config["port"])
         try:
