@@ -6,6 +6,7 @@ import struct
 import argparse
 import time
 import threading
+from datetime import datetime
 
 # This standalone python script to periodically take images using multiple cameras
 # to create a time-lapse video.
@@ -46,6 +47,8 @@ config = {
         "user": "pi"
     }
 }
+
+cams = ["cam1", "cam2", "cam3"]
 
 def safe_modbus(func):
     @wraps(func)
@@ -88,7 +91,7 @@ def _ssh_cam(cam_config):
         print(f"Connecting to camera at {ip_addr}...")
         ssh_client.connect(ip_addr, username=user, timeout=30)
         command = "cd /home/pi/RPi_CameraServers && python3 imdaq.py -s"
-        stdin, stdout, stderr = ssh_client.exec_command(command, get_pty=True)
+        stdin, stdout, stderr = ssh_client.exec_command(command, get_pty=True)  # timeout=240
 
         for line in stdout:
             print(line.rstrip("\r\n"))
@@ -99,8 +102,12 @@ def _ssh_cam(cam_config):
 
 def take_frame():
     # set up symlink
+    today = datetime.now().strftime('%Y%m%d')
+    base_dir = "/mnt/nas/rc-data/images/"
+    event_dir = os.path.join(base_dir, today)
+    os.makedirs(event_dir, exist_ok=True)
+
     current_path = "/mnt/nas/rc-data/current_event"
-    event_dir = "/mnt/nas/rc-data/images/"
     if os.path.islink(current_path):
         os.unlink(current_path)
     os.symlink(event_dir, current_path, target_is_directory=True)
@@ -131,14 +138,39 @@ def take_frame():
 
     # set up ssh connection in threads
     cam_threads = []
-    for cam in ["cam1", "cam2", "cam3"]:
-        thread = threading.Thread(target=_ssh_cam, args=(config[cam],))
+    for cam in cams:
+        thread = threading.Thread(target=_ssh_cam, args=(config[cam],), name=cam)
         cam_threads.append(thread)
         thread.start()
 
     # wait for all camera threads to finish
     for thread in cam_threads:
-        thread.join()
+        thread.join(timeout=300)
+    
+    timed_out_cams = [thread for thread in cam_threads if thread.is_alive()]
+    if timed_out_cams:
+        # Other cases, send a slack message
+        from slack_sdk import WebClient
+        with open(os.path.expanduser("~/.config/runcontrol/slack_token"), "r") as f:
+            token = f.read().strip()
+        client = WebClient(token=token)
+        channel_id = "C09945T2P7A" # runcontrol-alarm
+
+        for thread in timed_out_cams:
+            cam_name = thread.name
+            client.chat_postMessage(channel=channel_id, text=f"Camera Error: {cam_name} has timed out.")
+
+            cam_config = config[cam_name]
+            ip_addr = cam_config["ip_addr"]
+            user = cam_config["user"]
+            ssh_client = pm.client.SSHClient()
+            ssh_client.set_missing_host_key_policy(pm.AutoAddPolicy())
+            ssh_client.connect(ip_addr, username=user, timeout=30)
+            command = "sudo reboot"
+            ssh_client.exec_command(command, get_pty=True)
+            ssh_client.close()
+            cams.remove(cam_name)
+            print(f"{cam_name} at {ip_addr} has timed out. Reboot command sent.")
 
     # turn off LEDs
     ret = True
