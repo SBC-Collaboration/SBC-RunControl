@@ -134,11 +134,11 @@ class SiPMAmp(QObject):
                 return
         command = "; ".join(commands)
         _stdin, _stdout, _stderr = self.client.exec_command(command)
-        exit_status = _stdout.channel.recv_exit_status()  # wait for command to finish
+        exit_status = _stdout.channel.recv_exit_status()
         if exit_status != 0:
             error_message = _stderr.read().decode()
             self.logger.error(f"SiPM {self.amp} command failed with exit status {exit_status}: {error_message}")
-            raise RuntimeError(f"Command execution failed: {error_message}")
+            self.error.emit(ErrorCodes.SIPM_AMP_COMMAND_FAILED)
         if not already_connected:
             self.client.close()
 
@@ -344,14 +344,33 @@ class SiPMAmp(QObject):
         readback = {'amp': self.amp, 
                     'timestamp': dt.datetime.now().timestamp()}
         _stdin, _stdout, _stderr = self.client.exec_command(hv_command)
+        exit_status = _stdout.channel.recv_exit_status()
+        if exit_status != 0:
+            error_message = _stderr.read().decode()
+            self.error.emit(ErrorCodes.SIPM_AMP_HV_COMMAND_FAILED)
         readback.update(self._parse_hv_output(_stdout.read().decode()))
+        
         _stdin, _stdout, _stderr = self.client.exec_command(qp_command)
+        exit_status = _stdout.channel.recv_exit_status()
+        if exit_status != 0:
+            error_message = _stderr.read().decode()
+            self.error.emit(ErrorCodes.SIPM_AMP_QP_COMMAND_FAILED)
         readback.update(self._parse_hv_output(_stdout.read().decode()))
 
         _stdin, _stdout, _stderr = self.client.exec_command(ch_command_1)
+        exit_status = _stdout.channel.recv_exit_status()
+        if exit_status != 0:
+            error_message = _stderr.read().decode()
+            self.error.emit(ErrorCodes.SIPM_AMP_CH_COMMAND_FAILED)
         offsets1 = self._parse_dac_output(_stdout.read().decode())
+
         _stdin, _stdout, _stderr = self.client.exec_command(ch_command_2)
+        exit_status = _stdout.channel.recv_exit_status()
+        if exit_status != 0:
+            error_message = _stderr.read().decode()
+            self.error.emit(ErrorCodes.SIPM_AMP_CH_COMMAND_FAILED)
         offsets2 = self._parse_dac_output(_stdout.read().decode())
+
         dac_offsets = offsets1 + offsets2
         readback["ch_offsets_adc"] = dac_offsets
         scale_v = 5.0 / 2**16

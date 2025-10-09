@@ -45,6 +45,10 @@ class ErrorCodes(IntEnum):
     CAEN_NOT_CONNECTED = 2201
     SIPM_AMP_DISABLED = 2300
     SIPM_AMP_NOT_CONNECTED = 2301
+    SIPM_AMP_COMMAND_FAILED = 2310
+    SIPM_AMP_HV_COMMAND_FAILED = 2311
+    SIPM_AMP_QP_COMMAND_FAILED = 2312
+    SIPM_AMP_CH_COMMAND_FAILED = 2313
     DIGISCOPE_DISABLED = 2400
     DIGISCOPE_NOT_CONNECTED = 2401
 
@@ -87,6 +91,10 @@ class Guardian(QObject):
         ErrorCodes.CAEN_NOT_CONNECTED: "CAEN - CAEN digitizer not connected.",
         ErrorCodes.SIPM_AMP_DISABLED: "SiPM Amp - SiPM Amp disabled.",
         ErrorCodes.SIPM_AMP_NOT_CONNECTED: "SiPM Amp - SiPM Amp not connected.",
+        ErrorCodes.SIPM_AMP_COMMAND_FAILED: "SiPM Amp - Command execution failed.",
+        ErrorCodes.SIPM_AMP_HV_COMMAND_FAILED: "SiPM Amp - HV command execution failed.",
+        ErrorCodes.SIPM_AMP_QP_COMMAND_FAILED: "SiPM Amp - QP command execution failed.",
+        ErrorCodes.SIPM_AMP_CH_COMMAND_FAILED: "SiPM Amp - CH command execution failed.",
         ErrorCodes.DIGISCOPE_DISABLED: "Digiscope - Digiscope disabled.",
         ErrorCodes.DIGISCOPE_NOT_CONNECTED: "Digiscope - Digiscope not connected.",
     }

@@ -104,6 +104,7 @@ class Caen(QObject):
         It creates CAENGlobalConfig and CAENGroupConfig objects, and establishes connection 
         to the CAEN digitizer, and then sets the configuration.
         """
+        self.buffer = []
         self.global_config = red_caen.CAENGlobalConfig()
         self.group_configs = [red_caen.CAENGroupConfig() for _ in range(8)]
         self.config = self.main.config_class.run_config["caen"]["global"]
