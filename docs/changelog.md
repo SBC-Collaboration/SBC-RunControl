@@ -1,5 +1,17 @@
 # Changelog
 
+## [Run Control v0.4.0](https://github.com/SBC-Collaboration/SBC-RunControl/releases/tag/v0.4.0) (2025-10-09)
+### Added
+- Added the guardian module, which can handle error messages from any other modules. It can currently log and send alarms on Slack. In the future, it will handle automatic retries when appropriate. There is a checkbox for enabling/disabling the slack alarms.
+- Added a gain setting for arducam.
+- Added a Python script to take camera time lapse videos.
+- Added a new button to choose whether to turn off position sensor during an event.
+- Added a new button to take SiPM IV curves when not in a run.
+- Added more sources and source positions in the default list. The source names of existing sources at MINOS now loosely follow Fermilab source ID.
+### Changed
+- Stop Run button is "checked" and not "disabled" when pressed. The user can uncheck the button to continue the run after the end of the event.
+- SiPM unbiasing now happens at the end of run, not events now. Bias is still recorded at the start of every event.
+
 ## [Run Control v0.3.3](https://github.com/SBC-Collaboration/SBC-RunControl/releases/tag/v0.3.3) (2025-08-20)
 ### Changed
 - Modbus module will wait for cameras to finish for an event before turning off LED control voltages.
@@ -18,7 +30,7 @@
 ## [Run Control v0.3.1](https://github.com/SBC-Collaboration/SBC-RunControl/releases/tag/v0.3.1) (2025-07-18)
 ### Added
 - Added the Guardian module responsible for everything related to error handling.
-- Add a feedback loop when setting SiPM amp biases so the readback real voltage matches the target voltage.
+- Added a feedback loop when setting SiPM amp biases so the readback real voltage matches the target voltage.
 ### Fixed
 - Fixed the bug that SiPM are not biased at start of event.
 - Updated SiPM Amp class docstrings.
