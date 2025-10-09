@@ -829,9 +829,8 @@ class MainWindow(QMainWindow):
         self.update_state("stopping_event")
 
     def stop_run_but_pressed(self):
-        self.stopping_run = True
         self.manual_stop_run = True
-        self.ui.stop_run_but.setEnabled(False)
+        self.stopping_run = self.ui.stop_run_but.isChecked()
 
     def sw_trigger(self):
         self.send_trigger.emit("Software")

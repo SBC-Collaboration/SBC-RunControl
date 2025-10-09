@@ -630,8 +630,8 @@
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>838</width>
-               <height>598</height>
+               <width>382</width>
+               <height>119</height>
               </rect>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -948,8 +948,8 @@ background-color: rgb(150, 150, 150);</string>
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>836</width>
-               <height>596</height>
+               <width>98</width>
+               <height>155</height>
               </rect>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_11">
@@ -1052,8 +1052,8 @@ background-color: rgb(150, 150, 150);</string>
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>838</width>
-               <height>598</height>
+               <width>100</width>
+               <height>30</height>
               </rect>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_12">
@@ -1532,7 +1532,7 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
            <string>Stop Run</string>
           </property>
           <property name="checkable">
-           <bool>false</bool>
+           <bool>true</bool>
           </property>
          </widget>
         </item>
