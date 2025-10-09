@@ -216,6 +216,7 @@ class SiPMAmp(QObject):
             f"/root/nanopi/iv_cmd.py --start_v {start_v} --stop_v {stop_v} --step {step} --adc_rate {adc_rate} --num_readings {num_readings} --file {filename}"
         ]
         self.exec_commands(commands)
+        self.logger.debug(f"SiPM {self.amp} IV curve measurement command complete.")
 
     def check_iv_interval(self):
         """
@@ -347,6 +348,7 @@ class SiPMAmp(QObject):
         exit_status = _stdout.channel.recv_exit_status()
         if exit_status != 0:
             error_message = _stderr.read().decode()
+            self.logger.error(f"SiPM {self.amp} HV readback command failed with exit status {exit_status}: {error_message}")
             self.error.emit(ErrorCodes.SIPM_AMP_HV_COMMAND_FAILED)
         readback.update(self._parse_hv_output(_stdout.read().decode()))
         
@@ -354,6 +356,7 @@ class SiPMAmp(QObject):
         exit_status = _stdout.channel.recv_exit_status()
         if exit_status != 0:
             error_message = _stderr.read().decode()
+            self.logger.error(f"SiPM {self.amp} QP readback command failed with exit status {exit_status}: {error_message}")
             self.error.emit(ErrorCodes.SIPM_AMP_QP_COMMAND_FAILED)
         readback.update(self._parse_hv_output(_stdout.read().decode()))
 
@@ -361,6 +364,7 @@ class SiPMAmp(QObject):
         exit_status = _stdout.channel.recv_exit_status()
         if exit_status != 0:
             error_message = _stderr.read().decode()
+            self.logger.error(f"SiPM {self.amp} channel offset readback command failed with exit status {exit_status}: {error_message}")
             self.error.emit(ErrorCodes.SIPM_AMP_CH_COMMAND_FAILED)
         offsets1 = self._parse_dac_output(_stdout.read().decode())
 
@@ -368,6 +372,7 @@ class SiPMAmp(QObject):
         exit_status = _stdout.channel.recv_exit_status()
         if exit_status != 0:
             error_message = _stderr.read().decode()
+            self.logger.error(f"SiPM {self.amp} channel offset readback command failed with exit status {exit_status}: {error_message}")
             self.error.emit(ErrorCodes.SIPM_AMP_CH_COMMAND_FAILED)
         offsets2 = self._parse_dac_output(_stdout.read().decode())
 
@@ -423,6 +428,9 @@ class SiPMAmp(QObject):
         if self.check_iv_interval():
             self.run_iv_curve()
             self.logger.debug(f"SiPM {self.amp} IV curve measurement executed.")
+        # bias SiPMs
+        self.bias_sipm()
+        self.logger.debug(f"SiPM {self.amp} bias command executed.")
         self.run_started.emit(self.amp)
     
     @Slot()
@@ -433,6 +441,11 @@ class SiPMAmp(QObject):
         if not self.config["enabled"]:
             self.run_stopped.emit(f"{self.amp}-disabled")
             return
+        
+        # unbias SiPMs
+        self.unbias_sipm()
+        self.logger.debug(f"SiPM {self.amp} unbias command executed.")
+
         if self.client.get_transport() and self.client.get_transport().is_active():
             self.client.close()
             self.logger.debug(f"SiPM {self.amp} disconnected from {self.config['ip_addr']}.")
@@ -446,6 +459,8 @@ class SiPMAmp(QObject):
         if not self.config["enabled"]:
             self.event_started.emit(f"{self.amp}-disabled")
             return
+        
+        # bias SiPMs
         self.bias_sipm()
         self.logger.debug(f"SiPM {self.amp} bias command executed.")
         self.write_voltages(voltages=self.read_voltages())
@@ -459,7 +474,6 @@ class SiPMAmp(QObject):
         if not self.config["enabled"]:
             self.event_stopped.emit(f"{self.amp}-disabled")
             return
+        
         self.write_voltages(voltages=self.read_voltages())
-        self.unbias_sipm()
-        self.logger.debug(f"SiPM {self.amp} unbias command executed.")
         self.event_stopped.emit(self.amp)
