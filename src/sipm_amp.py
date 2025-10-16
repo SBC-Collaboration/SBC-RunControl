@@ -164,20 +164,24 @@ class SiPMAmp(QObject):
         target_v = self.config["bias"]
         set_v = target_v
         offset = 0
-        for i in range(1, iterations+1):
+        voltage_set = False
+        i = 0
+        while not voltage_set:
+            i+=1
             bias_command = [f"/root/nanopi/dactest -v hv 1 {set_v}"]  # set HV rail voltage
             self.exec_commands(bias_command)
-            if i == 1:
-                time.sleep(1)  # wait for voltage to stablize after big swing
 
             readback_v = self.read_voltages()["hv_mean_v"]
             offset = readback_v - target_v
             self.logger.debug(f"SiPM {self.amp} bias setting try {i}, readback: {readback_v:.3f} V, set: {set_v:.3f} V, target: {target_v:.3f} V, offset: {offset:.3f} V")
-            if abs(offset) < error:
-                break
+            if abs(offset) < error and i>=iterations:
+                voltage_set = True
             set_v -= offset  # adjust target voltage
 
-        self.logger.debug(f"SiPM {self.amp} bias set to {readback_v:.3f} V after {iterations} iterations, with target {target_v:.3f} V.")
+            if i >= max(10*iterations, 10):
+                self.logger.error(f"SiPM {self.amp} bias cannot be set to target voltage.")
+
+        self.logger.debug(f"SiPM {self.amp} bias set to {readback_v:.3f} V after {i} iterations, with target {target_v:.3f} V.")
 
     @Slot()
     def unbias_sipm(self):
