@@ -1,5 +1,10 @@
 # Changelog
 
+## [Run Control v0.4.1](https://github.com/SBC-Collaboration/SBC-RunControl/releases/tag/v0.4.1) (2025-10-16)
+### Changed
+- Improved SiPM amp module error handling when `dactest`, `adctest` or `iv_cmd.py` throws an error. 
+- Now when biasing SiPM, it will perform at least the number of iterations and keep performing correction until the readback is within tolerance.
+
 ## [Run Control v0.4.0](https://github.com/SBC-Collaboration/SBC-RunControl/releases/tag/v0.4.0) (2025-10-09)
 ### Added
 - Added the guardian module, which can handle error messages from any other modules. It can currently log and send alarms on Slack. In the future, it will handle automatic retries when appropriate. There is a checkbox for enabling/disabling the slack alarms.

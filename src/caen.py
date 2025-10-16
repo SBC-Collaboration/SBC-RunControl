@@ -183,6 +183,7 @@ class Caen(QObject):
         # write data to file
         for b in self.buffer:
             self.writer.write(b)
+            self.logger.debug(f"Writing CAEN data to file ...")
         
         self.logger.info("CAEN data written to file.")
         self.event_stopped.emit("caen")
