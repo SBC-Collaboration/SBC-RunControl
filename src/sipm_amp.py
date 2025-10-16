@@ -253,7 +253,7 @@ class SiPMAmp(QObject):
         else:
             return False
     
-    def _parse_hv_output(self, output):
+    def _parse_hv_output(self, output, channel="unknown"):
         """
         Parse the ADC test output and extract relevant data
 
@@ -283,8 +283,11 @@ class SiPMAmp(QObject):
             else:
                 raise ValueError(f"Unexpected channel pair for HV readback: {channels}")
         else:
-            self.logger.error(f"Could not find channel information in HV output: {output}")
-            raise ValueError("Could not find channel information in HV output.")
+            if channel != "unknown":
+                ch = channel
+            else:
+                self.logger.error(f"Could not find channel information in HV output: {output}")
+                raise ValueError("Could not find channel information in HV output.")
 
         # Extract ADC statistics
         adcvalue_match = re.search(r'ADCValue:\s+mean: ([\d.e+-]+), stdev: ([\d.e+-]+)', output)
@@ -350,15 +353,27 @@ class SiPMAmp(QObject):
             error_message = _stderr.read().decode()
             self.logger.error(f"SiPM {self.amp} HV readback command failed with exit status {exit_status}: {error_message}")
             self.error.emit(ErrorCodes.SIPM_AMP_HV_COMMAND_FAILED)
-        readback.update(self._parse_hv_output(_stdout.read().decode()))
-        
+
+        out_message = _stdout.read().decode()
+        try:
+            readback.update(self._parse_hv_output(out_message, "hv"))
+        except ValueError:
+            self.logger.error(f"SiPM {self.amp} HV readback parsing failed: {out_message}")
+            self.error.emit(ErrorCodes.SIPM_AMP_HV_COMMAND_FAILED)
+
         _stdin, _stdout, _stderr = self.client.exec_command(qp_command)
         exit_status = _stdout.channel.recv_exit_status()
         if exit_status != 0:
             error_message = _stderr.read().decode()
             self.logger.error(f"SiPM {self.amp} QP readback command failed with exit status {exit_status}: {error_message}")
             self.error.emit(ErrorCodes.SIPM_AMP_QP_COMMAND_FAILED)
-        readback.update(self._parse_hv_output(_stdout.read().decode()))
+
+        out_message = _stdout.read().decode()
+        try:
+            readback.update(self._parse_hv_output(out_message, "qp"))
+        except ValueError:
+            self.logger.error(f"SiPM {self.amp} QP readback parsing failed: {out_message}")
+            self.error.emit(ErrorCodes.SIPM_AMP_QP_COMMAND_FAILED)
 
         _stdin, _stdout, _stderr = self.client.exec_command(ch_command_1)
         exit_status = _stdout.channel.recv_exit_status()
@@ -366,7 +381,12 @@ class SiPMAmp(QObject):
             error_message = _stderr.read().decode()
             self.logger.error(f"SiPM {self.amp} channel offset readback command failed with exit status {exit_status}: {error_message}")
             self.error.emit(ErrorCodes.SIPM_AMP_CH_COMMAND_FAILED)
-        offsets1 = self._parse_dac_output(_stdout.read().decode())
+        out_message = _stdout.read().decode()
+        try:
+            offsets1 = self._parse_dac_output(out_message)
+        except ValueError:
+            self.logger.error(f"SiPM {self.amp} channel offset readback parsing failed: {out_message}")
+            self.error.emit(ErrorCodes.SIPM_AMP_CH_COMMAND_FAILED)
 
         _stdin, _stdout, _stderr = self.client.exec_command(ch_command_2)
         exit_status = _stdout.channel.recv_exit_status()
@@ -374,7 +394,12 @@ class SiPMAmp(QObject):
             error_message = _stderr.read().decode()
             self.logger.error(f"SiPM {self.amp} channel offset readback command failed with exit status {exit_status}: {error_message}")
             self.error.emit(ErrorCodes.SIPM_AMP_CH_COMMAND_FAILED)
-        offsets2 = self._parse_dac_output(_stdout.read().decode())
+        out_message = _stdout.read().decode()
+        try:
+            offsets2 = self._parse_dac_output(out_message)
+        except ValueError:
+            self.logger.error(f"SiPM {self.amp} channel offset readback parsing failed: {out_message}")
+            self.error.emit(ErrorCodes.SIPM_AMP_CH_COMMAND_FAILED)
 
         dac_offsets = offsets1 + offsets2
         readback["ch_offsets_adc"] = dac_offsets
@@ -461,7 +486,7 @@ class SiPMAmp(QObject):
             return
         
         # bias SiPMs
-        self.bias_sipm()
+        self.bias_sipm(iterations=1)
         self.logger.debug(f"SiPM {self.amp} bias command executed.")
         self.write_voltages(voltages=self.read_voltages())
         self.event_started.emit(self.amp)
