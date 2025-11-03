@@ -100,13 +100,13 @@ class Config(QObject):
         ui.pc_trig_timeout_box.setValue(plc_config.get("trig_timeout", 0))
         ui.pc_stop_timeout_box.setValue(plc_config.get("stop_timeout", 0))
         ui.pc_abort_timeout_box.setValue(plc_config.get("abort_timeout", 0))
-        ui.led1_control_enabled.setChecked(plc_config.get("led1_enabled", False))
-        ui.led2_control_enabled.setChecked(plc_config.get("led2_enabled", False))
-        ui.led3_control_enabled.setChecked(plc_config.get("led3_enabled", False))
-        ui.led1_control_box.setValue(plc_config.get("led1_control", 0))
-        ui.led2_control_box.setValue(plc_config.get("led2_control", 0))
-        ui.led3_control_box.setValue(plc_config.get("led3_control", 0))
-        ui.led_control_max_box.setValue(plc_config.get("led_control_max", 0))
+        ui.led1_out_enabled.setChecked(plc_config.get("led1_enabled", False))
+        ui.led2_out_enabled.setChecked(plc_config.get("led2_enabled", False))
+        ui.led3_out_enabled.setChecked(plc_config.get("led3_enabled", False))
+        ui.led1_out_box.setValue(plc_config.get("led1_out", 0))
+        ui.led2_out_box.setValue(plc_config.get("led2_out", 0))
+        ui.led3_out_box.setValue(plc_config.get("led3_out", 0))
+        ui.led_out_max_box.setValue(plc_config.get("led_out_max", 0))
 
         # pressure
         pressure_config = self.config["plc"]["pressure"]
@@ -114,38 +114,38 @@ class Config(QObject):
         for i in range(1,7):
             profile = pressure_config[f"profile{i}"]
             widgets[f"pressure{i}_enable"].setChecked(profile.get("enabled", False))
-            widgets[f"pressure{i}_set"].setValue(profile.get("setpoint", 0))
-            widgets[f"pressure{i}_high"].setValue(profile.get("setpoint_high", 0))
-            widgets[f"pressure{i}_slope"].setValue(profile.get("slope", 0))
-            widgets[f"pressure{i}_period"].setValue(profile.get("period", 0))
+            widgets[f"pressure{i}_low"].setValue(profile.get("setpoint_lo", 0))
+            widgets[f"pressure{i}_high"].setValue(profile.get("setpoint_hi", 0))
+            widgets[f"pressure{i}_ramp1"].setValue(profile.get("ramp1", 0))
+            widgets[f"pressure{i}_ramp_down"].setValue(profile.get("ramp_down", 0))
+            widgets[f"pressure{i}_ramp_up"].setValue(profile.get("ramp_up", 0))
 
         plc_registers = self.config["plc"]["registers"]
-        ui.PCYCLE_PSET_box.setValue(plc_registers.get("PCYCLE_PSET", 0))
-        ui.PCYCLE_EXPTIME_box.setValue(plc_registers.get("PCYCLE_EXPTIME", 0))
-        ui.PCYCLE_MAXEXPTIME_box.setValue(plc_registers.get("PCYCLE_MAXEXPTIME", 0))
-        ui.PCYCLE_MAXEQTIME_box.setValue(plc_registers.get("PCYCLE_MAXEQTIME", 0))
-        ui.PCYCLE_MAXEQPDIFF_box.setValue(plc_registers.get("PCYCLE_MAXEQPDIFF", 0))
-        ui.PCYCLE_MAXACCTIME_box.setValue(plc_registers.get("PCYCLE_MAXACCTIME", 0))
-        ui.PCYCLE_MAXACCDPDT_box.setValue(plc_registers.get("PCYCLE_MAXACCDPDT", 0))
-        ui.PCYCLE_MAXBLEEDTIME_box.setValue(plc_registers.get("PCYCLE_MAXBLEEDTIME", 0))
-        ui.PCYCLE_MAXBLEEDDPDT_box.setValue(plc_registers.get("PCYCLE_MAXBLEEDDPDT", 0))
-        ui.PCYCLE_SLOWCOMP_SET_box.setValue(plc_registers.get("PCYCLE_SLOWCOMP_SET", 0))
-        ui.LED1_OUT_box.setValue(plc_registers.get("LED1_OUT", 0))
-        ui.LED2_OUT_box.setValue(plc_registers.get("LED2_OUT", 0))
-        ui.LED3_OUT_box.setValue(plc_registers.get("LED3_OUT", 0))
-        ui.LED_MAX_box.setValue(plc_registers.get("LED_MAX", 0))
-        ui.WRITE_SLOWDAQ_box.setValue(plc_registers.get("WRITE_SLOWDAQ", 0))
-        ui.PRESSURE_CYCLE_box.setValue(plc_registers.get("PRESSURE_CYCLE", 0))
-        ui.TS_ADDREM_FF_box.setValue(plc_registers.get("TS_ADDREM_FF", 0))
-        ui.TS_EMPTY_FF_box.setValue(plc_registers.get("TS_EMPTY_FF", 0))
-        ui.TS_EMPTYALL_FF_box.setValue(plc_registers.get("TS_EMPTYALL_FF", 0))
-        ui.SLOWDAQ_FF_box.setValue(plc_registers.get("SLOWDAQ_FF", 0))
-        ui.PCYCLE_ABORT_FF_box.setValue(plc_registers.get("PCYCLE_ABORT_FF", 0))
-        ui.PCYCLE_FASTCOMP_FF_box.setValue(plc_registers.get("PCYCLE_FASTCOMP_FF", 0))
-        ui.PCYCLE_SLOWCOMP_FF_box.setValue(plc_registers.get("PCYCLE_SLOWCOMP_FF", 0))
-        ui.PCYCLE_CYLEQ_FF_box.setValue(plc_registers.get("PCYCLE_CYLEQ_FF", 0))
-        ui.PCYCLE_CYLBLEED_FF_box.setValue(plc_registers.get("PCYCLE_CYLBLEED_FF", 0))
-        ui.PCYCLE_ACCHARGE_FF_box.setValue(plc_registers.get("PCYCLE_ACCHARGE_FF", 0))
+        ui.LED1_OUT_reg_box.setValue(plc_registers.get("LED1_OUT", 0))
+        ui.LED2_OUT_reg_box.setValue(plc_registers.get("LED2_OUT", 0))
+        ui.LED3_OUT_reg_box.setValue(plc_registers.get("LED3_OUT", 0))
+        ui.LED_MAX_reg_box.setValue(plc_registers.get("LED_MAX", 0))
+        ui.LED1_OUT_PRE_reg_box.setValue(plc_registers.get("LED1_OUT_PRE", 0))
+        ui.LED2_OUT_PRE_reg_box.setValue(plc_registers.get("LED2_OUT_PRE", 0))
+        ui.LED3_OUT_PRE_reg_box.setValue(plc_registers.get("LED3_OUT_PRE", 0))
+        ui.LED1_OUT_POST_reg_box.setValue(plc_registers.get("LED1_OUT_POST", 0))
+        ui.LED2_OUT_POST_reg_box.setValue(plc_registers.get("LED2_OUT_POST", 0))
+        ui.LED3_OUT_POST_reg_box.setValue(plc_registers.get("LED3_OUT_POST", 0))
+        ui.LED_POST_TIME_reg_box.setValue(plc_registers.get("LED_POST_TIME", 0))
+        ui.PCYCLE_PSET_LOW_reg_box.setValue(plc_registers.get("PCYCLE_PSET_LOW", 0))
+        ui.PCYCLE_PSET_HIGH_reg_box.setValue(plc_registers.get("PCYCLE_PSET_HIGH", 0))
+        ui.PCYCLE_PSET_RAMP1_reg_box.setValue(plc_registers.get("PCYCLE_PSET_RAMP1", 0))
+        ui.PCYCLE_PSET_RAMPDOWN_reg_box.setValue(plc_registers.get("PCYCLE_PSET_RAMPDOWN", 0))
+        ui.PCYCLE_PSET_RAMPUP_reg_box.setValue(plc_registers.get("PCYCLE_PSET_RAMPUP", 0))
+        ui.WRITE_SLOWDAQ_reg_box.setValue(plc_registers.get("WRITE_SLOWDAQ", 0))
+        ui.PRESSURE_CYCLE_reg_box.setValue(plc_registers.get("PRESSURE_CYCLE", 0))
+        ui.TS_ADDREM_FF_reg_box.setValue(plc_registers.get("TS_ADDREM_FF", 0))
+        ui.TS_EMPTY_FF_reg_box.setValue(plc_registers.get("TS_EMPTY_FF", 0))
+        ui.TS_EMPTYALL_FF_reg_box.setValue(plc_registers.get("TS_EMPTYALL_FF", 0))
+        ui.SLOWDAQ_FF_reg_box.setValue(plc_registers.get("SLOWDAQ_FF", 0))
+        ui.PCYCLE_ABORT_FF_reg_box.setValue(plc_registers.get("PCYCLE_ABORT_FF", 0))
+        ui.PCYCLE_FASTCOMP_FF_reg_box.setValue(plc_registers.get("PCYCLE_FASTCOMP_FF", 0))
+        ui.PCYCLE_SLOWCOMP_FF_reg_box.setValue(plc_registers.get("PCYCLE_SLOWCOMP_FF", 0))
 
         # SQL
         sql_config = self.config["sql"]
@@ -391,13 +391,20 @@ class Config(QObject):
             "trig_timeout": ui.pc_trig_timeout_box.value(),
             "stop_timeout": ui.pc_stop_timeout_box.value(),
             "abort_timeout": ui.pc_abort_timeout_box.value(),
-            "led1_enabled": ui.led1_control_enabled.isChecked(),
-            "led2_enabled": ui.led2_control_enabled.isChecked(),
-            "led3_enabled": ui.led3_control_enabled.isChecked(),
-            "led1_control": ui.led1_control_box.value(),
-            "led2_control": ui.led2_control_box.value(),
-            "led3_control": ui.led3_control_box.value(),
-            "led_control_max": ui.led_control_max_box.value(),
+            "led1_enabled": ui.led1_out_enabled.isChecked(),
+            "led2_enabled": ui.led2_out_enabled.isChecked(),
+            "led3_enabled": ui.led3_out_enabled.isChecked(),
+            "led1_out": ui.led1_out_box.value(),
+            "led2_out": ui.led2_out_box.value(),
+            "led3_out": ui.led3_out_box.value(),
+            "led_out_max": ui.led_out_max_box.value(),
+            "led1_out_pre": ui.led1_out_pre_box.value(),
+            "led2_out_pre": ui.led2_out_pre_box.value(),
+            "led3_out_pre": ui.led3_out_pre_box.value(),
+            "led1_out_post": ui.led1_out_post_box.value(),
+            "led2_out_post": ui.led2_out_post_box.value(),
+            "led3_out_post": ui.led3_out_post_box.value(),
+            "led_post_time": ui.led_post_time_box.value(),
         }
 
         pressure_config = {
@@ -407,40 +414,40 @@ class Config(QObject):
         for i in range(1,7):
             profile = {}
             profile["enabled"] = widgets[f"pressure{i}_enable"].isChecked()
-            profile["setpoint"] = widgets[f"pressure{i}_set"].value()
-            profile["setpoint_high"] = widgets[f"pressure{i}_high"].value()
-            profile["slope"] = widgets[f"pressure{i}_slope"].value()
-            profile["period"] = widgets[f"pressure{i}_period"].value()
+            profile["setpoint_lo"] = widgets[f"pressure{i}_low"].value()
+            profile["setpoint_hi"] = widgets[f"pressure{i}_high"].value()
+            profile["ramp1"] = widgets[f"pressure{i}_ramp1"].value()
+            profile["ramp_down"] = widgets[f"pressure{i}_ramp_down"].value()
+            profile["ramp_up"] = widgets[f"pressure{i}_ramp_up"].value()
             pressure_config[f"profile{i}"] = profile
         plc_config["pressure"] = pressure_config
 
         plc_registers = {
-            "PCYCLE_PSET": ui.PCYCLE_PSET_box.value(),
-            "PCYCLE_EXPTIME": ui.PCYCLE_EXPTIME_box.value(),
-            "PCYCLE_MAXEXPTIME": ui.PCYCLE_MAXEXPTIME_box.value(),
-            "PCYCLE_MAXEQTIME": ui.PCYCLE_MAXEQTIME_box.value(),
-            "PCYCLE_MAXEQPDIFF": ui.PCYCLE_MAXEQPDIFF_box.value(),
-            "PCYCLE_MAXACCTIME": ui.PCYCLE_MAXACCTIME_box.value(),
-            "PCYCLE_MAXACCDPDT": ui.PCYCLE_MAXACCDPDT_box.value(),
-            "PCYCLE_MAXBLEEDTIME": ui.PCYCLE_MAXBLEEDTIME_box.value(),
-            "PCYCLE_MAXBLEEDDPDT": ui.PCYCLE_MAXBLEEDDPDT_box.value(),
-            "PCYCLE_SLOWCOMP_SET": ui.PCYCLE_SLOWCOMP_SET_box.value(),
-            "LED1_OUT": ui.LED1_OUT_box.value(),
-            "LED2_OUT": ui.LED2_OUT_box.value(),
-            "LED3_OUT": ui.LED3_OUT_box.value(),
-            "LED_MAX": ui.LED_MAX_box.value(),
-            "WRITE_SLOWDAQ": ui.WRITE_SLOWDAQ_box.value(),
-            "PRESSURE_CYCLE": ui.PRESSURE_CYCLE_box.value(),
-            "TS_ADDREM_FF": ui.TS_ADDREM_FF_box.value(),
-            "TS_EMPTY_FF": ui.TS_EMPTY_FF_box.value(),
-            "TS_EMPTYALL_FF": ui.TS_EMPTYALL_FF_box.value(),
-            "SLOWDAQ_FF": ui.SLOWDAQ_FF_box.value(),
-            "PCYCLE_ABORT_FF": ui.PCYCLE_ABORT_FF_box.value(),
-            "PCYCLE_FASTCOMP_FF": ui.PCYCLE_FASTCOMP_FF_box.value(),
-            "PCYCLE_SLOWCOMP_FF": ui.PCYCLE_SLOWCOMP_FF_box.value(),
-            "PCYCLE_CYLEQ_FF": ui.PCYCLE_CYLEQ_FF_box.value(),
-            "PCYCLE_CYLBLEED_FF": ui.PCYCLE_CYLBLEED_FF_box.value(),
-            "PCYCLE_ACCHARGE_FF": ui.PCYCLE_ACCHARGE_FF_box.value(),
+            "LED1_OUT": ui.LED1_OUT_reg_box.value(),
+            "LED2_OUT": ui.LED2_OUT_reg_box.value(),
+            "LED3_OUT": ui.LED3_OUT_reg_box.value(),
+            "LED_MAX": ui.LED_MAX_reg_box.value(),
+            "LED1_OUT_PRE": ui.LED1_OUT_PRE_reg_box.value(),
+            "LED2_OUT_PRE": ui.LED2_OUT_PRE_reg_box.value(),
+            "LED3_OUT_PRE": ui.LED3_OUT_PRE_reg_box.value(),
+            "LED1_OUT_POST": ui.LED1_OUT_POST_reg_box.value(),
+            "LED2_OUT_POST": ui.LED2_OUT_POST_reg_box.value(),
+            "LED3_OUT_POST": ui.LED3_OUT_POST_reg_box.value(),
+            "LED_POST_TIME": ui.LED_POST_TIME_reg_box.value(),
+            "PCYCLE_PSET_LOW": ui.PCYCLE_PSET_LOW_reg_box.value(),
+            "PCYCLE_PSET_HIGH": ui.PCYCLE_PSET_HIGH_reg_box.value(),
+            "PCYCLE_PSET_RAMP1": ui.PCYCLE_PSET_RAMP1_reg_box.value(),
+            "PCYCLE_PSET_RAMPDOWN": ui.PCYCLE_PSET_RAMPDOWN_reg_box.value(),
+            "PCYCLE_PSET_RAMPUP": ui.PCYCLE_PSET_RAMPUP_reg_box.value(),
+            "WRITE_SLOWDAQ": ui.WRITE_SLOWDAQ_reg_box.value(),
+            "PRESSURE_CYCLE": ui.PRESSURE_CYCLE_reg_box.value(),
+            "TS_ADDREM_FF": ui.TS_ADDREM_FF_reg_box.value(),
+            "TS_EMPTY_FF": ui.TS_EMPTY_FF_reg_box.value(),
+            "TS_EMPTYALL_FF": ui.TS_EMPTYALL_FF_reg_box.value(),
+            "SLOWDAQ_FF": ui.SLOWDAQ_FF_reg_box.value(),
+            "PCYCLE_ABORT_FF": ui.PCYCLE_ABORT_FF_reg_box.value(),
+            "PCYCLE_FASTCOMP_FF": ui.PCYCLE_FASTCOMP_FF_reg_box.value(),
+            "PCYCLE_SLOWCOMP_FF": ui.PCYCLE_SLOWCOMP_FF_reg_box.value(),
         }
         plc_config["registers"] = plc_registers
 
@@ -806,10 +813,11 @@ class Config(QObject):
         if not self.run_pressure_profiles:
             self.logger.debug("No pressure profiles enabled.")
             self.event_pressure = {
-                "setpoint": None, 
-                "setpoint_high": None, 
-                "slope": None, 
-                "period": None
+                "setpoint_lo": None, 
+                "setpoint_hi": None, 
+                "ramp1": None, 
+                "ramp_down": None,
+                "ramp_up": None
                 }
         elif self.run_pressure_mode == "Random":
             self.event_pressure = random.choice(self.run_pressure_profiles)
@@ -820,10 +828,11 @@ class Config(QObject):
             self.logger.error("No pressure mode selected.")
             self.event_pressure = {}
             return
-        self.logger.info(f"Event pressure: Pset: {self.event_pressure["setpoint"]}, "
-                         f"Pset_high: {self.event_pressure['setpoint_high']}, "
-                         f"Slope: {self.event_pressure['slope']}, "
-                         f"Period: {self.event_pressure['period']}")
+        self.logger.info(f"Event pressure: Pset Low: {self.event_pressure["setpoint_lo"]}, "
+                         f"Pset High: {self.event_pressure['setpoint_hi']}, "
+                         f"Ramp 1: {self.event_pressure['ramp1']}, "
+                         f"Ramp Down: {self.event_pressure['ramp_down']}"
+                         f"Ramp Up: {self.event_pressure['ramp_up']}")
 
     @Slot()
     def stop_run(self):

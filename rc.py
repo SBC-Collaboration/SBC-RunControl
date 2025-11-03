@@ -784,14 +784,16 @@ class MainWindow(QMainWindow):
 
         status = bool(self.config_class.run_pressure_profiles)
         ev_pressure = self.config_class.event_pressure
-        self.ui.ev_pset_box.setValue(ev_pressure["setpoint"] or 0)
+        self.ui.ev_pset_lo_box.setValue(ev_pressure["setpoint_low"] or 0)
         self.ui.ev_pset_hi_box.setValue(ev_pressure["setpoint_high"] or 0)
-        self.ui.ev_pset_slope_box.setValue(ev_pressure["slope"] or 0)
-        self.ui.ev_pset_period_box.setValue(ev_pressure["period"] or 0)
-        self.ui.ev_pset_box.setEnabled(status)
+        self.ui.ev_pset_ramp1_box.setValue(ev_pressure["ramp1"] or 0)
+        self.ui.ev_pset_ramp_down_box.setValue(ev_pressure["ramp_down"] or 0)
+        self.ui.ev_pset_ramp_up_box.setValue(ev_pressure["ramp_up"] or 0)
+        self.ui.ev_pset_lo_box.setEnabled(status)
         self.ui.ev_pset_hi_box.setEnabled(status)
-        self.ui.ev_pset_slope_box.setEnabled(status)
-        self.ui.ev_pset_period_box.setEnabled(status)
+        self.ui.ev_pset_ramp1_box.setEnabled(status)
+        self.ui.ev_pset_ramp_down_box.setEnabled(status)
+        self.ui.ev_pset_ramp_up_box.setEnabled(status)
         for m in self.all_modules:
             if m in self.starting_event_modules:
                 self.widgets[f"status_{m}"].working()

@@ -232,10 +232,10 @@ class SQL(QObject):
             None,
             0,  # event livetime
             str(datetime.timedelta(milliseconds=self.main.run_livetime)),
-            self.main.config_class.event_pressure["setpoint"],
-            self.main.config_class.event_pressure["setpoint_high"],
-            self.main.config_class.event_pressure["slope"],
-            self.main.config_class.event_pressure["period"],
+            self.main.config_class.event_pressure["setpoint_lo"],
+            self.main.config_class.event_pressure["setpoint_hi"],
+            self.main.config_class.event_pressure["ramp1"],
+            self.main.config_class.event_pressure["ramp_down"],
             self.main.event_start_time.isoformat(sep=" ", timespec="milliseconds"),
             None,  # end time
             None   # trigger source

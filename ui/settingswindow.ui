@@ -791,9 +791,9 @@
            <property name="geometry">
             <rect>
              <x>0</x>
-             <y>0</y>
+             <y>-220</y>
              <width>874</width>
-             <height>684</height>
+             <height>742</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_14">
@@ -829,232 +829,19 @@
               <property name="spacing">
                <number>3</number>
               </property>
-              <item row="2" column="5">
-               <widget class="QCheckBox" name="pressure5_enable">
+              <item row="4" column="0">
+               <widget class="QLabel" name="p_high_label">
+                <property name="toolTip">
+                 <string>If this number is the same or lower than setpoint, or if period is negative, it will be ignored.</string>
+                </property>
                 <property name="text">
-                 <string>Profile 5</string>
+                 <string>Setpoint High</string>
                 </property>
-               </widget>
-              </item>
-              <item row="2" column="3">
-               <widget class="QCheckBox" name="pressure3_enable">
-                <property name="text">
-                 <string>Profile 3</string>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
-               </widget>
-              </item>
-              <item row="6" column="6">
-               <widget class="NoWheelDoubleSpinBox" name="pressure6_period">
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="suffix">
-                 <string> s</string>
-                </property>
-                <property name="decimals">
-                 <number>2</number>
-                </property>
-                <property name="minimum">
-                 <double>-1.000000000000000</double>
-                </property>
-                <property name="maximum">
-                 <double>1000.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
-                <property name="value">
-                 <double>-1.000000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="6" column="1">
-               <widget class="NoWheelDoubleSpinBox" name="pressure1_period">
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="suffix">
-                 <string> s</string>
-                </property>
-                <property name="decimals">
-                 <number>2</number>
-                </property>
-                <property name="minimum">
-                 <double>-1.000000000000000</double>
-                </property>
-                <property name="maximum">
-                 <double>1000.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
-                <property name="value">
-                 <double>-1.000000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="5" column="3">
-               <widget class="NoWheelDoubleSpinBox" name="pressure3_slope">
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="suffix">
-                 <string> bar/s</string>
-                </property>
-                <property name="decimals">
-                 <number>2</number>
-                </property>
-                <property name="minimum">
-                 <double>0.000000000000000</double>
-                </property>
-                <property name="maximum">
-                 <double>99.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
-                <property name="value">
-                 <double>0.000000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="6">
-               <widget class="NoWheelDoubleSpinBox" name="pressure6_set">
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="suffix">
-                 <string> bara</string>
-                </property>
-                <property name="decimals">
-                 <number>2</number>
-                </property>
-                <property name="minimum">
-                 <double>0.000000000000000</double>
-                </property>
-                <property name="maximum">
-                 <double>1000.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="1">
-               <widget class="QCheckBox" name="pressure1_enable">
-                <property name="text">
-                 <string>Profile 1</string>
-                </property>
-               </widget>
-              </item>
-              <item row="5" column="4">
-               <widget class="NoWheelDoubleSpinBox" name="pressure4_slope">
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="suffix">
-                 <string> bar/s</string>
-                </property>
-                <property name="decimals">
-                 <number>2</number>
-                </property>
-                <property name="minimum">
-                 <double>0.000000000000000</double>
-                </property>
-                <property name="maximum">
-                 <double>99.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
-                <property name="value">
-                 <double>0.000000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="6">
-               <widget class="QCheckBox" name="pressure6_enable">
-                <property name="text">
-                 <string>Profile 6</string>
-                </property>
-               </widget>
-              </item>
-              <item row="6" column="2">
-               <widget class="NoWheelDoubleSpinBox" name="pressure2_period">
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="suffix">
-                 <string> s</string>
-                </property>
-                <property name="decimals">
-                 <number>2</number>
-                </property>
-                <property name="minimum">
-                 <double>-1.000000000000000</double>
-                </property>
-                <property name="maximum">
-                 <double>1000.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
-                <property name="value">
-                 <double>-1.000000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="0">
-               <widget class="QCheckBox" name="plc_enabled_box">
-                <property name="text">
-                 <string>Enabled</string>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="5">
-               <widget class="NoWheelDoubleSpinBox" name="pressure5_high">
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="suffix">
-                 <string> bara</string>
-                </property>
-                <property name="decimals">
-                 <number>2</number>
-                </property>
-                <property name="minimum">
-                 <double>0.000000000000000</double>
-                </property>
-                <property name="maximum">
-                 <double>1000.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
-                <property name="value">
-                 <double>0.000000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="1">
-               <widget class="NoWheelDoubleSpinBox" name="pressure1_set">
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="suffix">
-                 <string> bara</string>
-                </property>
-                <property name="decimals">
-                 <number>2</number>
-                </property>
-                <property name="minimum">
-                 <double>0.000000000000000</double>
-                </property>
-                <property name="maximum">
-                 <double>1000.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
+                <property name="buddy">
+                 <cstring>pressure1_high</cstring>
                 </property>
                </widget>
               </item>
@@ -1083,46 +870,77 @@
                 </property>
                </widget>
               </item>
-              <item row="2" column="4">
-               <widget class="QCheckBox" name="pressure4_enable">
-                <property name="text">
-                 <string>Profile 4</string>
-                </property>
+              <item row="1" column="6">
+               <widget class="QComboBox" name="p_mode_box">
+                <item>
+                 <property name="text">
+                  <string>Random</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Cycle</string>
+                 </property>
+                </item>
                </widget>
               </item>
-              <item row="4" column="0">
-               <widget class="QLabel" name="p_high_label">
+              <item row="6" column="0">
+               <widget class="QLabel" name="p_ramp_down_label">
                 <property name="toolTip">
-                 <string>If this number is the same or lower than setpoint, or if period is negative, it will be ignored.</string>
+                 <string>Period of oscillation between P_high and P_low. Negative number means disabled.</string>
                 </property>
                 <property name="text">
-                 <string>Setpoint High</string>
+                 <string>Ramp Down</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
-                 <cstring>pressure1_high</cstring>
+                 <cstring>pressure1_ramp_down</cstring>
                 </property>
                </widget>
               </item>
-              <item row="1" column="3">
-               <widget class="QLabel" name="pressure_label">
-                <property name="font">
-                 <font>
-                  <bold>false</bold>
-                 </font>
-                </property>
+              <item row="2" column="1">
+               <widget class="QCheckBox" name="pressure1_enable">
                 <property name="text">
-                 <string>Pressure</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                 <string>Profile 1</string>
                 </property>
                </widget>
               </item>
-              <item row="4" column="4">
-               <widget class="NoWheelDoubleSpinBox" name="pressure4_high">
+              <item row="2" column="5">
+               <widget class="QCheckBox" name="pressure5_enable">
+                <property name="text">
+                 <string>Profile 5</string>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="1">
+               <widget class="NoWheelDoubleSpinBox" name="pressure1_ramp_down">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string> bar/s</string>
+                </property>
+                <property name="decimals">
+                 <number>2</number>
+                </property>
+                <property name="minimum">
+                 <double>-100.000000000000000</double>
+                </property>
+                <property name="maximum">
+                 <double>100.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+                <property name="value">
+                 <double>0.000000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="5">
+               <widget class="NoWheelDoubleSpinBox" name="pressure5_high">
                 <property name="focusPolicy">
                  <enum>Qt::FocusPolicy::StrongFocus</enum>
                 </property>
@@ -1143,208 +961,6 @@
                 </property>
                 <property name="value">
                  <double>0.000000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="5" column="2">
-               <widget class="NoWheelDoubleSpinBox" name="pressure2_slope">
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="suffix">
-                 <string> bar/s</string>
-                </property>
-                <property name="decimals">
-                 <number>2</number>
-                </property>
-                <property name="minimum">
-                 <double>0.000000000000000</double>
-                </property>
-                <property name="maximum">
-                 <double>99.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
-                <property name="value">
-                 <double>0.000000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="5" column="6">
-               <widget class="NoWheelDoubleSpinBox" name="pressure6_slope">
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="suffix">
-                 <string> bar/s</string>
-                </property>
-                <property name="decimals">
-                 <number>2</number>
-                </property>
-                <property name="minimum">
-                 <double>0.000000000000000</double>
-                </property>
-                <property name="maximum">
-                 <double>99.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
-                <property name="value">
-                 <double>0.000000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="3">
-               <widget class="NoWheelDoubleSpinBox" name="pressure3_set">
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="suffix">
-                 <string> bara</string>
-                </property>
-                <property name="decimals">
-                 <number>2</number>
-                </property>
-                <property name="minimum">
-                 <double>0.000000000000000</double>
-                </property>
-                <property name="maximum">
-                 <double>1000.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="5" column="0">
-               <widget class="QLabel" name="p_slope_label">
-                <property name="text">
-                 <string>Slope</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>pressure1_slope</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="2">
-               <widget class="NoWheelDoubleSpinBox" name="pressure2_set">
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="suffix">
-                 <string> bara</string>
-                </property>
-                <property name="decimals">
-                 <number>2</number>
-                </property>
-                <property name="minimum">
-                 <double>0.000000000000000</double>
-                </property>
-                <property name="maximum">
-                 <double>1000.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="0">
-               <widget class="QLabel" name="p_setpoint_label">
-                <property name="text">
-                 <string>Setpoint</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>pressure1_set</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="5" column="5">
-               <widget class="NoWheelDoubleSpinBox" name="pressure5_slope">
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="suffix">
-                 <string> bar/s</string>
-                </property>
-                <property name="decimals">
-                 <number>2</number>
-                </property>
-                <property name="minimum">
-                 <double>0.000000000000000</double>
-                </property>
-                <property name="maximum">
-                 <double>99.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
-                <property name="value">
-                 <double>0.000000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="5" column="1">
-               <widget class="NoWheelDoubleSpinBox" name="pressure1_slope">
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="suffix">
-                 <string> bar/s</string>
-                </property>
-                <property name="decimals">
-                 <number>2</number>
-                </property>
-                <property name="minimum">
-                 <double>0.000000000000000</double>
-                </property>
-                <property name="maximum">
-                 <double>99.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
-                <property name="value">
-                 <double>0.000000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="6" column="4">
-               <widget class="NoWheelDoubleSpinBox" name="pressure4_period">
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="suffix">
-                 <string> s</string>
-                </property>
-                <property name="decimals">
-                 <number>2</number>
-                </property>
-                <property name="minimum">
-                 <double>-1.000000000000000</double>
-                </property>
-                <property name="maximum">
-                 <double>1000.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
-                <property name="value">
-                 <double>-1.000000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="2">
-               <widget class="QCheckBox" name="pressure2_enable">
-                <property name="text">
-                 <string>Profile 2</string>
                 </property>
                </widget>
               </item>
@@ -1373,19 +989,49 @@
                 </property>
                </widget>
               </item>
-              <item row="6" column="0">
-               <widget class="QLabel" name="p_period_label">
-                <property name="toolTip">
-                 <string>Period of oscillation between P_high and P_low. Negative number means disabled.</string>
+              <item row="3" column="4">
+               <widget class="NoWheelDoubleSpinBox" name="pressure4_low">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
                 </property>
+                <property name="suffix">
+                 <string> bara</string>
+                </property>
+                <property name="decimals">
+                 <number>2</number>
+                </property>
+                <property name="minimum">
+                 <double>0.000000000000000</double>
+                </property>
+                <property name="maximum">
+                 <double>1000.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="4">
+               <widget class="QCheckBox" name="pressure4_enable">
                 <property name="text">
-                 <string>Period</string>
+                 <string>Profile 4</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="5">
+               <widget class="QLabel" name="p_mode_label">
+                <property name="text">
+                 <string>Mode</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
-                <property name="buddy">
-                 <cstring>pressure1_period</cstring>
+               </widget>
+              </item>
+              <item row="2" column="6">
+               <widget class="QCheckBox" name="pressure6_enable">
+                <property name="text">
+                 <string>Profile 6</string>
                 </property>
                </widget>
               </item>
@@ -1439,97 +1085,18 @@
                 </property>
                </widget>
               </item>
-              <item row="3" column="4">
-               <widget class="NoWheelDoubleSpinBox" name="pressure4_set">
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+              <item row="1" column="3">
+               <widget class="QLabel" name="pressure_label">
+                <property name="font">
+                 <font>
+                  <bold>false</bold>
+                 </font>
                 </property>
-                <property name="suffix">
-                 <string> bara</string>
+                <property name="text">
+                 <string>Pressure</string>
                 </property>
-                <property name="decimals">
-                 <number>2</number>
-                </property>
-                <property name="minimum">
-                 <double>0.000000000000000</double>
-                </property>
-                <property name="maximum">
-                 <double>1000.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="6" column="5">
-               <widget class="NoWheelDoubleSpinBox" name="pressure5_period">
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="suffix">
-                 <string> s</string>
-                </property>
-                <property name="decimals">
-                 <number>2</number>
-                </property>
-                <property name="minimum">
-                 <double>-1.000000000000000</double>
-                </property>
-                <property name="maximum">
-                 <double>1000.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
-                <property name="value">
-                 <double>-1.000000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="6" column="3">
-               <widget class="NoWheelDoubleSpinBox" name="pressure3_period">
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="suffix">
-                 <string> s</string>
-                </property>
-                <property name="decimals">
-                 <number>2</number>
-                </property>
-                <property name="minimum">
-                 <double>-1.000000000000000</double>
-                </property>
-                <property name="maximum">
-                 <double>1000.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
-                </property>
-                <property name="value">
-                 <double>-1.000000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="5">
-               <widget class="NoWheelDoubleSpinBox" name="pressure5_set">
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="suffix">
-                 <string> bara</string>
-                </property>
-                <property name="decimals">
-                 <number>2</number>
-                </property>
-                <property name="minimum">
-                 <double>0.000000000000000</double>
-                </property>
-                <property name="maximum">
-                 <double>1000.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.100000000000000</double>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
                 </property>
                </widget>
               </item>
@@ -1548,28 +1115,627 @@
                 </property>
                </widget>
               </item>
-              <item row="1" column="5">
-               <widget class="QLabel" name="p_mode_label">
+              <item row="0" column="0">
+               <widget class="QCheckBox" name="plc_enabled_box">
                 <property name="text">
-                 <string>Mode</string>
+                 <string>Enabled</string>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="0">
+               <widget class="QLabel" name="p_ramp1_label">
+                <property name="text">
+                 <string>Ramp 1</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
+                <property name="buddy">
+                 <cstring>pressure1_ramp1</cstring>
+                </property>
                </widget>
               </item>
-              <item row="1" column="6">
-               <widget class="QComboBox" name="p_mode_box">
-                <item>
-                 <property name="text">
-                  <string>Random</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Cycle</string>
-                 </property>
-                </item>
+              <item row="2" column="2">
+               <widget class="QCheckBox" name="pressure2_enable">
+                <property name="text">
+                 <string>Profile 2</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="5">
+               <widget class="NoWheelDoubleSpinBox" name="pressure5_low">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string> bara</string>
+                </property>
+                <property name="decimals">
+                 <number>2</number>
+                </property>
+                <property name="minimum">
+                 <double>0.000000000000000</double>
+                </property>
+                <property name="maximum">
+                 <double>1000.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="4">
+               <widget class="NoWheelDoubleSpinBox" name="pressure4_high">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string> bara</string>
+                </property>
+                <property name="decimals">
+                 <number>2</number>
+                </property>
+                <property name="minimum">
+                 <double>0.000000000000000</double>
+                </property>
+                <property name="maximum">
+                 <double>1000.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+                <property name="value">
+                 <double>0.000000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="3">
+               <widget class="NoWheelDoubleSpinBox" name="pressure3_low">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string> bara</string>
+                </property>
+                <property name="decimals">
+                 <number>2</number>
+                </property>
+                <property name="minimum">
+                 <double>0.000000000000000</double>
+                </property>
+                <property name="maximum">
+                 <double>1000.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="1">
+               <widget class="NoWheelDoubleSpinBox" name="pressure1_ramp1">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string> bar/s</string>
+                </property>
+                <property name="decimals">
+                 <number>2</number>
+                </property>
+                <property name="minimum">
+                 <double>-100.000000000000000</double>
+                </property>
+                <property name="maximum">
+                 <double>100.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+                <property name="value">
+                 <double>0.000000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="0">
+               <widget class="QLabel" name="p_setpoint_label">
+                <property name="text">
+                 <string>Setpoint Low</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>pressure1_low</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="6">
+               <widget class="NoWheelDoubleSpinBox" name="pressure6_low">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string> bara</string>
+                </property>
+                <property name="decimals">
+                 <number>2</number>
+                </property>
+                <property name="minimum">
+                 <double>0.000000000000000</double>
+                </property>
+                <property name="maximum">
+                 <double>1000.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="2">
+               <widget class="NoWheelDoubleSpinBox" name="pressure2_low">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string> bara</string>
+                </property>
+                <property name="decimals">
+                 <number>2</number>
+                </property>
+                <property name="minimum">
+                 <double>0.000000000000000</double>
+                </property>
+                <property name="maximum">
+                 <double>1000.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="1">
+               <widget class="NoWheelDoubleSpinBox" name="pressure1_low">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string> bara</string>
+                </property>
+                <property name="decimals">
+                 <number>2</number>
+                </property>
+                <property name="minimum">
+                 <double>0.000000000000000</double>
+                </property>
+                <property name="maximum">
+                 <double>1000.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="3">
+               <widget class="QCheckBox" name="pressure3_enable">
+                <property name="text">
+                 <string>Profile 3</string>
+                </property>
+               </widget>
+              </item>
+              <item row="7" column="0">
+               <widget class="QLabel" name="p_ramp_up_label">
+                <property name="toolTip">
+                 <string>Period of oscillation between P_high and P_low. Negative number means disabled.</string>
+                </property>
+                <property name="text">
+                 <string>Ramp Up</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>pressure1_ramp_down</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="7" column="1">
+               <widget class="NoWheelDoubleSpinBox" name="pressure1_ramp_up">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string> bar/s</string>
+                </property>
+                <property name="decimals">
+                 <number>2</number>
+                </property>
+                <property name="minimum">
+                 <double>-100.000000000000000</double>
+                </property>
+                <property name="maximum">
+                 <double>100.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+                <property name="value">
+                 <double>0.000000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="2">
+               <widget class="NoWheelDoubleSpinBox" name="pressure2_ramp1">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string> bar/s</string>
+                </property>
+                <property name="decimals">
+                 <number>2</number>
+                </property>
+                <property name="minimum">
+                 <double>-100.000000000000000</double>
+                </property>
+                <property name="maximum">
+                 <double>100.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+                <property name="value">
+                 <double>0.000000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="3">
+               <widget class="NoWheelDoubleSpinBox" name="pressure3_ramp1">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string> bar/s</string>
+                </property>
+                <property name="decimals">
+                 <number>2</number>
+                </property>
+                <property name="minimum">
+                 <double>-100.000000000000000</double>
+                </property>
+                <property name="maximum">
+                 <double>100.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+                <property name="value">
+                 <double>0.000000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="4">
+               <widget class="NoWheelDoubleSpinBox" name="pressure4_ramp1">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string> bar/s</string>
+                </property>
+                <property name="decimals">
+                 <number>2</number>
+                </property>
+                <property name="minimum">
+                 <double>-100.000000000000000</double>
+                </property>
+                <property name="maximum">
+                 <double>100.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+                <property name="value">
+                 <double>0.000000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="5">
+               <widget class="NoWheelDoubleSpinBox" name="pressure5_ramp1">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string> bar/s</string>
+                </property>
+                <property name="decimals">
+                 <number>2</number>
+                </property>
+                <property name="minimum">
+                 <double>-100.000000000000000</double>
+                </property>
+                <property name="maximum">
+                 <double>100.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+                <property name="value">
+                 <double>0.000000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="6">
+               <widget class="NoWheelDoubleSpinBox" name="pressure6_ramp1">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string> bar/s</string>
+                </property>
+                <property name="decimals">
+                 <number>2</number>
+                </property>
+                <property name="minimum">
+                 <double>-100.000000000000000</double>
+                </property>
+                <property name="maximum">
+                 <double>100.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+                <property name="value">
+                 <double>0.000000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="2">
+               <widget class="NoWheelDoubleSpinBox" name="pressure2_ramp_down">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string> bar/s</string>
+                </property>
+                <property name="decimals">
+                 <number>2</number>
+                </property>
+                <property name="minimum">
+                 <double>-100.000000000000000</double>
+                </property>
+                <property name="maximum">
+                 <double>100.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+                <property name="value">
+                 <double>0.000000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="3">
+               <widget class="NoWheelDoubleSpinBox" name="pressure3_ramp_down">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string> bar/s</string>
+                </property>
+                <property name="decimals">
+                 <number>2</number>
+                </property>
+                <property name="minimum">
+                 <double>-100.000000000000000</double>
+                </property>
+                <property name="maximum">
+                 <double>100.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+                <property name="value">
+                 <double>0.000000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="4">
+               <widget class="NoWheelDoubleSpinBox" name="pressure4_ramp_down">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string> bar/s</string>
+                </property>
+                <property name="decimals">
+                 <number>2</number>
+                </property>
+                <property name="minimum">
+                 <double>-100.000000000000000</double>
+                </property>
+                <property name="maximum">
+                 <double>100.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+                <property name="value">
+                 <double>0.000000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="5">
+               <widget class="NoWheelDoubleSpinBox" name="pressure5_ramp_down">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string> bar/s</string>
+                </property>
+                <property name="decimals">
+                 <number>2</number>
+                </property>
+                <property name="minimum">
+                 <double>-100.000000000000000</double>
+                </property>
+                <property name="maximum">
+                 <double>100.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+                <property name="value">
+                 <double>0.000000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="6">
+               <widget class="NoWheelDoubleSpinBox" name="pressure6_ramp_down">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string> bar/s</string>
+                </property>
+                <property name="decimals">
+                 <number>2</number>
+                </property>
+                <property name="minimum">
+                 <double>-100.000000000000000</double>
+                </property>
+                <property name="maximum">
+                 <double>100.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+                <property name="value">
+                 <double>0.000000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="7" column="2">
+               <widget class="NoWheelDoubleSpinBox" name="pressure2_ramp_up">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string> bar/s</string>
+                </property>
+                <property name="decimals">
+                 <number>2</number>
+                </property>
+                <property name="minimum">
+                 <double>-100.000000000000000</double>
+                </property>
+                <property name="maximum">
+                 <double>100.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+                <property name="value">
+                 <double>0.000000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="7" column="3">
+               <widget class="NoWheelDoubleSpinBox" name="pressure3_ramp_up">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string> bar/s</string>
+                </property>
+                <property name="decimals">
+                 <number>2</number>
+                </property>
+                <property name="minimum">
+                 <double>-100.000000000000000</double>
+                </property>
+                <property name="maximum">
+                 <double>100.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+                <property name="value">
+                 <double>0.000000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="7" column="4">
+               <widget class="NoWheelDoubleSpinBox" name="pressure4_ramp_up">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string> bar/s</string>
+                </property>
+                <property name="decimals">
+                 <number>2</number>
+                </property>
+                <property name="minimum">
+                 <double>-100.000000000000000</double>
+                </property>
+                <property name="maximum">
+                 <double>100.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+                <property name="value">
+                 <double>0.000000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="7" column="5">
+               <widget class="NoWheelDoubleSpinBox" name="pressure5_ramp_up">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string> bar/s</string>
+                </property>
+                <property name="decimals">
+                 <number>2</number>
+                </property>
+                <property name="minimum">
+                 <double>-100.000000000000000</double>
+                </property>
+                <property name="maximum">
+                 <double>100.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+                <property name="value">
+                 <double>0.000000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="7" column="6">
+               <widget class="NoWheelDoubleSpinBox" name="pressure6_ramp_up">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string> bar/s</string>
+                </property>
+                <property name="decimals">
+                 <number>2</number>
+                </property>
+                <property name="minimum">
+                 <double>-100.000000000000000</double>
+                </property>
+                <property name="maximum">
+                 <double>100.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+                <property name="value">
+                 <double>0.000000000000000</double>
+                </property>
                </widget>
               </item>
              </layout>
@@ -1582,29 +1748,193 @@
               <property name="spacing">
                <number>3</number>
               </property>
-              <item row="11" column="5">
-               <widget class="NoWheelSpinBox" name="PCYCLE_ABORT_FF_box">
+              <item row="3" column="5">
+               <widget class="NoWheelDoubleSpinBox" name="pc_abort_timeout_box">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string> s</string>
+                </property>
+                <property name="decimals">
+                 <number>1</number>
+                </property>
+                <property name="maximum">
+                 <double>100000.000000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="11" column="3">
+               <widget class="NoWheelSpinBox" name="PCYCLE_PSET_RAMP1_reg_box">
                 <property name="maximum">
                  <number>99999</number>
                 </property>
                </widget>
               </item>
-              <item row="10" column="3">
-               <widget class="NoWheelSpinBox" name="PCYCLE_MAXEQTIME_box">
+              <item row="15" column="5">
+               <widget class="NoWheelSpinBox" name="PCYCLE_ABORT_FF_reg_box">
                 <property name="maximum">
                  <number>99999</number>
                 </property>
                </widget>
               </item>
-              <item row="10" column="5">
-               <widget class="NoWheelSpinBox" name="SLOWDAQ_FF_box">
+              <item row="11" column="0">
+               <widget class="QLabel" name="LED3_OUT_PRE_reg_label">
+                <property name="text">
+                 <string>LED3_OUT_PRE</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="5">
+               <widget class="QDoubleSpinBox" name="led3_out_box">
+                <property name="suffix">
+                 <string> V</string>
+                </property>
+                <property name="maximum">
+                 <double>10.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.010000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="17" column="5">
+               <widget class="NoWheelSpinBox" name="PCYCLE_SLOWCOMP_FF_reg_box">
+                <property name="maximum">
+                 <number>99999</number>
+                </property>
+               </widget>
+              </item>
+              <item row="14" column="2">
+               <widget class="QLabel" name="LED1_OUT_reg_label">
+                <property name="text">
+                 <string>LED1_OUT</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="15" column="0">
+               <widget class="QLabel" name="LED_POST_TIME_reg_label">
+                <property name="text">
+                 <string>LED_POST_TIME</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="14" column="4">
+               <widget class="QLabel" name="SLOWDAQ_FF_reg_label">
+                <property name="text">
+                 <string>SLOWDAQ_FF</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="9" column="4">
+               <widget class="QLabel" name="WRITE_SLOWDAQ_reg_label">
+                <property name="text">
+                 <string>WRITE_SLOWDAQ</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="8" column="0" colspan="6">
+               <widget class="QLabel" name="plc_registers_label">
+                <property name="font">
+                 <font>
+                  <bold>false</bold>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>Registers</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="5">
+               <widget class="NoWheelSpinBox" name="plc_modbus_port_box">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="maximum">
+                 <number>65535</number>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="3">
+               <widget class="QDoubleSpinBox" name="led2_out_box">
+                <property name="suffix">
+                 <string> V</string>
+                </property>
+                <property name="maximum">
+                 <double>10.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.010000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="7" column="1">
+               <widget class="NoWheelDoubleSpinBox" name="led_out_max_box">
+                <property name="suffix">
+                 <string> V</string>
+                </property>
+                <property name="maximum">
+                 <double>10.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.010000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="13" column="2">
+               <widget class="QLabel" name="PCYCLE_PSET_RAMPUP_reg_label">
+                <property name="text">
+                 <string>PCYCLE_PSET_RAMPUP</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="9" column="1">
+               <widget class="NoWheelSpinBox" name="LED1_OUT_PRE_reg_box">
+                <property name="maximum">
+                 <number>99999</number>
+                </property>
+               </widget>
+              </item>
+              <item row="9" column="5">
+               <widget class="NoWheelSpinBox" name="WRITE_SLOWDAQ_reg_box">
                 <property name="maximum">
                  <number>99999</number>
                 </property>
                </widget>
               </item>
               <item row="12" column="4">
-               <widget class="QLabel" name="PCYCLE_FASTCOMP_FF_label">
+               <widget class="QLabel" name="TS_EMPTY_FF_reg_label">
+                <property name="text">
+                 <string>TS_EMPTY_FF</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="16" column="4">
+               <widget class="QLabel" name="PCYCLE_FASTCOMP_FF_reg_label">
                 <property name="text">
                  <string>PCYCLE_FASTCOMP_FF</string>
                 </property>
@@ -1613,36 +1943,41 @@
                 </property>
                </widget>
               </item>
-              <item row="7" column="2">
-               <widget class="QLabel" name="PCYCLE_PSET_label">
+              <item row="12" column="1">
+               <widget class="NoWheelSpinBox" name="LED1_OUT_POST_reg_box">
+                <property name="maximum">
+                 <number>99999</number>
+                </property>
+               </widget>
+              </item>
+              <item row="16" column="3">
+               <widget class="NoWheelSpinBox" name="LED3_OUT_reg_box">
+                <property name="maximum">
+                 <number>99999</number>
+                </property>
+               </widget>
+              </item>
+              <item row="10" column="3">
+               <widget class="NoWheelSpinBox" name="PCYCLE_PSET_HIGH_reg_box">
+                <property name="maximum">
+                 <number>99999</number>
+                </property>
+               </widget>
+              </item>
+              <item row="12" column="0">
+               <widget class="QLabel" name="LED1_OUT_POST_reg_label">
                 <property name="text">
-                 <string>PCYCLE_PSET</string>
+                 <string>LED1_OUT_POST</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                </widget>
               </item>
-              <item row="13" column="4">
-               <widget class="QLabel" name="PCYCLE_SLOWCOMP_FF_label">
-                <property name="text">
-                 <string>PCYCLE_SLOWCOMP_FF</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="4">
-               <widget class="QLabel" name="plc_modbus_port_label">
-                <property name="text">
-                 <string>Modbus Port</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>plc_modbus_port_box</cstring>
+              <item row="11" column="5">
+               <widget class="NoWheelSpinBox" name="TS_ADDREM_FF_reg_box">
+                <property name="maximum">
+                 <number>99999</number>
                 </property>
                </widget>
               </item>
@@ -1659,226 +1994,47 @@
                 </property>
                </widget>
               </item>
+              <item row="17" column="4">
+               <widget class="QLabel" name="PCYCLE_SLOWCOMP_FF_reg_label">
+                <property name="text">
+                 <string>PCYCLE_SLOWCOMP_FF</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
               <item row="16" column="5">
-               <widget class="NoWheelSpinBox" name="PCYCLE_ACCHARGE_FF_box">
-                <property name="maximum">
-                 <number>99999</number>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="5">
-               <widget class="NoWheelSpinBox" name="plc_modbus_port_box">
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="maximum">
-                 <number>65535</number>
-                </property>
-               </widget>
-              </item>
-              <item row="15" column="5">
-               <widget class="NoWheelSpinBox" name="PCYCLE_CYLBLEED_FF_box">
-                <property name="maximum">
-                 <number>99999</number>
-                </property>
-               </widget>
-              </item>
-              <item row="13" column="5">
-               <widget class="NoWheelSpinBox" name="PCYCLE_SLOWCOMP_FF_box">
-                <property name="maximum">
-                 <number>99999</number>
-                </property>
-               </widget>
-              </item>
-              <item row="11" column="2">
-               <widget class="QLabel" name="PCYCLE_MAXEQPDIFF_label">
-                <property name="text">
-                 <string>PCYCLE_MAXEQPDIFF</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="7" column="5">
-               <widget class="NoWheelSpinBox" name="TS_ADDREM_FF_box">
-                <property name="maximum">
-                 <number>99999</number>
-                </property>
-               </widget>
-              </item>
-              <item row="10" column="4">
-               <widget class="QLabel" name="SLOWDAQ_FF_label">
-                <property name="text">
-                 <string>SLOWDAQ_FF</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="8" column="1">
-               <widget class="NoWheelSpinBox" name="PRESSURE_CYCLE_box">
-                <property name="maximum">
-                 <number>99999</number>
-                </property>
-               </widget>
-              </item>
-              <item row="16" column="3">
-               <widget class="NoWheelSpinBox" name="PCYCLE_SLOWCOMP_SET_box">
-                <property name="maximum">
-                 <number>99999</number>
-                </property>
-               </widget>
-              </item>
-              <item row="9" column="5">
-               <widget class="NoWheelSpinBox" name="TS_EMPTYALL_FF_box">
-                <property name="maximum">
-                 <number>99999</number>
-                </property>
-               </widget>
-              </item>
-              <item row="12" column="5">
-               <widget class="NoWheelSpinBox" name="PCYCLE_FASTCOMP_FF_box">
-                <property name="maximum">
-                 <number>99999</number>
-                </property>
-               </widget>
-              </item>
-              <item row="12" column="0">
-               <widget class="QLabel" name="LED_MAX_label">
-                <property name="text">
-                 <string>LED_MAX</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="11" column="3">
-               <widget class="NoWheelSpinBox" name="PCYCLE_MAXEQPDIFF_box">
+               <widget class="NoWheelSpinBox" name="PCYCLE_FASTCOMP_FF_reg_box">
                 <property name="maximum">
                  <number>99999</number>
                 </property>
                </widget>
               </item>
               <item row="12" column="2">
-               <widget class="QLabel" name="PCYCLE_MAXACCTIME_label">
+               <widget class="QLabel" name="PCYCLE_PSET_RAMPDOWN_reg_label">
                 <property name="text">
-                 <string>PCYCLE_MAXACCTIME</string>
+                 <string>PCYCLE_PSET_RAMPDOWN</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="11" column="4">
-               <widget class="QLabel" name="PCYCLE_ABORT_FF_label">
-                <property name="text">
-                 <string>PCYCLE_ABORT_FF</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="16" column="4">
-               <widget class="QLabel" name="PCYCLE_ACCHARGE_FF_label">
-                <property name="text">
-                 <string>PCYCLE_ACCHARGE_FF</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="8" column="2">
-               <widget class="QLabel" name="PCYCLE_EXPTIME_label">
-                <property name="text">
-                 <string>PCYCLE_EXPTIME</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="1" colspan="3">
-               <widget class="QLineEdit" name="plc_hostname_edit"/>
-              </item>
-              <item row="11" column="0">
-               <widget class="QLabel" name="LED3_OUT_label">
-                <property name="text">
-                 <string>LED3_OUT</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="8" column="3">
-               <widget class="NoWheelSpinBox" name="PCYCLE_EXPTIME_box">
-                <property name="maximum">
-                 <number>99999</number>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="3">
-               <widget class="QLineEdit" name="smb_filename_edit"/>
-              </item>
-              <item row="8" column="0">
-               <widget class="QLabel" name="PRESSURE_CYCLE_label">
-                <property name="text">
-                 <string>PRESSURE_CYCLE</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="15" column="4">
-               <widget class="QLabel" name="PCYCLE_CYLBLEED_FF_label">
-                <property name="text">
-                 <string>PCYCLE_CYLBLEED_FF</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="4">
-               <widget class="QLabel" name="pc_abort_timeout_label">
-                <property name="text">
-                 <string>PC Abort Timeout</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>max_num_ev_box</cstring>
                 </property>
                </widget>
               </item>
               <item row="15" column="2">
-               <widget class="QLabel" name="PCYCLE_MAXBLEEDDPDT_label">
+               <widget class="QLabel" name="LED2_OUT_reg_label">
                 <property name="text">
-                 <string>PCYCLE_MAXBLEEDDPDT</string>
+                 <string>LED2_OUT</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                </widget>
               </item>
-              <item row="8" column="5">
-               <widget class="NoWheelSpinBox" name="TS_EMPTY_FF_box">
-                <property name="maximum">
-                 <number>99999</number>
-                </property>
-               </widget>
-              </item>
-              <item row="7" column="4">
-               <widget class="QLabel" name="TS_ADDREM_FF_label">
+              <item row="11" column="2">
+               <widget class="QLabel" name="PCYCLE_PSET_RAMP1_reg_label">
                 <property name="text">
-                 <string>TS_ADDREM_FF</string>
+                 <string>PCYCLE_PSET_RAMP1</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
@@ -1900,51 +2056,63 @@
                 </property>
                </widget>
               </item>
-              <item row="10" column="1">
-               <widget class="NoWheelSpinBox" name="LED2_OUT_box">
-                <property name="maximum">
-                 <number>99999</number>
-                </property>
-               </widget>
-              </item>
-              <item row="8" column="4">
-               <widget class="QLabel" name="TS_EMPTY_FF_label">
+              <item row="13" column="0">
+               <widget class="QLabel" name="LED2_OUT_POST_reg_label">
                 <property name="text">
-                 <string>TS_EMPTY_FF</string>
+                 <string>LED2_OUT_POST</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                </widget>
               </item>
-              <item row="14" column="3">
-               <widget class="NoWheelSpinBox" name="PCYCLE_MAXBLEEDTIME_box">
+              <item row="14" column="1">
+               <widget class="NoWheelSpinBox" name="LED3_OUT_POST_reg_box">
                 <property name="maximum">
                  <number>99999</number>
                 </property>
                </widget>
               </item>
-              <item row="7" column="3">
-               <widget class="NoWheelSpinBox" name="PCYCLE_PSET_box">
+              <item row="4" column="1">
+               <widget class="NoWheelDoubleSpinBox" name="led1_out_box">
+                <property name="suffix">
+                 <string> V</string>
+                </property>
                 <property name="maximum">
-                 <number>99999</number>
+                 <double>10.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.010000000000000</double>
                 </property>
                </widget>
               </item>
-              <item row="13" column="2">
-               <widget class="QLabel" name="PCYCLE_MAXACCDPDT_label">
+              <item row="5" column="0">
+               <widget class="QLabel" name="led1_out_pre_label">
                 <property name="text">
-                 <string>PCYCLE_MAXACCDPDT</string>
+                 <string>LED1 Out Pre</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                </widget>
               </item>
-              <item row="16" column="2">
-               <widget class="QLabel" name="PCYCLE_SLOWCOMP_SET_label">
+              <item row="10" column="4">
+               <widget class="QLabel" name="PRESSURE_CYCLE_reg_label">
                 <property name="text">
-                 <string>PCYCLE_SLOWCOMP_SET</string>
+                 <string>PRESSURE_CYCLE</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1" colspan="3">
+               <widget class="QLineEdit" name="plc_hostname_edit"/>
+              </item>
+              <item row="10" column="2">
+               <widget class="QLabel" name="PCYCLE_PSET_HIGH_reg_label">
+                <property name="text">
+                 <string>PCYCLE_PSET_HIGH</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
@@ -1952,57 +2120,208 @@
                </widget>
               </item>
               <item row="9" column="0">
-               <widget class="QLabel" name="LED1_OUT_label">
+               <widget class="QLabel" name="LED1_OUT_PRE_reg_label">
                 <property name="text">
-                 <string>LED1_OUT</string>
+                 <string>LED1_OUT_PRE</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                </widget>
               </item>
-              <item row="9" column="3">
-               <widget class="NoWheelSpinBox" name="PCYCLE_MAXEXPTIME_box">
-                <property name="maximum">
-                 <number>99999</number>
-                </property>
-               </widget>
-              </item>
-              <item row="14" column="4">
-               <widget class="QLabel" name="PCYCLE_CYLEQ_FF_label">
+              <item row="1" column="4">
+               <widget class="QLabel" name="plc_modbus_port_label">
                 <property name="text">
-                 <string>PCYCLE_CYLEQ_FF</string>
+                 <string>Modbus Port</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>plc_modbus_port_box</cstring>
                 </property>
                </widget>
               </item>
               <item row="11" column="1">
-               <widget class="NoWheelSpinBox" name="LED3_OUT_box">
+               <widget class="NoWheelSpinBox" name="LED3_OUT_PRE_reg_box">
                 <property name="maximum">
                  <number>99999</number>
                 </property>
                </widget>
               </item>
-              <item row="3" column="5">
-               <widget class="NoWheelDoubleSpinBox" name="pc_abort_timeout_box">
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="suffix">
-                 <string> s</string>
-                </property>
-                <property name="decimals">
-                 <number>1</number>
-                </property>
+              <item row="12" column="5">
+               <widget class="NoWheelSpinBox" name="TS_EMPTY_FF_reg_box">
                 <property name="maximum">
-                 <double>100000.000000000000000</double>
+                 <number>99999</number>
                 </property>
                </widget>
               </item>
-              <item row="12" column="1">
-               <widget class="NoWheelSpinBox" name="LED_MAX_box">
+              <item row="10" column="0">
+               <widget class="QLabel" name="LED2_OUT_PRE_reg_label">
+                <property name="text">
+                 <string>LED2_OUT_PRE</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="15" column="4">
+               <widget class="QLabel" name="PCYCLE_ABORT_FF_reg_label">
+                <property name="text">
+                 <string>PCYCLE_ABORT_FF</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="17" column="2">
+               <widget class="QLabel" name="LED_MAX_reg_label">
+                <property name="text">
+                 <string>LED_MAX</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="15" column="1">
+               <widget class="NoWheelSpinBox" name="LED_POST_TIME_reg_box">
+                <property name="maximum">
+                 <number>99999</number>
+                </property>
+               </widget>
+              </item>
+              <item row="12" column="3">
+               <widget class="NoWheelSpinBox" name="PCYCLE_PSET_RAMPDOWN_reg_box">
+                <property name="maximum">
+                 <number>99999</number>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="2">
+               <widget class="QCheckBox" name="led2_out_enabled">
+                <property name="layoutDirection">
+                 <enum>Qt::LayoutDirection::RightToLeft</enum>
+                </property>
+                <property name="text">
+                 <string>LED2 Out</string>
+                </property>
+               </widget>
+              </item>
+              <item row="13" column="5">
+               <widget class="NoWheelSpinBox" name="TS_EMPTYALL_FF_reg_box">
+                <property name="maximum">
+                 <number>99999</number>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="2">
+               <widget class="QLabel" name="smb_filename_label">
+                <property name="text">
+                 <string>SMB Filename</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>max_num_ev_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QLabel" name="smb_share_label">
+                <property name="text">
+                 <string>SMB Share</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>max_num_ev_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="11" column="4">
+               <widget class="QLabel" name="TS_ADDREM_FF_reg_label">
+                <property name="text">
+                 <string>TS_ADDREM_FF</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="14" column="0">
+               <widget class="QLabel" name="LED3_OUT_POST_reg_label">
+                <property name="text">
+                 <string>LED3_OUT_POST</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="13" column="4">
+               <widget class="QLabel" name="TS_EMPTYALL_FF_reg_label">
+                <property name="text">
+                 <string>TS_EMPTYALL_FF</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="10" column="5">
+               <widget class="NoWheelSpinBox" name="PRESSURE_CYCLE_reg_box">
+                <property name="maximum">
+                 <number>99999</number>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="plc_hostname_label">
+                <property name="text">
+                 <string>Hostname</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>plc_hostname_edit</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="QLineEdit" name="smb_share_edit"/>
+              </item>
+              <item row="9" column="3">
+               <widget class="NoWheelSpinBox" name="PCYCLE_PSET_LOW_reg_box">
+                <property name="maximum">
+                 <number>99999</number>
+                </property>
+               </widget>
+              </item>
+              <item row="17" column="3">
+               <widget class="NoWheelSpinBox" name="LED_MAX_reg_box">
+                <property name="maximum">
+                 <number>99999</number>
+                </property>
+               </widget>
+              </item>
+              <item row="7" column="0">
+               <widget class="QLabel" name="led_out_max_label">
+                <property name="text">
+                 <string>LED Max</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="15" column="3">
+               <widget class="NoWheelSpinBox" name="LED2_OUT_reg_box">
                 <property name="maximum">
                  <number>99999</number>
                 </property>
@@ -2024,127 +2343,18 @@
                 </property>
                </widget>
               </item>
-              <item row="14" column="5">
-               <widget class="NoWheelSpinBox" name="PCYCLE_CYLEQ_FF_box">
-                <property name="maximum">
-                 <number>99999</number>
-                </property>
-               </widget>
-              </item>
-              <item row="10" column="0">
-               <widget class="QLabel" name="LED2_OUT_label">
+              <item row="16" column="2">
+               <widget class="QLabel" name="LED3_OUT_reg_label">
                 <property name="text">
-                 <string>LED2_OUT</string>
+                 <string>LED3_OUT</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                </widget>
               </item>
-              <item row="9" column="1">
-               <widget class="NoWheelSpinBox" name="LED1_OUT_box">
-                <property name="maximum">
-                 <number>99999</number>
-                </property>
-               </widget>
-              </item>
-              <item row="7" column="1">
-               <widget class="NoWheelSpinBox" name="WRITE_SLOWDAQ_box">
-                <property name="maximum">
-                 <number>99999</number>
-                </property>
-               </widget>
-              </item>
-              <item row="12" column="3">
-               <widget class="NoWheelSpinBox" name="PCYCLE_MAXACCTIME_box">
-                <property name="maximum">
-                 <number>99999</number>
-                </property>
-               </widget>
-              </item>
-              <item row="14" column="2">
-               <widget class="QLabel" name="PCYCLE_MAXBLEEDTIME_label">
-                <property name="text">
-                 <string>PCYCLE_MAXBLEEDTIME</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="1">
-               <widget class="QLineEdit" name="smb_share_edit"/>
-              </item>
-              <item row="2" column="0">
-               <widget class="QLabel" name="smb_share_label">
-                <property name="text">
-                 <string>SMB Share</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>max_num_ev_box</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="10" column="2">
-               <widget class="QLabel" name="PCYCLE_MAXEQTIME_label">
-                <property name="text">
-                 <string>PCYCLE_MAXEQTIME</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="15" column="3">
-               <widget class="NoWheelSpinBox" name="PCYCLE_MAXBLEEDDPDT_box">
-                <property name="maximum">
-                 <number>99999</number>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="0">
-               <widget class="QLabel" name="plc_hostname_label">
-                <property name="text">
-                 <string>Hostname</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>plc_hostname_edit</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="2">
-               <widget class="QLabel" name="smb_filename_label">
-                <property name="text">
-                 <string>SMB Filename</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>max_num_ev_box</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="6" column="0" colspan="6">
-               <widget class="QLabel" name="plc_registers_label">
-                <property name="font">
-                 <font>
-                  <bold>false</bold>
-                 </font>
-                </property>
-                <property name="text">
-                 <string>Registers</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignCenter</set>
-                </property>
-               </widget>
+              <item row="2" column="3">
+               <widget class="QLineEdit" name="smb_filename_edit"/>
               </item>
               <item row="3" column="3">
                <widget class="NoWheelDoubleSpinBox" name="pc_stop_timeout_box">
@@ -2162,30 +2372,74 @@
                 </property>
                </widget>
               </item>
-              <item row="9" column="4">
-               <widget class="QLabel" name="TS_EMPTYALL_FF_label">
-                <property name="text">
-                 <string>TS_EMPTYALL_FF</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+              <item row="13" column="1">
+               <widget class="NoWheelSpinBox" name="LED2_OUT_POST_reg_box">
+                <property name="maximum">
+                 <number>99999</number>
                 </property>
                </widget>
               </item>
-              <item row="13" column="3">
-               <widget class="NoWheelSpinBox" name="PCYCLE_MAXACCDPDT_box">
+              <item row="14" column="5">
+               <widget class="NoWheelSpinBox" name="SLOWDAQ_FF_reg_box">
                 <property name="maximum">
                  <number>99999</number>
                 </property>
                </widget>
               </item>
               <item row="9" column="2">
-               <widget class="QLabel" name="PCYCLE_MAXEXPTIME_label">
+               <widget class="QLabel" name="PCYCLE_PSET_LOW_reg_label">
                 <property name="text">
-                 <string>PCYCLE_MAXEXPTIME</string>
+                 <string>PCYCLE_PSET_LOW</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="0">
+               <widget class="QCheckBox" name="led1_out_enabled">
+                <property name="layoutDirection">
+                 <enum>Qt::LayoutDirection::RightToLeft</enum>
+                </property>
+                <property name="text">
+                 <string>LED1 Out</string>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="4">
+               <widget class="QCheckBox" name="led3_out_enabled">
+                <property name="layoutDirection">
+                 <enum>Qt::LayoutDirection::RightToLeft</enum>
+                </property>
+                <property name="text">
+                 <string>LED3 Out</string>
+                </property>
+               </widget>
+              </item>
+              <item row="10" column="1">
+               <widget class="NoWheelSpinBox" name="LED2_OUT_PRE_reg_box">
+                <property name="maximum">
+                 <number>99999</number>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="4">
+               <widget class="QLabel" name="pc_abort_timeout_label">
+                <property name="text">
+                 <string>PC Abort Timeout</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>max_num_ev_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="13" column="3">
+               <widget class="NoWheelSpinBox" name="PCYCLE_PSET_RAMPUP_reg_box">
+                <property name="maximum">
+                 <number>99999</number>
                 </property>
                </widget>
               </item>
@@ -2202,67 +2456,48 @@
                 </property>
                </widget>
               </item>
-              <item row="7" column="0">
-               <widget class="QLabel" name="WRITE_SLOWDAQ_label">
+              <item row="14" column="3">
+               <widget class="NoWheelSpinBox" name="LED1_OUT_reg_box">
+                <property name="maximum">
+                 <number>99999</number>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="0">
+               <widget class="QLabel" name="led1_out_post_label">
                 <property name="text">
-                 <string>WRITE_SLOWDAQ</string>
+                 <string>LED1 Out Post</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                </widget>
               </item>
-              <item row="5" column="0">
-               <widget class="QLabel" name="led_control_max_label">
+              <item row="7" column="2">
+               <widget class="QLabel" name="led_post_time_label">
                 <property name="text">
-                 <string>LED Max</string>
+                 <string>LED Post Time</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                </widget>
               </item>
-              <item row="4" column="1">
-               <widget class="NoWheelDoubleSpinBox" name="led1_control_box">
+              <item row="7" column="3">
+               <widget class="NoWheelDoubleSpinBox" name="led_post_time_box">
                 <property name="suffix">
-                 <string> V</string>
+                 <string> s</string>
                 </property>
                 <property name="maximum">
-                 <double>10.000000000000000</double>
+                 <double>99999.000000000000000</double>
                 </property>
                 <property name="singleStep">
-                 <double>0.010000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="3">
-               <widget class="QDoubleSpinBox" name="led2_control_box">
-                <property name="suffix">
-                 <string> V</string>
-                </property>
-                <property name="maximum">
-                 <double>10.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.010000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="5">
-               <widget class="QDoubleSpinBox" name="led3_control_box">
-                <property name="suffix">
-                 <string> V</string>
-                </property>
-                <property name="maximum">
-                 <double>10.000000000000000</double>
-                </property>
-                <property name="singleStep">
-                 <double>0.010000000000000</double>
+                 <double>1.000000000000000</double>
                 </property>
                </widget>
               </item>
               <item row="5" column="1">
-               <widget class="NoWheelDoubleSpinBox" name="led_control_max_box">
+               <widget class="NoWheelDoubleSpinBox" name="led1_out_pre_box">
                 <property name="suffix">
                  <string> V</string>
                 </property>
@@ -2274,33 +2509,108 @@
                 </property>
                </widget>
               </item>
-              <item row="4" column="0">
-               <widget class="QCheckBox" name="led1_control_enabled">
-                <property name="layoutDirection">
-                 <enum>Qt::LayoutDirection::RightToLeft</enum>
+              <item row="6" column="1">
+               <widget class="NoWheelDoubleSpinBox" name="led1_out_post_box">
+                <property name="suffix">
+                 <string> V</string>
                 </property>
-                <property name="text">
-                 <string>LED1 Control</string>
+                <property name="maximum">
+                 <double>10.000000000000000</double>
                 </property>
-               </widget>
-              </item>
-              <item row="4" column="2">
-               <widget class="QCheckBox" name="led2_control_enabled">
-                <property name="layoutDirection">
-                 <enum>Qt::LayoutDirection::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>LED2 Control</string>
+                <property name="singleStep">
+                 <double>0.010000000000000</double>
                 </property>
                </widget>
               </item>
-              <item row="4" column="4">
-               <widget class="QCheckBox" name="led3_control_enabled">
-                <property name="layoutDirection">
-                 <enum>Qt::LayoutDirection::RightToLeft</enum>
+              <item row="5" column="3">
+               <widget class="NoWheelDoubleSpinBox" name="led2_out_pre_box">
+                <property name="suffix">
+                 <string> V</string>
                 </property>
+                <property name="maximum">
+                 <double>10.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.010000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="3">
+               <widget class="NoWheelDoubleSpinBox" name="led2_out_post_box">
+                <property name="suffix">
+                 <string> V</string>
+                </property>
+                <property name="maximum">
+                 <double>10.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.010000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="5">
+               <widget class="NoWheelDoubleSpinBox" name="led3_out_post_box">
+                <property name="suffix">
+                 <string> V</string>
+                </property>
+                <property name="maximum">
+                 <double>10.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.010000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="5">
+               <widget class="NoWheelDoubleSpinBox" name="led3_out_pre_box">
+                <property name="suffix">
+                 <string> V</string>
+                </property>
+                <property name="maximum">
+                 <double>10.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.010000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="2">
+               <widget class="QLabel" name="led2_out_pre_label">
                 <property name="text">
-                 <string>LED3 Control</string>
+                 <string>LED2 Out Pre</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="2">
+               <widget class="QLabel" name="led2_out_post_label">
+                <property name="text">
+                 <string>LED2 Out Post</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="4">
+               <widget class="QLabel" name="led3_out_post_label">
+                <property name="text">
+                 <string>LED3 Out Post</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="4">
+               <widget class="QLabel" name="led3_out_pre_label">
+                <property name="text">
+                 <string>LED3 Out Pre</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                </widget>
               </item>
@@ -2357,7 +2667,7 @@
            <property name="geometry">
             <rect>
              <x>0</x>
-             <y>-451</y>
+             <y>0</y>
              <width>876</width>
              <height>1203</height>
             </rect>
@@ -17983,60 +18293,28 @@
   <tabstop>sql_hostname_edit</tabstop>
   <tabstop>sql_port_box</tabstop>
   <tabstop>plc_scroll_area</tabstop>
-  <tabstop>pressure1_set</tabstop>
-  <tabstop>pressure3_slope</tabstop>
-  <tabstop>pressure2_set</tabstop>
-  <tabstop>pressure4_slope</tabstop>
-  <tabstop>pressure4_period</tabstop>
+  <tabstop>pressure1_low</tabstop>
+  <tabstop>pressure2_low</tabstop>
   <tabstop>pressure6_high</tabstop>
-  <tabstop>pressure3_set</tabstop>
+  <tabstop>pressure3_low</tabstop>
   <tabstop>pressure2_high</tabstop>
   <tabstop>pressure5_enable</tabstop>
   <tabstop>pressure4_enable</tabstop>
-  <tabstop>pressure2_period</tabstop>
-  <tabstop>pressure6_set</tabstop>
-  <tabstop>pressure6_slope</tabstop>
-  <tabstop>pressure3_period</tabstop>
-  <tabstop>pressure1_slope</tabstop>
-  <tabstop>pressure1_period</tabstop>
-  <tabstop>pressure6_period</tabstop>
+  <tabstop>pressure6_low</tabstop>
+  <tabstop>pressure1_ramp1</tabstop>
+  <tabstop>pressure1_ramp_down</tabstop>
   <tabstop>pressure1_high</tabstop>
   <tabstop>pressure6_enable</tabstop>
   <tabstop>pressure3_enable</tabstop>
-  <tabstop>pressure5_set</tabstop>
-  <tabstop>pressure5_period</tabstop>
-  <tabstop>pressure4_set</tabstop>
+  <tabstop>pressure5_low</tabstop>
+  <tabstop>pressure4_low</tabstop>
   <tabstop>pressure1_enable</tabstop>
   <tabstop>pressure2_enable</tabstop>
-  <tabstop>pressure2_slope</tabstop>
   <tabstop>pressure3_high</tabstop>
-  <tabstop>pressure5_slope</tabstop>
   <tabstop>pressure5_high</tabstop>
   <tabstop>pressure4_high</tabstop>
-  <tabstop>PCYCLE_MAXACCDPDT_box</tabstop>
   <tabstop>plc_hostname_edit</tabstop>
-  <tabstop>TS_EMPTY_FF_box</tabstop>
-  <tabstop>PCYCLE_MAXEQTIME_box</tabstop>
-  <tabstop>SLOWDAQ_FF_box</tabstop>
-  <tabstop>WRITE_SLOWDAQ_box</tabstop>
-  <tabstop>PRESSURE_CYCLE_box</tabstop>
-  <tabstop>PCYCLE_SLOWCOMP_FF_box</tabstop>
-  <tabstop>PCYCLE_MAXACCTIME_box</tabstop>
-  <tabstop>PCYCLE_MAXEXPTIME_box</tabstop>
-  <tabstop>PCYCLE_MAXBLEEDTIME_box</tabstop>
-  <tabstop>PCYCLE_EXPTIME_box</tabstop>
-  <tabstop>PCYCLE_PSET_box</tabstop>
-  <tabstop>PCYCLE_CYLEQ_FF_box</tabstop>
-  <tabstop>PCYCLE_ABORT_FF_box</tabstop>
-  <tabstop>PCYCLE_SLOWCOMP_SET_box</tabstop>
-  <tabstop>PCYCLE_FASTCOMP_FF_box</tabstop>
-  <tabstop>PCYCLE_MAXEQPDIFF_box</tabstop>
-  <tabstop>TS_EMPTYALL_FF_box</tabstop>
   <tabstop>plc_modbus_port_box</tabstop>
-  <tabstop>TS_ADDREM_FF_box</tabstop>
-  <tabstop>PCYCLE_MAXBLEEDDPDT_box</tabstop>
-  <tabstop>PCYCLE_CYLBLEED_FF_box</tabstop>
-  <tabstop>PCYCLE_ACCHARGE_FF_box</tabstop>
   <tabstop>sipm_scroll_area</tabstop>
   <tabstop>sipm_amp1_enabled_box</tabstop>
   <tabstop>sipm_amp1_iv_enabled_box</tabstop>

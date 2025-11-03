@@ -50,19 +50,20 @@ class Writer(QObject):
             "ev_exit_code": self.main.event_exit_code,  # event exit code (int) e.g. 0
             "ev_livetime": self.main.event_livetime,  # event livetime (ms)
             "cum_livetime": self.main.run_livetime,  # cumulative livetime (ms)
-            "pset": self.main.config_class.event_pressure["setpoint"],  # pressure setpoint (float)
-            "pset_hi": self.main.config_class.event_pressure["setpoint_high"],  # pressure setpoint high (float)
-            "pset_slope": self.main.config_class.event_pressure["slope"],  # pressure setpoint slope (float)
-            "pset_period": self.main.config_class.event_pressure["period"],  # pressure setpoint period (float)
+            "pset_lo": self.main.config_class.event_pressure["setpoint_lo"],  # pressure setpoint lo (float)
+            "pset_hi": self.main.config_class.event_pressure["setpoint_hi"],  # pressure setpoint high (float)
+            "pset_ramp1": self.main.config_class.event_pressure["ramp1"],  # pressure setpoint ramp to pset_hi (float)
+            "pset_ramp_down": self.main.config_class.event_pressure["ramp_down"],  # pressure setpoint ramp down (float)
+            "pset_ramp_up": self.main.config_class.event_pressure["ramp_up"],  # pressure setpoint ramp up (float)
             "start_time": self.main.event_start_time.timestamp(),  # event start time (float)
             "end_time": self.main.event_end_time.timestamp(),  # event end time (float)
             "trigger_source": self.main.ui.trigger_edit.text(),  # trigger source (str)
         }
         headers = ["run_id", "event_id", "ev_exit_code", "ev_livetime", "cum_livetime",
-                   "pset", "pset_hi", "pset_slope", "pset_period",
+                   "pset", "pset_hi", "pset_ramp1", "pset_ramp_down", "pset_ramp_up",
                    "start_time", "end_time", "trigger_source"]
-        dtypes = ["U100", "u4", "u1", "u8", "u8", "f", "f", "f", "f", "d", "d", "U100"]
-        shapes = [[1], [1], [1], [1], [1], [1], [1], [1], [1], [1], [1], [1]]
+        dtypes = ["U100", "u4", "u1", "u8", "u8", "f", "f", "f", "f", "f", "d", "d", "U100"]
+        shapes = [[1], [1], [1], [1], [1], [1], [1], [1], [1], [1], [1], [1], [1]]
         with SBCWriter(
                 os.path.join(self.main.event_dir, f"event_info.sbc"),
                 headers, dtypes, shapes,

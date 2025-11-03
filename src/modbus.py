@@ -100,8 +100,14 @@ class Modbus(QObject):
             self.logger.error(f"SLOW DAQ process start failed.")
             self.error.emit(ErrorCodes.PLC_SLOWDAQ_START_FAILED)
 
-        if (self._write_float(self.registers["PCYCLE_PSET"],
-                               self.config["pressure"]["profile1"]["setpoint"]) == True):
+        ret = True
+        ev_pressure = self.main.config_class.event_pressure
+        ret = ret and self._write_float(self.registers["PCYCLE_PSET_LOW"], ev_pressure["setpoint_lo"])
+        ret = ret and self._write_float(self.registers["PCYCLE_PSET_HIGH"], ev_pressure["setpoint_hi"])
+        ret = ret and self._write_float(self.registers["PCYCLE_PSET_RAMP1"], ev_pressure["ramp1"])
+        ret = ret and self._write_float(self.registers["PCYCLE_PSET_RAMP_DOWN"], ev_pressure["ramp_down"])
+        ret = ret and self._write_float(self.registers["PCYCLE_PSET_RAMP_UP"], ev_pressure["ramp_up"])
+        if ret:
             self.logger.debug(f"write of PSET is successful.")
         else:
             self.logger.error(f"write of PSET failed.")
@@ -111,16 +117,24 @@ class Modbus(QObject):
         
         # turn on LEDs
         ret = True
-        ret = ret and self._write_float(self.registers["LED_MAX"], self.config["led_control_max"])
+        ret = ret and self._write_float(self.registers["LED_MAX"], self.config["led_out_max"])
         ret = ret and self._write_float(self.registers["LED1_OUT"],
-            min(self.config["led1_control"], self.config["led_control_max"]) 
+            min(self.config["led1_out"], self.config["led_out_max"]) 
             if self.config["led1_enabled"] else 0)
         ret = ret and self._write_float(self.registers["LED2_OUT"],
-            min(self.config["led2_control"], self.config["led_control_max"])
+            min(self.config["led2_out"], self.config["led_out_max"])
             if self.config["led2_enabled"] else 0)
         ret = ret and self._write_float(self.registers["LED3_OUT"],
-            min(self.config["led3_control"], self.config["led_control_max"])
+            min(self.config["led3_out"], self.config["led_out_max"])
             if self.config["led3_enabled"] else 0)
+        ret = ret and self._write_float(self.registers["LED1_OUT_PRE"], self.config["led1_out_pre"])
+        ret = ret and self._write_float(self.registers["LED2_OUT_PRE"], self.config["led2_out_pre"])
+        ret = ret and self._write_float(self.registers["LED3_OUT_PRE"], self.config["led3_out_pre"])
+        ret = ret and self._write_float(self.registers["LED1_OUT_POST"], self.config["led1_out_post"])
+        ret = ret and self._write_float(self.registers["LED2_OUT_POST"], self.config["led2_out_post"])
+        ret = ret and self._write_float(self.registers["LED3_OUT_POST"], self.config["led3_out_post"])
+        ret = ret and self._write_float(self.registers["LED_POST_TIME"], self.config["led3_post_time"])
+
         if ret:
             self.logger.debug(f"Writing of LED control voltages successful.")
         else:
@@ -152,13 +166,21 @@ class Modbus(QObject):
             "LED2_OUT": self._read_float(self.registers["LED2_OUT"]),
             "LED3_OUT": self._read_float(self.registers["LED3_OUT"]),
             "LED_MAX": self._read_float(self.registers["LED_MAX"]),
+            "LED1_OUT_PRE": self._read_float(self.registers["LED1_OUT_PRE"]),
+            "LED2_OUT_PRE": self._read_float(self.registers["LED2_OUT_PRE"]),
+            "LED3_OUT_PRE": self._read_float(self.registers["LED3_OUT_PRE"]),
+            "LED1_OUT_POST": self._read_float(self.registers["LED1_OUT_POST"]),
+            "LED2_OUT_POST": self._read_float(self.registers["LED2_OUT_POST"]),
+            "LED3_OUT_POST": self._read_float(self.registers["LED3_OUT_POST"]),
+            "LED_POST_TIME": self._read_float(self.registers["LED_POST_TIME"]),
         }
 
         # write the plc_data in a file
         headers = ["SLOWDAQ_FF","PCYCLE_ABORT_FF","PCYCLE_FASTCOMP_FF","PCYCLE_SLOWCOMP_FF", "PCYCLE_PSET", 
-                   "PCYCLE_EXIT_CODE", "LED1_OUT", "LED2_OUT", "LED3_OUT", "LED_MAX"]
-        dtypes = [ "i1", "i1", "i1", "i1", "f", "u2", "f", "f", "f", "f"]
-        shapes = [[15], [15], [15], [15], [1], [1], [1], [1], [1], [1]]
+                   "PCYCLE_EXIT_CODE", "LED1_OUT", "LED2_OUT", "LED3_OUT", "LED_MAX",
+                   "LED1_OUT_PRE", "LED2_OUT_PRE", "LED3_OUT_PRE", "LED1_OUT_POST", "LED2_OUT_POST", "LED3_OUT_POST", "LED_POST_TIME"]
+        dtypes = [ "i1", "i1", "i1", "i1", "f", "u2", "f", "f", "f", "f", "f", "f", "f", "f", "f", "f", "f"]
+        shapes = [[15], [15], [15], [15], [1], [1], [1], [1], [1], [1], [1], [1], [1], [1], [1], [1], [1]]
         with SBCWriter(
                 os.path.join(
                     self.main.event_dir, "plc.sbc"

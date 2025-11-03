@@ -124,9 +124,9 @@ class SettingsWindow(QMainWindow):
         self.checkpair_acoustic = CheckBoxPairBinder(self.widgets["active_acous"], self.widgets["acous_enabled_box"])
 
         # LED checkboxes
-        self.checkpair_led1 = CheckBoxPairBinder(self.widgets["active_led1"], self.widgets["led1_control_enabled"])
-        self.checkpair_led2 = CheckBoxPairBinder(self.widgets["active_led2"], self.widgets["led2_control_enabled"])
-        self.checkpair_led3 = CheckBoxPairBinder(self.widgets["active_led3"], self.widgets["led3_control_enabled"])
+        self.checkpair_led1 = CheckBoxPairBinder(self.widgets["active_led1"], self.widgets["led1_out_enabled"])
+        self.checkpair_led2 = CheckBoxPairBinder(self.widgets["active_led2"], self.widgets["led2_out_enabled"])
+        self.checkpair_led3 = CheckBoxPairBinder(self.widgets["active_led3"], self.widgets["led3_out_enabled"])
 
         # Camera checkboxes
         self.checkpair_cam1 = CheckBoxPairBinder(self.widgets["active_cam1"], self.widgets["cam1_enabled_box"])
