@@ -197,8 +197,8 @@ class Caen(QObject):
             self.run_stopped.emit(f"caen-disabled")
             return
         
-        del self.caen
-        del self.buffer
-        del self.global_config
-        del self.group_configs
+        self.caen = None
+        self.buffer = None
+        self.global_config = None
+        self.group_configs = None
         self.run_stopped.emit("caen")
