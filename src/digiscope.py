@@ -28,10 +28,11 @@ class Digiscope(QObject):
 
     def poll(self):
         if self.client is not None:
-            pass # get new data here
-        else:
-            datachunk = 0 # get new data here
-        self.digiscope_data.append(datachunk)
+            self.client.send(b'x')
+            records_cRIO = np.frombuffer(self.client.recv(4), '>i4')
+            records_ready = np.frombuffer(self.client.recv(4), '>i4')
+            datachunk = np.frombuffer(self.client.recv(20*records_ready[0]), '>u4')
+            self.digiscope_data.append(datachunk)
 
     @Slot()
     def run(self):
@@ -41,7 +42,7 @@ class Digiscope(QObject):
     @Slot()
     def periodic_task(self):
         if (self.enabled and self.poll_active):
-            pass # poll as needed
+            self.poll()
 
     @Slot()
     def start_run(self):
@@ -64,7 +65,8 @@ class Digiscope(QObject):
         if not self.enabled:
             self.event_started.emit("digiscope-disabled")
             return
-        # make first poll here
+        self.digiscope_data.clear()
+        self.poll() # make initial poll
         self.poll_active = True
         self.event_started.emit("digiscope")
 
@@ -73,14 +75,14 @@ class Digiscope(QObject):
         if not self.enabled:
             self.event_stopped.emit("digiscope-disabled")
             return
-        
         self.poll_active = False
+        self.poll() # make final poll
         # write the digiscope data in a file
         with SBCWriter(
                 os.path.join(
                     self.main.event_dir, "digiscope.sbc"
                 ),
-                headers, dtypes, shapes
+                self.headers, self.dtypes, self.shapes
         ) as digiscope_writer:
             digiscope_writer.write(self.digiscope_data)
 
