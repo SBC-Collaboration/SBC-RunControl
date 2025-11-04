@@ -144,11 +144,15 @@ class SQL(QObject):
                 self.active_modules.append(m)
         if self.main.config_class.run_config["caen"]["global"]["enabled"]:
             self.active_modules.append("caen")
+        pset_profiles = self.main.config_class.run_pressure_profiles
+
+        pset_lows = set(profile.get("setpoint_lo", None) for profile in pset_profiles)
+        pset_highs = set(profile.get("setpoint_hi", None) for profile in pset_profiles)
 
         query = f"""
             INSERT INTO {self.run_table} (
                 ID, run_ID, run_exit_code, num_events, run_livetime, comment,
-                active_modules, pset_mode, pset,
+                active_modules, pset_mode, pset_lo, pset_hi,
                 start_time, end_time,
                 source1_ID, source1_location,
                 source2_ID, source2_location,
@@ -158,7 +162,7 @@ class SQL(QObject):
             )
             VALUES (
                 NULL, %s, %s, %s, %s, %s,
-                %s, %s, %s,
+                %s, %s, %s, %s,
                 %s, %s,
                 %s, %s,
                 %s, %s,
@@ -175,8 +179,8 @@ class SQL(QObject):
             self.main.ui.comment_edit.toPlainText() or None,  # comment
             ",".join(self.active_modules) or None,                   # active_modules
             self.main.config_class.run_pressure_mode,                   # pset_mode
-            self.main.config_class.run_pressure_profiles[0]["setpoint_lo"]     # pset
-                if len(self.main.config_class.run_pressure_profiles)==1 else None,                                   
+            pset_lows.pop() if len(pset_lows)==1 else None,          # pset_lo
+            pset_highs.pop() if len(pset_highs)==1 else None,       # pset_hi
             self.main.run_start_time.isoformat(sep=" ", timespec="milliseconds"),              # start_time
             None,                                  # end_time
             self.main.ui.source_box.currentText() or None,              # source1_ID
@@ -217,12 +221,12 @@ class SQL(QObject):
         query = f"""
             INSERT INTO {self.event_table} (
                 ID, run_ID, event_ID, event_exit_code, event_livetime, cum_livetime,
-                pset, pset_hi, pset_slope, pset_period,
+                pset_lo, pset_hi, pset_ramp1, pset_ramp_down, pset_ramp_up,
                 start_time, stop_time, trigger_source
             )
             VALUES (
                 NULL, %s, %s, %s, %s, %s,
-                %s, %s, %s, %s,
+                %s, %s, %s, %s, %s,
                 %s, %s, %s
             )
         """
@@ -236,6 +240,7 @@ class SQL(QObject):
             self.main.config_class.event_pressure["setpoint_hi"],
             self.main.config_class.event_pressure["ramp1"],
             self.main.config_class.event_pressure["ramp_down"],
+            self.main.config_class.event_pressure["ramp_up"],
             self.main.event_start_time.isoformat(sep=" ", timespec="milliseconds"),
             None,  # end time
             None   # trigger source

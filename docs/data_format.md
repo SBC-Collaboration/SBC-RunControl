@@ -189,7 +189,8 @@ The run data is saved in the `RunData` tables in the slow control SQL database. 
 - **active_datastreams** (`SET('imaging', 'scintillation', 'acoustics')`, `NOT NULL`): A list of active data streams .
   for the run. It can have zero, one, or multiple entries, from the predetermined list. If it has zero elements, it is saved as an empty string, and not NULL.
 - **pset_mode** (`ENUM('random', 'sequential')`): Mode of pressure setpoint in this run. If `random`, then run control will choose randomly from the list. If `sequential`, then run control will cycle through the pressure setpoints in the list in order.
-- **pset** (`FLOAT`): Pressure set point of the run. If the run is doing pressure ramping, then the higher setpoint of the ramp.
+- **pset_lo** (`FLOAT`): Lower pressure set point of the run. Null if more than one profiles are enabled.
+- **pset_hi** (`FLOAT`): Higher pressure set point of the run. Null if more than one profiles are enabled.
 - **start_time** (`TIMESTAMP(3)`): UTC timestamp of when the run starts, with ms precision.
 - **end_time** (`TIMESTAMP(3)`): UTC timestamp of when the run ends, with ms precision.
 - **source1_ID** (`VARCHAR(100)`): Name of source 1.
@@ -213,10 +214,11 @@ The event data is saved in the `EventData` tables in the slow control SQL databa
 - **event_exit_code** (`TINYINT UNSIGNED`): Exit code when event stops. 0 means success, and other numbers mean some kind of error. Null value mean the event quitted unexpectedly. 
 - **event_livetime** (`TIME(3)`, `NOT NULL`): Run control livetime for this event.
 - **cum_livetime** (`TIME(3)`, `NOT NULL`): Cumulative livetime of the run at the end of the event.
-- **pset** (`FLOAT`): Pressure set point for this event, in units of bara. If `pset_hi` exists, then this is the lower of the two set points.
+- **pset_lo** (`FLOAT`): Pressure set point for this event, in units of bara. If `pset_hi` exists, then this is the lower of the two set points.
 - **pset_hi** (`FLOAT`): Higher pressure set point, in units of bara. If this number is lower than `pset` or is `NULL`, then there is only one set point.
-- **pset_slope** (`FLOAT`): Slope of expansion from compressed state to the higher pressure set point, in units of bar/s.
-- **pset_period** (`FLOAT`): Period of oscillation between higher and lower set points. In units of seconds.
+- **pset_ramp1** (`FLOAT`): Rate of ramp for expansion from compressed state to `pset_hi`.
+- **pset_ramp_down** (`FLOAT`): Rate of ramp from `pset_hi` to `pset_lo`.
+- **pset_ramp_up** (`FLOAT`): Rate of ramp from `pset_lo` to `pset_hi`.
 - **start_time** (`TIMESTAMP(3)`): Timestamp of the event start.
 - **stop_time** (`TIMESTAMP(3)`): Timestamp of the event stop.
 - **trigger_source** (`VARCHAR(100)`): Name of trigger's first fault.
