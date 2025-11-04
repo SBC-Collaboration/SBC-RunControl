@@ -175,7 +175,7 @@ class SQL(QObject):
             self.main.ui.comment_edit.toPlainText() or None,  # comment
             ",".join(self.active_modules) or None,                   # active_modules
             self.main.config_class.run_pressure_mode,                   # pset_mode
-            self.main.config_class.run_pressure_profiles[0]["setpoint"]     # pset
+            self.main.config_class.run_pressure_profiles[0]["setpoint_lo"]     # pset
                 if len(self.main.config_class.run_pressure_profiles)==1 else None,                                   
             self.main.run_start_time.isoformat(sep=" ", timespec="milliseconds"),              # start_time
             None,                                  # end_time

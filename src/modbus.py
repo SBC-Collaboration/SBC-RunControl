@@ -90,6 +90,37 @@ class Modbus(QObject):
 
     @Slot()                                                                      
     def start_event(self):
+        # turn on LEDs
+        ret = True
+        ret = ret and self._write_float(self.registers["LED_MAX"], self.config["led_out_max"])
+        ret = ret and self._write_float(self.registers["LED1_OUT"],
+            self.config["led1_out"] if self.config["led1_enabled"] else 0)
+        ret = ret and self._write_float(self.registers["LED2_OUT"],
+            self.config["led2_out"] if self.config["led2_enabled"] else 0)
+        ret = ret and self._write_float(self.registers["LED3_OUT"],
+            self.config["led3_out"] if self.config["led3_enabled"] else 0)
+        ret = ret and self._write_float(self.registers["LED1_OUT_PRE"], 
+            self.config["led1_out_pre"] if self.config["led1_enabled"] else 0)
+        ret = ret and self._write_float(self.registers["LED2_OUT_PRE"], 
+            self.config["led2_out_pre"] if self.config["led2_enabled"] else 0)
+        ret = ret and self._write_float(self.registers["LED3_OUT_PRE"], 
+            self.config["led3_out_pre"] if self.config["led3_enabled"] else 0)
+        ret = ret and self._write_float(self.registers["LED1_OUT_POST"], 
+            self.config["led1_out_post"] if self.config["led1_enabled"] else 0)
+        ret = ret and self._write_float(self.registers["LED2_OUT_POST"], 
+            self.config["led2_out_post"] if self.config["led2_enabled"] else 0)
+        ret = ret and self._write_float(self.registers["LED3_OUT_POST"], 
+            self.config["led3_out_post"] if self.config["led3_enabled"] else 0)
+        ret = ret and self._write_time(self.registers["LED_POST_TIME"], self.config["led_post_time"]*1000)
+
+        if ret:
+            self.logger.debug(f"Writing of LED control voltages successful.")
+        else:
+            self.logger.error(f"Writing of LED control voltages failed.")
+            self.error.emit(ErrorCodes.PLC_LED_ON_FAILED)
+            self.event_started.emit("modbus-error")
+            return
+
         if not self.enabled:
             self.event_started.emit("modbus-disabled")
             return
@@ -105,41 +136,13 @@ class Modbus(QObject):
         ret = ret and self._write_float(self.registers["PCYCLE_PSET_LOW"], ev_pressure["setpoint_lo"])
         ret = ret and self._write_float(self.registers["PCYCLE_PSET_HIGH"], ev_pressure["setpoint_hi"])
         ret = ret and self._write_float(self.registers["PCYCLE_PSET_RAMP1"], ev_pressure["ramp1"])
-        ret = ret and self._write_float(self.registers["PCYCLE_PSET_RAMP_DOWN"], ev_pressure["ramp_down"])
-        ret = ret and self._write_float(self.registers["PCYCLE_PSET_RAMP_UP"], ev_pressure["ramp_up"])
+        ret = ret and self._write_float(self.registers["PCYCLE_PSET_RAMPDOWN"], ev_pressure["ramp_down"])
+        ret = ret and self._write_float(self.registers["PCYCLE_PSET_RAMPUP"], ev_pressure["ramp_up"])
         if ret:
             self.logger.debug(f"write of PSET is successful.")
         else:
             self.logger.error(f"write of PSET failed.")
             self.error.emit(ErrorCodes.PLC_PSET_FAILED)
-            self.event_started.emit("modbus-error")
-            return
-        
-        # turn on LEDs
-        ret = True
-        ret = ret and self._write_float(self.registers["LED_MAX"], self.config["led_out_max"])
-        ret = ret and self._write_float(self.registers["LED1_OUT"],
-            min(self.config["led1_out"], self.config["led_out_max"]) 
-            if self.config["led1_enabled"] else 0)
-        ret = ret and self._write_float(self.registers["LED2_OUT"],
-            min(self.config["led2_out"], self.config["led_out_max"])
-            if self.config["led2_enabled"] else 0)
-        ret = ret and self._write_float(self.registers["LED3_OUT"],
-            min(self.config["led3_out"], self.config["led_out_max"])
-            if self.config["led3_enabled"] else 0)
-        ret = ret and self._write_float(self.registers["LED1_OUT_PRE"], self.config["led1_out_pre"])
-        ret = ret and self._write_float(self.registers["LED2_OUT_PRE"], self.config["led2_out_pre"])
-        ret = ret and self._write_float(self.registers["LED3_OUT_PRE"], self.config["led3_out_pre"])
-        ret = ret and self._write_float(self.registers["LED1_OUT_POST"], self.config["led1_out_post"])
-        ret = ret and self._write_float(self.registers["LED2_OUT_POST"], self.config["led2_out_post"])
-        ret = ret and self._write_float(self.registers["LED3_OUT_POST"], self.config["led3_out_post"])
-        ret = ret and self._write_float(self.registers["LED_POST_TIME"], self.config["led3_post_time"])
-
-        if ret:
-            self.logger.debug(f"Writing of LED control voltages successful.")
-        else:
-            self.logger.error(f"Writing of LED control voltages failed.")
-            self.error.emit(ErrorCodes.PLC_LED_ON_FAILED)
             self.event_started.emit("modbus-error")
             return
         
@@ -160,7 +163,11 @@ class Modbus(QObject):
             "PCYCLE_ABORT_FF": self._read_FF(self.registers["PCYCLE_ABORT_FF"]),
             "PCYCLE_FASTCOMP_FF": self._read_FF(self.registers["PCYCLE_FASTCOMP_FF"]),
             "PCYCLE_SLOWCOMP_FF": self._read_FF(self.registers["PCYCLE_SLOWCOMP_FF"]),
-            "PCYCLE_PSET": self._read_float(self.registers["PCYCLE_PSET"]),
+            "PCYCLE_PSET_LOW": self._read_float(self.registers["PCYCLE_PSET_LOW"]),
+            "PCYCLE_PSET_HIGH": self._read_float(self.registers["PCYCLE_PSET_HIGH"]),
+            "PCYCLE_PSET_RAMP1": self._read_float(self.registers["PCYCLE_PSET_RAMP1"]),
+            "PCYCLE_PSET_RAMPDOWN": self._read_float(self.registers["PCYCLE_PSET_RAMPDOWN"]),
+            "PCYCLE_PSET_RAMPUP": self._read_float(self.registers["PCYCLE_PSET_RAMPUP"]),
             "PCYCLE_EXIT_CODE": self._read_procedure(self.registers["PRESSURE_CYCLE"])[2],
             "LED1_OUT": self._read_float(self.registers["LED1_OUT"]),
             "LED2_OUT": self._read_float(self.registers["LED2_OUT"]),
@@ -176,11 +183,18 @@ class Modbus(QObject):
         }
 
         # write the plc_data in a file
-        headers = ["SLOWDAQ_FF","PCYCLE_ABORT_FF","PCYCLE_FASTCOMP_FF","PCYCLE_SLOWCOMP_FF", "PCYCLE_PSET", 
+        headers = ["SLOWDAQ_FF","PCYCLE_ABORT_FF","PCYCLE_FASTCOMP_FF","PCYCLE_SLOWCOMP_FF", 
+                   "PCYCLE_PSET_LOW", "PCYCLE_PSET_HIGH", "PCYCLE_PSET_RAMP1", "PCYCLE_PSET_RAMPDOWN", "PCYCLE_PSET_RAMPUP",
                    "PCYCLE_EXIT_CODE", "LED1_OUT", "LED2_OUT", "LED3_OUT", "LED_MAX",
                    "LED1_OUT_PRE", "LED2_OUT_PRE", "LED3_OUT_PRE", "LED1_OUT_POST", "LED2_OUT_POST", "LED3_OUT_POST", "LED_POST_TIME"]
-        dtypes = [ "i1", "i1", "i1", "i1", "f", "u2", "f", "f", "f", "f", "f", "f", "f", "f", "f", "f", "f"]
-        shapes = [[15], [15], [15], [15], [1], [1], [1], [1], [1], [1], [1], [1], [1], [1], [1], [1], [1]]
+        dtypes = [ "i1", "i1", "i1", "i1", 
+                  "f", "f", "f", "f", "f",
+                  "u2", "f", "f", "f", "f", 
+                  "f", "f", "f", "f", "f", "f", "f"]
+        shapes = [[15], [15], [15], [15], 
+                  [1], [1], [1], [1], [1], 
+                  [1], [1], [1], [1], [1], 
+                  [1], [1], [1], [1], [1], [1], [1]]
         with SBCWriter(
                 os.path.join(
                     self.main.event_dir, "plc.sbc"
@@ -329,7 +343,7 @@ class Modbus(QObject):
 
     @safe_modbus
     def _write_time(self, pos, value, endian='<'):
-        # PARAM_T
+        # PARAM_T, time in ms
         t = int(value)
         bytes = struct.pack(f'{endian}i', t)
         words = struct.unpack(f'{endian}HH', bytes)

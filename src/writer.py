@@ -97,8 +97,10 @@ class Writer(QObject):
             "run_end_time": self.main.run_end_time.timestamp(),
             "active_modules": ", ".join(self.active_modules) or "",
             "pset_mode": self.main.config_class.run_pressure_mode,
-            "pset": self.main.config_class.run_pressure_profiles[0]["setpoint"]
+            "pset_low": self.main.config_class.run_pressure_profiles[0]["setpoint_lo"]
                 if len(self.main.config_class.run_pressure_profiles)==1 else None, 
+            "pset_high": self.main.config_class.run_pressure_profiles[0]["setpoint_hi"]
+                if len(self.main.config_class.run_pressure_profiles)==1 else None,
             "source1_ID": self.main.ui.source_box.currentText() or "",
             "source1_location": self.main.ui.source_location_box.currentText() or "",
             "rc_ver": self.rc_version,
@@ -108,12 +110,12 @@ class Writer(QObject):
         }
         comment_len = len(run_data["comment"]) if run_data["comment"] else 1
         headers = ["run_id", "run_exit_code", "num_events", "run_livetime", "comment", 
-                   "run_start_time", "run_end_time", "active_modules", "pset_mode", "pset",
+                   "run_start_time", "run_end_time", "active_modules", "pset_mode", "pset_low", "pset_high",
                    "source1_ID", "source1_location", "rc_ver", "red_caen_ver", "niusb_ver", "sbc_binary_ver"]
         dtypes = ["U100", "u1", "u4", "u8", f"U{comment_len}", 
-                  "d", "d", "U100", "U100", "f",
+                  "d", "d", "U100", "U100", "f", "f", 
                   "U100", "U100", "U100", "U100", "U100", "U100"]
-        shapes = [[1], [1], [1], [1], [1], [1], [1], [1], [1], [1], [1], [1], [1], [1], [1], [1]]
+        shapes = [[1], [1], [1], [1], [1], [1], [1], [1], [1], [1], [1], [1], [1], [1], [1], [1], [1]]
         with SBCWriter(
                 os.path.join(
                     self.main.run_dir, f"run_info.sbc"

@@ -107,6 +107,13 @@ class Config(QObject):
         ui.led2_out_box.setValue(plc_config.get("led2_out", 0))
         ui.led3_out_box.setValue(plc_config.get("led3_out", 0))
         ui.led_out_max_box.setValue(plc_config.get("led_out_max", 0))
+        ui.led1_out_pre_box.setValue(plc_config.get("led1_out_pre", 0))
+        ui.led2_out_pre_box.setValue(plc_config.get("led2_out_pre", 0))
+        ui.led3_out_pre_box.setValue(plc_config.get("led3_out_pre", 0))
+        ui.led1_out_post_box.setValue(plc_config.get("led1_out_post", 0))
+        ui.led2_out_post_box.setValue(plc_config.get("led2_out_post", 0))
+        ui.led3_out_post_box.setValue(plc_config.get("led3_out_post", 0))
+        ui.led_post_time_box.setValue(plc_config.get("led_post_time", 0))
 
         # pressure
         pressure_config = self.config["plc"]["pressure"]

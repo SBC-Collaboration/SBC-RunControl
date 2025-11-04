@@ -252,9 +252,11 @@ This data is very similar the the **EventData** SQL table, but saved locally. It
 - **event_exit_code** (`uint8`): Exit code when event stops. 0 means success, and other numbers mean some kind of error. Null value mean the event quitted unexpectedly. 
 - **event_livetime** (`uint64`): Run control livetime for this event.
 - **cum_livetime** (`uint64`): Cumulative livetime of the run at the end of the event.
-- **pset** (`float`): Pressure set point for this event, in units of bara. If `pset_hi` exists, then this is the lower of the two set points.
-- **pset_hi** (`float`): Higher pressure set point, in units of bara. If this number is lower than `pset` or is `NULL`, then there is only one set point.
-- **pset_slope** (`float`): Slope of expansion from compressed state to the higher pressure set point, in units of bar/s.
+- **pset_lo** (`float`, bara): Lower pressure set point for this event.
+- **pset_hi** (`float`, bara): Higher pressure set point.
+- **pset_ramp1** (`float`, bar/s): Rate of ramp from compressed state to `pset_hi`.
+- **pset_ramp_down** (`flat`, bar/s): Rate of ramp from `pset_hi` to `pset_lo`.
+- **pset_ramp_up** (`flat`, bar/s): Rate of ramp from `pset_lo` to `pset_hi`.
 - **pset_period** (`float`): Period of oscillation between higher and lower set points. In units of seconds.
 - **start_time** (`double`): Timestamp of the event start.
 - **stop_time** (`double`): Timestamp of the event stop.
@@ -283,12 +285,17 @@ The first fault variables are arrays of 15 bits, each bit corresponds to a separ
 - **PCYCLE_ABORT_FF** (`int8`, 15): 
 - **PCYCLE_FASTCOMP_FF** (`int8`, 15): 
 - **PCYCLE_SLOWCOMP_FF** (`int8`, 15): 
-- **PCYCLE_PSET** (`float`, bara):
+- **PCYCLE_PSET_LOW** (`float`, bara): 
+- **PCYCLE_PSET_HIGH** (`float`, bara): 
+- **PCYCLE_PSET_RAMP1** (`flaot`, bar/s):
+- **PCYCLE_PSET_RAMPDOWN** (`float`, bar/s):
+- **PCYCLE_PSET_RAMPUP** (`float`, bar/s):
 - **PCYCLE_EXIT_CODE** (`uint16`):
-- **LED1_OUT** (`float`, V): Control voltage of LED ring 1. If the value is less than the `LED_MAX`, then the analog output channel is set to this voltage. Otherwise, the `LED_MAX` value is used. For each segment of each LED ring, an 1 Ohm power resistor is connected in series, so the LED current would be $I_{LED} = V_{LED} / 1 \Omega$, where $V_{LED}$ is the analog out voltage set here. 
-- **LED2_OUT** (`float`, V): See above.
-- **LED3_OUT** (`float`, V): See above.
+- **LED1_OUT**, **LED2_OUT**, **LED3_OUT** (`float`, V): Control voltage of LED ring when not in an event. If the value is less than the `LED_MAX`, then the analog output channel is set to this voltage. Otherwise, the `LED_MAX` value is used. For each segment of each LED ring, an 1 Ohm power resistor is connected in series, so the LED current would be $I_{LED} = V_{LED} / 1 \Omega$, where $V_{LED}$ is the analog out voltage set here. 
 - **LED_MAX** (`float`, V): Maximum value the three control voltages should be set. The PLC analog channels are 1 - 10 V, but the LEDs are rated only to 1 A. So the control voltages should never be set above 1 V, ideally lower than that.
+- **LED1_OUT_PRE**, **LED2_OUT_PRE**, **LED3_OUT_PRE** (`float`, V): Control voltage in an event before bubble trigger.
+- **LED1_OUT_POST**, **LED2_OUT_POST**, **LED3_OUT_POST** (`float`, V): Control voltage after a bubble trigger.
+- **LED_POST_TIME** (`float`, s): 
 
 ## SiPM Bias Voltages
 For each of the SiPM amplifiers, just after the SiPMs are biased at the start of an event, and just before the SiPMs are unbiased at the end of an event, the voltages of the high voltage rail and the charge pump are measured and saved into a `sipm_amp.sbc` file, along with the register values of per-channel offset. The real high voltage value read back from the `adctest` command can be off by up to a few volts compared to the initial value set using the `dactest` command. The off set is unique to each amplifier board, and may shift over time. Each ADC readout takes the average of 100 samples taken at 1000 samples/s. The parameters are set in the run control SiPM amplifier module. 
