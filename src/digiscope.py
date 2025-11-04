@@ -15,6 +15,10 @@ class Digiscope(QObject):
     event_stopped = Signal(str)
     error_msg = Signal(str)
 
+    col_headers = ['FPGAframes_ntrans','cRIOframes_ntrans','ix','t_ticks','dt_ticks','DI']
+    col_dtypes = ['i4','i4','u4','u4','u4','u4']
+    col_dsizes = [1,1,1,1,1,2]
+
     def __init__(self, mainwindow):
         super().__init__()
         self.main = mainwindow
@@ -28,11 +32,24 @@ class Digiscope(QObject):
 
     def poll(self):
         if self.client is not None:
-            self.client.send(b'x')
-            records_cRIO = np.frombuffer(self.client.recv(4), '>i4')
-            records_ready = np.frombuffer(self.client.recv(4), '>i4')
-            datachunk = np.frombuffer(self.client.recv(20*records_ready[0]), '>u4')
-            self.digiscope_data.append(datachunk)
+            try:
+                self.client.send(b'x')
+                records_cRIO = np.frombuffer(self.client.recv(4), '>i4')
+                records_ready = np.frombuffer(self.client.recv(4), '>i4')
+                datachunk = np.frombuffer(self.client.recv(20*records_ready[0]), '>u4').reshape((records_ready[0],5))
+                datapreamble0 = np.zeros((records_ready[0]), dtype=np.int32)
+                datapreamble0[0] = records_cRIO
+                datapreamble1 = np.zeros((records_ready[0]), dtype=np.int32)
+                datapreamble1[0] = records_ready
+                datadict = {col_headers[0]: datapreamble0,
+                            col_headers[1]: datapreamble1,
+                            col_headers[2]: datachunk[:,0],
+                            col_headers[3]: datachunk[:,1],
+                            col_headers[4]: datachunk[:,2],
+                            col_headers[5]: datachunk[:,3:]}
+                self.digiscope_data.append(datadict)
+            except Exception as e:
+                self.logger.error(f"Digiscope TCP data poll failed: {e}.")
 
     @Slot()
     def run(self):
@@ -51,12 +68,11 @@ class Digiscope(QObject):
         if not self.enabled:
             self.run_started.emit("digiscope-disabled")
             return
-
-        self.client = socket.create_connection((self.config["hostname"], self.config["port"]))
+            
         try:
-            pass
+            self.client = socket.create_connection((self.config["hostname"], self.config["port"]))
         except Exception as e:
-            self.logger.error(f"Digiscope TPC connection failed: {e}.")
+            self.logger.error(f"Digiscope TCP connection failed to open: {e}.")
         self.run_started.emit("digiscope")
 
 
@@ -82,7 +98,7 @@ class Digiscope(QObject):
                 os.path.join(
                     self.main.event_dir, "digiscope.sbc"
                 ),
-                self.headers, self.dtypes, self.shapes
+                self.col_headers, self.col_dtypes, self.col_shapes
         ) as digiscope_writer:
             digiscope_writer.write(self.digiscope_data)
 
@@ -94,8 +110,10 @@ class Digiscope(QObject):
         if not self.enabled:
             self.run_stopped.emit("digiscope-disabled")
             return
-        
-        self.client.close()
+        try:
+            self.client.close()
+        except Exception as e:
+            self.logger.error(f"Digiscope TCP connection failed to close: {e}.")
         self.client = None
         self.run_stopped.emit("digiscope")
     
