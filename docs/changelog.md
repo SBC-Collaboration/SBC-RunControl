@@ -1,5 +1,11 @@
 # Changelog
 
+## [Run Control v0.4.2](https://github.com/SBC-Collaboration/SBC-RunControl/releases/tag/v0.4.2) (2025-11-04)
+### Added
+- Access to new PLC variables `LED1_OUT_PRE`, `LED1_OUT_POST`, `LED_POST_TIME`, `PCYCLE_PSET_LOW`, `PCYCLE_PSET_HIGH`, `PCYCLE_PSET_RAMP1`, `PCYCLE_PSET_RAMPDOWN`, `PCYCLE_PSET_RAMPUP`. Changes to UI, binary file writer and SQL table to reflect the changes. 
+### Changed
+- Updates to acoustic driver to simplify data saving steps. 
+
 ## [Run Control v0.4.1](https://github.com/SBC-Collaboration/SBC-RunControl/releases/tag/v0.4.1) (2025-10-16)
 ### Changed
 - Improved SiPM amp module error handling when `dactest`, `adctest` or `iv_cmd.py` throws an error. 
