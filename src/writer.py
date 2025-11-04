@@ -60,7 +60,7 @@ class Writer(QObject):
             "trigger_source": self.main.ui.trigger_edit.text(),  # trigger source (str)
         }
         headers = ["run_id", "event_id", "ev_exit_code", "ev_livetime", "cum_livetime",
-                   "pset", "pset_hi", "pset_ramp1", "pset_ramp_down", "pset_ramp_up",
+                   "pset_lo", "pset_hi", "pset_ramp1", "pset_ramp_down", "pset_ramp_up",
                    "start_time", "end_time", "trigger_source"]
         dtypes = ["U100", "u4", "u1", "u8", "u8", "f", "f", "f", "f", "f", "d", "d", "U100"]
         shapes = [[1], [1], [1], [1], [1], [1], [1], [1], [1], [1], [1], [1], [1]]

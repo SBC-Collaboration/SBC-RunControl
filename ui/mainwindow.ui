@@ -188,7 +188,7 @@
                  </widget>
                 </item>
                 <item row="3" column="2">
-                 <widget class="QLabel" name="ev_pset_slope_label">
+                 <widget class="QLabel" name="ev_pset_ramp1_label">
                   <property name="text">
                    <string>Ramp 1</string>
                   </property>
@@ -538,7 +538,7 @@
                  </widget>
                 </item>
                 <item row="3" column="3">
-                 <widget class="QDoubleSpinBox" name="ev_pset_slope_box">
+                 <widget class="QDoubleSpinBox" name="ev_pset_ramp1_box">
                   <property name="readOnly">
                    <bool>true</bool>
                   </property>
@@ -651,8 +651,8 @@
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>838</width>
-               <height>598</height>
+               <width>382</width>
+               <height>119</height>
               </rect>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -969,8 +969,8 @@ background-color: rgb(150, 150, 150);</string>
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>836</width>
-               <height>596</height>
+               <width>98</width>
+               <height>155</height>
               </rect>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_11">
@@ -1073,8 +1073,8 @@ background-color: rgb(150, 150, 150);</string>
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>838</width>
-               <height>598</height>
+               <width>100</width>
+               <height>30</height>
               </rect>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_12">
