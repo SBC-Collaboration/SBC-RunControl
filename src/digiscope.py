@@ -17,7 +17,7 @@ class Digiscope(QObject):
 
     col_headers = ['FPGAframes_ntrans','cRIOframes_ntrans','ix','t_ticks','dt_ticks','DI']
     col_dtypes = ['i4','i4','u4','u4','u4','u4']
-    col_dsizes = [1,1,1,1,1,2]
+    col_shapes = [1,1,1,1,1,2]
 
     def __init__(self, mainwindow):
         super().__init__()
