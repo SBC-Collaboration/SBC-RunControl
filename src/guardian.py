@@ -41,6 +41,8 @@ class ErrorCodes(IntEnum):
     CAMERA_NOT_CONNECTED = 2001
     ACOUSTIC_DISABLED = 2100
     ACOUSTIC_NOT_CONNECTED = 2101
+    ACOUSTIC_FAILED_TO_START = 2102
+    ACOUSTIC_FAILED_TO_END = 2103
     CAEN_DISABLED = 2200
     CAEN_NOT_CONNECTED = 2201
     SIPM_AMP_DISABLED = 2300
@@ -87,6 +89,8 @@ class Guardian(QObject):
         ErrorCodes.CAMERA_NOT_CONNECTED: "Camera - Camera not connected",
         ErrorCodes.ACOUSTIC_DISABLED: "Acoustic - GaGe digitizer disabled.",
         ErrorCodes.ACOUSTIC_NOT_CONNECTED: "Acoustic - GaGe digitizer not connected.",
+        ErrorCodes.ACOUSTIC_FAILED_TO_START: "Acoustic - GaGe driver failed to start.",
+        ErrorCodes.ACOUSTIC_FAILED_TO_END: "Acoustic - GaGe driver failed to stop.",
         ErrorCodes.CAEN_DISABLED: "CAEN - CAEN digitizer disabled.",
         ErrorCodes.CAEN_NOT_CONNECTED: "CAEN - CAEN digitizer not connected.",
         ErrorCodes.SIPM_AMP_DISABLED: "SiPM Amp - SiPM Amp disabled.",

@@ -5,6 +5,7 @@ import signal
 from configparser import ConfigParser
 from multiprocessing import Process
 import ctypes
+from src.guardian import ErrorCodes
 
 class Acoustics(QObject):
     event_started = Signal(str)
@@ -157,10 +158,14 @@ class Acoustics(QObject):
         if not self.config["enabled"]:
             self.event_stopped.emit(f"gage-disabled")
             return
-
+        
+        timeout = 60  # seconds
         if self.gage_process and self.gage_process.is_alive():
             os.kill(self.gage_process.pid, signal.SIGINT)
-            self.gage_process.join()
+            self.gage_process.join(timeout)
+            if self.gage_process.is_alive():
+                os.kill(self.gage_process.pid, signal.SIGKILL)
+                self.error.emit(ErrorCodes.ACOUSTIC_FAILED_TO_END)
             self.gage_process = None
                 
         self.event_stopped.emit("gage")
