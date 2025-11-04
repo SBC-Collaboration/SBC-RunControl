@@ -34,19 +34,22 @@ class Digiscope(QObject):
         if self.client is not None:
             try:
                 self.client.send(b'x')
-                records_cRIO = np.frombuffer(self.client.recv(4), '>i4')
-                records_ready = np.frombuffer(self.client.recv(4), '>i4')
-                datachunk = np.frombuffer(self.client.recv(20*records_ready[0]), '>u4').reshape((records_ready[0],5))
+                records_cRIO = np.frombuffer(self.client.recv(4, socket.MSG_WAITALL),
+                                             '>i4')
+                records_ready = np.frombuffer(self.client.recv(4, socket.MSG_WAITALL),
+                                              '>i4')
+                datachunk = np.frombuffer(self.client.recv(20*records_ready[0], socket.MSG_WAITALL),
+                                          '>u4').reshape((records_ready[0],5))
                 datapreamble0 = np.zeros((records_ready[0]), dtype=np.int32)
                 datapreamble0[0] = records_cRIO
                 datapreamble1 = np.zeros((records_ready[0]), dtype=np.int32)
                 datapreamble1[0] = records_ready
                 datadict = {col_headers[0]: datapreamble0,
                             col_headers[1]: datapreamble1,
-                            col_headers[2]: datachunk[:,0],
-                            col_headers[3]: datachunk[:,1],
-                            col_headers[4]: datachunk[:,2],
-                            col_headers[5]: datachunk[:,3:]}
+                            col_headers[2]: datachunk[:,0].astype(np.uint32),
+                            col_headers[3]: datachunk[:,1].astype(np.uint32),
+                            col_headers[4]: datachunk[:,2].astype(np.uint32),
+                            col_headers[5]: datachunk[:,3:].astype(np.uint32)}
                 self.digiscope_data.append(datadict)
             except Exception as e:
                 self.logger.error(f"Digiscope TCP data poll failed: {e}.")
@@ -70,7 +73,8 @@ class Digiscope(QObject):
             return
             
         try:
-            self.client = socket.create_connection((self.config["hostname"], self.config["port"]))
+            self.client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            self.client.connect((self.config["hostname"], self.config["port"]))
         except Exception as e:
             self.logger.error(f"Digiscope TCP connection failed to open: {e}.")
         self.run_started.emit("digiscope")
