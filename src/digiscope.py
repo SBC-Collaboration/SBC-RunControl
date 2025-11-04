@@ -44,12 +44,12 @@ class Digiscope(QObject):
                 datapreamble0[0] = records_cRIO
                 datapreamble1 = np.zeros((records_ready[0]), dtype=np.int32)
                 datapreamble1[0] = records_ready
-                datadict = {col_headers[0]: datapreamble0,
-                            col_headers[1]: datapreamble1,
-                            col_headers[2]: datachunk[:,0].astype(np.uint32),
-                            col_headers[3]: datachunk[:,1].astype(np.uint32),
-                            col_headers[4]: datachunk[:,2].astype(np.uint32),
-                            col_headers[5]: datachunk[:,3:].astype(np.uint32)}
+                datadict = {self.col_headers[0]: datapreamble0,
+                            self.col_headers[1]: datapreamble1,
+                            self.col_headers[2]: datachunk[:,0].astype(np.uint32),
+                            self.col_headers[3]: datachunk[:,1].astype(np.uint32),
+                            self.col_headers[4]: datachunk[:,2].astype(np.uint32),
+                            self.col_headers[5]: datachunk[:,3:].astype(np.uint32)}
                 self.digiscope_data.append(datadict)
             except Exception as e:
                 self.logger.error(f"Digiscope TCP data poll failed: {e}.")
