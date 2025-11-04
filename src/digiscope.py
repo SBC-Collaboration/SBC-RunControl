@@ -26,6 +26,13 @@ class Digiscope(QObject):
         self.timer.setInterval(10000)
         self.timer.timeout.connect(self.periodic_task)
 
+    def poll(self):
+        if self.client is not None:
+            pass # get new data here
+        else:
+            datachunk = 0 # get new data here
+        self.digiscope_data.append(datachunk)
+
     @Slot()
     def run(self):
         self.timer.start()
@@ -76,8 +83,8 @@ class Digiscope(QObject):
                 headers, dtypes, shapes
         ) as digiscope_writer:
             digiscope_writer.write(self.digiscope_data)
-                    
 
+        self.digiscope_data.clear()
         self.event_stopped.emit("digiscope")
 
     @Slot()
@@ -87,5 +94,6 @@ class Digiscope(QObject):
             return
         
         self.client.close()
+        self.client = None
         self.run_stopped.emit("digiscope")
     
