@@ -1,5 +1,11 @@
 # Changelog
 
+## [Run Control v0.4.3](https://github.com/SBC-Collaboration/SBC-RunControl/releases/tag/v0.4.3) (2025-11-05)
+### Added
+- Digiscope module.
+### Changed
+- Added timeout for stop event of acoustic driver.
+
 ## [Run Control v0.4.2](https://github.com/SBC-Collaboration/SBC-RunControl/releases/tag/v0.4.2) (2025-11-04)
 ### Added
 - Access to new PLC variables `LED1_OUT_PRE`, `LED1_OUT_POST`, `LED_POST_TIME`, `PCYCLE_PSET_LOW`, `PCYCLE_PSET_HIGH`, `PCYCLE_PSET_RAMP1`, `PCYCLE_PSET_RAMPDOWN`, `PCYCLE_PSET_RAMPUP`. Changes to UI, binary file writer and SQL table to reflect the changes. 
