@@ -711,6 +711,14 @@ class MainWindow(QMainWindow):
         os.symlink(self.run_dir, current_run_path, target_is_directory=True)
 
     def start_program(self):
+        try:
+            result = subprocess.run(['git', 'describe', '--tags'], 
+                                capture_output=True, text=True, check=True)
+            self.rc_version = result.stdout.strip()
+        except subprocess.CalledProcessError:
+            self.rc_version = 'v0.0.0'  # fallback
+        self.ui.version_label.setText(f"{self.rc_version}")
+
         self.program_starting.emit()
         self.update_state("idle")
 

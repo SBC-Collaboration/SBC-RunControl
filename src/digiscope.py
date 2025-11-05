@@ -24,6 +24,7 @@ class Digiscope(QObject):
         self.main = mainwindow
         self.logger = logging.getLogger("rc")
         self.config = self.main.config_class.config["digiscope"]
+        self.enabled = False
         self.client = None
 
         self.timer = QTimer(self)

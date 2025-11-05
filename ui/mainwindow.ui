@@ -969,7 +969,7 @@ background-color: rgb(150, 150, 150);</string>
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>84</width>
+               <width>98</width>
                <height>155</height>
               </rect>
              </property>
@@ -1845,6 +1845,19 @@ QPushButton:disabled {color: rgb(120, 120, 120);}</string>
            </size>
           </property>
          </spacer>
+        </item>
+        <item>
+         <widget class="QLabel" name="version_label">
+          <property name="text">
+           <string>v0.0.0</string>
+          </property>
+          <property name="textFormat">
+           <enum>Qt::TextFormat::PlainText</enum>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignmentFlag::AlignCenter</set>
+          </property>
+         </widget>
         </item>
        </layout>
       </item>
