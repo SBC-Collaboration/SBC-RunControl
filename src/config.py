@@ -862,7 +862,7 @@ class Config(QObject):
         self.logger.info(f"Event pressure: Pset Low: {self.event_pressure["setpoint_lo"]}, "
                          f"Pset High: {self.event_pressure['setpoint_hi']}, "
                          f"Ramp 1: {self.event_pressure['ramp1']}, "
-                         f"Ramp Down: {self.event_pressure['ramp_down']}"
+                         f"Ramp Down: {self.event_pressure['ramp_down']}, "
                          f"Ramp Up: {self.event_pressure['ramp_up']}")
 
     @Slot()

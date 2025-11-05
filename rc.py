@@ -18,6 +18,7 @@ from src.sipm_amp import SiPMAmp
 from src.sql import SQL
 from src.niusb import NIUSB
 from src.writer import Writer
+from src.digiscope import Digiscope
 from src.guardian import Guardian, ErrorCodes
 from src.visualization import CAENPlotManager, AcousPlotManager
 import logging
@@ -313,6 +314,23 @@ class MainWindow(QMainWindow):
         self.event_stopping.connect(self.sql_worker.stop_event)
         self.run_stopping.connect(self.sql_worker.stop_run)
         self.sql_thread.start()
+        time.sleep(0.001)
+
+        self.digiscope_worker = Digiscope(self)
+        self.digiscope_worker.run_started.connect(self.starting_run_wait)
+        self.digiscope_worker.run_stopped.connect(self.stopping_run_wait)
+        self.digiscope_worker.event_started.connect(self.starting_event_wait)
+        self.digiscope_worker.event_stopped.connect(self.stopping_event_wait)
+        self.digiscope_worker.error.connect(self.guardian_worker.error_handler)
+        self.digiscope_thread = QThread()
+        self.digiscope_thread.setObjectName("digiscope_thread")
+        self.digiscope_worker.moveToThread(self.digiscope_thread)
+        self.digiscope_thread.started.connect(self.digiscope_worker.run)
+        self.run_starting.connect(self.digiscope_worker.start_run)
+        self.event_starting.connect(self.digiscope_worker.start_event)
+        self.event_stopping.connect(self.digiscope_worker.stop_event)
+        self.run_stopping.connect(self.digiscope_worker.stop_run)
+        self.digiscope_thread.start()
         time.sleep(0.001)
 
         # establish mutex and wait conditions for syncing
