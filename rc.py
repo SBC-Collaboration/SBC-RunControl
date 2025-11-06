@@ -12,7 +12,7 @@ from src.ui_loader import SettingsWindow, LogWindow
 from src.arduinos import Arduino
 from src.caen import Caen
 from src.acoustics import Acoustics
-from src.modbus import Modbus
+from src.plc import PLC
 from src.cameras import Camera
 from src.sipm_amp import SiPMAmp
 from src.sql import SQL
@@ -120,18 +120,18 @@ class MainWindow(QMainWindow):
         )
 
         # List populated by ready modules at each state. After all modules are ready, it will proceed to the next state
-        self.all_modules = ["config", "niusb", "modbus", "sql", "writer", 
+        self.all_modules = ["config", "niusb", "plc", "sql", "writer", 
                             "cam1", "cam2", "cam3", "clock", "trigger", "position",
                             "amp1", "amp2", "amp3", "caen", "gage", "digiscope"]
         self.starting_program_modules = []
         self.starting_run_modules = ["amp1", "amp2", "amp3", "cam1", "cam2", "cam3",
-                                     "clock", "position", "trigger", "niusb", "caen", "modbus", "sql", "digiscope"]
+                                     "clock", "position", "trigger", "niusb", "caen", "plc", "sql", "digiscope"]
         self.stopping_run_modules = ["amp1", "amp2", "amp3", "cam1", "cam2", "cam3",
-                                     "sql", "niusb", "caen", "modbus", "writer", "digiscope"]
+                                     "sql", "niusb", "caen", "plc", "writer", "digiscope"]
         self.starting_event_modules = ["cam1", "cam2", "cam3", "amp1", "amp2", "amp3", "position",
-                                       "niusb", "caen", "gage", "modbus", "sql", "digiscope"]
+                                       "niusb", "caen", "gage", "plc", "sql", "digiscope"]
         self.stopping_event_modules = ["cam1", "cam2", "cam3", "amp1", "amp2", "amp3", "position",
-                                       "niusb", "caen", "gage", "modbus", "sql", "writer", "digiscope"]
+                                       "niusb", "caen", "gage", "plc", "sql", "writer", "digiscope"]
 
         self.update_state("preparing")
 
@@ -248,28 +248,28 @@ class MainWindow(QMainWindow):
         self.acous_thread.start()
         time.sleep(0.001)
 
-        self.modbus_worker = Modbus(self)
-        self.modbus_worker.run_started.connect(self.starting_run_wait)
-        self.modbus_worker.run_stopped.connect(self.stopping_run_wait)
-        self.modbus_worker.event_started.connect(self.starting_event_wait)
-        self.modbus_worker.event_stopped.connect(self.stopping_event_wait)
-        self.modbus_worker.error.connect(self.guardian_worker.error_handler)
-        self.modbus_thread = QThread()
-        self.modbus_thread.setObjectName("modbus_thread")
-        self.modbus_worker.moveToThread(self.modbus_thread)
-        self.modbus_thread.started.connect(self.modbus_worker.run)
-        self.run_starting.connect(self.modbus_worker.start_run)
-        self.event_starting.connect(self.modbus_worker.start_event)
-        self.event_stopping.connect(self.modbus_worker.stop_event)
-        self.run_stopping.connect(self.modbus_worker.stop_run)
-        self.modbus_thread.start()
+        self.plc_worker = PLC(self)
+        self.plc_worker.run_started.connect(self.starting_run_wait)
+        self.plc_worker.run_stopped.connect(self.stopping_run_wait)
+        self.plc_worker.event_started.connect(self.starting_event_wait)
+        self.plc_worker.event_stopped.connect(self.stopping_event_wait)
+        self.plc_worker.error.connect(self.guardian_worker.error_handler)
+        self.plc_thread = QThread()
+        self.plc_thread.setObjectName("plc_thread")
+        self.plc_worker.moveToThread(self.plc_thread)
+        self.plc_thread.started.connect(self.plc_worker.run)
+        self.run_starting.connect(self.plc_worker.start_run)
+        self.event_starting.connect(self.plc_worker.start_event)
+        self.event_stopping.connect(self.plc_worker.stop_event)
+        self.run_stopping.connect(self.plc_worker.stop_run)
+        self.plc_thread.start()
         time.sleep(0.001)
 
         self.niusb_worker = NIUSB(self)
         self.niusb_worker.run_started.connect(self.starting_run_wait)
         self.niusb_worker.event_started.connect(self.starting_event_wait)
         self.niusb_worker.event_stopped.connect(self.stopping_event_wait)
-        self.niusb_worker.all_cams_stopped.connect(self.modbus_worker.turn_off_leds)
+        self.niusb_worker.all_cams_stopped.connect(self.plc_worker.turn_off_leds)
         self.niusb_worker.run_stopped.connect(self.stopping_run_wait)
         self.niusb_worker.trigger_detected.connect(self.stop_event)
         self.niusb_worker.trigger_ff.connect(self.ui.trigger_edit.setText)
@@ -357,7 +357,7 @@ class MainWindow(QMainWindow):
         # quit all created workers and threads
         modules = ["cam1", "cam2", "cam3", "amp1", "amp2", "amp3",
                    "arduino_trigger", "arduino_clock", "arduino_position", 
-                   "caen", "acous", "modbus", "niusb", "writer", "sql", "digiscope"]
+                   "caen", "acous", "plc", "niusb", "writer", "sql", "digiscope"]
         for m in modules:
             worker = getattr(self, f"{m}_worker", None)
             thread = getattr(self, f"{m}_thread", None)
@@ -534,26 +534,22 @@ class MainWindow(QMainWindow):
             ):
                 self.send_trigger.emit("Timeout")
         elif self.run_state == self.run_states["starting_run"]:
-            # SiPM amp 1/2/3, Cam 1/2/3, clock/position/trigger arduino, NI USB, CAEN, MODBUS #change for RC-PLC comm.
             if len(self.starting_run_ready) >= len(self.starting_run_modules):
                 self.logger.info(f"Run {self.run_id} started.")
                 self.logger.debug(f"Modules started for run: {self.starting_run_ready}\n")
                 self.start_event()
         elif self.run_state == self.run_states["starting_event"]:
-            # cam 1/2/3, sipm amp 1/2/3, *PLC, NIUSB, CAEN, GaGe, MODBUS
             self.event_timer.start()
             if len(self.starting_event_ready) >= len(self.starting_event_modules):
                 self.logger.info(f"Event {self.event_id} started.")
                 self.logger.debug(f"Modules started for event: {self.starting_event_ready}\n")
                 self.update_state("active")
         elif self.run_state == self.run_states["stopping_event"]:
-            # SQL, cam 1/2/3, sipm amp 1/2/3, NIUSB, CAEN, GaGe, MODBUS
             if len(self.stopping_event_ready) >= len(self.stopping_event_modules):
                 self.logger.info(f"Event {self.event_id} stopped.")
                 self.logger.debug(f"Modules stopped for event: {self.stopping_event_ready}\n")
                 self.start_event()
         elif self.run_state == self.run_states["stopping_run"]:
-            # SQL, cam 1/2/3, sipm amp 1/2/3, NIUSB, CAEN, MODBUS
             if len(self.stopping_run_ready) >= len(self.stopping_run_modules):
                 self.logger.info(f"Run {self.run_id} stopped.")
                 self.logger.debug(f"Modules stopped for run: {self.stopping_run_ready}\n")

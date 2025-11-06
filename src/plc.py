@@ -21,7 +21,7 @@ def safe_modbus(func):
             return None
     return wrapper
 
-class Modbus(QObject):
+class PLC(QObject):
     pressure_cycle =  False
     run_started = Signal(str)
     run_stopped = Signal(str)
@@ -44,7 +44,7 @@ class Modbus(QObject):
     @Slot()
     def run(self):
         self.timer.start()
-        self.logger.debug(f"Modbus module initialized in {QThread.currentThread().objectName()}.")
+        self.logger.debug(f"PLC module initialized in {QThread.currentThread().objectName()}.")
 
     @Slot()
     def periodic_task(self):
@@ -85,7 +85,7 @@ class Modbus(QObject):
         except Exception as e:
             self.logger.error(f"Beckoff PLC connection failed: {e}.")
             self.error.emit(ErrorCodes.PLC_CONNECTION_FAILED)
-        self.run_started.emit("modbus")
+        self.run_started.emit("plc")
 
 
     @Slot()                                                                      
@@ -118,11 +118,11 @@ class Modbus(QObject):
         else:
             self.logger.error(f"Writing of LED control voltages failed.")
             self.error.emit(ErrorCodes.PLC_LED_ON_FAILED)
-            self.event_started.emit("modbus-error")
+            self.event_started.emit("plc-error")
             return
 
         if not self.enabled:
-            self.event_started.emit("modbus-disabled")
+            self.event_started.emit("plc-disabled")
             return
         
         if (self._start_procedure(self.registers["WRITE_SLOWDAQ"])) == True:
@@ -143,15 +143,15 @@ class Modbus(QObject):
         else:
             self.logger.error(f"write of PSET failed.")
             self.error.emit(ErrorCodes.PLC_PSET_FAILED)
-            self.event_started.emit("modbus-error")
+            self.event_started.emit("plc-error")
             return
         
-        self.event_started.emit("modbus")
+        self.event_started.emit("plc")
 
     @Slot()
     def stop_event(self):
         if not self.enabled:
-            self.event_stopped.emit("modbus-disabled")
+            self.event_stopped.emit("plc-disabled")
             return
 
         # Stop the pressure cycle if it's running
@@ -209,7 +209,7 @@ class Modbus(QObject):
         if (self._read_procedure(self.registers["WRITE_SLOWDAQ"])[0]):
             self.logger.error("SLOW_DAQ process didn't end successfully.")
             self.error.emit(ErrorCodes.PLC_SLOWDAQ_STOP_FAILED)
-            self.event_stopped.emit("modbus-error")
+            self.event_stopped.emit("plc-error")
         else:
             self.logger.debug("SLOW_DAQ process ended successfully.")
             
@@ -222,27 +222,27 @@ class Modbus(QObject):
         if not os.path.exists(perm_file):
             self.logger.error(f"PLC SMB Permission file {perm_file} does not exist.")
             self.error.emit(ErrorCodes.PLC_SMB_PERMISSION_FILE_MISSING)
-            self.event_stopped.emit("modbus-error")
+            self.event_stopped.emit("plc-error")
             return
         command = f"smbclient //{hostname}/{share} -A {perm_file} -c 'get {remote_file} {local_path}'"
         ret_os = os.system(command)
         if (ret_os > 0):
             self.logger.error("PLC log File copy is unsuccessful.")
-            self.event_stopped.emit("modbus-error")
+            self.event_stopped.emit("plc-error")
             return
         else:
             self.logger.debug("PLC log File copied successfully.")
 
-        self.event_stopped.emit("modbus")
+        self.event_stopped.emit("plc")
 
     @Slot()
     def stop_run(self):
         if not self.enabled:
-            self.run_stopped.emit("modbus-disabled")
+            self.run_stopped.emit("plc-disabled")
             return
         
         self.client.close()
-        self.run_stopped.emit("modbus")
+        self.run_stopped.emit("plc")
     
     def _stop_pressure_cycle(self):
         """
