@@ -1,6 +1,6 @@
 # Changelog
 
-## [latest]
+## [Run Control v0.4.4](https://github.com/SBC-Collaboration/SBC-RunControl/releases/tag/v0.4.4) (2025-11-06)
 ### Added
 - Version number display on main window.
 ### Changed

@@ -7,8 +7,8 @@ project = 'SBC Run Control'
 copyright = '2024-2025 SBC Collaboration'
 author = 'SBC Collaboration'
 
-release = '0.4.3'
-version = '0.4.3'
+release = '0.4.4'
+version = '0.4.4'
 
 # -- General configuration
 
