@@ -270,36 +270,6 @@
                   </item>
                  </widget>
                 </item>
-                <item row="0" column="4" rowspan="5" colspan="2">
-                 <widget class="QPlainTextEdit" name="comment_edit">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <kerning>true</kerning>
-                   </font>
-                  </property>
-                  <property name="frameShape">
-                   <enum>QFrame::Shape::NoFrame</enum>
-                  </property>
-                  <property name="sizeAdjustPolicy">
-                   <enum>QAbstractScrollArea::SizeAdjustPolicy::AdjustToContents</enum>
-                  </property>
-                  <property name="textInteractionFlags">
-                   <set>Qt::TextInteractionFlag::LinksAccessibleByKeyboard|Qt::TextInteractionFlag::LinksAccessibleByMouse|Qt::TextInteractionFlag::TextBrowserInteraction|Qt::TextInteractionFlag::TextEditable|Qt::TextInteractionFlag::TextEditorInteraction|Qt::TextInteractionFlag::TextSelectableByKeyboard|Qt::TextInteractionFlag::TextSelectableByMouse</set>
-                  </property>
-                  <property name="backgroundVisible">
-                   <bool>false</bool>
-                  </property>
-                  <property name="placeholderText">
-                   <string>Enter run comments here.</string>
-                  </property>
-                 </widget>
-                </item>
                 <item row="1" column="2">
                  <widget class="QLabel" name="ev_pset_lo_label">
                   <property name="text">
@@ -591,6 +561,36 @@
                   </property>
                  </widget>
                 </item>
+                <item row="0" column="4" rowspan="6" colspan="2">
+                 <widget class="QPlainTextEdit" name="comment_edit">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <kerning>true</kerning>
+                   </font>
+                  </property>
+                  <property name="frameShape">
+                   <enum>QFrame::Shape::NoFrame</enum>
+                  </property>
+                  <property name="sizeAdjustPolicy">
+                   <enum>QAbstractScrollArea::SizeAdjustPolicy::AdjustToContents</enum>
+                  </property>
+                  <property name="textInteractionFlags">
+                   <set>Qt::TextInteractionFlag::LinksAccessibleByKeyboard|Qt::TextInteractionFlag::LinksAccessibleByMouse|Qt::TextInteractionFlag::TextBrowserInteraction|Qt::TextInteractionFlag::TextEditable|Qt::TextInteractionFlag::TextEditorInteraction|Qt::TextInteractionFlag::TextSelectableByKeyboard|Qt::TextInteractionFlag::TextSelectableByMouse</set>
+                  </property>
+                  <property name="backgroundVisible">
+                   <bool>false</bool>
+                  </property>
+                  <property name="placeholderText">
+                   <string>Enter run comments here.</string>
+                  </property>
+                 </widget>
+                </item>
                </layout>
               </item>
               <item>
@@ -651,8 +651,8 @@
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>382</width>
-               <height>119</height>
+               <width>838</width>
+               <height>598</height>
               </rect>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -969,8 +969,8 @@ background-color: rgb(150, 150, 150);</string>
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>98</width>
-               <height>155</height>
+               <width>836</width>
+               <height>596</height>
               </rect>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_11">
@@ -1073,8 +1073,8 @@ background-color: rgb(150, 150, 150);</string>
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>100</width>
-               <height>30</height>
+               <width>838</width>
+               <height>598</height>
               </rect>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_12">

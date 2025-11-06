@@ -83,6 +83,7 @@ class SiPMAmp(QObject):
         self.username = "root"
         self.client = pm.client.SSHClient()
         self.client.set_missing_host_key_policy(pm.AutoAddPolicy())
+        self.offset_v = 0
         self.timer = QTimer(self)
         self.timer.setInterval(100)
         self.timer.timeout.connect(self.periodic_task)
@@ -143,15 +144,11 @@ class SiPMAmp(QObject):
             self.client.close()
 
     @Slot()
-    def bias_sipm(self, error=0.01, iterations=3):
-        """ 
-        Bias SiPM amplifier, and then make small changes so the bias readback is close to target value 
-
-        :param error: acceptable error in volts
-        :type error: float
-        :param iterations: number of iterations to adjust the bias. If 1, it will set only once
-        :type iterations: int
+    def setup_sipm(self):
         """
+        Setup SiPM amplifier HV rail and charge pump.
+        """
+
         setup_commands = [
             "/root/nanopi/dactest -v hv 1 0",  # set HV rail to 0V
             "/root/nanopi/setPin ENQP hi",  # enable charge pump
@@ -166,13 +163,23 @@ class SiPMAmp(QObject):
             except RuntimeError:
                 continue
 
+    @Slot()
+    def bias_sipm(self, error=0.01, iterations=3, offset_v=0):
+        """ 
+        Bias SiPM amplifier, and then make small changes so the bias readback is close to target value 
+
+        :param error: acceptable error in volts
+        :type error: float
+        :param iterations: number of iterations to adjust the bias. If 1, it will set only once
+        :type iterations: int
+        """
+
         # start feedback loop to set the bias voltage
         target_v = self.config["bias"]
-        set_v = target_v
-        offset = 0
-        voltage_set = False
+        set_v = target_v - offset_v
         i = 0
-        while not voltage_set:
+
+        while True:
             i+=1
             bias_command = [f"/root/nanopi/dactest -v hv 1 {set_v}"]  # set HV rail voltage
             try:
@@ -181,15 +188,18 @@ class SiPMAmp(QObject):
                 continue
 
             readback_v = self.read_voltages()["hv_mean_v"]
-            offset = readback_v - target_v
-            self.logger.debug(f"SiPM {self.amp} bias setting try {i}, readback: {readback_v:.3f} V, set: {set_v:.3f} V, target: {target_v:.3f} V, offset: {offset:.3f} V")
-            if abs(offset) < error and i>=iterations:
-                voltage_set = True
-            set_v -= offset  # adjust target voltage
+            offset_v = readback_v - set_v
+            diff_v = readback_v - target_v
+            self.logger.debug(f"SiPM {self.amp} bias setting try {i}, readback: {readback_v:.3f} V, set: {set_v:.3f} V, target: {target_v:.3f} V, diff: {diff_v:.3f} V")
+            if abs(diff_v) < error and i>=iterations:
+                self.offset_v = offset_v
+                break
+            set_v = target_v - offset_v  # adjust target voltage
 
             if i >= max(5*iterations, 10):
                 self.logger.error(f"SiPM {self.amp} bias cannot be set to target voltage.")
                 self.error.emit(ErrorCodes.SIPM_AMP_BIASING_FAILED)
+                break
 
         self.logger.debug(f"SiPM {self.amp} bias set to {readback_v:.3f} V after {i} iterations, with target {target_v:.3f} V.")
 
@@ -479,8 +489,10 @@ class SiPMAmp(QObject):
         if self.check_iv_interval():
             self.run_iv_curve()
             self.logger.debug(f"SiPM {self.amp} IV curve measurement executed.")
+        
         # bias SiPMs
-        self.bias_sipm()
+        self.setup_sipm()
+        self.bias_sipm(offset_v=self.offset_v)
         self.logger.debug(f"SiPM {self.amp} bias command executed.")
         self.run_started.emit(self.amp)
     
@@ -512,7 +524,7 @@ class SiPMAmp(QObject):
             return
         
         # bias SiPMs
-        self.bias_sipm(iterations=1)
+        self.bias_sipm(iterations=1, offset_v=self.offset_v)
         self.logger.debug(f"SiPM {self.amp} bias command executed.")
         voltage_readback = self.read_voltages()
         # redo voltage readback if failed
