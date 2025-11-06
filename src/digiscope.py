@@ -101,7 +101,7 @@ class Digiscope(QObject):
         # write the digiscope data in a file
         with SBCWriter(
                 os.path.join(
-                    self.main.event_dir, "digiscope.sbc"
+                    self.main.event_dir, self.config["filename"]
                 ),
                 self.col_headers, self.col_dtypes, self.col_shapes
         ) as digiscope_writer:

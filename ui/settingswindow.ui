@@ -18081,10 +18081,10 @@
               <property name="spacing">
                <number>6</number>
               </property>
-              <item row="0" column="3">
-               <widget class="QLabel" name="digi_port_label">
-                <property name="text">
-                 <string>Port</string>
+              <item row="0" column="4">
+               <widget class="NoWheelSpinBox" name="digi_port_box">
+                <property name="maximum">
+                 <number>65535</number>
                 </property>
                </widget>
               </item>
@@ -18095,15 +18095,22 @@
                 </property>
                </widget>
               </item>
-              <item row="0" column="4">
-               <widget class="NoWheelSpinBox" name="digi_port_box">
-                <property name="maximum">
-                 <number>65535</number>
+              <item row="0" column="5">
+               <widget class="QLabel" name="digi_filename_label">
+                <property name="text">
+                 <string>Filename</string>
                 </property>
                </widget>
               </item>
               <item row="0" column="2">
                <widget class="QLineEdit" name="digi_hostname_edit"/>
+              </item>
+              <item row="0" column="3">
+               <widget class="QLabel" name="digi_port_label">
+                <property name="text">
+                 <string>Port</string>
+                </property>
+               </widget>
               </item>
               <item row="0" column="1">
                <widget class="QLabel" name="digi_hostname_label">
@@ -18111,6 +18118,9 @@
                  <string>Hostname</string>
                 </property>
                </widget>
+              </item>
+              <item row="0" column="6">
+               <widget class="QLineEdit" name="digi_filename_edit"/>
               </item>
              </layout>
             </item>
@@ -18122,31 +18132,11 @@
               <property name="bottomMargin">
                <number>6</number>
               </property>
-              <item row="1" column="6">
-               <widget class="QCheckBox" name="digi_ch4_box">
-                <property name="layoutDirection">
-                 <enum>Qt::LayoutDirection::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>Ch4</string>
-                </property>
-               </widget>
-              </item>
               <item row="3" column="5">
                <widget class="QLineEdit" name="digi_ch11_name"/>
               </item>
               <item row="3" column="1">
                <widget class="QLineEdit" name="digi_ch9_name"/>
-              </item>
-              <item row="1" column="4">
-               <widget class="QCheckBox" name="digi_ch3_box">
-                <property name="layoutDirection">
-                 <enum>Qt::LayoutDirection::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>Ch3</string>
-                </property>
-               </widget>
               </item>
               <item row="3" column="3">
                <widget class="QLineEdit" name="digi_ch10_name"/>
@@ -18166,48 +18156,18 @@
                 </property>
                </widget>
               </item>
-              <item row="3" column="2">
-               <widget class="QCheckBox" name="digi_ch10_box">
-                <property name="layoutDirection">
-                 <enum>Qt::LayoutDirection::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>Ch10</string>
-                </property>
-               </widget>
-              </item>
-              <item row="5" column="0">
-               <widget class="QCheckBox" name="digi_ch17_box">
-                <property name="layoutDirection">
-                 <enum>Qt::LayoutDirection::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>Ch17</string>
-                </property>
-               </widget>
-              </item>
               <item row="0" column="6">
-               <widget class="QLabel" name="digi_ch_enable_label_4">
+               <widget class="QLabel" name="digi_ch_label_4">
                 <property name="font">
                  <font>
                   <bold>true</bold>
                  </font>
                 </property>
                 <property name="text">
-                 <string>Enable</string>
+                 <string>Channel</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="2">
-               <widget class="QCheckBox" name="digi_ch2_box">
-                <property name="layoutDirection">
-                 <enum>Qt::LayoutDirection::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>Ch2</string>
                 </property>
                </widget>
               </item>
@@ -18216,36 +18176,6 @@
               </item>
               <item row="2" column="7">
                <widget class="QLineEdit" name="digi_ch8_name"/>
-              </item>
-              <item row="2" column="2">
-               <widget class="QCheckBox" name="digi_ch6_box">
-                <property name="layoutDirection">
-                 <enum>Qt::LayoutDirection::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>Ch6</string>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="4">
-               <widget class="QCheckBox" name="digi_ch11_box">
-                <property name="layoutDirection">
-                 <enum>Qt::LayoutDirection::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>Ch11</string>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="0">
-               <widget class="QCheckBox" name="digi_ch5_box">
-                <property name="layoutDirection">
-                 <enum>Qt::LayoutDirection::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>Ch5</string>
-                </property>
-               </widget>
               </item>
               <item row="2" column="3">
                <widget class="QLineEdit" name="digi_ch6_name"/>
@@ -18274,16 +18204,6 @@
               <item row="2" column="1">
                <widget class="QLineEdit" name="digi_ch5_name"/>
               </item>
-              <item row="8" column="0">
-               <widget class="QCheckBox" name="digi_ch29_box">
-                <property name="layoutDirection">
-                 <enum>Qt::LayoutDirection::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>Ch29</string>
-                </property>
-               </widget>
-              </item>
               <item row="0" column="7">
                <widget class="QLabel" name="digi_ch_name_label_4">
                 <property name="font">
@@ -18299,35 +18219,15 @@
                 </property>
                </widget>
               </item>
-              <item row="4" column="0">
-               <widget class="QCheckBox" name="digi_ch13_box">
-                <property name="layoutDirection">
-                 <enum>Qt::LayoutDirection::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>Ch13</string>
-                </property>
-               </widget>
-              </item>
-              <item row="6" column="0">
-               <widget class="QCheckBox" name="digi_ch21_box">
-                <property name="layoutDirection">
-                 <enum>Qt::LayoutDirection::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>Ch21</string>
-                </property>
-               </widget>
-              </item>
               <item row="0" column="0">
-               <widget class="QLabel" name="digi_ch_enable_label_1">
+               <widget class="QLabel" name="digi_ch_label_1">
                 <property name="font">
                  <font>
                   <bold>true</bold>
                  </font>
                 </property>
                 <property name="text">
-                 <string>Enable</string>
+                 <string>Channel</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -18338,27 +18238,17 @@
                <widget class="QLineEdit" name="digi_ch7_name"/>
               </item>
               <item row="0" column="2">
-               <widget class="QLabel" name="digi_ch_enable_label_2">
+               <widget class="QLabel" name="digi_ch_label_2">
                 <property name="font">
                  <font>
                   <bold>true</bold>
                  </font>
                 </property>
                 <property name="text">
-                 <string>Enable</string>
+                 <string>Channel</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="7" column="0">
-               <widget class="QCheckBox" name="digi_ch25_box">
-                <property name="layoutDirection">
-                 <enum>Qt::LayoutDirection::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>Ch25</string>
                 </property>
                </widget>
               </item>
@@ -18377,58 +18267,18 @@
                 </property>
                </widget>
               </item>
-              <item row="2" column="4">
-               <widget class="QCheckBox" name="digi_ch7_box">
-                <property name="layoutDirection">
-                 <enum>Qt::LayoutDirection::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>Ch7</string>
-                </property>
-               </widget>
-              </item>
               <item row="1" column="1">
                <widget class="QLineEdit" name="digi_ch1_name"/>
               </item>
-              <item row="3" column="0">
-               <widget class="QCheckBox" name="digi_ch9_box">
-                <property name="layoutDirection">
-                 <enum>Qt::LayoutDirection::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>Ch9</string>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="6">
-               <widget class="QCheckBox" name="digi_ch8_box">
-                <property name="layoutDirection">
-                 <enum>Qt::LayoutDirection::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>Ch8</string>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="0">
-               <widget class="QCheckBox" name="digi_ch1_box">
-                <property name="layoutDirection">
-                 <enum>Qt::LayoutDirection::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>Ch1</string>
-                </property>
-               </widget>
-              </item>
               <item row="0" column="4">
-               <widget class="QLabel" name="digi_ch_enable_label_3">
+               <widget class="QLabel" name="digi_ch_label_3">
                 <property name="font">
                  <font>
                   <bold>true</bold>
                  </font>
                 </property>
                 <property name="text">
-                 <string>Enable</string>
+                 <string>Channel</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -18450,56 +18300,6 @@
               <item row="8" column="1">
                <widget class="QLineEdit" name="digi_ch29_name"/>
               </item>
-              <item row="4" column="2">
-               <widget class="QCheckBox" name="digi_ch14_box">
-                <property name="layoutDirection">
-                 <enum>Qt::LayoutDirection::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>Ch14</string>
-                </property>
-               </widget>
-              </item>
-              <item row="5" column="2">
-               <widget class="QCheckBox" name="digi_ch18_box">
-                <property name="layoutDirection">
-                 <enum>Qt::LayoutDirection::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>Ch18</string>
-                </property>
-               </widget>
-              </item>
-              <item row="6" column="2">
-               <widget class="QCheckBox" name="digi_ch22_box">
-                <property name="layoutDirection">
-                 <enum>Qt::LayoutDirection::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>Ch22</string>
-                </property>
-               </widget>
-              </item>
-              <item row="7" column="2">
-               <widget class="QCheckBox" name="digi_ch26_box">
-                <property name="layoutDirection">
-                 <enum>Qt::LayoutDirection::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>Ch26</string>
-                </property>
-               </widget>
-              </item>
-              <item row="8" column="2">
-               <widget class="QCheckBox" name="digi_ch30_box">
-                <property name="layoutDirection">
-                 <enum>Qt::LayoutDirection::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>Ch30</string>
-                </property>
-               </widget>
-              </item>
               <item row="4" column="3">
                <widget class="QLineEdit" name="digi_ch14_name"/>
               </item>
@@ -18515,56 +18315,6 @@
               <item row="8" column="3">
                <widget class="QLineEdit" name="digi_ch30_name"/>
               </item>
-              <item row="4" column="4">
-               <widget class="QCheckBox" name="digi_ch15_box">
-                <property name="layoutDirection">
-                 <enum>Qt::LayoutDirection::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>Ch15</string>
-                </property>
-               </widget>
-              </item>
-              <item row="5" column="4">
-               <widget class="QCheckBox" name="digi_ch19_box">
-                <property name="layoutDirection">
-                 <enum>Qt::LayoutDirection::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>Ch19</string>
-                </property>
-               </widget>
-              </item>
-              <item row="6" column="4">
-               <widget class="QCheckBox" name="digi_ch23_box">
-                <property name="layoutDirection">
-                 <enum>Qt::LayoutDirection::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>Ch23</string>
-                </property>
-               </widget>
-              </item>
-              <item row="7" column="4">
-               <widget class="QCheckBox" name="digi_ch27_box">
-                <property name="layoutDirection">
-                 <enum>Qt::LayoutDirection::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>Ch27</string>
-                </property>
-               </widget>
-              </item>
-              <item row="8" column="4">
-               <widget class="QCheckBox" name="digi_ch31_box">
-                <property name="layoutDirection">
-                 <enum>Qt::LayoutDirection::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>Ch31</string>
-                </property>
-               </widget>
-              </item>
               <item row="4" column="5">
                <widget class="QLineEdit" name="digi_ch15_name"/>
               </item>
@@ -18579,66 +18329,6 @@
               </item>
               <item row="8" column="5">
                <widget class="QLineEdit" name="digi_ch31_name"/>
-              </item>
-              <item row="3" column="6">
-               <widget class="QCheckBox" name="digi_ch12_box">
-                <property name="layoutDirection">
-                 <enum>Qt::LayoutDirection::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>Ch12</string>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="6">
-               <widget class="QCheckBox" name="digi_ch16_box">
-                <property name="layoutDirection">
-                 <enum>Qt::LayoutDirection::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>Ch16</string>
-                </property>
-               </widget>
-              </item>
-              <item row="5" column="6">
-               <widget class="QCheckBox" name="digi_ch20_box">
-                <property name="layoutDirection">
-                 <enum>Qt::LayoutDirection::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>Ch20</string>
-                </property>
-               </widget>
-              </item>
-              <item row="6" column="6">
-               <widget class="QCheckBox" name="digi_ch24_box">
-                <property name="layoutDirection">
-                 <enum>Qt::LayoutDirection::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>Ch24</string>
-                </property>
-               </widget>
-              </item>
-              <item row="7" column="6">
-               <widget class="QCheckBox" name="digi_ch28_box">
-                <property name="layoutDirection">
-                 <enum>Qt::LayoutDirection::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>Ch28</string>
-                </property>
-               </widget>
-              </item>
-              <item row="8" column="6">
-               <widget class="QCheckBox" name="digi_ch32_box">
-                <property name="layoutDirection">
-                 <enum>Qt::LayoutDirection::RightToLeft</enum>
-                </property>
-                <property name="text">
-                 <string>Ch32</string>
-                </property>
-               </widget>
               </item>
               <item row="3" column="7">
                <widget class="QLineEdit" name="digi_ch12_name"/>
@@ -18657,6 +18347,326 @@
               </item>
               <item row="8" column="7">
                <widget class="QLineEdit" name="digi_ch32_name"/>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="digi_ch1_label">
+                <property name="text">
+                 <string>Ch1</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="2">
+               <widget class="QLabel" name="digi_ch2_label">
+                <property name="text">
+                 <string>Ch2</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="4">
+               <widget class="QLabel" name="digi_ch3_label">
+                <property name="text">
+                 <string>Ch3</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="6">
+               <widget class="QLabel" name="digi_ch4_label">
+                <property name="text">
+                 <string>Ch4</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QLabel" name="digi_ch5_label">
+                <property name="text">
+                 <string>Ch5</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="2">
+               <widget class="QLabel" name="digi_ch6_label">
+                <property name="text">
+                 <string>Ch6</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="4">
+               <widget class="QLabel" name="digi_ch7_label">
+                <property name="text">
+                 <string>Ch7</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="6">
+               <widget class="QLabel" name="digi_ch8_label">
+                <property name="text">
+                 <string>Ch8</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="0">
+               <widget class="QLabel" name="digi_ch9_label">
+                <property name="text">
+                 <string>Ch9</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="2">
+               <widget class="QLabel" name="digi_ch10_label">
+                <property name="text">
+                 <string>Ch10</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="4">
+               <widget class="QLabel" name="digi_ch11_label">
+                <property name="text">
+                 <string>Ch11</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="6">
+               <widget class="QLabel" name="digi_ch12_label">
+                <property name="text">
+                 <string>Ch12</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="0">
+               <widget class="QLabel" name="digi_ch13_label">
+                <property name="text">
+                 <string>Ch13</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="2">
+               <widget class="QLabel" name="digi_ch14_label">
+                <property name="text">
+                 <string>Ch14</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="4">
+               <widget class="QLabel" name="digi_ch15_label">
+                <property name="text">
+                 <string>Ch15</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="6">
+               <widget class="QLabel" name="digi_ch16_label">
+                <property name="text">
+                 <string>Ch16</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="0">
+               <widget class="QLabel" name="digi_ch17_label">
+                <property name="text">
+                 <string>Ch17</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="2">
+               <widget class="QLabel" name="digi_ch18_label">
+                <property name="text">
+                 <string>Ch18</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="4">
+               <widget class="QLabel" name="digi_ch19_label">
+                <property name="text">
+                 <string>Ch19</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="6">
+               <widget class="QLabel" name="digi_ch20_label">
+                <property name="text">
+                 <string>Ch20</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="0">
+               <widget class="QLabel" name="digi_ch21_label">
+                <property name="text">
+                 <string>Ch21</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="2">
+               <widget class="QLabel" name="digi_ch22_label">
+                <property name="text">
+                 <string>Ch22</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="4">
+               <widget class="QLabel" name="digi_ch23_label">
+                <property name="text">
+                 <string>Ch23</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="6">
+               <widget class="QLabel" name="digi_ch24_label">
+                <property name="text">
+                 <string>Ch24</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="7" column="0">
+               <widget class="QLabel" name="digi_ch25_label">
+                <property name="text">
+                 <string>Ch25</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="7" column="2">
+               <widget class="QLabel" name="digi_ch26_label">
+                <property name="text">
+                 <string>Ch26</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="7" column="4">
+               <widget class="QLabel" name="digi_ch27_label">
+                <property name="text">
+                 <string>Ch27</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="7" column="6">
+               <widget class="QLabel" name="digi_ch28_label">
+                <property name="text">
+                 <string>Ch28</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="8" column="0">
+               <widget class="QLabel" name="digi_ch29_label">
+                <property name="text">
+                 <string>Ch29</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="8" column="2">
+               <widget class="QLabel" name="digi_ch30_label">
+                <property name="text">
+                 <string>Ch30</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="8" column="4">
+               <widget class="QLabel" name="digi_ch31_label">
+                <property name="text">
+                 <string>Ch31</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="8" column="6">
+               <widget class="QLabel" name="digi_ch32_label">
+                <property name="text">
+                 <string>Ch32</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                </property>
+               </widget>
               </item>
              </layout>
             </item>
@@ -18707,7 +18717,7 @@
   </widget>
   <action name="actionReloadConfig">
    <property name="icon">
-    <iconset resource="../code/RunControl/resources/resources.qrc">
+    <iconset resource="../resources/resources.qrc">
      <normaloff>:/icons/reload.png</normaloff>:/icons/reload.png</iconset>
    </property>
    <property name="text">
@@ -18725,7 +18735,7 @@
   </action>
   <action name="actionSaveConfig">
    <property name="icon">
-    <iconset resource="../code/RunControl/resources/resources.qrc">
+    <iconset resource="../resources/resources.qrc">
      <normaloff>:/icons/save.png</normaloff>:/icons/save.png</iconset>
    </property>
    <property name="text">
@@ -18743,7 +18753,7 @@
   </action>
   <action name="actionApply_config">
    <property name="icon">
-    <iconset resource="../code/RunControl/resources/resources.qrc">
+    <iconset resource="../resources/resources.qrc">
      <normaloff>:/icons/check.png</normaloff>:/icons/check.png</iconset>
    </property>
    <property name="text">
@@ -18758,7 +18768,7 @@
   </action>
   <action name="actionClose_Window">
    <property name="icon">
-    <iconset resource="../code/RunControl/resources/resources.qrc">
+    <iconset resource="../resources/resources.qrc">
      <normaloff>:/icons/quit.png</normaloff>:/icons/quit.png</iconset>
    </property>
    <property name="text">
@@ -18776,7 +18786,7 @@
   </action>
   <action name="actionLoadConfig">
    <property name="icon">
-    <iconset resource="../code/RunControl/resources/resources.qrc">
+    <iconset resource="../resources/resources.qrc">
      <normaloff>:/icons/open.png</normaloff>:/icons/open.png</iconset>
    </property>
    <property name="text">
@@ -19602,7 +19612,7 @@
   <tabstop>position_subnet_edit</tabstop>
  </tabstops>
  <resources>
-  <include location="../code/RunControl/resources/resources.qrc"/>
+  <include location="../resources/resources.qrc"/>
  </resources>
  <connections>
   <connection>

@@ -370,9 +370,9 @@ class Config(QObject):
         ui.digi_enabled_box.setChecked(digiscope_config.get("enabled", False))
         ui.digi_hostname_edit.setText(digiscope_config.get("hostname", ""))
         ui.digi_port_box.setValue(digiscope_config.get("port", 0))
+        ui.digi_filename_edit.setText(digiscope_config.get("filename", ""))
         for ch in range(1, 33):
             digi_ch_config = digiscope_config.get(f"ch{ch}", {})
-            widgets[f"digi_ch{ch}_box"].setChecked(digi_ch_config.get("enabled", False))
             widgets[f"digi_ch{ch}_name"].setText(digi_ch_config.get("name", ""))
 
         self.logger.info("Configuration loaded from file.")
@@ -730,10 +730,10 @@ class Config(QObject):
             "enabled": ui.digi_enabled_box.isChecked(),
             "hostname": ui.digi_hostname_edit.text(),
             "port": ui.digi_port_box.value(),
+            "filename": ui.digi_filename_edit.text()
         }
         for ch in range(1, 33):
             digiscope_config[f"ch{ch}"] = {
-                "enabled": widgets[f"digi_ch{ch}_box"].isChecked(),
                 "name": widgets[f"digi_ch{ch}_name"].text()
             }
 
