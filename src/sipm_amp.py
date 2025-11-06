@@ -172,7 +172,6 @@ class SiPMAmp(QObject):
             try:
                 self.exec_commands(bias_command)
             except RuntimeError:
-                i-=1  # don't count failed attempt
                 continue
 
             readback_v = self.read_voltages()["hv_mean_v"]
@@ -182,8 +181,9 @@ class SiPMAmp(QObject):
                 voltage_set = True
             set_v -= offset  # adjust target voltage
 
-            if i >= max(10*iterations, 10):
+            if i >= max(5*iterations, 10):
                 self.logger.error(f"SiPM {self.amp} bias cannot be set to target voltage.")
+                self.error.emit(ErrorCodes.SIPM_AMP_BIASING_FAILED)
 
         self.logger.debug(f"SiPM {self.amp} bias set to {readback_v:.3f} V after {i} iterations, with target {target_v:.3f} V.")
 

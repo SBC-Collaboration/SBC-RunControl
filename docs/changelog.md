@@ -1,5 +1,12 @@
 # Changelog
 
+## [latest]
+### Added
+- Version number display on main window.
+### Changed
+- Changed some of digiscope config options.
+- SiPM voltage set or readback errors will now cause a warning only and not an error.
+
 ## [Run Control v0.4.3](https://github.com/SBC-Collaboration/SBC-RunControl/releases/tag/v0.4.3) (2025-11-05)
 ### Added
 - Digiscope module.
