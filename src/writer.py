@@ -62,7 +62,7 @@ class Writer(QObject):
         headers = ["run_id", "event_id", "ev_exit_code", "ev_livetime", "cum_livetime",
                    "pset_lo", "pset_hi", "pset_ramp1", "pset_ramp_down", "pset_ramp_up",
                    "start_time", "end_time", "trigger_source"]
-        dtypes = ["U100", "u4", "u1", "u8", "u8", "f", "f", "f", "f", "f", "d", "d", "U100"]
+        dtypes = ["U100", "u4", "u2", "u8", "u8", "f", "f", "f", "f", "f", "d", "d", "U100"]
         shapes = [[1], [1], [1], [1], [1], [1], [1], [1], [1], [1], [1], [1], [1]]
         with SBCWriter(
                 os.path.join(self.main.event_dir, f"event_info.sbc"),
@@ -112,7 +112,7 @@ class Writer(QObject):
         headers = ["run_id", "run_exit_code", "num_events", "run_livetime", "comment", 
                    "run_start_time", "run_end_time", "active_modules", "pset_mode", "pset_low", "pset_high",
                    "source1_ID", "source1_location", "rc_ver", "red_caen_ver", "niusb_ver", "sbc_binary_ver"]
-        dtypes = ["U100", "u1", "u4", "u8", f"U{comment_len}", 
+        dtypes = ["U100", "u2", "u4", "u8", f"U{comment_len}", 
                   "d", "d", "U100", "U100", "f", "f", 
                   "U100", "U100", "U100", "U100", "U100", "U100"]
         shapes = [[1], [1], [1], [1], [1], [1], [1], [1], [1], [1], [1], [1], [1], [1], [1], [1], [1]]

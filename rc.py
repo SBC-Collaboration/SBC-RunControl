@@ -764,7 +764,8 @@ class MainWindow(QMainWindow):
         self.run_end_time = datetime.datetime.now()
         self.stopping_run_ready = []
         self.stopping_run = False
-        self.run_exit_code = 0
+        if self.run_exit_code == 255:
+            self.run_exit_code = 0
 
         for m in self.all_modules:
             if m in self.stopping_run_modules:
@@ -846,7 +847,8 @@ class MainWindow(QMainWindow):
         self.stopping_event_ready = []
         self.event_livetime = self.event_timer.elapsed()
         self.run_livetime += self.event_livetime
-        self.event_exit_code = 0
+        if self.event_exit_code == 255:
+            self.event_exit_code = 0
         for m in self.all_modules:
             if m in self.stopping_event_modules:
                 self.widgets[f"status_{m}"].working()

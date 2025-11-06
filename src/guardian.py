@@ -53,6 +53,7 @@ class ErrorCodes(IntEnum):
     SIPM_AMP_CH_COMMAND_FAILED = 2313
     DIGISCOPE_DISABLED = 2400
     DIGISCOPE_NOT_CONNECTED = 2401
+    UNKNOWN_ERROR = 9999
 
 class Guardian(QObject):
     error_messages = {
@@ -101,6 +102,7 @@ class Guardian(QObject):
         ErrorCodes.SIPM_AMP_CH_COMMAND_FAILED: "SiPM Amp - CH command execution failed.",
         ErrorCodes.DIGISCOPE_DISABLED: "Digiscope - Digiscope disabled.",
         ErrorCodes.DIGISCOPE_NOT_CONNECTED: "Digiscope - Digiscope not connected.",
+        ErrorCodes.UNKNOWN_ERROR: "Unknown Error."
     }
 
     def __init__(self, mainwindow):
@@ -140,7 +142,13 @@ class Guardian(QObject):
     def error_handler(self, error):
         if error in ErrorCodes:
             self.send_message(error)
-        
+            self.main.run_exit_code = error
+            self.main.event_exit_code = error
+        else:
+            self.send_message(ErrorCodes.UNKNOWN_ERROR)
+            self.main.run_exit_code = ErrorCodes.UNKNOWN_ERROR
+            self.main.event_exit_code = ErrorCodes.UNKNOWN_ERROR
+
         match error:
             case 2:
                 pass
