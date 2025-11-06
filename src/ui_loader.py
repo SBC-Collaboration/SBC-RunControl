@@ -108,14 +108,6 @@ class SettingsWindow(QMainWindow):
             self.widgets[f"caen_{group}_plot_box"].stateChanged.connect(self.caen_group_changed)
         self.caen_individual_changed()
 
-        # connect upload sketch signals, force upload
-        self.ui.trigger_upload_but.clicked.connect(
-            lambda: self.main.arduino_trigger_worker.upload_sketch(check_archive=False))
-        self.ui.clock_upload_but.clicked.connect(
-            lambda: self.main.arduino_clock_worker.upload_sketch(check_archive=False))
-        self.ui.position_upload_but.clicked.connect(
-            lambda: self.main.arduino_position_worker.upload_sketch(check_archive=False))
-
         # set up checkboxes pairs and groups
         # Individual checkbox pairs (general tab <-> specific tab)
         self.checkpair_pressure = CheckBoxPairBinder(self.widgets["active_plc"], self.widgets["plc_enabled_box"])
@@ -222,6 +214,18 @@ class SettingsWindow(QMainWindow):
             caption="Position Arduino Sketch Directory",
             dir=self.config["dio"]["position"]["sketch"])
         self.ui.position_sketch_edit.setText(position_dir)
+    
+    def upload_trigger_sketch(self):
+        self.save_config()
+        self.main.arduino_trigger_worker.upload_sketch(check_archive=False)
+    
+    def upload_clock_sketch(self):
+        self.save_config()
+        self.main.arduino_clock_worker.upload_sketch(check_archive=False)
+
+    def upload_position_sketch(self):
+        self.save_config()
+        self.main.arduino_position_worker.upload_sketch(check_archive=False)
 
     def select_amp1_iv_dir(self):
         amp1_iv_dir = QFileDialog.getExistingDirectory(

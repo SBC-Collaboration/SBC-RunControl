@@ -13256,7 +13256,7 @@
            <property name="geometry">
             <rect>
              <x>0</x>
-             <y>0</y>
+             <y>-499</y>
              <width>876</width>
              <height>1416</height>
             </rect>
@@ -19687,7 +19687,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>825</x>
-     <y>1389</y>
+     <y>890</y>
     </hint>
     <hint type="destinationlabel">
      <x>199</x>
@@ -19703,7 +19703,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>879</x>
-     <y>263</y>
+     <y>-236</y>
     </hint>
     <hint type="destinationlabel">
      <x>199</x>
@@ -19751,7 +19751,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>879</x>
-     <y>834</y>
+     <y>335</y>
     </hint>
     <hint type="destinationlabel">
      <x>199</x>
@@ -19767,7 +19767,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>879</x>
-     <y>-302</y>
+     <y>126</y>
     </hint>
     <hint type="destinationlabel">
      <x>399</x>
@@ -19783,7 +19783,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>879</x>
-     <y>-28</y>
+     <y>400</y>
     </hint>
     <hint type="destinationlabel">
      <x>399</x>
@@ -19831,7 +19831,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>879</x>
-     <y>254</y>
+     <y>682</y>
     </hint>
     <hint type="destinationlabel">
      <x>660</x>
@@ -19846,8 +19846,8 @@
    <slot>run_amp1_iv()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>75</x>
-     <y>-283</y>
+     <x>80</x>
+     <y>154</y>
     </hint>
     <hint type="destinationlabel">
      <x>44</x>
@@ -19862,8 +19862,8 @@
    <slot>run_amp2_iv()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>58</x>
-     <y>-12</y>
+     <x>63</x>
+     <y>428</y>
     </hint>
     <hint type="destinationlabel">
      <x>291</x>
@@ -19878,12 +19878,60 @@
    <slot>run_amp3_iv()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>28</x>
-     <y>270</y>
+     <x>33</x>
+     <y>710</y>
     </hint>
     <hint type="destinationlabel">
      <x>233</x>
      <y>650</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>trigger_upload_but</sender>
+   <signal>clicked()</signal>
+   <receiver>SettingsWindow</receiver>
+   <slot>upload_trigger_sketch()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>818</x>
+     <y>-274</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>995</x>
+     <y>277</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>clock_upload_but</sender>
+   <signal>clicked()</signal>
+   <receiver>SettingsWindow</receiver>
+   <slot>upload_clock_sketch()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>848</x>
+     <y>275</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1028</x>
+     <y>302</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>position_upload_but</sender>
+   <signal>clicked()</signal>
+   <receiver>SettingsWindow</receiver>
+   <slot>upload_position_sketch()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>868</x>
+     <y>862</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>964</x>
+     <y>572</y>
     </hint>
    </hints>
   </connection>
@@ -19907,5 +19955,8 @@
   <slot>run_amp1_iv()</slot>
   <slot>run_amp2_iv()</slot>
   <slot>run_amp3_iv()</slot>
+  <slot>upload_trigger_sketch()</slot>
+  <slot>upload_clock_sketch()</slot>
+  <slot>upload_position_sketch()</slot>
  </slots>
 </ui>
