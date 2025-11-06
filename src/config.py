@@ -251,6 +251,7 @@ class Config(QObject):
         ui.acous_page_size_box.setValue(acous_config.get("page_size", 0))
         ui.acous_file_format_box.setCurrentText(acous_config.get("file_format", ""))
         ui.acous_file_name_edit.setText(acous_config.get("file_name", ""))
+        ui.acous_driver_timeout_box.setValue(acous_config.get("driver_timeout", 0))
 
         # Channel settings
         for i in range(1,9):
@@ -626,6 +627,7 @@ class Config(QObject):
             "page_size": ui.acous_page_size_box.value(),
             "file_format": ui.acous_file_format_box.currentText(),
             "file_name": ui.acous_file_name_edit.text(),
+            "driver_timeout": ui.acous_driver_timeout_box.value(),
         }
 
         for i in range(1,9):

@@ -159,10 +159,9 @@ class Acoustics(QObject):
             self.event_stopped.emit(f"gage-disabled")
             return
         
-        timeout = 60  # seconds
         if self.gage_process and self.gage_process.is_alive():
             os.kill(self.gage_process.pid, signal.SIGINT)
-            self.gage_process.join(timeout)
+            self.gage_process.join(self.config["driver_timeout"])
             if self.gage_process.is_alive():
                 os.kill(self.gage_process.pid, signal.SIGKILL)
                 self.error.emit(ErrorCodes.ACOUSTIC_FAILED_TO_END)
