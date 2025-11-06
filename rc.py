@@ -122,17 +122,17 @@ class MainWindow(QMainWindow):
         # List populated by ready modules at each state. After all modules are ready, it will proceed to the next state
         self.all_modules = ["config", "niusb", "modbus", "sql", "writer", 
                             "cam1", "cam2", "cam3", "clock", "trigger", "position",
-                            "amp1", "amp2", "amp3", "caen", "gage"]
+                            "amp1", "amp2", "amp3", "caen", "gage", "digiscope"]
         self.starting_program_modules = []
         self.starting_run_modules = ["amp1", "amp2", "amp3", "cam1", "cam2", "cam3",
-                                     "clock", "position", "trigger", "niusb", "caen", "modbus", "sql"]
+                                     "clock", "position", "trigger", "niusb", "caen", "modbus", "sql", "digiscope"]
         self.stopping_run_modules = ["amp1", "amp2", "amp3", "cam1", "cam2", "cam3",
-                                     "sql", "niusb", "caen", "modbus", "writer"]
+                                     "sql", "niusb", "caen", "modbus", "writer", "digiscope"]
         self.starting_event_modules = ["cam1", "cam2", "cam3", "amp1", "amp2", "amp3", "position",
-                                       "niusb", "caen", "gage", "modbus", "sql"]
+                                       "niusb", "caen", "gage", "modbus", "sql", "digiscope"]
         self.stopping_event_modules = ["cam1", "cam2", "cam3", "amp1", "amp2", "amp3", "position",
-                                       "niusb", "caen", "gage", "modbus", "sql", "writer"]
-        
+                                       "niusb", "caen", "gage", "modbus", "sql", "writer", "digiscope"]
+
         self.update_state("preparing")
 
         self.starting_program_ready = []
@@ -357,7 +357,7 @@ class MainWindow(QMainWindow):
         # quit all created workers and threads
         modules = ["cam1", "cam2", "cam3", "amp1", "amp2", "amp3",
                    "arduino_trigger", "arduino_clock", "arduino_position", 
-                   "caen", "acous", "modbus", "niusb", "writer", "sql"]
+                   "caen", "acous", "modbus", "niusb", "writer", "sql", "digiscope"]
         for m in modules:
             worker = getattr(self, f"{m}_worker", None)
             thread = getattr(self, f"{m}_thread", None)
