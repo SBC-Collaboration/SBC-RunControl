@@ -158,7 +158,13 @@ class SiPMAmp(QObject):
             f"/root/nanopi/dactest -v hv 0 {self.config['qp']}",  # set charge pump voltage
             "/root/nanopi/enhv enable",  # enable HV rail
         ]
-        self.exec_commands(setup_commands)
+        # Retry until setup commands succeed
+        while True:
+            try:
+                self.exec_commands(setup_commands)
+                break
+            except RuntimeError:
+                continue
 
         # start feedback loop to set the bias voltage
         target_v = self.config["bias"]
@@ -197,7 +203,13 @@ class SiPMAmp(QObject):
             "/root/nanopi/enhv disable",  # disable HV rails
             "/root/nanopi/setPin ENQP lo",  # disable charge pump
         ]
-        self.exec_commands(unset_commands)
+        # Retry until unset commands succeed
+        while True:
+            try:
+                self.exec_commands(unset_commands)
+                break
+            except RuntimeError:
+                continue
 
     @Slot()
     def run_iv_curve(self):
@@ -223,7 +235,13 @@ class SiPMAmp(QObject):
             "cd /root/nanopi",
             f"/root/nanopi/iv_cmd.py --start_v {start_v} --stop_v {stop_v} --step {step} --adc_rate {adc_rate} --num_readings {num_readings} --file {filename}"
         ]
-        self.exec_commands(commands)
+        # Retry until commands succeed
+        while True:
+            try:
+                self.exec_commands(commands)
+                break
+            except RuntimeError:
+                continue
         self.logger.debug(f"SiPM {self.amp} IV curve measurement command complete.")
 
     def check_iv_interval(self):
