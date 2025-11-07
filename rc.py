@@ -732,6 +732,7 @@ class MainWindow(QMainWindow):
         self.event_livetime = 0
         self.run_livetime = 0
         self.manual_stop_run = False
+        self.ui.stop_run_but.setChecked(False)
         self.ui.event_id_edit.setText(f"{self.event_id:2d}")
         self.ui.event_time_edit.setText(self.format_time(self.event_livetime))
         self.ui.run_live_time_edit.setText(self.format_time(self.run_livetime))

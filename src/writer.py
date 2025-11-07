@@ -97,9 +97,9 @@ class Writer(QObject):
             "run_end_time": self.main.run_end_time.timestamp(),
             "active_modules": ", ".join(self.active_modules) or "",
             "pset_mode": self.main.config_class.run_pressure_mode,
-            "pset_low": self.main.config_class.run_pressure_profiles[0]["setpoint_lo"]
+            "pset_lo": self.main.config_class.run_pressure_profiles[0]["setpoint_lo"]
                 if len(self.main.config_class.run_pressure_profiles)==1 else None, 
-            "pset_high": self.main.config_class.run_pressure_profiles[0]["setpoint_hi"]
+            "pset_hi": self.main.config_class.run_pressure_profiles[0]["setpoint_hi"]
                 if len(self.main.config_class.run_pressure_profiles)==1 else None,
             "source1_ID": self.main.ui.source_box.currentText() or "",
             "source1_location": self.main.ui.source_location_box.currentText() or "",

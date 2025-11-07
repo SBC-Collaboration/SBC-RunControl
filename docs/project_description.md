@@ -12,6 +12,7 @@ structure of this repository:
 │   ├── ArduinoSketches/
 │   ├── CAENDrivers/
 │   ├── gati-linux-driver/
+│   ├── conda_rc.lock.yml
 │   ├── conda_rc.yml
 │   └── root-init.sh
 ├── docs
@@ -20,23 +21,28 @@ structure of this repository:
 │   ├── api.rst
 │   ├── conf.py
 │   ├── data_format.md
+│   ├── git_workflow.md
 │   ├── index.md
 │   ├── project_structure.md
 │   └── usage.rst
 ├── init.sh
 ├── rc.py
 ├── resources/
+├── start_rc.sh
 ├── src
 │   ├── acoustics.py
 │   ├── arduinos.py
 │   ├── caen.py
 │   ├── cameras.py
 │   ├── config.py
+│   ├── digiscope.py
+│   ├── guardian.py
 │   ├── niusb.py
 │   ├── plc.py
 │   ├── sipm_amp.py
 │   ├── sql.py
 │   ├── ui_loader.py
+│   ├── visualization.py
 │   └── writer.py
 └── ui
     ├── custom_widgets.py
@@ -143,6 +149,8 @@ The acoustics module controls the GaGe digitizer using the provided `gati-linux-
 
 ### PLC
 Run control communicates with the PLC using Modbus in this module. It opens and closes the Modbus-TCP connection at the start and end of a run, respectively. When a event starts, it starts the `WRITE_SLOWDAQ` procedure on the PLC, starts data taking. Also it sets all relavent variables for the event, like pressure setpoint. When the event becomes active, it start the `PRESSURE_CYCLE` procedure, telling the PLC to start a pressure cycle. When a trigger happens at the end of an event, the module waits until the `PRESSURE_CYCLE` procedure ends, reads the `PCYCLE_*_FF` for any first fault information, stops the `WRITE_SLOWDAQ` procedure, and copies the data via SMB to the data folder. 
+### Guardian
+Error handling module. 
 
 ### Digiscope
 This module uses NI CompactRIO device to serve as a global clock sync at 1 us resolution for up to 64 digital lines.
