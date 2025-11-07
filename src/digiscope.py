@@ -53,7 +53,7 @@ class Digiscope(QObject):
                             self.col_headers[5]: datachunk[:,3:].astype(np.uint32)}
                 self.digiscope_data.append(datadict)
             except Exception as e:
-                self.logger.error(f"Digiscope TCP data poll failed: {e}.")
+                self.logger.error(f"Digiscope: TCP data poll failed: {e}.")
 
     @Slot()
     def run(self):
@@ -77,7 +77,7 @@ class Digiscope(QObject):
             self.client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             self.client.connect((self.config["hostname"], self.config["port"]))
         except Exception as e:
-            self.logger.error(f"Digiscope TCP connection failed to open: {e}.")
+            self.logger.error(f"Digiscope: TCP connection failed to open: {e}.")
         self.run_started.emit("digiscope")
 
 
@@ -118,7 +118,7 @@ class Digiscope(QObject):
         try:
             self.client.close()
         except Exception as e:
-            self.logger.error(f"Digiscope TCP connection failed to close: {e}.")
+            self.logger.error(f"Digiscope: TCP connection failed to close: {e}.")
         self.client = None
         self.run_stopped.emit("digiscope")
     

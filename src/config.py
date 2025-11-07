@@ -316,9 +316,9 @@ class Config(QObject):
         speed = ["fast", "slow"]
         for i in range(1, 17):
             in_port_name = trig_in_ports[(i - 1) // 8] + str((i - 1) % 8)
-            in_pin = self.main.arduino_trigger_worker.reverse_port_map[in_port_name]
+            in_pin = self.main.trigger_worker.reverse_port_map[in_port_name]
             ff_port_name = trig_ff_ports[(i - 1) // 8] + str((i - 1) % 8)
-            ff_pin = self.main.arduino_trigger_worker.reverse_port_map[ff_port_name]
+            ff_pin = self.main.trigger_worker.reverse_port_map[ff_port_name]
 
             conf = trigger_config[f"trig{i}"]
             widgets[f"trig{i}_enabled"].setChecked(conf["enabled"]),
@@ -328,7 +328,7 @@ class Config(QObject):
             widgets[f"trig{i}_compression"].setText(speed[(i - 1) // 8])
 
         for i in range(1, 14):
-            latch_pin = self.main.arduino_trigger_worker.latch_pins[i-1]
+            latch_pin = self.main.trigger_worker.latch_pins[i-1]
             widgets[f"trig_latch_pin{i}_box"].setValue(latch_pin)
 
         clock_ports = ["C", "L"]
@@ -339,7 +339,7 @@ class Config(QObject):
         for i in range(1, 17):
             w = f"wave{i}"
             clock_port_name = clock_ports[(i - 1) // 8] + str((i - 1) % 8)
-            clock_pin = self.main.arduino_clock_worker.reverse_port_map[clock_port_name]
+            clock_pin = self.main.clock_worker.reverse_port_map[clock_port_name]
             config = clock_config[w]
             widgets[f"{w}_enabled"].setChecked(config.get("enabled", False))
             widgets[f"clock_name_{w}"].setText(config.get("name", ""))

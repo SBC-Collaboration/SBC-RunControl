@@ -217,15 +217,15 @@ class SettingsWindow(QMainWindow):
     
     def upload_trigger_sketch(self):
         self.save_config()
-        self.main.arduino_trigger_worker.upload_sketch(check_archive=False)
+        self.main.trigger_worker.upload_sketch(check_archive=False)
     
     def upload_clock_sketch(self):
         self.save_config()
-        self.main.arduino_clock_worker.upload_sketch(check_archive=False)
+        self.main.clock_worker.upload_sketch(check_archive=False)
 
     def upload_position_sketch(self):
         self.save_config()
-        self.main.arduino_position_worker.upload_sketch(check_archive=False)
+        self.main.position_worker.upload_sketch(check_archive=False)
 
     def select_amp1_iv_dir(self):
         amp1_iv_dir = QFileDialog.getExistingDirectory(

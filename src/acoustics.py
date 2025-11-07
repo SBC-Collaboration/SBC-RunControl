@@ -63,7 +63,7 @@ class Acoustics(QObject):
     def periodic_task(self):
         if (self.main.run_state == self.main.run_states["active"] and self.gage_process):
             if not self.gage_process.is_alive():
-                self.logger.debug(f"GaGe process not alive. Starting new thread.")
+                self.logger.debug(f"Acous: GaGe process not alive. Starting new thread.")
                 self.gage_process = Process(target=self.start_gage)
                 self.gage_process.start()
 
@@ -144,19 +144,19 @@ class Acoustics(QObject):
     def start_event(self):
         self.config = self.main.config_class.run_config["acous"]
         if not self.config["enabled"]:
-            self.event_started.emit(f"gage-disabled")
+            self.event_started.emit(f"acous-disabled")
             return
         self.save_config()
         
-        self.logger.debug(f"Acoustic data acquisition starting.")
+        self.logger.debug(f"Acous: Data acquisition starting.")
         self.gage_process = Process(target=self.start_gage)
         self.gage_process.start()
-        self.event_started.emit("gage")
+        self.event_started.emit("acous")
 
     @Slot()
     def stop_event(self):
         if not self.config["enabled"]:
-            self.event_stopped.emit(f"gage-disabled")
+            self.event_stopped.emit(f"acous-disabled")
             return
         
         if self.gage_process and self.gage_process.is_alive():
@@ -167,4 +167,4 @@ class Acoustics(QObject):
                 self.error.emit(ErrorCodes.ACOUSTIC_FAILED_TO_END)
             self.gage_process = None
                 
-        self.event_stopped.emit("gage")
+        self.event_stopped.emit("acous")

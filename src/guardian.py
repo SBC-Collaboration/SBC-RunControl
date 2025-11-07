@@ -132,10 +132,10 @@ class Guardian(QObject):
                 channel_id = config["slack_channel_id"]
                 self.client.chat_postMessage(channel=channel_id, text=f"RC E{error}: {message}")
             except Exception as e:
-                self.logger.error(f"Failed to send Slack message: {e}")
+                self.logger.error(f"Guardian: Failed to send Slack message: {e}")
 
     @Slot()
-    def error_handler(self, error):
+    def error_handler(self, error, message=""):
         if error in ErrorCodes:
             self.send_message(error)
             self.main.run_exit_code = error

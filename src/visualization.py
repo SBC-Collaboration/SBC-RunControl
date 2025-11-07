@@ -154,7 +154,7 @@ class AcousPlotManager(QObject):
         try:
             data = Streamer(os.path.join(self.main.current_path, "acoustics.sbc")).to_dict()
         except FileNotFoundError:
-            self.logger.warning("Acoustics data file not found.")
+            self.logger.warning("AcousPlotter: Acoustics data file not found.")
             return
         sample_rate = self.main.acous_worker.sample_rate_conversion[acous_configs["sample_rate"]]/1e6
         time_axis = [i/sample_rate for i in range(data["Waveforms"].shape[2])]

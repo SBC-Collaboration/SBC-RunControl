@@ -1412,7 +1412,7 @@ background-color: #969696;</string>
          </widget>
         </item>
         <item row="2" column="4">
-         <widget class="StatusLight" name="status_gage">
+         <widget class="StatusLight" name="status_acous">
           <property name="minimumSize">
            <size>
             <width>0</width>
@@ -1424,7 +1424,7 @@ background-color: #969696;</string>
 background-color: #969696;</string>
           </property>
           <property name="text">
-           <string>Gage</string>
+           <string>Acoustic</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignmentFlag::AlignCenter</set>

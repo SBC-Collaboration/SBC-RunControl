@@ -5,6 +5,7 @@ from PySide6.QtCore import QTimer, QObject, Slot, Signal, QThread
 import red_caen
 from sbcbinaryformat import Writer
 from src.guardian import ErrorCodes
+import time
 
 class Caen(QObject):
     run_started = Signal(str)
@@ -28,7 +29,7 @@ class Caen(QObject):
     @Slot() 
     def run(self):
         self.timer.start()
-        self.logger.debug(f"Caen module initialized in {QThread.currentThread().objectName()}.")
+        self.logger.debug(f"CAEN module initialized in {QThread.currentThread().objectName()}.")
 
 
     @Slot()
@@ -95,7 +96,7 @@ class Caen(QObject):
         # get configurations back from CAEN
         self.real_global_config = self.caen.GetGlobalConfiguration()
         self.real_group_configs = self.caen.GetGroupConfigurations()
-        self.logger.info("CAEN configuration set.")
+        self.logger.info("CAEN: Configuration set.")
 
     @Slot()
     def start_run(self):
@@ -122,7 +123,7 @@ class Caen(QObject):
             0,
             0)
         if self.caen.IsConnected():
-            self.logger.info("CAEN connection successful.\n")
+            self.logger.info("CAEN: Connection successful.\n")
         else:
             self.error.emit(ErrorCodes.CAEN_NOT_CONNECTED)
 
@@ -157,7 +158,7 @@ class Caen(QObject):
         )
 
         self.caen.EnableAcquisition()
-        self.logger.info("CAEN acquisition enabled.")
+        self.logger.info("CAEN: Acquisition enabled.")
 
         self.event_started.emit("caen")
 
@@ -172,7 +173,7 @@ class Caen(QObject):
             return
 
         self.caen.DisableAcquisition()
-        self.logger.info("CAEN acquisition disabled.")
+        self.logger.info("CAEN: Acquisition disabled.")
 
         self.caen.RetrieveData()
         self.caen.DecodeEvents()
@@ -181,11 +182,15 @@ class Caen(QObject):
             self.data_retrieved.emit(self.buffer[-1])
 
         # write data to file
+        last_log_time = time.time()
         for b in self.buffer:
             self.writer.write(b)
-            self.logger.debug(f"Writing CAEN data to file ...")
+            # log status every 5 seconds
+            if time.time() - last_log_time > 5:
+                self.logger.debug(f"CAEN: Writing data to file ...")
+                last_log_time = time.time()
         
-        self.logger.info("CAEN data written to file.")
+        self.logger.info("CAEN: Data written to file.")
         self.event_stopped.emit("caen")
 
     @Slot()

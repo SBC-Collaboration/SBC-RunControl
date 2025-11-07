@@ -122,16 +122,16 @@ class MainWindow(QMainWindow):
         # List populated by ready modules at each state. After all modules are ready, it will proceed to the next state
         self.all_modules = ["config", "niusb", "plc", "sql", "writer", 
                             "cam1", "cam2", "cam3", "clock", "trigger", "position",
-                            "amp1", "amp2", "amp3", "caen", "gage", "digiscope"]
+                            "amp1", "amp2", "amp3", "caen", "acous", "digiscope"]
         self.starting_program_modules = []
         self.starting_run_modules = ["amp1", "amp2", "amp3", "cam1", "cam2", "cam3",
                                      "clock", "position", "trigger", "niusb", "caen", "plc", "sql", "digiscope"]
         self.stopping_run_modules = ["amp1", "amp2", "amp3", "cam1", "cam2", "cam3",
                                      "sql", "niusb", "caen", "plc", "writer", "digiscope"]
         self.starting_event_modules = ["cam1", "cam2", "cam3", "amp1", "amp2", "amp3", "position",
-                                       "niusb", "caen", "gage", "plc", "sql", "digiscope"]
+                                       "niusb", "caen", "acous", "plc", "sql", "digiscope"]
         self.stopping_event_modules = ["cam1", "cam2", "cam3", "amp1", "amp2", "amp3", "position",
-                                       "niusb", "caen", "gage", "plc", "sql", "writer", "digiscope"]
+                                       "niusb", "caen", "acous", "plc", "sql", "writer", "digiscope"]
 
         self.update_state("preparing")
 
@@ -200,20 +200,20 @@ class MainWindow(QMainWindow):
             time.sleep(0.001)
 
         for ino in ["trigger", "clock", "position"]:
-            d[f"arduino_{ino}_worker"] = Arduino(self, ino)
-            d[f"arduino_{ino}_worker"].run_started.connect(self.starting_run_wait)
-            d[f"arduino_{ino}_worker"].error.connect(self.guardian_worker.error_handler)
-            d[f"arduino_{ino}_thread"] = QThread()
-            d[f"arduino_{ino}_thread"].setObjectName(f"arduino_{ino}_thread")
-            d[f"arduino_{ino}_worker"].moveToThread(d[f"arduino_{ino}_thread"])
-            d[f"arduino_{ino}_thread"].started.connect(d[f"arduino_{ino}_worker"].run)
-            self.run_starting.connect(d[f"arduino_{ino}_worker"].start_run)
+            d[f"{ino}_worker"] = Arduino(self, ino)
+            d[f"{ino}_worker"].run_started.connect(self.starting_run_wait)
+            d[f"{ino}_worker"].error.connect(self.guardian_worker.error_handler)
+            d[f"{ino}_thread"] = QThread()
+            d[f"{ino}_thread"].setObjectName(f"{ino}_thread")
+            d[f"{ino}_worker"].moveToThread(d[f"{ino}_thread"])
+            d[f"{ino}_thread"].started.connect(d[f"{ino}_worker"].run)
+            self.run_starting.connect(d[f"{ino}_worker"].start_run)
             if ino == "position":
-                self.event_starting.connect(d[f"arduino_{ino}_worker"].start_event)
-                self.event_stopping.connect(d[f"arduino_{ino}_worker"].stop_event)
-                d[f"arduino_{ino}_worker"].event_started.connect(self.starting_event_wait)
-                d[f"arduino_{ino}_worker"].event_stopped.connect(self.stopping_event_wait)
-            d[f"arduino_{ino}_thread"].start()
+                self.event_starting.connect(d[f"{ino}_worker"].start_event)
+                self.event_stopping.connect(d[f"{ino}_worker"].stop_event)
+                d[f"{ino}_worker"].event_started.connect(self.starting_event_wait)
+                d[f"{ino}_worker"].event_stopped.connect(self.stopping_event_wait)
+            d[f"{ino}_thread"].start()
             time.sleep(0.001)
 
         self.caen_worker = Caen(self)
@@ -356,7 +356,7 @@ class MainWindow(QMainWindow):
 
         # quit all created workers and threads
         modules = ["cam1", "cam2", "cam3", "amp1", "amp2", "amp3",
-                   "arduino_trigger", "arduino_clock", "arduino_position", 
+                   "trigger", "clock", "position", 
                    "caen", "acous", "plc", "niusb", "writer", "sql", "digiscope"]
         for m in modules:
             worker = getattr(self, f"{m}_worker", None)
