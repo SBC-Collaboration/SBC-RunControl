@@ -84,7 +84,7 @@ class CAENPlotManager(QObject):
         for i in range(len(self.plots)):
             curves = self.curves[i]
             # frequency is 62.5MHz
-            tick = 0.016 * 2**configs["decimation"]  # us
+            tick = 0.016 * 2**configs["global"]["decimation"]  # us
             time_axis = [i*tick for i in range(data["Waveforms"].shape[2])]
             for j in range(8):
                 if not configs[f"group{i}"]["enabled"] or \
