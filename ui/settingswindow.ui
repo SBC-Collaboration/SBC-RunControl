@@ -6876,13 +6876,13 @@
                  <string/>
                 </property>
                 <property name="minimum">
-                 <number>0</number>
+                 <number>1</number>
                 </property>
                 <property name="maximum">
-                 <number>7</number>
+                 <number>128</number>
                 </property>
                 <property name="value">
-                 <number>0</number>
+                 <number>1</number>
                 </property>
                </widget>
               </item>

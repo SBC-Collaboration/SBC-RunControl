@@ -110,7 +110,7 @@ class Writer(QObject):
         }
         comment_len = len(run_data["comment"]) if run_data["comment"] else 1
         headers = ["run_id", "run_exit_code", "num_events", "run_livetime", "comment", 
-                   "run_start_time", "run_end_time", "active_modules", "pset_mode", "pset_low", "pset_high",
+                   "run_start_time", "run_end_time", "active_modules", "pset_mode", "pset_lo", "pset_hi",
                    "source1_ID", "source1_location", "rc_ver", "red_caen_ver", "niusb_ver", "sbc_binary_ver"]
         dtypes = ["U100", "u2", "u4", "u8", f"U{comment_len}", 
                   "d", "d", "U100", "U100", "f", "f", 

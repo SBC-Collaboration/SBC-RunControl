@@ -79,12 +79,13 @@ class CAENPlotManager(QObject):
         Update the CAEN plot widgets every time data is retrieved
         """
         self.event_label.setText(f"Event: {data['EventCounter'][-1]}")
+        self.main_config = self.main.config_class.run_config
         configs = self.main_config["caen"]
 
         for i in range(len(self.plots)):
             curves = self.curves[i]
             # frequency is 62.5MHz
-            tick = 0.016 * 2**configs["global"]["decimation"]  # us
+            tick = 0.016 * configs["global"]["decimation"]  # us
             time_axis = [i*tick for i in range(data["Waveforms"].shape[2])]
             for j in range(8):
                 if not configs[f"group{i}"]["enabled"] or \
