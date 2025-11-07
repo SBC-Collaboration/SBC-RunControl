@@ -13,6 +13,7 @@ The data structure is:
   - **data_dir** (`str`): Main directory where all of the data is saved.
   - **log_dir** (`str`): Directory in which log files will be saved. If the folder doesn't exist, run control will create one. A new file will be created every day when run control is started first time after midnight.
   - **slack_alarm** (`bool`): When an error appears, should alarms be sent to slack, in addition to being logged?
+  - **slack_channel_id** (`str`): ID of slack channel that the alarm should be sent to. It can be found in the URL or on the about page of a channel.
   - **max_ev_time** (`int`, s): Max time an event can last. After the maximum is reached, a software trigger is sent from run control.
   - **max_num_evs** (`int`): Max number of events that a run can have. If the max number is reached, then the run will end, instead of starting a new event.
 - **plc**: 
@@ -25,17 +26,21 @@ The data structure is:
   - **stop_timeout**(`float`, s): After this much time after a stop signal is sent, run control will send a abort signal, which should more forcibly stop the procedure.
   - **abort_timeout** (`float`, s): If after this much time after the abort signal has been sent, the PLC is still stuck in the pressure cycle procedure, then something is very wrong. Run control should send an error message for some one to check what's going on.
   - **led1_enabled**, **led2_enabled**, **led3_enabled** (`bool`): Boolean flags of whether each of the LED ring should be turned on. If disabled, then run control will set the control voltage to 0.
-  - **led1_control**, **led2_control**, **led3_control** (`float`, V): Control voltage setting LED brightness. There's a 1 Ohm resistor in LED driver box. The current through LED is set by V_CTRL/1 Ohm.
+  - **led1_out**, **led2_out**, **led3_out** (`float`, V): Control voltage setting LED brightness when not in a run. There's a 1 Ohm resistor in LED driver box. The current through LED is set by V_CTRL/1 Ohm.
+  - **led1_out_pre**, **led2_out_pre**, **led3_out_pre** (`float`, V): LED brightness in an event before bubble trigger.
+  - **led1_out_post**, **led2_out_post**, **led3_out_post** (`float`, V): LED brightness in an event after bubble trigger.
+  - **led_post_time** (`float`, s): 
   - **registers**: Modbus register addresses of PLC variables that may be intersing in run control. The unit is in modbus words (2 bytes), and includes the starting address offset. Python `pymodbus` library uses this register value for communication.
   - **pressure**: Pressure profiles for the run.
     - **enabled** (`bool`): Whether pressure profiles are enabled.
     - **mode**: The selection mode of pressure profiles for events in a run. If `random`, then a profile is chosen randomly among enabled ones. If `cycle`, then it will cycle through all enabled ones in order.
     - **profile1**, **profile2**, **profile3**, **profile4**, **profile5**, **profile6**: Six slots for pressure profiles to choose from.
       - **enabled** (`bool`): Whether this profile is enabled to be used in the run.
-      - **setpoint** (`float`, bara): Pressure set point if it only uses one, and lower pressure set point if it oscillates between two values.
-      - **setpoint_high** (`float`, bara): Higher pressure set point if it oscillates between two values. If only one setpoint is needed, just set this value to number smaller than `setpoint`, preferably 0.
-      - **slope** (`float`, bar/s): The speed of expansion at the start of the event.
-      - **period** (`float`, s): The period of oscillation between the low and high pressure set points.
+      - **setpoint_lo** (`float`, bara): Pressure set point if it only uses one, and lower pressure set point if it oscillates between two values.
+      - **setpoint_hi** (`float`, bara): Higher pressure set point if it oscillates between two values.
+      - **ramp1** (`float`, bar/s): The speed of expansion at the start of the event, from compressed state to `setpoint_hi`.
+      - **ramp_down** (`float`, s): The speed of ramp from `setpoint_hi` to `setpoint_lo`.
+      - **ramp_up** (`float`, s): The speed of ramp from `setpoint_lo` to `setpoint_hi`.
 - **sql**: SQL configurations
   - **hostname** (`str`): Host name of SQL server
   - **port** (`int`): Port used by SQL server
@@ -103,7 +108,8 @@ The data structure is:
   - **trig_delay** (`int`)
   - **pre_trig_len** (`float`)
   - **post_trig_len** (`float`)
-  - **ch1**, **ch2**, **ch3**, **ch4**, **ch5**, **ch6**, **ch7**, **ch8**
+  - **driver_timeout** (`float`, s): Time after stop_event signal before a `SIGKILL` signal is sent to the driver, in case the driver process hangs.
+  - **ch1**, ..., **ch8**
     - **enabled** (`bool`)
     - **range** (`int`)
     - **offset** (`int`)
@@ -152,7 +158,7 @@ The data structure is:
     - **or** (`int`): Logic OR (non-latching) pin.
     - **on_time** (`int`): On-time pin showing whether all operations completed within designated clock cycle (100 us).
     - **heartbeat** (`int`): Heartbeat pin, oscillates between high and low each clock cycle.
-    - **trig1**, **trig2**, **trig3**, **trig4**, **trig5**, **trig6**, **trig7**, **trig8**, **trig9**, **trig10**, **trig11**, **trig12**, **trig13**, **trig14**, **trig15**, **trig16**
+    - **trig1**, ..., **trig16**
       - **enabled** (`bool`): Whether this channel is enabled. If not, trigger in to this channel will not be counted in the global latching.
       - **name** (`str`): Name for this pin for information.
       - **compressions** (`str`): Whether this trigger causes fast or slow compression in the PLC.
@@ -162,7 +168,7 @@ The data structure is:
     - **port** (`str`): Serial port for this device.
     - **sketch** (`str`): Location of sketch folder.
     - **loop** (`int`, us): How long each loop of the code should take. If arduino cannot complete the tasks within that time, it will print warning to serial and lower the `on_time` pin. 
-    - **wave1**, **wave2**, **wave3**, **wave4**, **wave5**, **wave6**, **wave7**, **wave8**, **wave9**, **wave10**, **wave11**, **wave12**, **wave13**, **wave14**, **wave15**, **wave16**
+    - **wave1**, ..., **wave16**
       - **enabled** (`bool`): If not enabled, this channel will always be low.
       - **name** (`str`): Name of channel for information.
       - **gated** (`bool`): Whether this channel is controlled by the trigger gate signal from trigger arduino. If true, this channel will only be active when the gate pin is high from trigger arduino.
@@ -177,6 +183,13 @@ The data structure is:
     - **ip_addr** (`str`): Local static IP address in the subnet.
     - **gateway** (`str`)
     - **subnet** (`str`)
+- **digiscope**: 
+  - **enabled** (`bool`): Whether this module is enabled.
+  - **hostname** (`str`): Server IP address.
+  - **port** (`int`): TCP port.
+  - **filename** (`str`): Name of the saved file.
+  - **ch1**, ..., **ch32**
+    - **name** (`str`): Name of signal connected to this channel.
 
 ## Run Data
 The run data is saved in the `RunData` tables in the slow control SQL database. There is one line per run.
@@ -225,34 +238,35 @@ The event data is saved in the `EventData` tables in the slow control SQL databa
 
 ## Run Info
 This data is very similar to the **RunData** SQL table, but saved locally. It is saved in the SBC binary format using `SBCBinaryFormat` library, named `run_info.sbc` in the run data folder. It can be read into a python dictionary of numpy arrays. Each array will only have 1 row. The data structure is:
-- **run_ID** (`string100`): Run ID generated by run control software, like "20240101_0".
+- **run_id** (`string100`): Run ID generated by run control software, like "20240101_0".
 - **run_exit_code** (`uint16`): Exit code when run stops. 0 means success, and other numbers mean some kind of error. Null value mean the run quitted unexpectedly. 
 - **num_events** (`uint32`): Number of events in the run.
 - **run_livetime** (`uint64`): Total livetime of the run, with ms precision.
 - **comment** (`string{len}`): Any comments entered by the user during the run. The field length is variable depending on the length of the text. 
-- **active_datastreams** (`string100`): A list of active data streams .
+- **run_start_time** (`double`): UTC timestamp of when the run starts, with ms precision.
+- **run_end_time** (`double`): UTC timestamp of when the run ends, with ms precision.
+- **active_modules** (`string100`): A list of active data streams .
   for the run. It can have zero, one, or multiple entries, from the predetermined list. If it has zero elements, it is saved as an empty string, and not NULL.
 - **pset_mode** (`string100`): Mode of pressure setpoint in this run. If `random`, then run control will choose randomly from the list. If `sequential`, then run control will cycle through the pressure setpoints in the list in order.
-- **pset** (`float`): Pressure set point of the run. If the run is doing pressure ramping, then the higher setpoint of the ramp.
-- **start_time** (`double`): UTC timestamp of when the run starts, with ms precision.
-- **end_time** (`double`): UTC timestamp of when the run ends, with ms precision.
+- **pset_lo** (`float`): Lower pressure set point of the run. If the run is doing pressure ramping, then the higher setpoint of the ramp.
+- **pset_hi** (`float`): Higher pressure set point of the run. If the run is doing pressure ramping, then the higher setpoint of the ramp.
 - **source1_ID** (`string100`): Name of source 1.
 - **source1_location** (`string100`): Location of source 1.
 - **source2_ID** (`string100`): Name of source 2.
 - **source2_location** (`string100`): Location of source 2.
 - **source3_ID** (`string100`): Name of source 3.
 - **source3_location** (`string100`): Location of source 3.
-- **rc_ver** (`string100`): Version of the run control software. Dependencies like **ArduinoSketches**, **SBC-Piezo-Base-Code**, **gati-linux-driver** and **CAENDrivers** have specific commits recorded in git submodules in each run control commit, so the changes there are also reflected in run control versions. The version here is in the format of `0.0.3.dev64+gd14b86c.d20250611`, where `0.0.3` is the semantic version with major, minor and patch version numbers. `dev64` means there are 64 commits from the `0.0.3` version release, `gd14b86c.d20250611` means current commit is `d14b86c`, and is built on `2025-06-11`. Every merge / pull request into main branch of run control should have a new version number generated, meaning all real data should only have the first part (`0.0.3`) of this version string.
+- **rc_ver** (`string100`): Version of the run control software. Dependencies like **ArduinoSketches**, **SBC-Piezo-Base-Code**, **gati-linux-driver** and **CAENDrivers** have specific commits recorded in git submodules in each run control commit, so the changes there are also reflected in run control versions. The version here is in the format of `0.0.3.dev64+gd14b86c.d20250611`, where `0.0.3` is the semantic version with major, minor and patch version numbers. `dev64` means there are 64 commits after the `0.0.3` version release, `gd14b86c.d20250611` means current commit is `d14b86c`, and is built on `2025-06-11`. Every merge / pull request into main branch of run control should have a new version number generated, meaning all real data should only have the first part (`0.0.3`) of this version string.
 - **red_caen_ver** (`string100`): Version of red_caen library.
 - **niusb_ver** (`string100`): Version of the ni_usb_6501 library.
 - **sbc_binary_ver** (`string100`): Version of the SBC binary format library.
 
 ## Event Info
 This data is very similar the the **EventData** SQL table, but saved locally. It is saved in the SBC binary format using `SBCBinaryFormat` library, named `event_info.sbc` in the event data folder. It can be read into a python dictionary of numpy arrays. Each array will only have 1 row. The data structure is:
-- **run_ID** (`string100`): Run ID generated by run control software, like "20240101_0". Run_ID and event_ID combined is a unique key for the event.
-- **event_ID** (`uint32`): Integer event ID starting from 0 in the run. 
+- **run_id** (`string100`): Run ID generated by run control software, like "20240101_0". Run_ID and event_ID combined is a unique key for the event.
+- **event_id** (`uint32`): Integer event ID starting from 0 in the run. 
 - **event_exit_code** (`uint16`): Exit code when event stops. 0 means success, and other numbers mean some kind of error. Null value mean the event quitted unexpectedly. 
-- **event_livetime** (`uint64`): Run control livetime for this event.
+- **ev_livetime** (`uint64`): Run control livetime for this event.
 - **cum_livetime** (`uint64`): Cumulative livetime of the run at the end of the event.
 - **pset_lo** (`float`, bara): Lower pressure set point for this event.
 - **pset_hi** (`float`, bara): Higher pressure set point.
@@ -261,18 +275,18 @@ This data is very similar the the **EventData** SQL table, but saved locally. It
 - **pset_ramp_up** (`flat`, bar/s): Rate of ramp from `pset_lo` to `pset_hi`.
 - **pset_period** (`float`): Period of oscillation between higher and lower set points. In units of seconds.
 - **start_time** (`double`): Timestamp of the event start.
-- **stop_time** (`double`): Timestamp of the event stop.
+- **end_time** (`double`): Timestamp of the event stop.
 - **trigger_source** (`string100`): Name of trigger's first fault.
 
 ## Slow DAQ Data
 For each pressure cycle, the PLC saves the 10 ms resolution data of a few important pressure transducers and valves. When an event ends, run control copies the data to the `slow_daq.sbc` file in the data folder.
 - **time_ms** (`uint32`):
 - **valves** (`uint32`):
-- **PT3308** (`float`):
-- **PT3309** (`float`):
-- **PT3311** (`float`):
-- **PT3314** (`float`):
-- **PT3320** (`float`):
+- **TT6415** (`float`):
+- **PT1101** (`float`):
+- **TT2118** (`float`):
+- **TT2119** (`float`):
+- **PT2121** (`float`):
 - **PT3332** (`float`):
 - **PT3333** (`float`):
 - **CYL3334** (`float`):
@@ -338,3 +352,12 @@ Each camera will save a certain number of pre-trigger and post-trigger images in
 - **timediff** (`int`, us): Difference of the **pts** of this frame from the last frame.
 - **skipped** (`int`): Number of skipped frame between the previous frame and this frame. Right now if the **timediff** is more than 12 ms, it is counted as a skipped frame, and every 10 ms increments that number.
 - **pixdiff** (`int`): How many pixels changed between the previous frame and this frame. If a value of an 8-bit pixel changed more than **adc_threshold**, then this pixel is counted as different. If the number of different pixels is more than **pix_threshold** and the **trig_en** pin is high, then a trigger will be sent.
+
+## Digiscope
+This data is saved in the SBC binary format with the file name `digiscope.sbc`. 
+- **PGAframes_ntrans** (`int32`)
+- **cRIOframes_ntrans** (`uint32`)
+- **ix** (`uint32`)
+- **t_ticks** (`uint32`)
+- **dt_ticks** (`uint32`)
+- **DI** (`uint32`, 2)
