@@ -98,3 +98,12 @@ class Camera(QObject):
         else:
             self.client.close()
             self.camera_closed.emit(self.cam_name)
+    
+    @Slot()
+    def force_restart_camera(self, cam_name):
+        if cam_name != self.cam_name:
+            return
+        elif not self.config["enabled"]:
+            return
+        self.stop_camera()
+        self.start_camera()

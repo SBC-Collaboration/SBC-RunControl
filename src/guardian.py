@@ -39,6 +39,8 @@ class ErrorCodes(IntEnum):
     SQL_NOT_CONNECTED = 1701
     CAMERA_DISABLED = 2000
     CAMERA_NOT_CONNECTED = 2001
+    CAMERA_FAILED_TO_START = 2002
+    CAMERA_FAILED_TO_STOP = 2003
     ACOUSTIC_DISABLED = 2100
     ACOUSTIC_NOT_CONNECTED = 2101
     ACOUSTIC_FAILED_TO_START = 2102
@@ -86,6 +88,8 @@ class Guardian(QObject):
         ErrorCodes.SQL_NOT_CONNECTED: "SQL - Not connected.",
         ErrorCodes.CAMERA_DISABLED: "Camera - Disabled.",
         ErrorCodes.CAMERA_NOT_CONNECTED: "Camera - Not connected.",
+        ErrorCodes.CAMERA_FAILED_TO_START: "Camera - Failed to start recording.",
+        ErrorCodes.CAMERA_FAILED_TO_STOP: "Camera - Failed to stop recording.",
         ErrorCodes.ACOUSTIC_DISABLED: "Acoustic - Disabled.",
         ErrorCodes.ACOUSTIC_NOT_CONNECTED: "Acoustic - Not connected.",
         ErrorCodes.ACOUSTIC_FAILED_TO_START: "Acoustic - GaGe driver failed to start.",

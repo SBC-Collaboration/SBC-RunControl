@@ -270,6 +270,8 @@ class MainWindow(QMainWindow):
         self.niusb_worker.event_started.connect(self.starting_event_wait)
         self.niusb_worker.event_stopped.connect(self.stopping_event_wait)
         self.niusb_worker.all_cams_stopped.connect(self.plc_worker.turn_off_leds)
+        for cam in ["cam1", "cam2", "cam3"]:
+            self.niusb_worker.force_restart_camera.connect(d[f"{cam}_worker"].force_restart_camera)
         self.niusb_worker.run_stopped.connect(self.stopping_run_wait)
         self.niusb_worker.trigger_detected.connect(self.stop_event)
         self.niusb_worker.trigger_ff.connect(self.ui.trigger_edit.setText)
@@ -428,8 +430,11 @@ class MainWindow(QMainWindow):
         seconds, milliseconds = divmod(t, 1000)
         minutes, seconds = divmod(seconds, 60)
         hours, minutes = divmod(minutes, 60)
-        if hours > 0:
-            return f"{hours}h {minutes:02d}m {seconds:02d}s{milliseconds//100:1d}"
+        days, hours = divmod(hours, 24)
+        if days > 0:
+            return f"{days}d {hours:02d}h {minutes:02d}m {seconds:02d}s"
+        elif hours > 0:
+            return f"{hours}h {minutes:02d}m {seconds:02d}s {milliseconds//100:1d}"
         elif minutes > 0:
             return f"{minutes}m {seconds:02d}s {milliseconds:03d}"
         else:
@@ -732,7 +737,6 @@ class MainWindow(QMainWindow):
         self.event_livetime = 0
         self.run_livetime = 0
         self.manual_stop_run = False
-        self.ui.stop_run_but.setChecked(False)
         self.ui.event_id_edit.setText(f"{self.event_id:2d}")
         self.ui.event_time_edit.setText(self.format_time(self.event_livetime))
         self.ui.run_live_time_edit.setText(self.format_time(self.run_livetime))
@@ -744,7 +748,7 @@ class MainWindow(QMainWindow):
         self.widgets["status_config"].active()
 
         file_handler = logging.FileHandler(self.run_log_dir, mode="a")
-        file_handler.setLevel(logging.INFO)
+        file_handler.setLevel(logging.DEBUG)
         file_handler.setFormatter(self.log_formatter)
         self.logger.addHandler(file_handler)
         for m in self.all_modules:
@@ -761,6 +765,7 @@ class MainWindow(QMainWindow):
         self.run_end_time = datetime.datetime.now()
         self.stopping_run_ready = []
         self.stopping_run = False
+        self.ui.stop_run_but.setChecked(False)
         if self.run_exit_code == 255:
             self.run_exit_code = 0
 

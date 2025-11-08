@@ -4,6 +4,7 @@ import logging
 from PySide6.QtCore import QTimer, QObject, QThread, Slot, Signal, QMutex, QWaitCondition
 import os
 import time
+from src.guardian import ErrorCodes
 
 class NIUSB(QObject):
     pin_definition = {  # input / output from run control
@@ -77,6 +78,7 @@ class NIUSB(QObject):
     all_cams_stopped = Signal()
     run_stopped = Signal(str)
     trigger_ff = Signal(str)
+    force_restart_camera = Signal(str)
     error = Signal(int)
 
     def __init__(self, mainwindow):
@@ -269,16 +271,33 @@ class NIUSB(QObject):
         self.event_stopped.emit("niusb")
 
         cam_ready = {}
-        for cam in ["cam1", "cam2", "cam3"]:
-            if self.main.config_class.run_config["cams"][cam]["enabled"]:
-                self.dev.write_pin(*self.reverse_config[f"comm_{cam}"], False)
-                self.dev.write_pin(*self.reverse_config[f"trigen_{cam}"], False)
-                while self.dev.read_pin(*self.reverse_config[f"state_{cam}"]):
-                    time.sleep(0.01)
-                self.logger.debug(f"{cam} is complete.")
-                self.event_stopped.emit(cam)
-            else:
-                self.event_stopped.emit(f"{cam}-disabled")
+        stop_event_time = time.time()
+        timeout = 60  # seconds
+
+        while True:
+            time.sleep(0.01)
+            if len(cam_ready) == 3:
+                break
+
+            for cam in ["cam1", "cam2", "cam3"]:
+                if cam in cam_ready.keys():
+                    continue
+                elif not self.main.config_class.run_config["cams"][cam]["enabled"]:
+                    cam_ready[cam] = "disabled"
+                    self.event_stopped.emit(f"{cam}-disabled")
+                elif not self.dev.read_pin(*self.reverse_config[f"state_{cam}"]):
+                    cam_ready[cam] = "complete"
+                    self.logger.info(f"Camera {cam} has completed.")
+                    self.event_stopped.emit(cam)
+                elif time.time() - stop_event_time > timeout:
+                    cam_ready[cam] = "timeout"
+                    self.error.emit(ErrorCodes.CAMERA_FAILED_TO_STOP)
+                    self.force_restart_camera.emit(cam)
+                    self.event_stopped.emit(f"{cam}-error")
+                else:
+                    self.dev.write_pin(*self.reverse_config[f"comm_{cam}"], False)
+                    self.dev.write_pin(*self.reverse_config[f"trigen_{cam}"], False)
+                    
         self.all_cams_stopped.emit()
 
     @Slot()

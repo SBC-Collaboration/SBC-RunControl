@@ -43,9 +43,10 @@ class Caen(QObject):
         """
         if (self.main.run_state == self.main.run_states["active"] and self.caen):
             if self.caen.RetrieveDataUntilNEvents(self.evs_per_read):
-                self.logger.info(f"Retrieving {self.evs_per_read} CAEN events.")
                 self.caen.DecodeEvents()
-                self.buffer.append(self.caen.GetDataDict())
+                caen_data = self.caen.GetDataDict()
+                self.buffer.append(caen_data)
+                self.logger.debug(f"Retrieving {len(caen_data["Waveforms"])} CAEN events.")
                 self.data_retrieved.emit(self.buffer[-1])
 
 
