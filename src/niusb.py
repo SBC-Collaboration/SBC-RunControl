@@ -79,7 +79,7 @@ class NIUSB(QObject):
     run_stopped = Signal(str)
     trigger_ff = Signal(str)
     force_restart_camera = Signal(str)
-    error = Signal(int)
+    error = Signal(int, str)
 
     def __init__(self, mainwindow):
         super().__init__()
@@ -291,7 +291,7 @@ class NIUSB(QObject):
                     self.event_stopped.emit(cam)
                 elif time.time() - stop_event_time > timeout:
                     cam_ready[cam] = "timeout"
-                    self.error.emit(ErrorCodes.CAMERA_FAILED_TO_STOP)
+                    self.error.emit(ErrorCodes.CAMERA_FAILED_TO_STOP, cam)
                     self.force_restart_camera.emit(cam)
                     self.event_stopped.emit(f"{cam}-error")
                 else:

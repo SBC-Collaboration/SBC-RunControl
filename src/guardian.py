@@ -127,8 +127,10 @@ class Guardian(QObject):
     def periodic_task(self):
         pass
 
-    def send_message(self, error):
+    def send_message(self, error, extra_msg=""):
         message = self.error_messages.get(error, "Unknown Error. ")
+        if message:
+            message += f"{extra_msg}."
         if self.main.run_state == self.main.run_states["active"] or \
               self.main.run_state == self.main.event_states["starting_event"] or \
               self.main.run_state == self.main.event_states["stopping_event"]:
@@ -148,9 +150,9 @@ class Guardian(QObject):
                 self.logger.error(f"Guardian: Failed to send Slack message: {e}")
 
     @Slot()
-    def error_handler(self, error, message=""):
+    def error_handler(self, error, msg=""):
         if error in ErrorCodes:
-            self.send_message(error)
+            self.send_message(error, msg)
             self.main.run_exit_code = error
             self.main.event_exit_code = error
         else:

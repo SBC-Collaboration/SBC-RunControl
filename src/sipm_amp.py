@@ -72,7 +72,7 @@ class SiPMAmp(QObject):
     run_stopped = Signal(str)
     event_started = Signal(str)
     event_stopped = Signal(str)
-    error = Signal(int)
+    error = Signal(int, str)
 
     def __init__(self, mainwindow, amp):
         super().__init__()
@@ -131,7 +131,7 @@ class SiPMAmp(QObject):
             try:
                 self.client.connect(self.config['ip_addr'], username=self.config["user"])
             except pm.ssh_exception.NoValidConnectionsError:
-                self.error.emit(ErrorCodes.SIPM_AMP_NOT_CONNECTED)
+                self.error.emit(ErrorCodes.SIPM_AMP_NOT_CONNECTED, self.amp)
                 return
         command = "; ".join(commands)
         _stdin, _stdout, _stderr = self.client.exec_command(command)
@@ -198,7 +198,7 @@ class SiPMAmp(QObject):
 
             if i >= max(5*iterations, 10):
                 self.logger.error(f"SiPM {self.amp} bias cannot be set to target voltage.")
-                self.error.emit(ErrorCodes.SIPM_AMP_BIASING_FAILED)
+                self.error.emit(ErrorCodes.SIPM_AMP_BIASING_FAILED, self.amp)
                 break
 
         self.logger.debug(f"SiPM {self.amp} bias set to {readback_v:.3f} V after {i} iterations, with target {target_v:.3f} V.")
@@ -482,7 +482,7 @@ class SiPMAmp(QObject):
         try:
             self.client.connect(self.config["ip_addr"], username=self.config["user"])
         except pm.ssh_exception.NoValidConnectionsError:
-            self.error.emit(ErrorCodes.SIPM_AMP_NOT_CONNECTED)
+            self.error.emit(ErrorCodes.SIPM_AMP_NOT_CONNECTED, self.amp)
             return
 
         self.logger.debug(f"SiPM {self.amp} connected to {self.config['ip_addr']}.")
