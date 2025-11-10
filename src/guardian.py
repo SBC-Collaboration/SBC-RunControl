@@ -128,7 +128,16 @@ class Guardian(QObject):
         pass
 
     def send_message(self, error):
-        message = self.error_messages.get(error, "Unknown Error.")
+        message = self.error_messages.get(error, "Unknown Error. ")
+        if self.main.run_state == self.main.run_states["active"] or \
+              self.main.run_state == self.main.event_states["starting_event"] or \
+              self.main.run_state == self.main.event_states["stopping_event"]:
+            message += f" Current run: {self.main.run_number}, event: {self.main.event_number}, "
+        elif self.main.run_state == self.main.run_states["starting_run"] or \
+              self.main.run_state == self.main.run_states["stopping_run"]:
+            message += f" Current run: {self.main.run_number}, "
+        message += f"State: {self.main.run_state}."
+
         self.logger.error(f"Error {error}: {message}")
         config = self.main.config_class.run_config["general"]
         if config.get("slack_alarm", False):
