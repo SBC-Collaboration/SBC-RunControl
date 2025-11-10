@@ -1,5 +1,19 @@
 # Changelog
 
+## [Run Control v0.4.5](https://github.com/SBC-Collaboration/SBC-RunControl/releases/tag/v0.4.5) (2025-11-10)
+### Added
+- Added error handling for camera thread. 
+- Added timeout for acoustic module.
+### Changed
+- Improved SiPM biasing speed for each event.
+- Renamed Modbus module to PLC.
+- Updated documentation to reflect changes in data formats.
+- Improved logging to be more clear.
+### Fixed 
+- Stop run button is no longer checked at start of new run.
+- CAEN plotting will use decimation for time-axis.
+- Bugfix for CAEN decimation.
+
 ## [Run Control v0.4.4](https://github.com/SBC-Collaboration/SBC-RunControl/releases/tag/v0.4.4) (2025-11-06)
 ### Added
 - Version number display on main window.
