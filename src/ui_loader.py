@@ -172,7 +172,7 @@ class SettingsWindow(QMainWindow):
                 self.widgets[f"caen_{gp}_name_{ch}"].setModel(self.amp_names)
 
         self.load_config()
-        self.logger.debug("Settings window loaded.")
+        self.logger.debug("UI: Settings window loaded.")
 
     def load_config(self):
         self.config_class.load_config_to_window(self.ui)
@@ -320,7 +320,7 @@ class LogWindow(QMainWindow):
         self.timer.timeout.connect(self.periodic_task)
         self.timer.start()
 
-        self.logger.info("Log window loaded.")
+        self.logger.info("UI: Log window loaded.")
 
     def periodic_task(self):
         self.load_log()

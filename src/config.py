@@ -20,14 +20,14 @@ class Config(QObject):
         self.config = {}
         self.run_config = {}  # A copy of config for the run
         self.run_pressure_profiles = []
-        self.load_config()
-        self.run_config = copy.deepcopy(self.config)
 
         self.logger = logging.getLogger("rc")
         self.timer = QTimer(self)
         self.timer.setInterval(100)
         self.timer.timeout.connect(self.periodic_task)
 
+        self.load_config()
+        self.run_config = copy.deepcopy(self.config)
         self.logger.debug("Config class initialized.")
 
     def periodic_task(self):
@@ -49,11 +49,12 @@ class Config(QObject):
         # check if the config file exists, if not, copy the template
         if not os.path.isfile(self.path):
             os.makedirs(os.path.dirname(self.path), exist_ok=True)
-            self.logger.info(f"Config file not found. Created a new one at {self.path}")
+            self.logger.info(f"Config: File not found. Created a new one at {self.path}.")
             self.new_config = {}
         else:
             with open(self.path, "r") as file:
                 self.new_config = json.load(file)
+            self.logger.info(f"Config: Loaded from {self.path}.")
 
         # update existing dict with new settings
         self.update_dict(self.config, self.new_config)
@@ -376,7 +377,7 @@ class Config(QObject):
             digi_ch_config = digiscope_config.get(f"ch{ch}", {})
             widgets[f"digi_ch{ch}_name"].setText(digi_ch_config.get("name", ""))
 
-        self.logger.info("Configuration loaded from file.")
+        self.logger.info("Config: Loaded from file.")
 
     @Slot()
     def apply_config(self, ui):
@@ -764,7 +765,7 @@ class Config(QObject):
             "digiscope": digiscope_config,
         }
 
-        self.logger.info("Configuration applied.")
+        self.logger.info("Config: Config applied.")
 
     @Slot()
     def save_config_from_ui(self, ui):
@@ -775,7 +776,7 @@ class Config(QObject):
     def save_config(self):
         with open(self.path, "w") as file:
             json.dump(self.config, file, indent=2)
-        self.logger.info("Configuration saved to file.")
+        self.logger.info("Config: Config saved to file.")
 
     @Slot()
     def start_run(self):
@@ -832,14 +833,14 @@ class Config(QObject):
                 continue
             with open(cam_config["rc_config_path"], "w") as file:
                 json.dump(cam_config, file, indent=2)
-            self.logger.debug(f"Configuration file saved for {cam}")
+            self.logger.debug(f"Config: Configuration file saved for {cam}")
 
         self.main.niusb_worker.cam_config_mutex.lock()
         self.main.niusb_worker.cam_config_ready = True
         self.main.niusb_worker.cam_config_wait.wakeOne()
         self.main.niusb_worker.cam_config_mutex.unlock()
 
-        self.logger.info(f"Configuration saved to file for run {self.main.run_id}.\n")
+        self.logger.info(f"Config: Configuration saved to file for run {self.main.run_id}.\n")
         self.run_config_saved.emit()
 
     @Slot()
@@ -859,10 +860,11 @@ class Config(QObject):
             self.event_pressure = self.run_pressure_profiles[0]
             self.run_pressure_profiles.append(self.run_pressure_profiles.pop(0))
         else:
-            self.logger.error("No pressure mode selected.")
+            self.logger.error("Config: No pressure mode selected.")
             self.event_pressure = {}
             return
-        self.logger.info(f"Event pressure: Pset Low: {self.event_pressure["setpoint_lo"]}, "
+        self.logger.info(f"Config: Event pressure: "
+                         f"Pset Low: {self.event_pressure['setpoint_lo']}, "
                          f"Pset High: {self.event_pressure['setpoint_hi']}, "
                          f"Ramp 1: {self.event_pressure['ramp1']}, "
                          f"Ramp Down: {self.event_pressure['ramp_down']}, "

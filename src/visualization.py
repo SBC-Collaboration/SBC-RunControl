@@ -78,7 +78,7 @@ class CAENPlotManager(QObject):
         """
         Update the CAEN plot widgets every time data is retrieved
         """
-        self.event_label.setText(f"Event: {data['EventCounter'][-1]}")
+        self.event_label.setText(f"Event: {data['EventCounter'][-1]:,}")
         self.main_config = self.main.config_class.run_config
         configs = self.main_config["caen"]
 

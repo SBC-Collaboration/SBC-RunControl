@@ -93,7 +93,7 @@ class Arduino(QObject):
     @Slot()
     def run(self):
         self.timer.start()
-        self.logger.debug(f"Arduino {self.arduino} module initialized in {QThread.currentThread().objectName()}.")
+        self.logger.debug(f"Arduino {self.arduino}: Module initialized in {QThread.currentThread().objectName()}.")
 
     @Slot()
     def periodic_task(self):
@@ -104,9 +104,9 @@ class Arduino(QObject):
         try:
             os.stat(self.config["port"])
         except:
-            self.logger.error(f"Arduino {self.arduino} not connected.")
+            self.logger.error(f"Arduino {self.arduino}: Not connected.")
             return 1
-        self.logger.debug(f"Arduino {self.arduino} connected")
+        self.logger.debug(f"Arduino {self.arduino}: Connected")
         return 0
 
     @Slot()
@@ -127,23 +127,23 @@ class Arduino(QObject):
         elif not (archives := glob.glob(os.path.join(build_path, "*.zip"))):
             # check if a zip file exists in the build folder, without in the filename
             checksum = b""
-            self.logger.debug(f"Sketch archive doesn't exist for {self.arduino} arduino. Creating archive.")
+            self.logger.debug(f"Arduino {self.arduino}: Sketch archive doesn't exist. Creating archive.")
         elif len(archives)==1:
             # generate checksum for old zip file
             with open(archives[0], "rb") as f:
                 checksum = hashlib.sha256(f.read()).digest()
         else:
-            self.logger.debug(f"More than one sketch archive for {self.arduino} arduino. Recreating archive.")
+            self.logger.debug(f"Arduino {self.arduino}: More than one sketch archive found. Recreating archive.")
             checksum = b""
 
         # generate a new zip archive of sketch
-        self.logger.debug(f"Creating sketch archive for {self.arduino} arduino.")
+        self.logger.debug(f"Arduino {self.arduino}: Creating sketch archive.")
         os.environ["PATH"] += os.pathsep + os.path.join(os.path.dirname(os.path.dirname(__file__)), "dependencies")
         command = (f"cd {sketch_path} && rm -f {build_path}/*.zip && "
                    f"arduino-cli sketch archive {sketch_path} {build_path}")
         result = subprocess.run(command, shell=True, capture_output=True)
         if result.returncode != 0:
-            self.logger.error(result.stderr.decode("utf-8"))
+            self.logger.error(f"Arduino {self.arduino}: {result.stderr.decode('utf-8')}")
             self.error.emit(ErrorCodes.ARDUINO_SKETCH_ARCHIVAL_FAILED)
             return False
 
@@ -151,23 +151,23 @@ class Arduino(QObject):
         if (archives := glob.glob(os.path.join(build_path, "*.zip"))) and len(archives)==1 and check_archive:
             with open(archives[0], "rb") as f:
                 if checksum == hashlib.sha256(f.read()).digest():
-                    self.logger.info(f"Sketch for {self.arduino} arduino not changed. Skipping upload.")
+                    self.logger.info(f"Arduino {self.arduino}: Sketch not changed. Skipping upload.")
                     return True
 
         # if not the same, compile and upload
-        self.logger.debug(f"Uploading sketch for {self.arduino} arduino.")
+        self.logger.debug(f"Arduino {self.arduino}: Uploading sketch.")
         command = (f"cd {sketch_path} && "
                    f"arduino-cli compile -b {fqbn} --build-path {build_path} {sketch_path} && "
                    f"arduino-cli upload -p {port} -b {fqbn} --input-dir {build_path}")
         result = subprocess.run(command, shell=True, capture_output=True)
         if result.returncode:
-            self.logger.error(result.stderr.decode("utf-8"))
+            self.logger.error(f"Arduino {self.arduino}: {result.stderr.decode('utf-8')}")
             command = f"cd {sketch_path} && rm -f {build_path}/*.zip"
             result = subprocess.run(command, shell=True, capture_output=True)
             self.error.emit(ErrorCodes.ARDUINO_SKETCH_COMPILE_UPLOAD_FAILED)
             return False
-        
-        self.logger.info(f"Sketch successfully uploaded for {self.arduino} arduino.")
+
+        self.logger.info(f"Arduino {self.arduino}: Sketch successfully uploaded.")
         return True
     
     def connect_modbus(self):
@@ -175,9 +175,9 @@ class Arduino(QObject):
             return self.client
         self.client = ModbusTcpClient(self.config["ip_addr"], port=502)
         if not self.client.connect():
-            self.logger.error(f"Failed to connect to Modbus server at {self.config['ip_addr']}.")
+            self.logger.error(f"Arduino {self.arduino}: Failed to connect to Modbus server at {self.config['ip_addr']}.")
             raise ConnectionError(f"Modbus connection failed for {self.arduino} arduino.")
-        self.logger.debug(f"Connected to Modbus server at {self.config['ip_addr']} for {self.arduino} arduino.")
+        self.logger.debug(f"Arduino {self.arduino}: Connected to Modbus server at {self.config['ip_addr']}.")
         return self.client
     
     @Slot()
@@ -187,7 +187,7 @@ class Arduino(QObject):
         self.connect_modbus()
         self.client.write_register(0, 3)
         self.client.write_register(8, 3)
-        self.logger.debug("Position arduino UTI chips enabled.")
+        self.logger.debug(f"Arduino {self.arduino}: UTI chips enabled.")
 
     @Slot()
     def disable_position(self):
@@ -198,7 +198,7 @@ class Arduino(QObject):
         self.connect_modbus()
         self.client.write_register(0, 0)
         self.client.write_register(8, 0)
-        self.logger.debug("Position arduino UTI chips disabled.")
+        self.logger.debug(f"Arduino {self.arduino}: UTI chips disabled.")
 
     @Slot()
     def start_run(self):

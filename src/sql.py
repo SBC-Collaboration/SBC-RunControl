@@ -47,7 +47,7 @@ class SQL(QObject):
     @Slot()
     def run(self):
         self.timer.start()
-        self.logger.debug(f"SQL module initialized in {QThread.currentThread().objectName()}.")
+        self.logger.debug(f"SQL: Module initialized in {QThread.currentThread().objectName()}.")
 
     @Slot()
     def periodic_task(self):
@@ -99,7 +99,7 @@ class SQL(QObject):
         elif dates.ndim == 2:
             runs = set(dates[:,0])
         else:
-            self.logger.warning("Unexpected dimensions for run IDs.")
+            self.logger.warning("SQL: Unexpected dimensions for run IDs.")
 
         # now do the event table
         event_query = f"SELECT run_id FROM {self.event_table} WHERE run_ID LIKE '{date}%'" if date \
@@ -111,7 +111,7 @@ class SQL(QObject):
         elif dates.ndim == 2:
             more_runs = set(dates[:,0])
         else:
-            self.logger.warning("Unexpected dimensions for run IDs.")
+            self.logger.warning("SQL: Unexpected dimensions for run IDs.")
         all_runs = runs.union(more_runs)
         self.close_connection()
 

@@ -44,7 +44,7 @@ class PLC(QObject):
     @Slot()
     def run(self):
         self.timer.start()
-        self.logger.debug(f"PLC module initialized in {QThread.currentThread().objectName()}.")
+        self.logger.debug(f"PLC: Module initialized in {QThread.currentThread().objectName()}.")
 
     @Slot()
     def periodic_task(self):
@@ -55,9 +55,9 @@ class PLC(QObject):
                 start_pressure = self._start_procedure(self.registers["PRESSURE_CYCLE"])
                 if((start_pressure)==True):
                     self.pressure_cycle  = True
-                    self.logger.debug(f"Pressure cycle started successfully.")
+                    self.logger.debug(f"PLC: Pressure cycle started successfully.")
                 else:
-                    self.logger.error(f"Pressure cycle start failed.")
+                    self.logger.error(f"PLC: Pressure cycle start failed.")
                     self.error.emit(ErrorCodes.PLC_PRESSURE_CYCLE_START_FAILED)
     
     @Slot()
@@ -68,9 +68,9 @@ class PLC(QObject):
         ret = ret and self._write_float(self.registers["LED2_OUT"], 0)
         ret = ret and self._write_float(self.registers["LED3_OUT"], 0)
         if ret:
-            self.logger.debug(f"LED control voltages successfully changed to 0.")
+            self.logger.debug(f"PLC: LED control voltages successfully changed to 0.")
         else:
-            self.logger.error(f"Writing of LED control voltages failed.")
+            self.logger.error(f"PLC: Writing of LED control voltages failed.")
             self.error.emit(ErrorCodes.PLC_LED_OFF_FAILED)
 
     @Slot()
@@ -81,9 +81,9 @@ class PLC(QObject):
         self.client = ModbusTcpClient(self.config["hostname"], port=self.config["port"])
         try:
             self.connected = self.client.connect()
-            self.logger.debug(f"Beckoff PLC connected: {str(self.connected)}.")
+            self.logger.debug(f"PLC: Beckhoff Connected: {str(self.connected)}.")
         except Exception as e:
-            self.logger.error(f"Beckoff PLC connection failed: {e}.")
+            self.logger.error(f"PLC: Beckhoff connection failed: {e}.")
             self.error.emit(ErrorCodes.PLC_CONNECTION_FAILED)
         self.run_started.emit("plc")
 
@@ -114,9 +114,9 @@ class PLC(QObject):
         ret = ret and self._write_time(self.registers["LED_POST_TIME"], self.config["led_post_time"]*1000)
 
         if ret:
-            self.logger.debug(f"Writing of LED control voltages successful.")
+            self.logger.debug(f"PLC: Writing of LED control voltages successful.")
         else:
-            self.logger.error(f"Writing of LED control voltages failed.")
+            self.logger.error(f"PLC: Writing of LED control voltages failed.")
             self.error.emit(ErrorCodes.PLC_LED_ON_FAILED)
             self.event_started.emit("plc-error")
             return
@@ -126,9 +126,9 @@ class PLC(QObject):
             return
         
         if (self._start_procedure(self.registers["WRITE_SLOWDAQ"])) == True:
-            self.logger.debug(f"SLOW DAQ process started.")
+            self.logger.debug(f"PLC: SLOW DAQ process started.")
         else:
-            self.logger.error(f"SLOW DAQ process start failed.")
+            self.logger.error(f"PLC: SLOW DAQ process start failed.")
             self.error.emit(ErrorCodes.PLC_SLOWDAQ_START_FAILED)
 
         ret = True
@@ -139,9 +139,9 @@ class PLC(QObject):
         ret = ret and self._write_float(self.registers["PCYCLE_PSET_RAMPDOWN"], ev_pressure["ramp_down"])
         ret = ret and self._write_float(self.registers["PCYCLE_PSET_RAMPUP"], ev_pressure["ramp_up"])
         if ret:
-            self.logger.debug(f"write of PSET is successful.")
+            self.logger.debug(f"PLC: Write of PSET is successful.")
         else:
-            self.logger.error(f"write of PSET failed.")
+            self.logger.error(f"PLC: Write of PSET failed.")
             self.error.emit(ErrorCodes.PLC_PSET_FAILED)
             self.event_started.emit("plc-error")
             return
@@ -207,11 +207,11 @@ class PLC(QObject):
         self.pressure_cycle = False
         time.sleep(1)
         if (self._read_procedure(self.registers["WRITE_SLOWDAQ"])[0]):
-            self.logger.error("SLOW_DAQ process didn't end successfully.")
+            self.logger.error(f"PLC: SLOW_DAQ process didn't end successfully.")
             self.error.emit(ErrorCodes.PLC_SLOWDAQ_STOP_FAILED)
             self.event_stopped.emit("plc-error")
         else:
-            self.logger.debug("SLOW_DAQ process ended successfully.")
+            self.logger.debug("PLC: SLOW_DAQ process ended successfully.")
             
         # copy data file from plc to RC
         hostname = self.config["hostname"]
@@ -220,18 +220,18 @@ class PLC(QObject):
         remote_file = self.config["smb_filename"]
         local_path = os.path.join(self.main.event_dir, "slow_daq.sbc")
         if not os.path.exists(perm_file):
-            self.logger.error(f"PLC SMB Permission file {perm_file} does not exist.")
+            self.logger.error(f"PLC: SMB Permission file {perm_file} does not exist.")
             self.error.emit(ErrorCodes.PLC_SMB_PERMISSION_FILE_MISSING)
             self.event_stopped.emit("plc-error")
             return
         command = f"smbclient //{hostname}/{share} -A {perm_file} -c 'get {remote_file} {local_path}'"
         ret_os = os.system(command)
         if (ret_os > 0):
-            self.logger.error("PLC log File copy is unsuccessful.")
+            self.logger.error("PLC: Log File copy is unsuccessful.")
             self.event_stopped.emit("plc-error")
             return
         else:
-            self.logger.debug("PLC log File copied successfully.")
+            self.logger.debug("PLC: Log File copied successfully.")
 
         self.event_stopped.emit("plc")
 
@@ -265,7 +265,7 @@ class PLC(QObject):
             time.sleep(0.1)
 
         if not self._get_procedure_state(pc_register):
-            self.logger.debug("PRESSURE_CYCLE ended.")
+            self.logger.debug("PLC: PRESSURE_CYCLE ended.")
             return
         
         # If timed out, try to stop procedure
@@ -275,7 +275,7 @@ class PLC(QObject):
             time.sleep(0.1)
         
         if not self._get_procedure_state(pc_register):
-            self.logger.warning("PRESSURE_CYCLE stopped.")
+            self.logger.warning("PLC: PRESSURE_CYCLE stopped.")
             return
         
         # If still running, or stop failed, try to abort procedure
@@ -286,10 +286,10 @@ class PLC(QObject):
         
         # If abort failed, or timeout, raise an error
         if not self._get_procedure_state(pc_register):
-            self.logger.warning("PRESSURE_CYCLE aborted.")
+            self.logger.warning("PLC: PRESSURE_CYCLE aborted.")
         else:
-            self.logger.error("PRESSURE_CYCLE failed to abort.")
-            self.error.emit("PRESSURE_CYCLE still running")
+            self.logger.error("PLC: PRESSURE_CYCLE failed to abort.")
+            self.error.emit(ErrorCodes.PLC_PRESSURE_CYCLE_STOP_FAILED)
     
     #############################################################
     # Private helper functions to read / write Modbus registers

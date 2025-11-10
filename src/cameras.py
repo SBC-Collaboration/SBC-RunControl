@@ -85,7 +85,7 @@ class Camera(QObject):
         stdin, stdout, stderr = self.client.exec_command(command, get_pty=True)
 
         for line in stdout:
-            self.logger.debug(line.rstrip("\r\n"))
+            self.logger.debug(f"Camera: {line.rstrip('\r\n')}")
             if "Image acquisition started" in line:
                 self.camera_started.emit(self.cam_name)
                 return

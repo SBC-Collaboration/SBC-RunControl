@@ -58,7 +58,7 @@ class Digiscope(QObject):
     @Slot()
     def run(self):
         self.timer.start()
-        self.logger.debug(f"Digiscope module initialized in {QThread.currentThread().objectName()}.")
+        self.logger.debug(f"Digiscope: Module initialized in {QThread.currentThread().objectName()}.")
 
     @Slot()
     def periodic_task(self):
@@ -76,6 +76,7 @@ class Digiscope(QObject):
         try:
             self.client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             self.client.connect((self.config["hostname"], self.config["port"]))
+            self.logger.debug(f"Digiscope: TCP connection established to {self.config['hostname']}:{self.config['port']}.")
         except Exception as e:
             self.logger.error(f"Digiscope: TCP connection failed to open: {e}.")
         self.run_started.emit("digiscope")
@@ -106,7 +107,8 @@ class Digiscope(QObject):
                 self.col_headers, self.col_dtypes, self.col_shapes
         ) as digiscope_writer:
             digiscope_writer.write(self.digiscope_data)
-
+        
+        self.logger.debug(f"Digiscope: Data written to {self.config['filename']}.")
         self.digiscope_data.clear()
         self.event_stopped.emit("digiscope")
 
@@ -117,6 +119,7 @@ class Digiscope(QObject):
             return
         try:
             self.client.close()
+            self.logger.debug(f"Digiscope: TCP connection closed.")
         except Exception as e:
             self.logger.error(f"Digiscope: TCP connection failed to close: {e}.")
         self.client = None

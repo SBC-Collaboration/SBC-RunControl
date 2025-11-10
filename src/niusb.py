@@ -103,7 +103,7 @@ class NIUSB(QObject):
     @Slot()
     def run(self):
         self.timer.start()
-        self.logger.debug(f"NI_USB class initialized in {QThread.currentThread().objectName()}.")
+        self.logger.debug(f"NIUSB: Module initialized in {QThread.currentThread().objectName()}.")
 
     @Slot()
     def periodic_task(self):
@@ -124,7 +124,7 @@ class NIUSB(QObject):
                     continue
                 elif elapsed_time > wait_time * 1000:
                     self.dev.write_pin(*self.reverse_config[f"trigen_{cam}"], True)
-                    self.logger.info(f"Camera {cam} trigger is enabled.")
+                    self.logger.info(f"NIUSB: Camera {cam} trigger is enabled.")
                     self.cam_trig[cam] = True
 
     @Slot()
@@ -132,14 +132,14 @@ class NIUSB(QObject):
         try:
             os.stat("/dev/niusb")
         except:
-            self.logger.error(f"NIUSB not connected.")
-        self.logger.debug(f"NIUSB connected")
+            self.logger.error(f"NIUSB: Not connected.")
+        self.logger.debug(f"NIUSB: Connected")
 
     @Slot(str)
     def send_trigger(self, source):
         self.ff_pin = source
         self.dev.write_pin(*self.reverse_config["trig"], 1)
-        self.logger.info("Software trigger sent.")
+        self.logger.info("NIUSB: Software trigger sent.")
 
     @Slot()
     def start_run(self):
@@ -154,7 +154,7 @@ class NIUSB(QObject):
             self.dev = ni.get_adapter()
         self.dev.reset()
         if not self.dev:
-            self.logger.error("NI USB device not found!")
+            self.logger.error("NIUSB: Device not found!")
 
         # get config
         self.config = self.main.config_class.run_config["dio"]["niusb"]
@@ -172,7 +172,7 @@ class NIUSB(QObject):
                                        self.pin_definition[self.config[k]] == "output",
                                        self.drive_definition[self.config[k]] == "active_drive")
             except IndexError:
-                self.logger.error(f"Pin {k} {self.config[k]} invalid.")
+                self.logger.error(f"NIUSB: Pin {k} {self.config[k]} invalid.")
                 continue
 
         # initialize output pins
@@ -182,6 +182,7 @@ class NIUSB(QObject):
 
         self.dev.write_pin(*self.reverse_config["trig"], False)
         self.dev.write_pin(*self.reverse_config["reset"], True)
+        self.logger.debug("NIUSB: Device initialized for run.")
 
         self.run_mutex.lock()
         self.run_ready = True
@@ -206,6 +207,7 @@ class NIUSB(QObject):
         self.main.trigff_mutex.lock()
         self.main.trigff_ready = False
         self.main.trigff_mutex.unlock()
+        self.logger.debug("NIUSB: Event started, trigger reset.")
         self.event_started.emit("niusb")
 
         # check if cameras config are saved

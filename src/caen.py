@@ -29,7 +29,7 @@ class Caen(QObject):
     @Slot() 
     def run(self):
         self.timer.start()
-        self.logger.debug(f"CAEN module initialized in {QThread.currentThread().objectName()}.")
+        self.logger.debug(f"CAEN: Module initialized in {QThread.currentThread().objectName()}.")
 
 
     @Slot()
@@ -46,7 +46,7 @@ class Caen(QObject):
                 self.caen.DecodeEvents()
                 caen_data = self.caen.GetDataDict()
                 self.buffer.append(caen_data)
-                self.logger.debug(f"Retrieving {len(caen_data["Waveforms"])} CAEN events.")
+                self.logger.debug(f"CAEN: Retrieving {len(caen_data['Waveforms'])} CAEN events.")
                 self.data_retrieved.emit(self.buffer[-1])
 
 
