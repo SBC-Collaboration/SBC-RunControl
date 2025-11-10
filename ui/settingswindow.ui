@@ -300,9 +300,9 @@
                </widget>
               </item>
               <item row="1" column="2">
-               <widget class="QCheckBox" name="active_plc">
+               <widget class="QCheckBox" name="active_pressure">
                 <property name="text">
-                 <string>PLC</string>
+                 <string>Pressure</string>
                 </property>
                </widget>
               </item>
@@ -1116,7 +1116,7 @@
                </widget>
               </item>
               <item row="0" column="0">
-               <widget class="QCheckBox" name="plc_enabled_box">
+               <widget class="QCheckBox" name="pressure_enabled_box">
                 <property name="text">
                  <string>Enabled</string>
                 </property>
@@ -18866,7 +18866,7 @@
   <tabstop>acous_offset_ch4</tabstop>
   <tabstop>acous_trig_ch4</tabstop>
   <tabstop>acous_offset_ch5</tabstop>
-  <tabstop>active_plc</tabstop>
+  <tabstop>active_pressure</tabstop>
   <tabstop>acous_trig_ch5</tabstop>
   <tabstop>acous_threshold_ch5</tabstop>
   <tabstop>acous_offset_ch6</tabstop>

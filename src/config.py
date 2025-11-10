@@ -92,7 +92,7 @@ class Config(QObject):
 
         # PLC
         plc_config = self.config.get("plc", {})
-        ui.plc_enabled_box.setChecked(plc_config.get("enabled", False))
+        ui.pressure_enabled_box.setChecked(plc_config.get("enabled", False))
         ui.plc_hostname_edit.setText(plc_config.get("hostname", ""))
         ui.plc_modbus_port_box.setValue(plc_config.get("port", 0))
         ui.smb_share_edit.setText(plc_config.get("smb_share", ""))
@@ -400,7 +400,7 @@ class Config(QObject):
 
         # apply plc config
         plc_config = {
-            "enabled": ui.plc_enabled_box.isChecked(),
+            "enabled": ui.pressure_enabled_box.isChecked(),
             "hostname": ui.plc_hostname_edit.text(),
             "port": ui.plc_modbus_port_box.value(),
             "smb_share": ui.smb_share_edit.text(),
