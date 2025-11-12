@@ -253,6 +253,7 @@ class MainWindow(QMainWindow):
         self.plc_worker.run_stopped.connect(self.stopping_run_wait)
         self.plc_worker.event_started.connect(self.starting_event_wait)
         self.plc_worker.event_stopped.connect(self.stopping_event_wait)
+        self.plc_worker.current_pressure.connect(self.update_current_pressure)
         self.plc_worker.error.connect(self.guardian_worker.error_handler)
         self.plc_thread = QThread()
         self.plc_thread.setObjectName("plc_thread")
@@ -414,6 +415,9 @@ class MainWindow(QMainWindow):
         """
         filename, _ = QFileDialog.getOpenFileName(self)
         self.ui.file_path.setText(filename)
+
+    def update_current_pressure(self, pressure):
+        self.ui.current_pressure_box.setValue(pressure)
 
     def format_time(self, t):
         """

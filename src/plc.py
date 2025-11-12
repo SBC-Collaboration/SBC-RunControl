@@ -22,7 +22,8 @@ def safe_modbus(func):
     return wrapper
 
 class PLC(QObject):
-    pressure_cycle =  False
+    pressure_cycle_started =  False
+    current_pressure = Signal(float)
     run_started = Signal(str)
     run_stopped = Signal(str)
     event_started = Signal(str)
@@ -36,9 +37,10 @@ class PLC(QObject):
         self.config = self.main.config_class.config["plc"]
         self.registers = self.config["registers"]
         self.client = None
+        self.enabled = False
 
         self.timer = QTimer(self)
-        self.timer.setInterval(10)
+        self.timer.setInterval(100)
         self.timer.timeout.connect(self.periodic_task)
 
     @Slot()
@@ -49,17 +51,24 @@ class PLC(QObject):
     @Slot()
     def periodic_task(self):
         if (self.main.run_state == self.main.run_states["active"] and 
-            self.enabled and self.pressure_cycle ==  False): 
+            self.enabled and self.pressure_cycle_started ==  False): 
             pressure_state  = self._read_procedure(self.registers["PRESSURE_CYCLE"]) 
             if(pressure_state is None or pressure_state[0] == False):
                 start_pressure = self._start_procedure(self.registers["PRESSURE_CYCLE"])
                 if((start_pressure)==True):
-                    self.pressure_cycle  = True
+                    self.pressure_cycle_started  = True
                     self.logger.debug(f"PLC: Pressure cycle started successfully.")
                 else:
                     self.logger.error(f"PLC: Pressure cycle start failed.")
                     self.error.emit(ErrorCodes.PLC_PRESSURE_CYCLE_START_FAILED)
-    
+        
+        # periodically update chamber pressure reading
+        if self.enabled and self.client and self.client.is_socket_open():
+            pt1101_register = 12830
+            pressure = self._read_float(pt1101_register)
+            if pressure is not None:
+                self.current_pressure.emit(pressure)
+
     @Slot()
     def turn_off_leds(self):
         # Turn off LEDs
@@ -204,7 +213,8 @@ class PLC(QObject):
             plc_writer.write(plc_data)
                     
         slowdaq_stop = self._stop_procedure(self.registers["WRITE_SLOWDAQ"])
-        self.pressure_cycle = False
+        self.pressure_cycle_started = False
+        self.current_pressure.emit(0)
         time.sleep(1)
         if (self._read_procedure(self.registers["WRITE_SLOWDAQ"])[0]):
             self.logger.error(f"PLC: SLOW_DAQ process didn't end successfully.")
@@ -241,6 +251,7 @@ class PLC(QObject):
             self.run_stopped.emit("plc-disabled")
             return
         
+        self.current_pressure.emit(0)
         self.client.close()
         self.run_stopped.emit("plc")
     
