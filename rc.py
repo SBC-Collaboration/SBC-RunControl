@@ -31,6 +31,7 @@ import re
 import sys
 import os
 import fcntl
+import json
 from sbcbinaryformat import Streamer
 
 
@@ -487,6 +488,7 @@ class MainWindow(QMainWindow):
             f"background-color: {run_state_colors[self.run_state.value-1]}"
         )
 
+        self.write_lockfile()
         start_run_but_available = False
         stop_run_but_available = False
 
@@ -568,6 +570,8 @@ class MainWindow(QMainWindow):
                 if autorun:
                     self.start_run()
                 else:
+                    self.run_id = ""
+                    self.event_id = None
                     self.update_state("idle")
 
         self.display_image(
@@ -715,6 +719,27 @@ class MainWindow(QMainWindow):
             os.unlink(current_run_path)
         os.symlink(self.run_dir, current_run_path, target_is_directory=True)
 
+    def write_lockfile(self, extra: dict = None):
+        # write to lock file
+        try:
+            file = self.lock_fd
+            metadata = {
+                "pid": os.getpid(),
+                "state": self.run_state.name,
+                "timestamp": datetime.datetime.now().isoformat(),
+                "active_run": self.run_id,
+                "active_event": self.event_id,
+            }
+            if extra:
+                metadata.update(extra)
+            file.seek(0)
+            file.truncate()
+            file.write(json.dumps(metadata))
+            file.flush()
+            os.fsync(file.fileno())
+        except Exception:
+            self.logger.warning("Failed to write to lockfile.")
+
     def start_program(self):
         try:
             result = subprocess.run(['git', 'describe', '--tags'], 
@@ -723,6 +748,7 @@ class MainWindow(QMainWindow):
         except subprocess.CalledProcessError:
             self.rc_version = 'v0.0.0'  # fallback
         self.ui.version_label.setText(f"{self.rc_version}")
+        self.write_lockfile(self.lock_fd)
 
         self.program_starting.emit()
         self.update_state("idle")
