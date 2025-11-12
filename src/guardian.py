@@ -134,10 +134,10 @@ class Guardian(QObject):
         if self.main.run_state == self.main.run_states["active"] or \
               self.main.run_state == self.main.run_states["starting_event"] or \
               self.main.run_state == self.main.run_states["stopping_event"]:
-            message += f" Current run: {self.main.run_number}, event: {self.main.event_number}, "
+            message += f" Current run: {self.main.run_id}, event: {self.main.event_id}, "
         elif self.main.run_state == self.main.run_states["starting_run"] or \
               self.main.run_state == self.main.run_states["stopping_run"]:
-            message += f" Current run: {self.main.run_number}, "
+            message += f" Current run: {self.main.run_id}, "
         message += f"State: {self.main.run_state}."
 
         self.logger.error(f"Error {error}: {message}")

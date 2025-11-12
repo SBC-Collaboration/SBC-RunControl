@@ -98,7 +98,7 @@ class Camera(QObject):
         else:
             self.client.close()
             self.camera_closed.emit(self.cam_name)
-    
+
     @Slot()
     def force_restart_camera(self, cam_name):
         if cam_name != self.cam_name:
@@ -106,4 +106,22 @@ class Camera(QObject):
         elif not self.config["enabled"]:
             return
         self.stop_camera()
+        self.force_reboot_camera()
         self.start_camera()
+    
+    @Slot()
+    def force_reboot_camera(self):
+        command = "sudo reboot"
+        stdin, stdout, stderr = self.client.exec_command(command, get_pty=True)
+
+        for line in stdout:
+            self.logger.debug(f"Camera: {line.rstrip('\r\n')}")
+        
+        try:
+            stdout.channel.recv_exit_status()
+        except Exception: pass
+        finally:
+            try: self.client.close()
+            except Exception: pass
+        
+        self.logger.info(f"Camera {self.cam_name}: Rebooted.")
