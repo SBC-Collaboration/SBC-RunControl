@@ -112,7 +112,11 @@ class Camera(QObject):
     @Slot()
     def force_reboot_camera(self):
         command = "sudo reboot"
-        stdin, stdout, stderr = self.client.exec_command(command, get_pty=True)
+        try:
+            stdin, stdout, stderr = self.client.exec_command(command, get_pty=True)
+        except Exception as e:
+            self.logger.error(f"Camera {self.cam_name}: Failed to reboot: {e}")
+            return
 
         for line in stdout:
             self.logger.debug(f"Camera: {line.rstrip('\r\n')}")

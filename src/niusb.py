@@ -310,6 +310,7 @@ class NIUSB(QObject):
                     self.event_stopped.emit(cam)
                 elif time.time() - stop_event_time > timeout:
                     cam_ready[cam] = "timeout"
+                    self.cam_error[cam] = True
                     self.error.emit(ErrorCodes.CAMERA_FAILED_TO_STOP, cam)
                     self.force_restart_camera.emit(cam)
                     self.event_stopped.emit(f"{cam}-error")

@@ -130,15 +130,15 @@ class Guardian(QObject):
     def send_message(self, error, extra_msg=""):
         message = self.error_messages.get(error, "Unknown Error. ")
         if message:
-            message += f"{extra_msg}."
+            message += f" {extra_msg}"
         if self.main.run_state == self.main.run_states["active"] or \
               self.main.run_state == self.main.run_states["starting_event"] or \
               self.main.run_state == self.main.run_states["stopping_event"]:
-            message += f" Current run: {self.main.run_id}, event: {self.main.event_id}, "
+            message += f" Run {self.main.run_id} ev {self.main.event_id}, "
         elif self.main.run_state == self.main.run_states["starting_run"] or \
               self.main.run_state == self.main.run_states["stopping_run"]:
-            message += f" Current run: {self.main.run_id}, "
-        message += f"State: {self.main.run_state}."
+            message += f" Run {self.main.run_id}, "
+        message += f"{self.main.run_state}."
 
         self.logger.error(f"Error {error}: {message}")
         config = self.main.config_class.run_config["general"]
