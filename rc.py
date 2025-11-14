@@ -531,7 +531,7 @@ class MainWindow(QMainWindow):
             self.ui.start_run_but.setEnabled(True)
         else:
             self.ui.start_run_but.setEnabled(False)
-        if stop_run_but_available and not self.stopping_run:
+        if stop_run_but_available:
             self.ui.stop_run_but.setEnabled(True)
         else:
             self.ui.stop_run_but.setEnabled(False)
