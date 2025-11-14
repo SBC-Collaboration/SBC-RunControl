@@ -100,6 +100,18 @@ class MainWindow(QMainWindow):
         self.file_handler.setFormatter(self.log_formatter)
         self.logger.addHandler(self.file_handler)
 
+        # init current_event and current_run symlink, to tmp first
+        tmp_path = "/tmp/runcontrol/"
+        os.mkdir(tmp_path, exist_ok=True)
+        current_run_path = os.path.join(self.config_class.config["general"]["data_dir"], "current_run")
+        if os.path.islink(current_run_path):
+            os.unlink(current_run_path)
+        os.symlink(tmp_path, current_run_path, target_is_directory=True)
+        current_event_path = os.path.join(self.config_class.config["general"]["data_dir"], "current_event")
+        if os.path.islink(current_event_path):
+            os.unlink(current_event_path)
+        os.symlink(tmp_path, current_event_path, target_is_directory=True)
+
         # visualization setup
         self.caen_plot_mgr = CAENPlotManager(self)
         self.acous_plot_mgr = AcousPlotManager(self)

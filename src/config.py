@@ -78,6 +78,7 @@ class Config(QObject):
         main_ui.autorun_box.stateChanged.connect(self.apply_config_from_mainwindow)
         main_ui.source_box.currentTextChanged.connect(self.apply_config_from_mainwindow)
         main_ui.source_location_box.currentTextChanged.connect(self.apply_config_from_mainwindow)
+
     @Slot()
     def load_config_to_window(self, ui):
         # settings window
