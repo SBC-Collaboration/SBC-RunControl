@@ -63,6 +63,13 @@ class Acoustics(QObject):
     def periodic_task(self):
         if (self.main.run_state == self.main.run_states["active"] and self.gage_process):
             if not self.gage_process.is_alive():
+                exit_code = self.gage_process.exitcode
+                if exit_code == 0:
+                    self.logger.debug("Acous: GaGe process ended normally.")
+                elif exit_code is not None:
+                    self.logger.warning(f"Acous: GaGe process exited with code {exit_code}.")
+
+                self.gage_process.close()
                 self.logger.debug(f"Acous: GaGe process not alive. Starting new thread.")
                 self.gage_process = Process(target=self.start_gage)
                 self.gage_process.start()

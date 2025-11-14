@@ -239,6 +239,7 @@ class NIUSB(QObject):
                     if self.dev.read_pin(*self.reverse_config[f"state_{cam}"]):
                         cam_ready[cam] = "ready"
                         self.dev.write_pin(*self.reverse_config[f"comm_{cam}"], False)
+                        self.cam_error[cam] = False
                         self.logger.info(f"Camera {cam} is ready.")
                         self.event_started.emit(cam)
                     elif time.time() - start_event_time > timeout:
@@ -299,12 +300,10 @@ class NIUSB(QObject):
                 elif not self.main.config_class.run_config["cams"][cam]["enabled"]:
                     cam_ready[cam] = "disabled"
                     self.event_stopped.emit(f"{cam}-disabled")
-                elif self.cam_error[cam]:
-                    cam_ready[cam] = "disabled"
-                    self.event_stopped.emit(f"{cam}-error")
                 elif not self.dev.read_pin(*self.reverse_config[f"state_{cam}"]):
                     cam_ready[cam] = "complete"
                     self.logger.info(f"Camera {cam} has completed.")
+                    self.cam_error[cam] = False
                     self.event_stopped.emit(cam)
                 elif time.time() - stop_event_time > timeout:
                     # if camera was working before, set error
