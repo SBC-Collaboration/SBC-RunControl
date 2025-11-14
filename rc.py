@@ -53,10 +53,10 @@ class MainWindow(QMainWindow):
         # Acquire a lock to prevent multiple instances of the program
         os.umask(0o000) # allow r/w for all users
         self.lock_file = "/tmp/runcontrol.lock"
-        self.lock_fd = open(self.lock_file, 'w+')
         try:
+            self.lock_fd = open(self.lock_file, 'w+')
             fcntl.flock(self.lock_fd, fcntl.LOCK_EX | fcntl.LOCK_NB)
-        except BlockingIOError:
+        except (BlockingIOError, PermissionError):
             print("Another instance of RunControl is running. Quitting RunControl.")
             sys.exit(1)
 
@@ -70,7 +70,7 @@ class MainWindow(QMainWindow):
         # initialize config class
         self.config_class = Config(self)
         self.config_class.load_config()
-        self.config_class.load_config_to_mainwindow()
+        self.config_class.init_config_to_mainwindow()
         self.stopping_run = False
         self.stopping_event_flag = False
 
@@ -566,7 +566,8 @@ class MainWindow(QMainWindow):
                 self.logger.debug(f"Modules stopped for run: {self.stopping_run_ready}\n")
 
                 # check for autorun condition
-                autorun = self.ui.autorun_box.isChecked() and not self.manual_stop_run
+                autorun = self.config_class.run_config["general"]["autorun"] and \
+                    not self.manual_stop_run
                 if autorun:
                     self.start_run()
                 else:

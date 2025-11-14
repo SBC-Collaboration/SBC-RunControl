@@ -417,7 +417,44 @@
               <property name="spacing">
                <number>3</number>
               </property>
-              <item row="2" column="5" colspan="2">
+              <item row="1" column="7">
+               <widget class="QToolButton" name="data_dir_but">
+                <property name="text">
+                 <string>...</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="7">
+               <widget class="QToolButton" name="log_dir_but">
+                <property name="text">
+                 <string>...</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QCheckBox" name="autorun_box">
+                <property name="layoutDirection">
+                 <enum>Qt::LayoutDirection::LeftToRight</enum>
+                </property>
+                <property name="text">
+                 <string>Autorun</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="QLabel" name="source_label">
+                <property name="text">
+                 <string>Source</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>max_ev_time_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="6" colspan="2">
                <widget class="NoWheelDoubleSpinBox" name="max_ev_time_box">
                 <property name="focusPolicy">
                  <enum>Qt::FocusPolicy::StrongFocus</enum>
@@ -433,6 +470,219 @@
                 </property>
                </widget>
               </item>
+              <item row="2" column="5">
+               <widget class="QLabel" name="max_ev_time_label">
+                <property name="text">
+                 <string>Max Event Time</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>max_ev_time_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="4">
+               <widget class="NoWheelSpinBox" name="max_num_ev_box">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="minimum">
+                 <number>1</number>
+                </property>
+                <property name="maximum">
+                 <number>1000</number>
+                </property>
+                <property name="value">
+                 <number>100</number>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="3">
+               <widget class="QLabel" name="max_num_ev_label">
+                <property name="text">
+                 <string>Max Num of Events</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>max_num_ev_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="3">
+               <widget class="QCheckBox" name="slack_alarm_box">
+                <property name="layoutDirection">
+                 <enum>Qt::LayoutDirection::LeftToRight</enum>
+                </property>
+                <property name="text">
+                 <string>Slack Alarm</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="4">
+               <widget class="QLabel" name="slack_channel_id_label">
+                <property name="text">
+                 <string>Slack Channel ID</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>max_num_ev_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="5" colspan="3">
+               <widget class="QLineEdit" name="slack_channel_id_edit"/>
+              </item>
+              <item row="3" column="1">
+               <widget class="QLabel" name="source_location_label">
+                <property name="text">
+                 <string>Location</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>max_ev_time_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="2">
+               <widget class="QComboBox" name="source_box">
+                <property name="editable">
+                 <bool>true</bool>
+                </property>
+                <item>
+                 <property name="text">
+                  <string>Bg</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>LED</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Test</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>22Na</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>57Co-0.1-2</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>60Co-1.5-1</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>88Y</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>124Sb</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>133Ba-0.1-3</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>137Cs-2.3-2</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>137Cs-3.1-69</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>152Eu</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>207Bi-1.3-1</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>228Th-1.1-1</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>241Am-0.1-29</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>252Cf</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>58Co-Be</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>124Sb-Be</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>207Bi-Be</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="3" column="2">
+               <widget class="QComboBox" name="source_location_box">
+                <property name="acceptDrops">
+                 <bool>false</bool>
+                </property>
+                <property name="editable">
+                 <bool>true</bool>
+                </property>
+                <item>
+                 <property name="text">
+                  <string>None</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Source Tube</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Side - Set 1</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Side - Set 2</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
               <item row="1" column="0">
                <widget class="QLabel" name="data_dir_label">
                 <property name="lineWidth">
@@ -446,35 +696,6 @@
                 </property>
                 <property name="buddy">
                  <cstring>data_dir_edit</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="1" colspan="5">
-               <widget class="QLineEdit" name="log_dir_edit"/>
-              </item>
-              <item row="2" column="2">
-               <widget class="QLabel" name="max_num_ev_label">
-                <property name="text">
-                 <string>Max Num of Events</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>max_num_ev_box</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="4">
-               <widget class="QLabel" name="max_ev_time_label">
-                <property name="text">
-                 <string>Max Event Time</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>max_ev_time_box</cstring>
                 </property>
                </widget>
               </item>
@@ -494,74 +715,11 @@
                 </property>
                </widget>
               </item>
-              <item row="2" column="3">
-               <widget class="NoWheelSpinBox" name="max_num_ev_box">
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="minimum">
-                 <number>1</number>
-                </property>
-                <property name="maximum">
-                 <number>1000</number>
-                </property>
-                <property name="value">
-                 <number>100</number>
-                </property>
-               </widget>
+              <item row="0" column="1" colspan="6">
+               <widget class="QLineEdit" name="log_dir_edit"/>
               </item>
-              <item row="0" column="6">
-               <widget class="QToolButton" name="log_dir_but">
-                <property name="text">
-                 <string>...</string>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="1" colspan="5">
+              <item row="1" column="1" colspan="6">
                <widget class="QLineEdit" name="data_dir_edit"/>
-              </item>
-              <item row="2" column="0">
-               <widget class="QCheckBox" name="autorun_box">
-                <property name="layoutDirection">
-                 <enum>Qt::LayoutDirection::LeftToRight</enum>
-                </property>
-                <property name="text">
-                 <string>Autorun</string>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="6">
-               <widget class="QToolButton" name="data_dir_but">
-                <property name="text">
-                 <string>...</string>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="1">
-               <widget class="QCheckBox" name="slack_alarm_box">
-                <property name="layoutDirection">
-                 <enum>Qt::LayoutDirection::LeftToRight</enum>
-                </property>
-                <property name="text">
-                 <string>Slack Alarm</string>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="2">
-               <widget class="QLabel" name="slack_channel_id_label">
-                <property name="text">
-                 <string>Slack Channel ID</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>max_num_ev_box</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="3" colspan="3">
-               <widget class="QLineEdit" name="slack_channel_id_edit"/>
               </item>
              </layout>
             </item>
@@ -793,7 +951,7 @@
              <x>0</x>
              <y>0</y>
              <width>874</width>
-             <height>742</height>
+             <height>736</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_14">
@@ -1112,13 +1270,6 @@
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="0">
-               <widget class="QCheckBox" name="pressure_enabled_box">
-                <property name="text">
-                 <string>Enabled</string>
                 </property>
                </widget>
               </item>
@@ -1735,6 +1886,13 @@
                 </property>
                 <property name="value">
                  <double>0.000000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QCheckBox" name="pressure_enabled_box">
+                <property name="text">
+                 <string>Enabled</string>
                 </property>
                </widget>
               </item>
@@ -9747,7 +9905,7 @@
            <property name="geometry">
             <rect>
              <x>0</x>
-             <y>-54</y>
+             <y>0</y>
              <width>876</width>
              <height>579</height>
             </rect>

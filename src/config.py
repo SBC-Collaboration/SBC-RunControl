@@ -69,18 +69,20 @@ class Config(QObject):
         self.load_config_to_window(ui)
     
     @Slot()
-    def load_config_to_mainwindow(self):
+    def init_config_to_mainwindow(self):
         main_ui = self.main.ui
         config = self.config["general"]
         main_ui.autorun_box.setChecked(config["autorun"])
         main_ui.source_box.setCurrentText(config["source"])
         main_ui.source_location_box.setCurrentText(config["source_location"])
-
-
+        main_ui.autorun_box.stateChanged.connect(self.apply_config_from_mainwindow)
+        main_ui.source_box.currentTextChanged.connect(self.apply_config_from_mainwindow)
+        main_ui.source_location_box.currentTextChanged.connect(self.apply_config_from_mainwindow)
     @Slot()
     def load_config_to_window(self, ui):
         # settings window
         widgets = ui.__dict__
+        main_ui = self.main.ui
 
         # general
         general_config = self.config.get("general", {})
@@ -90,6 +92,12 @@ class Config(QObject):
         ui.slack_channel_id_edit.setText(general_config.get("slack_channel_id", ""))
         ui.max_ev_time_box.setValue(general_config.get("max_ev_time", 0))
         ui.max_num_ev_box.setValue(general_config.get("max_num_evs", 0))
+        ui.autorun_box.setChecked(general_config.get("autorun", False))
+        ui.source_box.setCurrentText(general_config.get("source", ""))
+        ui.source_location_box.setCurrentText(general_config.get("source_location", ""))
+        main_ui.autorun_box.setChecked(general_config.get("autorun", False))
+        main_ui.source_box.setCurrentText(general_config.get("source", ""))
+        main_ui.source_location_box.setCurrentText(general_config.get("source_location", ""))
 
         # PLC
         plc_config = self.config.get("plc", {})
@@ -378,6 +386,17 @@ class Config(QObject):
             widgets[f"digi_ch{ch}_name"].setText(digi_ch_config.get("name", ""))
 
         self.logger.info("Config: Loaded from file.")
+    
+    @Slot()
+    def apply_config_from_mainwindow(self):
+        main_ui = self.main.ui
+        general_config = self.config.get("general", {})
+        general_config["autorun"] = main_ui.autorun_box.isChecked()
+        general_config["source"] = main_ui.source_box.currentText()
+        general_config["source_location"] = main_ui.source_location_box.currentText()
+        self.config["general"].update(general_config)
+        if hasattr(self.main, 'settings_window'):
+            self.load_config_to_window(self.main.settings_window.ui)
 
     @Slot()
     def apply_config(self, ui):
