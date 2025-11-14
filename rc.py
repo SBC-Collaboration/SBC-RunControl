@@ -102,7 +102,7 @@ class MainWindow(QMainWindow):
 
         # init current_event and current_run symlink, to tmp first
         tmp_path = "/tmp/runcontrol/"
-        os.mkdir(tmp_path, exist_ok=True)
+        os.makedirs(tmp_path, exist_ok=True)
         current_run_path = os.path.join(self.config_class.config["general"]["data_dir"], "current_run")
         if os.path.islink(current_run_path):
             os.unlink(current_run_path)
