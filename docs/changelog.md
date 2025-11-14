@@ -1,5 +1,13 @@
 # Changelog
 
+## [Run Control v0.4.6](https://github.com/SBC-Collaboration/SBC-RunControl/releases/tag/v0.4.6) (2025-11-14)
+### Changed
+- Writes PID, run state, active run and event number into lockfile, for data transfer script to use.
+- Cameras are allowed to come back after timeout in a run.
+### Fixed 
+- Link autorun and source into settings window.
+- Stop run button disabled by mistake.
+
 ## [Run Control v0.4.5](https://github.com/SBC-Collaboration/SBC-RunControl/releases/tag/v0.4.5) (2025-11-10)
 ### Added
 - Added error handling for camera thread. 
