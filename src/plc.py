@@ -23,7 +23,8 @@ def safe_modbus(func):
 
 class PLC(QObject):
     pressure_cycle_started =  False
-    current_pressure = Signal(float)
+    current_ar_pressure = Signal(float)
+    current_cf4_pressure = Signal(float)
     run_started = Signal(str)
     run_stopped = Signal(str)
     event_started = Signal(str)
@@ -65,9 +66,14 @@ class PLC(QObject):
         # periodically update chamber pressure reading
         if self.enabled and self.client and self.client.is_socket_open():
             pt1101_register = 12830
-            pressure = self._read_float(pt1101_register)
-            if pressure is not None:
-                self.current_pressure.emit(pressure)
+            pt1101_pressure = self._read_float(pt1101_register)
+            if pt1101_pressure is not None:
+                self.current_ar_pressure.emit(pt1101_pressure)
+
+            pt2121_register = 12796
+            pt2121_pressure = self._read_float(pt2121_register)
+            if pt2121_pressure is not None:
+                self.current_cf4_pressure.emit(pt2121_pressure)
 
     @Slot()
     def turn_off_leds(self):
@@ -214,7 +220,8 @@ class PLC(QObject):
                     
         slowdaq_stop = self._stop_procedure(self.registers["WRITE_SLOWDAQ"])
         self.pressure_cycle_started = False
-        self.current_pressure.emit(0)
+        self.current_ar_pressure.emit(0)
+        self.current_cf4_pressure.emit(0)
         time.sleep(1)
         if (self._read_procedure(self.registers["WRITE_SLOWDAQ"])[0]):
             self.logger.error(f"PLC: SLOW_DAQ process didn't end successfully.")
@@ -251,7 +258,8 @@ class PLC(QObject):
             self.run_stopped.emit("plc-disabled")
             return
         
-        self.current_pressure.emit(0)
+        self.current_ar_pressure.emit(0)
+        self.current_cf4_pressure.emit(0)
         self.client.close()
         self.run_stopped.emit("plc")
     

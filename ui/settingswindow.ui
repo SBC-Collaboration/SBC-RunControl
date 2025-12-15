@@ -573,6 +573,16 @@
                 </item>
                 <item>
                  <property name="text">
+                  <string>DD</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>DT</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
                   <string>22Na</string>
                  </property>
                 </item>
@@ -584,6 +594,11 @@
                 <item>
                  <property name="text">
                   <string>60Co-1.5-1</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>60Co-1.3-8</string>
                  </property>
                 </item>
                 <item>
@@ -629,6 +644,11 @@
                 <item>
                  <property name="text">
                   <string>241Am-0.1-29</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>241AmBe-2.1-1</string>
                  </property>
                 </item>
                 <item>
@@ -950,7 +970,7 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>874</width>
+             <width>809</width>
              <height>736</height>
             </rect>
            </property>
@@ -2826,7 +2846,7 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>876</width>
+             <width>769</width>
              <height>1203</height>
             </rect>
            </property>
@@ -6613,7 +6633,7 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>876</width>
+             <width>874</width>
              <height>998</height>
             </rect>
            </property>
@@ -9906,7 +9926,7 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>876</width>
+             <width>692</width>
              <height>579</height>
             </rect>
            </property>
@@ -12142,7 +12162,7 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>876</width>
+             <width>398</width>
              <height>590</height>
             </rect>
            </property>
@@ -13447,7 +13467,7 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>876</width>
+             <width>658</width>
              <height>1416</height>
             </rect>
            </property>
@@ -18243,8 +18263,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>890</width>
-             <height>524</height>
+             <width>440</width>
+             <height>327</height>
             </rect>
            </property>
            <layout class="QGridLayout" name="gridLayout_2">

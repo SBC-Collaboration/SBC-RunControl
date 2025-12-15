@@ -57,7 +57,7 @@ class SQL(QObject):
         self.db = pymysql.connect(
             host=self.hostname, 
             user=self.user, 
-            passwd=self.password,
+            password=self.password,
             database=self.database, 
             port=self.port,
             connect_timeout=10)
