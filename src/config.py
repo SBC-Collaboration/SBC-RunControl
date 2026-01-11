@@ -124,6 +124,7 @@ class Config(QObject):
         ui.led2_out_post_box.setValue(plc_config.get("led2_out_post", 0))
         ui.led3_out_post_box.setValue(plc_config.get("led3_out_post", 0))
         ui.led_post_time_box.setValue(plc_config.get("led_post_time", 0))
+        ui.quiet_mode_box.setChecked(plc_config.get("quiet_mode", False))
 
         # pressure
         pressure_config = plc_config.get("pressure", {})
@@ -149,6 +150,7 @@ class Config(QObject):
         ui.LED2_OUT_POST_reg_box.setValue(plc_registers.get("LED2_OUT_POST", 0))
         ui.LED3_OUT_POST_reg_box.setValue(plc_registers.get("LED3_OUT_POST", 0))
         ui.LED_POST_TIME_reg_box.setValue(plc_registers.get("LED_POST_TIME", 0))
+        ui.PCYCLE_QUIETMODE_reg_box.setValue(plc_registers.get("PCYCLE_QUIETMODE", 0))
         ui.PCYCLE_PSET_LOW_reg_box.setValue(plc_registers.get("PCYCLE_PSET_LOW", 0))
         ui.PCYCLE_PSET_HIGH_reg_box.setValue(plc_registers.get("PCYCLE_PSET_HIGH", 0))
         ui.PCYCLE_PSET_RAMP1_reg_box.setValue(plc_registers.get("PCYCLE_PSET_RAMP1", 0))
@@ -443,6 +445,7 @@ class Config(QObject):
             "led2_out_post": ui.led2_out_post_box.value(),
             "led3_out_post": ui.led3_out_post_box.value(),
             "led_post_time": ui.led_post_time_box.value(),
+            "quiet_mode": ui.quiet_mode_box.isChecked(),
         }
 
         pressure_config = {
@@ -472,6 +475,7 @@ class Config(QObject):
             "LED2_OUT_POST": ui.LED2_OUT_POST_reg_box.value(),
             "LED3_OUT_POST": ui.LED3_OUT_POST_reg_box.value(),
             "LED_POST_TIME": ui.LED_POST_TIME_reg_box.value(),
+            "PCYCLE_QUIETMODE": ui.PCYCLE_QUIETMODE_reg_box.value(),
             "PCYCLE_PSET_LOW": ui.PCYCLE_PSET_LOW_reg_box.value(),
             "PCYCLE_PSET_HIGH": ui.PCYCLE_PSET_HIGH_reg_box.value(),
             "PCYCLE_PSET_RAMP1": ui.PCYCLE_PSET_RAMP1_reg_box.value(),

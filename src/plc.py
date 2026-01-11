@@ -127,6 +127,7 @@ class PLC(QObject):
         ret = ret and self._write_float(self.registers["LED3_OUT_POST"], 
             self.config["led3_out_post"] if self.config["led3_enabled"] else 0)
         ret = ret and self._write_time(self.registers["LED_POST_TIME"], self.config["led_post_time"]*1000)
+        ret = ret and self._write_flag(self.registers["PCYCLE_QUIETMODE"], self.config["quiet_mode"])
 
         if ret:
             self.logger.debug(f"PLC: Writing of LED control voltages successful.")

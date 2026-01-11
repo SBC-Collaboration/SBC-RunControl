@@ -970,7 +970,7 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>809</width>
+             <width>874</width>
              <height>736</height>
             </rect>
            </property>
@@ -2792,6 +2792,33 @@
                 </property>
                </widget>
               </item>
+              <item row="16" column="0">
+               <widget class="QLabel" name="PCYCLE_QUIETMODE_reg_label">
+                <property name="text">
+                 <string>PCYCLE_QUIETMODE</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="16" column="1">
+               <widget class="NoWheelSpinBox" name="PCYCLE_QUIETMODE_reg_box">
+                <property name="maximum">
+                 <number>99999</number>
+                </property>
+               </widget>
+              </item>
+              <item row="7" column="4">
+               <widget class="QCheckBox" name="quiet_mode_box">
+                <property name="layoutDirection">
+                 <enum>Qt::LayoutDirection::RightToLeft</enum>
+                </property>
+                <property name="text">
+                 <string>Quiet Mode</string>
+                </property>
+               </widget>
+              </item>
              </layout>
             </item>
             <item>
@@ -2846,7 +2873,7 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>769</width>
+             <width>876</width>
              <height>1203</height>
             </rect>
            </property>
@@ -6633,7 +6660,7 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>874</width>
+             <width>876</width>
              <height>998</height>
             </rect>
            </property>
@@ -9926,7 +9953,7 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>692</width>
+             <width>876</width>
              <height>579</height>
             </rect>
            </property>
@@ -12162,7 +12189,7 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>398</width>
+             <width>876</width>
              <height>590</height>
             </rect>
            </property>
@@ -13467,7 +13494,7 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>658</width>
+             <width>876</width>
              <height>1416</height>
             </rect>
            </property>
@@ -18263,8 +18290,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>440</width>
-             <height>327</height>
+             <width>890</width>
+             <height>524</height>
             </rect>
            </property>
            <layout class="QGridLayout" name="gridLayout_2">
