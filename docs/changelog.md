@@ -1,5 +1,13 @@
 # Changelog
 
+## [Run Control v0.4.7](https://github.com/SBC-Collaboration/SBC-RunControl/releases/tag/v0.4.7) (2026-01-11)
+### Changed
+- Added 252Cf-(-2.3)-1 source in the drop down menu. (In earlier data, it was named 252Cf-2.3-1. These are the same source.)
+- Add PCYCLE_QUIETMODE.
+### Fixed 
+- Better handling of camera error and rebooting.
+- Fix a mis-used numpy function call in digiscope code.
+
 ## [Run Control v0.4.6](https://github.com/SBC-Collaboration/SBC-RunControl/releases/tag/v0.4.6) (2025-11-14)
 ### Changed
 - Writes PID, run state, active run and event number into lockfile, for data transfer script to use.

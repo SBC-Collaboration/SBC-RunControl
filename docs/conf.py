@@ -4,11 +4,11 @@ import os, sys
 # -- Project information
 
 project = 'SBC Run Control'
-copyright = '2024-2025 SBC Collaboration'
+copyright = '2024-2026 SBC Collaboration'
 author = 'SBC Collaboration'
 
-release = '0.4.6'
-version = '0.4.6'
+release = '0.4.7'
+version = '0.4.7'
 
 # -- General configuration
 
