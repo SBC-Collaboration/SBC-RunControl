@@ -42,9 +42,9 @@ class Digiscope(QObject):
                 datachunk = np.frombuffer(self.client.recv(20*records_ready[0], socket.MSG_WAITALL),
                                           '>u4').reshape((records_ready[0],5))
                 datapreamble0 = np.zeros((records_ready[0]), dtype=np.int32)
-                datapreamble0[0] = records_cRIO
+                datapreamble0[0] = records_cRIO[0]
                 datapreamble1 = np.zeros((records_ready[0]), dtype=np.int32)
-                datapreamble1[0] = records_ready
+                datapreamble1[0] = records_ready[0]
                 datadict = {self.col_headers[0]: datapreamble0,
                             self.col_headers[1]: datapreamble1,
                             self.col_headers[2]: datachunk[:,0].astype(np.uint32),
