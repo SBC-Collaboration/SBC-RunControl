@@ -105,25 +105,40 @@ class Camera(QObject):
             return
         elif not self.config["enabled"]:
             return
-        self.stop_camera()
         self.force_reboot_camera()
+
+        attempts = 0
+        max_attempts = 100 # try for up to 3000 seconds
+        while attempts < max_attempts:
+            if self.test_rpi():
+                self.logger.info(f"Camera {self.cam_name}: Reconnected after reboot.")
+                break
+            attempts += 1
+            QThread.sleep(30)
+        
         self.start_camera()
     
     @Slot()
     def force_reboot_camera(self):
-        command = "sudo reboot"
         try:
-            stdin, stdout, stderr = self.client.exec_command(command, get_pty=True)
+            self.client.close()
+        except Exception: 
+            pass
+
+        try:    
+            # Create fresh connection
+            self.client = pm.client.SSHClient()
+            self.client.set_missing_host_key_policy(pm.AutoAddPolicy())
+            self.client.connect(self.config["ip_addr"], username=self.username, timeout=10)
+            self.logger.info(f"Camera {self.cam_name}: Sending reboot command...")
+
+            command = "sudo reboot"
+            self.client.exec_command(command, get_pty=True)
+            QThread.sleep(1)
         except Exception as e:
             self.logger.error(f"Camera {self.cam_name}: Failed to reboot: {e}")
             return
 
-        for line in stdout:
-            self.logger.debug(f"Camera: {line.rstrip('\r\n')}")
-        
-        try:
-            stdout.channel.recv_exit_status()
-        except Exception: pass
         finally:
             try: self.client.close()
             except Exception: pass
