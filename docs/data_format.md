@@ -280,8 +280,22 @@ This data is very similar the the **EventData** SQL table, but saved locally. It
 
 ## Slow DAQ Data
 For each pressure cycle, the PLC saves the 10 ms resolution data of a few important pressure transducers and valves. When an event ends, run control copies the data to the `slow_daq.sbc` file in the data folder.
-- **time_ms** (`uint32`):
-- **valves** (`uint32`):
+- **time_ms** (`uint32`): Time stamp in milliseconds.
+- **valves** (`uint32`): A bit mask of status of a list of valves in the system, for each time stamp. First 14 bits are used, starting from the LSB: 
+  - 0 - FASTCOMP (FF set)
+  - 1 - SLOWCOMP (FF set)
+  - 2 - CC9313_CONT (Cryomech on)
+  - 3 - HFSV3312
+  - 4 - HFSV3323
+  - 5 - HFSV3331
+  - 6 - PUMP3305
+  - 7 - SV3307
+  - 8 - SV3310
+  - 9 - SV3322
+  - 10 - SV3325
+  - 11 - SV3326
+  - 12 - SV3329
+  - 13 - PV1344
 - **TT6415** (`float`):
 - **PT1101** (`float`):
 - **TT2118** (`float`):
@@ -354,10 +368,10 @@ Each camera will save a certain number of pre-trigger and post-trigger images in
 - **pixdiff** (`int`): How many pixels changed between the previous frame and this frame. If a value of an 8-bit pixel changed more than **adc_threshold**, then this pixel is counted as different. If the number of different pixels is more than **pix_threshold** and the **trig_en** pin is high, then a trigger will be sent.
 
 ## Digiscope
-This data is saved in the SBC binary format with the file name `digiscope.sbc`. 
-- **PGAframes_ntrans** (`int32`)
-- **cRIOframes_ntrans** (`uint32`)
-- **ix** (`uint32`)
-- **t_ticks** (`uint32`)
-- **dt_ticks** (`uint32`)
-- **DI** (`uint32`, 2)
+This data is saved in the SBC binary format with the file name `digiscope.sbc`. Repository of the cRIO code is [here](https://github.com/SBC-Collaboration/cRIO-Digiscope)
+- **PGAframes_ntrans** (`int32`): INT32 giving # of data frames recorded (by cRIO) since last dump. Should match shift in Frame Index (below) unles FPGA buffer overflows.
+- **cRIOframes_ntrans** (`uint32`): INT32 giving # of data frames in this dump. Should match # of data frames recorded (above) unless cRIO buffer overflows.
+- **ix** (`uint32`): Frame index (assigned by FPGA)
+- **t_ticks** (`uint32`): Frame timestamps
+- **dt_ticks** (`uint32`): Frame dT (time resolution).
+- **DI** (`uint32`, 2): Two 32 bit mask of digital-in banks status. Only DI1 is implemented right now, and accessible from the digiscope box. The name of each of the 32 channels is saved in run control config file, from LSB to MSB.
