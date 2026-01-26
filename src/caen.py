@@ -149,7 +149,7 @@ class Caen(QObject):
 
         # create writer
         en_chs = np.sum([self.real_group_configs[i].AcquisitionMask for i in range(4) 
-                         if self.real_group_configs[i].Enabled ]) # number of enabled channels
+                         if self.real_group_configs[i].Enabled], dtype=np.int64) # number of enabled channels
         rec_len = self.real_global_config.RecordLength
         self.writer = Writer(
             os.path.join(self.config["data_path"], "scintillation.sbc"), # file path
