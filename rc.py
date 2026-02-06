@@ -19,6 +19,7 @@ from src.sql import SQL
 from src.niusb import NIUSB
 from src.writer import Writer
 from src.digiscope import Digiscope
+from src.wait import Wait
 from src.guardian import Guardian, ErrorCodes
 from src.visualization import CAENPlotManager, AcousPlotManager
 import logging
@@ -135,7 +136,7 @@ class MainWindow(QMainWindow):
         # List populated by ready modules at each state. After all modules are ready, it will proceed to the next state
         self.all_modules = ["config", "niusb", "plc", "sql", "writer", 
                             "cam1", "cam2", "cam3", "clock", "trigger", "position",
-                            "amp1", "amp2", "amp3", "caen", "acous", "digiscope"]
+                            "amp1", "amp2", "amp3", "caen", "acous", "digiscope", "wait"]
         self.starting_program_modules = []
         self.starting_run_modules = ["amp1", "amp2", "amp3", "cam1", "cam2", "cam3",
                                      "clock", "position", "trigger", "niusb", "caen", "plc", "sql", "digiscope"]
@@ -144,7 +145,7 @@ class MainWindow(QMainWindow):
         self.starting_event_modules = ["cam1", "cam2", "cam3", "amp1", "amp2", "amp3", "position",
                                        "niusb", "caen", "acous", "plc", "sql", "digiscope"]
         self.stopping_event_modules = ["cam1", "cam2", "cam3", "amp1", "amp2", "amp3", "position",
-                                       "niusb", "caen", "acous", "plc", "sql", "writer", "digiscope"]
+                                       "niusb", "caen", "acous", "plc", "sql", "writer", "digiscope", "wait"]
 
         self.update_state("preparing")
 
@@ -348,6 +349,17 @@ class MainWindow(QMainWindow):
         self.event_stopping.connect(self.digiscope_worker.stop_event)
         self.run_stopping.connect(self.digiscope_worker.stop_run)
         self.digiscope_thread.start()
+        time.sleep(0.001)
+
+        self.wait_worker = Wait(self)
+        self.wait_worker.event_stopped.connect(self.stopping_event_wait)
+        self.wait_worker.error.connect(self.guardian_worker.error_handler)
+        self.wait_thread = QThread()
+        self.wait_thread.setObjectName("wait_thread")
+        self.wait_worker.moveToThread(self.wait_thread)
+        self.wait_thread.started.connect(self.wait_worker.run)
+        self.event_stopping.connect(self.wait_worker.stop_event)
+        self.wait_thread.start()
         time.sleep(0.001)
 
         # establish mutex and wait conditions for syncing

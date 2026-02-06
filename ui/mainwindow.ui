@@ -764,8 +764,8 @@
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>838</width>
-               <height>598</height>
+               <width>382</width>
+               <height>119</height>
               </rect>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -1082,8 +1082,8 @@ background-color: rgb(150, 150, 150);</string>
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>836</width>
-               <height>596</height>
+               <width>84</width>
+               <height>155</height>
               </rect>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_11">
@@ -1186,8 +1186,8 @@ background-color: rgb(150, 150, 150);</string>
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>838</width>
-               <height>598</height>
+               <width>100</width>
+               <height>30</height>
               </rect>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_12">
@@ -1598,6 +1598,26 @@ background-color: #969696;</string>
           </property>
           <property name="text">
            <string>Digiscope</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignmentFlag::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="5">
+         <widget class="StatusLight" name="status_wait">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">color: #ffffff;
+background-color: #969696;</string>
+          </property>
+          <property name="text">
+           <string>Wait</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignmentFlag::AlignCenter</set>
