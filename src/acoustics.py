@@ -142,6 +142,7 @@ class Acoustics(QObject):
             parser.write(f)
     
     def start_gage(self):
+        os.setpgid(0, 0)
         path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 
                             "..", self.config["driver_path"])
         lib = ctypes.cdll.LoadLibrary(path)
@@ -167,10 +168,11 @@ class Acoustics(QObject):
             return
         
         if self.gage_process and self.gage_process.is_alive():
-            os.kill(self.gage_process.pid, signal.SIGINT)
+            pgid = os.getpgid(self.gage_process.pid)
+            os.killpg(pgid, signal.SIGINT)
             self.gage_process.join(self.config["driver_timeout"])
             if self.gage_process.is_alive():
-                os.kill(self.gage_process.pid, signal.SIGKILL)
+                os.killpg(pgid, signal.SIGKILL)
                 self.error.emit(ErrorCodes.ACOUSTIC_FAILED_TO_END)
             self.gage_process = None
                 
