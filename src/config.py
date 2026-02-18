@@ -93,6 +93,7 @@ class Config(QObject):
         ui.slack_channel_id_edit.setText(general_config.get("slack_channel_id", ""))
         ui.max_ev_time_box.setValue(general_config.get("max_ev_time", 0))
         ui.max_num_ev_box.setValue(general_config.get("max_num_evs", 0))
+        ui.ev_wait_time_box.setValue(general_config.get("ev_wait_time", 0))
         ui.autorun_box.setChecked(general_config.get("autorun", False))
         ui.source_box.setCurrentText(general_config.get("source", ""))
         ui.source_location_box.setCurrentText(general_config.get("source_location", ""))
@@ -419,6 +420,7 @@ class Config(QObject):
             "slack_channel_id": ui.slack_channel_id_edit.text(),
             "max_ev_time": ui.max_ev_time_box.value(),
             "max_num_evs": ui.max_num_ev_box.value(),
+            "ev_wait_time": ui.ev_wait_time_box.value(),
         }
 
         # apply plc config

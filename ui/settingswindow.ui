@@ -417,63 +417,10 @@
               <property name="spacing">
                <number>3</number>
               </property>
-              <item row="1" column="7">
-               <widget class="QToolButton" name="data_dir_but">
+              <item row="3" column="1">
+               <widget class="QLabel" name="source_location_label">
                 <property name="text">
-                 <string>...</string>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="7">
-               <widget class="QToolButton" name="log_dir_but">
-                <property name="text">
-                 <string>...</string>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="0">
-               <widget class="QCheckBox" name="autorun_box">
-                <property name="layoutDirection">
-                 <enum>Qt::LayoutDirection::LeftToRight</enum>
-                </property>
-                <property name="text">
-                 <string>Autorun</string>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="1">
-               <widget class="QLabel" name="source_label">
-                <property name="text">
-                 <string>Source</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>max_ev_time_box</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="6" colspan="2">
-               <widget class="NoWheelDoubleSpinBox" name="max_ev_time_box">
-                <property name="focusPolicy">
-                 <enum>Qt::FocusPolicy::StrongFocus</enum>
-                </property>
-                <property name="suffix">
-                 <string> s</string>
-                </property>
-                <property name="decimals">
-                 <number>1</number>
-                </property>
-                <property name="maximum">
-                 <double>100000.000000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="5">
-               <widget class="QLabel" name="max_ev_time_label">
-                <property name="text">
-                 <string>Max Event Time</string>
+                 <string>Location</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
@@ -499,30 +446,39 @@
                 </property>
                </widget>
               </item>
-              <item row="2" column="3">
-               <widget class="QLabel" name="max_num_ev_label">
+              <item row="0" column="1" colspan="6">
+               <widget class="QLineEdit" name="log_dir_edit"/>
+              </item>
+              <item row="2" column="1">
+               <widget class="QLabel" name="source_label">
                 <property name="text">
-                 <string>Max Num of Events</string>
+                 <string>Source</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
-                 <cstring>max_num_ev_box</cstring>
+                 <cstring>max_ev_time_box</cstring>
                 </property>
                </widget>
               </item>
-              <item row="3" column="3">
-               <widget class="QCheckBox" name="slack_alarm_box">
-                <property name="layoutDirection">
-                 <enum>Qt::LayoutDirection::LeftToRight</enum>
+              <item row="1" column="0">
+               <widget class="QLabel" name="data_dir_label">
+                <property name="lineWidth">
+                 <number>0</number>
                 </property>
                 <property name="text">
-                 <string>Slack Alarm</string>
+                 <string>Data Dir</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>data_dir_edit</cstring>
                 </property>
                </widget>
               </item>
-              <item row="3" column="4">
+              <item row="4" column="4">
                <widget class="QLabel" name="slack_channel_id_label">
                 <property name="text">
                  <string>Slack Channel ID</string>
@@ -535,19 +491,85 @@
                 </property>
                </widget>
               </item>
-              <item row="3" column="5" colspan="3">
-               <widget class="QLineEdit" name="slack_channel_id_edit"/>
-              </item>
-              <item row="3" column="1">
-               <widget class="QLabel" name="source_location_label">
+              <item row="2" column="5">
+               <widget class="QLabel" name="max_ev_time_label">
                 <property name="text">
-                 <string>Location</string>
+                 <string>Max Event Time</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                 </property>
                 <property name="buddy">
                  <cstring>max_ev_time_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0">
+               <widget class="QLabel" name="log_dir_label">
+                <property name="lineWidth">
+                 <number>0</number>
+                </property>
+                <property name="text">
+                 <string>Log Dir</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>log_dir_edit</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="7">
+               <widget class="QToolButton" name="log_dir_but">
+                <property name="text">
+                 <string>...</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="7">
+               <widget class="QToolButton" name="data_dir_but">
+                <property name="text">
+                 <string>...</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QCheckBox" name="autorun_box">
+                <property name="layoutDirection">
+                 <enum>Qt::LayoutDirection::LeftToRight</enum>
+                </property>
+                <property name="text">
+                 <string>Autorun</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="5">
+               <widget class="QLabel" name="ev_wait_time_label">
+                <property name="text">
+                 <string>Event Wait Time</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>max_ev_time_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="6" colspan="2">
+               <widget class="NoWheelDoubleSpinBox" name="ev_wait_time_box">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
+                </property>
+                <property name="suffix">
+                 <string> s</string>
+                </property>
+                <property name="decimals">
+                 <number>1</number>
+                </property>
+                <property name="maximum">
+                 <double>100000.000000000000000</double>
                 </property>
                </widget>
               </item>
@@ -703,43 +725,50 @@
                 </item>
                </widget>
               </item>
-              <item row="1" column="0">
-               <widget class="QLabel" name="data_dir_label">
-                <property name="lineWidth">
-                 <number>0</number>
+              <item row="2" column="6" colspan="2">
+               <widget class="NoWheelDoubleSpinBox" name="max_ev_time_box">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::StrongFocus</enum>
                 </property>
-                <property name="text">
-                 <string>Data Dir</string>
+                <property name="suffix">
+                 <string> s</string>
                 </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                <property name="decimals">
+                 <number>1</number>
                 </property>
-                <property name="buddy">
-                 <cstring>data_dir_edit</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="0">
-               <widget class="QLabel" name="log_dir_label">
-                <property name="lineWidth">
-                 <number>0</number>
-                </property>
-                <property name="text">
-                 <string>Log Dir</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>log_dir_edit</cstring>
+                <property name="maximum">
+                 <double>100000.000000000000000</double>
                 </property>
                </widget>
-              </item>
-              <item row="0" column="1" colspan="6">
-               <widget class="QLineEdit" name="log_dir_edit"/>
               </item>
               <item row="1" column="1" colspan="6">
                <widget class="QLineEdit" name="data_dir_edit"/>
+              </item>
+              <item row="2" column="3">
+               <widget class="QLabel" name="max_num_ev_label">
+                <property name="text">
+                 <string>Max Num of Events</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="buddy">
+                 <cstring>max_num_ev_box</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="5" colspan="3">
+               <widget class="QLineEdit" name="slack_channel_id_edit"/>
+              </item>
+              <item row="4" column="3">
+               <widget class="QCheckBox" name="slack_alarm_box">
+                <property name="layoutDirection">
+                 <enum>Qt::LayoutDirection::LeftToRight</enum>
+                </property>
+                <property name="text">
+                 <string>Slack Alarm</string>
+                </property>
+               </widget>
               </item>
              </layout>
             </item>

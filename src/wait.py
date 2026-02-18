@@ -13,7 +13,6 @@ class Wait(QObject):
         super().__init__()
         self.main = mainwindow
         self.logger = logging.getLogger("rc")
-        self.stop_event_wait = 60*1000  #ms
 
         self.timer = QTimer(self)
         self.timer.setInterval(100)
@@ -34,7 +33,9 @@ class Wait(QObject):
 
     @Slot()
     def stop_event(self):
-        self.logger.debug("Wait: Stopping event, starting wait timer.")
+        self.config = self.main.config_class.run_config["general"]
+        self.stop_event_wait = self.config.get("ev_wait_time", 0) * 1000  # convert seconds to milliseconds
+        self.logger.debug(f"Wait: Stopping event, starting wait timer for {self.stop_event_wait} ms.")
         self.wait_timer.start(self.stop_event_wait)
         
     @Slot()
