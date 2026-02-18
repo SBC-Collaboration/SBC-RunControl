@@ -119,6 +119,18 @@ class AcousPlotManager(QObject):
         self.pens = []
         self.logger = logging.getLogger("rc")
 
+    def block_downsample(self, data, n_total=10000):
+        """
+        Downsample by average over a block of data. This makes sure the total number of sample is constant
+        """
+        n = len(data)
+        if n <= n_total:
+            return data
+        
+        block_size = n // n_total
+        data_reshaped = data[:block_size* n_total].reshape(n_total, block_size).mean(axis=1)
+        return data_reshaped
+
     def setup_plot(self):
         """
         Set up the Acous plot widgets. It will create the plot and text items for each plot, and set up basic properties.
@@ -162,4 +174,6 @@ class AcousPlotManager(QObject):
             if not acous_configs[f"ch{i+1}"]["plot"]:
                 self.curves[i].setData(x=[], y=[])
             else:
-                self.curves[i].setData(x=time_axis, y=data['Waveforms'][-1][i])
+                x_data = self.block_downsample(time_axis)
+                y_data = self.block_downsample(data['Waveforms'][-1][i])
+                self.curves[i].setData(x=x_data, y=y_data)
