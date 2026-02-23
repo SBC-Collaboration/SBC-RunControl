@@ -1,5 +1,5 @@
-# Data Formats
-This documentation contains information for the data structures of different saved files by the RLAr10Ana analysis module.
+# Recon Data Formats
+This documentation contains information for the data structures of different saved files by the [LAr10Ana](https://github.com/SBC-Collaboration/LAr10Ana) analysis modules. All data are saved in the [SBC Binary Format](https://github.com/SBC-Collaboration/SBCBinaryFormat). Depending on the enabled DAQ modules for each run, not all analysis modules will run, and only a subset of the files may be generated. 
 
 ## Version
 The `version.txt` file saves the [version of LAr10Ana](https://github.com/SBC-Collaboration/LAr10Ana/releases) repository that's run to produce the outputs. Between manually added tags (like `v0.0.1`), it displays the number of commits from last tag, and the hash of latest commit. 
@@ -51,3 +51,12 @@ This module (`ScintRate.py`) follows the same structure as the scintillation mod
 - **hits_mask**: 32-bit mask of channels that are hit.
 - **runid**: Run ID of this row. (Added by EventDealer)
 - **ev**: Event ID of this row. (Added by EventDealer)
+
+## Bubble Finder
+This modules (`BubbleFinder.py`) looks at the frame-to-frame diff and applies a circle Hough Transform (CHT) to find bubbles.
+- **bub_num**: Index of the bubble. Each bubble in each frame from each camera will have its own unique ID in the event.
+- **cam**: Camera ID (1, 2, 3) of the bubble.
+- **pos**: (x, y) pixel position of the bubble center in the image.
+- **radius**: Estimated radius of the bubble in pixels.
+- **significance**: Ratio of this bubble's CHT vote count to the maximum vote count in the event; 1.0 for the backward t0 scan.
+- **frame**: Frame number in which the bubble was detected.
