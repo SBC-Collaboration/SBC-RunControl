@@ -11,7 +11,7 @@ from datetime import datetime
 # This standalone python script to periodically take images using multiple cameras
 # to create a time-lapse video.
 # It connects to the PLC and sets LED control voltage for the duration of image-taking.
-# The images are saved to `rc-data/images/` folder on the NAS.
+# The images are saved to `rc-data/images/` folder on the T9SSD.
 
 # Run this script in a screen using the following command:
 # screen -S camera_time_lapse -dm python3 time_lapse.py -t 20 -n 0
@@ -103,11 +103,11 @@ def _ssh_cam(cam_config):
 def take_frame():
     # set up symlink
     today = datetime.now().strftime('%Y%m%d')
-    base_dir = "/mnt/nas/rc-data/images/"
+    base_dir = "/mnt/T9SSD/rc-data/images/"
     event_dir = os.path.join(base_dir, today)
     os.makedirs(event_dir, exist_ok=True)
 
-    current_path = "/mnt/nas/rc-data/current_event"
+    current_path = "/mnt/T9SSD/rc-data/current_event"
     if os.path.islink(current_path):
         os.unlink(current_path)
     os.symlink(event_dir, current_path, target_is_directory=True)
