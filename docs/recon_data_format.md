@@ -60,3 +60,7 @@ This modules (`BubbleFinder.py`) looks at the frame-to-frame diff and applies a 
 - **radius**: Estimated radius of the bubble in pixels.
 - **significance**: Ratio of this bubble's CHT vote count to the maximum vote count in the event; 1.0 for the backward t0 scan.
 - **frame**: Frame number in which the bubble was detected.
+
+## 3D Position Reconstruction
+This module (`Reconstruction3D.py`) pulls bubble pixel position data from the Bubble Finder module and triangulates to output the 3D coordinate of the bubble within the chamber. Uses the first frame where at least two cameras have defined pixel coordinates. Currently only supports single bubble events (multi-bubble support in progress). 
+- **coords_3D**: Array of xyz coords, in inches. np.nan if no frame with at least two cameras defined. 
