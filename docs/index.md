@@ -11,7 +11,6 @@ Welcome to the documentation page of SBC Run Control, the data acquisition (DAQ)
 usage
 project_description
 data_format
-recon_data_format
 documentation
 git_workflow
 api

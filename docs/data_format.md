@@ -1,5 +1,13 @@
 # Data Formats
-This documentation contains information for the data structures of different saved files by the Run Control software and different modules.
+This documentation contains information for the data structures of different saved files by the Run Control software and different modules. This is the raw data of the SBC-LAr10 detector, which is accessible with a Fermilab computing account at
+```
+/exp/e961/data/SBC-25-daqdata/
+```
+Each run is archived as a tarball, and can be loaded into Python by the `GetEvent` function in the [LAr10Ana](https://github.com/SBC-Collaboration/LAr10Ana) repository.
+
+```{seealso}
+For documentation on the reconstructed data, see [LAr10Ana Documentation](https://lar10ana.readthedocs.io/latest/data_format.html)
+```
 
 ## Main configuration
 The master configuration file is saved in `.json` format. It contains configuration for run control itself and also all modules, including SiPM amps, CAEN, GaGe, cameras, arduinos, NI USB, and SQL. When run control starts, it will read the file from the main run control folder, and populate the fields in the settings window. After editing in the setting window, applying will update the config dictionary, and saving will update the dictionary and update the local file. Loading from a file will overwrite only the fields available in the file. 
